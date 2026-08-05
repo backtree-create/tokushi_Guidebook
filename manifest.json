@@ -1,0 +1,26 @@
+{
+  "name": "特別支援教育 障害種別支援 リファレンス",
+  "short_name": "障害種別早見帳",
+  "description": "文部科学省資料に基づく特別支援教育の指導ハンドブック（障害種別ごとの教育的ニーズ・支援内容・自立活動を整理）",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f4f4f0",
+  "theme_color": "#132132",
+  "lang": "ja",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
