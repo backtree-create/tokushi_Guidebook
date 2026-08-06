@@ -2,19 +2,14 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>特別支援教育 障害種別支援 リファレンス｜文部科学省資料に基づく指導ハンドブック</title>
-
-<!-- PWA: ホーム画面への追加・オフライン利用に対応 -->
-<link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#132132">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="障害種別早見帳">
-<link rel="apple-touch-icon" href="icon-192.png">
-<link rel="icon" href="icon-192.png" sizes="192x192">
-
+<meta name="apple-mobile-web-app-title" content="特別支援ハンドブック">
+<meta name="format-detection" content="telephone=no">
 <style>
   :root{
     --navy:#132132;
@@ -221,6 +216,41 @@
   ul.cat-list button:hover{background:rgba(19,33,50,.05);}
   ul.cat-list li.active button{background:var(--navy);color:#fff;}
   ul.cat-list li.active button .num{color:var(--gold-soft);}
+  .idx-hit-count{
+    margin-left:auto;
+    font-family:var(--mono);
+    font-size:10px;
+    background:var(--gold);
+    color:#fff;
+    padding:1px 6px;
+    border-radius:10px;
+    flex-shrink:0;
+  }
+
+  .disease-hits{margin-bottom:8px;}
+  ul.hit-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);}
+  ul.hit-list li{border-bottom:1px solid var(--line);}
+  ul.hit-list button{
+    all:unset;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    width:100%;
+    padding:8px 6px;
+    cursor:pointer;
+    transition:background .12s;
+  }
+  ul.hit-list button:hover{background:rgba(19,33,50,.05);}
+  ul.hit-list .hit-disease{
+    font-family:var(--serif);
+    font-size:13px;
+    font-weight:700;
+    color:var(--navy);
+  }
+  ul.hit-list .hit-cat{
+    font-size:10.5px;
+    color:var(--ink-faint);
+  }
 
   .school-stage{
     font-size:11.5px;
@@ -632,11 +662,42 @@
   table.item-table td.item-name{font-weight:700;color:var(--navy);width:220px;}
   table.item-table tr:last-child td{border-bottom:none;}
 
+  /* ---------- インストール案内バナー ---------- */
+  .install-banner{
+    background:var(--gold);
+    color:var(--navy);
+    font-size:12.5px;
+    font-weight:600;
+    padding:9px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    text-align:center;
+    position:relative;
+  }
+  .install-banner button{
+    all:unset;
+    cursor:pointer;
+    font-size:16px;
+    line-height:1;
+    padding:2px 6px;
+    position:absolute;
+    right:10px;
+    top:50%;
+    transform:translateY(-50%);
+  }
+
   ::-webkit-scrollbar{width:9px;}
   ::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:5px;}
 </style>
 </head>
 <body>
+
+<div id="installBanner" class="install-banner" style="display:none;">
+  <span id="installText"></span>
+  <button id="installClose" type="button" aria-label="閉じる">×</button>
+</div>
 
 <div class="top-strip">
   <span>特別支援教育 障害種別支援リファレンス <span class="dim">| Special Needs Education Field Reference</span></span>
@@ -1064,17 +1125,57 @@ tabJiritsu.onclick = ()=> setMode('jiritsu');
 function renderIndex(filter){
   const f = (filter||"").trim().toLowerCase();
   catList.innerHTML = "";
+  const diseaseHits = [];
   DATA.forEach(cat=>{
-    const hay = (cat.name+cat.en+cat.overview).toLowerCase();
-    if(f && !hay.includes(f)) return;
+    const catHay = (cat.name+cat.en+cat.overview).toLowerCase();
+    const matchedDiseases = f ? cat.diseases.filter(d=>d.name.toLowerCase().includes(f) || (d.overview||"").toLowerCase().includes(f)) : [];
+    const catMatches = !f || catHay.includes(f);
+    if(f && matchedDiseases.length){
+      matchedDiseases.forEach(d=> diseaseHits.push({cat, disease:d}));
+    }
+    if(f && !catMatches && !matchedDiseases.length) return;
     const li = document.createElement('li');
     if(cat.id===currentId) li.className='active';
     const btn = document.createElement('button');
-    btn.innerHTML = `<span class="num">${cat.num}</span><span>${cat.name}</span>`;
+    const hitBadge = matchedDiseases.length ? `<span class="idx-hit-count">${matchedDiseases.length}</span>` : "";
+    btn.innerHTML = `<span class="num">${cat.num}</span><span>${cat.name}</span>${hitBadge}`;
     btn.onclick = ()=>{ currentId=cat.id; renderIndex(searchBox.value); renderMain(cat.id); window.scrollTo({top:0,behavior:'smooth'}); };
     li.appendChild(btn);
     catList.appendChild(li);
   });
+
+  // 疾患名でのヒットをカテゴリー一覧の下に別枠で表示
+  let hitsEl = document.getElementById('diseaseHits');
+  if(hitsEl) hitsEl.remove();
+  if(f && diseaseHits.length){
+    hitsEl = document.createElement('div');
+    hitsEl.id = 'diseaseHits';
+    hitsEl.className = 'disease-hits';
+    const label = document.createElement('p');
+    label.className = 'index-label';
+    label.style.marginTop = '18px';
+    label.textContent = `疾患名でのヒット（${diseaseHits.length}件）`;
+    hitsEl.appendChild(label);
+    const ul = document.createElement('ul');
+    ul.className = 'hit-list';
+    diseaseHits.slice(0, 30).forEach(({cat, disease})=>{
+      const li = document.createElement('li');
+      const btn = document.createElement('button');
+      btn.innerHTML = `<span class="hit-disease">${disease.name}</span><span class="hit-cat">${cat.name}</span>`;
+      btn.onclick = ()=>{ currentId=cat.id; renderIndex(searchBox.value); renderMain(cat.id, disease.name); window.scrollTo({top:0,behavior:'smooth'}); };
+      li.appendChild(btn);
+      ul.appendChild(li);
+    });
+    hitsEl.appendChild(ul);
+    if(diseaseHits.length > 30){
+      const more = document.createElement('p');
+      more.className = 'block-sub';
+      more.style.margin = '6px 2px 0';
+      more.textContent = `他 ${diseaseHits.length - 30} 件（検索語を絞り込んでください）`;
+      hitsEl.appendChild(more);
+    }
+    catList.insertAdjacentElement('afterend', hitsEl);
+  }
 }
 
 function renderHome(){
@@ -1105,7 +1206,7 @@ function renderHome(){
   });
 }
 
-function renderMain(id){
+function renderMain(id, openDiseaseName){
   const cat = DATA.find(c=>c.id===id);
   if(!cat){ renderHome(); return; }
 
@@ -1217,6 +1318,20 @@ function renderMain(id){
       row.querySelector('.d-hint').textContent = willOpen ? '閉じる' : '詳細を見る';
     };
   });
+
+  // 検索経由で特定の疾患が指定された場合、自動的に開いてスクロール
+  if(openDiseaseName){
+    const idx = cat.diseases.findIndex(d=>d.name===openDiseaseName);
+    if(idx >= 0){
+      const target = mainContent.querySelector(`.disease-item[data-idx="${idx}"]`);
+      if(target){
+        target.classList.add('open');
+        const hint = target.querySelector('.d-hint');
+        if(hint) hint.textContent = '閉じる';
+        setTimeout(()=> target.scrollIntoView({behavior:'smooth', block:'center'}), 60);
+      }
+    }
+  }
 }
 
 function renderJiritsuTable(){
@@ -1256,12 +1371,31 @@ searchBox.addEventListener('input', ()=> renderIndex(searchBox.value));
 renderIndex();
 renderHome();
 
-// PWA: Service Worker登録（オフラインでも動作するように）
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js').catch(()=>{});
-  });
-}
+// ---- ホーム画面追加の案内バナー ----
+(function(){
+  try{
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    const dismissed = localStorage.getItem('installBannerDismissed') === '1';
+    if(isStandalone || dismissed) return;
+    const ua = navigator.userAgent;
+    const isIOS = /iPhone|iPad|iPod/.test(ua);
+    const isAndroid = /Android/.test(ua);
+    if(!isIOS && !isAndroid) return; // デスクトップでは表示しない
+    const banner = document.getElementById('installBanner');
+    const text = document.getElementById('installText');
+    if(isIOS){
+      text.textContent = '画面下部の共有ボタン（□に↑）から「ホーム画面に追加」でアプリのように使えます';
+    }else{
+      text.textContent = 'ブラウザメニュー（⋮）から「ホーム画面に追加」または「アプリをインストール」でアプリのように使えます';
+    }
+    banner.style.display = 'flex';
+    document.getElementById('installClose').onclick = function(){
+      banner.style.display = 'none';
+      try{ localStorage.setItem('installBannerDismissed', '1'); }catch(e){}
+    };
+  }catch(e){ /* localStorage等が使えない環境では何もしない */ }
+})();
+
 </script>
 </body>
 </html>
