@@ -31,7 +31,7 @@
     --mono: "Roboto Mono", "SFMono-Regular", Consolas, monospace;
   }
   *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
+  html,body{margin:0;padding:0; max-width:100%; overflow-x:hidden;}
   body{
     background:var(--paper);
     color:var(--ink);
@@ -39,8 +39,12 @@
     line-height:1.75;
     min-height:100vh;
     -webkit-font-smoothing:antialiased;
+    word-break:normal;
+    overflow-wrap:break-word;
+    line-break:strict;
   }
-  a{color:var(--teal);}
+  a{color:var(--teal); overflow-wrap:break-word; word-break:break-word;}
+  img, table, pre, .source-box, .credential, .top-strip{max-width:100%;}
 
   /* ---------- 上部帯（機関名） ---------- */
   .top-strip{
@@ -64,15 +68,18 @@
     color:#f2f1ea;
     border-bottom:3px solid var(--gold);
   }
-  .header-inner{max-width:1220px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:28px;flex-wrap:wrap;padding-bottom:22px;}
+  .header-inner{max-width:1220px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:28px;flex-wrap:wrap;padding-bottom:22px; min-width:0;}
   .brandmark{
     display:flex;
     align-items:center;
     gap:16px;
     cursor:pointer;
     transition:opacity .15s;
+    min-width:0;
+    max-width:100%;
   }
   .brandmark:hover{opacity:.85;}
+  .brandmark > div{min-width:0;}
   .emblem{
     width:52px;height:52px;
     border:1.5px solid var(--gold-soft);
@@ -112,6 +119,7 @@
     color:#b7c0c8;
     font-size:13.5px;
     max-width:600px;
+    overflow-wrap:break-word;
   }
   .credential{
     text-align:right;
@@ -119,6 +127,7 @@
     color:#9fb0bb;
     line-height:1.9;
     flex-shrink:0;
+    max-width:100%;
   }
   .credential b{color:#e9e4d5;font-weight:600;}
 
@@ -145,13 +154,42 @@
     color:var(--navy);
   }
   .mode-tabs button:not(.on):hover{color:#eef0ec;}
-  .mode-tabs .home-btn{
-    border:1px solid rgba(201,169,107,.4);
-    border-radius:5px 5px 0 0;
-    margin-right:8px;
-    color:#eef0ec;
+
+  /* ---------- ホームに戻る（フローティングボタン） ---------- */
+  .fab-home{
+    all:unset;
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:var(--navy);
+    color:var(--gold-soft);
+    border:2px solid var(--gold);
+    border-radius:30px;
+    padding:12px 16px;
+    font-family:var(--sans);
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 6px 18px rgba(19,33,50,.35);
+    z-index:600;
+    transition:transform .15s ease, box-shadow .15s ease;
   }
-  .mode-tabs .home-btn:hover{background:rgba(201,169,107,.15);}
+  .fab-home:hover{transform:translateY(-2px); box-shadow:0 8px 22px rgba(19,33,50,.42);}
+  .fab-home:active{transform:scale(.95);}
+  .fab-home .fab-icon{font-size:19px; line-height:1;}
+  .fab-home .fab-label{white-space:nowrap;}
+  @media (max-width:520px){
+    .fab-home{
+      right:14px;
+      bottom:14px;
+      padding:13px;
+      border-radius:50%;
+    }
+    .fab-home .fab-label{display:none;}
+  }
 
   /* ---------- レイアウト ---------- */
   .layout{
@@ -161,12 +199,14 @@
     grid-template-columns:272px 1fr;
     gap:0;
     align-items:start;
+    width:100%;
   }
   @media (max-width:880px){
     .layout{grid-template-columns:1fr;}
   }
   .layout.wide{grid-template-columns:1fr;}
   .layout.wide main{max-width:1080px;margin:0 auto;width:100%;}
+  nav.index, main{min-width:0;}
 
   /* ---------- サイドバー(索引) ---------- */
   nav.index{
@@ -654,7 +694,8 @@
     margin:0;
     color:var(--navy);
   }
-  table.item-table{width:100%;border-collapse:collapse;background:var(--card);box-shadow:var(--shadow);}
+  .table-scroll{width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  table.item-table{width:100%;min-width:480px;border-collapse:collapse;background:var(--card);box-shadow:var(--shadow);}
   table.item-table th{
     text-align:left;
     font-size:11px;
@@ -669,10 +710,15 @@
     border-bottom:1px solid var(--line);
     font-size:13px;
     vertical-align:top;
+    word-break:normal;
+    overflow-wrap:break-word;
   }
   table.item-table td.item-no{font-family:var(--mono);color:var(--ink-faint);width:34px;}
-  table.item-table td.item-name{font-weight:700;color:var(--navy);width:220px;}
+  table.item-table td.item-name{font-weight:700;color:var(--navy);width:150px;}
   table.item-table tr:last-child td{border-bottom:none;}
+  @media (max-width:600px){
+    table.item-table td.item-name{width:110px;}
+  }
 
   /* ---------- インストール案内バナー ---------- */
   .install-banner{
@@ -743,11 +789,15 @@
     </div>
   </div>
   <div class="mode-tabs">
-    <button id="homeBtn" class="home-btn">🏠 ホーム</button>
     <button id="tabGuide" class="on">障害種別ガイド</button>
     <button id="tabJiritsu">自立活動 6区分27項目 一覧</button>
   </div>
 </header>
+
+<button id="homeBtn" class="fab-home" type="button" aria-label="ホームに戻る">
+  <span class="fab-icon">🏠</span>
+  <span class="fab-label">ホーム</span>
+</button>
 
 <div class="layout" id="layoutRoot">
   <nav class="index" id="sideNav">
@@ -1421,13 +1471,14 @@ function renderJiritsuTable(){
         <span class="ku-index">${gi+1}</span>
         <h3>${group.ku}</h3>
       </div>
+      <div class="table-scroll">
       <table class="item-table">
-        <thead><tr><th style="width:34px;">No.</th><th style="width:220px;">項目</th><th>内容の要旨</th></tr></thead>
+        <thead><tr><th style="width:34px;">No.</th><th>項目</th><th>内容の要旨</th></tr></thead>
         <tbody>`;
     group.items.forEach((it, ii)=>{
       html += `<tr><td class="item-no">(${ii+1})</td><td class="item-name">${it.name}</td><td>${it.desc}</td></tr>`;
     });
-    html += `</tbody></table></div>`;
+    html += `</tbody></table></div></div>`;
   });
 
   html += `<div class="source-box">
