@@ -69,7 +69,10 @@
     display:flex;
     align-items:center;
     gap:16px;
+    cursor:pointer;
+    transition:opacity .15s;
   }
+  .brandmark:hover{opacity:.85;}
   .emblem{
     width:52px;height:52px;
     border:1.5px solid var(--gold-soft);
@@ -142,6 +145,13 @@
     color:var(--navy);
   }
   .mode-tabs button:not(.on):hover{color:#eef0ec;}
+  .mode-tabs .home-btn{
+    border:1px solid rgba(201,169,107,.4);
+    border-radius:5px 5px 0 0;
+    margin-right:8px;
+    color:#eef0ec;
+  }
+  .mode-tabs .home-btn:hover{background:rgba(201,169,107,.15);}
 
   /* ---------- レイアウト ---------- */
   .layout{
@@ -451,10 +461,12 @@
   .disease-detail{
     max-height:0;
     overflow:hidden;
-    transition:max-height .22s ease;
+    transition:max-height .32s cubic-bezier(.4,0,.2,1), opacity .28s ease;
     background:var(--paper2);
+    opacity:0;
+    will-change:max-height;
   }
-  .disease-item.open .disease-detail{max-height:4000px;}
+  .disease-item.open .disease-detail{opacity:1;}
   .disease-detail-inner{
     padding:4px 20px 20px 32px;
     font-size:13.2px;
@@ -688,6 +700,16 @@
     transform:translateY(-50%);
   }
 
+  @keyframes fadeInMain{
+    from{opacity:0; transform:translateY(6px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  #mainContent.fade-in{animation:fadeInMain .32s cubic-bezier(.4,0,.2,1);}
+  @media (prefers-reduced-motion: reduce){
+    #mainContent.fade-in{animation:none;}
+    .disease-detail{transition:none;}
+  }
+
   ::-webkit-scrollbar{width:9px;}
   ::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:5px;}
 </style>
@@ -706,7 +728,7 @@
 
 <header>
   <div class="header-inner">
-    <div class="brandmark">
+    <div class="brandmark" id="homeLink" role="button" tabindex="0" aria-label="ホームに戻る">
       <div class="emblem">特</div>
       <div>
         <p class="eyebrow">Special Needs Education Reference</p>
@@ -721,6 +743,7 @@
     </div>
   </div>
   <div class="mode-tabs">
+    <button id="homeBtn" class="home-btn">🏠 ホーム</button>
     <button id="tabGuide" class="on">障害種別ガイド</button>
     <button id="tabJiritsu">自立活動 6区分27項目 一覧</button>
   </div>
@@ -1099,14 +1122,37 @@ const JIRITSU27 = [{"ku": "健康の保持", "items": [{"name": "生活のリズ
 
 const catList = document.getElementById('catList');
 const mainContent = document.getElementById('mainContent');
+function playFadeIn(){
+  mainContent.classList.remove('fade-in');
+  void mainContent.offsetWidth; // 強制リフローでアニメーションを再スタート
+  mainContent.classList.add('fade-in');
+}
 const searchBox = document.getElementById('searchBox');
 const sideNav = document.getElementById('sideNav');
 const tabGuide = document.getElementById('tabGuide');
 const tabJiritsu = document.getElementById('tabJiritsu');
 const layoutRoot = document.getElementById('layoutRoot');
+const homeBtn = document.getElementById('homeBtn');
+const homeLink = document.getElementById('homeLink');
 let currentId = null;
 let mode = 'guide'; // 'guide' | 'jiritsu'
 const supportKeyLabels = {content:"教育内容・方法", method:"教材・情報保障", system:"支援体制", facility:"施設・設備"};
+
+function goHome(){
+  currentId = null;
+  searchBox.value = '';
+  mode = 'guide';
+  tabGuide.classList.add('on');
+  tabJiritsu.classList.remove('on');
+  sideNav.style.display = '';
+  layoutRoot.classList.remove('wide');
+  renderIndex('');
+  renderHome();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+homeBtn.onclick = goHome;
+homeLink.onclick = goHome;
+homeLink.onkeydown = (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); goHome(); } };
 
 function setMode(m){
   mode = m;
@@ -1205,6 +1251,7 @@ function renderHome(){
     <div class="disclaimer">本ツールの記述は一次資料の要約・言い換えです。原文の引用は必要最小限にとどめています。実際の就学相談・指導計画の作成にあたっては、必ず出典元の原文および専門家の判断をご確認ください。</div>
   </div>`;
   mainContent.innerHTML = html;
+  playFadeIn();
   mainContent.querySelectorAll('.home-card').forEach(el=>{
     el.onclick = ()=>{ currentId = el.dataset.id; renderIndex(searchBox.value); renderMain(currentId); window.scrollTo({top:0,behavior:'smooth'}); };
   });
@@ -1300,6 +1347,7 @@ function renderMain(id, openDiseaseName){
       <a href="https://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/02/04/1399950_5.pdf" target="_blank" rel="noopener">https://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/02/04/1399950_5.pdf</a></p>
     </div>
   `;
+  playFadeIn();
 
   // support tabs
   const tabWrap = document.getElementById('supportTabs');
@@ -1313,26 +1361,47 @@ function renderMain(id, openDiseaseName){
   tabWrap.querySelectorAll('button').forEach(b=> b.onclick = ()=> showTab(b.dataset.k));
   showTab(keys[0]);
 
-  // disease accordion
+  // disease accordion（実測した高さでアニメーションし、カクつきを防止）
+  function measureHeight(detail){
+    const inner = detail.querySelector('.disease-detail-inner');
+    return (inner ? inner.scrollHeight : detail.scrollHeight);
+  }
+  function openDiseaseItem(item){
+    const detail = item.querySelector('.disease-detail');
+    const row = item.querySelector('.disease-row');
+    item.classList.add('open');
+    detail.style.maxHeight = measureHeight(detail) + 'px';
+    const hint = row.querySelector('.d-hint');
+    if(hint) hint.textContent = '閉じる';
+  }
+  function closeDiseaseItem(item){
+    const detail = item.querySelector('.disease-detail');
+    const row = item.querySelector('.disease-row');
+    detail.style.maxHeight = measureHeight(detail) + 'px'; // 現在の高さを明示してから0へ
+    requestAnimationFrame(()=>{
+      requestAnimationFrame(()=>{ detail.style.maxHeight = '0px'; });
+    });
+    item.classList.remove('open');
+    const hint = row.querySelector('.d-hint');
+    if(hint) hint.textContent = '詳細を見る';
+  }
   mainContent.querySelectorAll('.disease-item').forEach(item=>{
     const row = item.querySelector('.disease-row');
     row.onclick = ()=>{
       const willOpen = !item.classList.contains('open');
-      item.classList.toggle('open', willOpen);
-      row.querySelector('.d-hint').textContent = willOpen ? '閉じる' : '詳細を見る';
+      if(willOpen){ openDiseaseItem(item); } else { closeDiseaseItem(item); }
     };
   });
 
-  // 検索経由で特定の疾患が指定された場合、自動的に開いてスクロール
+  // 検索経由で特定の疾患が指定された場合：先に位置までスムーズスクロールし、
+  // 落ち着いたタイミングで展開することでスクロールと展開が重ならないようにする
   if(openDiseaseName){
     const idx = cat.diseases.findIndex(d=>d.name===openDiseaseName);
     if(idx >= 0){
       const target = mainContent.querySelector(`.disease-item[data-idx="${idx}"]`);
       if(target){
-        target.classList.add('open');
-        const hint = target.querySelector('.d-hint');
-        if(hint) hint.textContent = '閉じる';
-        setTimeout(()=> target.scrollIntoView({behavior:'smooth', block:'center'}), 60);
+        target.scrollIntoView({behavior:'smooth', block:'center'});
+        setTimeout(()=> openDiseaseItem(target), 280);
       }
     }
   }
@@ -1368,6 +1437,7 @@ function renderJiritsuTable(){
     </div>
   </div>`;
   mainContent.innerHTML = html;
+  playFadeIn();
 }
 
 searchBox.addEventListener('input', ()=> renderIndex(searchBox.value));
