@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>特別支援教育 障害種別支援 リファレンス｜文部科学省資料に基づく指導ハンドブック</title>
+<meta name="theme-color" content="#132132">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="特別支援ハンドブック">
+<meta name="format-detection" content="telephone=no">
+<style>
+  :root{
+    --navy:#132132;
+    --navy-2:#1c3040;
+    --paper:#f4f4f0;
+    --paper2:#ebeae3;
+    --ink:#1c2126;
+    --ink-soft:#565c60;
+    --ink-faint:#8a9096;
+    --line:#d6d5cb;
+    --line-strong:#b9b8ac;
+    --gold:#8a6d2f;
+    --gold-soft:#c9a96b;
+    --teal:#2c5a63;
+    --card:#ffffff;
+    --shadow: 0 1px 2px rgba(19,33,50,.06), 0 6px 18px -12px rgba(19,33,50,.28);
+    --serif: "Noto Serif JP","Shippori Mincho","游明朝体","Hiragino Mincho ProN",serif;
+    --sans: "Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    --mono: "Roboto Mono", "SFMono-Regular", Consolas, monospace;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.75;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--teal);}
+
+  /* ---------- 上部帯（機関名） ---------- */
+  .top-strip{
+    background:var(--navy);
+    color:#c9d2da;
+    font-size:11.5px;
+    letter-spacing:.06em;
+    padding:7px 24px;
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .top-strip span.dim{color:#7c8ea0;}
+
+  /* ---------- ヘッダー ---------- */
+  header{
+    position:relative;
+    padding:30px 24px 0;
+    background:var(--navy);
+    color:#f2f1ea;
+    border-bottom:3px solid var(--gold);
+  }
+  .header-inner{max-width:1220px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:28px;flex-wrap:wrap;padding-bottom:22px;}
+  .brandmark{
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .emblem{
+    width:52px;height:52px;
+    border:1.5px solid var(--gold-soft);
+    border-radius:50%;
+    flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);
+    font-size:20px;
+    color:var(--gold-soft);
+    position:relative;
+  }
+  .emblem::after{
+    content:"";
+    position:absolute;
+    inset:5px;
+    border:1px solid rgba(201,169,107,.4);
+    border-radius:50%;
+  }
+  .eyebrow{
+    font-family:var(--sans);
+    letter-spacing:.28em;
+    font-size:11px;
+    color:var(--gold-soft);
+    margin:0 0 8px;
+    text-transform:uppercase;
+  }
+  h1{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(23px,3.2vw,32px);
+    margin:0 0 6px;
+    letter-spacing:.02em;
+    color:#fbfaf6;
+  }
+  header p.lead{
+    margin:2px 0 0;
+    color:#b7c0c8;
+    font-size:13.5px;
+    max-width:600px;
+  }
+  .credential{
+    text-align:right;
+    font-size:11.5px;
+    color:#9fb0bb;
+    line-height:1.9;
+    flex-shrink:0;
+  }
+  .credential b{color:#e9e4d5;font-weight:600;}
+
+  /* ---------- モード切り替えタブ ---------- */
+  .mode-tabs{
+    max-width:1220px;
+    margin:0 auto;
+    display:flex;
+    gap:2px;
+  }
+  .mode-tabs button{
+    all:unset;
+    cursor:pointer;
+    font-family:var(--sans);
+    font-size:13.5px;
+    font-weight:600;
+    letter-spacing:.02em;
+    color:#aab7c1;
+    padding:12px 22px;
+    border-radius:5px 5px 0 0;
+  }
+  .mode-tabs button.on{
+    background:var(--paper);
+    color:var(--navy);
+  }
+  .mode-tabs button:not(.on):hover{color:#eef0ec;}
+
+  /* ---------- レイアウト ---------- */
+  .layout{
+    max-width:1220px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:272px 1fr;
+    gap:0;
+    align-items:start;
+  }
+  @media (max-width:880px){
+    .layout{grid-template-columns:1fr;}
+  }
+  .layout.wide{grid-template-columns:1fr;}
+  .layout.wide main{max-width:1080px;margin:0 auto;width:100%;}
+
+  /* ---------- サイドバー(索引) ---------- */
+  nav.index{
+    padding:24px 16px 60px 24px;
+    position:sticky;
+    top:0;
+    align-self:start;
+    max-height:100vh;
+    overflow-y:auto;
+    border-right:1px solid var(--line);
+  }
+  @media (max-width:880px){
+    nav.index{position:relative;max-height:none;padding:20px 18px;border-right:none;border-bottom:1px solid var(--line);}
+  }
+  .search-wrap{margin-bottom:16px;}
+  .search-wrap input{
+    width:100%;
+    padding:9px 12px;
+    border:1px solid var(--line-strong);
+    background:var(--card);
+    border-radius:3px;
+    font-family:var(--sans);
+    font-size:13px;
+    color:var(--ink);
+  }
+  .search-wrap input:focus{outline:2px solid var(--teal);outline-offset:1px;}
+  .index-label{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:.14em;
+    color:var(--ink-faint);
+    margin:0 0 8px 2px;
+    text-transform:uppercase;
+  }
+  ul.cat-list{list-style:none;margin:0 0 20px;padding:0;border-top:1px solid var(--line);}
+  ul.cat-list li{border-bottom:1px solid var(--line);}
+  ul.cat-list button{
+    all:unset;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    width:100%;
+    padding:9px 6px 9px 2px;
+    cursor:pointer;
+    font-size:13.5px;
+    color:var(--ink);
+    transition:background .12s;
+  }
+  ul.cat-list button .num{
+    font-family:var(--mono);
+    font-size:10.5px;
+    color:var(--ink-faint);
+    width:18px;
+    flex-shrink:0;
+  }
+  ul.cat-list button:hover{background:rgba(19,33,50,.05);}
+  ul.cat-list li.active button{background:var(--navy);color:#fff;}
+  ul.cat-list li.active button .num{color:var(--gold-soft);}
+  .idx-hit-count{
+    margin-left:auto;
+    font-family:var(--mono);
+    font-size:10px;
+    background:var(--gold);
+    color:#fff;
+    padding:1px 6px;
+    border-radius:10px;
+    flex-shrink:0;
+  }
+
+  .disease-hits{margin-bottom:8px;}
+  ul.hit-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);}
+  ul.hit-list li{border-bottom:1px solid var(--line);}
+  ul.hit-list button{
+    all:unset;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    width:100%;
+    padding:8px 6px;
+    cursor:pointer;
+    transition:background .12s;
+  }
+  ul.hit-list button:hover{background:rgba(19,33,50,.05);}
+  ul.hit-list .hit-disease{
+    font-family:var(--serif);
+    font-size:13px;
+    font-weight:700;
+    color:var(--navy);
+  }
+  ul.hit-list .hit-cat{
+    font-size:10.5px;
+    color:var(--ink-faint);
+  }
+
+  .school-stage{
+    font-size:11.5px;
+    color:var(--ink-soft);
+    border-top:1px dashed var(--line);
+    padding-top:13px;
+    line-height:1.85;
+  }
+  .school-stage b{color:var(--ink);font-weight:700;}
+  .stage-flow{
+    font-family:var(--mono);
+    font-size:10.5px;
+    color:var(--teal);
+    display:block;
+    margin:6px 0;
+    letter-spacing:-.01em;
+  }
+
+  /* ---------- メイン ---------- */
+  main{padding:28px 26px 90px;}
+  .article-head{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    margin-bottom:4px;
+    flex-wrap:wrap;
+    border-bottom:1px solid var(--line);
+    padding-bottom:16px;
+  }
+  .article-num{
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--navy);
+    background:var(--paper2);
+    border:1px solid var(--line-strong);
+    border-radius:3px;
+    width:38px;height:38px;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  h2.cat-title{
+    font-family:var(--serif);
+    font-size:clamp(21px,2.8vw,27px);
+    margin:0;
+    line-height:1.35;
+    color:var(--navy);
+  }
+  .cat-title .en{
+    display:block;
+    font-family:var(--sans);
+    font-size:11.5px;
+    letter-spacing:.12em;
+    color:var(--ink-faint);
+    margin-top:3px;
+    font-weight:400;
+  }
+  .overview{
+    margin:18px 0 30px;
+    padding:16px 20px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:4px solid var(--navy);
+    box-shadow:var(--shadow);
+    font-size:14.5px;
+    border-radius:2px;
+    color:var(--ink);
+  }
+
+  section.block{margin-bottom:36px;}
+  h3.block-title{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:.04em;
+    margin:0 0 4px;
+    display:flex;
+    align-items:center;
+    gap:9px;
+    color:var(--navy);
+    padding-bottom:9px;
+    border-bottom:1px solid var(--line);
+  }
+  h3.block-title::before{
+    content:"";
+    width:5px;height:15px;
+    background:var(--gold);
+    flex-shrink:0;
+  }
+  h3.block-title .tally{
+    margin-left:auto;
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--ink-faint);
+    font-weight:400;
+  }
+
+  .need-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin-top:14px;}
+  .need-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:12px 14px;
+    font-size:13px;
+    box-shadow:var(--shadow);
+  }
+  .need-card .k{
+    display:inline-block;
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:10.5px;
+    color:var(--teal);
+    background:#e4ece9;
+    padding:2px 8px;
+    border-radius:2px;
+    margin-bottom:7px;
+    letter-spacing:.02em;
+  }
+
+  .instr-list{display:flex;flex-direction:column;gap:0;margin-top:14px;}
+  .instr-item{
+    display:grid;
+    grid-template-columns:170px 1fr;
+    gap:16px;
+    padding:11px 0;
+    border-bottom:1px solid var(--line);
+    font-size:13px;
+  }
+  @media (max-width:600px){.instr-item{grid-template-columns:1fr;gap:4px;}}
+  .instr-item .t{font-weight:700;color:var(--navy);font-size:13px;}
+
+  .support-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 12px;}
+  .support-tabs button{
+    all:unset;cursor:pointer;
+    font-size:12px;
+    font-weight:600;
+    padding:7px 15px;
+    border:1px solid var(--line-strong);
+    border-radius:2px;
+    color:var(--ink-soft);
+    background:var(--card);
+  }
+  .support-tabs button.on{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .support-panel{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:16px 18px;
+    box-shadow:var(--shadow);
+  }
+  .support-panel ul{margin:0;padding-left:1.15em;font-size:13.3px;}
+  .support-panel li{margin-bottom:8px;}
+
+  .block-sub{
+    margin:0 0 14px;
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- 病気・状態リスト（アコーディオン） ---------- */
+  .disease-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line);margin-top:14px;}
+  .disease-item{border-bottom:1px solid var(--line);}
+  .disease-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    width:100%;
+    padding:12px 4px;
+    cursor:pointer;
+    background:none;
+    border:none;
+    text-align:left;
+    font-family:var(--sans);
+  }
+  .disease-row:hover{background:rgba(19,33,50,.035);}
+  .disease-row .chevron{
+    width:16px;height:16px;
+    flex-shrink:0;
+    color:var(--gold);
+    transition:transform .16s;
+    font-size:11px;
+  }
+  .disease-item.open .disease-row .chevron{transform:rotate(90deg);}
+  .disease-row .d-name{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:14px;
+    color:var(--ink);
+  }
+  .disease-row .d-hint{
+    margin-left:auto;
+    font-size:11.5px;
+    color:var(--ink-faint);
+    flex-shrink:0;
+    display:none;
+  }
+  @media (min-width:640px){.disease-row .d-hint{display:block;}}
+
+  .disease-detail{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .22s ease;
+    background:var(--paper2);
+  }
+  .disease-item.open .disease-detail{max-height:4000px;}
+  .disease-detail-inner{
+    padding:4px 20px 20px 32px;
+    font-size:13.2px;
+  }
+  .disease-detail-inner .d-overview{color:var(--ink);margin:0 0 12px;}
+  .dd-label{
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:.08em;
+    color:var(--teal);
+    text-transform:uppercase;
+    margin:0 0 6px;
+  }
+  .dd-support{margin:0 0 14px;padding-left:1.1em;}
+  .dd-support li{margin-bottom:5px;}
+  .dd-jiritsu{display:flex;flex-wrap:wrap;gap:6px;}
+  .sev-badge{
+    font-size:10px;
+    font-weight:700;
+    color:#fff;
+    background:var(--gold);
+    padding:2px 8px;
+    border-radius:10px;
+    flex-shrink:0;
+  }
+  .severity-list{display:flex;flex-direction:column;gap:10px;}
+  .severity-item{
+    background:var(--card);
+    border:1px solid var(--line-strong);
+    border-left:4px solid var(--gold);
+    border-radius:2px;
+    padding:11px 14px;
+  }
+  .sv-level{font-family:var(--serif);font-weight:700;color:var(--navy);font-size:13px;margin-bottom:4px;}
+  .sv-criteria{color:var(--ink-soft);font-size:12.5px;margin-bottom:8px;}
+  .sv-support{margin:0;padding-left:1.1em;font-size:12.5px;}
+  .sv-support li{margin-bottom:3px;}
+  .jiritsu-chip{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:var(--card);
+    border:1px solid var(--line-strong);
+    border-radius:20px;
+    padding:4px 12px 4px 4px;
+    font-size:11.5px;
+  }
+  .jiritsu-chip .ku-mini{
+    background:var(--navy);
+    color:#fff;
+    font-size:10px;
+    padding:2px 8px;
+    border-radius:14px;
+  }
+
+  .jiritsu-list{display:flex;flex-direction:column;gap:8px;margin-top:14px;}
+  .jiritsu-row{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:3px solid var(--teal);
+    border-radius:2px;
+    padding:10px 14px;
+    font-size:13px;
+    box-shadow:var(--shadow);
+  }
+  .jiritsu-row .ku-tag{
+    display:inline-block;
+    font-size:10.5px;
+    font-weight:700;
+    background:var(--paper2);
+    color:var(--teal);
+    padding:2px 9px;
+    border-radius:2px;
+    margin-right:8px;
+  }
+  .jiritsu-row .item-name{font-weight:700;color:var(--navy);}
+  .jiritsu-row .j-note{margin-top:5px;color:var(--ink-soft);}
+
+  .place-row{
+    display:grid;
+    grid-template-columns:190px 1fr;
+    gap:16px;
+    border-top:1px solid var(--line);
+    padding:13px 0;
+    font-size:13px;
+  }
+  @media (max-width:600px){.place-row{grid-template-columns:1fr;gap:4px;}}
+  .place-row:last-child{border-bottom:1px solid var(--line);}
+  .place-row .p-name{font-family:var(--serif);font-weight:700;color:var(--ink);}
+
+  .source-box{
+    margin-top:32px;
+    padding:16px 20px;
+    border:1px solid var(--line);
+    border-radius:3px;
+    font-size:12px;
+    color:var(--ink-soft);
+    background:var(--paper2);
+  }
+  .source-box .quote{
+    font-family:var(--serif);
+    color:var(--ink);
+    font-size:13.3px;
+    margin:0 0 10px;
+    padding-left:12px;
+    border-left:2px solid var(--gold);
+  }
+  .source-box a{color:var(--teal);word-break:break-all;}
+
+  footer{
+    max-width:1220px;margin:0 auto;
+    padding:24px 26px 70px;
+    color:var(--ink-soft);
+    font-size:11.5px;
+    border-top:1px solid var(--line);
+  }
+  footer a{color:var(--teal);}
+  footer .refs{margin-top:10px;line-height:2;}
+
+  .home-view{max-width:840px;}
+  .home-view p{font-size:14px;color:var(--ink-soft);}
+  .home-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:12px;margin-top:20px;}
+  .home-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:15px 17px;
+    cursor:pointer;
+    box-shadow:var(--shadow);
+    transition:border-color .12s;
+  }
+  .home-card:hover{border-color:var(--navy);}
+  .home-card .num{font-family:var(--mono);color:var(--gold);font-size:11px;}
+  .home-card h4{font-family:var(--serif);margin:6px 0 6px;font-size:16px;color:var(--navy);}
+  .home-card p{margin:0;font-size:12px;color:var(--ink-soft);}
+  .home-stats{
+    display:flex;
+    gap:22px;
+    margin:22px 0;
+    padding:16px 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    flex-wrap:wrap;
+  }
+  .home-stat b{
+    display:block;
+    font-family:var(--serif);
+    font-size:26px;
+    color:var(--navy);
+  }
+  .home-stat span{font-size:11px;color:var(--ink-soft);}
+
+  .disclaimer{
+    font-size:11px;
+    color:var(--ink-soft);
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:12px 16px;
+    border-radius:3px;
+    margin-top:26px;
+  }
+
+  /* ---------- 自立活動 27項目 一覧 ---------- */
+  .jiritsu-table-wrap{max-width:1000px;}
+  .ku-group{margin-bottom:30px;}
+  .ku-heading{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin:0 0 12px;
+  }
+  .ku-index{
+    font-family:var(--mono);
+    font-size:12px;
+    color:#fff;
+    background:var(--navy);
+    width:26px;height:26px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .ku-heading h3{
+    font-family:var(--serif);
+    font-size:19px;
+    margin:0;
+    color:var(--navy);
+  }
+  table.item-table{width:100%;border-collapse:collapse;background:var(--card);box-shadow:var(--shadow);}
+  table.item-table th{
+    text-align:left;
+    font-size:11px;
+    letter-spacing:.06em;
+    color:var(--ink-faint);
+    border-bottom:2px solid var(--line-strong);
+    padding:9px 14px;
+    text-transform:uppercase;
+  }
+  table.item-table td{
+    padding:12px 14px;
+    border-bottom:1px solid var(--line);
+    font-size:13px;
+    vertical-align:top;
+  }
+  table.item-table td.item-no{font-family:var(--mono);color:var(--ink-faint);width:34px;}
+  table.item-table td.item-name{font-weight:700;color:var(--navy);width:220px;}
+  table.item-table tr:last-child td{border-bottom:none;}
+
+  /* ---------- インストール案内バナー ---------- */
+  .install-banner{
+    background:var(--gold);
+    color:var(--navy);
+    font-size:12.5px;
+    font-weight:600;
+    padding:9px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    text-align:center;
+    position:relative;
+  }
+  .install-banner button{
+    all:unset;
+    cursor:pointer;
+    font-size:16px;
+    line-height:1;
+    padding:2px 6px;
+    position:absolute;
+    right:10px;
+    top:50%;
+    transform:translateY(-50%);
+  }
+
+  ::-webkit-scrollbar{width:9px;}
+  ::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:5px;}
+</style>
+</head>
+<body>
+
+<div id="installBanner" class="install-banner" style="display:none;">
+  <span id="installText"></span>
+  <button id="installClose" type="button" aria-label="閉じる">×</button>
+</div>
+
+<div class="top-strip">
+  <span>特別支援教育 障害種別支援リファレンス <span class="dim">| Special Needs Education Field Reference</span></span>
+  <span class="dim">出典：文部科学省 公表資料に基づく</span>
+</div>
+
+<header>
+  <div class="header-inner">
+    <div class="brandmark">
+      <div class="emblem">特</div>
+      <div>
+        <p class="eyebrow">Special Needs Education Reference</p>
+        <h1>特別支援教育 指導支援ハンドブック</h1>
+        <p class="lead">障害種別・原因疾患ごとの教育的ニーズ、合理的配慮、自立活動を、文部科学省の公表資料に基づき整理した実務参照ツールです。</p>
+      </div>
+    </div>
+    <div class="credential">
+      <b>一次資料</b><br>
+      文部科学省「障害のある子供の教育支援の手引」（令和3年6月）<br>
+      文部科学省「特別支援学校 自立活動編」（平成30年3月）
+    </div>
+  </div>
+  <div class="mode-tabs">
+    <button id="tabGuide" class="on">障害種別ガイド</button>
+    <button id="tabJiritsu">自立活動 6区分27項目 一覧</button>
+  </div>
+</header>
+
+<div class="layout" id="layoutRoot">
+  <nav class="index" id="sideNav">
+    <div class="search-wrap">
+      <input id="searchBox" type="text" placeholder="障害種・キーワードで検索">
+    </div>
+    <p class="index-label">障害種別 索引</p>
+    <ul class="cat-list" id="catList"></ul>
+
+    <div class="school-stage">
+      <p><b>学びの場の連続性</b></p>
+      <span class="stage-flow">通常学級 → 通級指導 → 特別支援学級 → 特別支援学校</span>
+      <p>連続性のある多様な学びの場の中から、一人一人の教育的ニーズに応じて検討されます。</p>
+    </div>
+  </nav>
+
+  <main id="mainContent"></main>
+</div>
+
+<footer>
+  <p>本ツールは文部科学省の公表資料（障害の種別・教育的ニーズ・合理的配慮・自立活動）に加え、小児慢性特定疾病情報センター、難病情報センター、GeneReviews Japan、DSM-5-TR／ICD-11の診断分類など、公的機関・専門データベースの情報を精査して原因疾患・状態の分類を整理したものです。引用部分は原文をそのまま転載せず、要旨を短く言い換えています。病気・状態別の指導内容は、各情報源に記載された医学的特性を踏まえた教育実務上の整理であり、個々の指導計画は必ず専門家・主治医・教育委員会の判断のもとで作成してください。</p>
+  <div class="refs">
+    <p>主な参照資料：</p>
+    <p>・文部科学省「障害のある子供の教育支援の手引～子供たち一人一人の教育的ニーズを踏まえた学びの充実に向けて～」（令和3年6月）<br>
+    <a href="https://www.mext.go.jp/a_menu/shotou/tokubetu/material/1340250_00004.htm" target="_blank" rel="noopener">https://www.mext.go.jp/a_menu/shotou/tokubetu/material/1340250_00004.htm</a></p>
+    <p>・文部科学省「特別支援教育について」<br>
+    <a href="https://www.mext.go.jp/a_menu/shotou/tokubetu/main.htm" target="_blank" rel="noopener">https://www.mext.go.jp/a_menu/shotou/tokubetu/main.htm</a></p>
+    <p>・文部科学省「特別支援教育の現状」<br>
+    <a href="https://www.mext.go.jp/a_menu/shotou/tokubetu/002.htm" target="_blank" rel="noopener">https://www.mext.go.jp/a_menu/shotou/tokubetu/002.htm</a></p>
+    <p>・文部科学省「特別支援教育資料（令和5年度）」<br>
+    <a href="https://www.mext.go.jp/a_menu/shotou/tokubetu/material/1406456_00012.htm" target="_blank" rel="noopener">https://www.mext.go.jp/a_menu/shotou/tokubetu/material/1406456_00012.htm</a></p>
+    <p>・文部科学省「特別支援学校教育要領・学習指導要領解説 自立活動編（幼稚部・小学部・中学部）」（平成30年3月）〔自立活動 6区分27項目〕<br>
+    <a href="https://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/02/04/1399950_5.pdf" target="_blank" rel="noopener">https://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/02/04/1399950_5.pdf</a></p>
+    <p>・小児慢性特定疾病情報センター（厚生労働省告示に基づく対象疾病リスト。16疾患群・801疾病を収録）<br>
+    <a href="https://www.shouman.jp/disease/" target="_blank" rel="noopener">https://www.shouman.jp/disease/</a></p>
+    <p>・難病情報センター（指定難病に関する診断基準・概要）<br>
+    <a href="https://www.nanbyou.or.jp/" target="_blank" rel="noopener">https://www.nanbyou.or.jp/</a></p>
+    <p>・GeneReviews Japan（遺伝性疾患・症候群の医学的解説、国立成育医療研究センター等監修）<br>
+    <a href="https://grj.umin.jp/" target="_blank" rel="noopener">https://grj.umin.jp/</a></p>
+    <p>・DSM-5-TR（米国精神医学会 精神疾患の診断・統計マニュアル）／ICD-11（世界保健機関 国際疾病分類第11版）の診断分類</p>
+    <p>・文部科学省「不登校児童生徒への支援の在り方について（通知）」（令和元年10月25日）／「不登校の児童生徒等への支援の充実について（通知）」（令和5年11月17日）<br>
+    <a href="https://www.mext.go.jp/a_menu/shotou/seitoshidou/1422155.htm" target="_blank" rel="noopener">https://www.mext.go.jp/a_menu/shotou/seitoshidou/1422155.htm</a></p>
+    <p>・文部科学省「令和5年度 児童生徒の問題行動・不登校等生徒指導上の諸課題に関する調査結果について」〔不登校の要因の類型〕<br>
+    <a href="https://www.mext.go.jp/a_menu/shotou/seitoshidou/1302902.htm" target="_blank" rel="noopener">https://www.mext.go.jp/a_menu/shotou/seitoshidou/1302902.htm</a></p>
+    <p>・肢体不自由：GMFCS（Gross Motor Function Classification System）／重症心身障害：大島分類（重症度判定の国際的・国内的に確立された分類指標）</p>
+    <p>・自閉スペクトラム症とADHDの併存に関する知見：DSM-5（American Psychiatric Association, 2013）による併存診断の許容、および東京大学国際高等研究所ニューロインテリジェンス国際研究機構（WPI-IRCN）の研究発表<br>
+    <a href="https://ircn.jp/pressrelease/20230714_takamitsu_watanabe" target="_blank" rel="noopener">https://ircn.jp/pressrelease/20230714_takamitsu_watanabe</a></p>
+  </div>
+</footer>
+<script>
+const DATA = [
+{
+  id:"visual", num:"01", name:"視覚障害", en:"Visual Impairment",
+  overview:"視機能の永続的な低下により、学習や生活に困難がある状態。文字の読み書きや事物の確認、初めての場所での移動などに困難が生じやすく、出生後から10歳頃までの視力の発達時期における早期対応が特に重要とされます。",
+  needs:[
+    {k:"早期対応",v:"視力が安定する10歳頃までの時期に、視機能や視覚認知の発達を促す養育・教育が極めて重要。"},
+    {k:"概念形成",v:"視覚からの情報が得にくいため、具体的な事物・動作と言葉を結び付けて基礎的な概念を育む必要がある。"},
+    {k:"移動・安全",v:"初めての環境や周囲の変化への不安が大きく、状況説明や環境への慣れの支援が求められる。"},
+    {k:"対人関係",v:"表情など視覚的手がかりが読み取れないため、対面でのやり取りの基本を丁寧に指導する必要がある。"}
+  ],
+  instruction:[
+    {t:"視機能の活用と向上",d:"保有する視力・視野の状態を理解し、姿勢や見る動作の工夫を通じて視機能の発達を促す。"},
+    {t:"概念の形成",d:"触覚や保有する視覚を用いて対象物の形・大きさ・手触りなどを観察し、的確な概念形成につなげる。"},
+    {t:"感覚の補助・代行手段",d:"弱視レンズ等の視覚補助具やタブレット端末等のICT機器の活用技能を高める。"},
+    {t:"状況に応じたコミュニケーション",d:"声の大きさや話し方を、部屋の広さや相手との距離に応じて調整する力を養う。"},
+    {t:"身体の移動能力",d:"伝い歩きやガイド歩行、他者への援助依頼など、安全に移動するための技能を身に付ける。"}
+  ],
+  support:{
+    content:["弱視レンズ等の効果的な活用や、見えやすい環境を自ら整える力の育成","状況の丁寧な説明、観察時の時間延長や近接、体育等での安全確保"],
+    method:["拡大文字・拡大コピー、触ってわかる模型、画面拡大や読み上げソフト等ICT機器による情報保障","実物や模型に触れる能動的な学習機会の確保、学習予定の事前提示","眼疾患の進行や事故防止への配慮、見えにくい時に尋ねやすい雰囲気づくり"],
+    system:["特別支援学校（視覚障害）のセンター的機能や弱視特別支援学級、通級指導の専門性の活用","眼科医からの助言の活用、点字図書館等地域資源との連携"],
+    facility:["廊下を含む十分な明るさの確保、分かりやすい目印や段差表示","まぶしさを防ぐ照明・カーテン等の調整、拡大読書器の設置"]
+  },
+  places:[
+    {name:"通常の学級", note:"拡大教材の活用や座席位置の配慮等の支援を受けながら参加"},
+    {name:"通級による指導（弱視）", note:"大部分は通常の学級で学び、一部の時間で自立活動の指導を受ける"},
+    {name:"弱視特別支援学級", note:"視知覚・視機能の向上を図る指導を系統的・継続的に実施"},
+    {name:"特別支援学校（視覚障害）", note:"点字による教育や自立活動を含む専門的な一貫教育を実施"}
+  ],
+  diseases:[{"name": "小眼球症", "overview": "眼球の発育が未熟なまま生まれる先天性疾患で、他の眼疾患を合併しやすい。", "support": ["保有する視覚を活かす拡大教材の工夫", "視覚以外の感覚（触覚・聴覚）を活用した教材の併用"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}, {"ku": "環境の把握", "item": "感覚の補助及び代行手段の活用"}]}, {"name": "先天白内障", "overview": "水晶体の混濁により視力発達が妨げられる疾患。手術で回復する場合と、合併症により回復が限定的な場合がある。", "support": ["術後の見え方の変化に応じた教材サイズの調整", "遮光眼鏡等によるまぶしさ対策"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}, {"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "先天緑内障", "overview": "眼圧の上昇により視神経が損傷し、視野狭窄や視力低下が進行しうる疾患。", "support": ["眼圧管理を踏まえた学校生活での安全確保", "疲労時の休憩やまぶしさへの配慮"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}, {"ku": "環境の把握", "item": "周囲の状況把握と状況に応じた行動"}]}, {"name": "視神経萎縮", "overview": "視神経の障害により視力・視野が低下する状態。原因となる疾患は多岐にわたる。", "support": ["拡大教材や読み上げソフト等ICT機器の活用", "近距離での観察や作業空間の確保"], "jiritsu": [{"ku": "環境の把握", "item": "感覚の補助及び代行手段の活用"}, {"ku": "環境の把握", "item": "概念の形成"}]}, {"name": "網膜色素変性症", "overview": "進行性に視野狭窄・夜盲が生じる遺伝性疾患。将来的な見え方の変化を見据えた指導が必要。", "support": ["進行を見据えた白杖歩行等の技能の早期習得", "暗い場所・夕方の活動での安全確保"], "jiritsu": [{"ku": "身体の動き", "item": "身体の移動能力"}, {"ku": "心理的な安定", "item": "困難を改善・克服する意欲"}]}, {"name": "未熟児網膜症", "overview": "未熟児への酸素投与等に伴い網膜血管に異常が生じる疾患。", "support": ["視機能の状態に応じた個別の教材調整", "定期的な眼科受診結果を踏まえた指導の見直し"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "網膜芽細胞腫", "overview": "乳幼児期に発症する眼内の悪性腫瘍。摘出により視力を失う場合がある。", "support": ["手術前後の心理的ケア", "片眼視力となった場合の遠近感の困難への配慮"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}, {"ku": "環境の把握", "item": "周囲の状況把握と状況に応じた行動"}]}, {"name": "強度近視", "overview": "屈折異常が強く、矯正しても十分な視力が得られにくい場合がある状態。", "support": ["拡大教材・拡大読書器の活用", "黒板や掲示物が見やすい座席位置の配慮"], "jiritsu": [{"ku": "環境の把握", "item": "感覚の補助及び代行手段の活用"}]}, {"name": "白子症（アルビニズム）に伴う視覚障害", "overview": "メラニン色素の欠乏により羞明・視力低下・眼振等を伴う遺伝性疾患。", "support": ["遮光眼鏡やサンバイザー等によるまぶしさ対策", "屋外活動時の照度調整"], "jiritsu": [{"ku": "環境の把握", "item": "感覚の補助及び代行手段の活用"}]}, {"name": "若年性黄斑変性", "overview": "網膜の中心部（黄斑）が変性し、中心視力が低下する疾患。周辺視野は保たれることが多い。", "support": ["中心外視野を活用する見方の指導", "拡大教材と十分な明るさの確保"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "コロボーマ（脈絡膜・網膜欠損）", "overview": "眼球組織の形成不全により、視野の一部が欠ける先天性疾患。", "support": ["欠損部位に応じた見え方の把握と教材配置の工夫", "視野の状態に応じた座席位置の配慮"], "jiritsu": [{"ku": "環境の把握", "item": "周囲の状況把握と状況に応じた行動"}]}, {"name": "先天性全盲", "overview": "出生時より光を全く感じない状態。点字を中心とした触覚・聴覚を活用する教育が必要となる。", "support": ["点字の読み書き技能の系統的な指導", "触覚教材・立体教材による概念形成"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の受容と表出"}, {"ku": "身体の動き", "item": "身体の移動能力"}]}, {"name": "屈折異常による弱視（斜視性・不同視性等）", "overview": "強い遠視・乱視や斜視等により、視力の発達自体が妨げられている状態。", "support": ["眼科での治療（アイパッチ等）と学校生活の連携", "文字の大きさやコントラストの調整"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "続発性緑内障", "overview": "他の眼疾患や外傷、手術後等に伴って眼圧が上昇する状態。", "support": ["定期受診の状況を踏まえた活動制限の共有", "急な視力変化への注意深い観察"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "視神経形成不全", "overview": "視神経が生まれつき十分に発達していないために生じる視力障害。", "support": ["保有視力を最大限活用する教材の工夫", "他の障害の合併有無の確認"], "jiritsu": [{"ku": "環境の把握", "item": "感覚の補助及び代行手段の活用"}]}, {"name": "糖尿病網膜症（若年発症例）", "overview": "糖尿病の合併症として網膜の血管が障害され、視力低下が進行することがある状態。", "support": ["血糖管理と眼科受診の状況の共有", "視力の変化に応じた教材の見直し"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "レーベル先天黒内障", "overview": "網膜の光受容細胞の遺伝子異常により、乳児期から高度の視覚障害を示す遺伝性疾患。", "support": ["早期からの触覚・聴覚を中心とした教育的対応", "保有する光覚の活用方法の探索"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "スターガルト病", "overview": "若年期に発症する遺伝性の黄斑変性症。中心視力が進行性に低下する。", "support": ["進行を見据えた拡大教材から点字への移行準備", "羞明への対応（遮光眼鏡等）"], "jiritsu": [{"ku": "心理的な安定", "item": "困難を改善・克服する意欲"}]}, {"name": "アッシャー症候群（視覚障害を伴う場合）", "overview": "感音難聴と網膜色素変性症を併せ有する遺伝性疾患。視覚と聴覚の両面での配慮が必要。", "support": ["視覚・聴覚双方の状態変化を踏まえた複合的支援", "将来を見据えた点字・手話等の選択肢の提供"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "未熟児無水晶体症", "overview": "未熟児網膜症の治療等に伴い水晶体を摘出した状態。強い遠視となるため矯正が必要。", "support": ["コンタクトレンズ・眼鏡の管理支援", "矯正後の見え方に応じた教材調整"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "視中枢障害（皮質盲を含む）", "overview": "眼球自体に大きな異常がなくても、脳の視覚中枢の障害により見えにくさが生じる状態。", "support": ["視覚以外の感覚を優先した教材構成", "医療機関と連携した状態把握"], "jiritsu": [{"ku": "環境の把握", "item": "感覚の補助及び代行手段の活用"}]}, {"name": "眼球振盪（先天眼振）", "overview": "眼球が不随意に揺れ動くため、注視や追視に困難が生じる状態。", "support": ["最も見やすい頭位・視距離の把握と教材配置", "作業時間への配慮"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "ぶどう膜炎による視力低下", "overview": "眼内の炎症性疾患により、慢性的に視力低下や羞明を来すことがある状態。", "support": ["炎症の活動性に応じた活動量の調整", "点眼等の治療スケジュールとの連携"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "未熟児網膜症後の網膜剥離", "overview": "未熟児網膜症の進行により網膜剥離を来し、視力に重い影響が及ぶことがある状態。", "support": ["術後の見え方の変化に応じた教材の見直し", "段階的な保有視覚の活用訓練"], "jiritsu": [{"ku": "環境の把握", "item": "感覚の補助及び代行手段の活用"}]}, {"name": "角膜混濁（先天性・外傷性）", "overview": "角膜が濁ることで光の通過が妨げられ、視力低下が生じる状態。", "support": ["移植・手術の見通しを踏まえた学習計画", "羞明対策"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "色覚異常（強度）", "overview": "色の識別に困難があり、教材や資料の色分けが判別しにくい状態。", "support": ["色以外の情報（形・模様・文字）を併用した教材", "色覚シミュレーションを踏まえた掲示物の配色"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "視野障害（緑内障による末期）", "overview": "緑内障の進行により視野の大部分が失われた状態。中心視力は保たれることもある。", "support": ["残存視野を最大限活かした資料配置", "歩行時の安全確保"], "jiritsu": [{"ku": "身体の動き", "item": "身体の移動能力"}]}, {"name": "視神経炎後遺症", "overview": "視神経の炎症の後遺症として視力低下が残ることがある状態。", "support": ["視力の変動に応じた柔軟な教材選択", "体調管理との連携"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "未熟児による皮質視覚障害", "overview": "未熟児として出生した子供に、脳の視覚処理の未熟さに起因する見えにくさが生じる状態。", "support": ["視覚刺激の量や提示速度の調整", "他の感覚と組み合わせた学習支援"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "外傷性視覚障害", "overview": "事故等による眼球や視神経の損傷によって生じる視覚障害。", "support": ["受傷前後の見え方の変化への心理的ケア", "新しい見え方に応じた学習方法の再構築"], "jiritsu": [{"ku": "心理的な安定", "item": "困難を改善・克服する意欲"}]}, {"name": "複視（両眼視機能障害）", "overview": "両眼の視線が一致せず、物が二重に見える状態。眼球運動障害等が原因となる。", "support": ["片眼遮蔽等、見やすくする工夫の共有", "疲労に配慮した学習時間の調整"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "進行性外眼筋麻痺に伴う視覚障害", "overview": "眼球を動かす筋肉の進行性の機能低下により、視野や見え方に制約が生じる状態。", "support": ["頭部を動かして視野を補う指導", "疲労しやすさへの配慮"], "jiritsu": [{"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能"}]}, {"name": "黄斑ジストロフィ（ベスト病等）", "overview": "黄斑部に病変が生じる遺伝性疾患群。進行の速度や視力低下の程度は型により異なる。", "support": ["進行状況に応じた教材サイズの見直し", "定期的な視力評価に基づく学習方法の調整"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "錐体杆体ジストロフィ", "overview": "色覚異常や羞明、視力低下が進行する遺伝性網膜疾患。", "support": ["色以外の情報を併用した教材", "羞明対策（遮光眼鏡等）"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "無虹彩症", "overview": "虹彩が生まれつき欠損又は形成不全であるため、羞明や視力低下を伴う疾患。", "support": ["遮光眼鏡・カラーコンタクトレンズ等の活用", "明るい場所での活動時間の調整"], "jiritsu": [{"ku": "環境の把握", "item": "感覚の補助及び代行手段の活用"}]}, {"name": "小児白内障術後の水晶体様変化", "overview": "乳幼児期の白内障手術後、眼鏡やコンタクトレンズによる継続的な矯正が必要となる状態。", "support": ["矯正器具の管理支援", "定期受診状況の共有"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "未熟児網膜症（軽症・自然治癒例の経過観察）", "overview": "軽度の未熟児網膜症で自然治癒した場合も、将来的な近視や網膜合併症のリスクに留意が必要とされる。", "support": ["定期眼科受診の継続的な確認", "近視進行への配慮（座席位置等）"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "視神経低形成症", "overview": "視神経が生まれつき細く、視力障害を来す疾患。下垂体機能低下を合併することがある。", "support": ["内分泌機能の定期評価との連携", "保有視覚を生かした教材の工夫"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "網膜静脈閉塞症（若年発症例）", "overview": "網膜の血管が詰まることで視力低下や視野欠損を来す疾患。若年での発症は稀。", "support": ["視野の状態に応じた資料配置", "急な見え方の変化への対応体制"], "jiritsu": [{"ku": "環境の把握", "item": "周囲の状況把握と状況に応じた行動"}]}, {"name": "角膜ジストロフィ", "overview": "角膜に混濁が生じ、進行性に視力が低下する遺伝性疾患群。", "support": ["羞明対策と拡大教材の活用", "移植手術の見通しを踏まえた学習計画"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "若年性黄斑円孔", "overview": "黄斑部に孔が生じ、中心視力が低下する疾患。外傷等が誘因となることがある。", "support": ["術後の見え方の変化に応じた教材調整", "中心外視野を活用する見方の指導"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "視放線・後頭葉損傷による同名半盲", "overview": "脳の視覚経路の損傷により、視野の左右どちらか半分が欠ける状態。", "support": ["欠損側からの情報提示を補う配置の工夫", "頭部を動かして視野を広げる指導"], "jiritsu": [{"ku": "環境の把握", "item": "周囲の状況把握と状況に応じた行動"}]}, {"name": "先天性眼瞼下垂による視性刺激遮断弱視", "overview": "まぶたが十分に開かないことにより、視覚刺激が遮断され弱視を生じる状態。", "support": ["手術後の視機能訓練との連携", "保有視覚を最大限活用する教材"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "視神経脊髄炎関連疾患による視力障害", "overview": "自己免疫性の炎症性疾患により、視神経炎を繰り返し視力障害が進行することがある状態。", "support": ["再発時の急な見え方の変化への対応", "治療スケジュールとの連携"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "未熟児黄斑低形成", "overview": "未熟児網膜症等の影響で黄斑部の発達が不十分となり、視力に制約が生じる状態。", "support": ["拡大教材と十分な明るさの確保", "保有視覚の活用方法の個別検討"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "虚血性視神経症", "overview": "視神経への血流が障害され、急激な視力低下を来す状態。", "support": ["急な視力変化への心理的ケア", "新しい見え方に応じた学習方法の再構築"], "jiritsu": [{"ku": "心理的な安定", "item": "困難を改善・克服する意欲"}]}, {"name": "デュエイン症候群（眼球運動障害を伴う）", "overview": "外眼筋の発達異常により、眼球の運動が制限される先天性疾患。", "support": ["見やすい頭位を活かした教材配置", "眼精疲労への配慮"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "若年性糖尿病網膜症の増殖期病変", "overview": "糖尿病網膜症が進行し、新生血管や出血を伴う状態。視力への影響が大きい。", "support": ["血糖・眼科治療の状況を踏まえた活動調整", "視力変動に応じた柔軟な教材選択"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "先天無眼球症", "overview": "眼球が生まれつき形成されていない状態。義眼を装用することが多い。", "support": ["点字を中心とした早期からの教育的対応", "義眼の管理に関する情報共有"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の受容と表出"}]}, {"name": "未熟児による視覚性認知の困難（皮質性視覚障害の軽症例）", "overview": "眼球の機能は保たれているが、脳での視覚情報処理に軽度の困難がある状態。", "support": ["視覚刺激を整理した教材提示", "反応時間に配慮した学習進行"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "未熟児網膜症瘢痕期による斜視・弱視", "overview": "未熟児網膜症の瘢痕化に伴い、斜視や弱視を来すことがある状態。", "support": ["視能訓練との連携", "保有視覚を生かした教材の工夫"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "視神経乳頭低形成", "overview": "視神経の根元部分が生まれつき小さく、視力障害の原因となる状態。", "support": ["拡大教材の活用", "定期的な視機能評価"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "水晶体亜脱臼に伴う視力障害（マルファン症候群等）", "overview": "結合組織の異常により水晶体の位置がずれ、視力障害を来す状態。全身疾患の一症状であることがある。", "support": ["矯正眼鏡の管理支援", "全身状態を踏まえた活動制限の確認"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}],
+  jiritsu:[{"ku": "環境の把握", "item": "保有する感覚の活用", "note": "触覚や聴覚などを効果的に活用できるようにする指導"}, {"ku": "環境の把握", "item": "感覚の補助及び代行手段の活用", "note": "白杖による一人歩きの技能、弱視レンズ等視覚補助具の活用技能"}, {"ku": "環境の把握", "item": "認知や行動の手掛かりとなる概念の形成", "note": "実物・模型に触れる体験を通じた的確な概念形成"}, {"ku": "身体の動き", "item": "身体の移動能力", "note": "伝い歩き・ガイド歩行、他者への援助依頼を含む安全な移動技能"}, {"ku": "心理的な安定", "item": "障害による学習上又は生活上の困難を改善・克服する意欲", "note": "見えにくさを補う積極的な姿勢の育成"}, {"ku": "コミュニケーション", "item": "状況に応じたコミュニケーション", "note": "相手との距離に応じた声の大きさ・話し方の調整"}],
+  quote:"視覚障害とは、視機能の永続的な低下により、学習や生活に困難がある状態をいう。",
+  srcUrl:"https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_05.pdf"
+},
+{
+  id:"hearing", num:"02", name:"聴覚障害", en:"Hearing Impairment",
+  overview:"身の周りの音や話し言葉が聞こえにくい、またはほとんど聞こえない状態。聴覚と言葉の発達には臨界期があり、乳幼児期からの早期発見・早期の教育的対応が、その後の言語発達や人間関係の形成に大きく影響します。",
+  needs:[
+    {k:"早期発見",v:"新生児聴覚スクリーニング等を通じた早期の気付きと、療育・教育相談への速やかな接続が重要。"},
+    {k:"言語発達",v:"聞こえの不足を補いながら、遊びや生活を通して言葉の習得と概念形成を図る必要がある。"},
+    {k:"環境調整力",v:"自分の聞こえの特性を理解し、周囲に配慮を求める力（生活環境の調整）を育てる。"},
+    {k:"孤立感への配慮",v:"周囲の音声情報が入らないことによる孤立感を防ぐ学級づくりが求められる。"}
+  ],
+  instruction:[
+    {t:"聴覚の活用",d:"保有する聴力に応じ、補聴器・人工内耳等を活用して音や音声を聞く態度を育てる。"},
+    {t:"生活環境の調整",d:"補聴援助機器のマイク使用や要点の筆談依頼など、自ら環境を調整する力を養う。"},
+    {t:"言語概念の形成",d:"体験と言葉を結び付け、語彙や文法体系、言語による思考力を段階的に伸ばす。"},
+    {t:"コミュニケーション手段の選択",d:"音声・手話・指文字・キュードスピーチ等から状況に応じた手段を主体的に選べるようにする。"}
+  ],
+  support:{
+    content:["補聴援助機器の活用、身振り・手話・筆談等の適切なコミュニケーション手段の活用","ノートテイクやパソコン要約筆記、音声文字変換システム等による情報保障"],
+    method:["分かりやすい板書、音読箇所の明示、要点の視覚的提示","座席位置や話者の音量調整、机・椅子の雑音軽減など環境構成の工夫","体験と言葉を結び付ける機会の確保、孤立感を生まない学級づくり"],
+    system:["特別支援学校（聴覚障害）のセンター的機能、難聴特別支援学級・通級指導の活用","耳鼻科・補聴器店・難聴児親の会等との連携"],
+    facility:["字幕放送受信システム等、音声情報を視覚的に受容できる環境整備","絨毯敷きの指導室や補聴援助機器とのBluetooth接続等の整備"]
+  },
+  places:[
+    {name:"通常の学級", note:"補聴器・人工内耳の活用や座席配慮等を受けながら学習に参加"},
+    {name:"通級による指導（難聴）", note:"大部分は通常の学級で学び、聴覚活用や言語指導を一部時間で実施"},
+    {name:"難聴特別支援学級", note:"聴覚活用や音声の受容・表出に関する指導を系統的に実施"},
+    {name:"特別支援学校（聴覚障害）", note:"聴覚活用・言語発達を軸とした一貫した専門教育を実施"}
+  ],
+  diseases:[{"name": "感音難聴（内耳性）", "overview": "内耳・聴神経の障害による難聴。音がひずみ、語音の明瞭度が低下しやすい。", "support": ["補聴器・人工内耳の適切な調整", "板書や資料等、視覚的な情報提示の徹底"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}, {"ku": "コミュニケーション", "item": "言語の受容と表出"}]}, {"name": "伝音難聴", "overview": "外耳・中耳の障害による難聴。音が全体的に小さく聞こえる状態が中心。", "support": ["聞き取りやすい座席位置の配慮", "補聴器の適切な活用と定期点検"], "jiritsu": [{"ku": "環境の把握", "item": "感覚の補助及び代行手段の活用"}]}, {"name": "混合性難聴", "overview": "伝音難聴と感音難聴の両方の要素を併せ持つ状態。", "support": ["聴覚活用と視覚的情報提示を組み合わせた指導", "補聴援助機器の活用"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "症候群性難聴（アッシャー症候群等）", "overview": "難聴に加え視力障害等を伴う遺伝性疾患群。", "support": ["視覚障害の進行も見据えた早期からの複合的な支援", "関連する専門医療機関との情報共有"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "先天性風疹症候群", "overview": "妊娠初期の母体感染により、難聴に心疾患・眼疾患等を伴うことがある。", "support": ["重複障害を踏まえた個別の指導計画の作成", "医療機関との緊密な連携"], "jiritsu": [{"ku": "健康の保持", "item": "障害の特性の理解と生活環境の調整"}]}, {"name": "人工内耳装用", "overview": "高度難聴で補聴器の効果が不十分な場合に手術で装用するもの。装用後も聞き取りには個人差が大きい。", "support": ["装用後の聴覚活用を促す継続的な指導", "雑音環境での聞き取りを助ける補聴援助機器の活用"], "jiritsu": [{"ku": "コミュニケーション", "item": "コミュニケーション手段の選択と活用"}]}, {"name": "滲出性中耳炎（慢性）", "overview": "中耳炎の慢性化等により、一時的・断続的な伝音難聴を生じることがある状態。", "support": ["定期的な聴力チェックの実施", "聞こえの変動を踏まえた座席・環境調整"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "先天性サイトメガロウイルス感染症", "overview": "胎内感染により難聴のほか、まれに知的障害等を伴うことがある疾患。", "support": ["聴力の変動（進行性の場合あり）を踏まえた定期評価", "重複する困難への総合的な支援"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "若年発症型両側性感音難聴（遺伝性）", "overview": "GJB2遺伝子変異等による、非症候群性の遺伝性難聴。", "support": ["補聴器・人工内耳の早期からの適合", "家族への遺伝カウンセリング情報の共有"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の形成と活用"}]}, {"name": "突発性難聴（後天性・学齢期発症）", "overview": "ある日突然、片側または両側の聴力が低下する疾患。原因は多くの場合特定されない。", "support": ["発症前後の聞こえの変化への心理的配慮", "座席位置や情報保障の見直し"], "jiritsu": [{"ku": "心理的な安定", "item": "状況の理解と変化への対応"}]}, {"name": "進行性難聴", "overview": "加齢や遺伝的要因等により、時間の経過とともに聴力が低下していく状態。", "support": ["定期的な聴力検査に基づく支援内容の見直し", "将来を見据えたコミュニケーション手段の拡充"], "jiritsu": [{"ku": "コミュニケーション", "item": "コミュニケーション手段の選択と活用"}]}, {"name": "聴覚情報処理障害（APD）", "overview": "聴力自体に大きな問題はないが、聞いた音声情報の処理に困難がある状態。", "support": ["静かな環境の確保と指示の視覚化", "要点を絞った簡潔な伝え方"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "外耳道閉鎖症（先天性）", "overview": "外耳道が生まれつき形成されていないため生じる伝音難聴。", "support": ["骨導補聴器等、特性に応じた補聴手段の活用", "手術の可能性を含めた医療機関との連携"], "jiritsu": [{"ku": "環境の把握", "item": "感覚の補助及び代行手段の活用"}]}, {"name": "ムンプス難聴（後天性・片側性）", "overview": "流行性耳下腺炎（おたふくかぜ）の合併症として生じる、多くは片側性の高度難聴。", "support": ["健聴耳を活かした座席配置", "片側性難聴による聞こえの偏りへの配慮"], "jiritsu": [{"ku": "環境の把握", "item": "周囲の状況把握と状況に応じた行動"}]}, {"name": "ワールデンブルグ症候群", "overview": "虹彩の色素異常や前頭部の白髪等を伴う遺伝性の症候群性難聴。", "support": ["外見に関する心理的配慮", "聴覚活用と視覚的情報提示の併用"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "ペンドレッド症候群", "overview": "感音難聴に甲状腺腫を伴う遺伝性疾患。思春期以降に甲状腺症状が顕在化することがある。", "support": ["甲状腺機能の定期チェックとの連携", "進行性難聴を見据えたコミュニケーション手段の検討"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "トリーチャー・コリンズ症候群", "overview": "顔面骨の低形成や外耳・中耳の形態異常を特徴とする先天性疾患。伝音難聴を伴う。", "support": ["摂食・呼吸面への配慮を含む多職種連携", "伝音難聴に応じた補聴手段の活用"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "CHARGE症候群", "overview": "眼のコロボーマ、心疾患、後鼻孔閉鎖、成長発達の遅れ、耳の異常等、複数の症状を伴う症候群。", "support": ["視覚・聴覚等複数の感覚障害を踏まえた総合的な支援", "医療的ケアを含む多職種連携"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "アルポート症候群", "overview": "進行性の腎炎に感音難聴を伴う遺伝性疾患。", "support": ["腎機能の状態に応じた生活管理との連携", "進行性難聴を踏まえた定期的な聴力評価"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "スティックラー症候群", "overview": "結合組織の異常により、難聴のほか近視や関節の症状を伴うことがある遺伝性疾患。", "support": ["視覚・聴覚双方の状態把握と教材の工夫", "関節への負担に配慮した活動"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "鰓弓耳腎症候群（BOR症候群）", "overview": "外耳・中耳の形態異常に腎機能障害を伴うことがある遺伝性症候群。", "support": ["腎機能の定期評価との連携", "伝音難聴に応じた補聴支援"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "内耳奇形（Mondini型異形成等）", "overview": "内耳の形成が不完全なために生じる先天性の感音難聴。", "support": ["人工内耳の適応可能性の医療機関での検討", "めまい等前庭症状への配慮"], "jiritsu": [{"ku": "環境の把握", "item": "感覚の補助及び代行手段の活用"}]}, {"name": "側頭骨骨折後の難聴", "overview": "頭部外傷により側頭骨が骨折し、伝音難聴や感音難聴を来すことがある状態。", "support": ["受傷前後の聞こえの変化への心理的ケア", "座席位置・情報保障の見直し"], "jiritsu": [{"ku": "心理的な安定", "item": "状況の理解と変化への対応"}]}, {"name": "高ビリルビン血症後遺症による難聴", "overview": "新生児期の重症黄疸の後遺症として感音難聴が生じることがある状態。", "support": ["早期からの補聴器・人工内耳の適合", "言語発達の状態に応じた継続的評価"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の形成と活用"}]}, {"name": "髄膜炎後の両側性高度難聴", "overview": "細菌性髄膜炎の後遺症として、急速に進行する高度感音難聴を来すことがある状態。", "support": ["人工内耳の早期適応の検討", "急な聞こえの変化への心理的支援"], "jiritsu": [{"ku": "心理的な安定", "item": "状況の理解と変化への対応"}]}, {"name": "聴神経腫瘍による難聴", "overview": "聴神経に生じる腫瘍により、片側性の進行性難聴を来すことがある状態（稀に神経線維腫症2型に伴う）。", "support": ["定期的な聴力・画像検査の状況共有", "片側性難聴による聞こえの偏りへの配慮"], "jiritsu": [{"ku": "環境の把握", "item": "周囲の状況把握と状況に応じた行動"}]}, {"name": "薬剤性難聴（抗がん剤・抗菌薬等）", "overview": "治療に用いる薬剤の副作用として、内耳の有毛細胞が障害され難聴を生じる状態。", "support": ["治療経過を踏まえた聴力の定期評価", "治療優先の中での学習支援の工夫"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "オトフェリン遺伝子異常による難聴（聴覚神経症）", "overview": "内耳の機能は保たれているが、音の情報がうまく神経に伝わらないタイプの難聴。人工内耳の効果が高いとされる。", "support": ["人工内耳の適応評価との連携", "雑音下での聞き取りへの配慮"], "jiritsu": [{"ku": "コミュニケーション", "item": "コミュニケーション手段の選択と活用"}]}, {"name": "若年発症型両側性感音難聴（コネキシン26遺伝子変異以外）", "overview": "GJB2以外の遺伝子変異による非症候群性難聴。臨床像はGJB2関連難聴と類似することが多い。", "support": ["補聴器・人工内耳の早期適合", "定期的な聴力評価に基づく指導内容の見直し"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の形成と活用"}]}, {"name": "ジャーバル・ランゲ・ニールセン症候群", "overview": "高度先天性感音難聴に心臓の不整脈を伴う稀な遺伝性疾患。突然死のリスクがあるため注意を要する。", "support": ["心疾患管理との連携（運動制限等）", "緊急時対応体制の整備"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "ノリー病", "overview": "網膜の異常と難聴を伴うことがあるX連鎖性遺伝性疾患。視覚・聴覚両面の支援を要する。", "support": ["視覚・聴覚の複合的な状態把握", "早期からの多職種連携"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "外リンパ瘻", "overview": "内耳と中耳を隔てる膜が破れ、めまいや難聴を来す状態。外傷や気圧変化が誘因となることがある。", "support": ["めまい発作時の安全確保", "激しい運動や気圧変化を伴う活動の制限"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "メニエール病（若年発症例）", "overview": "内耳のリンパ水腫により、難聴・耳鳴り・めまいを繰り返す疾患。若年での発症は比較的稀。", "support": ["めまい発作時の休息場所の確保", "ストレス管理に関する情報共有"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "側頭骨形成異常（小耳症・外耳道狭窄を伴う）", "overview": "耳介や外耳道の形成不全により、伝音難聴を伴う先天性疾患。", "support": ["骨導補聴器等、特性に応じた補聴手段", "外見に関する心理的配慮"], "jiritsu": [{"ku": "環境の把握", "item": "感覚の補助及び代行手段の活用"}]}, {"name": "聴神経発育不全", "overview": "聴神経そのものが生まれつき細い、又は欠損しているために生じる高度難聴。人工内耳の効果が限定的な場合がある。", "support": ["触覚や視覚を活用した代替コミュニケーション手段の検討", "早期からの手話等の選択肢の提供"], "jiritsu": [{"ku": "コミュニケーション", "item": "コミュニケーション手段の選択と活用"}]}, {"name": "先天性サイトメガロウイルス感染症による遅発性難聴", "overview": "出生時は正常聴力でも、乳幼児期以降に進行性の難聴が顕在化することがある状態。", "support": ["定期的な聴力検査の継続", "聴力低下の兆候の早期把握"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}]}, {"name": "騒音性難聴（若年例）", "overview": "大音量への曝露により生じる感音難聴。近年、イヤホン使用等による若年層での増加が指摘されている。", "support": ["音量管理に関する生活指導", "高音域の聞き取りにくさへの配慮"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "真珠腫性中耳炎", "overview": "中耳に生じた表皮組織の塊が周囲の骨を破壊し、難聴や合併症を来す疾患。", "support": ["手術前後の聞こえの変化への対応", "定期的な耳鼻科受診の状況共有"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "顔面神経麻痺を伴う難聴", "overview": "顔面神経と近接する内耳の障害が同時に生じ、難聴と顔面の動きの困難を併せ有する状態。", "support": ["表情表出の困難に配慮したコミュニケーション支援", "リハビリテーションとの連携"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の受容と表出"}]}, {"name": "聴覚過敏を伴う難聴（一部周波数の過敏反応）", "overview": "難聴がある一方で、特定の周波数の音に過敏に反応する状態を併せ持つことがある。", "support": ["音環境の調整（イヤーマフの併用等）", "過敏な音への段階的な慣らし"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "外傷性鼓膜穿孔", "overview": "事故等により鼓膜が破れ、一時的又は永続的な伝音難聴を来す状態。", "support": ["治癒までの活動制限（水泳等）の共有", "聞こえの回復状況に応じた座席配慮"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "耳硬化症（若年発症例）", "overview": "中耳の骨が硬化し、進行性の伝音難聴を来す疾患。若年での発症は比較的稀。", "support": ["進行性難聴を見据えた定期評価", "手術の可能性を含めた医療機関との連携"], "jiritsu": [{"ku": "コミュニケーション", "item": "コミュニケーション手段の選択と活用"}]}, {"name": "先天性内耳道狭窄症", "overview": "聴神経が通る内耳道が生まれつき狭く、聴神経の発達に影響が及ぶことがある状態。", "support": ["人工内耳の効果を含む医学的評価との連携", "代替コミュニケーション手段の準備"], "jiritsu": [{"ku": "環境の把握", "item": "感覚の補助及び代行手段の活用"}]}, {"name": "ムコ多糖症に伴う難聴", "overview": "代謝異常疾患の症状の一つとして、伝音難聴や感音難聴を来すことがある状態。", "support": ["全身状態を踏まえた総合的な支援計画", "定期的な聴力評価"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "聴覚野の脳損傷による中枢性難聴", "overview": "内耳・聴神経は正常でも、脳の聴覚処理領域の損傷により聞こえに困難が生じる稀な状態。", "support": ["視覚的な情報保障を中心とした指導", "医療機関との連携による状態把握"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "先天性トキソプラズマ症による難聴", "overview": "胎内感染により難聴のほか、視力障害や知的障害を伴うことがある疾患。", "support": ["複数の障害を踏まえた総合的な支援", "医療機関との緊密な連携"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}],
+  jiritsu:[{"ku": "環境の把握", "item": "保有する感覚の活用", "note": "補聴器・人工内耳を通した聴覚活用の指導"}, {"ku": "環境の把握", "item": "感覚の補助及び代行手段の活用", "note": "補聴援助機器（マイク等）の活用"}, {"ku": "コミュニケーション", "item": "コミュニケーション手段の選択と活用", "note": "音声・手話・指文字・キュードスピーチ等からの主体的な選択"}, {"ku": "コミュニケーション", "item": "言語の形成と活用", "note": "語彙の拡充、文法体系の習得、言語による思考力の伸長"}, {"ku": "心理的な安定", "item": "状況の理解と変化への対応", "note": "聞こえの特性を理解した上での生活環境の調整"}, {"ku": "人間関係の形成", "item": "他者の意図や感情の理解", "note": "視覚的な手がかりを中心とした状況把握の指導"}],
+  quote:"聴覚障害とは、身の周りの音や話し言葉が聞こえにくかったり、ほとんど聞こえなかったりする状態をいう。",
+  srcUrl:"https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_06.pdf"
+},
+{
+  id:"intellectual", num:"03", name:"知的障害", en:"Intellectual Disability",
+  overview:"認知や言語などにかかわる知的機能の発達に遅れがあり、他者との意思の交換や日常生活・社会生活等についての適応能力も不十分で、特別な支援を要する状態。状態は環境的・社会的条件によって変わり得るとされています。",
+  needs:[
+    {k:"体験的な学び",v:"学習で得た知識・技能が断片的になりやすく、実際の生活場面に即した継続的・段階的な指導が重要。"},
+    {k:"成功体験",v:"失敗経験の積み重ねから自信を持てないことが多く、双方向のコミュニケーションの成功体験の積み重ねが必要。"},
+    {k:"適応行動",v:"買い物や乗り物の利用等のライフスキル、社会的ルールの理解を実生活に即して育てる。"},
+    {k:"自己理解",v:"できること・できないことの認識や、援助を適切に求める力を段階的に育む。"}
+  ],
+  instruction:[
+    {t:"コミュニケーションの基礎",d:"絵カードや簡単なジェスチャーなど、要求を伝える手段を広げる指導を行う。"},
+    {t:"概念の形成",d:"実物や写真を使い、興味関心のある場面から認知や行動の手がかりとなる概念形成を図る。"},
+    {t:"姿勢・運動の基本技能",d:"ボタンの着脱や道具の操作など、目と手の協応動作を要する技能を段階的に指導する。"},
+    {t:"自己理解と行動調整",d:"容易にできる活動から成就感を積み重ね、自己に肯定的な感情を高めていく。"}
+  ],
+  support:{
+    content:["実生活につながる技術・態度の習得、社会生活上の規範やルールの理解の促進","理解の状況に応じた学習内容の焦点化、基礎的・基本的な内容の重視"],
+    method:["文字の拡大・振り仮名、具体的な用語の使用、動作化・視覚化した教材（絵カード・数え棒等）","調理実習や宿泊学習等の具体的な活動場面の確保、日課表・活動予定表の活用","学級での所属意識が持てる活動の工夫、自尊感情への配慮"],
+    system:["特別支援学校（知的障害）のセンター的機能や特別支援学級の専門性の活用","てんかん等への対応のための医療機関との連携"],
+    facility:["動線や目的の場所が視覚的に分かる校内環境の整備","危険予知の困難さを踏まえた安全性の高い校内環境の整備"]
+  },
+  places:[
+    {name:"知的障害特別支援学級", note:"小中学校等の教育課程に準じつつ、実態に応じた特別の教育課程を編成"},
+    {name:"特別支援学校（知的障害）", note:"生活に根ざした独自の教科・内容による一貫した教育を実施"}
+  ],
+  diseases:[{"name": "ダウン症候群（21トリソミー）", "overview": "染色体異常による代表的な先天性疾患。心疾患等を合併することもある。", "support": ["視覚的な情報を活用した繰り返し学習", "体力面に配慮した活動量の調整"], "jiritsu": [{"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能"}, {"ku": "コミュニケーション", "item": "コミュニケーションの基礎的能力"}]}, {"name": "先天性代謝異常", "overview": "出生前の要因の一つ。早期の食事療法等により発達への影響を抑えられる場合がある。", "support": ["医療機関と連携した生活管理", "個別の教育支援計画を活用した情報共有"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "周産期の脳損傷（新生児仮死等）", "overview": "分娩期・新生児期の低酸素状態等による脳への影響。", "support": ["発達の状態に応じた個別の指導計画の作成", "運動面の状態に配慮した活動設計"], "jiritsu": [{"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能"}]}, {"name": "脳炎・髄膜炎の後遺症", "overview": "出生後の感染症による中枢神経系への影響が知的発達に及ぶ状態。", "support": ["発症前後の変化を踏まえた個別対応", "本人・家族への心理的ケア"], "jiritsu": [{"ku": "心理的な安定", "item": "状況の理解と変化への対応"}]}, {"name": "染色体異常（ダウン症候群以外）", "overview": "様々な染色体異常が知的障害の原因となりうる。合併症の有無の確認が重要。", "support": ["医療的な情報の共有と定期的な状態把握", "個々の特性に応じた指導内容の調整"], "jiritsu": [{"ku": "環境の把握", "item": "概念の形成"}]}, {"name": "原因不明の知的障害", "overview": "原因が特定されない場合も少なくなく、多くは出生前要因と推定されている。", "support": ["行動観察や検査結果に基づく個別のアセスメント", "得意・不得意を踏まえた指導内容の設定"], "jiritsu": [{"ku": "人間関係の形成", "item": "自己の理解と行動の調整"}]}, {"name": "脆弱X症候群", "overview": "X染色体の異常による遺伝性疾患。知的障害に加え、行動面の特徴を伴うことがある。", "support": ["刺激を整理した学習環境の工夫", "対人関係における段階的な指導"], "jiritsu": [{"ku": "人間関係の形成", "item": "他者との関わりの基礎"}]}, {"name": "ウィリアムズ症候群", "overview": "染色体微小欠失による疾患。言語面の強さと視空間認知の弱さなど、能力の偏りが特徴的とされる。", "support": ["得意な言語面を生かした学習方法の活用", "視空間認知を要する課題への個別の配慮"], "jiritsu": [{"ku": "環境の把握", "item": "概念の形成"}]}, {"name": "プラダー・ウィリー症候群", "overview": "染色体異常による疾患で、過食や肥満傾向、筋緊張低下等を伴うことがある。", "support": ["食事管理に関する家庭・給食担当者との連携", "筋力面に配慮した活動内容の調整"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "甲状腺機能低下症（先天性）", "overview": "早期発見・早期治療により知的発達への影響を抑えられる代謝性疾患の一つ。", "support": ["服薬状況の学校との共有", "発達の状態に応じた個別の指導計画"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "周産期低酸素性虚血性脳症の後遺症", "overview": "出産前後の酸素供給不足により脳に影響が生じ、知的障害を伴うことがある状態。", "support": ["運動面を含めた発達全体の状態把握", "関係機関と連携した個別の支援計画"], "jiritsu": [{"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能"}]}, {"name": "出生後の脳外傷による知的障害", "overview": "学齢期以降の頭部外傷等により、知的機能に影響が生じる場合がある状態。", "support": ["受傷前の状態との違いを踏まえた個別対応", "心理的なショックへの丁寧な配慮"], "jiritsu": [{"ku": "心理的な安定", "item": "状況の理解と変化への対応"}]}, {"name": "栄養障害に起因する発達の遅れ", "overview": "重度の栄養不良等、出生後の環境要因により知的発達に影響が及ぶ場合がある状態。", "support": ["家庭・福祉機関と連携した生活基盤の支援", "個々の発達状況に応じた段階的な指導"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "アンジェルマン症候群", "overview": "重度の知的障害・言語障害に、特徴的な陽気な様子や失調性の歩行を伴う遺伝性疾患。", "support": ["非言語的なコミュニケーション手段の活用", "てんかん発作への対応の共有"], "jiritsu": [{"ku": "コミュニケーション", "item": "コミュニケーションの基礎的能力"}]}, {"name": "猫鳴き症候群（5p欠失症候群）", "overview": "乳児期の猫のような泣き声を特徴とする染色体欠失症候群。中等度から重度の知的障害を伴う。", "support": ["理解力に対して表出言語が弱い特性を踏まえた指導", "音への過敏さへの配慮"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の受容と表出"}]}, {"name": "コルネリア・デ・ランゲ症候群", "overview": "特徴的な顔貌と成長・発達の遅れを伴う遺伝性疾患。自閉的傾向を併せ有することがある。", "support": ["感覚過敏に配慮した学習環境", "自傷行動が見られる場合の代替手段の指導"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "22q11.2欠失症候群", "overview": "心疾患・口蓋裂・知的障害等を伴うことがある染色体微小欠失症候群。", "support": ["医療的な合併症を踏まえた総合的な支援計画", "言語発達の状態に応じた指導"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の形成と活用"}]}, {"name": "スミス・マギニス症候群", "overview": "知的障害に加え、睡眠リズムの乱れや自傷行動等の行動特徴を伴う染色体微小欠失症候群。", "support": ["生活リズムを整えるための家庭との連携", "自傷行動への代替手段の指導"], "jiritsu": [{"ku": "健康の保持", "item": "生活のリズムや生活習慣の形成"}]}, {"name": "結節性硬化症に伴う知的障害", "overview": "全身に過誤腫が生じる疾患で、てんかんや自閉的な特性、知的障害を伴うことがある。", "support": ["てんかん発作への対応の共有", "医療機関との継続的な連携"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "フェニルケトン尿症（治療後）", "overview": "先天性代謝異常の一つ。新生児期からの食事療法により知的障害の発症を防げる場合が多い。", "support": ["食事療法の継続状況の学校との共有", "除去食品への理解"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "ムコ多糖症に伴う知的障害", "overview": "代謝異常により全身に症状が現れる疾患群の一つ。型により知的障害の程度は異なる。", "support": ["進行性の症状を踏まえた指導内容の見直し", "医療機関との連携"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "低酸素性虚血性脳症による重度知的障害", "overview": "出生時の重度の低酸素状態により、広範な脳への影響が生じた状態。", "support": ["医療的ケアを含めた個別の支援体制", "残存する力を生かした働きかけ"], "jiritsu": [{"ku": "コミュニケーション", "item": "コミュニケーションの基礎的能力"}]}, {"name": "先天性甲状腺機能低下症（未治療・晩期発見）", "overview": "早期治療が遅れた場合に、知的発達への影響が残ることがある代謝性疾患。", "support": ["ホルモン補充療法の継続状況の共有", "発達の状態に応じた個別対応"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "胎児性アルコール・スペクトラム障害", "overview": "妊娠中の母体のアルコール摂取の影響により、発達・知的機能に困難が生じることがある状態。", "support": ["得意・不得意の差を踏まえた個別の指導", "生活面での繰り返しによる定着支援"], "jiritsu": [{"ku": "環境の把握", "item": "概念の形成"}]}, {"name": "重症新生児仮死後の脳性まひを伴う知的障害", "overview": "出産時の重度の酸素不足により、運動障害と知的障害を併せ有する状態。", "support": ["運動面と認知面双方に応じた個別の指導計画", "医療・福祉との連携"], "jiritsu": [{"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能"}]}, {"name": "難治性てんかんに伴う知的障害（点頭てんかん等）", "overview": "乳児期発症の難治性てんかんの影響により、知的発達に遅れが生じることがある状態。", "support": ["発作の記録と医療機関への情報提供", "発作後の状態に応じた活動の調整"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "レット症候群に伴う知的障害", "overview": "主に女児にみられる神経発達症で、発達の退行に伴い重度の知的障害を示すことが多い。", "support": ["スイッチ等を用いた意思表出支援", "医療的ケアを含めた多職種連携"], "jiritsu": [{"ku": "コミュニケーション", "item": "コミュニケーションの基礎的能力"}]}, {"name": "スミス・レムリ・オピッツ症候群", "overview": "コレステロール代謝異常による先天性疾患で、知的障害や複数の身体的特徴を伴う。", "support": ["食事療法（コレステロール補充等）との連携", "発達段階に応じた個別の指導"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "ソトス症候群", "overview": "出生時から成長が著しく、特徴的な顔貌を伴う遺伝性疾患。軽度から中等度の知的障害を伴うことが多い。", "support": ["体格差に関する心理的な配慮", "学習内容の個に応じた調整"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "コフィン・ローリー症候群", "overview": "X連鎖性の遺伝性疾患で、知的障害と特徴的な骨格の異常を伴う。", "support": ["身体面の特徴に応じた活動内容の調整", "段階的な生活動作の指導"], "jiritsu": [{"ku": "身体の動き", "item": "日常生活に必要な基本動作"}]}, {"name": "ミトコンドリア病に伴う知的障害", "overview": "エネルギー産生に関わるミトコンドリアの機能異常により、多臓器に症状が現れる疾患群の一つ。", "support": ["疲労しやすさに配慮した活動量の調整", "医療機関との継続的な連携"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "レッシュ・ナイハン症候群", "overview": "プリン代謝異常による遺伝性疾患。知的障害に加え、自傷行動を伴うことが特徴的とされる。", "support": ["自傷行動を防ぐための環境調整（保護具の活用等）", "医療機関と連携した薬物療法との併用"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "18トリソミー症候群に伴う知的障害", "overview": "複数の合併症を伴う染色体異常。医療的ケアを要することが多い重度の知的障害を伴う。", "support": ["医療的ケアを含む個別の支援体制", "残存する反応を生かした働きかけ"], "jiritsu": [{"ku": "コミュニケーション", "item": "コミュニケーションの基礎的能力"}]}, {"name": "CHARGE症候群に伴う知的障害", "overview": "視覚・聴覚障害等、複数の障害を併せ有する症候群の一部として知的障害がみられることがある。", "support": ["視覚・聴覚等の複合的な障害を踏まえた総合的支援", "医療的ケアを含む多職種連携"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "先天性風疹症候群に伴う知的障害", "overview": "胎内感染の影響として、難聴・心疾患等とともに知的障害を伴うことがある状態。", "support": ["複数の障害を踏まえた個別の指導計画", "医療機関との緊密な連携"], "jiritsu": [{"ku": "コミュニケーション", "item": "コミュニケーションの基礎的能力"}]}, {"name": "周産期脳室内出血後遺症による知的障害", "overview": "早産児等にみられる脳室内出血の後遺症として、知的発達に影響が及ぶことがある状態。", "support": ["運動面を含めた発達全体の状態把握", "理学療法等との連携"], "jiritsu": [{"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能"}]}, {"name": "先天性水頭症に伴う知的障害", "overview": "脳脊髄液の循環異常により脳室が拡大し、知的発達に影響が及ぶことがある状態。", "support": ["シャント機能不全の徴候の共有", "疲労しやすさへの配慮"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "低出生体重児における発達の遅れ", "overview": "極低出生体重等で出生した子供に、知的発達の遅れがみられることがある状態。", "support": ["発達の個人差を踏まえた長期的な見守り", "得意な面を生かした学習支援"], "jiritsu": [{"ku": "環境の把握", "item": "概念の形成"}]}, {"name": "重症新生児黄疸後遺症（核黄疸）による知的障害", "overview": "重症の新生児黄疸の後遺症として、知的障害や運動障害を来すことがある状態。", "support": ["聴覚障害の合併有無の確認", "運動面に配慮した個別の指導"], "jiritsu": [{"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能"}]}, {"name": "自閉スペクトラム症を伴わない特定不能の知的発達症", "overview": "標準化された知能検査等の実施が困難な低年齢児等で用いられる、原因や重症度が確定していない知的障害の分類。", "support": ["行動観察に基づく継続的なアセスメント", "得意・不得意を踏まえた柔軟な指導内容の設定"], "jiritsu": [{"ku": "人間関係の形成", "item": "自己の理解と行動の調整"}]}, {"name": "アペール症候群（頭蓋顔面異骨症）に伴う知的障害", "overview": "頭蓋骨の早期癒合を特徴とする遺伝性疾患。知的発達に影響が及ぶことがある。", "support": ["手術の経過を踏まえた個別対応", "発達の状態に応じた指導内容の調整"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "ヌーナン症候群", "overview": "低身長や心疾患等を伴う遺伝性疾患。軽度の知的障害を伴うことがある。", "support": ["心疾患管理との連携", "得意な面を生かした学習支援"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}],
+  jiritsu:[{"ku": "人間関係の形成", "item": "他者との関わりの基礎", "note": "双方向のコミュニケーションが成立する成功体験の積み重ね"}, {"ku": "人間関係の形成", "item": "自己の理解と行動の調整", "note": "容易な活動での成就感を通じた自己肯定感の向上"}, {"ku": "環境の把握", "item": "認知や行動の手掛かりとなる概念の形成", "note": "実物・写真を用いた興味関心に基づく概念形成"}, {"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能", "note": "着替えのボタン操作等、目と手の協応動作を要する技能の習得"}, {"ku": "コミュニケーション", "item": "コミュニケーションの基礎的能力", "note": "絵カードやジェスチャーによる要求伝達手段の拡大"}],
+  quote:"認知や言語などにかかわる知的機能の発達に遅れが認められ…特別な支援や配慮が必要な状態。",
+  srcUrl:"https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_07.pdf"
+},
+{
+  id:"physical", num:"04", name:"肢体不自由", en:"Physical Disability",
+  overview:"身体の動きに関する器官が病気やけがで損なわれ、歩行や筆記など日常生活動作が困難な状態。原因疾患は多様で、知的障害や言語障害などを併せ有することも少なくなく、二次的な困難への配慮も重要になります。",
+  needs:[
+    {k:"姿勢づくり",v:"臥位・座位・立位など、あらゆる運動の基礎となる姿勢づくりへの積極的な取り組みが必要。"},
+    {k:"体験の確保",v:"身体の動きの制約から体験不足になりやすく、具体物に触れる体験的な活動が概念形成に不可欠。"},
+    {k:"健康・医療的ニーズ",v:"関節拘縮の予防や呼吸・摂食機能の維持など、主治医・看護師等との連携が必要な場合がある。"},
+    {k:"表出手段",v:"上肢の困難により書字等に困難がある場合、ICT・AT（支援技術）による代替手段が有効。"}
+  ],
+  instruction:[
+    {t:"保有する感覚の活用",d:"視覚・聴覚・触覚に加え、姿勢の変化を感じ取る固有覚・前庭覚の活用も丁寧に指導する。"},
+    {t:"基礎的な概念の形成",d:"具体物を見る・触れる・数える等の体験的活動を通じ、言葉の意味づけを的確に図る。"},
+    {t:"表出・表現する力",d:"入出力装置の活用等、子供一人一人に応じた補助具・補助的手段を工夫する。"},
+    {t:"障害の理解",d:"自己理解・自己管理・自己肯定感を高め、困難を改善・克服する意欲を育てる。"}
+  ],
+  support:{
+    content:["片手で使える道具の活用、移動方法の検討や実際の移動支援","書く時間の延長や量の軽減、体育等での運動内容の変更"],
+    method:["上肢の機能に応じた教材・支援機器（文字盤・音声出力型機器等）の提供","新出語句や未経験の活動の事前リスト化、車椅子でも参加できる活動環境の工夫","膝や肘のサポーター使用、長距離移動時の介助者確保等、健康面への配慮"],
+    system:["体育担当・養護教諭・栄養職員・学校医によるサポートチームの編成","理学療法士（PT）・作業療法士（OT）・言語聴覚士（ST）等の専門家の助言活用"],
+    facility:["段差解消、スロープ、手すり、引戸、エレベーター、バリアフリートイレの整備","車椅子で移動できる教室内空間、姿勢変換や休憩のためのスペース確保"]
+  },
+  places:[
+    {name:"通常の学級", note:"書く時間の延長等の配慮を受けながら一斉授業に参加"},
+    {name:"通級による指導（肢体不自由）", note:"自立活動を中心とした特別の指導を一部時間で実施"},
+    {name:"肢体不自由特別支援学級", note:"個別・グループ指導を組み合わせ、自立活動を継続的に実施"},
+    {name:"特別支援学校（肢体不自由）", note:"多様な教育課程を編成し、自立活動と各教科を一体的に指導"}
+  ],
+  diseases:[{"name": "脳性まひ（痙直型）", "overview": "下肢優位の痙性まひを主症状とする、最も多い病型。知的障害・視覚障害・言語障害・てんかんを伴うこともある。", "support": ["座位保持装置等の補装具の活用", "関節拘縮予防のための姿勢管理"], "jiritsu": [{"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能"}, {"ku": "身体の動き", "item": "補助的手段の活用"}], "severity": [{"level": "GMFCS レベルI〜II（軽度）", "criteria": "補助なしで歩行が可能、走る・跳ぶ等に軽度の制限がある程度。", "support": ["体育等での運動内容の一部調整", "疲労しやすさへの配慮"]}, {"level": "GMFCS レベルIII（中等度）", "criteria": "歩行補助具（歩行器・杖等）を使用すれば屋内外の移動が可能。", "support": ["歩行補助具を用いた移動経路の確保", "長距離移動時の車椅子の併用"]}, {"level": "GMFCS レベルIV〜V（重度）", "criteria": "自力移動が非常に制限され、電動車椅子等の使用や介助による移動が必要。", "support": ["姿勢保持装置・車椅子での学習環境の整備", "医療的ケアを含む多職種連携"]}]}, {"name": "脳性まひ（アテトーゼ型）", "overview": "不随意運動が主症状。知能は比較的高い傾向があり、難聴を伴うこともある。", "support": ["目と手の協応動作を要する場面での時間的余裕", "代替入力機器（スイッチ等）の活用"], "jiritsu": [{"ku": "環境の把握", "item": "保有する感覚の活用"}, {"ku": "コミュニケーション", "item": "言語の受容と表出"}]}, {"name": "脳性まひ（失調型）", "overview": "平衡機能障害が主体で、書字等の微細な運動に困難が生じやすい。", "support": ["タブレット端末等、書字の代替手段の活用", "姿勢の安定を助ける机・椅子の使用"], "jiritsu": [{"ku": "身体の動き", "item": "作業に必要な動作と円滑な遂行"}]}, {"name": "脳性まひ（固縮型）", "overview": "四肢の強い抵抗感を伴う病型。知的障害・てんかんを伴うことが多い。", "support": ["筋緊張の緩和を意識した活動設計", "医療機関と連携した経過観察"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "二分脊椎症", "overview": "脊椎管の形成異常により下肢の運動・知覚障害、直腸膀胱障害、水頭症を伴うことがある。", "support": ["自己導尿等の医療的ケアへの環境面の配慮", "褥瘡予防のための定期的な姿勢変換"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}, {"ku": "身体の動き", "item": "日常生活に必要な基本動作"}]}, {"name": "筋ジストロフィー（デュシェンヌ型等）", "overview": "進行性の筋萎縮・筋力低下を主症状とする遺伝性疾患。年齢とともに歩行困難、呼吸・心機能の低下が進む。", "support": ["進行段階に応じた学習環境の継続的な見直し", "ICTを活用した学びの継続手段の確保"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}, {"ku": "コミュニケーション", "item": "コミュニケーション手段の選択と活用"}]}, {"name": "骨形成不全症", "overview": "骨が脆く、わずかな外力でも骨折を繰り返しやすい全身の結合組織疾患。", "support": ["過度な安静を避けつつ骨折リスクを抑えた活動設計", "本人・家族からの骨折状況の詳細な聞き取り"], "jiritsu": [{"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能"}]}, {"name": "中途障害（事故・疾病後遺症）", "overview": "学齢期に事故や疾病により肢体不自由となったケース。", "support": ["喪失感・心理的ショックへのケア", "新しい生活動作の再学習支援"], "jiritsu": [{"ku": "心理的な安定", "item": "困難を改善・克服する意欲"}]}, {"name": "ウェルドニッヒ・ホフマン病（脊髄性筋萎縮症Ⅰ型）", "overview": "運動神経の障害により、乳児期から進行性の筋力低下を示す遺伝性疾患。", "support": ["呼吸管理を含めた医療的ケアとの連携", "残存する動きを生かした意思表出手段の確保"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}, {"ku": "コミュニケーション", "item": "コミュニケーションの基礎的能力"}]}, {"name": "分娩麻痺（腕神経叢麻痺）", "overview": "出産時の神経損傷により、片側の上肢に運動障害が残ることがある状態。", "support": ["利き手の状態に応じた学習用具の工夫", "患側の可動域を維持するための配慮"], "jiritsu": [{"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能"}]}, {"name": "関節拘縮症（先天性多発性）", "overview": "複数の関節が生まれつき硬く動きにくい状態を示す疾患群。", "support": ["関節の可動域に応じた道具・机上環境の調整", "日常生活動作の代替手段の検討"], "jiritsu": [{"ku": "身体の動き", "item": "日常生活に必要な基本動作"}]}, {"name": "外傷性脊髄損傷", "overview": "事故等により脊髄が損傷し、損傷部位以下の運動・感覚障害が生じる状態。", "support": ["車椅子や補助具を用いた学習環境の整備", "受傷後の心理的な変化への継続的なケア"], "jiritsu": [{"ku": "心理的な安定", "item": "困難を改善・克服する意欲"}, {"ku": "身体の動き", "item": "補助的手段の活用"}]}, {"name": "先天性四肢欠損・形成不全", "overview": "出生時より四肢の一部が欠損又は形成不全である状態。", "support": ["義肢の使用状況に応じた学習・生活動作の工夫", "本人の工夫を尊重した代替動作の指導"], "jiritsu": [{"ku": "身体の動き", "item": "作業に必要な動作と円滑な遂行"}]}, {"name": "筋緊張低下症候群（低緊張）", "overview": "全身の筋緊張が低く、姿勢保持や運動発達に困難を伴う状態。", "support": ["姿勢保持具を用いた学習姿勢の確保", "体幹を意識した運動プログラムとの連携"], "jiritsu": [{"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能"}]}, {"name": "若年性関節リウマチに伴う関節障害", "overview": "関節の炎症が慢性的に繰り返され、痛みや可動域制限を伴う疾患。", "support": ["痛みの状態に応じた活動量の調整", "服薬・通院状況の学校との共有"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "熱傷後拘縮", "overview": "熱傷の治療過程で皮膚や関節が硬くなり、運動が制限される状態。", "support": ["瘢痕部位への負担を避けた活動の工夫", "外見に関する心理的な配慮"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "脊髄性筋萎縮症（Ⅱ型・Ⅲ型）", "overview": "運動神経の変性により進行性の筋力低下を来す遺伝性疾患。発症時期により経過は異なる。", "support": ["進行段階に応じた補助具・呼吸管理との連携", "治療薬の効果を踏まえた継続的な評価"], "jiritsu": [{"ku": "身体の動き", "item": "補助的手段の活用"}]}, {"name": "シャルコー・マリー・トゥース病", "overview": "末梢神経の障害により、手足の筋力低下やしびれが徐々に進行する遺伝性疾患。", "support": ["装具を用いた歩行支援", "巧緻動作の困難に応じた学習用具の工夫"], "jiritsu": [{"ku": "身体の動き", "item": "日常生活に必要な基本動作"}]}, {"name": "先天性多発性関節拘縮症", "overview": "複数の関節が出生時から可動域制限を示す疾患群の総称。", "support": ["関節可動域に応じた姿勢保持具の活用", "日常動作の代替手段の検討"], "jiritsu": [{"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能"}]}, {"name": "二分脊椎に伴う水頭症", "overview": "二分脊椎症に合併しやすい脳脊髄液循環の異常。シャント手術で管理されることが多い。", "support": ["シャント機能不全の徴候（頭痛・嘔吐等）の共有", "疲労しやすさへの配慮"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "先天性股関節脱臼後の運動制限", "overview": "股関節の形成不全に対する治療後、可動域や歩容に制限が残ることがある状態。", "support": ["歩行状態に応じた移動方法の工夫", "体育等での運動内容の調整"], "jiritsu": [{"ku": "身体の動き", "item": "身体の移動能力"}]}, {"name": "ペルテス病後の下肢機能障害", "overview": "大腿骨頭の壊死とその修復過程で、下肢の運動機能に制限が残ることがある状態。", "support": ["装具着用時期に応じた活動の調整", "筋力維持のための自立活動との連携"], "jiritsu": [{"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能"}]}, {"name": "骨形成不全症（重症型）", "overview": "骨が非常に脆く、乳幼児期から多数の骨折を経験することがある重症型。", "support": ["移動・姿勢保持における骨折リスクの最小化", "過度な安静を避けた適度な活動の確保"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "進行性骨化性線維異形成症", "overview": "軟部組織が徐々に骨化していく非常に稀な疾患で、外傷を避けることが重要となる。", "support": ["外傷を避けるための活動内容の慎重な検討", "医療機関との緊密な連携"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "腕神経叢損傷（出生時）による上肢機能障害", "overview": "出産時の神経損傷により、片側上肢の運動機能に制限が残ることがある状態。", "support": ["利き手の状態に応じた学習用具の選定", "可動域訓練との連携"], "jiritsu": [{"ku": "身体の動き", "item": "作業に必要な動作と円滑な遂行"}]}, {"name": "筋強直性ジストロフィー", "overview": "筋肉の異常な収縮の持続（筋強直）と進行性の筋力低下を特徴とする遺伝性疾患。", "support": ["疲労しやすさに応じた活動時間の調整", "嚥下機能への配慮"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "福山型先天性筋ジストロフィー", "overview": "筋力低下に加え、知的障害やてんかんを伴うことが多い、日本人に多いタイプの筋ジストロフィー。", "support": ["運動・認知両面に応じた個別の指導計画", "呼吸・摂食機能への継続的な配慮"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "外傷性切断（四肢）", "overview": "事故等により四肢の一部を失った状態。義肢の使用状況に応じた支援が必要。", "support": ["義肢を用いた動作の習得支援", "受傷後の心理的なケア"], "jiritsu": [{"ku": "心理的な安定", "item": "困難を改善・克服する意欲"}]}, {"name": "側弯症（特発性・思春期発症）", "overview": "原因不明の脊柱の側方への弯曲。思春期の女子に多く見られる。", "support": ["装具療法期間中の姿勢に応じた学習環境", "手術前後の学習空白への対応"], "jiritsu": [{"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能"}]}, {"name": "痙性対麻痺（遺伝性）", "overview": "下肢を中心とした痙性まひが緩徐に進行する遺伝性疾患群。", "support": ["歩行状態の変化に応じた移動手段の見直し", "筋緊張緩和のための自立活動"], "jiritsu": [{"ku": "身体の動き", "item": "身体の移動能力"}]}, {"name": "軟骨無形成症", "overview": "四肢が短い低身長を特徴とする骨系統疾患。関節の可動域制限を伴うことがある。", "support": ["体格に応じた机・椅子等の環境調整", "体育等での活動内容の個別調整"], "jiritsu": [{"ku": "身体の動き", "item": "日常生活に必要な基本動作"}]}, {"name": "多発性関節拘縮症（アーサログリポーシス）", "overview": "複数の関節が出生時から硬く動きにくい状態を特徴とする疾患群。", "support": ["関節可動域に応じた姿勢保持具の活用", "日常動作の代替手段の検討"], "jiritsu": [{"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能"}]}, {"name": "進行性筋ジストロフィー（肢帯型）", "overview": "体幹に近い筋肉から筋力低下が進行するタイプの筋ジストロフィー。", "support": ["進行段階に応じた移動手段の見直し", "疲労しやすさへの配慮"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "先天性ミオパチー", "overview": "筋線維の構造異常により、出生時から筋力低下がみられる疾患群。", "support": ["姿勢保持具を用いた学習姿勢の確保", "呼吸機能への配慮"], "jiritsu": [{"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能"}]}, {"name": "若年性特発性側弯症（早期発症型）", "overview": "10歳未満で発症する側弯症。進行が速い場合、呼吸機能への影響に注意が必要。", "support": ["装具着用期間の姿勢に配慮した学習環境", "呼吸機能を踏まえた運動強度の調整"], "jiritsu": [{"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能"}]}, {"name": "末梢神経障害（ギラン・バレー症候群後遺症）", "overview": "急性の末梢神経の炎症の後遺症として、筋力低下や感覚障害が残ることがある状態。", "support": ["回復状況に応じたリハビリテーションとの連携", "疲労しやすさへの配慮"], "jiritsu": [{"ku": "身体の動き", "item": "日常生活に必要な基本動作"}]}, {"name": "先天性下肢欠損（部分・完全）", "overview": "下肢の一部又は全部が生まれつき欠損している状態。義足を使用することが多い。", "support": ["義足を用いた移動の習得支援", "体育等での活動内容の工夫"], "jiritsu": [{"ku": "身体の動き", "item": "身体の移動能力"}]}, {"name": "脊髄空洞症", "overview": "脊髄内に空洞ができ、進行性に運動・感覚障害を来すことがある疾患。", "support": ["症状の進行に応じた学習環境の見直し", "定期的な神経学的評価との連携"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "多発性硬化症（小児発症例）", "overview": "中枢神経の様々な部位に炎症が生じ、症状が再発と寛解を繰り返す疾患。小児での発症は稀。", "support": ["症状の変動に応じた柔軟な活動調整", "再発時の心理的なケア"], "jiritsu": [{"ku": "心理的な安定", "item": "状況の理解と変化への対応"}]}, {"name": "先天性股関節形成不全（未治療・重症例）", "overview": "股関節の受け皿が十分に形成されず、跛行や脚長差を来すことがある状態。", "support": ["歩行状態に応じた移動方法の工夫", "体育等での運動内容の調整"], "jiritsu": [{"ku": "身体の動き", "item": "身体の移動能力"}]}, {"name": "外傷性脳損傷による運動機能障害", "overview": "頭部外傷後に、片まひ等の運動障害が残ることがある状態。", "support": ["受傷前後の変化を踏まえた個別対応", "リハビリテーションとの連携"], "jiritsu": [{"ku": "心理的な安定", "item": "困難を改善・克服する意欲"}]}, {"name": "骨系統疾患（軟骨低形成症等）", "overview": "骨の成長に関わる遺伝子異常により、低身長や骨変形を来す疾患群。", "support": ["体格に応じた学習環境の整備", "整形外科的な治療スケジュールとの連携"], "jiritsu": [{"ku": "身体の動き", "item": "日常生活に必要な基本動作"}]}, {"name": "若年性特発性関節炎による関節拘縮", "overview": "関節炎の慢性化により、関節の可動域制限が進行することがある状態。", "support": ["朝のこわばりを踏まえた時間割の配慮", "痛みの状態に応じた活動量の調整"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "脳血管障害（小児期発症の脳卒中）後遺症", "overview": "小児期に生じた脳血管障害の後遺症として、片まひ等が残ることがある状態。", "support": ["受傷前後の能力の変化への心理的配慮", "リハビリテーションとの連携"], "jiritsu": [{"ku": "心理的な安定", "item": "困難を改善・克服する意欲"}]}, {"name": "低酸素性脳症後の四肢まひ", "overview": "重度の低酸素状態の後遺症として、四肢の運動機能に重い障害が残った状態。", "support": ["医療的ケアを含む個別の支援体制", "スイッチ等を用いた意思表出支援"], "jiritsu": [{"ku": "コミュニケーション", "item": "コミュニケーションの基礎的能力"}]}, {"name": "デュシェンヌ型筋ジストロフィーの進行後期例", "overview": "病状が進行し、呼吸・心機能の管理が生活の中心となる段階。", "support": ["人工呼吸器等の医療機器を踏まえた学習環境", "意思表出手段の継続的な見直し"], "jiritsu": [{"ku": "コミュニケーション", "item": "コミュニケーション手段の選択と活用"}]}, {"name": "先天性内反足（重症例）", "overview": "足の形が生まれつき内側にねじれている状態。矯正治療後も歩容に影響が残ることがある。", "support": ["装具着用時期に応じた活動調整", "歩行状態に応じた移動方法の工夫"], "jiritsu": [{"ku": "身体の動き", "item": "身体の移動能力"}]}, {"name": "若年性特発性筋炎（皮膚筋炎）", "overview": "筋肉と皮膚に炎症が生じる自己免疫疾患。筋力低下と皮疹を伴う。", "support": ["日光曝露への対策", "筋力低下に応じた活動内容の調整"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}],
+  jiritsu:[{"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能", "note": "座位・立位保持、関節拘縮の予防、筋力の維持・強化"}, {"ku": "身体の動き", "item": "日常生活に必要な基本動作", "note": "食事・排せつ・衣服の着脱等、身辺処理の動作の習得"}, {"ku": "身体の動き", "item": "身体の移動能力", "note": "車椅子、歩行器、つえ等を用いた移動能力の向上"}, {"ku": "環境の把握", "item": "保有する感覚の活用", "note": "固有覚・前庭覚を含む感覚を総合的に活用する指導"}, {"ku": "コミュニケーション", "item": "コミュニケーション手段の選択と活用", "note": "文字盤・トーキングエイド等の補助的手段の活用"}, {"ku": "健康の保持", "item": "健康状態の維持・改善", "note": "呼吸機能・摂食機能の維持向上に向けた指導"}],
+  quote:"肢体不自由とは、身体の動きに関する器官が、病気やけがで損なわれ…困難な状態をいう。",
+  srcUrl:"https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_08.pdf"
+},
+{
+  id:"health", num:"05", name:"病弱・身体虚弱", en:"Health Impairment / Physical Weakness",
+  overview:"病弱とは心身が病気のため弱っている状態、身体虚弱とは病気ではないが不調が続きやすい状態。慢性疾患・小児がん・心身症・精神疾患など対象は多岐にわたり、入院の短期化に伴い在籍校との連携がより重要になっています。",
+  needs:[
+    {k:"生活の自己管理",v:"服薬や運動制限等を他者からの規制ではなく「生活の自己管理」として捉える力を育てる。"},
+    {k:"学習空白への対応",v:"入退院の繰り返しによる学習空白を把握し、Web会議システム等で学びを継続する。"},
+    {k:"心のケア",v:"治療への不安や外見の変化等に配慮し、自己肯定感を高める関わりが重要。"},
+    {k:"多職種連携",v:"主治医・学校生活管理指導表等に基づく医療機関との緊密な連携が不可欠。"}
+  ],
+  instruction:[
+    {t:"病気の理解と生活管理",d:"服薬・安静・食事等の日常の諸活動で、自己選択・自己決定できる力を育てる。"},
+    {t:"情緒の安定",d:"不安な気持ちを表現できる活動を通じ、治療に伴う情緒の波に対応する。"},
+    {t:"コミュニケーション手段の選択",d:"進行性の病気等で表出が変化する場合、本人と一緒に手段を検討し続ける。"},
+    {t:"移動能力・移動手段",d:"心臓への負担等を踏まえ、医師の指導のもと適切な移動手段を選択する。"}
+  ],
+  support:{
+    content:["服薬管理・環境調整など病状に応じた指導、学校生活管理指導表に基づく学習内容の調整","入院等による学習空白を考慮した指導内容の変更・調整"],
+    method:["Web会議システムによる同時双方向の授業配信、友達との手紙・メール交換等の交流機会","治療過程での学習可能な時期の把握、アレルギー等に応じた運動内容の調整"],
+    system:["主治医・保護者からの情報に基づく校内体制の整備、緊急時対応の全教職員での共有","医療的ケアが必要な場合の看護師等医療関係者との連携"],
+    facility:["階段移動が困難な場合や自己導尿等が必要な場合に対応した施設整備","紫外線対策や心理的に落ち着ける空間の確保等、病状に応じた設備配慮"]
+  },
+  places:[
+    {name:"通常の学級", note:"血糖測定や酸素使用等、支援を受けつつ通常学級で学ぶ例も増加"},
+    {name:"通級による指導（病弱・身体虚弱）", note:"体力向上や心理的課題への対応等、自立活動を一部時間で実施"},
+    {name:"病弱・身体虚弱特別支援学級", note:"病院内・小中学校内いずれにも設置され、生活の管理を伴う指導を実施"},
+    {name:"特別支援学校（病弱）", note:"病院に隣接・併設される例が多く、訪問教育を行う学校もある"}
+  ],
+  diseases:[{"name": "悪性新生物（白血病・神経芽腫等）", "overview": "化学療法等の治療が中心となる小児がん。晩期合併症への不安軽減が教育上の課題となる。", "support": ["治療段階に応じた学習内容の調整", "外見の変化等への心理的配慮"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}, {"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "腎臓病（腎炎・ネフローゼ症候群等）", "overview": "運動・食事等の生活規制を伴うことがあり、自己管理能力の育成が重視される。", "support": ["学校生活管理指導表に基づく運動制限の共有", "過剰な規制にならないよう医師と連携した調整"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "気管支喘息", "overview": "気道の慢性的な炎症による発作性の呼吸困難を繰り返す疾患。", "support": ["発作予防のための環境整備（アレルゲン対策等）", "腹式呼吸法等、発作時の対処法の指導"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}, {"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "心臓病（先天性・後天性）", "overview": "心室中隔欠損等の先天性疾患や心筋症、川崎病等。多くは早期に治療されるが継続管理を要する例もある。", "support": ["学校生活管理指導表に基づく運動強度の調整", "過度な運動制限に偏らない発達への配慮"], "jiritsu": [{"ku": "身体の動き", "item": "身体の移動能力"}]}, {"name": "糖尿病（1型）", "overview": "インスリンの分泌が高度に低下し、継続的なインスリン注射・血糖管理が必要となる疾患。", "support": ["血糖値測定・インスリン注射の自己管理への支援", "低血糖時の対応（糖分摂取等）の共有"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}, {"ku": "心理的な安定", "item": "困難を改善・克服する意欲"}]}, {"name": "血友病", "overview": "血液凝固因子の異常により出血しやすく、止まりにくい遺伝性疾患。", "support": ["けが時の対応方法の周知", "凝固因子製剤の注射等、医療的ケアへの理解"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "食物アレルギー・アトピー性皮膚炎", "overview": "特定の食物や環境因子に対する過敏反応。重篤な場合はアナフィラキシーショックを伴う。", "support": ["給食・調理実習等での原因食物の除去確認", "エピペン®等緊急時対応の教職員間での共有"], "jiritsu": [{"ku": "健康の保持", "item": "障害の特性の理解と生活環境の調整"}]}, {"name": "てんかん", "overview": "脳の神経細胞の異常な電気的興奮により、意識・運動・感覚の突発的な異常を来す疾患。", "support": ["発作時の対応手順の教職員間での共有", "確実な服薬管理と医師との連絡体制"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "整形外科的疾患（ペルテス病・脊柱側弯症等）", "overview": "股関節や脊柱の疾患により、装具着用や運動制限を伴うことがある。", "support": ["装具着用時期に応じた学習内容・姿勢の工夫", "手術前後の学習空白への対応（ベッドサイド指導等）"], "jiritsu": [{"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能"}]}, {"name": "肥満（症）", "overview": "摂取カロリー過剰等による体脂肪の異常な増加。生活習慣病につながることもある。", "support": ["過度な食事制限でなく運動療法・生活リズム改善を重視", "体型に関する劣等感への心理的配慮"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "心身症（反復性腹痛・頭痛・摂食障害等）", "overview": "心理社会的な要因が身体症状の発症・経過に密接に関わる状態。", "support": ["環境調整と心理療法を組み合わせた対応", "器質的疾患の有無の医学的な確認"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "うつ病等の精神疾患", "overview": "気分障害、統合失調症等。発達障害の診断を受けた子供が二次的に発症する場合もある。", "support": ["安定した関わりと病期に応じた柔軟な対応", "家庭・専門機関との速やかな連携"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "重症心身障害", "overview": "重度の知的障害と重度の肢体不自由を併せ有し、日常的な医療管理を要する状態。", "support": ["呼吸・食事・消化機能を高める働きかけ", "スイッチ等支援機器を用いた意思表出の支援"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}, {"ku": "コミュニケーション", "item": "コミュニケーションの基礎的能力"}], "severity": [{"level": "大島分類1〜4（重症心身障害の中核群）", "criteria": "寝たきり又は座位保持までの運動機能に、重度〜最重度の知的障害を伴う状態。", "support": ["呼吸・摂食等の医療的ケアを含む日常的な健康管理", "スイッチ等を用いた意思表出支援"]}, {"level": "大島分類5〜9（周辺群）", "criteria": "歩行可能だが知的障害が重度、又は運動機能の制限があるが知的障害は軽度等、中核群に準じる状態。", "support": ["残存する運動・認知機能を生かした個別の指導", "移動と学習の両面に応じた環境調整"]}]}, {"name": "急性リンパ性白血病", "overview": "小児の白血病で最も頻度が高い病型。化学療法により治癒率が高くなっている。", "support": ["寛解維持療法中の感染症予防への配慮", "治療スケジュールに応じた出席・学習調整"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "脳腫瘍（小児）", "overview": "手術・放射線治療・化学療法等が行われる疾患。高次脳機能障害を伴うことがある。", "support": ["認知面の変化を踏まえた個別の指導計画", "記憶や注意の困難に応じた教材の工夫"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "急性糸球体腎炎", "overview": "感染後に血尿・むくみ・高血圧等で急性に発症する腎疾患。多くは数か月で改善する。", "support": ["急性期の安静と食事制限への理解", "回復に応じた生活規制の段階的な解除"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "慢性糸球体腎炎", "overview": "検尿で早期発見されることが多い腎疾患。進行すると腎不全に至る場合がある。", "support": ["学校生活管理指導表に基づく無理のない生活規制", "年単位の治療を見据えた継続的な支援"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "ネフローゼ症候群", "overview": "大量の蛋白尿により、むくみ等を伴う腎疾患。再発を繰り返すことがある。", "support": ["感染予防と再発時の早期対応の共有", "ステロイド治療の副作用への理解"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "先天性心疾患（心室中隔欠損等）", "overview": "胎生期の心臓の形成異常。多くは幼児期までに手術され、術後は通常の生活が可能となる。", "support": ["術後の遺残病変の有無に応じた運動制限の確認", "学校生活管理指導表の活用"], "jiritsu": [{"ku": "身体の動き", "item": "身体の移動能力"}]}, {"name": "心筋症", "overview": "心臓の筋肉が薄くなる、または厚くなる疾患。学校の心臓検診で発見されることもある。", "support": ["厳重な運動制限を含む内科的管理の共有", "突然死のリスクを踏まえた緊急時対応の整備"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "川崎病（既往）", "overview": "発熱等を主症状とする疾患で、心臓に冠状動脈瘤等の合併症を残すことがある。", "support": ["合併症の重症度に応じた運動規制の確認", "定期受診状況の共有"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "2型糖尿病（小児・思春期発症）", "overview": "生活習慣や肥満等を背景に発症が増加している糖尿病。", "support": ["食事療法・運動療法に関する家庭との連携", "体重や体型に関する心理的な配慮"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "アトピー性皮膚炎", "overview": "皮膚のバリア機能低下等により、かゆみを伴う皮膚炎が慢性的に生じる疾患。", "support": ["プール指導時の紫外線・塩素対策", "かゆみによる集中力低下への配慮"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "食物依存性運動誘発アナフィラキシー", "overview": "特定の食物摂取後に運動することで、アナフィラキシー症状が誘発される状態。", "support": ["体育・部活動前の摂取状況の確認", "エピペン®携行と緊急時対応の共有"], "jiritsu": [{"ku": "健康の保持", "item": "障害の特性の理解と生活環境の調整"}]}, {"name": "反復性腹痛（心身症）", "overview": "数か月以上にわたり腹痛を繰り返す状態で、不安や緊張との関連が指摘される。", "support": ["安心して休める場所の確保", "心理的な要因への気付きを促す関わり"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "緊張性頭痛（心身症）", "overview": "精神的な緊張を背景に、頭部を覆う筋肉の持続的な収縮によって生じる頭痛。", "support": ["ストレス要因の把握と学習負荷の調整", "休息を取りやすい学校生活の工夫"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "神経性やせ症（神経性食欲不振症）", "overview": "極端な食事制限を特徴とする摂食障害。生命に関わる場合もあり医療機関との連携が不可欠。", "support": ["主治医と連携した学校生活上の配慮", "体重や体型を話題にしない関わり方の徹底"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "再生不良性貧血", "overview": "骨髄の造血機能が低下し、血球全般が減少する疾患。感染・出血のリスクに配慮が必要。", "support": ["感染予防のための生活環境の整備", "出血しやすさに応じた活動制限の共有"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "リンパ腫（小児）", "overview": "リンパ組織に生じる悪性腫瘍。化学療法を中心とした治療が行われる。", "support": ["治療スケジュールに応じた出席調整", "治療に伴う倦怠感への配慮"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "骨肉腫等の骨の悪性腫瘍", "overview": "骨に生じる悪性腫瘍。患肢温存術等の治療後、運動機能に制限が残ることがある。", "support": ["術後の運動制限に応じた活動内容の調整", "義足等補助具の活用支援"], "jiritsu": [{"ku": "身体の動き", "item": "身体の移動能力"}]}, {"name": "ファロー四徴症", "overview": "複数の心奇形を伴う代表的な先天性心疾患。手術後も継続的な管理が必要な場合がある。", "support": ["学校生活管理指導表に基づく運動強度の調整", "定期受診状況の共有"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "単心室症（フォンタン手術後）", "overview": "心室が一つしかない重い先天性心疾患。段階的な手術後も運動制限を要することが多い。", "support": ["運動強度の厳密な管理", "疲労時の休息の確保"], "jiritsu": [{"ku": "身体の動き", "item": "身体の移動能力"}]}, {"name": "若年性特発性関節炎", "overview": "原因不明の関節の慢性炎症により、痛みや腫れ、可動域制限を来す疾患。", "support": ["痛みの状態に応じた活動量の調整", "朝のこわばりを踏まえた時間割の配慮"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "全身性エリテマトーデス", "overview": "全身の様々な臓器に炎症が生じる自己免疫疾患。日光への曝露に注意が必要な場合がある。", "support": ["紫外線対策（日陰での活動等）", "服薬・通院状況の共有"], "jiritsu": [{"ku": "健康の保持", "item": "障害の特性の理解と生活環境の調整"}]}, {"name": "成長ホルモン分泌不全性低身長症", "overview": "成長ホルモンの分泌不全により身長の伸びが遅れる内分泌疾患。", "support": ["体格差に関する心理的な配慮", "ホルモン注射の自己管理に向けた支援"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "先天性副腎皮質過形成症", "overview": "副腎でのホルモン合成の異常により、電解質異常等を来すことがある内分泌疾患。", "support": ["ストレス時の緊急対応（追加投薬等）の共有", "体調不良時の早期対応"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "血友病A・B", "overview": "血液凝固因子の先天的な欠乏により、出血しやすく止まりにくい状態を示す遺伝性疾患。", "support": ["凝固因子製剤の定期補充と学校との連携", "激しい接触を伴う活動の調整"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "慢性肉芽腫症", "overview": "免疫細胞の機能異常により、重い感染症を繰り返しやすい原発性免疫不全症の一つ。", "support": ["感染予防を意識した学校生活の工夫", "発熱時の早期受診体制の共有"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "原発性免疫不全症候群", "overview": "生まれつき免疫の働きに弱さがあり、感染症にかかりやすい疾患群の総称。", "support": ["感染症流行期の出席に関する配慮", "治療（定期補充療法等）との調整"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "ウエスト症候群（点頭てんかん）", "overview": "乳児期に発症する難治性てんかんの一つ。発達への影響を伴うことが多い。", "support": ["発作の記録と医療機関への情報共有", "発達の状態に応じた個別の指導"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "胆道閉鎖症（術後）", "overview": "胆道の閉塞により生まれつき黄疸を来す疾患。手術後も肝機能の管理が必要な場合がある。", "support": ["定期受診・服薬状況の共有", "疲労しやすさへの配慮"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "18トリソミー症候群", "overview": "18番染色体が3本になることで生じる、複数の合併症を伴う染色体異常。", "support": ["医療的ケアを含む個別の支援体制", "家族との緊密な情報共有"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "色素性乾皮症", "overview": "紫外線に対する感受性が非常に高く、皮膚がんのリスクが高い遺伝性疾患。", "support": ["紫外線カットフィルムの設置等、校内環境の整備", "外出時の防御（帽子・長袖等）の徹底"], "jiritsu": [{"ku": "健康の保持", "item": "障害の特性の理解と生活環境の調整"}]}, {"name": "脈管奇形（リンパ管腫等）", "overview": "血管やリンパ管の形成異常により腫脹等の症状を来す疾患群。", "support": ["腫脹部位への物理的な負担を避ける配慮", "治療（硬化療法等）の経過に応じた調整"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "起立性調節障害", "overview": "自律神経の調節不全により、立ちくらみや朝の不調を来しやすい状態。思春期に多い。", "support": ["午前中の活動量への配慮", "段階的な起立訓練に関する情報共有"], "jiritsu": [{"ku": "健康の保持", "item": "生活のリズムや生活習慣の形成"}]}, {"name": "若年性特発性側弯症を伴う呼吸機能低下例", "overview": "高度な側弯により、肺の拡張が制限され呼吸機能に影響が及ぶことがある状態。", "support": ["呼吸機能に配慮した運動強度の調整", "装具・術後管理との連携"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "若年性特発性糖尿病の急性合併症（低血糖・高血糖）", "overview": "血糖コントロールの乱れにより、意識障害等の急性症状を来すことがある状態。", "support": ["低血糖・高血糖の初期症状の教職員間での共有", "緊急時対応（補食・注射等）の手順の整備"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "神経性過食症", "overview": "過食と代償行動（嘔吐・下剤乱用等）を繰り返す摂食障害。外見からは分かりにくいことが多い。", "support": ["体重や食事を話題にしない関わり", "主治医と連携した心理的支援"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "双極性障害（小児期発症）", "overview": "気分の高揚と落ち込みを周期的に繰り返す気分障害。診断には慎重な経過観察が必要とされる。", "support": ["気分の波に応じた柔軟な対応", "医療機関との継続的な連携"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "統合失調症（10歳前後での発症例）", "overview": "幻覚や妄想等を主症状とする精神疾患。思春期以降の発症が多いが稀に低年齢での発症もある。", "support": ["専門医療機関との緊密な連携", "混乱を招かない落ち着いた関わり"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "高次脳機能障害（脳腫瘍術後等）", "overview": "脳の損傷後に、記憶・注意・言語等の認知機能に困難が残ることがある状態。", "support": ["認知面の特性に応じた教材・指導方法の工夫", "受傷前後の能力の変化への心理的配慮"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "心身症（起立性調節障害を伴う不登校例）", "overview": "身体症状（立ちくらみ等）と心理社会的要因が絡み合い、不登校状態につながることがある状態。", "support": ["身体症状への理解に基づく無理のない登校支援", "本人のペースに応じた学習機会の確保"], "jiritsu": [{"ku": "心理的な安定", "item": "状況の理解と変化への対応"}]}, {"name": "重症喘息（難治性）", "overview": "通常の治療でコントロールが難しい重症の気管支喘息。頻回の発作により学校生活に影響が及ぶことがある。", "support": ["発作予防のための環境整備の徹底", "緊急時対応の教職員間での共有"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "神経芽腫", "overview": "乳幼児に多い小児がんの一つ。発生部位により症状は様々。", "support": ["治療段階に応じた学習内容の調整", "外見の変化への心理的配慮"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "腎芽腫（ウィルムス腫瘍）", "overview": "腎臓に生じる小児がん。手術と化学療法が中心となる。", "support": ["術後の腎機能に応じた生活規制の共有", "治療スケジュールに応じた出席調整"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "横紋筋肉腫", "overview": "筋肉組織に発生する小児がん。発生部位により運動機能への影響が異なる。", "support": ["治療後の運動機能に応じた活動調整", "治療に伴う倦怠感への配慮"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "骨髄異形成症候群", "overview": "造血幹細胞の異常により、血球減少等を来す疾患。感染・出血のリスクに配慮が必要。", "support": ["感染予防のための生活環境の整備", "出血しやすさに応じた活動制限"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "慢性活動性EBウイルス感染症", "overview": "EBウイルスの持続感染により、発熱等の全身症状が慢性的に続く稀な疾患。", "support": ["体調の変動に応じた活動量の調整", "感染予防への配慮"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "慢性B型・C型肝炎", "overview": "肝炎ウイルスの持続感染により、肝機能に影響が及ぶことがある疾患。", "support": ["定期受診・服薬状況の共有", "感染予防に関する正しい知識の共有（過度な隔離を避ける）"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "炎症性腸疾患（クローン病・潰瘍性大腸炎）", "overview": "消化管に慢性的な炎症が生じる疾患。腹痛・下痢等の症状を繰り返すことがある。", "support": ["トイレへのアクセスへの配慮", "給食における食事制限への対応"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "先天性副腎低形成症", "overview": "副腎の発達不全によりホルモン分泌が不十分となる疾患。ストレス時の急性副腎不全に注意が必要。", "support": ["ストレス時の緊急対応（追加投薬等）の共有", "体調不良時の早期対応体制"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "中枢性尿崩症", "overview": "抗利尿ホルモンの分泌不全により、多飲・多尿を来す内分泌疾患。", "support": ["水分摂取・トイレへのアクセスへの配慮", "脱水症状への注意"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "性分化疾患", "overview": "生殖器の発達に関わる先天的な状態。個別の心理的配慮とプライバシーへの配慮が重要。", "support": ["プライバシーに配慮した更衣・トイレ等の環境", "本人・家族の意向を尊重した対応"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "若年性痛風・高尿酸血症", "overview": "尿酸代謝の異常により、関節炎等を来すことがある代謝性疾患。小児での発症は稀。", "support": ["食事療法に関する家庭との連携", "関節症状に応じた活動調整"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "先天性心筋症（肥大型）", "overview": "心臓の筋肉が異常に厚くなる疾患。突然死のリスクがあり、運動制限が必要な場合がある。", "support": ["厳重な運動制限の共有と緊急時対応の整備", "定期受診状況の把握"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "不整脈原性右室心筋症", "overview": "右心室の筋肉が徐々に脂肪組織に置き換わる疾患。運動誘発性の不整脈に注意が必要。", "support": ["運動強度の厳密な管理", "緊急時対応体制の整備"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "QT延長症候群", "overview": "心臓の電気的な興奮の異常により、致死性不整脈のリスクがある遺伝性疾患。", "support": ["特定の音（アラーム音等）や運動を避ける配慮", "緊急時対応体制（AED含む）の整備"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "若年性肺高血圧症", "overview": "肺の血管の圧力が異常に高くなる疾患。運動耐容能が著しく低下することがある。", "support": ["運動強度の厳密な管理", "酸素投与等の医療的ケアへの対応"], "jiritsu": [{"ku": "身体の動き", "item": "身体の移動能力"}]}, {"name": "先天性代謝異常（有機酸代謝異常症）", "overview": "体内の物質代謝の異常により、急性の体調悪化（代謝クライシス）を来すことがある疾患群。", "support": ["体調不良時の早期対応（絶食を避ける等）の共有", "食事療法との連携"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "糖原病", "overview": "糖の代謝に関わる酵素の異常により、低血糖等を来しやすい代謝性疾患群。", "support": ["低血糖予防のための補食のタイミング調整", "体調不良時の早期対応"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "副腎白質ジストロフィー", "overview": "神経の脱髄が進行する遺伝性疾患。運動・認知機能に進行性の影響が及ぶ。", "support": ["進行段階に応じた学習内容の継続的な見直し", "医療機関との緊密な連携"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "ライソゾーム病（ゴーシェ病等）", "overview": "特定の物質を分解する酵素の異常により、全身に症状が現れる疾患群。", "support": ["酵素補充療法等の治療スケジュールとの連携", "進行性の症状を踏まえた指導内容の見直し"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "限局性強皮症（若年性）", "overview": "皮膚や皮下組織が硬くなる疾患。関節近くに生じると可動域制限を伴うことがある。", "support": ["可動域制限に応じた活動内容の調整", "外見に関する心理的配慮"], "jiritsu": [{"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能"}]}, {"name": "周期性発熱症候群（PFAPA症候群等）", "overview": "周期的に発熱を繰り返す自己炎症性疾患。発熱時以外は通常の生活が可能なことが多い。", "support": ["発熱周期を踏まえた出席・行事の調整", "発熱時の早退等、柔軟な対応"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "限局性摂食障害（回避・制限性食物摂取症）", "overview": "体型への懸念ではなく、感覚的な偏り等により極端に偏食が生じる摂食症の一類型。", "support": ["無理強いしない段階的な食品への慣らし", "栄養面での医療機関・家庭との連携"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "若年性全身性強皮症", "overview": "皮膚だけでなく内臓にも線維化が及ぶことがある全身性の自己免疫疾患。", "support": ["症状の進行に応じた活動調整", "定期受診状況の共有"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "若年性混合性結合組織病", "overview": "複数の膠原病の特徴を併せ持つ自己免疫疾患。", "support": ["症状の変動に応じた柔軟な対応", "服薬・通院状況の共有"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "先天性血液凝固異常症（フォン・ヴィレブランド病）", "overview": "血液凝固因子の機能異常により出血しやすい状態を示す遺伝性疾患。血友病より軽症のことが多い。", "support": ["けが時の対応方法の周知", "激しい接触を伴う活動の調整"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "若年性特発性再発性膵炎", "overview": "膵臓に炎症を繰り返す疾患。腹痛発作時の対応が必要となる。", "support": ["食事内容に関する家庭との連携", "発作時の早退等柔軟な対応"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}],
+  jiritsu:[{"ku": "健康の保持", "item": "病気の状態の理解と生活管理", "note": "服薬・安静・食事等の自己管理能力の育成"}, {"ku": "健康の保持", "item": "健康状態の維持・改善", "note": "運動量の低下や体力低下を防ぐ自己管理"}, {"ku": "心理的な安定", "item": "情緒の安定", "note": "治療への不安の軽減、心のケア"}, {"ku": "心理的な安定", "item": "障害による学習上又は生活上の困難を改善・克服する意欲", "note": "生きがいを感じられる学習・活動の工夫"}, {"ku": "コミュニケーション", "item": "コミュニケーション手段の選択と活用", "note": "進行性疾患による表出の変化に応じた手段の再検討"}, {"ku": "身体の動き", "item": "身体の移動能力", "note": "心臓等への負担を踏まえた移動手段の選択"}],
+  quote:"病弱とは、心身が病気のため弱っている状態をいう。身体虚弱とは…病気にかかりやすいといった状態をいう。",
+  srcUrl:"https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_09.pdf"
+},
+{
+  id:"language", num:"06", name:"言語障害", en:"Speech and Language Disorder",
+  overview:"発音が不明瞭であったり話し言葉のリズムが円滑でなかったりして、話し言葉によるコミュニケーションが円滑に進まず、本人が引け目を感じるなど社会生活上不都合な状態。構音障害・吃音・言語発達の遅れなどに大別されます。",
+  needs:[
+    {k:"見逃されやすさ",v:"日常や教科学習への影響が少ないと見られがちで、発見や対応が遅れやすい点に注意が必要。"},
+    {k:"心理的側面",v:"劣等感や不安など情緒面への影響が大きく、心理的・情緒的な支援も併せて行う。"},
+    {k:"話しやすい環境",v:"自由で楽な雰囲気の中で「楽に話せた」という経験を積み重ねることが重要（特に吃音）。"},
+    {k:"周囲の理解",v:"話し方でなく話の内容に耳を傾ける姿勢を、学級全体で共有することが大切。"}
+  ],
+  instruction:[
+    {t:"構音の指導",d:"発語器官の運動機能の向上や、正しい構音への誘導を段階的に行う。"},
+    {t:"話し言葉の流暢性の指導",d:"吃音のある子供が「楽に話す」体験を重ね、緊張の解消や自己実現につなげる。"},
+    {t:"言語機能の基礎的事項の指導",d:"コミュニケーションへの意欲を高め、実際の生活場面での言語活用を促す。"},
+    {t:"生活環境の調整",d:"通常の学級担任に配慮を伝える力を養い、学習・生活しやすい環境をつくる。"}
+  ],
+  support:{
+    content:["一斉指導における発音への個別対応、話すことに自信を持てる個別指導","音読・合唱等における個別的配慮、構音状態に応じた音読分量の調整"],
+    method:["発表を書くこと・文字入力に代替できる仕組み、筆談等の代替コミュニケーション手段","音読や発音練習の個別指導時間の確保、言語障害のある子供同士の交流機会の情報提供"],
+    system:["言語聴覚士等の専門家との連携による指導の充実"],
+    facility:["安心して自主的に移動できるよう動線を視覚的に分かりやすくする校内環境整備"]
+  },
+  places:[
+    {name:"通常の学級", note:"話しやすい学級の雰囲気づくりや音読等での個別配慮を受けて参加"},
+    {name:"通級による指導（言語障害）", note:"構音・吃音・言語発達の状態に応じた特別の指導を一部時間で実施"},
+    {name:"言語障害特別支援学級", note:"程度が著しい場合に、構音改善や流暢性の指導等を系統的に実施"}
+  ],
+  diseases:[{"name": "器質性構音障害（口蓋裂等）", "overview": "口唇・舌・歯等の構音器官の構造や機能の異常が原因となる構音障害。", "support": ["発語器官の運動機能を高める指導", "呼気の流れを口腔前方に向ける指導"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の受容と表出"}]}, {"name": "発達性（機能性）構音障害", "overview": "構音器官に器質的な異常はなく、構音の習得過程で誤りが固定した状態（音韻障害とも呼ばれる）。", "support": ["正しい構音への段階的な誘導", "音の聴覚的な弁別力を高める指導"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の受容と表出"}]}, {"name": "吃音", "overview": "語頭音の繰り返し・引き伸ばし・阻止等、話し言葉の流暢性に困難がある状態。原因は現在のところ不明。", "support": ["自由な雰囲気で「楽に話す」経験を積む環境づくり", "苦手な場面・語音への緊張を段階的に和らげる指導"], "jiritsu": [{"ku": "心理的な安定", "item": "困難を改善・克服する意欲"}, {"ku": "コミュニケーション", "item": "状況に応じたコミュニケーション"}]}, {"name": "言語発達の遅れ", "overview": "知的障害、難聴、肢体不自由（脳性まひ）、てんかん等の神経学的問題、自閉症・情緒障害などが背景にあることが多い。", "support": ["実際の生活場面での言語活用の機会の確保", "習得した語彙・言い回しを使う言語活動の工夫"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の形成と活用"}]}, {"name": "早口言語症（クラッタリング）", "overview": "話す速度が速く不規則になり、聞き手にとって分かりにくくなる話し言葉の障害。", "support": ["話す速度を意識づける指導", "聞き手の反応を確認しながら話す練習"], "jiritsu": [{"ku": "コミュニケーション", "item": "状況に応じたコミュニケーション"}]}, {"name": "口蓋裂に伴う構音障害", "overview": "口蓋の形成不全により、呼気の鼻漏れ等から構音に異常が生じる状態。", "support": ["手術後の口腔機能に応じた発語指導", "滲出性中耳炎等の合併症への健康管理"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "運動性構音障害（まひ性構音障害）", "overview": "唇・舌・喉頭等、発語に関わる筋肉の神経性の障害による構音の困難。", "support": ["補助的なコミュニケーション手段（文字盤等）の活用", "発語器官の運動機能を高める指導"], "jiritsu": [{"ku": "コミュニケーション", "item": "コミュニケーション手段の選択と活用"}]}, {"name": "音韻障害（発達性）", "overview": "聴覚・構音器官に器質的な問題はなく、音の並べ方や選び方に系統的な誤りが見られる状態。", "support": ["音の弁別・認知を高める段階的な指導", "文字と音を関連付けた指導の併用"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の受容と表出"}]}, {"name": "表出性言語障害", "overview": "言葉の理解に比べ、自分の考えを言葉で表出することに著しい困難がある状態。", "support": ["絵カードやジェスチャーを併用した表出の補助", "話したいことを整理する練習の機会"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の受容と表出"}]}, {"name": "受容性言語障害", "overview": "話し言葉を聞いて理解することそのものに著しい困難がある状態。", "support": ["短く具体的な言葉での指示", "視覚的な情報を併用した説明"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の受容と表出"}]}, {"name": "喉頭軟弱症等による発声の困難", "overview": "喉頭の形態異常により、声の質や発声の持続に困難がある状態。", "support": ["無理のない発声量での活動", "医療機関との連携による経過観察"], "jiritsu": [{"ku": "健康の保持", "item": "身体各部の状態の理解と養護"}]}, {"name": "難聴に起因する言語発達の遅れ", "overview": "聴覚障害により音声言語の獲得が制約され、言語発達に遅れが生じている状態。", "support": ["保有する聴覚を活かした言語指導", "視覚的な情報を併用した語彙学習"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の形成と活用"}]}, {"name": "脳性まひに伴う言語障害（構音障害を含む）", "overview": "発語に関わる筋肉の運動障害により、構音や発声に困難が生じている状態。", "support": ["補助的コミュニケーション手段（AAC）の活用", "発語器官の運動機能を高める指導"], "jiritsu": [{"ku": "コミュニケーション", "item": "コミュニケーション手段の選択と活用"}]}, {"name": "てんかん性言語退行（ランドウ・クレフナー症候群等）", "overview": "てんかん性の脳波異常に伴い、獲得していた言語機能が退行することがある稀な疾患。", "support": ["医療機関と連携した経過観察", "言語機能の変化に応じた指導内容の見直し"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の受容と表出"}]}, {"name": "選択性かん黙に伴う発話の制限", "overview": "特定の場面で話せない状態が、言語表出の機会そのものを制約している状態。", "support": ["非言語的な意思表示の尊重", "安心できる関係の中での発話機会の拡大"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "構音発達の個人差の範囲内にある遅れ", "overview": "年齢相応の構音発達の途上にあり、経過観察が適切とされる軽微な状態。", "support": ["過度に指摘せず自然な発話機会を増やす関わり", "定期的な発達の見守り"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の受容と表出"}]}, {"name": "構音障害を伴う口唇口蓋裂術後の経過", "overview": "手術後も鼻咽腔閉鎖機能の状態により、構音に影響が残ることがある状態。", "support": ["言語聴覚士による継続的な構音指導との連携", "定期的な機能評価"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の受容と表出"}]}, {"name": "重度難聴に伴う構音の不明瞭さ", "overview": "高度難聴により自己の発話音を聞いてモニターすることが難しく、構音が不明瞭になりやすい状態。", "support": ["視覚的フィードバック（口形の提示等）を用いた指導", "聴覚活用と組み合わせた発語指導"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の受容と表出"}]}, {"name": "場面緘黙を伴わない極度の内気さによる発話の少なさ", "overview": "診断基準を満たす選択性かん黙ではないが、非常に発話量が少ない性格特性による状態。", "support": ["発話を強要しない安心できる関係づくり", "小集団での発話機会の段階的な提供"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "多言語環境における言語発達の遅れ", "overview": "複数の言語環境で育つ中で、いずれの言語も年齢相応の発達に至っていない状態。", "support": ["家庭で使用する言語の状況把握", "日本語・母語双方の発達支援の検討"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の形成と活用"}]}, {"name": "高機能自閉症に伴う語用論的な言語の困難", "overview": "文法や語彙の習得は良好でも、場面に応じた言葉の使い方（語用）に困難がある状態。", "support": ["場面に応じた言葉の使い方の具体的な指導", "比喩や暗黙の了解を要する表現の解説"], "jiritsu": [{"ku": "人間関係の形成", "item": "他者の意図や感情の理解"}]}, {"name": "社会的（語用論的）コミュニケーション症", "overview": "言語そのものの障害はないが、社会的な場面での言語使用に選択的な困難がある状態（DSM-5-TRの診断分類）。", "support": ["会話のルールの明示的な指導", "ロールプレイ等を通じた練習機会"], "jiritsu": [{"ku": "コミュニケーション", "item": "状況に応じたコミュニケーション"}]}, {"name": "吃音の二次症状（随伴症状）を伴う場合", "overview": "吃音に加え、まばたきや body の動き等の随伴症状がみられる状態。", "support": ["随伴症状を指摘せず見守る学級づくり", "話しやすい場面づくりを優先した支援"], "jiritsu": [{"ku": "心理的な安定", "item": "困難を改善・克服する意欲"}]}, {"name": "獲得性失語（小児期発症）", "overview": "脳血管障害や外傷等により、獲得していた言語機能に障害が生じた状態。", "support": ["リハビリテーション（言語聴覚療法）との連携", "代替コミュニケーション手段の活用"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の受容と表出"}]}],
+  jiritsu:[{"ku": "コミュニケーション", "item": "言語の受容と表出", "note": "正しい構音への誘導、聴覚的な認知力の向上"}, {"ku": "コミュニケーション", "item": "言語の形成と活用", "note": "習得した語彙・文法を実際の生活場面で使う指導"}, {"ku": "心理的な安定", "item": "障害による学習上又は生活上の困難を改善・克服する意欲", "note": "「楽に話す」体験の積み重ね（吃音の場合）"}, {"ku": "健康の保持", "item": "障害の特性の理解と生活環境の調整", "note": "通常の学級担任に配慮を伝える力の育成"}, {"ku": "人間関係の形成", "item": "他者との関わりの基礎", "note": "温かな人間関係の中でのコミュニケーション意欲の向上"}],
+  quote:"言語障害とは、発音が不明瞭であったり、話し言葉のリズムがスムーズでなかったりする…状態をいう。",
+  srcUrl:"https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_10.pdf"
+},
+{
+  id:"autism", num:"07", name:"自閉症", en:"Autism",
+  overview:"①他者との社会的関係の形成の困難さ、②言葉の発達の遅れ、③興味や関心が狭く特定のものにこだわること、を特徴とする発達の障害。3歳くらいまでに特徴が現れることが多く、感覚の過敏性・鈍感性を伴うこともあります。",
+  needs:[
+    {k:"見通し",v:"予定変更等への不安が強いため、スケジュールの視覚的提示など見通しを持てる支援が重要。"},
+    {k:"視覚優位",v:"聴覚的な情報より視覚的な情報の処理が得意な傾向（視覚認知の優位）を活かした支援が有効。"},
+    {k:"構造化",v:"物理的・時間的・活動の構造化により、やるべきことが理解しやすくなり不安が軽減される。"},
+    {k:"保護者支援",v:"保護者のストレスが高い傾向にあるとされ、関係機関と連携した心情理解と支援が必要。"}
+  ],
+  instruction:[
+    {t:"他者との関わりの基礎",d:"身近な教師との安定した関係の形成から、やり取りの方法の定着を図る。"},
+    {t:"状況の理解と変化への対応",d:"スケジュールの事前提示や体験機会の設定により、行動の仕方を身に付ける。"},
+    {t:"感覚調整の補助・代行手段",d:"イヤーマフ等の活用により、聴覚過敏など感覚特性への対処法を身に付ける。"},
+    {t:"他者の意図や感情の理解",d:"具体的な場面を想定し、相手の言葉や表情から意図を推測する指導を行う。"}
+  ],
+  support:{
+    content:["動作等を利用した意味理解、繰り返し練習による道具使用の定着","理解の程度を考慮した基礎的・基本的内容の確実な習得、社会適応に必要な技術の習得"],
+    method:["写真・図面・模型等の視覚情報の活用、活動予定表による見通しの提示","実際的な体験の機会の充実","二次的な情緒不安・不登校・自尊感情低下等の予防への配慮"],
+    system:["特別支援学校のセンター的機能、自閉症・情緒障害特別支援学級、医療機関等の専門性の活用"],
+    facility:["備品配置や動線の視覚的な分かりやすさの確保、クールダウンのための場所の確保","蛍光灯の明るさ・ちらつき等、感覚過敏に配慮した環境整備"]
+  },
+  places:[
+    {name:"通常の学級", note:"視覚的な指示提示等の配慮を受けながら一斉授業に参加"},
+    {name:"通級による指導（自閉症）", note:"対人関係やコミュニケーションに関する自立活動を一部時間で実施"},
+    {name:"自閉症・情緒障害特別支援学級", note:"他人との意思疎通・対人関係の形成が困難な程度の子供が対象"}
+  ],
+  diseases:[{"name": "高機能自閉症", "overview": "知的発達の遅れを伴わない自閉症。学習面での得意・不得意の差が大きく現れやすい。", "support": ["得意分野を生かした学習動機づけ", "苦手な対人場面での具体的な行動指導"], "jiritsu": [{"ku": "人間関係の形成", "item": "他者の意図や感情の理解"}]}, {"name": "アスペルガー症候群", "overview": "知的・言語発達に遅れがなく、言葉の発達の遅れが目立たない自閉症の下位分類。こだわりや対人関係の困難が主な特徴。", "support": ["曖昧な指示を避けた具体的な説明", "対人関係のルールの明示的な指導"], "jiritsu": [{"ku": "人間関係の形成", "item": "他者の意図や感情の理解"}]}, {"name": "自閉症＋知的障害（重複）", "overview": "自閉症の特性と知的発達の遅れを併せ有する状態。", "support": ["視覚的な手がかりを重視した指導", "生活場面に即した繰り返し学習"], "jiritsu": [{"ku": "環境の把握", "item": "概念の形成"}], "severity": [{"level": "軽度の知的障害を伴う場合", "criteria": "日常会話は可能で、具体的な支援があれば学習内容の一部を習得できる。", "support": ["視覚的な手がかりを併用した通常に近い教育課程での指導", "得意分野を生かした学習動機づけ"]}, {"level": "中等度〜重度の知的障害を伴う場合", "criteria": "言語によるコミュニケーションに著しい制限があり、日常生活動作にも個別の支援を要する。", "support": ["絵カード等を用いた基礎的なコミュニケーション指導", "生活単元学習を中心とした教育課程"]}, {"level": "最重度の知的障害を伴う場合", "criteria": "意思疎通の大部分を非言語的手段に依存し、常時の見守り・支援を要する。", "support": ["感覚を活用した働きかけ、医療的ケアとの連携", "重複障害学級・訪問教育等、個に応じた学びの場の検討"]}]}, {"name": "自閉症＋てんかん（合併）", "overview": "自閉症のある子供はてんかんを合併しやすいことが報告されている。", "support": ["発作時対応の共有と医療機関との連携", "服薬管理を踏まえた学校生活の調整"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}], "severity": [{"level": "発作が稀（年数回以下）で薬物療法により安定", "criteria": "服薬管理のもと、通常の学校生活を送ることができる状態。", "support": ["発作時対応の共有と服薬状況の把握", "運動制限等、主治医の指示に基づく調整"]}, {"level": "発作が比較的頻回（月単位）", "criteria": "生活上の一定の制約があり、活動内容に個別の配慮を要する状態。", "support": ["発作の誘因（睡眠不足・光刺激等）を避ける環境調整", "発作後の休息スペースの確保"]}, {"level": "難治性てんかん（治療抵抗性）", "criteria": "複数の薬剤でも発作の抑制が難しく、日常生活全般に大きな影響がある状態。", "support": ["医療機関と密接に連携した個別の支援計画", "発作記録の共有と緊急時対応体制の整備"]}]}, {"name": "自閉症＋注意欠陥多動性障害（併存）", "overview": "自閉症とADHDの特性を併せ有する状態。DSM-Ⅳでは併記が除外されていたが、DSM-5（2013年改訂）以降は両者の併存診断が可能となった。知的障害を伴わない自閉症のうち約3割にADHDの併存がみられるとする報告があり、自閉的傾向が強いほど併存率が高まるとの研究もある。脳機能画像研究では、併存例のADHD様症状は純粋なADHD単独例とは異なる神経基盤を持つ可能性も指摘されている。", "support": ["両方の特性を踏まえた個別の指導計画の作成", "構造化された環境と行動調整支援を組み合わせた指導", "どちらか一方の特性のみに注目せず、双方の観点からの丁寧なアセスメント"], "jiritsu": [{"ku": "心理的な安定", "item": "状況の理解と変化への対応"}, {"ku": "人間関係の形成", "item": "自己の理解と行動の調整"}], "severity": [{"level": "ASDレベル1相当＋軽度のADHD症状", "criteria": "支援があれば対人関係が成立し、不注意等のADHD症状も生活に大きな支障を来さない程度。", "support": ["構造化された環境の中での自立的な活動の促進", "忘れ物防止等、軽微な行動面のサポート"]}, {"level": "ASDレベル2相当＋中等度のADHD症状", "criteria": "対人関係・コミュニケーションに多くの支援を要し、不注意・多動性も学習や生活に一定の影響を及ぼす程度。", "support": ["視覚的構造化と行動調整支援を組み合わせた指導計画", "通級による指導等、専門的な支援の活用"]}, {"level": "ASDレベル3相当＋重度のADHD症状", "criteria": "対人関係・コミュニケーションに非常に多くの支援を要し、多動性・衝動性も顕著で常時の見守りを要する程度。", "support": ["個別対応を中心とした手厚い支援体制", "医療機関と連携した総合的な支援計画の作成"]}]}, {"name": "自閉症＋不安症（併存）", "overview": "対人関係の困難等を背景に、不安症状を併発することがある。", "support": ["安心できる環境・見通しの提供", "不安の高まりに気付いた際の早期対応"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "レット症候群", "overview": "主に女児に見られる神経発達症で、退行や特徴的な手の常同運動を伴うことがある。", "support": ["スイッチ等を用いた意思表出の支援", "医療的ケアを含めた多職種連携"], "jiritsu": [{"ku": "コミュニケーション", "item": "コミュニケーションの基礎的能力"}]}, {"name": "小児期崩壊性障害", "overview": "それまで正常に発達していた子供が、幼児期に急速に発達の退行を示す稀な状態。", "support": ["退行前の状態を踏まえた個別の目標設定", "家族への心理的な支援"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "自閉症＋学習障害（併存）", "overview": "自閉症の特性と、特定の学習領域における著しい困難を併せ有する状態。", "support": ["得意分野を生かした学習方法の工夫", "苦手な学習領域への個別の代替手段"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "自閉症＋発達性協調運動障害（併存）", "overview": "自閉症の特性に加え、協調運動（手先の操作等）に著しい不器用さを伴う状態。", "support": ["段階的な運動・動作の練習", "書字や道具操作の代替手段の検討"], "jiritsu": [{"ku": "身体の動き", "item": "作業に必要な動作と円滑な遂行"}]}, {"name": "感覚統合の困難を伴う自閉症", "overview": "複数の感覚情報を統合して処理することに困難があり、日常動作に影響が及ぶ状態。", "support": ["感覚を整理しやすい環境設定", "段階的な感覚刺激への慣らし"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "緊張病（カタトニア）症状を伴う自閉症", "overview": "思春期以降、動作の停止や過度の緊張等の症状が見られることがある状態。", "support": ["医療機関と連携した継続的な観察", "無理のない範囲での活動参加の工夫"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "結節性硬化症に伴う自閉症", "overview": "全身に過誤腫が生じる疾患に、自閉的な特性やてんかんを伴うことがある状態。", "support": ["てんかん発作への対応の共有", "感覚特性に応じた学習環境の調整"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "脆弱X症候群に伴う自閉的特性", "overview": "知的障害の原因となる遺伝性疾患の一つで、自閉的な行動特徴を伴うことが多い。", "support": ["対人場面での緊張を和らげる段階的な指導", "刺激を整理した学習環境"], "jiritsu": [{"ku": "人間関係の形成", "item": "他者との関わりの基礎"}]}, {"name": "てんかんを伴う自閉症", "overview": "自閉症のある子供はてんかんを合併しやすいとされ、発作管理と教育的対応の両立が必要となる。", "support": ["発作時対応の教職員間での共有", "服薬管理を踏まえた学校生活の調整"], "jiritsu": [{"ku": "健康の保持", "item": "病気の状態の理解と生活管理"}]}, {"name": "重度知的障害を伴う自閉症（低機能自閉症）", "overview": "自閉症の特性に加え、重度の知的発達の遅れを併せ有する状態。", "support": ["視覚的な手がかりを中心とした構造化された環境", "日常生活動作の系統的な指導"], "jiritsu": [{"ku": "環境の把握", "item": "概念の形成"}]}, {"name": "選択性かん黙を併せ有する自閉症", "overview": "自閉症の特性に加え、特定の場面で話せない状態を併せ有することがある状態。", "support": ["非言語的な意思表示の尊重", "安心できる環境づくりを優先した関わり"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "睡眠障害を伴う自閉症", "overview": "入眠困難や中途覚醒等、睡眠に関する困難を併せ有することが多いとされる状態。", "support": ["生活リズムに関する家庭との連携", "日中の疲労に配慮した活動調整"], "jiritsu": [{"ku": "健康の保持", "item": "生活のリズムや生活習慣の形成"}]}, {"name": "偏食（極端な食行動）を伴う自閉症", "overview": "感覚の過敏さ等を背景に、特定の食品しか受け付けない等の偏食を示すことがある状態。", "support": ["無理強いしない段階的な食品への慣らし", "栄養面での家庭・給食担当者との連携"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "緘動・カタトニア様症状を伴う自閉症（思春期以降）", "overview": "思春期以降に動作の停止等の症状が見られることがある状態。", "support": ["医療機関と連携した継続的な観察", "無理のない範囲での活動参加"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "自傷行動を伴う自閉症", "overview": "不快な情動への対処として、自分の身体を叩く等の自傷行動が見られることがある状態。", "support": ["行動の背景にある要因（感覚・不安等）の分析", "代替行動の指導"], "jiritsu": [{"ku": "心理的な安定", "item": "状況の理解と変化への対応"}]}, {"name": "社会的コミュニケーション症（自閉的特性が目立たないタイプ）", "overview": "限定された興味・反復行動は目立たないが、社会的コミュニケーションに困難がある状態。", "support": ["場面に応じた言葉の使い方の具体的な指導", "対人関係のルールの明示"], "jiritsu": [{"ku": "人間関係の形成", "item": "他者の意図や感情の理解"}]}, {"name": "退行を伴う自閉症（発達後退型）", "overview": "1〜2歳頃に一旦獲得した言葉や社会的関心が失われる経過をたどるタイプ。", "support": ["退行前後の状態の丁寧な記録と共有", "家族への心理的な支援"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "高い認知能力を伴う自閉症（ギフテッド傾向）", "overview": "特定領域で高い能力を示す一方、対人関係や柔軟性に困難があるタイプ。", "support": ["得意分野を伸ばしつつ苦手な対人面を補う個別支援", "学習内容の深さ・ペースの調整"], "jiritsu": [{"ku": "人間関係の形成", "item": "他者の意図や感情の理解"}]}, {"name": "女児の自閉症（診断の遅れが指摘されるタイプ）", "overview": "対人関係の困難を模倣等で補いやすく、診断が遅れる傾向が指摘されている状態。", "support": ["行動観察に基づく丁寧なアセスメント", "本人の困り感に寄り添った支援"], "jiritsu": [{"ku": "人間関係の形成", "item": "他者との関わりの基礎"}]}, {"name": "限定された興味が学習に強く影響するタイプ", "overview": "特定の分野への強い興味・関心が、学習全体の取り組み方に大きく影響しているタイプ。", "support": ["興味を生かした学習動機づけ", "興味の対象を広げる段階的な働きかけ"], "jiritsu": [{"ku": "心理的な安定", "item": "困難を改善・克服する意欲"}]}, {"name": "常同行動が顕著なタイプ", "overview": "体を揺らす、手をひらひらさせる等の反復的な動きが顕著にみられるタイプ。", "support": ["常同行動の背景（安心・興奮等）の理解", "代替行動や落ち着ける環境の提供"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "限局性学習症を伴わない知的発達症の境界域を示す自閉症", "overview": "知能検査上、知的障害と平均域の境界に位置する自閉症のタイプ。", "support": ["得意・不得意の差を踏まえた個別の指導", "柔軟な評価方法の工夫"], "jiritsu": [{"ku": "環境の把握", "item": "概念の形成"}]}, {"name": "胃腸症状を伴う自閉症", "overview": "便秘や下痢等の消化器症状を併せ有することが比較的多いとされるタイプ。", "support": ["体調不良のサインの早期把握", "医療機関との連携"], "jiritsu": [{"ku": "健康の保持", "item": "健康状態の維持・改善"}]}, {"name": "聴覚過敏が特に顕著なタイプ", "overview": "特定の音（教室のざわめき等）に強い苦痛を示すタイプ。", "support": ["イヤーマフ・ノイズキャンセリング機器の活用", "音源からの距離や活動場所の調整"], "jiritsu": [{"ku": "環境の把握", "item": "感覚の補助及び代行手段の活用"}]}, {"name": "触覚過敏が特に顕著なタイプ", "overview": "衣服の素材や特定の触感に強い不快感を示すタイプ。", "support": ["衣服・教材の素材への配慮", "無理な接触を避ける活動設計"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "緘黙傾向を伴う自閉症（家庭内のみ発話）", "overview": "家庭では話すが、学校等特定の場面では発話が著しく制限されるタイプ。", "support": ["非言語的な意思表示の尊重", "安心できる環境づくりを優先した関わり"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}],
+  jiritsu:[{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応", "note": "感覚の過敏性・鈍感性の理解と適切な対応"}, {"ku": "環境の把握", "item": "感覚の補助及び代行手段の活用", "note": "イヤーマフ等を用いた感覚調整の手段の習得"}, {"ku": "心理的な安定", "item": "状況の理解と変化への対応", "note": "スケジュールの視覚的提示による見通しの確保"}, {"ku": "人間関係の形成", "item": "他者の意図や感情の理解", "note": "具体的な場面を想定した相手の意図の読み取り指導"}, {"ku": "コミュニケーション", "item": "コミュニケーションの基礎的能力", "note": "絵カードやシンボルマーク等を用いた気持ちの共有"}],
+  quote:"自閉症とは、①他者との社会的関係の形成の困難さ、②言葉の発達の遅れ、③興味や関心が狭く特定のものにこだわることを特徴とする発達の障害である。",
+  srcUrl:"https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_11.pdf"
+},
+{
+  id:"emotional", num:"08", name:"情緒障害", en:"Emotional Disturbance",
+  overview:"周囲の環境から受けるストレスによって生じたストレス反応として、状況に合わない心身の状態が持続し、自分の意思ではコントロールできない状態。選択性かん黙や不登校などの「内在化」と、かんしゃくなどの「外在化」に大別されます。",
+  needs:[
+    {k:"背景理解",v:"対人関係のストレス、学業・部活動の負担、親子関係の問題など背景要因の丁寧な把握が必要。"},
+    {k:"意図せず話せない",v:"選択性かん黙は「話さないことを選んでいる」のではなく、不安による防衛反応と理解する。"},
+    {k:"非言語的手段の尊重",v:"身振りや指さし等の非言語的コミュニケーションを積極的に認め、安心感を育てる。"},
+    {k:"段階的な対応",v:"登校のみにこだわらず、本人のペースに応じた柔軟な支援体制が重要。"}
+  ],
+  instruction:[
+    {t:"情緒の安定",d:"負担の少ない方法（身振り・指さし等）でのコミュニケーションを認め、安定を図る。"},
+    {t:"状況の理解と変化への対応",d:"視覚的なスケジュール提示や事前予告により、変化への緊張を和らげる。"},
+    {t:"状況に応じたコミュニケーション",d:"日記や作文等、本人にとって負担の少ない方法で気持ちを交換する機会を設ける。"},
+    {t:"言語の表出",d:"話しやすい条件を整えたうえで、スモールステップで話せる場面を増やす。"}
+  ],
+  support:{
+    content:["社会適応に必要な技術・態度が身に付くよう指導内容を工夫","学習の空白期間等に配慮した学習内容の定着支援、評価方法の工夫"],
+    method:["緊張や不安を緩和する情報提示、治療等による学習機会不足への配慮","カウンセリング的対応や医師の診断を踏まえた心理面・健康面の配慮"],
+    system:["特別支援学校のセンター的機能、自閉症・情緒障害特別支援学級、医療機関等との連携"],
+    facility:["特別教室への動線を分かりやすくする、興奮が収まらない際のクールダウンスペース確保"]
+  },
+  places:[
+    {name:"通常の学級", note:"タブレット端末での文字表現等、負担の少ない手段での参加を支援"},
+    {name:"通級による指導（情緒障害）", note:"選択性かん黙等について、自立活動を一部時間で実施"},
+    {name:"自閉症・情緒障害特別支援学級", note:"社会生活への適応が困難な程度の子供が対象"}
+  ],
+  diseases:[{"name": "選択性かん黙（場面緘黙）", "overview": "発声器官に器質的な障害はなく、特定の社会的状況で話すことが一貫してできない状態。対人緊張・不安の強さが背景にある。", "support": ["話させようとする働きかけを控え、安心できる関係づくりを優先", "非言語的な意思表示（指さし・カード等）を認める"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}, {"ku": "コミュニケーション", "item": "言語の受容と表出"}]}, {"name": "不安症（社交不安症・分離不安症等）", "overview": "特定の状況や分離場面等で過度の不安・恐怖を示す状態。", "support": ["不安が高まる場面の事前の把握と回避的対応", "段階的に不安場面へ慣れていく指導"], "jiritsu": [{"ku": "心理的な安定", "item": "状況の理解と変化への対応"}]}, {"name": "強迫性障害", "overview": "特定の考えや行動を繰り返さずにいられない状態。学習や生活に支障を来すことがある。", "support": ["無理にやめさせず段階的に対応する指導", "医療機関と連携した経過観察"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "適応障害", "overview": "特定のストレス要因に対して、通常の範囲を超えた情緒的・行動的反応が生じる状態。", "support": ["ストレス要因の把握と環境調整", "段階的な集団参加の支援"], "jiritsu": [{"ku": "心理的な安定", "item": "状況の理解と変化への対応"}]}, {"name": "心的外傷後ストレス障害（PTSD）", "overview": "強い衝撃を伴う体験の後に、不安や再体験症状等が持続する状態。", "support": ["安心できる環境の確保と信頼関係の構築", "専門機関と連携した継続的な支援"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "心理的要因による不登校", "overview": "登校する必要性を意識しながらも、心理的な要因により登校できない状態が続くもの。", "support": ["登校のみにこだわらない柔軟な支援体制", "本人のペースに応じた学校との関わり方の確保"], "jiritsu": [{"ku": "心理的な安定", "item": "状況の理解と変化への対応"}]}, {"name": "全般性不安症", "overview": "様々な出来事に対して過剰な不安や心配が持続する状態。", "support": ["見通しを事前に伝えることによる安心感の確保", "段階的にリラックスできる方法の指導"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "パニック症", "overview": "突然の強い不安発作（動悸・呼吸困難感等）を繰り返す状態。", "support": ["発作時に落ち着ける場所の確保", "再発への不安に配慮した段階的な対応"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "分離不安症", "overview": "保護者等、愛着のある対象からの分離に対して過度の不安を示す状態。", "support": ["登校時の引き継ぎ方法の工夫", "安心できる人・物の活用"], "jiritsu": [{"ku": "心理的な安定", "item": "状況の理解と変化への対応"}]}, {"name": "反応性愛着障害", "overview": "養育環境の影響により、他者との適切な愛着関係を築くことに困難がある状態。", "support": ["安定した人間関係を継続的に築く関わり", "福祉機関と連携した家庭環境への支援"], "jiritsu": [{"ku": "人間関係の形成", "item": "他者との関わりの基礎"}]}, {"name": "素行症（行為障害）の背景にある情緒の問題", "overview": "規則違反や攻撃的行動等が持続する状態で、背景に情緒的な困難があることが多い。", "support": ["行動の背景にある感情の理解", "専門機関と連携した一貫した対応"], "jiritsu": [{"ku": "人間関係の形成", "item": "自己の理解と行動の調整"}]}, {"name": "抜毛症・皮膚むしり症", "overview": "自分の毛髪を抜く、皮膚をむしる等の行為を繰り返す状態。ストレスとの関連が指摘される。", "support": ["ストレス要因の把握と代替行動の提案", "医療機関と連携した経過観察"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "チック症（ストレス関連の増悪例）", "overview": "まばたきや首振り等の不随意な動きを繰り返す状態。不安や緊張で増強することがある。", "support": ["症状を指摘せず見守る学級づくり", "ストレス軽減につながる環境調整"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "起立性調節障害に伴う情緒の不安定さ", "overview": "自律神経の不調に伴い、朝の不調とともに情緒面の不安定さが見られることがある状態。", "support": ["身体症状への理解に基づく対応", "午後からの登校等、柔軟な学校との関わり"], "jiritsu": [{"ku": "心理的な安定", "item": "状況の理解と変化への対応"}]}, {"name": "複雑性心的外傷後ストレス障害", "overview": "長期反復的な被害体験の後に、感情調整や対人関係に広範な困難が生じる状態。", "support": ["安全で安定した人間関係の継続的な提供", "専門機関との緊密な連携"], "jiritsu": [{"ku": "人間関係の形成", "item": "他者との関わりの基礎"}]}, {"name": "解離症状を伴う情緒障害", "overview": "強いストレスの影響で、意識や記憶、自己感覚の連続性に一時的な断絶が生じることがある状態。", "support": ["安心できる環境の確保", "専門機関と連携した継続的な見守り"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "限局性恐怖症", "overview": "特定の対象や状況に対して強い恐怖を示す状態。", "support": ["恐怖対象への段階的な慣らし", "無理に直面させない配慮"], "jiritsu": [{"ku": "心理的な安定", "item": "状況の理解と変化への対応"}]}, {"name": "身体症状症", "overview": "器質的な異常が明らかでないにもかかわらず、身体症状が持続し生活に支障を来す状態。", "support": ["身体症状を否定せず受け止める関わり", "心理的な要因への気付きを促す支援"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "愛着の課題を背景とする対人関係の困難", "overview": "養育環境の影響により、他者との信頼関係の形成に困難が見られる状態。", "support": ["一貫した安定的な関わりの継続", "福祉機関との連携"], "jiritsu": [{"ku": "人間関係の形成", "item": "他者との関わりの基礎"}]}, {"name": "ゲーム行動症（背景に情緒的困難を伴う場合）", "overview": "日常生活に支障が出るほどゲームに没頭する状態が持続する場合。背景に情緒的な困難が関与することがある。", "support": ["生活リズムに関する家庭との連携", "背景にあるストレス要因の把握"], "jiritsu": [{"ku": "心理的な安定", "item": "状況の理解と変化への対応"}]}, {"name": "醜形恐怖症", "overview": "自分の外見上の欠点に過度にとらわれ、日常生活に支障を来す状態。思春期に発症しやすい。", "support": ["外見を話題にしない配慮", "専門機関と連携した心理的支援"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "ためこみ症", "overview": "物を過剰に集め、捨てることができず生活に支障が生じる状態。", "support": ["無理に片付けさせない段階的な対応", "専門機関との連携"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "抑うつ気分を伴う適応反応症", "overview": "特定のストレス要因の後に、抑うつ気分を中心とした反応が生じる状態。", "support": ["ストレス要因の把握と環境調整", "気分の変化を見守る継続的な関わり"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "不安を伴う適応反応症", "overview": "特定のストレス要因の後に、不安症状を中心とした反応が生じる状態。", "support": ["不安の背景にあるストレス要因への対応", "段階的な環境への慣らし"], "jiritsu": [{"ku": "心理的な安定", "item": "状況の理解と変化への対応"}]}, {"name": "行為の障害を伴う適応反応症", "overview": "特定のストレス要因の後に、規則違反等の行動上の問題が生じる状態。", "support": ["行動の背景にあるストレス要因の把握", "一貫した対応と専門機関との連携"], "jiritsu": [{"ku": "人間関係の形成", "item": "自己の理解と行動の調整"}]}, {"name": "急性ストレス反応", "overview": "強い衝撃的な出来事の直後に生じる、一時的な心身の反応。", "support": ["安心できる環境の確保", "無理に振り返らせない配慮"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "燃え尽き（バーンアウト）様の消耗状態", "overview": "継続的な学業・活動の負荷により、心身のエネルギーが著しく消耗した状態。", "support": ["活動量の調整と十分な休息の確保", "負荷の要因（習い事・部活等）の見直し"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "きょうだい児としてのストレスに起因する情緒の困難", "overview": "障害や病気のあるきょうだいのケアに関する家庭内の状況が、情緒面に影響することがある状態。", "support": ["本人の気持ちを個別に聞く時間の確保", "家庭全体を視野に入れた福祉的な支援"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}],
+  jiritsu:[{"ku": "心理的な安定", "item": "情緒の安定", "note": "身振り・指さし等の非言語的手段を認めた安心できる関わり"}, {"ku": "心理的な安定", "item": "状況の理解と変化への対応", "note": "見通しをもちやすくする視覚的な手がかりの提示"}, {"ku": "コミュニケーション", "item": "状況に応じたコミュニケーション", "note": "日記・筆談等、負担の少ない方法での意思交換"}, {"ku": "コミュニケーション", "item": "言語の受容と表出", "note": "スモールステップによる発話場面の拡大"}, {"ku": "人間関係の形成", "item": "他者との関わりの基礎", "note": "緊張・不安の軽減を通じた対人関係の基礎づくり"}],
+  quote:"情緒障害とは、周囲の環境から受けるストレスによって生じたストレス反応として状況に合わない心身の状態が持続し…コントロールできないことが継続している状態をいう。",
+  srcUrl:"https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_12.pdf"
+},
+{
+  id:"ld", num:"09", name:"学習障害（LD）", en:"Learning Disabilities",
+  overview:"全般的な知的発達に遅れはないが、聞く・話す・読む・書く・計算する・推論するといった特定の能力の習得や使用に著しい困難を示す状態。「見えにくい障害」であり、努力不足と誤解されやすい点に注意が必要です。",
+  needs:[
+    {k:"早期の気付き",v:"就学前の文字への興味の薄さ等の兆候に気付き、専門家への相談につなげることが大切。"},
+    {k:"特性の把握",v:"聞く・話す・読む・書く・計算・推論のどの領域に困難があるかを丁寧に見極める。"},
+    {k:"代替手段の活用",v:"音声読み上げやICT機器等、本人に合った代替手段を使いこなす力を育てる。"},
+    {k:"自尊感情",v:"努力しても成果が出にくい経験から自信を失いやすく、成功体験の積み重ねが重要。"}
+  ],
+  instruction:[
+    {t:"感覚・認知特性の理解",d:"読み取りやすい書体や行間など、本人に合った学習方法を認識し活用できるようにする。"},
+    {t:"代替手段の活用",d:"読み上げ機能や音声入力、フリック入力など、学びやすさにつながる手段を実感させる。"},
+    {t:"認知や行動の手がかりとなる概念形成",d:"体験的な活動と言葉を関連付け、空間・時間等の基礎的概念を育む。"},
+    {t:"障害の特性の理解",d:"個別・小集団指導により心理的な安定を保ちながら、自分の特性への気付きを促す。"}
+  ],
+  support:{
+    content:["文字の形の言語化、パソコン・タブレット等の使用、口頭試問による評価","習熟のための時間の別設定、学習内容の軽重をつけた配分"],
+    method:["文章の体裁変更、拡大文字、振り仮名、音声・読み上げの併用","身体を使った活動や複数感覚を用いた活動の導入","成功体験を積む機会の確保、時間延長、受容的な学級づくり"],
+    system:["特別支援学校や発達障害者支援センター等の外部専門家からの助言の活用","通級による指導など校内資源の有効活用"],
+    facility:["不要な情報を隠す・必要な情報だけを届ける等、視覚的に分かりやすい校内環境の整備"]
+  },
+  places:[
+    {name:"通常の学級", note:"基本的な学びの場。個に応じた教材の工夫等により学習に参加"},
+    {name:"通級による指導（学習障害）", note:"自分に合った学習方法や代替手段の活用力を育てる自立活動を実施"}
+  ],
+  diseases:[{"name": "読むことの困難", "overview": "文章を正確に読み、内容を理解することに著しい困難がある状態。", "support": ["文字間・行間を広げた教材、振り仮名の付加", "音声読み上げソフト等の活用"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "書くことの困難", "overview": "文字を正確に書く、筋道立てて文章を作成することに著しい困難がある状態。", "support": ["キーボード入力・音声入力等の代替手段", "書く量やマス目の大きさの調整"], "jiritsu": [{"ku": "環境の把握", "item": "感覚の補助及び代行手段の活用"}]}, {"name": "計算することの困難（算数障害）", "overview": "暗算・筆算や数の概念の理解に著しい困難がある状態。", "support": ["具体物や図を用いた数量概念の指導", "計算過程を分解した段階的な指導"], "jiritsu": [{"ku": "環境の把握", "item": "概念の形成"}]}, {"name": "聞く・話すことの困難", "overview": "話を正しく聞き取って理解すること、伝えたいことを的確に話すことに著しい困難がある状態。", "support": ["視覚的な情報を併用した説明", "要点を絞った短い指示"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の受容と表出"}]}, {"name": "推論することの困難", "overview": "事実を基に結果を予測したり、結果から原因を推し量ったりすることに著しい困難がある状態。", "support": ["具体的な事象・実体験を用いた指導", "図示による因果関係の可視化"], "jiritsu": [{"ku": "環境の把握", "item": "概念の形成"}]}, {"name": "注意欠陥多動性障害との併存", "overview": "学習障害と注意欠陥多動性障害が重複する場合も少なくない。", "support": ["双方の特性を踏まえた個別の指導計画", "集中しやすい環境調整と学習内容の工夫の組み合わせ"], "jiritsu": [{"ku": "心理的な安定", "item": "困難を改善・克服する意欲"}], "severity": [{"level": "学習面の困難が主で行動面は軽度", "criteria": "特定の学習領域に著しい困難があるが、行動のコントロールは比較的保たれている状態。", "support": ["学習内容の個別調整を中心とした支援", "短時間の集中を促す学習環境"]}, {"level": "学習面と行動面の困難が同程度", "criteria": "学習の困難に加え、不注意・多動性による生活面の困難も目立つ状態。", "support": ["学習支援と行動面の支援を組み合わせた指導計画", "通級による指導の活用"]}]}, {"name": "発達性読み書き障害（ディスレクシア）", "overview": "知的発達に遅れがないにもかかわらず、文字の読み書きの習得に著しい困難がある状態。", "support": ["音と文字の対応関係を丁寧に指導", "デジタル教科書・音声読み上げの活用"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "算数障害（ディスカリキュリア）", "overview": "数の大小・順序等、数概念の基礎的な理解に著しい困難がある状態。", "support": ["具体物を用いた数量感覚の育成", "計算過程を可視化した指導"], "jiritsu": [{"ku": "環境の把握", "item": "概念の形成"}]}, {"name": "書字表出障害（ディスグラフィア）", "overview": "文字を書く動作や文章の構成に著しい困難がある状態。", "support": ["タイピングや音声入力等の代替手段", "文字のマス目や罫線の工夫"], "jiritsu": [{"ku": "環境の把握", "item": "感覚の補助及び代行手段の活用"}]}, {"name": "視空間認知の困難によるLD", "overview": "図形やグラフ、位置関係の把握等、視覚的・空間的な情報処理に困難がある状態。", "support": ["立体模型など具体物を用いた指導", "図表の見方を段階的に教える工夫"], "jiritsu": [{"ku": "環境の把握", "item": "概念の形成"}]}, {"name": "聴覚情報処理の困難によるLD", "overview": "音声による指示や説明の理解に時間がかかり、聞き漏らしが多くなる状態。", "support": ["指示の視覚化（メモ・掲示）", "要点を短く区切って伝える工夫"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の受容と表出"}]}, {"name": "自閉症との併存によるLD", "overview": "自閉症の特性を背景に、特定の学習領域に著しい困難が生じている状態。", "support": ["興味関心を生かした学習内容の工夫", "構造化された学習環境の整備"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "発達性協調運動症を伴うLD", "overview": "手先の協調運動の困難により、書字や図形の描写等に影響が及ぶ状態。", "support": ["書字の代替手段の活用", "運動面の段階的な練習との連携"], "jiritsu": [{"ku": "身体の動き", "item": "作業に必要な動作と円滑な遂行"}]}, {"name": "言語性LD（読解・作文の困難が中心）", "overview": "文章の内容理解や、まとまった文章の作成に著しい困難がある状態。", "support": ["文章構成の視覚化（図式化）", "要点を整理する練習の機会"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の形成と活用"}]}, {"name": "非言語性学習障害", "overview": "言語的な能力は高い一方、視空間認知や社会的状況の読み取りに著しい困難がある状態。", "support": ["具体的な言葉での状況説明", "視覚的な情報の補足的な言語化"], "jiritsu": [{"ku": "環境の把握", "item": "概念の形成"}]}, {"name": "数処理の基礎的困難（数の大小・順序の理解）", "overview": "数字の意味や大小関係等、数概念の基礎そのものに著しい困難がある状態。", "support": ["具体物・数直線を用いた数量感覚の育成", "繰り返しによる段階的な定着"], "jiritsu": [{"ku": "環境の把握", "item": "概念の形成"}]}, {"name": "流暢性の困難を中心とするLD（読みの速度の遅さ）", "overview": "読みの正確性はあるが、速度が著しく遅く、読解に時間がかかる状態。", "support": ["時間延長の配慮", "音読練習の反復機会の確保"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "視覚性ワーキングメモリの弱さによるLD", "overview": "見た情報を一時的に保持し操作する力に弱さがあり、板書の書き写し等に困難が生じる状態。", "support": ["書き写す量の調整", "タブレット等での撮影による代替"], "jiritsu": [{"ku": "環境の把握", "item": "感覚の補助及び代行手段の活用"}]}, {"name": "聴覚性ワーキングメモリの弱さによるLD", "overview": "聞いた情報を一時的に保持する力に弱さがあり、複数の指示を覚えることが難しい状態。", "support": ["指示を一つずつ区切って伝える", "メモや視覚的な手順表の活用"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の受容と表出"}]}, {"name": "漢字の習得に特化した困難", "overview": "ひらがな・カタカナの習得は比較的良好だが、漢字の形の記憶・想起に著しい困難がある状態。", "support": ["部首等の構成要素に着目した指導", "繰り返し書く以外の記憶方法（語呂合わせ等）の活用"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "文章題の理解に特化した困難（読解由来の算数困難）", "overview": "計算技能自体は保たれているが、文章題の読解に起因して解答が困難になる状態。", "support": ["文章題を図式化する指導", "キーワードに着目した読み方の指導"], "jiritsu": [{"ku": "環境の把握", "item": "概念の形成"}]}, {"name": "時間の概念理解の困難", "overview": "時計の読み取りや時間の経過の感覚をつかむことに著しい困難がある状態。", "support": ["視覚的なタイマー・スケジュールの活用", "時間の感覚を体験的につかむ活動"], "jiritsu": [{"ku": "環境の把握", "item": "概念の形成"}]}, {"name": "作文構成の困難（書字自体は可能なタイプ）", "overview": "文字を書く動作自体には大きな困難がないが、文章全体の構成・展開に著しい困難がある状態。", "support": ["構成メモや付箋を用いた組み立ての可視化", "段落ごとに区切った指導"], "jiritsu": [{"ku": "コミュニケーション", "item": "言語の形成と活用"}]}, {"name": "英語（外国語）学習に特化した読み書きの困難", "overview": "母語の読み書きは可能でも、英語のつづりと発音の対応関係の習得に著しい困難がある状態。", "support": ["フォニックス等、音と文字の対応を重視した指導", "口頭でのやり取りを重視した評価方法の工夫"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}],
+  jiritsu:[{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応", "note": "読み取りやすい書体・文字間・行間等の環境調整"}, {"ku": "環境の把握", "item": "感覚の補助及び代行手段の活用", "note": "読み上げ機能・音声入力等、代替手段の活用"}, {"ku": "環境の把握", "item": "認知や行動の手掛かりとなる概念の形成", "note": "体験的な活動と位置・方向を表す言葉との関連付け"}, {"ku": "心理的な安定", "item": "障害による学習上又は生活上の困難を改善・克服する意欲", "note": "成功体験の積み重ねによる自信の獲得"}, {"ku": "コミュニケーション", "item": "コミュニケーション手段の選択と活用", "note": "図やマインドマップ等を用いた表現の工夫"}],
+  quote:"学習障害とは…聞く、話す、読む、書く、計算する又は推論するといった学習に必要な基礎的な能力のうち…なかなか習得できなかったり、うまく発揮することができなかったりする…状態をいう。",
+  srcUrl:"https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_13.pdf"
+},
+{
+  id:"adhd", num:"10", name:"注意欠陥多動性障害（ADHD）", en:"Attention-Deficit/Hyperactivity Disorder",
+  overview:"注意力に様々な問題があり、または衝動的で落ち着きのない行動により、生活上様々な困難に直面している状態。通常12歳になる前に現れ、叱責の積み重ねによる自己肯定感の低下を防ぐ関わり方が特に重視されます。",
+  needs:[
+    {k:"叱責より称賛",v:"注意や叱責よりも、望ましい行動を具体的に示し、良い面をすぐに褒めることが効果的。"},
+    {k:"保護者支援",v:"厳しいしつけが反抗を助長する悪循環を防ぐため、相談しやすい環境づくりが必要。"},
+    {k:"行動の自己調整",v:"自分の行動と出来事の因果関係を可視化し、自ら適切な行動を選択する力を育てる。"},
+    {k:"二次的障害の予防",v:"自尊感情の低下から生じる不安・うつ等の二次的な障害を未然に防ぐ関わりが重要。"}
+  ],
+  instruction:[
+    {t:"注意集中の持続",d:"注目すべき箇所の色分けや指示の段階的提示により、自分に合った集中方法を学ぶ。"},
+    {t:"行動の調整",d:"行動と結果の因果関係を図示し、点検表による振り返りの仕方を学ぶ。"},
+    {t:"姿勢保持の基本的技能",d:"姿勢が崩れにくい机・椅子の使用や、自分で確認できるチェックポイントの活用。"},
+    {t:"情緒の安定",d:"落ち着ける場所への移動や深呼吸など、興奮を鎮める具体的な方法を身に付ける。"}
+  ],
+  support:{
+    content:["途中で忘れないための工夫（メモ・物品管理の工夫等）","注意集中を考慮した学習内容の分割・適切な量への調整"],
+    method:["掲示物の整理・精選、近づいての指示、静かで集中できる環境づくり","興味関心を生かした学習導入、危険防止を講じた体験学習","成功体験の増加、感情のコントロール方法の指導、相談できる人や場所の確保"],
+    system:["特別支援学校や発達障害者支援センター等の外部専門家からの助言活用","通級による指導など校内資源の有効活用"],
+    facility:["余分な刺激を覆うカーテン、危険箇所の防止柵、静かな小部屋の設置"]
+  },
+  places:[
+    {name:"通常の学級", note:"座席配慮や視覚的な行動目標の提示等を受けながら学習に参加"},
+    {name:"通級による指導（ADHD）", note:"注意集中や行動調整に関する自立活動を一部時間で実施"}
+  ],
+  diseases:[{"name": "不注意優勢の状態", "overview": "気が散りやすく、注意を集中させ続けることや必要な事柄を忘れないことに著しい困難がある状態。", "support": ["注目すべき箇所の色分けや掲示物の精選", "メモや点検表を用いた確認習慣の指導"], "jiritsu": [{"ku": "環境の把握", "item": "概念の形成"}]}, {"name": "多動性・衝動性優勢の状態", "overview": "じっとしていることが苦手で、順番を待つことや思いつくままの行動を抑えることに著しい困難がある状態。", "support": ["意図的に動ける役割を与える工夫", "行動と結果の因果関係を可視化する指導"], "jiritsu": [{"ku": "人間関係の形成", "item": "自己の理解と行動の調整"}, {"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能"}]}, {"name": "混合型（不注意・多動性・衝動性）", "overview": "不注意と多動性・衝動性の両方の特徴を併せ持つ状態。", "support": ["短時間で活動を区切るメリハリのある指導", "肯定的な評価を意図的に行う関わり"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "学習障害との併存", "overview": "注意欠陥多動性障害と学習障害が重複する場合も少なくない。", "support": ["双方の特性を踏まえた指導目標・内容の設定", "通常の学級と通級による指導の連携"], "jiritsu": [{"ku": "心理的な安定", "item": "困難を改善・克服する意欲"}], "severity": [{"level": "行動面の困難が主で学習面は軽度", "criteria": "不注意・多動性が中心で、特定の学習領域の困難は比較的軽い状態。", "support": ["行動調整のための視覚的な手がかりの活用", "学習内容の焦点化"]}, {"level": "行動面と学習面の困難が同程度", "criteria": "双方の困難が同程度にみられ、生活・学習両面での個別支援を要する状態。", "support": ["通級による指導等を活用した重点的な支援", "学校・家庭が連携した一貫した対応"]}]}, {"name": "自閉症との併存", "overview": "注意欠陥多動性障害と自閉症の特性を併せ有する場合がある。DSM-5（2013年改訂）以降、両者の併存診断が正式に認められるようになり、研究によりASDのある子供の約3〜8割にADHD症状がみられるとする報告もある。両特性が相互に影響し合うため、どちらか一方の傾向のみで判断しないことが重要とされる。", "support": ["対人関係とセルフコントロール双方への配慮", "構造化と行動調整支援の組み合わせ", "自閉症・ADHD双方の観点からの継続的なアセスメント"], "jiritsu": [{"ku": "心理的な安定", "item": "状況の理解と変化への対応"}, {"ku": "人間関係の形成", "item": "自己の理解と行動の調整"}]}, {"name": "不注意優勢型（診断基準に基づく分類）", "overview": "多動性・衝動性よりも不注意の症状が優位に見られるタイプ。", "support": ["視覚的なチェックリストの活用", "気が散る要因の除去"], "jiritsu": [{"ku": "環境の把握", "item": "概念の形成"}]}, {"name": "多動・衝動優勢型（診断基準に基づく分類）", "overview": "不注意よりも多動性・衝動性の症状が優位に見られるタイプ。", "support": ["身体を動かせる役割の付与", "衝動を抑える練習の段階的な指導"], "jiritsu": [{"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能"}]}, {"name": "反抗挑発症の併存", "overview": "注意欠陥多動性障害に、大人への反抗的・挑発的な態度が持続する状態を併せ有する場合。", "support": ["一貫した対応と落ち着いた関わり", "成功体験を通じた信頼関係の構築"], "jiritsu": [{"ku": "人間関係の形成", "item": "自己の理解と行動の調整"}]}, {"name": "素行症の併存", "overview": "規則違反や攻撃的行動等、より重い行動上の問題を併せ有する場合。", "support": ["専門機関と連携した一貫した支援体制", "行動の背景にある要因の丁寧な把握"], "jiritsu": [{"ku": "人間関係の形成", "item": "自己の理解と行動の調整"}]}, {"name": "睡眠の問題を伴うADHD", "overview": "入眠困難や睡眠リズムの乱れを併せ有し、日中の不注意等が強まることがある状態。", "support": ["生活リズムに関する家庭との連携", "日中の疲労に配慮した活動調整"], "jiritsu": [{"ku": "健康の保持", "item": "生活のリズムや生活習慣の形成"}]}, {"name": "実行機能の困難が中心のADHD", "overview": "計画を立てて物事を順序立てて行う力（実行機能）に著しい困難がある状態。", "support": ["手順表やチェックリストの活用", "小さな段階に分けた課題設定"], "jiritsu": [{"ku": "環境の把握", "item": "概念の形成"}]}, {"name": "感情調整の困難を伴うADHD", "overview": "感情の起伏が大きく、気持ちの切り替えに時間がかかることがある状態。", "support": ["気持ちを落ち着ける方法の具体的な指導", "感情を言語化する練習の機会"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "学業不振を伴うADHD", "overview": "不注意等の特性により、学力面での遅れが表面化している状態。", "support": ["個に応じた学習内容の調整", "小さな達成の積み重ねによる自信の回復"], "jiritsu": [{"ku": "心理的な安定", "item": "困難を改善・克服する意欲"}]}, {"name": "対人トラブルが目立つADHD", "overview": "衝動性から友人関係でのトラブルが頻発しやすい状態。", "support": ["ソーシャルスキルトレーニングの実施", "トラブル場面の振り返りを通じた学び"], "jiritsu": [{"ku": "人間関係の形成", "item": "自己の理解と行動の調整"}]}, {"name": "不注意が主で見過ごされやすいADHD（特に女児に多い傾向）", "overview": "多動性が目立たず、ぼんやりしている印象で見過ごされやすいタイプ。", "support": ["行動観察に基づく早期の気付き", "本人の困り感に寄り添った支援"], "jiritsu": [{"ku": "環境の把握", "item": "概念の形成"}]}, {"name": "衝動買い等の金銭管理の困難を伴うADHD（青年期）", "overview": "衝動性の特性が、金銭管理等の実生活場面での困難として表れるタイプ。", "support": ["視覚化した予算管理の練習", "段階的な自己管理スキルの指導"], "jiritsu": [{"ku": "人間関係の形成", "item": "自己の理解と行動の調整"}]}, {"name": "過集中（ハイパーフォーカス）を伴うADHD", "overview": "興味のある対象には極端に集中する一方、それ以外への切り替えが著しく困難なタイプ。", "support": ["活動の切り替えを促す事前予告", "興味を学習活動に生かす工夫"], "jiritsu": [{"ku": "環境の把握", "item": "概念の形成"}]}, {"name": "時間管理の困難が中心のADHD", "overview": "時間の見積もりや管理に著しい困難があり、遅刻や提出物の遅れが頻発するタイプ。", "support": ["視覚的なタイムタイマーの活用", "余裕を持ったスケジュールの提示"], "jiritsu": [{"ku": "環境の把握", "item": "概念の形成"}]}],
+  jiritsu:[{"ku": "心理的な安定", "item": "障害による学習上又は生活上の困難を改善・克服する意欲", "note": "叱責でなく称賛による意欲の向上"}, {"ku": "人間関係の形成", "item": "自己の理解と行動の調整", "note": "行動と結果の因果関係を可視化した振り返り"}, {"ku": "身体の動き", "item": "姿勢と運動・動作の基本的技能", "note": "姿勢が崩れにくい机・椅子の使用、自己確認のチェックポイント"}, {"ku": "環境の把握", "item": "認知や行動の手掛かりとなる概念の形成", "note": "スケジュールや時計を用いた時間の視覚化"}, {"ku": "心理的な安定", "item": "情緒の安定", "note": "落ち着ける場所への移動や深呼吸など、興奮を静める具体的方法の習得"}],
+  quote:"注意欠陥多動性障害とは、身の回りの特定のものに意識を集中させる脳の働きである注意力に様々な問題があり、又は、衝動的で落ち着きのない行動により、生活上、様々な困難に直面している状態をいう。",
+  srcUrl:"https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_14.pdf"
+}
+,
+{"id": "futoukou", "num": "11", "name": "不登校", "en": "School Non-Attendance (Futoko)", "overview": "文部科学省の定義では、不登校とは何らかの心理的・情緒的・身体的あるいは社会的要因・背景により、児童生徒が登校しない、あるいはしたくてもできない状況にあるため、年間30日以上欠席した者のうち、病気や経済的理由によるものを除いた状態を指す。特別支援教育の対象障害種とは異なる枠組みだが、情緒障害・発達障害等との重なりも大きいため、支援の観点から本アプリに項目として整理する。", "needs": [{"k": "社会的自立の視点", "v": "「学校に登校する」という結果のみを目標にせず、児童生徒が自らの進路を主体的に捉え、社会的に自立することを目指す支援が求められる。"}, {"k": "多様な学びの場", "v": "教育支援センターや不登校特例校、ICTを活用した学習支援、フリースクール、夜間中学等、本人の希望を尊重した多様な学びの場の確保が重要。"}, {"k": "早期の気付き", "v": "心の小さなSOSを早期に発見し、教職員・家庭・関係機関が情報を共有して組織的に対応する体制が必要。"}, {"k": "欠席中の学習評価", "v": "教育支援センターや自宅等での学習成果を適切に評価し、学びを継続できるようにする仕組みが求められる。"}], "instruction": [{"t": "心理的な安定の確保", "d": "安心して過ごせる関係・環境を整え、無理に登校を促さない中で情緒の安定を図る。"}, {"t": "自己肯定感の回復", "d": "小さな目標の達成を積み重ね、自己肯定感を段階的に回復できるよう支援する。"}, {"t": "社会との接点の維持", "d": "教育支援センターやICTを活用し、学校以外の場での人との関わりや学びの機会を確保する。"}, {"t": "進路選択への支援", "d": "本人の興味・関心を踏まえ、多様な進路の選択肢について情報提供と相談を行う。"}], "support": {"content": ["登校を唯一の目標としない、個々の状況に応じた指導計画の作成", "欠席中の学習成果を評価に反映する仕組みの活用（成績評価の法令改正を踏まえた対応）"], "method": ["ICTを活用した自宅学習支援（オンライン授業配信等）", "教育支援センター（適応指導教室）や不登校特例校（学びの多様化学校）における個別カリキュラム"], "system": ["スクールカウンセラー・スクールソーシャルワーカーとの連携体制", "「児童生徒理解・教育支援シート」を活用した学校・家庭・関係機関の情報共有"], "facility": ["別室登校（保健室・相談室等）ができる校内環境の整備", "段階的な登校（部分登校・時差登校等）に対応できる柔軟な受け入れ体制"]}, "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定", "note": "安心できる関係の中で気持ちを落ち着ける"}, {"ku": "心理的な安定", "item": "状況の理解と変化への対応", "note": "登校再開等、状況の変化に段階的に慣れる"}, {"ku": "人間関係の形成", "item": "他者との関わりの基礎", "note": "学校以外の場での人との関わりから信頼関係を築く"}, {"ku": "健康の保持", "item": "生活のリズムや生活習慣の形成", "note": "昼夜逆転等を防ぎ、生活リズムを整える"}], "places": [{"name": "教育支援センター（適応指導教室）", "note": "学校復帰や社会的自立に向け、個別の学習・相談支援を行う公的な施設"}, {"name": "不登校特例校（学びの多様化学校）", "note": "不登校児童生徒の実情に配慮した特別の教育課程を編成する学校"}, {"name": "ICTを活用した学習支援", "note": "オンライン授業配信等により、自宅にいながら学習を継続する仕組み"}, {"name": "フリースクール等民間施設", "note": "民間が運営する、不登校児童生徒の居場所・学習支援の場"}, {"name": "夜間中学", "note": "様々な事情で十分な教育を受けられなかった人が学び直せる中学校の夜間学級"}, {"name": "訪問指導（家庭訪問による支援）", "note": "外出が困難な場合に、教員等が家庭を訪問して行う学習・相談支援"}], "diseases": [{"name": "不安など情緒的混乱型（神経症的不登校）", "overview": "漠然とした不安や緊張を背景に登校できなくなるタイプ。文部科学省の実態調査で中学生32.4%、高校生25.9%を占める最多の要因とされる。", "support": ["安心できる関係づくりを優先し、無理な登校刺激を避ける", "頭痛・腹痛等の身体症状への理解と、段階的な集団参加の支援"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "無気力型", "overview": "特別なきっかけが明確でなく、なんとなく登校しない状態が持続するタイプ。中学生30.0%、高校生31.7%を占める。", "support": ["「学校に行けなくてもいい」という安心感を与え、無理に行動を促さない", "小さな達成体験の積み重ねによる自己肯定感の回復"], "jiritsu": [{"ku": "心理的な安定", "item": "困難を改善・克服する意欲"}]}, {"name": "学校生活上の影響型", "overview": "いじめ・友人関係のトラブル・学業不振・部活動の問題等、学校生活の特定の出来事がきっかけとなるタイプ。", "support": ["きっかけとなった出来事の丁寧な聞き取りと環境調整", "人間関係やクラス編成等、学校側の対応の見直し"], "jiritsu": [{"ku": "人間関係の形成", "item": "他者との関わりの基礎"}]}, {"name": "あそび・非行型", "overview": "遊びや非行的な行動を優先し、学校の意義を軽視する傾向を伴うタイプ。", "support": ["生活リズムの立て直しに向けた家庭との連携", "関係機関（警察・福祉等）と連携した見守り体制"], "jiritsu": [{"ku": "人間関係の形成", "item": "自己の理解と行動の調整"}]}, {"name": "意図的な拒否型", "overview": "学校の意義を認めながらも、本人なりの積極的な理由により登校を拒否するタイプ。", "support": ["本人の考えを尊重した対話を通じた進路選択支援", "多様な学びの場の情報提供"], "jiritsu": [{"ku": "心理的な安定", "item": "障害による学習上又は生活上の困難を改善・克服する意欲"}]}, {"name": "複合型", "overview": "主たる要因が明確でなく、複数の要因が複雑に絡み合っているタイプ。小・中学校とも上位を占める分類の一つ。", "support": ["多角的な要因分析に基づく個別支援計画の作成", "学校・家庭・関係機関が連携した組織的な対応"], "jiritsu": [{"ku": "心理的な安定", "item": "状況の理解と変化への対応"}]}, {"name": "準不登校（不登校の周辺群）", "overview": "完全な欠席には至らないものの、遅刻・早退の頻度が多い、または保健室登校が続く等の状態。次第に不登校に移行しやすいとされる。", "support": ["早期の段階からの丁寧な見守りと声かけ", "無理のない範囲での学校とのつながりの維持"], "jiritsu": [{"ku": "心理的な安定", "item": "状況の理解と変化への対応"}]}, {"name": "五月雨登校", "overview": "登校と欠席を断続的に繰り返すパターン。週の中で出席日と欠席日が入り混じることが多い。", "support": ["出席できた日の頑張りを肯定的に評価する関わり", "欠席の理由を問い詰めない受容的な対応"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "別室登校（教室に入れないタイプ）", "overview": "学校には来られるが、教室に入ることに強い抵抗があり、保健室や相談室等で過ごすタイプ。", "support": ["別室でも学習が継続できる教材・ICT環境の整備", "教室復帰を急がせない段階的な支援計画"], "jiritsu": [{"ku": "心理的な安定", "item": "状況の理解と変化への対応"}]}, {"name": "起立性調節障害を背景とする不登校（身体症状先行型）", "overview": "自律神経の不調による立ちくらみ・倦怠感等の身体症状が先行し、結果として登校が困難になるタイプ。", "support": ["身体症状への医学的理解に基づく無理のない対応", "午後からの登校等、柔軟な学校との関わり方"], "jiritsu": [{"ku": "健康の保持", "item": "生活のリズムや生活習慣の形成"}]}, {"name": "発達障害の特性を背景とする不登校", "overview": "自閉症やADHD等の特性による学校生活での困難の積み重ねが、不登校につながっているタイプ。", "support": ["特性に応じた合理的配慮の見直し", "感覚過敏や対人関係の困難に配慮した環境調整"], "jiritsu": [{"ku": "環境の把握", "item": "感覚や認知の特性についての理解と対応"}]}, {"name": "いじめを背景とする不登校", "overview": "いじめの被害が直接のきっかけとなっているタイプ。安全の確保が最優先される。", "support": ["いじめの事実確認と加害側への指導、被害児童生徒の安全確保", "心理的なケアと、安心できる学びの場の提供（別室・転校等を含む）"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "学業不振を背景とする不登校", "overview": "授業についていけない等の学習面の困難が積み重なり、登校への抵抗感につながっているタイプ。", "support": ["個に応じた学習内容の調整と学び直しの機会", "小さな成功体験を通じた学習意欲の回復"], "jiritsu": [{"ku": "心理的な安定", "item": "困難を改善・克服する意欲"}]}, {"name": "家庭の状況を背景とする不登校", "overview": "家庭環境の変化等、家庭に関わる要因が背景にあるタイプ。", "support": ["家庭への福祉的な支援を含む多機関連携", "スクールソーシャルワーカーによる家庭状況の把握と支援"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "社交不安症等の精神疾患を背景とする不登校", "overview": "社交不安症やうつ状態等、診断可能な精神疾患が背景にあるタイプ。医療的な対応が必要となる場合がある。", "support": ["医療機関と連携した治療と学校生活の両立支援", "無理のない範囲での段階的な社会参加の支援"], "jiritsu": [{"ku": "心理的な安定", "item": "情緒の安定"}]}, {"name": "インターネット・ゲームへの没頭を伴う不登校", "overview": "家庭ではインターネットやゲームに没頭して過ごす時間が長くなっているタイプ。", "support": ["生活リズムに関する家庭との連携", "没頭の背景にあるストレスや孤立感の把握"], "jiritsu": [{"ku": "健康の保持", "item": "生活のリズムや生活習慣の形成"}]}, {"name": "ひきこもり傾向を伴う不登校", "overview": "家庭内でも社会的な接触が乏しくなり、ひきこもりの状態に近づいているタイプ。厚生労働省のひきこもり概念とも重なりがある。", "support": ["訪問支援等、本人の負担が少ない形での関わりの継続", "家族への相談支援と関係機関へのつなぎ"], "jiritsu": [{"ku": "人間関係の形成", "item": "他者との関わりの基礎"}]}, {"name": "積極的不登校（オルタナティブ教育を自ら選択するタイプ）", "overview": "学校教育になじめないことを本人・保護者が自覚し、フリースクール等の学びを積極的に選択するタイプ。", "support": ["本人の希望に沿った多様な学びの場に関する情報提供", "出席扱い制度等、学びが正当に評価される仕組みの活用"], "jiritsu": [{"ku": "心理的な安定", "item": "障害による学習上又は生活上の困難を改善・克服する意欲"}]}], "quote": "不登校とは、何らかの心理的、情緒的、身体的あるいは社会的要因・背景により、登校しないあるいはしたくてもできない状況にある者（ただし、病気や経済的な理由による者を除く。）", "srcUrl": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/1422155.htm"}
+];
+const JIRITSU27 = [{"ku": "健康の保持", "items": [{"name": "生活のリズムや生活習慣の形成", "desc": "睡眠と覚醒などの生活リズムを整え、食事・排せつ等の生活習慣や、清潔の保持など健康な生活環境をつくる力を育てる。"}, {"name": "病気の状態の理解と生活管理", "desc": "自分の病気の状態を理解し、進行を防ぐための生活の仕方を身に付け、自己管理できるようにする。"}, {"name": "身体各部の状態の理解と養護", "desc": "病気や事故による神経・筋・骨・皮膚等の状態を理解し、部位を保護したり症状の進行を防いだりできるようにする。"}, {"name": "障害の特性の理解と生活環境の調整", "desc": "自己の障害の特性が及ぼす学習・生活上の困難を理解し、行動や感情を調整したり周囲に働きかけたりして環境を整える。"}, {"name": "健康状態の維持・改善", "desc": "運動量の減少や体力低下を防ぐため、日常生活における健康の自己管理ができるようにする。"}]}, {"ku": "心理的な安定", "items": [{"name": "情緒の安定", "desc": "情緒の安定を図ることが難しい子供が、安定した情緒のもとで生活できるようにする。"}, {"name": "状況の理解と変化への対応", "desc": "場所や場面の状況を理解して心理的な抵抗を減らしたり、変化する状況に適切に対応したりする力を育てる。"}, {"name": "困難を改善・克服する意欲", "desc": "自分の障害の状態を理解・受容し、積極的に困難の改善・克服に取り組もうとする意欲を高める。"}]}, {"ku": "人間関係の形成", "items": [{"name": "他者との関わりの基礎", "desc": "人に対する基本的な信頼感をもち、他者からの働きかけを受け止め、それに応じることができるようにする。"}, {"name": "他者の意図や感情の理解", "desc": "他者の意図や感情を理解し、場に応じた適切な行動をとれるようにする。"}, {"name": "自己の理解と行動の調整", "desc": "自分の得意・不得意や行動の特徴を理解し、集団の中で状況に応じた行動ができるようにする。"}, {"name": "集団への参加の基礎", "desc": "集団の雰囲気に合わせたり、参加の手順や決まりを理解したりして、集団活動に積極的に参加できるようにする。"}]}, {"ku": "環境の把握", "items": [{"name": "保有する感覚の活用", "desc": "保有する視覚・聴覚・触覚・嗅覚・固有覚・前庭覚等の感覚を十分に活用できるようにする。"}, {"name": "感覚や認知の特性についての理解と対応", "desc": "自分の感覚や認知の特性（過敏さや偏り等）を理解し、情報を適切に処理し対応できるようにする。"}, {"name": "感覚の補助及び代行手段の活用", "desc": "補助機器の活用や、他の感覚・機器による代行によって、状況を的確に把握できるようにする。"}, {"name": "周囲の状況把握と状況に応じた行動", "desc": "複数の感覚や補助・代行手段を総合的に活用し、情報を収集して的確な判断・行動ができるようにする。"}, {"name": "概念の形成", "desc": "ものの機能・属性・形・色や、空間・時間等の概念の形成を図り、認知や行動の手がかりとして活用できるようにする。"}]}, {"ku": "身体の動き", "items": [{"name": "姿勢と運動・動作の基本的技能", "desc": "姿勢保持や上肢・下肢の運動・動作の改善、関節拘縮・変形の予防、筋力の維持・強化を図る。"}, {"name": "補助的手段の活用", "desc": "姿勢の保持や運動・動作が困難な場合に、補助用具等の補助的手段を活用してできるようにする。"}, {"name": "日常生活に必要な基本動作", "desc": "食事・排せつ・衣服の着脱・洗面等の身辺処理や、書字・描画等、学習に必要な基本動作を身に付ける。"}, {"name": "身体の移動能力", "desc": "自力での移動や歩行、歩行器・車椅子による移動など、日常生活に必要な移動能力の向上を図る。"}, {"name": "作業に必要な動作と円滑な遂行", "desc": "作業に必要な基本動作を習得し、巧緻性・持続性を高め、円滑に作業を遂行する力を養う。"}]}, {"ku": "コミュニケーション", "items": [{"name": "コミュニケーションの基礎的能力", "desc": "表情・身振り・各種の機器等を用いて、意思のやり取りができる基礎的な力を身に付ける。"}, {"name": "言語の受容と表出", "desc": "話し言葉や文字・記号等を用いて、相手の意図を受け止めたり自分の考えを伝えたりできるようにする。"}, {"name": "言語の形成と活用", "desc": "コミュニケーションを通じて事物・現象・自己の行動等に対応した言語概念を形成し、体系的に言語を身に付ける。"}, {"name": "コミュニケーション手段の選択と活用", "desc": "話し言葉・文字・記号・機器等の中から適切な手段を選択・活用し、円滑なやり取りができるようにする。"}, {"name": "状況に応じたコミュニケーション", "desc": "相手との関係やその場の状況を把握し、場や相手に応じて主体的にコミュニケーションを展開できるようにする。"}]}];
+
+const catList = document.getElementById('catList');
+const mainContent = document.getElementById('mainContent');
+const searchBox = document.getElementById('searchBox');
+const sideNav = document.getElementById('sideNav');
+const tabGuide = document.getElementById('tabGuide');
+const tabJiritsu = document.getElementById('tabJiritsu');
+const layoutRoot = document.getElementById('layoutRoot');
+let currentId = null;
+let mode = 'guide'; // 'guide' | 'jiritsu'
+const supportKeyLabels = {content:"教育内容・方法", method:"教材・情報保障", system:"支援体制", facility:"施設・設備"};
+
+function setMode(m){
+  mode = m;
+  tabGuide.classList.toggle('on', m==='guide');
+  tabJiritsu.classList.toggle('on', m==='jiritsu');
+  if(m==='guide'){
+    sideNav.style.display = '';
+    layoutRoot.classList.remove('wide');
+    if(currentId){ renderMain(currentId); } else { renderHome(); }
+  }else{
+    sideNav.style.display = 'none';
+    layoutRoot.classList.add('wide');
+    renderJiritsuTable();
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+tabGuide.onclick = ()=> setMode('guide');
+tabJiritsu.onclick = ()=> setMode('jiritsu');
+
+function renderIndex(filter){
+  const f = (filter||"").trim().toLowerCase();
+  catList.innerHTML = "";
+  const diseaseHits = [];
+  DATA.forEach(cat=>{
+    const catHay = (cat.name+cat.en+cat.overview).toLowerCase();
+    const matchedDiseases = f ? cat.diseases.filter(d=>d.name.toLowerCase().includes(f) || (d.overview||"").toLowerCase().includes(f)) : [];
+    const catMatches = !f || catHay.includes(f);
+    if(f && matchedDiseases.length){
+      matchedDiseases.forEach(d=> diseaseHits.push({cat, disease:d}));
+    }
+    if(f && !catMatches && !matchedDiseases.length) return;
+    const li = document.createElement('li');
+    if(cat.id===currentId) li.className='active';
+    const btn = document.createElement('button');
+    const hitBadge = matchedDiseases.length ? `<span class="idx-hit-count">${matchedDiseases.length}</span>` : "";
+    btn.innerHTML = `<span class="num">${cat.num}</span><span>${cat.name}</span>${hitBadge}`;
+    btn.onclick = ()=>{ currentId=cat.id; renderIndex(searchBox.value); renderMain(cat.id); window.scrollTo({top:0,behavior:'smooth'}); };
+    li.appendChild(btn);
+    catList.appendChild(li);
+  });
+
+  // 疾患名でのヒットをカテゴリー一覧の下に別枠で表示
+  let hitsEl = document.getElementById('diseaseHits');
+  if(hitsEl) hitsEl.remove();
+  if(f && diseaseHits.length){
+    hitsEl = document.createElement('div');
+    hitsEl.id = 'diseaseHits';
+    hitsEl.className = 'disease-hits';
+    const label = document.createElement('p');
+    label.className = 'index-label';
+    label.style.marginTop = '18px';
+    label.textContent = `疾患名でのヒット（${diseaseHits.length}件）`;
+    hitsEl.appendChild(label);
+    const ul = document.createElement('ul');
+    ul.className = 'hit-list';
+    diseaseHits.slice(0, 30).forEach(({cat, disease})=>{
+      const li = document.createElement('li');
+      const btn = document.createElement('button');
+      btn.innerHTML = `<span class="hit-disease">${disease.name}</span><span class="hit-cat">${cat.name}</span>`;
+      btn.onclick = ()=>{ currentId=cat.id; renderIndex(searchBox.value); renderMain(cat.id, disease.name); window.scrollTo({top:0,behavior:'smooth'}); };
+      li.appendChild(btn);
+      ul.appendChild(li);
+    });
+    hitsEl.appendChild(ul);
+    if(diseaseHits.length > 30){
+      const more = document.createElement('p');
+      more.className = 'block-sub';
+      more.style.margin = '6px 2px 0';
+      more.textContent = `他 ${diseaseHits.length - 30} 件（検索語を絞り込んでください）`;
+      hitsEl.appendChild(more);
+    }
+    catList.insertAdjacentElement('afterend', hitsEl);
+  }
+}
+
+function renderHome(){
+  const totalDiseases = DATA.reduce((s,c)=>s+c.diseases.length,0);
+  let html = `<div class="home-view">
+    <p class="eyebrow" style="color:var(--gold);font-family:var(--sans);letter-spacing:.28em;font-size:11px;">INDEX</p>
+    <h2 class="cat-title">障害種別 索引</h2>
+    <p>${DATA.length}の障害種別について、原因となる病気・状態別の分類、教育的ニーズ、合理的配慮を含む必要な支援内容、自立活動、学びの場を整理しています。左の索引または下の一覧から選んでください。</p>
+    <div class="home-stats">
+      <div class="home-stat"><b>${DATA.length}</b><span>障害種別</span></div>
+      <div class="home-stat"><b>${totalDiseases}</b><span>原因疾患・状態の分類</span></div>
+      <div class="home-stat"><b>27</b><span>自立活動 項目数</span></div>
+    </div>
+    <div class="home-grid">`;
+  DATA.forEach(cat=>{
+    html += `<div class="home-card" data-id="${cat.id}">
+      <span class="num">${cat.num}</span>
+      <h4>${cat.name}</h4>
+      <p>${cat.diseases.length}種の分類を収録 ／ ${cat.overview.slice(0,40)}…</p>
+    </div>`;
+  });
+  html += `</div>
+    <div class="disclaimer">本ツールの記述は一次資料の要約・言い換えです。原文の引用は必要最小限にとどめています。実際の就学相談・指導計画の作成にあたっては、必ず出典元の原文および専門家の判断をご確認ください。</div>
+  </div>`;
+  mainContent.innerHTML = html;
+  mainContent.querySelectorAll('.home-card').forEach(el=>{
+    el.onclick = ()=>{ currentId = el.dataset.id; renderIndex(searchBox.value); renderMain(currentId); window.scrollTo({top:0,behavior:'smooth'}); };
+  });
+}
+
+function renderMain(id, openDiseaseName){
+  const cat = DATA.find(c=>c.id===id);
+  if(!cat){ renderHome(); return; }
+
+  let needsHtml = cat.needs.map(n=>`<div class="need-card"><span class="k">${n.k}</span><div>${n.v}</div></div>`).join("");
+  let instrHtml = cat.instruction.map(i=>`<div class="instr-item"><div class="t">${i.t}</div><div>${i.d}</div></div>`).join("");
+  let placesHtml = cat.places.map(p=>`<div class="place-row"><div class="p-name">${p.name}</div><div>${p.note}</div></div>`).join("");
+  let jiritsuHtml = cat.jiritsu.map(j=>`<div class="jiritsu-row"><span class="ku-tag">${j.ku}</span><span class="item-name">${j.item}</span><div class="j-note">${j.note}</div></div>`).join("");
+
+  let diseaseHtml = cat.diseases.map((d,i)=>{
+    const chips = d.jiritsu.map(j=>`<span class="jiritsu-chip"><span class="ku-mini">${j.ku}</span>${j.item}</span>`).join("");
+    const supportLis = d.support.map(s=>`<li>${s}</li>`).join("");
+    const severityBlock = d.severity ? `
+          <p class="dd-label">程度別の支援（重症度分類に基づく細分化）</p>
+          <div class="severity-list">${d.severity.map(sv=>`
+            <div class="severity-item">
+              <div class="sv-level">${sv.level}</div>
+              <div class="sv-criteria">${sv.criteria}</div>
+              <ul class="sv-support">${sv.support.map(s=>`<li>${s}</li>`).join("")}</ul>
+            </div>`).join("")}
+          </div>` : "";
+    const badge = d.severity ? `<span class="sev-badge">程度別あり</span>` : "";
+    return `<div class="disease-item" data-idx="${i}">
+      <button class="disease-row" type="button">
+        <span class="chevron">▶</span>
+        <span class="d-name">${d.name}</span>
+        ${badge}
+        <span class="d-hint">詳細を見る</span>
+      </button>
+      <div class="disease-detail">
+        <div class="disease-detail-inner">
+          <p class="d-overview">${d.overview}</p>
+          <p class="dd-label">個別に求められる支援</p>
+          <ul class="dd-support">${supportLis}</ul>
+          <p class="dd-label">関連する自立活動項目</p>
+          <div class="dd-jiritsu">${chips}</div>
+          ${severityBlock}
+        </div>
+      </div>
+    </div>`;
+  }).join("");
+
+  mainContent.innerHTML = `
+    <div class="article-head">
+      <div class="article-num">${cat.num}</div>
+      <h2 class="cat-title">${cat.name}<span class="en">${cat.en}</span></h2>
+    </div>
+    <div class="overview">${cat.overview}</div>
+
+    <section class="block">
+      <h3 class="block-title">基となる病気・状態による分類<span class="tally">${cat.diseases.length}件</span></h3>
+      <p class="block-sub">同じ障害種でも、原因となる疾患や状態の違いによって必要な配慮は異なります。各項目をクリックすると、個別に求められる支援と関連する自立活動項目が表示されます。</p>
+      <div class="disease-list">${diseaseHtml}</div>
+    </section>
+
+    <section class="block">
+      <h3 class="block-title">教育的ニーズの要点</h3>
+      <div class="need-grid">${needsHtml}</div>
+    </section>
+
+    <section class="block">
+      <h3 class="block-title">求められる特別な指導内容（例）</h3>
+      <div class="instr-list">${instrHtml}</div>
+    </section>
+
+    <section class="block">
+      <h3 class="block-title">合理的配慮を含む必要な支援の内容</h3>
+      <div class="support-tabs" id="supportTabs"></div>
+      <div class="support-panel" id="supportPanel"></div>
+    </section>
+
+    <section class="block">
+      <h3 class="block-title">求められる自立活動（障害種として選定されることが多い項目）</h3>
+      <p class="block-sub">自立活動は27項目すべてを行うものではなく、子供一人一人の実態に応じて必要な項目を選定し関連付けて指導します。詳細な全項目は上部タブ「自立活動 6区分27項目 一覧」をご覧ください。</p>
+      <div class="jiritsu-list">${jiritsuHtml}</div>
+    </section>
+
+    <section class="block">
+      <h3 class="block-title">学びの場</h3>
+      ${placesHtml}
+    </section>
+
+    <div class="source-box">
+      <p class="quote">「${cat.quote}」</p>
+      <p>出典：文部科学省「障害のある子供の教育支援の手引～子供たち一人一人の教育的ニーズを踏まえた学びの充実に向けて～」（令和3年6月）第3編<br>
+      <a href="${cat.srcUrl}" target="_blank" rel="noopener">${cat.srcUrl}</a></p>
+      <p style="margin-top:10px;">自立活動の区分・項目は、文部科学省「特別支援学校教育要領・学習指導要領解説 自立活動編（幼稚部・小学部・中学部）」（平成30年3月）に基づきます。<br>
+      <a href="https://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/02/04/1399950_5.pdf" target="_blank" rel="noopener">https://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/02/04/1399950_5.pdf</a></p>
+    </div>
+  `;
+
+  // support tabs
+  const tabWrap = document.getElementById('supportTabs');
+  const panel = document.getElementById('supportPanel');
+  const keys = Object.keys(cat.support);
+  function showTab(k){
+    tabWrap.querySelectorAll('button').forEach(b=>b.classList.toggle('on', b.dataset.k===k));
+    panel.innerHTML = `<ul>${cat.support[k].map(li=>`<li>${li}</li>`).join("")}</ul>`;
+  }
+  tabWrap.innerHTML = keys.map(k=>`<button data-k="${k}">${supportKeyLabels[k]}</button>`).join("");
+  tabWrap.querySelectorAll('button').forEach(b=> b.onclick = ()=> showTab(b.dataset.k));
+  showTab(keys[0]);
+
+  // disease accordion
+  mainContent.querySelectorAll('.disease-item').forEach(item=>{
+    const row = item.querySelector('.disease-row');
+    row.onclick = ()=>{
+      const willOpen = !item.classList.contains('open');
+      item.classList.toggle('open', willOpen);
+      row.querySelector('.d-hint').textContent = willOpen ? '閉じる' : '詳細を見る';
+    };
+  });
+
+  // 検索経由で特定の疾患が指定された場合、自動的に開いてスクロール
+  if(openDiseaseName){
+    const idx = cat.diseases.findIndex(d=>d.name===openDiseaseName);
+    if(idx >= 0){
+      const target = mainContent.querySelector(`.disease-item[data-idx="${idx}"]`);
+      if(target){
+        target.classList.add('open');
+        const hint = target.querySelector('.d-hint');
+        if(hint) hint.textContent = '閉じる';
+        setTimeout(()=> target.scrollIntoView({behavior:'smooth', block:'center'}), 60);
+      }
+    }
+  }
+}
+
+function renderJiritsuTable(){
+  let html = `<div class="jiritsu-table-wrap">
+    <div class="article-head">
+      <div class="article-num" style="border-radius:3px;">27</div>
+      <h2 class="cat-title">自立活動 6区分27項目 一覧<span class="en">Six Categories, 27 Items of Jiritsu Katsudo (Independence Activities)</span></h2>
+    </div>
+    <div class="overview">自立活動は、障害のある子供が自立を目指し、学習上又は生活上の困難を主体的に改善・克服するために設けられた特別な指導領域です。27項目すべてを一律に指導するのではなく、子供一人一人の実態に応じて必要な項目を選定し、相互に関連付けて具体的な指導内容を組み立てます。</div>`;
+
+  JIRITSU27.forEach((group, gi)=>{
+    html += `<div class="ku-group">
+      <div class="ku-heading">
+        <span class="ku-index">${gi+1}</span>
+        <h3>${group.ku}</h3>
+      </div>
+      <table class="item-table">
+        <thead><tr><th style="width:34px;">No.</th><th style="width:220px;">項目</th><th>内容の要旨</th></tr></thead>
+        <tbody>`;
+    group.items.forEach((it, ii)=>{
+      html += `<tr><td class="item-no">(${ii+1})</td><td class="item-name">${it.name}</td><td>${it.desc}</td></tr>`;
+    });
+    html += `</tbody></table></div>`;
+  });
+
+  html += `<div class="source-box">
+      <p>出典：文部科学省「特別支援学校教育要領・学習指導要領解説 自立活動編（幼稚部・小学部・中学部）」（平成30年3月）第7章 自立活動<br>
+      <a href="https://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/02/04/1399950_5.pdf" target="_blank" rel="noopener">https://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/02/04/1399950_5.pdf</a></p>
+      <p style="margin-top:8px;">項目の説明は原文を要約・言い換えたものです。指導計画作成の際は原文をご確認ください。</p>
+    </div>
+  </div>`;
+  mainContent.innerHTML = html;
+}
+
+searchBox.addEventListener('input', ()=> renderIndex(searchBox.value));
+
+renderIndex();
+renderHome();
+
+// ---- ホーム画面追加の案内バナー ----
+(function(){
+  try{
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    const dismissed = localStorage.getItem('installBannerDismissed') === '1';
+    if(isStandalone || dismissed) return;
+    const ua = navigator.userAgent;
+    const isIOS = /iPhone|iPad|iPod/.test(ua);
+    const isAndroid = /Android/.test(ua);
+    if(!isIOS && !isAndroid) return; // デスクトップでは表示しない
+    const banner = document.getElementById('installBanner');
+    const text = document.getElementById('installText');
+    if(isIOS){
+      text.textContent = '画面下部の共有ボタン（□に↑）から「ホーム画面に追加」でアプリのように使えます';
+    }else{
+      text.textContent = 'ブラウザメニュー（⋮）から「ホーム画面に追加」または「アプリをインストール」でアプリのように使えます';
+    }
+    banner.style.display = 'flex';
+    document.getElementById('installClose').onclick = function(){
+      banner.style.display = 'none';
+      try{ localStorage.setItem('installBannerDismissed', '1'); }catch(e){}
+    };
+  }catch(e){ /* localStorage等が使えない環境では何もしない */ }
+})();
+
+</script>
+</body>
+</html>
