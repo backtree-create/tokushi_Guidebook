@@ -743,7 +743,7 @@
     </div>
   </div>
   <div class="mode-tabs">
-    <button id="homeBtn" class="home-btn">ホーム</button>
+    <button id="homeBtn" class="home-btn">🏠 ホーム</button>
     <button id="tabGuide" class="on">障害種別ガイド</button>
     <button id="tabJiritsu">自立活動 6区分27項目 一覧</button>
   </div>
@@ -1212,7 +1212,7 @@ function renderIndex(filter){
       const li = document.createElement('li');
       const btn = document.createElement('button');
       btn.innerHTML = `<span class="hit-disease">${disease.name}</span><span class="hit-cat">${cat.name}</span>`;
-      btn.onclick = ()=>{ currentId=cat.id; renderIndex(searchBox.value); renderMain(cat.id, disease.name); window.scrollTo({top:0,behavior:'smooth'}); };
+      btn.onclick = ()=>{ currentId=cat.id; renderIndex(searchBox.value); renderMain(cat.id, disease.name); };
       li.appendChild(btn);
       ul.appendChild(li);
     });
