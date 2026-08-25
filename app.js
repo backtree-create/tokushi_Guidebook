@@ -17,7 +17,23 @@
   }
 
   var DATA = [], JIRITSU27 = [], SOURCES = [], META = {};
-  var SRC = {}; // id -> source
+  var SRC = {};   // id -> source
+  var REV = {};    // 「区分／項目」-> [{cat, disease}]  自立活動からの逆引き
+  var PLACES = {}; // 学びの場の段階 -> [{cat, name, note}]
+
+  // 学びの場は障害種ごとに細かい名前（通級による指導（弱視）等）で入っている。
+  // 一覧では「学びの場の連続性」の4段階に束ね、細かい名前は各行に残す。
+  var STAGES = [
+    { key: '通常の学級',     test: function (n) { return /^通常の学級/.test(n); } },
+    { key: '通級による指導', test: function (n) { return /^通級による指導/.test(n); } },
+    { key: '特別支援学級',   test: function (n) { return /特別支援学級$/.test(n); } },
+    { key: '特別支援学校',   test: function (n) { return /^特別支援学校/.test(n); } },
+    { key: 'その他の学びの場', test: function () { return true; } }
+  ];
+  function stageOf(name) {
+    for (var i = 0; i < STAGES.length; i++) if (STAGES[i].test(name)) return STAGES[i].key;
+    return 'その他の学びの場';
+  }
 
   function srcLink(id) {
     var s = SRC[id];
@@ -33,7 +49,9 @@
       tabGuide, tabJiritsu, tabTerms, layoutRoot, homeBtn, homeLink, homeEmblem, siteFooter;
 
   var currentId = null;
-  var mode = 'guide'; // 'guide' | 'jiritsu' | 'terms'
+  var mode = 'guide'; // 'guide' | 'jiritsu' | 'terms' | 'places'
+  var openDisease = null;   // 開いている疾患名（URLに載せる）
+  var routing = false;      // 描画中の navigate を無視するための印
 
   var supportKeyLabels = {
     content: '教育内容・方法', method: '教材・情報保障',
@@ -46,30 +64,156 @@
     mainContent.classList.add('fade-in');
   }
 
-  /* ---------- 画面モード ---------- */
+  /* ==========================================================
+     ルーティング
+     現在地を URL のハッシュに持たせる。これで
+       ・ブラウザの戻る／進むが効く
+       ・特定の疾患を指すURLを同僚に送れる
+       ・ブックマークできる
+     ハッシュを使うのは、GitHub Pages でも単一ファイル版（file://）でも
+     サーバ側の設定なしに同じ動きをするため。
+     ========================================================== */
 
-  function goHome() {
-    currentId = null;
-    searchBox.value = '';
-    setMode('guide');
+  var ROUTES = {
+    home:    function () { return '#/'; },
+    cat:     function (id, disease) {
+      return '#/c/' + encodeURIComponent(id) +
+             (disease ? '/' + encodeURIComponent(disease) : '');
+    },
+    search:  function (q) { return '#/q/' + encodeURIComponent(q); },
+    jiritsu: function () { return '#/jiritsu'; },
+    kumoku:  function (ku, item) {
+      return '#/jiritsu/' + encodeURIComponent(ku) + '/' + encodeURIComponent(item);
+    },
+    places:  function (name) {
+      return '#/place' + (name ? '/' + encodeURIComponent(name) : '');
+    },
+    terms:   function () { return '#/terms'; }
+  };
+
+  function parseHash() {
+    var h = (location.hash || '').replace(/^#\/?/, '');
+    if (!h) return { view: 'home' };
+    var seg = h.split('/').map(function (x) {
+      try { return decodeURIComponent(x); } catch (e) { return x; }
+    });
+    switch (seg[0]) {
+      case 'c':       return { view: 'cat', catId: seg[1], disease: seg[2] || null };
+      case 'q':       return { view: 'search', q: seg.slice(1).join('/') };
+      case 'jiritsu': return seg[1]
+        ? { view: 'kumoku', ku: seg[1], item: seg[2] }
+        : { view: 'jiritsu' };
+      case 'place':   return { view: 'places', place: seg[1] || null };
+      case 'terms':   return { view: 'terms' };
+      default:        return { view: 'home' };
+    }
   }
 
-  function setMode(m) {
-    mode = m;
-    tabGuide.classList.toggle('on', m === 'guide');
+  // 画面から遷移するときはこれを呼ぶ。描画は hashchange 経由で1本化する。
+  function navigate(hash, replace) {
+    if (location.hash === hash) { applyRoute(); return; }
+    if (replace && history.replaceState) {
+      history.replaceState(null, '', hash);
+      applyRoute();
+    } else {
+      location.hash = hash;   // hashchange が発火して applyRoute が走る
+    }
+  }
+
+  function setTabs(m) {
+    tabGuide.classList.toggle('on', m === 'guide' || m === 'places');
     tabJiritsu.classList.toggle('on', m === 'jiritsu');
     tabTerms.classList.toggle('on', m === 'terms');
-    if (m === 'guide') {
-      sideNav.style.display = '';
-      layoutRoot.classList.remove('wide');
-      renderIndex(searchBox.value);
-      if (currentId) { renderMain(currentId); } else { renderHome(); }
-    } else {
-      sideNav.style.display = 'none';
-      layoutRoot.classList.add('wide');
-      if (m === 'jiritsu') { renderJiritsuTable(); } else { renderTerms(); }
+  }
+
+  function applyRoute() {
+    if (routing) return;
+    routing = true;
+    try {
+      var r = parseHash();
+      mode = (r.view === 'jiritsu' || r.view === 'kumoku') ? 'jiritsu'
+           : r.view === 'terms' ? 'terms'
+           : r.view === 'places' ? 'places' : 'guide';
+      setTabs(mode);
+
+      var wide = (mode !== 'guide');
+      sideNav.style.display = wide ? 'none' : '';
+      layoutRoot.classList.toggle('wide', wide);
+
+      if (r.view === 'cat' || r.view === 'search' || r.view === 'home') {
+        searchBox.value = (r.view === 'search') ? (r.q || '') : '';
+        currentId = (r.view === 'cat') ? r.catId : null;
+        openDisease = (r.view === 'cat') ? (r.disease || null) : null;
+        renderIndex(searchBox.value);
+        if (r.view === 'cat' && DATA.some(function (c) { return c.id === r.catId; })) {
+          renderMain(r.catId, r.disease || null);
+        } else {
+          currentId = null;
+          renderHome();
+        }
+      } else if (r.view === 'jiritsu') {
+        renderJiritsuTable();
+      } else if (r.view === 'kumoku') {
+        renderKumoku(r.ku, r.item);
+      } else if (r.view === 'places') {
+        renderPlaces(r.place);
+      } else if (r.view === 'terms') {
+        renderTerms();
+      }
+      document.title = pageTitle(r);
+    } finally {
+      routing = false;
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function pageTitle(r) {
+    var base = META.title || '特別支援教育 指導支援ハンドブック';
+    if (r.view === 'cat') {
+      var c = DATA.find(function (x) { return x.id === r.catId; });
+      if (c) return (r.disease ? r.disease + '｜' : '') + c.name + '｜' + base;
+    }
+    if (r.view === 'search') return '「' + r.q + '」の検索結果｜' + base;
+    if (r.view === 'jiritsu') return '自立活動 6区分27項目｜' + base;
+    if (r.view === 'kumoku') return r.item + '｜自立活動から探す｜' + base;
+    if (r.view === 'places') return '学びの場から探す｜' + base;
+    if (r.view === 'terms') return '診断名・出典｜' + base;
+    return base;
+  }
+
+  function goHome() { navigate(ROUTES.home()); }
+  function setMode(m) {
+    navigate(m === 'guide' ? ROUTES.home()
+           : m === 'jiritsu' ? ROUTES.jiritsu()
+           : m === 'places' ? ROUTES.places()
+           : ROUTES.terms());
+  }
+
+  /* ---------- 検索 ---------- */
+
+  var HIT_LABEL = {
+    name: '病名', overview: '説明', support: '支援内容',
+    severity: '程度別', jiritsu: '自立活動'
+  };
+
+  // どのフィールドで当たったかを返す。当たらなければ null。
+  function matchDisease(d, f) {
+    if ((d.name || '').toLowerCase().indexOf(f) >= 0) return 'name';
+    if ((d.overview || '').toLowerCase().indexOf(f) >= 0) return 'overview';
+    var i, j;
+    for (i = 0; i < (d.support || []).length; i++) {
+      if (d.support[i].toLowerCase().indexOf(f) >= 0) return 'support';
+    }
+    for (i = 0; i < (d.severity || []).length; i++) {
+      var sv = d.severity[i];
+      if ((sv.level + sv.criteria).toLowerCase().indexOf(f) >= 0) return 'severity';
+      for (j = 0; j < (sv.support || []).length; j++) {
+        if (sv.support[j].toLowerCase().indexOf(f) >= 0) return 'severity';
+      }
+    }
+    for (i = 0; i < (d.jiritsu || []).length; i++) {
+      if ((d.jiritsu[i].ku + d.jiritsu[i].item).toLowerCase().indexOf(f) >= 0) return 'jiritsu';
+    }
+    return null;
   }
 
   /* ---------- 索引 ---------- */
@@ -80,10 +224,16 @@
     var diseaseHits = [];
 
     DATA.forEach(function (cat) {
-      var catHay = (cat.name + cat.en + cat.overview).toLowerCase();
+      var catHay = (cat.name + cat.en + cat.overview +
+        (cat.needs || []).map(function (n) { return n.k + n.v; }).join('') +
+        (cat.instruction || []).map(function (x) { return x.t + x.d; }).join('') +
+        Object.keys(cat.support || {}).map(function (k) { return cat.support[k].join(''); }).join('')
+      ).toLowerCase();
+      // 病名・概要に加え、支援内容・程度別支援・自立活動の項目名まで探す。
+      // 「拡大教材」のような手立ての言葉から、それを要する状態を辿れるように。
       var matched = f ? cat.diseases.filter(function (d) {
-        return d.name.toLowerCase().indexOf(f) >= 0 ||
-               (d.overview || '').toLowerCase().indexOf(f) >= 0;
+        d._hit = matchDisease(d, f);
+        return !!d._hit;
       }) : [];
       var catMatches = !f || catHay.indexOf(f) >= 0;
       if (f && matched.length) {
@@ -98,12 +248,7 @@
       var hitBadge = matched.length ? '<span class="idx-hit-count">' + matched.length + '</span>' : '';
       btn.innerHTML = '<span class="num">' + esc(cat.num) + '</span>' +
                       '<span class="cat-name">' + esc(cat.name) + '</span>' + hitBadge;
-      btn.onclick = function () {
-        currentId = cat.id;
-        renderIndex(searchBox.value);
-        renderMain(cat.id);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      };
+      btn.onclick = function () { navigate(ROUTES.cat(cat.id)); };
       li.appendChild(btn);
       catList.appendChild(li);
     });
@@ -125,13 +270,11 @@
         var li = document.createElement('li');
         var btn = document.createElement('button');
         btn.type = 'button';
-        btn.innerHTML = '<span class="hit-disease">' + esc(h.disease.name) + '</span>' +
+        var where = h.disease._hit && h.disease._hit !== 'name'
+          ? '<span class="hit-where">' + esc(HIT_LABEL[h.disease._hit] || '') + '</span>' : '';
+        btn.innerHTML = '<span class="hit-disease">' + esc(h.disease.name) + where + '</span>' +
                         '<span class="hit-cat">' + esc(h.cat.name) + '</span>';
-        btn.onclick = function () {
-          currentId = h.cat.id;
-          renderIndex(searchBox.value);
-          renderMain(h.cat.id, h.disease.name);
-        };
+        btn.onclick = function () { navigate(ROUTES.cat(h.cat.id, h.disease.name)); };
         li.appendChild(btn);
         ul.appendChild(li);
       });
@@ -175,12 +318,7 @@
     mainContent.innerHTML = html;
     playFadeIn();
     mainContent.querySelectorAll('.home-card').forEach(function (el) {
-      el.onclick = function () {
-        currentId = el.dataset.id;
-        renderIndex(searchBox.value);
-        renderMain(currentId);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      };
+      el.onclick = function () { navigate(ROUTES.cat(el.dataset.id)); };
     });
   }
 
@@ -222,6 +360,18 @@
 
     return '<div class="basis-row">' + tags.join('') + '</div>' +
            (body ? '<div class="basis-detail">' + body + '</div>' : '');
+  }
+
+  // 現場の先生が気づいた誤りを送れるようにする。
+  // 何について書けばよいか迷わないよう、対象の名前を画面に出しておく。
+  function feedbackLink(catName, diseaseName) {
+    var fb = META.feedback;
+    if (!fb || !fb.url) return '';
+    return '<p class="fb-line">' +
+      '<a class="fb-link" href="' + esc(fb.url) + '" target="_blank" rel="noopener">' +
+      esc(fb.itemLabel || 'この項目について指摘する') + '</a>' +
+      '<span class="fb-ctx">フォームに次をお書き添えください：' +
+      esc(catName) + '／' + esc(diseaseName) + '</span></p>';
   }
 
   /* ---------- 障害種別ページ ---------- */
@@ -287,6 +437,7 @@
           severityBlock +
           noteBlock +
           basisBadges(d) +
+          feedbackLink(cat.name, d.name) +
         '</div></div>' +
       '</div>';
     }).join('');
@@ -381,7 +532,12 @@
     }
     mainContent.querySelectorAll('.disease-item').forEach(function (item) {
       item.querySelector('.disease-row').onclick = function () {
-        if (!item.classList.contains('open')) { openDiseaseItem(item); } else { closeDiseaseItem(item); }
+        var willOpen = !item.classList.contains('open');
+        if (willOpen) { openDiseaseItem(item); } else { closeDiseaseItem(item); }
+        // 開いている疾患をURLに載せる。履歴は積まない（戻るは前の画面へ）
+        var name = cat.diseases[Number(item.dataset.idx)].name;
+        openDisease = willOpen ? name : null;
+        navigate(willOpen ? ROUTES.cat(cat.id, name) : ROUTES.cat(cat.id), true);
       };
     });
 
@@ -419,9 +575,16 @@
         var official = it.official
           ? '<span class="item-official">正式名称：' + esc(it.official) + '</span>'
           : '';
+        var n = (REV[group.ku + '／' + it.name] || []).length;
         html += '<tr><td class="item-no">(' + (ii + 1) + ')</td>' +
-                '<td class="item-name">' + esc(it.name) + official + '</td>' +
-                '<td>' + esc(it.desc) + '</td></tr>';
+                '<td class="item-name">' +
+                  '<a class="ku-link" href="' + ROUTES.kumoku(group.ku, it.name) + '">' +
+                    esc(it.name) + '</a>' + official +
+                '</td>' +
+                '<td>' + esc(it.desc) +
+                  '<a class="rev-count" href="' + ROUTES.kumoku(group.ku, it.name) + '">' +
+                  'この項目を要する状態を見る（' + n + '件）</a>' +
+                '</td></tr>';
       });
       html += '</tbody></table></div></div>';
     });
@@ -431,6 +594,122 @@
       '<p style="margin-top:8px;">項目の説明は原文を要約・言い換えたものです。指導計画作成の際は原文をご確認ください。</p>' +
       '</div></div>';
 
+    mainContent.innerHTML = html;
+    playFadeIn();
+  }
+
+  /* ---------- 自立活動から疾患を逆引き ---------- */
+
+  function renderKumoku(ku, item) {
+    var key = ku + '／' + item;
+    var list = REV[key] || [];
+    var group = JIRITSU27.find(function (g) { return g.ku === ku; });
+    var def = group && group.items.find(function (x) { return x.name === item; });
+
+    if (!def) { navigate(ROUTES.jiritsu(), true); return; }
+
+    // 障害種ごとにまとめる
+    var byCat = {};
+    list.forEach(function (x) {
+      (byCat[x.cat.id] = byCat[x.cat.id] || { cat: x.cat, items: [] }).items.push(x.disease);
+    });
+
+    var html = '<div class="jiritsu-table-wrap">' +
+      '<p class="crumb"><a href="' + ROUTES.jiritsu() + '">← 自立活動 6区分27項目 一覧</a></p>' +
+      '<div class="article-head">' +
+        '<div class="article-num" style="border-radius:3px;">' + esc(ku.slice(0, 2)) + '</div>' +
+        '<h2 class="cat-title">' + esc(item) +
+          '<span class="en">' + esc(ku) + '</span></h2>' +
+      '</div>' +
+      '<div class="overview">' + esc(def.desc) + '</div>' +
+      (def.official
+        ? '<p class="official-line">学習指導要領の正式名称：' + esc(def.official) + '</p>' : '') +
+
+      '<section class="block">' +
+        '<h3 class="block-title">この項目を要することが多い状態' +
+          '<span class="tally">' + list.length + '件</span></h3>' +
+        '<p class="block-sub">自立活動は27項目すべてを行うものではなく、一人一人の実態に応じて選定します。' +
+          'この一覧は「この項目を選定するとき、他にどのような背景が考えられるか」を見渡すためのものです。' +
+          '掲載されている状態に当てはまるからといって、この項目を選定すべきという意味ではありません。</p>';
+
+    if (!list.length) {
+      html += '<p class="block-sub">現在この項目に紐づく状態は登録されていません。</p>';
+    }
+
+    Object.keys(byCat).forEach(function (cid) {
+      var g = byCat[cid];
+      html += '<div class="rev-group">' +
+        '<p class="rev-cat"><a href="' + ROUTES.cat(g.cat.id) + '">' +
+          '<span class="rev-num">' + esc(g.cat.num) + '</span>' + esc(g.cat.name) + '</a>' +
+          '<span class="rev-n">' + g.items.length + '件</span></p>' +
+        '<ul class="rev-list">' +
+        g.items.map(function (d) {
+          return '<li><a href="' + ROUTES.cat(g.cat.id, d.name) + '">' + esc(d.name) + '</a>' +
+                 '<span class="rev-ov">' + esc(d.overview) + '</span></li>';
+        }).join('') +
+        '</ul></div>';
+    });
+
+    html += '</section>' +
+      '<div class="source-box"><p>自立活動の区分・項目は次に基づきます。<br>' +
+      srcLink('jiritsu-kaisetsu') + '</p>' +
+      '<p style="margin-top:8px;">状態との対応づけは本ツールによる教育的整理であり、' +
+      'いずれの資料にも直接記載されているものではありません。</p></div></div>';
+
+    mainContent.innerHTML = html;
+    playFadeIn();
+  }
+
+  /* ---------- 学びの場から探す ---------- */
+
+  function renderPlaces(selected) {
+    var stages = STAGES.map(function (x) { return x.key; })
+      .filter(function (k) { return PLACES[k] && PLACES[k].length; });
+
+    var html = '<div class="jiritsu-table-wrap">' +
+      '<div class="article-head">' +
+        '<div class="article-num" style="border-radius:3px;">場</div>' +
+        '<h2 class="cat-title">学びの場から探す<span class="en">Continuum of Placements</span></h2>' +
+      '</div>' +
+      '<div class="overview">通常の学級から特別支援学校まで、連続性のある多様な学びの場の中から、' +
+      '一人一人の教育的ニーズに応じて検討されます。ここでは場の側から、' +
+      'どの障害種でその場が想定されているかを見渡せます。</div>' +
+      '<div class="section-disclaimer"><b>就学先を決めるものではありません</b>' +
+      '<p>実際の就学先は、本人・保護者の意向、専門家の意見、学校や地域の状況等を' +
+      '総合的に判断して市町村教育委員会が決定します。この一覧は検討の手がかりです。</p></div>' +
+
+      '<div class="stage-flowline">' +
+        stages.filter(function (k) { return k !== 'その他の学びの場'; })
+          .map(function (k, i) {
+            return (i ? '<span class="arrow">→</span>' : '') +
+              '<a class="place-chip' + (k === selected ? ' on' : '') + '" href="' +
+              ROUTES.places(k === selected ? null : k) + '">' + esc(k) +
+              '<span>' + PLACES[k].length + '</span></a>';
+          }).join('') +
+      '</div>';
+
+    if (PLACES['その他の学びの場']) {
+      html += '<div class="place-chips">' +
+        '<a class="place-chip' + ('その他の学びの場' === selected ? ' on' : '') + '" href="' +
+        ROUTES.places('その他の学びの場' === selected ? null : 'その他の学びの場') + '">' +
+        'その他の学びの場<span>' + PLACES['その他の学びの場'].length + '</span></a></div>';
+    }
+
+    var show = selected && PLACES[selected] ? [selected] : stages;
+    show.forEach(function (k) {
+      html += '<div class="rev-group">' +
+        '<p class="rev-cat">' + esc(k) +
+          '<span class="rev-n">' + PLACES[k].length + '件</span></p>' +
+        '<ul class="rev-list">' +
+        PLACES[k].map(function (x) {
+          return '<li><a href="' + ROUTES.cat(x.cat.id) + '">' +
+                 '<span class="rev-num">' + esc(x.cat.num) + '</span>' + esc(x.name) + '</a>' +
+                 '<span class="rev-ov">' + esc(x.note) + '</span></li>';
+        }).join('') +
+        '</ul></div>';
+    });
+
+    html += '<div class="source-box"><p>出典：' + srcLink('tebiki') + '</p></div></div>';
     mainContent.innerHTML = html;
     playFadeIn();
   }
@@ -500,6 +779,18 @@
 
   /* ---------- フッター ---------- */
 
+  // 左の索引にある「学びの場の連続性」を、そのまま入口にする
+  function wireSideNav() {
+    var box = document.querySelector('.school-stage');
+    if (!box || box.dataset.wired) return;
+    box.dataset.wired = '1';
+    var a = document.createElement('a');
+    a.className = 'stage-link';
+    a.href = ROUTES.places();
+    a.textContent = '学びの場から探す →';
+    box.appendChild(a);
+  }
+
   function renderFooter() {
     var fb = META.feedback;
     siteFooter.innerHTML =
@@ -561,7 +852,18 @@
     tabGuide.onclick = function () { setMode('guide'); };
     tabJiritsu.onclick = function () { setMode('jiritsu'); };
     tabTerms.onclick = function () { setMode('terms'); };
-    searchBox.addEventListener('input', function () { renderIndex(searchBox.value); });
+
+    // 検索は打つたびにURLを積むと戻るボタンが使い物にならないので、
+    // 表示だけ即座に更新し、URLは打ち終わってから置き換える。
+    var searchTimer = null;
+    searchBox.addEventListener('input', function () {
+      renderIndex(searchBox.value);
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(function () {
+        var q = searchBox.value.trim();
+        navigate(q ? ROUTES.search(q) : ROUTES.home(), true);
+      }, 600);
+    });
   }
 
   function boot(bundle) {
@@ -571,11 +873,32 @@
     DATA = bundle.categories;
     SOURCES.forEach(function (s) { SRC[s.id] = s; });
 
+    // 自立活動の項目 → その項目を要する疾患、の索引を作る。
+    // データはすでに疾患側に持っているので、向きを変えるだけ。
+    DATA.forEach(function (c) {
+      c.diseases.forEach(function (d) {
+        (d.jiritsu || []).forEach(function (j) {
+          var k = j.ku + '／' + j.item;
+          (REV[k] = REV[k] || []).push({ cat: c, disease: d });
+        });
+      });
+      (c.places || []).forEach(function (pl) {
+        var st = stageOf(pl.name);
+        (PLACES[st] = PLACES[st] || []).push({ cat: c, name: pl.name, note: pl.note });
+      });
+    });
+
     bindDom();
-    renderIndex('');
-    renderHome();
+    wireSideNav();
     renderFooter();
     installBanner();
+
+    // 戻る／進む、URL直打ち、リンク経由のいずれもここで拾う
+    window.addEventListener('hashchange', function () {
+      applyRoute();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    applyRoute();
   }
 
   function fail(err) {

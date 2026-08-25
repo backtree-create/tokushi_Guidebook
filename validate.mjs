@@ -161,23 +161,52 @@ const contrast = (a, b) => {
   return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
 };
 
-const tokens = {};
-for (const m of css.matchAll(/--([\w-]+)\s*:\s*(#[0-9a-fA-F]{3,6})\s*;/g)) tokens[m[1]] = m[2];
+// 明るい配色と暗い配色のトークンを、それぞれ切り出す
+function tokensIn(block) {
+  const t = {};
+  for (const m of block.matchAll(/--([\w-]+)\s*:\s*(#[0-9a-fA-F]{3,6})\s*;/g)) t[m[1]] = m[2];
+  return t;
+}
+const darkStart = css.indexOf('@media (prefers-color-scheme: dark)');
+const lightTokens = tokensIn(darkStart >= 0 ? css.slice(0, darkStart) : css);
+const darkTokens = darkStart >= 0
+  ? Object.assign({}, lightTokens, tokensIn(css.slice(darkStart)))
+  : null;
 
-// 明るい背景の上に置く文字色は、いずれの背景でも 4.5:1 以上であること
-const LIGHT_BGS = ['paper', 'card', 'paper2'];
-const TEXT_TOKENS = ['ink', 'ink-soft', 'ink-faint', 'gold', 'teal'];
-for (const t of TEXT_TOKENS) {
-  if (!tokens[t]) { err(`style.css: --${t} が見つかりません`); continue; }
-  for (const bg of LIGHT_BGS) {
-    if (!tokens[bg]) continue;
-    const r = contrast(tokens[t], tokens[bg]);
+const BGS = ['paper', 'card', 'paper2'];
+const TEXT_TOKENS = ['ink', 'ink-strong', 'ink-soft', 'ink-faint', 'gold', 'teal'];
+const TONE_PAIRS = [
+  ['tone-ok-fg', 'tone-ok-bg'],
+  ['tone-info-fg', 'tone-info-bg'],
+  ['tone-warn-fg', 'tone-warn-bg'],
+  ['tag-fg', 'tag-bg'],
+];
+
+function checkPalette(label, t) {
+  if (!t) return;
+  for (const name of TEXT_TOKENS) {
+    if (!t[name]) { err(`style.css(${label}): --${name} が見つかりません`); continue; }
+    for (const bg of BGS) {
+      if (!t[bg]) continue;
+      const r = contrast(t[name], t[bg]);
+      if (r < 4.5) {
+        err(`style.css(${label}): --${name} (${t[name]}) を --${bg} (${t[bg]}) の上に置くと` +
+            `コントラスト比 ${r.toFixed(2)}。4.5 以上が必要です`);
+      }
+    }
+  }
+  for (const [fg, bg] of TONE_PAIRS) {
+    if (!t[fg] || !t[bg]) { err(`style.css(${label}): --${fg} / --${bg} が見つかりません`); continue; }
+    const r = contrast(t[fg], t[bg]);
     if (r < 4.5) {
-      err(`style.css: --${t} (${tokens[t]}) を --${bg} (${tokens[bg]}) の上に置くとコントラスト比 ${r.toFixed(2)}。` +
-          `4.5 以上が必要です（色を暗くしてください）`);
+      err(`style.css(${label}): --${fg} (${t[fg]}) を --${bg} (${t[bg]}) の上に置くと` +
+          `コントラスト比 ${r.toFixed(2)}。4.5 以上が必要です`);
     }
   }
 }
+checkPalette('明るい配色', lightTokens);
+checkPalette('暗い配色', darkTokens);
+if (!darkTokens) warn('style.css: 暗い配色（prefers-color-scheme: dark）の定義がありません');
 
 // 本文として読ませる文字は 11px を下回らないこと
 const MIN_PX = 11;

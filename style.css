@@ -12,6 +12,11 @@
     --gold-soft:#c9a96b;
     --teal:#2c5a63;
     --card:#ffffff;
+    --ink-strong:#132132;   /* 見出しの文字色。--navy は面の色なので文字には使わない */
+    --tone-ok-fg:#3f5b45;   --tone-ok-bg:#eef3ee;   --tone-ok-bd:#8fa892;
+    --tone-info-fg:#866a2e; --tone-info-bg:#f6f1e6; --tone-info-bd:#b99a55;
+    --tone-warn-fg:#7a5c15; --tone-warn-bg:#f8f2e2; --tone-warn-bd:#c0a15c;
+    --tag-fg:#245058;       --tag-bg:#e4ece9;
     --shadow: 0 1px 2px rgba(19,33,50,.06), 0 6px 18px -12px rgba(19,33,50,.28);
     --serif: "Noto Serif JP","Shippori Mincho","游明朝体","Hiragino Mincho ProN",serif;
     --sans: "Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
@@ -140,7 +145,7 @@
   }
   .mode-tabs button.on{
     background:var(--paper);
-    color:var(--navy);
+    color:var(--ink-strong);
   }
   .mode-tabs button:not(.on):hover{color:#eef0ec;}
 
@@ -296,7 +301,7 @@
     font-family:var(--serif);
     font-size:13px;
     font-weight:700;
-    color:var(--navy);
+    color:var(--ink-strong);
     overflow-wrap:break-word;
     word-break:normal;
   }
@@ -337,7 +342,7 @@
   .article-num{
     font-family:var(--mono);
     font-size:13px;
-    color:var(--navy);
+    color:var(--ink-strong);
     background:var(--paper2);
     border:1px solid var(--line-strong);
     border-radius:3px;
@@ -350,7 +355,7 @@
     font-size:clamp(21px,2.8vw,27px);
     margin:0;
     line-height:1.35;
-    color:var(--navy);
+    color:var(--ink-strong);
   }
   .cat-title .en{
     display:block;
@@ -383,7 +388,7 @@
     display:flex;
     align-items:center;
     gap:9px;
-    color:var(--navy);
+    color:var(--ink-strong);
     padding-bottom:9px;
     border-bottom:1px solid var(--line);
   }
@@ -415,8 +420,8 @@
     font-family:var(--sans);
     font-weight:700;
     font-size:11.5px;
-    color:var(--teal);
-    background:#e4ece9;
+    color:var(--tag-fg);
+    background:var(--tag-bg);
     padding:2px 8px;
     border-radius:2px;
     margin-bottom:7px;
@@ -433,7 +438,7 @@
     font-size:13.8px;
   }
   @media (max-width:600px){.instr-item{grid-template-columns:1fr;gap:4px;}}
-  .instr-item .t{font-weight:700;color:var(--navy);font-size:13px;}
+  .instr-item .t{font-weight:700;color:var(--ink-strong);font-size:13px;}
 
   .support-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 12px;}
   .support-tabs button{
@@ -544,7 +549,7 @@
     border-radius:2px;
     padding:11px 14px;
   }
-  .sv-level{font-family:var(--serif);font-weight:700;color:var(--navy);font-size:13px;margin-bottom:4px;}
+  .sv-level{font-family:var(--serif);font-weight:700;color:var(--ink-strong);font-size:13px;margin-bottom:4px;}
   .sv-criteria{color:var(--ink-soft);font-size:12.5px;margin-bottom:8px;}
   .sv-support{margin:0;padding-left:1.1em;font-size:12.5px;}
   .sv-support li{margin-bottom:3px;}
@@ -586,7 +591,7 @@
     border-radius:2px;
     margin-right:8px;
   }
-  .jiritsu-row .item-name{font-weight:700;color:var(--navy);}
+  .jiritsu-row .item-name{font-weight:700;color:var(--ink-strong);}
   .jiritsu-row .j-note{margin-top:5px;color:var(--ink-soft);}
 
   .place-row{
@@ -644,7 +649,7 @@
   }
   .home-card:hover{border-color:var(--navy);}
   .home-card .num{font-family:var(--mono);color:var(--gold);font-size:11px;}
-  .home-card h4{font-family:var(--serif);margin:6px 0 6px;font-size:16px;color:var(--navy);}
+  .home-card h4{font-family:var(--serif);margin:6px 0 6px;font-size:16px;color:var(--ink-strong);}
   .home-card p{margin:0;font-size:12px;color:var(--ink-soft);}
   .home-stats{
     display:flex;
@@ -659,7 +664,7 @@
     display:block;
     font-family:var(--serif);
     font-size:26px;
-    color:var(--navy);
+    color:var(--ink-strong);
   }
   .home-stat span{font-size:12px;color:var(--ink-soft);}
 
@@ -696,7 +701,7 @@
     font-family:var(--serif);
     font-size:19px;
     margin:0;
-    color:var(--navy);
+    color:var(--ink-strong);
   }
   .table-scroll{width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch;}
   table.item-table{width:100%;min-width:480px;border-collapse:collapse;background:var(--card);box-shadow:var(--shadow);}
@@ -718,7 +723,7 @@
     overflow-wrap:break-word;
   }
   table.item-table td.item-no{font-family:var(--mono);color:var(--ink-faint);width:34px;}
-  table.item-table td.item-name{font-weight:700;color:var(--navy);width:150px;}
+  table.item-table td.item-name{font-weight:700;color:var(--ink-strong);width:150px;}
   table.item-table tr:last-child td{border-bottom:none;}
   @media (max-width:600px){
     table.item-table td.item-name{width:110px;}
@@ -727,7 +732,7 @@
   /* ---------- インストール案内バナー ---------- */
   .install-banner{
     background:var(--gold);
-    color:var(--navy);
+    color:var(--ink-strong);
     font-size:12.5px;
     font-weight:600;
     padding:9px 16px;
@@ -818,9 +823,9 @@
     background:var(--paper2);
     /* 色だけに頼らず、必ず文字で区別が付くようにしている */
   }
-  .basis-tag.tone-ok{border-color:#8fa892;color:#3f5b45;background:#eef3ee;}
-  .basis-tag.tone-info{border-color:#b99a55;color:#866a2e;background:#f6f1e6;}
-  .basis-tag.tone-warn{border-color:#c0a15c;color:#7a5c15;background:#f8f2e2;}
+  .basis-tag.tone-ok{border-color:var(--tone-ok-bd);color:var(--tone-ok-fg);background:var(--tone-ok-bg);}
+  .basis-tag.tone-info{border-color:var(--tone-info-bd);color:var(--tone-info-fg);background:var(--tone-info-bg);}
+  .basis-tag.tone-warn{border-color:var(--tone-warn-bd);color:var(--tone-warn-fg);background:var(--tone-warn-bg);}
 
   /* --- 編集上の注記 --- */
   .d-note{
@@ -859,7 +864,7 @@
     border:1px solid var(--line-strong);
     white-space:nowrap;
   }
-  .policy-tag.latest{border-color:#c0a15c;color:#7a5c15;background:#f8f2e2;}
+  .policy-tag.latest{border-color:var(--tone-warn-bd);color:var(--tone-warn-fg);background:var(--tone-warn-bg);}
   .policy-tag.pinned{color:var(--ink-soft);background:var(--paper2);}
 
   /* --- フッター --- */
@@ -1012,3 +1017,290 @@
 
   /* 説明文はクリック対象ではない。文字を選んで読める。 */
   .brandmark .lead{cursor:text;user-select:text;}
+
+  /* ==========================================================
+     自立活動からの逆引き・学びの場・指摘フォーム
+     ========================================================== */
+  .crumb{margin:0 0 14px;font-size:13px;}
+  .crumb a{color:var(--teal);}
+
+  .official-line{
+    margin:-8px 0 22px;
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+
+  .ku-link{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-strong);}
+  .ku-link:hover{color:var(--teal);border-bottom-color:var(--teal);}
+
+  .rev-count{
+    display:inline-block;
+    margin-top:6px;
+    font-size:12px;
+    color:var(--teal);
+    white-space:nowrap;
+  }
+
+  .rev-group{
+    border:1px solid var(--line);
+    border-radius:3px;
+    background:var(--card);
+    margin:0 0 14px;
+    overflow:hidden;
+  }
+  .rev-cat{
+    margin:0;
+    padding:10px 16px;
+    background:var(--paper2);
+    border-bottom:1px solid var(--line);
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:14.5px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .rev-cat a{color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px;}
+  .rev-cat a:hover{color:var(--teal);}
+  .rev-num{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--ink-soft);
+    border:1px solid var(--line-strong);
+    border-radius:2px;
+    padding:1px 6px;
+    font-variant-numeric:tabular-nums;
+  }
+  .rev-n{
+    margin-left:auto;
+    font-family:var(--mono);
+    font-size:12px;
+    font-weight:400;
+    color:var(--ink-soft);
+  }
+  .rev-list{list-style:none;margin:0;padding:0;}
+  .rev-list li{
+    padding:10px 16px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    flex-wrap:wrap;
+    align-items:baseline;
+    gap:4px 14px;
+    font-size:13.8px;
+    line-height:1.75;
+  }
+  .rev-list li:last-child{border-bottom:none;}
+  .rev-list a{font-weight:700;color:var(--teal);text-decoration:none;flex:none;}
+  .rev-list a:hover{text-decoration:underline;}
+  .rev-ov{color:var(--ink-soft);font-size:12.8px;flex:1 1 260px;min-width:0;}
+
+  .place-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;}
+  .place-chip{
+    display:inline-flex;align-items:center;gap:8px;
+    border:1px solid var(--line-strong);
+    border-radius:3px;
+    padding:7px 13px;
+    font-size:13px;
+    color:var(--ink);
+    text-decoration:none;
+    background:var(--card);
+  }
+  .place-chip span{
+    font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);
+    font-variant-numeric:tabular-nums;
+  }
+  .place-chip:hover{border-color:var(--teal);color:var(--teal);}
+  .place-chip.on{background:var(--navy);color:#fbfaf6;border-color:var(--navy);}
+  .place-chip.on span{color:var(--gold-soft);}
+
+  .stage-link{
+    display:inline-block;
+    margin-top:10px;
+    font-size:12.5px;
+    color:var(--teal);
+    font-weight:700;
+  }
+
+  .fb-line{
+    margin:12px 0 0;
+    padding-top:12px;
+    border-top:1px dashed var(--line);
+    display:flex;
+    flex-wrap:wrap;
+    align-items:baseline;
+    gap:4px 12px;
+  }
+  .fb-link{font-size:12.5px;font-weight:700;color:var(--teal);white-space:nowrap;}
+  .fb-ctx{font-size:11.5px;color:var(--ink-faint);}
+
+  .hit-where{
+    display:inline-block;
+    margin-left:6px;
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:400;
+    color:var(--ink-soft);
+    border:1px solid var(--line-strong);
+    border-radius:2px;
+    padding:0 5px;
+  }
+
+  .stage-flowline{
+    display:flex;flex-wrap:wrap;align-items:center;gap:8px;
+    margin:0 0 14px;
+  }
+  .stage-flowline .arrow{color:var(--ink-faint);font-size:14px;}
+
+  /* ==========================================================
+     印刷
+     支援会議の資料や、個別の指導計画を書くときの下敷きとして
+     紙に出す前提で整える。画面用の要素は落とし、リンク先のURLは
+     紙の上でも辿れるよう本文の後ろに出す。
+     ========================================================== */
+  @media print{
+    @page{ margin:16mm 14mm; }
+
+    html,body{
+      background:#fff !important;
+      color:#000 !important;
+      font-size:10.5pt;
+      line-height:1.7;
+      overflow:visible !important;
+    }
+
+    /* 画面の操作部品は紙に出さない */
+    .top-strip,.mode-tabs,.fab-home,.install-banner,
+    .index,.search-wrap,.disease-hits,.school-stage,
+    .support-tabs,.place-chips,.stage-flowline,.crumb,
+    .fb-line,.rev-count,.d-hint,.chevron{
+      display:none !important;
+    }
+
+    header{background:#fff !important;border-bottom:1.5pt solid #000;padding-bottom:8pt;}
+    .header-inner{display:block;padding-bottom:6pt;}
+    .emblem{display:none !important;}
+    h1{color:#000 !important;font-size:17pt;margin:0 0 4pt;}
+    .eyebrow{color:#555 !important;letter-spacing:.1em;}
+    header p.lead,.lead{color:#333 !important;font-size:9pt;max-width:none;}
+    .credential{
+      color:#333 !important;background:none;border:none;
+      font-size:8.5pt;text-align:left;margin-top:6pt;
+    }
+    .credential b{color:#000 !important;}
+
+    .layout{display:block !important;}
+    main{padding:0 !important;}
+    .jiritsu-table-wrap{max-width:none;}
+
+    /* 開いている疾患だけを詳しく刷る。
+       全件を展開すると病弱で70ページを超え、実用にならないため。
+       閉じているものは名前だけを索引として残す。 */
+    .disease-item.open .disease-detail{max-height:none !important;overflow:visible !important;}
+    .disease-item:not(.open) .disease-detail{display:none !important;}
+    .disease-item:not(.open){
+      display:inline-block;
+      width:auto;
+      border:none;
+      margin:0 10pt 0 0;
+      padding:0;
+    }
+    .disease-item:not(.open) .disease-row{
+      display:inline;padding:0;font-size:9pt;color:#444 !important;
+    }
+    .disease-item:not(.open) .d-name{font-size:9pt;font-weight:400;}
+    .disease-item:not(.open) .sev-badge{display:none !important;}
+    .disease-item:not(.open){margin-right:14pt;}
+    /* 画面では縦積みだが、紙では名前を流し込んで行数を節約する */
+    .disease-list{display:block !important;line-height:1.9;border-top:none;}
+
+    .disease-item.open{
+      display:block;width:auto;
+      break-inside:avoid;page-break-inside:avoid;
+      border:1pt solid #666;padding:8pt 10pt;margin:8pt 0;
+    }
+    .disease-item.open .disease-row{padding:0 0 4pt;}
+    .disease-item.open .d-name{font-size:12pt;font-weight:700;}
+    .disease-item.open .disease-detail-inner{padding:0;}
+
+    .block{break-inside:avoid;page-break-inside:avoid;}
+    .block-title{border-left:3pt solid #000;padding-left:6pt;}
+    /* 閉じている疾患は名前だけ並ぶので、その旨を添える */
+    .disease-list::before{
+      content:"※ 開いている項目のみ詳細を印刷します。以下は同じ障害種に含まれる他の項目です。";
+      display:block;font-size:8.5pt;color:#555;margin-bottom:6pt;
+    }
+    h2,h3{break-after:avoid;page-break-after:avoid;}
+
+    /* 支援内容のタブは紙では意味がないので、全区分を並べる */
+    .support-panel{display:block !important;}
+
+    .need-card,.instr-item,.place-row,.severity-item,
+    .rev-group,.source-box,.section-disclaimer,.basis-detail,.d-note{
+      border-color:#999 !important;background:#fff !important;
+      break-inside:avoid;page-break-inside:avoid;
+    }
+    .jiritsu-chip{border:.5pt solid #666 !important;background:#fff !important;color:#000 !important;}
+    .ku-mini{background:#000 !important;color:#fff !important;}
+    .basis-tag{border:.5pt solid #666 !important;background:#fff !important;color:#000 !important;}
+
+    /* リンクは紙では押せないので、URLを添える */
+    .source-box a[href^="http"]::after,
+    .basis-refs a[href^="http"]::after{
+      content:" 〈" attr(href) "〉";
+      font-size:8pt;color:#444;word-break:break-all;
+    }
+    a{color:#000 !important;text-decoration:none;}
+
+    table{page-break-inside:auto;}
+    tr{break-inside:avoid;page-break-inside:avoid;}
+    thead{display:table-header-group;}
+
+    footer{
+      border-top:1pt solid #000;margin-top:12pt;padding-top:6pt;
+      font-size:8pt;color:#333 !important;
+    }
+    .footer-feedback{border:none;background:none;padding:0;}
+
+    /* 出典を明記したまま配れるように、末尾に版を刷る */
+    .footer-meta{font-size:8pt;}
+  }
+
+  /* ==========================================================
+     暗い配色
+     端末の設定に従って自動で切り替わる。紺のヘッダーは残し、
+     地色だけを暗くする。文字色は明るい側と同じく、いずれの背景でも
+     コントラスト比4.5以上を満たす値に置き換えている。
+     ========================================================== */
+  @media (prefers-color-scheme: dark){
+    :root{
+      --navy:#0d1620;
+      --ink-strong:#f0ede6;   /* 暗い地では見出しを明るく */
+      --navy-2:#16283a;
+      --paper:#151a1f;
+      --paper2:#1c2229;
+      --card:#1b2128;
+      --ink:#e9e7e1;
+      --ink-soft:#b6bbbf;
+      --ink-faint:#949ba1;
+      --line:#2b333b;
+      --line-strong:#3d454d;
+      --gold:#d9b978;
+      --gold-soft:#c9a96b;
+      --teal:#8dc0cb;
+      --shadow:0 1px 2px rgba(0,0,0,.5), 0 6px 18px -12px rgba(0,0,0,.8);
+      --tone-ok-fg:#9ecfa8;   --tone-ok-bg:#1e2a21;   --tone-ok-bd:#456a4c;
+      --tone-info-fg:#dcbd7d; --tone-info-bg:#2a2418; --tone-info-bd:#7a6433;
+      --tone-warn-fg:#e3c37a; --tone-warn-bg:#2e2716; --tone-warn-bd:#856212;
+      --tag-fg:#9ed2de;       --tag-bg:#16262b;
+    }
+
+    /* 罫線やタブの薄い塗りは、暗い地では逆方向に効かせる */
+    .disease-row{background:rgba(255,255,255,.03);}
+    .support-panel{background:var(--card);}
+    .place-chip.on{background:var(--gold);color:#14181c;border-color:var(--gold);}
+    .place-chip.on span{color:#3a2f14;}
+    .ku-mini{background:var(--gold);color:#14181c;}
+    .mode-tabs button.on{background:var(--paper);color:var(--ink);}
+
+    /* 印刷は常に明るい配色で出す（下の @media print が優先される） */
+  }
