@@ -1,23 +1,42 @@
   :root{
+    /* ---- 面 ----
+       地は白。副次的な面はごくわずかに青みを帯びた明るいグレーで、
+       濃紺のヘッダーと同じ系統に収める。生成りは使わない。 */
+    --paper:#ffffff;
+    --paper2:#f2f5f8;
+    --card:#ffffff;
+    --line:#dce2e8;
+    --line-strong:#a9b4be;
+
+    /* ---- 濃紺（構造色）----
+       ヘッダー、見出しの罫、選択状態。このツールの背骨。 */
     --navy:#132132;
     --navy-2:#1c3040;
-    --paper:#f4f4f0;
-    --paper2:#ebeae3;
-    --ink:#1c2126;
-    --ink-soft:#565c60;
-    --ink-faint:#65696e;   /* 4.5:1 を満たすよう補正（旧 #8a9096 は 2.9:1 で不足） */
-    --line:#d6d5cb;
-    --line-strong:#b9b8ac;
-    --gold:#80652c;        /* 4.5:1 を満たすよう補正（旧 #8a6d2f は 4.4:1 で僅かに不足） */
+
+    /* ---- 文字 ----
+       白地で18:1。行政文書の水準に合わせて高めに取る。 */
+    --ink:#141719;
+    --ink-strong:#0e2033;
+    --ink-soft:#40484f;
+    --ink-faint:#59626a;
+
+    /* ---- 操作色 ----
+       リンクと押せるもの。金や青緑ではなく、公的機関で通用する藍。 */
+    --accent:#0f4c8a;
+    --accent-soft:#e9eff7;
+
+    /* ---- 金 ----
+       濃紺の面の上でのみ使う。明るい地には置かない（濁って見えるため）。 */
     --gold-soft:#c9a96b;
-    --teal:#2c5a63;
-    --card:#ffffff;
-    --ink-strong:#132132;   /* 見出しの文字色。--navy は面の色なので文字には使わない */
-    --tone-ok-fg:#3f5b45;   --tone-ok-bg:#eef3ee;   --tone-ok-bd:#8fa892;
-    --tone-info-fg:#866a2e; --tone-info-bg:#f6f1e6; --tone-info-bd:#b99a55;
-    --tone-warn-fg:#7a5c15; --tone-warn-bg:#f8f2e2; --tone-warn-bd:#c0a15c;
-    --tag-fg:#245058;       --tag-bg:#e4ece9;
-    --shadow: 0 1px 2px rgba(19,33,50,.06), 0 6px 18px -12px rgba(19,33,50,.28);
+    --gold-line:#a8823c;
+
+    /* ---- 状態を表す色 ---- */
+    --tone-ok-fg:#12592f;   --tone-ok-bg:#e8f2ec;   --tone-ok-bd:#6a9a7c;
+    --tone-info-fg:#0f4c8a; --tone-info-bg:#e9eff7; --tone-info-bd:#7799bf;
+    --tone-warn-fg:#7a4c00; --tone-warn-bg:#fbf0dd; --tone-warn-bd:#b8934f;
+    --tag-fg:#0d3d54;       --tag-bg:#e6eef3;
+
+    --shadow: 0 1px 2px rgba(19,33,50,.05), 0 6px 18px -12px rgba(19,33,50,.22);
     --serif: "Noto Serif JP","Shippori Mincho","游明朝体","Hiragino Mincho ProN",serif;
     --sans: "Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
     --mono: "Roboto Mono", "SFMono-Regular", Consolas, monospace;
@@ -35,7 +54,7 @@
     overflow-wrap:break-word;
     line-break:strict;
   }
-  a{color:var(--teal); overflow-wrap:break-word; word-break:break-word;}
+  a{color:var(--accent); overflow-wrap:break-word; word-break:break-word;}
   img, table, pre, .source-box, .credential, .top-strip{max-width:100%;}
 
   /* ---------- 上部帯（機関名） ---------- */
@@ -58,7 +77,7 @@
     padding:30px 24px 0;
     background:var(--navy);
     color:#f2f1ea;
-    border-bottom:3px solid var(--gold);
+    border-bottom:3px solid var(--gold-line);
   }
   .header-inner{max-width:1220px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:28px;flex-wrap:wrap;padding-bottom:22px; min-width:0;}
   .brandmark{
@@ -160,7 +179,7 @@
     gap:8px;
     background:var(--navy);
     color:var(--gold-soft);
-    border:2px solid var(--gold);
+    border:2px solid var(--gold-soft);
     border-radius:30px;
     padding:12px 16px;
     font-family:var(--sans);
@@ -229,7 +248,7 @@
     font-size:13px;
     color:var(--ink);
   }
-  .search-wrap input:focus{outline:2px solid var(--teal);outline-offset:1px;}
+  .search-wrap input:focus{outline:2px solid var(--accent);outline-offset:1px;}
   .index-label{
     font-family:var(--sans);
     font-weight:700;
@@ -274,7 +293,7 @@
     margin-left:auto;
     font-family:var(--mono);
     font-size:11px;
-    background:var(--gold);
+    background:var(--accent);
     color:#fff;
     padding:1px 6px;
     border-radius:10px;
@@ -322,7 +341,7 @@
   .stage-flow{
     font-family:var(--mono);
     font-size:12px;
-    color:var(--teal);
+    color:var(--accent);
     display:block;
     margin:6px 0;
     letter-spacing:-.01em;
@@ -395,7 +414,7 @@
   h3.block-title::before{
     content:"";
     width:5px;height:15px;
-    background:var(--gold);
+    background:var(--navy);
     flex-shrink:0;
   }
   h3.block-title .tally{
@@ -487,7 +506,7 @@
   .disease-row .chevron{
     width:16px;height:16px;
     flex-shrink:0;
-    color:var(--gold);
+    color:var(--accent);
     transition:transform .16s;
     font-size:11px;
   }
@@ -525,7 +544,7 @@
     font-size:12px;
     font-weight:700;
     letter-spacing:.08em;
-    color:var(--teal);
+    color:var(--accent);
     text-transform:uppercase;
     margin:0 0 6px;
   }
@@ -536,7 +555,7 @@
     font-size:11px;
     font-weight:700;
     color:#fff;
-    background:var(--gold);
+    background:var(--accent);
     padding:2px 8px;
     border-radius:10px;
     flex-shrink:0;
@@ -545,7 +564,7 @@
   .severity-item{
     background:var(--card);
     border:1px solid var(--line-strong);
-    border-left:4px solid var(--gold);
+    border-left:4px solid var(--accent);
     border-radius:2px;
     padding:11px 14px;
   }
@@ -575,7 +594,7 @@
   .jiritsu-row{
     background:var(--card);
     border:1px solid var(--line);
-    border-left:3px solid var(--teal);
+    border-left:3px solid var(--accent);
     border-radius:2px;
     padding:10px 14px;
     font-size:13px;
@@ -586,7 +605,7 @@
     font-size:11.5px;
     font-weight:700;
     background:var(--paper2);
-    color:var(--teal);
+    color:var(--accent);
     padding:2px 9px;
     border-radius:2px;
     margin-right:8px;
@@ -621,9 +640,9 @@
     font-size:13.3px;
     margin:0 0 10px;
     padding-left:12px;
-    border-left:2px solid var(--gold);
+    border-left:2px solid var(--line-strong);
   }
-  .source-box a{color:var(--teal);word-break:break-all;}
+  .source-box a{color:var(--accent);word-break:break-all;}
 
   footer{
     max-width:1220px;margin:0 auto;
@@ -632,7 +651,7 @@
     font-size:13px;
     border-top:1px solid var(--line);
   }
-  footer a{color:var(--teal);}
+  footer a{color:var(--accent);}
   footer .refs{margin-top:10px;line-height:2;}
 
   .home-view{max-width:840px;}
@@ -648,7 +667,7 @@
     transition:border-color .12s;
   }
   .home-card:hover{border-color:var(--navy);}
-  .home-card .num{font-family:var(--mono);color:var(--gold);font-size:11px;}
+  .home-card .num{font-family:var(--mono);color:var(--accent);font-size:11px;}
   .home-card h4{font-family:var(--serif);margin:6px 0 6px;font-size:16px;color:var(--ink-strong);}
   .home-card p{margin:0;font-size:12px;color:var(--ink-soft);}
   .home-stats{
@@ -731,8 +750,8 @@
 
   /* ---------- インストール案内バナー ---------- */
   .install-banner{
-    background:var(--gold);
-    color:var(--ink-strong);
+    background:var(--navy);
+    color:#ffffff;
     font-size:12.5px;
     font-weight:600;
     padding:9px 16px;
@@ -776,7 +795,7 @@
   .section-disclaimer{
     background:var(--card);
     border:1px solid var(--line);
-    border-left:3px solid var(--gold);
+    border-left:3px solid var(--accent);
     border-radius:3px;
     padding:12px 16px;
     margin:0 0 18px;
@@ -996,7 +1015,7 @@
      以前はヘッダーのブロック全体がボタンで、説明文をなぞろうとしただけで
      ホームへ飛んでいた。紋章とタイトルの2つだけを操作対象にする。
      ========================================================== */
-  .emblem:hover{opacity:.85;border-color:var(--gold);}
+  .emblem:hover{opacity:.85;border-color:var(--gold-soft);}
   .emblem:focus-visible{outline:2px solid var(--gold-soft);outline-offset:3px;}
 
   .h1-home{
@@ -1022,7 +1041,7 @@
      自立活動からの逆引き・学びの場・指摘フォーム
      ========================================================== */
   .crumb{margin:0 0 14px;font-size:13px;}
-  .crumb a{color:var(--teal);}
+  .crumb a{color:var(--accent);}
 
   .official-line{
     margin:-8px 0 22px;
@@ -1031,13 +1050,13 @@
   }
 
   .ku-link{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-strong);}
-  .ku-link:hover{color:var(--teal);border-bottom-color:var(--teal);}
+  .ku-link:hover{color:var(--accent);border-bottom-color:var(--accent);}
 
   .rev-count{
     display:inline-block;
     margin-top:6px;
     font-size:12px;
-    color:var(--teal);
+    color:var(--accent);
     white-space:nowrap;
   }
 
@@ -1061,7 +1080,7 @@
     gap:10px;
   }
   .rev-cat a{color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px;}
-  .rev-cat a:hover{color:var(--teal);}
+  .rev-cat a:hover{color:var(--accent);}
   .rev-num{
     font-family:var(--mono);
     font-size:11.5px;
@@ -1090,7 +1109,7 @@
     line-height:1.75;
   }
   .rev-list li:last-child{border-bottom:none;}
-  .rev-list a{font-weight:700;color:var(--teal);text-decoration:none;flex:none;}
+  .rev-list a{font-weight:700;color:var(--accent);text-decoration:none;flex:none;}
   .rev-list a:hover{text-decoration:underline;}
   .rev-ov{color:var(--ink-soft);font-size:12.8px;flex:1 1 260px;min-width:0;}
 
@@ -1109,7 +1128,7 @@
     font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);
     font-variant-numeric:tabular-nums;
   }
-  .place-chip:hover{border-color:var(--teal);color:var(--teal);}
+  .place-chip:hover{border-color:var(--accent);color:var(--accent);}
   .place-chip.on{background:var(--navy);color:#fbfaf6;border-color:var(--navy);}
   .place-chip.on span{color:var(--gold-soft);}
 
@@ -1117,7 +1136,7 @@
     display:inline-block;
     margin-top:10px;
     font-size:12.5px;
-    color:var(--teal);
+    color:var(--accent);
     font-weight:700;
   }
 
@@ -1130,7 +1149,7 @@
     align-items:baseline;
     gap:4px 12px;
   }
-  .fb-link{font-size:12.5px;font-weight:700;color:var(--teal);white-space:nowrap;}
+  .fb-link{font-size:12.5px;font-weight:700;color:var(--accent);white-space:nowrap;}
   .fb-ctx{font-size:11.5px;color:var(--ink-faint);}
 
   .hit-where{
@@ -1273,34 +1292,53 @@
      ========================================================== */
   @media (prefers-color-scheme: dark){
     :root{
-      --navy:#0d1620;
-      --ink-strong:#f0ede6;   /* 暗い地では見出しを明るく */
+      /* 明るい配色と同じ骨格のまま、面と文字を反転させる。
+         濃紺のヘッダーはさらに沈め、地との段差を残す。 */
+      --paper:#10151a;
+      --paper2:#1a2027;
+      --card:#161c22;
+      --line:#2a323a;
+      --line-strong:#414b55;
+
+      --navy:#0b131c;
       --navy-2:#16283a;
-      --paper:#151a1f;
-      --paper2:#1c2229;
-      --card:#1b2128;
-      --ink:#e9e7e1;
-      --ink-soft:#b6bbbf;
-      --ink-faint:#949ba1;
-      --line:#2b333b;
-      --line-strong:#3d454d;
-      --gold:#d9b978;
-      --gold-soft:#c9a96b;
-      --teal:#8dc0cb;
+
+      --ink:#eef1f4;
+      --ink-strong:#eaf0f7;
+      --ink-soft:#b8c1c9;
+      --ink-faint:#98a2ab;
+
+      --accent:#7db3e8;
+      --accent-soft:#152331;
+
+      --gold-soft:#d3b478;
+      --gold-line:#8a6a30;
+
+      --tone-ok-fg:#8fd0a5;   --tone-ok-bg:#14261b;   --tone-ok-bd:#3d6a4c;
+      --tone-info-fg:#9ec9f2; --tone-info-bg:#12212e; --tone-info-bd:#3e6488;
+      --tone-warn-fg:#e0b878; --tone-warn-bg:#2a2113; --tone-warn-bd:#7a6132;
+      --tag-fg:#9fd0e0;       --tag-bg:#14252c;
+
       --shadow:0 1px 2px rgba(0,0,0,.5), 0 6px 18px -12px rgba(0,0,0,.8);
-      --tone-ok-fg:#9ecfa8;   --tone-ok-bg:#1e2a21;   --tone-ok-bd:#456a4c;
-      --tone-info-fg:#dcbd7d; --tone-info-bg:#2a2418; --tone-info-bd:#7a6433;
-      --tone-warn-fg:#e3c37a; --tone-warn-bg:#2e2716; --tone-warn-bd:#856212;
-      --tag-fg:#9ed2de;       --tag-bg:#16262b;
     }
 
-    /* 罫線やタブの薄い塗りは、暗い地では逆方向に効かせる */
-    .disease-row{background:rgba(255,255,255,.03);}
+    /* 薄い塗りは暗い地では逆方向に効かせる */
+    .disease-row:hover{background:rgba(255,255,255,.04);}
+    ul.cat-list button:hover{background:rgba(255,255,255,.04);}
+    ul.cat-list li.active button{background:var(--accent-soft);color:var(--ink);}
+    ul.cat-list li.active button .num{color:var(--gold-soft);}
     .support-panel{background:var(--card);}
-    .place-chip.on{background:var(--gold);color:#14181c;border-color:var(--gold);}
-    .place-chip.on span{color:#3a2f14;}
-    .ku-mini{background:var(--gold);color:#14181c;}
+    .support-tabs button.on{background:var(--accent);color:#0b131c;border-color:var(--accent);}
+    .place-chip.on{background:var(--accent);color:#0b131c;border-color:var(--accent);}
+    .place-chip.on span{color:#0b131c;}
+    .ku-mini{background:var(--accent);color:#0b131c;}
     .mode-tabs button.on{background:var(--paper);color:var(--ink);}
+    .idx-hit-count{background:var(--accent);color:#0b131c;}
+    .sev-badge{background:var(--accent);color:#0b131c;}
+    h3.block-title::before{background:var(--accent);}
+    .install-banner{background:var(--accent-soft);color:var(--ink);}
+    .home-card:hover{border-color:var(--accent);}
 
     /* 印刷は常に明るい配色で出す（下の @media print が優先される） */
   }
+

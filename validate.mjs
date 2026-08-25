@@ -174,7 +174,17 @@ const darkTokens = darkStart >= 0
   : null;
 
 const BGS = ['paper', 'card', 'paper2'];
-const TEXT_TOKENS = ['ink', 'ink-strong', 'ink-soft', 'ink-faint', 'gold', 'teal'];
+
+// 一律 4.5 だと「基準は満たすが沈んで見える」配色を通してしまう。
+// 役割ごとに下限を分け、本文は行政文書の水準（12以上）を要求する。
+const TEXT_MIN = {
+  'ink': 12,          // 本文
+  'ink-strong': 12,   // 見出し
+  'ink-soft': 7,      // 補助的な本文
+  'ink-faint': 5.5,   // 注記・出典の発行機関名など
+  'accent': 4.5,      // リンク・操作要素
+};
+const TEXT_TOKENS = Object.keys(TEXT_MIN);
 const TONE_PAIRS = [
   ['tone-ok-fg', 'tone-ok-bg'],
   ['tone-info-fg', 'tone-info-bg'],
@@ -186,13 +196,22 @@ function checkPalette(label, t) {
   if (!t) return;
   for (const name of TEXT_TOKENS) {
     if (!t[name]) { err(`style.css(${label}): --${name} が見つかりません`); continue; }
+    const min = TEXT_MIN[name];
     for (const bg of BGS) {
       if (!t[bg]) continue;
       const r = contrast(t[name], t[bg]);
-      if (r < 4.5) {
+      if (r < min) {
         err(`style.css(${label}): --${name} (${t[name]}) を --${bg} (${t[bg]}) の上に置くと` +
-            `コントラスト比 ${r.toFixed(2)}。4.5 以上が必要です`);
+            `コントラスト比 ${r.toFixed(2)}。この役割には ${min} 以上が必要です`);
       }
+    }
+  }
+
+  // 金は濃紺の面の上でのみ使う約束。明るい地に置くと濁って見えるため。
+  if (t['gold-soft'] && t['navy']) {
+    const r = contrast(t['gold-soft'], t['navy']);
+    if (r < 4.5) {
+      err(`style.css(${label}): --gold-soft を --navy の上に置くとコントラスト比 ${r.toFixed(2)}`);
     }
   }
   for (const [fg, bg] of TONE_PAIRS) {
@@ -207,6 +226,11 @@ function checkPalette(label, t) {
 checkPalette('明るい配色', lightTokens);
 checkPalette('暗い配色', darkTokens);
 if (!darkTokens) warn('style.css: 暗い配色（prefers-color-scheme: dark）の定義がありません');
+
+// 金を明るい地に置いていないか（--gold は廃止し、--gold-soft / --gold-line のみ）
+if (/var\(--gold\)/.test(css.replace(/@media \(prefers-color-scheme: dark\)[\s\S]*/, ''))) {
+  err('style.css: 明るい配色で --gold を使っています。金は濃紺の面の上（--gold-soft / --gold-line）だけに限ってください');
+}
 
 // 本文として読ませる文字は 11px を下回らないこと
 const MIN_PX = 11;
