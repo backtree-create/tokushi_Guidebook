@@ -1,0 +1,553 @@
+[
+  {
+    "name": "読むことの困難",
+    "overview": "文章を正確に読み、内容を理解することに著しい困難がある状態。",
+    "support": [
+      "文字間・行間を広げた教材、振り仮名の付加",
+      "音声読み上げソフト等の活用"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "書くことの困難",
+    "overview": "文字を正確に書く、筋道立てて文章を作成することに著しい困難がある状態。",
+    "support": [
+      "キーボード入力・音声入力等の代替手段",
+      "書く量やマス目の大きさの調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚の補助及び代行手段の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "計算することの困難（算数障害）",
+    "overview": "暗算・筆算や数の概念の理解に著しい困難がある状態。",
+    "support": [
+      "具体物や図を用いた数量概念の指導",
+      "計算過程を分解した段階的な指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "聞く・話すことの困難",
+    "overview": "話を正しく聞き取って理解すること、伝えたいことを的確に話すことに著しい困難がある状態。",
+    "support": [
+      "視覚的な情報を併用した説明",
+      "要点を絞った短い指示"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "推論することの困難",
+    "overview": "事実を基に結果を予測したり、結果から原因を推し量ったりすることに著しい困難がある状態。",
+    "support": [
+      "具体的な事象・実体験を用いた指導",
+      "図示による因果関係の可視化"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "注意欠陥多動性障害との併存",
+    "overview": "学習障害と注意欠陥多動性障害が重複する場合も少なくない。",
+    "support": [
+      "双方の特性を踏まえた個別の指導計画",
+      "集中しやすい環境調整と学習内容の工夫の組み合わせ"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "困難を改善・克服する意欲"
+      }
+    ],
+    "severity": [
+      {
+        "level": "学習面の困難が主で行動面は軽度",
+        "criteria": "特定の学習領域に著しい困難があるが、行動のコントロールは比較的保たれている状態。",
+        "support": [
+          "学習内容の個別調整を中心とした支援",
+          "短時間の集中を促す学習環境"
+        ]
+      },
+      {
+        "level": "学習面と行動面の困難が同程度",
+        "criteria": "学習の困難に加え、不注意・多動性による生活面の困難も目立つ状態。",
+        "support": [
+          "学習支援と行動面の支援を組み合わせた指導計画",
+          "通級による指導の活用"
+        ]
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    },
+    "note": "ADHDの項の「学習障害との併存」と対になる項目です。内容を見直す際は両方を揃えて修正してください。"
+  },
+  {
+    "name": "発達性読み書き障害（ディスレクシア）",
+    "overview": "知的発達に遅れがないにもかかわらず、文字の読み書きの習得に著しい困難がある状態。",
+    "support": [
+      "音と文字の対応関係を丁寧に指導",
+      "デジタル教科書・音声読み上げの活用"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "算数障害（ディスカリキュリア）",
+    "overview": "数の大小・順序等、数概念の基礎的な理解に著しい困難がある状態。",
+    "support": [
+      "具体物を用いた数量感覚の育成",
+      "計算過程を可視化した指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "書字表出障害（ディスグラフィア）",
+    "overview": "文字を書く動作や文章の構成に著しい困難がある状態。",
+    "support": [
+      "タイピングや音声入力等の代替手段",
+      "文字のマス目や罫線の工夫"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚の補助及び代行手段の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "視空間認知の困難によるLD",
+    "overview": "図形やグラフ、位置関係の把握等、視覚的・空間的な情報処理に困難がある状態。",
+    "support": [
+      "立体模型など具体物を用いた指導",
+      "図表の見方を段階的に教える工夫"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "聴覚情報処理の困難によるLD",
+    "overview": "音声による指示や説明の理解に時間がかかり、聞き漏らしが多くなる状態。",
+    "support": [
+      "指示の視覚化（メモ・掲示）",
+      "要点を短く区切って伝える工夫"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "自閉症との併存によるLD",
+    "overview": "自閉症の特性を背景に、特定の学習領域に著しい困難が生じている状態。",
+    "support": [
+      "興味関心を生かした学習内容の工夫",
+      "構造化された学習環境の整備"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "発達性協調運動症を伴うLD",
+    "overview": "手先の協調運動の困難により、書字や図形の描写等に影響が及ぶ状態。",
+    "support": [
+      "書字の代替手段の活用",
+      "運動面の段階的な練習との連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "作業に必要な動作と円滑な遂行"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "言語性LD（読解・作文の困難が中心）",
+    "overview": "文章の内容理解や、まとまった文章の作成に著しい困難がある状態。",
+    "support": [
+      "文章構成の視覚化（図式化）",
+      "要点を整理する練習の機会"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の形成と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "非言語性学習障害",
+    "overview": "言語的な能力は高い一方、視空間認知や社会的状況の読み取りに著しい困難がある状態。",
+    "support": [
+      "具体的な言葉での状況説明",
+      "視覚的な情報の補足的な言語化"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "数処理の基礎的困難（数の大小・順序の理解）",
+    "overview": "数字の意味や大小関係等、数概念の基礎そのものに著しい困難がある状態。",
+    "support": [
+      "具体物・数直線を用いた数量感覚の育成",
+      "繰り返しによる段階的な定着"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "流暢性の困難を中心とするLD（読みの速度の遅さ）",
+    "overview": "読みの正確性はあるが、速度が著しく遅く、読解に時間がかかる状態。",
+    "support": [
+      "時間延長の配慮",
+      "音読練習の反復機会の確保"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "視覚性ワーキングメモリの弱さによるLD",
+    "overview": "見た情報を一時的に保持し操作する力に弱さがあり、板書の書き写し等に困難が生じる状態。",
+    "support": [
+      "書き写す量の調整",
+      "タブレット等での撮影による代替"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚の補助及び代行手段の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "聴覚性ワーキングメモリの弱さによるLD",
+    "overview": "聞いた情報を一時的に保持する力に弱さがあり、複数の指示を覚えることが難しい状態。",
+    "support": [
+      "指示を一つずつ区切って伝える",
+      "メモや視覚的な手順表の活用"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "漢字の習得に特化した困難",
+    "overview": "ひらがな・カタカナの習得は比較的良好だが、漢字の形の記憶・想起に著しい困難がある状態。",
+    "support": [
+      "部首等の構成要素に着目した指導",
+      "繰り返し書く以外の記憶方法（語呂合わせ等）の活用"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "文章題の理解に特化した困難（読解由来の算数困難）",
+    "overview": "計算技能自体は保たれているが、文章題の読解に起因して解答が困難になる状態。",
+    "support": [
+      "文章題を図式化する指導",
+      "キーワードに着目した読み方の指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "時間の概念理解の困難",
+    "overview": "時計の読み取りや時間の経過の感覚をつかむことに著しい困難がある状態。",
+    "support": [
+      "視覚的なタイマー・スケジュールの活用",
+      "時間の感覚を体験的につかむ活動"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "作文構成の困難（書字自体は可能なタイプ）",
+    "overview": "文字を書く動作自体には大きな困難がないが、文章全体の構成・展開に著しい困難がある状態。",
+    "support": [
+      "構成メモや付箋を用いた組み立ての可視化",
+      "段落ごとに区切った指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の形成と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "英語（外国語）学習に特化した読み書きの困難",
+    "overview": "母語の読み書きは可能でも、英語のつづりと発音の対応関係の習得に著しい困難がある状態。",
+    "support": [
+      "フォニックス等、音と文字の対応を重視した指導",
+      "口頭でのやり取りを重視した評価方法の工夫"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "数的事実の記憶に特化した困難（九九の暗記困難等）",
+    "overview": "計算の手続き自体は理解できても、九九等の数的事実を記憶に定着させることに著しい困難がある状態。",
+    "support": [
+      "視覚的・リズム的な記憶方略の活用",
+      "計算機等の補助具の使用を認める配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚の補助及び代行手段の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "読解の速度と正確性のアンバランスによるLD",
+    "overview": "時間をかければ読めるが速度が著しく遅い、または速く読めても理解が伴わない等のアンバランスを示す状態。",
+    "support": [
+      "読む目的に応じた読み方（精読・多読）の使い分け指導",
+      "時間延長の配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "作業記憶（ワーキングメモリ）の弱さに起因する複合的LD",
+    "overview": "聴覚性・視覚性双方のワーキングメモリの弱さが、読み書き計算の複数領域に影響している状態。",
+    "support": [
+      "情報を小分けにして提示する指導",
+      "メモや図等の外部記憶補助の活用"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚の補助及び代行手段の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "視知覚の統合に困難があるタイプのLD",
+    "overview": "個々の視覚情報は捉えられても、それらを一つのまとまりとして統合することに困難がある状態。",
+    "support": [
+      "情報を段階的に提示する指導",
+      "全体像を事前に示してから細部に入る指導順序"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  }
+]

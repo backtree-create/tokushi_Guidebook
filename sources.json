@@ -1,0 +1,165 @@
+[
+  {
+    "id": "tebiki",
+    "title": "障害のある子供の教育支援の手引～子供たち一人一人の教育的ニーズを踏まえた学びの充実に向けて～",
+    "publisher": "文部科学省",
+    "edition": "令和3年6月",
+    "url": "https://www.mext.go.jp/a_menu/shotou/tokubetu/material/1340250_00004.htm",
+    "indexUrl": "https://www.mext.go.jp/a_menu/shotou/tokubetu/material/1340250.htm",
+    "policy": "pinned",
+    "checked": "2026-08-25",
+    "note": "本ツールの障害種別ページ（教育的ニーズ・指導内容・合理的配慮・学びの場）の一次資料"
+  },
+  { "id": "tebiki-3-visual",       "title": "同 第3編 Ⅰ 視覚障害",     "publisher": "文部科学省", "edition": "令和3年6月", "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_05.pdf", "policy": "pinned", "checked": "2026-08-25" },
+  { "id": "tebiki-3-hearing",      "title": "同 第3編 Ⅱ 聴覚障害",     "publisher": "文部科学省", "edition": "令和3年6月", "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_06.pdf", "policy": "pinned", "checked": "2026-08-25" },
+  { "id": "tebiki-3-intellectual", "title": "同 第3編 Ⅲ 知的障害",     "publisher": "文部科学省", "edition": "令和3年6月", "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_07.pdf", "policy": "pinned", "checked": "2026-08-25" },
+  { "id": "tebiki-3-physical",     "title": "同 第3編 Ⅳ 肢体不自由",   "publisher": "文部科学省", "edition": "令和3年6月", "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_08.pdf", "policy": "pinned", "checked": "2026-08-25" },
+  { "id": "tebiki-3-health",       "title": "同 第3編 Ⅴ 病弱・身体虚弱", "publisher": "文部科学省", "edition": "令和3年6月", "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_09.pdf", "policy": "pinned", "checked": "2026-08-25" },
+  { "id": "tebiki-3-language",     "title": "同 第3編 Ⅵ 言語障害",     "publisher": "文部科学省", "edition": "令和3年6月", "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_10.pdf", "policy": "pinned", "checked": "2026-08-25" },
+  { "id": "tebiki-3-autism",       "title": "同 第3編 Ⅶ 自閉症",       "publisher": "文部科学省", "edition": "令和3年6月", "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_11.pdf", "policy": "pinned", "checked": "2026-08-25" },
+  { "id": "tebiki-3-emotional",    "title": "同 第3編 Ⅷ 情緒障害",     "publisher": "文部科学省", "edition": "令和3年6月", "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_12.pdf", "policy": "pinned", "checked": "2026-08-25" },
+  { "id": "tebiki-3-ld",           "title": "同 第3編 Ⅸ 学習障害",     "publisher": "文部科学省", "edition": "令和3年6月", "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_13.pdf", "policy": "pinned", "checked": "2026-08-25" },
+  { "id": "tebiki-3-adhd",         "title": "同 第3編 Ⅹ 注意欠陥多動性障害", "publisher": "文部科学省", "edition": "令和3年6月", "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_14.pdf", "policy": "pinned", "checked": "2026-08-25" },
+  {
+    "id": "jiritsu-kaisetsu",
+    "title": "特別支援学校教育要領・学習指導要領解説 自立活動編（幼稚部・小学部・中学部）",
+    "publisher": "文部科学省",
+    "edition": "平成30年3月",
+    "url": "https://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/02/04/1399950_5.pdf",
+    "policy": "pinned",
+    "checked": "2026-08-25",
+    "note": "自立活動 6区分27項目の根拠"
+  },
+  {
+    "id": "mext-tokubetsu-main",
+    "title": "特別支援教育に関する最近の主な動向",
+    "publisher": "文部科学省",
+    "url": "https://www.mext.go.jp/a_menu/shotou/tokubetu/main.htm",
+    "policy": "latest",
+    "checked": "2026-08-25"
+  },
+  {
+    "id": "mext-tokubetsu-genjo",
+    "title": "特別支援教育の現状",
+    "publisher": "文部科学省",
+    "url": "https://www.mext.go.jp/a_menu/shotou/tokubetu/002.htm",
+    "policy": "latest",
+    "checked": "2026-08-25"
+  },
+  {
+    "id": "mext-shiryo",
+    "title": "特別支援教育資料",
+    "publisher": "文部科学省",
+    "edition": "令和6年度",
+    "url": "https://www.mext.go.jp/a_menu/shotou/tokubetu/material/1406456_00013.htm",
+    "indexUrl": "https://www.mext.go.jp/a_menu/shotou/tokubetu/1343888.htm",
+    "policy": "latest",
+    "review": "毎年3月",
+    "checked": "2026-08-25",
+    "note": "年度版。旧年度ページも残るためリンクチェックでは陳腐化を検出できない"
+  },
+  {
+    "id": "shouman",
+    "title": "小児慢性特定疾病情報センター 対象疾病",
+    "publisher": "国立成育医療研究センター",
+    "edition": "令和7年4月1日改正時点 16疾患群801疾病",
+    "url": "https://www.shouman.jp/disease/",
+    "indexUrl": "https://www.shouman.jp/about/history",
+    "policy": "latest",
+    "review": "告示改正のたび",
+    "checked": "2026-08-25",
+    "note": "疾病数は2015年704→2018年756→2021年788→2025年801と増加。数値には必ず時点を付す"
+  },
+  {
+    "id": "nanbyou",
+    "title": "難病情報センター",
+    "publisher": "公益財団法人 難病医学研究財団",
+    "url": "https://www.nanbyou.or.jp/",
+    "policy": "latest",
+    "checked": "2026-08-25"
+  },
+  {
+    "id": "grj",
+    "title": "GeneReviews Japan（日本語版）",
+    "publisher": "GeneReviews Japan",
+    "url": "https://grj.umin.jp/",
+    "policy": "latest",
+    "checked": "2026-08-25"
+  },
+  {
+    "id": "mext-futoukou-tsuchi-r1",
+    "title": "不登校児童生徒への支援の在り方について（通知）",
+    "publisher": "文部科学省",
+    "edition": "令和元年10月25日",
+    "url": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/1422155.htm",
+    "policy": "pinned",
+    "checked": "2026-08-25"
+  },
+  {
+    "id": "mext-mondai-kodo",
+    "title": "児童生徒の問題行動・不登校等生徒指導上の諸課題に関する調査",
+    "publisher": "文部科学省",
+    "edition": "令和6年度",
+    "url": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/1302902.htm",
+    "policy": "latest",
+    "review": "毎年11月頃",
+    "checked": "2026-08-25",
+    "note": "目次ページのためURLは変わらないが、本文の年度表記と数値は毎年見直しが必要。令和6年度は小中の不登校が過去最多"
+  },
+  {
+    "id": "dsm-icd",
+    "title": "DSM-5-TR（米国精神医学会）／ICD-11（世界保健機関）",
+    "publisher": "APA / WHO",
+    "edition": "DSM-5-TR 2022 ／ ICD-11 2019採択",
+    "policy": "pinned",
+    "checked": "2026-08-25",
+    "note": "ASDとADHDの併存診断の許容はDSM-5（2013）での変更点"
+  },
+  {
+    "id": "gmfcs-oshima",
+    "title": "GMFCS（粗大運動能力分類システム）／大島分類",
+    "publisher": "—",
+    "policy": "pinned",
+    "checked": "2026-08-25",
+    "note": "重症度の目安として使用。GMFCSは脳性まひ、大島分類は重症心身障害の分類指標"
+  },
+  {
+    "id": "ircn-2023",
+    "title": "ASDとADHDの併存に関する研究発表",
+    "publisher": "東京大学 ニューロインテリジェンス国際研究機構（WPI-IRCN）",
+    "edition": "2023年7月",
+    "url": "https://ircn.jp/pressrelease/20230714_takamitsu_watanabe",
+    "policy": "pinned",
+    "tier": "research",
+    "checked": "2026-08-25"
+  },
+  {
+    "id": "riken-2024",
+    "title": "自閉スペクトラム症の新たなモデルマウスを開発（KMT2C遺伝子）",
+    "publisher": "理化学研究所",
+    "edition": "2024年3月26日",
+    "url": "https://www.riken.jp/press/2024/20240326_1/index.html",
+    "policy": "pinned",
+    "tier": "research",
+    "checked": "2026-08-25"
+  },
+  {
+    "id": "natgen-2025",
+    "title": "Decomposition of phenotypic heterogeneity in autism reveals underlying genetic programs（Nature Genetics）",
+    "publisher": "Litman, Sauerwald et al. / Princeton・Simons Foundation・Flatiron Institute",
+    "edition": "2025年7月9日",
+    "url": "https://www.simonsfoundation.org/2025/07/09/new-study-reveals-subclasses-of-autism-by-linking-traits-to-genetics/",
+    "policy": "pinned",
+    "tier": "research",
+    "checked": "2026-08-25",
+    "note": "SPARKコホート5,000人超の解析。論文自身が「少なくとも4クラス」と述べており、確定した分類ではない"
+  },
+  {
+    "id": "sfari",
+    "title": "SFARI Gene データベース",
+    "publisher": "Simons Foundation Autism Research Initiative",
+    "policy": "latest",
+    "tier": "research",
+    "checked": "2026-08-25"
+  }
+]

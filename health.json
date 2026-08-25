@@ -1,0 +1,1918 @@
+[
+  {
+    "name": "悪性新生物（白血病・神経芽腫等）",
+    "overview": "化学療法等の治療が中心となる小児がん。晩期合併症への不安軽減が教育上の課題となる。",
+    "support": [
+      "治療段階に応じた学習内容の調整",
+      "外見の変化等への心理的配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      },
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "腎臓病（腎炎・ネフローゼ症候群等）",
+    "overview": "運動・食事等の生活規制を伴うことがあり、自己管理能力の育成が重視される。",
+    "support": [
+      "学校生活管理指導表に基づく運動制限の共有",
+      "過剰な規制にならないよう医師と連携した調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "気管支喘息",
+    "overview": "気道の慢性的な炎症による発作性の呼吸困難を繰り返す疾患。",
+    "support": [
+      "発作予防のための環境整備（アレルゲン対策等）",
+      "腹式呼吸法等、発作時の対処法の指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      },
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "心臓病（先天性・後天性）",
+    "overview": "心室中隔欠損等の先天性疾患や心筋症、川崎病等。多くは早期に治療されるが継続管理を要する例もある。",
+    "support": [
+      "学校生活管理指導表に基づく運動強度の調整",
+      "過度な運動制限に偏らない発達への配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "身体の移動能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "糖尿病（1型）",
+    "overview": "インスリンの分泌が高度に低下し、継続的なインスリン注射・血糖管理が必要となる疾患。",
+    "support": [
+      "血糖値測定・インスリン注射の自己管理への支援",
+      "低血糖時の対応（糖分摂取等）の共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      },
+      {
+        "ku": "心理的な安定",
+        "item": "困難を改善・克服する意欲"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "血友病",
+    "overview": "血液凝固因子の異常により出血しやすく、止まりにくい遺伝性疾患。",
+    "support": [
+      "けが時の対応方法の周知",
+      "凝固因子製剤の注射等、医療的ケアへの理解"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "食物アレルギー・アトピー性皮膚炎",
+    "overview": "特定の食物や環境因子に対する過敏反応。重篤な場合はアナフィラキシーショックを伴う。",
+    "support": [
+      "給食・調理実習等での原因食物の除去確認",
+      "エピペン®等緊急時対応の教職員間での共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "障害の特性の理解と生活環境の調整"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "てんかん",
+    "overview": "脳の神経細胞の異常な電気的興奮により、意識・運動・感覚の突発的な異常を来す疾患。",
+    "support": [
+      "発作時の対応手順の教職員間での共有",
+      "確実な服薬管理と医師との連絡体制"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "整形外科的疾患（ペルテス病・脊柱側弯症等）",
+    "overview": "股関節や脊柱の疾患により、装具着用や運動制限を伴うことがある。",
+    "support": [
+      "装具着用時期に応じた学習内容・姿勢の工夫",
+      "手術前後の学習空白への対応（ベッドサイド指導等）"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "肥満（症）",
+    "overview": "摂取カロリー過剰等による体脂肪の異常な増加。生活習慣病につながることもある。",
+    "support": [
+      "過度な食事制限でなく運動療法・生活リズム改善を重視",
+      "体型に関する劣等感への心理的配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "心身症（反復性腹痛・頭痛・摂食障害等）",
+    "overview": "心理社会的な要因が身体症状の発症・経過に密接に関わる状態。",
+    "support": [
+      "環境調整と心理療法を組み合わせた対応",
+      "器質的疾患の有無の医学的な確認"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "うつ病等の精神疾患",
+    "overview": "気分障害、統合失調症等。発達障害の診断を受けた子供が二次的に発症する場合もある。",
+    "support": [
+      "安定した関わりと病期に応じた柔軟な対応",
+      "家庭・専門機関との速やかな連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "重症心身障害",
+    "overview": "重度の知的障害と重度の肢体不自由を併せ有し、日常的な医療管理を要する状態。",
+    "support": [
+      "呼吸・食事・消化機能を高める働きかけ",
+      "スイッチ等支援機器を用いた意思表出の支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      },
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーションの基礎的能力"
+      }
+    ],
+    "severity": [
+      {
+        "level": "大島分類1〜4（重症心身障害の中核群）",
+        "criteria": "寝たきり又は座位保持までの運動機能に、重度〜最重度の知的障害を伴う状態。",
+        "support": [
+          "呼吸・摂食等の医療的ケアを含む日常的な健康管理",
+          "スイッチ等を用いた意思表出支援"
+        ]
+      },
+      {
+        "level": "大島分類5〜9（周辺群）",
+        "criteria": "歩行可能だが知的障害が重度、又は運動機能の制限があるが知的障害は軽度等、中核群に準じる状態。",
+        "support": [
+          "残存する運動・認知機能を生かした個別の指導",
+          "移動と学習の両面に応じた環境調整"
+        ]
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    },
+    "note": "重症心身障害は重度の知的障害と重度の肢体不自由が重複する状態であり、学校教育法上の単一の障害種には対応しません。本ツールでは医療的ケアとの関わりの深さから病弱・身体虚弱に収めていますが、実際の就学相談では肢体不自由または重複障害として検討される場合が多くあります。"
+  },
+  {
+    "name": "急性リンパ性白血病",
+    "overview": "小児の白血病で最も頻度が高い病型。化学療法により治癒率が高くなっている。",
+    "support": [
+      "寛解維持療法中の感染症予防への配慮",
+      "治療スケジュールに応じた出席・学習調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "脳腫瘍（小児）",
+    "overview": "手術・放射線治療・化学療法等が行われる疾患。高次脳機能障害を伴うことがある。",
+    "support": [
+      "認知面の変化を踏まえた個別の指導計画",
+      "記憶や注意の困難に応じた教材の工夫"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "急性糸球体腎炎",
+    "overview": "感染後に血尿・むくみ・高血圧等で急性に発症する腎疾患。多くは数か月で改善する。",
+    "support": [
+      "急性期の安静と食事制限への理解",
+      "回復に応じた生活規制の段階的な解除"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "慢性糸球体腎炎",
+    "overview": "検尿で早期発見されることが多い腎疾患。進行すると腎不全に至る場合がある。",
+    "support": [
+      "学校生活管理指導表に基づく無理のない生活規制",
+      "年単位の治療を見据えた継続的な支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ネフローゼ症候群",
+    "overview": "大量の蛋白尿により、むくみ等を伴う腎疾患。再発を繰り返すことがある。",
+    "support": [
+      "感染予防と再発時の早期対応の共有",
+      "ステロイド治療の副作用への理解"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性心疾患（心室中隔欠損等）",
+    "overview": "胎生期の心臓の形成異常。多くは幼児期までに手術され、術後は通常の生活が可能となる。",
+    "support": [
+      "術後の遺残病変の有無に応じた運動制限の確認",
+      "学校生活管理指導表の活用"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "身体の移動能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "心筋症",
+    "overview": "心臓の筋肉が薄くなる、または厚くなる疾患。学校の心臓検診で発見されることもある。",
+    "support": [
+      "厳重な運動制限を含む内科的管理の共有",
+      "突然死のリスクを踏まえた緊急時対応の整備"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "川崎病（既往）",
+    "overview": "発熱等を主症状とする疾患で、心臓に冠状動脈瘤等の合併症を残すことがある。",
+    "support": [
+      "合併症の重症度に応じた運動規制の確認",
+      "定期受診状況の共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "2型糖尿病（小児・思春期発症）",
+    "overview": "生活習慣や肥満等を背景に発症が増加している糖尿病。",
+    "support": [
+      "食事療法・運動療法に関する家庭との連携",
+      "体重や体型に関する心理的な配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "アトピー性皮膚炎",
+    "overview": "皮膚のバリア機能低下等により、かゆみを伴う皮膚炎が慢性的に生じる疾患。",
+    "support": [
+      "プール指導時の紫外線・塩素対策",
+      "かゆみによる集中力低下への配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "食物依存性運動誘発アナフィラキシー",
+    "overview": "特定の食物摂取後に運動することで、アナフィラキシー症状が誘発される状態。",
+    "support": [
+      "体育・部活動前の摂取状況の確認",
+      "エピペン®携行と緊急時対応の共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "障害の特性の理解と生活環境の調整"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "反復性腹痛（心身症）",
+    "overview": "数か月以上にわたり腹痛を繰り返す状態で、不安や緊張との関連が指摘される。",
+    "support": [
+      "安心して休める場所の確保",
+      "心理的な要因への気付きを促す関わり"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "緊張性頭痛（心身症）",
+    "overview": "精神的な緊張を背景に、頭部を覆う筋肉の持続的な収縮によって生じる頭痛。",
+    "support": [
+      "ストレス要因の把握と学習負荷の調整",
+      "休息を取りやすい学校生活の工夫"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "神経性やせ症（神経性食欲不振症）",
+    "overview": "極端な食事制限を特徴とする摂食障害。生命に関わる場合もあり医療機関との連携が不可欠。",
+    "support": [
+      "主治医と連携した学校生活上の配慮",
+      "体重や体型を話題にしない関わり方の徹底"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "再生不良性貧血",
+    "overview": "骨髄の造血機能が低下し、血球全般が減少する疾患。感染・出血のリスクに配慮が必要。",
+    "support": [
+      "感染予防のための生活環境の整備",
+      "出血しやすさに応じた活動制限の共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "リンパ腫（小児）",
+    "overview": "リンパ組織に生じる悪性腫瘍。化学療法を中心とした治療が行われる。",
+    "support": [
+      "治療スケジュールに応じた出席調整",
+      "治療に伴う倦怠感への配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "骨肉腫等の骨の悪性腫瘍",
+    "overview": "骨に生じる悪性腫瘍。患肢温存術等の治療後、運動機能に制限が残ることがある。",
+    "support": [
+      "術後の運動制限に応じた活動内容の調整",
+      "義足等補助具の活用支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "身体の移動能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ファロー四徴症",
+    "overview": "複数の心奇形を伴う代表的な先天性心疾患。手術後も継続的な管理が必要な場合がある。",
+    "support": [
+      "学校生活管理指導表に基づく運動強度の調整",
+      "定期受診状況の共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "単心室症（フォンタン手術後）",
+    "overview": "心室が一つしかない重い先天性心疾患。段階的な手術後も運動制限を要することが多い。",
+    "support": [
+      "運動強度の厳密な管理",
+      "疲労時の休息の確保"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "身体の移動能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性特発性関節炎",
+    "overview": "原因不明の関節の慢性炎症により、痛みや腫れ、可動域制限を来す疾患。",
+    "support": [
+      "痛みの状態に応じた活動量の調整",
+      "朝のこわばりを踏まえた時間割の配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "全身性エリテマトーデス",
+    "overview": "全身の様々な臓器に炎症が生じる自己免疫疾患。日光への曝露に注意が必要な場合がある。",
+    "support": [
+      "紫外線対策（日陰での活動等）",
+      "服薬・通院状況の共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "障害の特性の理解と生活環境の調整"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "成長ホルモン分泌不全性低身長症",
+    "overview": "成長ホルモンの分泌不全により身長の伸びが遅れる内分泌疾患。",
+    "support": [
+      "体格差に関する心理的な配慮",
+      "ホルモン注射の自己管理に向けた支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性副腎皮質過形成症",
+    "overview": "副腎でのホルモン合成の異常により、電解質異常等を来すことがある内分泌疾患。",
+    "support": [
+      "ストレス時の緊急対応（追加投薬等）の共有",
+      "体調不良時の早期対応"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "血友病A・B",
+    "overview": "血液凝固因子の先天的な欠乏により、出血しやすく止まりにくい状態を示す遺伝性疾患。",
+    "support": [
+      "凝固因子製剤の定期補充と学校との連携",
+      "激しい接触を伴う活動の調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "慢性肉芽腫症",
+    "overview": "免疫細胞の機能異常により、重い感染症を繰り返しやすい原発性免疫不全症の一つ。",
+    "support": [
+      "感染予防を意識した学校生活の工夫",
+      "発熱時の早期受診体制の共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "原発性免疫不全症候群",
+    "overview": "生まれつき免疫の働きに弱さがあり、感染症にかかりやすい疾患群の総称。",
+    "support": [
+      "感染症流行期の出席に関する配慮",
+      "治療（定期補充療法等）との調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ウエスト症候群（点頭てんかん）",
+    "overview": "乳児期に発症する難治性てんかんの一つ。発達への影響を伴うことが多い。",
+    "support": [
+      "発作の記録と医療機関への情報共有",
+      "発達の状態に応じた個別の指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "胆道閉鎖症（術後）",
+    "overview": "胆道の閉塞により生まれつき黄疸を来す疾患。手術後も肝機能の管理が必要な場合がある。",
+    "support": [
+      "定期受診・服薬状況の共有",
+      "疲労しやすさへの配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "18トリソミー症候群",
+    "overview": "18番染色体が3本になることで生じる、複数の合併症を伴う染色体異常。",
+    "support": [
+      "医療的ケアを含む個別の支援体制",
+      "家族との緊密な情報共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "色素性乾皮症",
+    "overview": "紫外線に対する感受性が非常に高く、皮膚がんのリスクが高い遺伝性疾患。",
+    "support": [
+      "紫外線カットフィルムの設置等、校内環境の整備",
+      "外出時の防御（帽子・長袖等）の徹底"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "障害の特性の理解と生活環境の調整"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "脈管奇形（リンパ管腫等）",
+    "overview": "血管やリンパ管の形成異常により腫脹等の症状を来す疾患群。",
+    "support": [
+      "腫脹部位への物理的な負担を避ける配慮",
+      "治療（硬化療法等）の経過に応じた調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "起立性調節障害",
+    "overview": "自律神経の調節不全により、立ちくらみや朝の不調を来しやすい状態。思春期に多い。",
+    "support": [
+      "午前中の活動量への配慮",
+      "段階的な起立訓練に関する情報共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "生活のリズムや生活習慣の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性特発性側弯症を伴う呼吸機能低下例",
+    "overview": "高度な側弯により、肺の拡張が制限され呼吸機能に影響が及ぶことがある状態。",
+    "support": [
+      "呼吸機能に配慮した運動強度の調整",
+      "装具・術後管理との連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性特発性糖尿病の急性合併症（低血糖・高血糖）",
+    "overview": "血糖コントロールの乱れにより、意識障害等の急性症状を来すことがある状態。",
+    "support": [
+      "低血糖・高血糖の初期症状の教職員間での共有",
+      "緊急時対応（補食・注射等）の手順の整備"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "神経性過食症",
+    "overview": "過食と代償行動（嘔吐・下剤乱用等）を繰り返す摂食障害。外見からは分かりにくいことが多い。",
+    "support": [
+      "体重や食事を話題にしない関わり",
+      "主治医と連携した心理的支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "双極性障害（小児期発症）",
+    "overview": "気分の高揚と落ち込みを周期的に繰り返す気分障害。診断には慎重な経過観察が必要とされる。",
+    "support": [
+      "気分の波に応じた柔軟な対応",
+      "医療機関との継続的な連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "統合失調症（10歳前後での発症例）",
+    "overview": "幻覚や妄想等を主症状とする精神疾患。思春期以降の発症が多いが稀に低年齢での発症もある。",
+    "support": [
+      "専門医療機関との緊密な連携",
+      "混乱を招かない落ち着いた関わり"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "高次脳機能障害（脳腫瘍術後等）",
+    "overview": "脳の損傷後に、記憶・注意・言語等の認知機能に困難が残ることがある状態。",
+    "support": [
+      "認知面の特性に応じた教材・指導方法の工夫",
+      "受傷前後の能力の変化への心理的配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "心身症（起立性調節障害を伴う不登校例）",
+    "overview": "身体症状（立ちくらみ等）と心理社会的要因が絡み合い、不登校状態につながることがある状態。",
+    "support": [
+      "身体症状への理解に基づく無理のない登校支援",
+      "本人のペースに応じた学習機会の確保"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "状況の理解と変化への対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "重症喘息（難治性）",
+    "overview": "通常の治療でコントロールが難しい重症の気管支喘息。頻回の発作により学校生活に影響が及ぶことがある。",
+    "support": [
+      "発作予防のための環境整備の徹底",
+      "緊急時対応の教職員間での共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "神経芽腫",
+    "overview": "乳幼児に多い小児がんの一つ。発生部位により症状は様々。",
+    "support": [
+      "治療段階に応じた学習内容の調整",
+      "外見の変化への心理的配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "腎芽腫（ウィルムス腫瘍）",
+    "overview": "腎臓に生じる小児がん。手術と化学療法が中心となる。",
+    "support": [
+      "術後の腎機能に応じた生活規制の共有",
+      "治療スケジュールに応じた出席調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "横紋筋肉腫",
+    "overview": "筋肉組織に発生する小児がん。発生部位により運動機能への影響が異なる。",
+    "support": [
+      "治療後の運動機能に応じた活動調整",
+      "治療に伴う倦怠感への配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "骨髄異形成症候群",
+    "overview": "造血幹細胞の異常により、血球減少等を来す疾患。感染・出血のリスクに配慮が必要。",
+    "support": [
+      "感染予防のための生活環境の整備",
+      "出血しやすさに応じた活動制限"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "慢性活動性EBウイルス感染症",
+    "overview": "EBウイルスの持続感染により、発熱等の全身症状が慢性的に続く稀な疾患。",
+    "support": [
+      "体調の変動に応じた活動量の調整",
+      "感染予防への配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "慢性B型・C型肝炎",
+    "overview": "肝炎ウイルスの持続感染により、肝機能に影響が及ぶことがある疾患。",
+    "support": [
+      "定期受診・服薬状況の共有",
+      "感染予防に関する正しい知識の共有（過度な隔離を避ける）"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "炎症性腸疾患（クローン病・潰瘍性大腸炎）",
+    "overview": "消化管に慢性的な炎症が生じる疾患。腹痛・下痢等の症状を繰り返すことがある。",
+    "support": [
+      "トイレへのアクセスへの配慮",
+      "給食における食事制限への対応"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性副腎低形成症",
+    "overview": "副腎の発達不全によりホルモン分泌が不十分となる疾患。ストレス時の急性副腎不全に注意が必要。",
+    "support": [
+      "ストレス時の緊急対応（追加投薬等）の共有",
+      "体調不良時の早期対応体制"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "中枢性尿崩症",
+    "overview": "抗利尿ホルモンの分泌不全により、多飲・多尿を来す内分泌疾患。",
+    "support": [
+      "水分摂取・トイレへのアクセスへの配慮",
+      "脱水症状への注意"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "性分化疾患",
+    "overview": "生殖器の発達に関わる先天的な状態。個別の心理的配慮とプライバシーへの配慮が重要。",
+    "support": [
+      "プライバシーに配慮した更衣・トイレ等の環境",
+      "本人・家族の意向を尊重した対応"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性痛風・高尿酸血症",
+    "overview": "尿酸代謝の異常により、関節炎等を来すことがある代謝性疾患。小児での発症は稀。",
+    "support": [
+      "食事療法に関する家庭との連携",
+      "関節症状に応じた活動調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性心筋症（肥大型）",
+    "overview": "心臓の筋肉が異常に厚くなる疾患。突然死のリスクがあり、運動制限が必要な場合がある。",
+    "support": [
+      "厳重な運動制限の共有と緊急時対応の整備",
+      "定期受診状況の把握"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "不整脈原性右室心筋症",
+    "overview": "右心室の筋肉が徐々に脂肪組織に置き換わる疾患。運動誘発性の不整脈に注意が必要。",
+    "support": [
+      "運動強度の厳密な管理",
+      "緊急時対応体制の整備"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "QT延長症候群",
+    "overview": "心臓の電気的な興奮の異常により、致死性不整脈のリスクがある遺伝性疾患。",
+    "support": [
+      "特定の音（アラーム音等）や運動を避ける配慮",
+      "緊急時対応体制（AED含む）の整備"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性肺高血圧症",
+    "overview": "肺の血管の圧力が異常に高くなる疾患。運動耐容能が著しく低下することがある。",
+    "support": [
+      "運動強度の厳密な管理",
+      "酸素投与等の医療的ケアへの対応"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "身体の移動能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性代謝異常（有機酸代謝異常症）",
+    "overview": "体内の物質代謝の異常により、急性の体調悪化（代謝クライシス）を来すことがある疾患群。",
+    "support": [
+      "体調不良時の早期対応（絶食を避ける等）の共有",
+      "食事療法との連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "糖原病",
+    "overview": "糖の代謝に関わる酵素の異常により、低血糖等を来しやすい代謝性疾患群。",
+    "support": [
+      "低血糖予防のための補食のタイミング調整",
+      "体調不良時の早期対応"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "副腎白質ジストロフィー",
+    "overview": "神経の脱髄が進行する遺伝性疾患。運動・認知機能に進行性の影響が及ぶ。",
+    "support": [
+      "進行段階に応じた学習内容の継続的な見直し",
+      "医療機関との緊密な連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ライソゾーム病（ゴーシェ病等）",
+    "overview": "特定の物質を分解する酵素の異常により、全身に症状が現れる疾患群。",
+    "support": [
+      "酵素補充療法等の治療スケジュールとの連携",
+      "進行性の症状を踏まえた指導内容の見直し"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "限局性強皮症（若年性）",
+    "overview": "皮膚や皮下組織が硬くなる疾患。関節近くに生じると可動域制限を伴うことがある。",
+    "support": [
+      "可動域制限に応じた活動内容の調整",
+      "外見に関する心理的配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "周期性発熱症候群（PFAPA症候群等）",
+    "overview": "周期的に発熱を繰り返す自己炎症性疾患。発熱時以外は通常の生活が可能なことが多い。",
+    "support": [
+      "発熱周期を踏まえた出席・行事の調整",
+      "発熱時の早退等、柔軟な対応"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "限局性摂食障害（回避・制限性食物摂取症）",
+    "overview": "体型への懸念ではなく、感覚的な偏り等により極端に偏食が生じる摂食症の一類型。",
+    "support": [
+      "無理強いしない段階的な食品への慣らし",
+      "栄養面での医療機関・家庭との連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性全身性強皮症",
+    "overview": "皮膚だけでなく内臓にも線維化が及ぶことがある全身性の自己免疫疾患。",
+    "support": [
+      "症状の進行に応じた活動調整",
+      "定期受診状況の共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性混合性結合組織病",
+    "overview": "複数の膠原病の特徴を併せ持つ自己免疫疾患。",
+    "support": [
+      "症状の変動に応じた柔軟な対応",
+      "服薬・通院状況の共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性血液凝固異常症（フォン・ヴィレブランド病）",
+    "overview": "血液凝固因子の機能異常により出血しやすい状態を示す遺伝性疾患。血友病より軽症のことが多い。",
+    "support": [
+      "けが時の対応方法の周知",
+      "激しい接触を伴う活動の調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性特発性再発性膵炎",
+    "overview": "膵臓に炎症を繰り返す疾患。腹痛発作時の対応が必要となる。",
+    "support": [
+      "食事内容に関する家庭との連携",
+      "発作時の早退等柔軟な対応"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性特発性関節炎（多関節型）",
+    "overview": "5関節以上の関節が侵される若年性特発性関節炎のタイプ。長期の薬物治療を要することが多い。",
+    "support": [
+      "朝のこわばりに配慮した時間割",
+      "服薬管理と体育参加の調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "川崎病による冠動脈瘤（重症後遺症）",
+    "overview": "川崎病の急性期治療後も、大きな冠動脈瘤が残存し長期的な心臓管理を要する状態。",
+    "support": [
+      "運動強度に関する主治医の指示の厳守",
+      "緊急時対応体制の整備"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "1型糖尿病における低血糖無自覚症",
+    "overview": "低血糖の自覚症状が乏しくなり、重症低血糖のリスクが高まっている状態。",
+    "support": [
+      "定期的な血糖測定（持続血糖測定器等）の活用支援",
+      "教職員間での低血糖対応手順の共有徹底"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "重症食物アレルギー（複数アレルゲン・アナフィラキシー既往）",
+    "overview": "複数の食物に対して重篤なアレルギー反応の既往がある状態。",
+    "support": [
+      "給食・調理実習における厳密な除去対応",
+      "校外学習時の携行薬・緊急連絡体制の整備"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "障害の特性の理解と生活環境の調整"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "難治性ネフローゼ症候群（頻回再発型）",
+    "overview": "寛解と再発を頻回に繰り返すタイプのネフローゼ症候群。免疫抑制薬を要することがある。",
+    "support": [
+      "感染予防を意識した学校生活",
+      "再発の兆候（むくみ等）の早期共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性皮膚エリテマトーデス（限局型）",
+    "overview": "皮膚に限局した自己免疫性の炎症を示すタイプ。全身性への移行がないか経過観察が必要。",
+    "support": [
+      "紫外線対策の徹底",
+      "外見の変化に関する心理的配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "骨髄不全症候群（先天性）",
+    "overview": "骨髄での血球産生が生まれつき不十分な疾患群。感染症や出血のリスクが高い。",
+    "support": [
+      "感染予防を意識した学校生活の徹底",
+      "造血幹細胞移植等の治療スケジュールへの対応"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "慢性疲労症候群（筋痛性脳脊髄炎）",
+    "overview": "強い疲労感が長期間持続し、日常生活に大きな支障を来す疾患。原因は十分に解明されていない。",
+    "support": [
+      "体調に応じた活動量の柔軟な調整（ペーシング）",
+      "出席にこだわらない多様な学習機会の確保"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性心疾患術後の不整脈管理",
+    "overview": "複雑心奇形の手術後に、不整脈のモニタリングを継続的に要する状態。",
+    "support": [
+      "運動強度に関する定期的な指示の更新確認",
+      "突然の体調変化時の対応手順の共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性痛風以外の代謝性骨疾患（くる病等）",
+    "overview": "ビタミンD代謝異常等により骨の石灰化が不十分となる疾患。骨折・変形のリスクがある。",
+    "support": [
+      "骨折予防を意識した活動内容の調整",
+      "服薬・栄養管理との連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "回避・制限性食物摂取症（ARFID）に伴う成長への影響",
+    "overview": "感覚過敏や恐怖等を背景に極端な偏食が続き、成長や栄養状態に影響が及んでいる状態。",
+    "support": [
+      "医療機関と連携した栄養モニタリング",
+      "無理強いしない環境調整による摂食機会の拡大"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年発症型パーキンソニズム（稀少例）",
+    "overview": "通常は高齢者に多い症状が若年で発症する稀な神経疾患群。運動症状への対応が必要。",
+    "support": [
+      "運動症状に応じた活動内容の調整",
+      "服薬タイミングと学校生活の調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性特発性血小板減少性紫斑病（ITP）",
+    "overview": "血小板に対する自己抗体により血小板が減少し、出血しやすくなる疾患。",
+    "support": [
+      "接触を伴う運動の制限に関する共有",
+      "出血傾向（あざ等）への注意喚起"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性巨大結腸症（ヒルシュスプルング病）術後管理",
+    "overview": "腸管の神経節細胞の欠如による疾患。手術後も排便管理を要することがある。",
+    "support": [
+      "トイレへのアクセスへの配慮",
+      "食事内容に関する家庭との連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性甲状腺機能亢進症（バセドウ病）",
+    "overview": "甲状腺ホルモンが過剰に分泌される自己免疫疾患。動悸・情緒不安定等を伴うことがある。",
+    "support": [
+      "情緒面の変動への理解ある対応",
+      "服薬・定期受診状況の共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "周期性嘔吐症候群",
+    "overview": "周期的に激しい嘔吐発作を繰り返す疾患。片頭痛との関連が指摘される。",
+    "support": [
+      "発作の予兆時の早退等柔軟な対応",
+      "誘因（睡眠不足・ストレス等）の回避"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性線維筋痛症",
+    "overview": "全身の広範囲にわたる慢性的な痛みを主症状とする疾患。原因は十分に解明されていない。",
+    "support": [
+      "痛みの訴えを真摯に受け止める対応",
+      "無理のない活動量の調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性凝固異常症（プロテインC欠乏症等）",
+    "overview": "血液が固まりやすくなる遺伝性疾患。血栓症のリスク管理が必要。",
+    "support": [
+      "長時間同じ姿勢を避ける配慮",
+      "抗凝固療法中の外傷リスクへの注意"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性全身性血管炎（IgA血管炎等）",
+    "overview": "全身の血管に炎症が生じる疾患群。皮疹・腹痛・関節痛等を伴う。",
+    "support": [
+      "急性期の安静と活動制限の共有",
+      "腎機能への影響を踏まえた経過観察"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "重症複合免疫不全症（SCID）治療後の経過観察例",
+    "overview": "造血幹細胞移植等により治療された後も、免疫機能の回復状況の継続的な確認を要する状態。",
+    "support": [
+      "感染予防に関する個別の配慮",
+      "治療後の発達状況に応じた指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  }
+]

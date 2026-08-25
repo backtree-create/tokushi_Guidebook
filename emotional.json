@@ -1,0 +1,652 @@
+[
+  {
+    "name": "選択性かん黙（場面緘黙）",
+    "overview": "発声器官に器質的な障害はなく、特定の社会的状況で話すことが一貫してできない状態。対人緊張・不安の強さが背景にある。",
+    "support": [
+      "話させようとする働きかけを控え、安心できる関係づくりを優先",
+      "非言語的な意思表示（指さし・カード等）を認める"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      },
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "不安症（社交不安症・分離不安症等）",
+    "overview": "特定の状況や分離場面等で過度の不安・恐怖を示す状態。",
+    "support": [
+      "不安が高まる場面の事前の把握と回避的対応",
+      "段階的に不安場面へ慣れていく指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "状況の理解と変化への対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "強迫性障害",
+    "overview": "特定の考えや行動を繰り返さずにいられない状態。学習や生活に支障を来すことがある。",
+    "support": [
+      "無理にやめさせず段階的に対応する指導",
+      "医療機関と連携した経過観察"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "適応障害",
+    "overview": "特定のストレス要因に対して、通常の範囲を超えた情緒的・行動的反応が生じる状態。",
+    "support": [
+      "ストレス要因の把握と環境調整",
+      "段階的な集団参加の支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "状況の理解と変化への対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "心的外傷後ストレス障害（PTSD）",
+    "overview": "強い衝撃を伴う体験の後に、不安や再体験症状等が持続する状態。",
+    "support": [
+      "安心できる環境の確保と信頼関係の構築",
+      "専門機関と連携した継続的な支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "心理的要因による不登校",
+    "overview": "登校する必要性を意識しながらも、心理的な要因により登校できない状態が続くもの。",
+    "support": [
+      "登校のみにこだわらない柔軟な支援体制",
+      "本人のペースに応じた学校との関わり方の確保"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "状況の理解と変化への対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "全般性不安症",
+    "overview": "様々な出来事に対して過剰な不安や心配が持続する状態。",
+    "support": [
+      "見通しを事前に伝えることによる安心感の確保",
+      "段階的にリラックスできる方法の指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "パニック症",
+    "overview": "突然の強い不安発作（動悸・呼吸困難感等）を繰り返す状態。",
+    "support": [
+      "発作時に落ち着ける場所の確保",
+      "再発への不安に配慮した段階的な対応"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "分離不安症",
+    "overview": "保護者等、愛着のある対象からの分離に対して過度の不安を示す状態。",
+    "support": [
+      "登校時の引き継ぎ方法の工夫",
+      "安心できる人・物の活用"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "状況の理解と変化への対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "反応性愛着障害",
+    "overview": "養育環境の影響により、他者との適切な愛着関係を築くことに困難がある状態。",
+    "support": [
+      "安定した人間関係を継続的に築く関わり",
+      "福祉機関と連携した家庭環境への支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "人間関係の形成",
+        "item": "他者との関わりの基礎"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "素行症（行為障害）の背景にある情緒の問題",
+    "overview": "規則違反や攻撃的行動等が持続する状態で、背景に情緒的な困難があることが多い。",
+    "support": [
+      "行動の背景にある感情の理解",
+      "専門機関と連携した一貫した対応"
+    ],
+    "jiritsu": [
+      {
+        "ku": "人間関係の形成",
+        "item": "自己の理解と行動の調整"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "抜毛症・皮膚むしり症",
+    "overview": "自分の毛髪を抜く、皮膚をむしる等の行為を繰り返す状態。ストレスとの関連が指摘される。",
+    "support": [
+      "ストレス要因の把握と代替行動の提案",
+      "医療機関と連携した経過観察"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "チック症（ストレス関連の増悪例）",
+    "overview": "まばたきや首振り等の不随意な動きを繰り返す状態。不安や緊張で増強することがある。",
+    "support": [
+      "症状を指摘せず見守る学級づくり",
+      "ストレス軽減につながる環境調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "起立性調節障害に伴う情緒の不安定さ",
+    "overview": "自律神経の不調に伴い、朝の不調とともに情緒面の不安定さが見られることがある状態。",
+    "support": [
+      "身体症状への理解に基づく対応",
+      "午後からの登校等、柔軟な学校との関わり"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "状況の理解と変化への対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "複雑性心的外傷後ストレス障害",
+    "overview": "長期反復的な被害体験の後に、感情調整や対人関係に広範な困難が生じる状態。",
+    "support": [
+      "安全で安定した人間関係の継続的な提供",
+      "専門機関との緊密な連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "人間関係の形成",
+        "item": "他者との関わりの基礎"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "解離症状を伴う情緒障害",
+    "overview": "強いストレスの影響で、意識や記憶、自己感覚の連続性に一時的な断絶が生じることがある状態。",
+    "support": [
+      "安心できる環境の確保",
+      "専門機関と連携した継続的な見守り"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "限局性恐怖症",
+    "overview": "特定の対象や状況に対して強い恐怖を示す状態。",
+    "support": [
+      "恐怖対象への段階的な慣らし",
+      "無理に直面させない配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "状況の理解と変化への対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "身体症状症",
+    "overview": "器質的な異常が明らかでないにもかかわらず、身体症状が持続し生活に支障を来す状態。",
+    "support": [
+      "身体症状を否定せず受け止める関わり",
+      "心理的な要因への気付きを促す支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "愛着の課題を背景とする対人関係の困難",
+    "overview": "養育環境の影響により、他者との信頼関係の形成に困難が見られる状態。",
+    "support": [
+      "一貫した安定的な関わりの継続",
+      "福祉機関との連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "人間関係の形成",
+        "item": "他者との関わりの基礎"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ゲーム行動症（背景に情緒的困難を伴う場合）",
+    "overview": "日常生活に支障が出るほどゲームに没頭する状態が持続する場合。背景に情緒的な困難が関与することがある。",
+    "support": [
+      "生活リズムに関する家庭との連携",
+      "背景にあるストレス要因の把握"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "状況の理解と変化への対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "醜形恐怖症",
+    "overview": "自分の外見上の欠点に過度にとらわれ、日常生活に支障を来す状態。思春期に発症しやすい。",
+    "support": [
+      "外見を話題にしない配慮",
+      "専門機関と連携した心理的支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ためこみ症",
+    "overview": "物を過剰に集め、捨てることができず生活に支障が生じる状態。",
+    "support": [
+      "無理に片付けさせない段階的な対応",
+      "専門機関との連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "抑うつ気分を伴う適応反応症",
+    "overview": "特定のストレス要因の後に、抑うつ気分を中心とした反応が生じる状態。",
+    "support": [
+      "ストレス要因の把握と環境調整",
+      "気分の変化を見守る継続的な関わり"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "不安を伴う適応反応症",
+    "overview": "特定のストレス要因の後に、不安症状を中心とした反応が生じる状態。",
+    "support": [
+      "不安の背景にあるストレス要因への対応",
+      "段階的な環境への慣らし"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "状況の理解と変化への対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "行為の障害を伴う適応反応症",
+    "overview": "特定のストレス要因の後に、規則違反等の行動上の問題が生じる状態。",
+    "support": [
+      "行動の背景にあるストレス要因の把握",
+      "一貫した対応と専門機関との連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "人間関係の形成",
+        "item": "自己の理解と行動の調整"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "急性ストレス反応",
+    "overview": "強い衝撃的な出来事の直後に生じる、一時的な心身の反応。",
+    "support": [
+      "安心できる環境の確保",
+      "無理に振り返らせない配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "燃え尽き（バーンアウト）様の消耗状態",
+    "overview": "継続的な学業・活動の負荷により、心身のエネルギーが著しく消耗した状態。",
+    "support": [
+      "活動量の調整と十分な休息の確保",
+      "負荷の要因（習い事・部活等）の見直し"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "きょうだい児としてのストレスに起因する情緒の困難",
+    "overview": "障害や病気のあるきょうだいのケアに関する家庭内の状況が、情緒面に影響することがある状態。",
+    "support": [
+      "本人の気持ちを個別に聞く時間の確保",
+      "家庭全体を視野に入れた福祉的な支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "限局性恐怖症（動物・自然環境・血液注射外傷型等）",
+    "overview": "特定の対象（動物、高所、注射等）に対する強い恐怖を示すタイプ別の限局性恐怖症。",
+    "support": [
+      "恐怖対象への段階的暴露を含む個別の配慮",
+      "無理な直面化を避けた学級運営"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "状況の理解と変化への対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "重篤気分調節症",
+    "overview": "慢性的な易怒性と頻回のかんしゃくを主症状とする、DSM-5で新設された診断分類。",
+    "support": [
+      "かんしゃくの予兆に気付いた早期の対応",
+      "一貫した対応による見通しの提供"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "分離不安症（学校生活への影響が顕著なタイプ）",
+    "overview": "保護者からの分離場面で強い苦痛を示し、不登校につながることがある分離不安症のタイプ。",
+    "support": [
+      "登校時の引き継ぎ方法の工夫（お守り等の活用）",
+      "段階的な分離時間の延長"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "状況の理解と変化への対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "心的外傷後ストレス症（複雑性、虐待関連）",
+    "overview": "長期反復的な虐待体験等により、感情調整・自己概念・対人関係に広範な影響が及んでいる状態。",
+    "support": [
+      "安全な環境の確保と信頼関係の丁寧な構築",
+      "福祉・医療機関との緊密な連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "人間関係の形成",
+        "item": "他者との関わりの基礎"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "燃え尽き型の不安症（学業ストレス関連）",
+    "overview": "高い学業期待等の持続的なストレスを背景に、不安症状が顕在化するタイプ。",
+    "support": [
+      "学習負荷の見直しと休息の確保",
+      "本人・保護者との目標のすり合わせ"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "適応反応症（混合性の情緒と行為の障害を伴う）",
+    "overview": "ストレス要因の後に、情緒面と行動面の両方の問題が混在して現れるタイプの適応反応症。",
+    "support": [
+      "情緒・行動両面からの包括的なアセスメント",
+      "一貫した対応と専門機関との連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  }
+]

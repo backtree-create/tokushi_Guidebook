@@ -1,0 +1,448 @@
+[
+  {
+    "name": "不注意優勢の状態",
+    "overview": "気が散りやすく、注意を集中させ続けることや必要な事柄を忘れないことに著しい困難がある状態。",
+    "support": [
+      "注目すべき箇所の色分けや掲示物の精選",
+      "メモや点検表を用いた確認習慣の指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "多動性・衝動性優勢の状態",
+    "overview": "じっとしていることが苦手で、順番を待つことや思いつくままの行動を抑えることに著しい困難がある状態。",
+    "support": [
+      "意図的に動ける役割を与える工夫",
+      "行動と結果の因果関係を可視化する指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "人間関係の形成",
+        "item": "自己の理解と行動の調整"
+      },
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "混合型（不注意・多動性・衝動性）",
+    "overview": "不注意と多動性・衝動性の両方の特徴を併せ持つ状態。",
+    "support": [
+      "短時間で活動を区切るメリハリのある指導",
+      "肯定的な評価を意図的に行う関わり"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "学習障害との併存",
+    "overview": "注意欠陥多動性障害と学習障害が重複する場合も少なくない。",
+    "support": [
+      "双方の特性を踏まえた指導目標・内容の設定",
+      "通常の学級と通級による指導の連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "困難を改善・克服する意欲"
+      }
+    ],
+    "severity": [
+      {
+        "level": "行動面の困難が主で学習面は軽度",
+        "criteria": "不注意・多動性が中心で、特定の学習領域の困難は比較的軽い状態。",
+        "support": [
+          "行動調整のための視覚的な手がかりの活用",
+          "学習内容の焦点化"
+        ]
+      },
+      {
+        "level": "行動面と学習面の困難が同程度",
+        "criteria": "双方の困難が同程度にみられ、生活・学習両面での個別支援を要する状態。",
+        "support": [
+          "通級による指導等を活用した重点的な支援",
+          "学校・家庭が連携した一貫した対応"
+        ]
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    },
+    "note": "学習障害（LD）の項の「注意欠陥多動性障害との併存」と対になる項目です。内容を見直す際は両方を揃えて修正してください。"
+  },
+  {
+    "name": "自閉症との併存",
+    "overview": "注意欠陥多動性障害と自閉症の特性を併せ有する場合がある。DSM-5（2013年改訂）以降、両者の併存診断が正式に認められるようになり、研究によりASDのある子供の約3〜8割にADHD症状がみられるとする報告もある。両特性が相互に影響し合うため、どちらか一方の傾向のみで判断しないことが重要とされる。",
+    "support": [
+      "対人関係とセルフコントロール双方への配慮",
+      "構造化と行動調整支援の組み合わせ",
+      "自閉症・ADHD双方の観点からの継続的なアセスメント"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "状況の理解と変化への対応"
+      },
+      {
+        "ku": "人間関係の形成",
+        "item": "自己の理解と行動の調整"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "不注意優勢型（診断基準に基づく分類）",
+    "overview": "多動性・衝動性よりも不注意の症状が優位に見られるタイプ。",
+    "support": [
+      "視覚的なチェックリストの活用",
+      "気が散る要因の除去"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "多動・衝動優勢型（診断基準に基づく分類）",
+    "overview": "不注意よりも多動性・衝動性の症状が優位に見られるタイプ。",
+    "support": [
+      "身体を動かせる役割の付与",
+      "衝動を抑える練習の段階的な指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "反抗挑発症の併存",
+    "overview": "注意欠陥多動性障害に、大人への反抗的・挑発的な態度が持続する状態を併せ有する場合。",
+    "support": [
+      "一貫した対応と落ち着いた関わり",
+      "成功体験を通じた信頼関係の構築"
+    ],
+    "jiritsu": [
+      {
+        "ku": "人間関係の形成",
+        "item": "自己の理解と行動の調整"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "素行症の併存",
+    "overview": "規則違反や攻撃的行動等、より重い行動上の問題を併せ有する場合。",
+    "support": [
+      "専門機関と連携した一貫した支援体制",
+      "行動の背景にある要因の丁寧な把握"
+    ],
+    "jiritsu": [
+      {
+        "ku": "人間関係の形成",
+        "item": "自己の理解と行動の調整"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "睡眠の問題を伴うADHD",
+    "overview": "入眠困難や睡眠リズムの乱れを併せ有し、日中の不注意等が強まることがある状態。",
+    "support": [
+      "生活リズムに関する家庭との連携",
+      "日中の疲労に配慮した活動調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "生活のリズムや生活習慣の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "実行機能の困難が中心のADHD",
+    "overview": "計画を立てて物事を順序立てて行う力（実行機能）に著しい困難がある状態。",
+    "support": [
+      "手順表やチェックリストの活用",
+      "小さな段階に分けた課題設定"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "感情調整の困難を伴うADHD",
+    "overview": "感情の起伏が大きく、気持ちの切り替えに時間がかかることがある状態。",
+    "support": [
+      "気持ちを落ち着ける方法の具体的な指導",
+      "感情を言語化する練習の機会"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "学業不振を伴うADHD",
+    "overview": "不注意等の特性により、学力面での遅れが表面化している状態。",
+    "support": [
+      "個に応じた学習内容の調整",
+      "小さな達成の積み重ねによる自信の回復"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "困難を改善・克服する意欲"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "対人トラブルが目立つADHD",
+    "overview": "衝動性から友人関係でのトラブルが頻発しやすい状態。",
+    "support": [
+      "ソーシャルスキルトレーニングの実施",
+      "トラブル場面の振り返りを通じた学び"
+    ],
+    "jiritsu": [
+      {
+        "ku": "人間関係の形成",
+        "item": "自己の理解と行動の調整"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "不注意が主で見過ごされやすいADHD（特に女児に多い傾向）",
+    "overview": "多動性が目立たず、ぼんやりしている印象で見過ごされやすいタイプ。",
+    "support": [
+      "行動観察に基づく早期の気付き",
+      "本人の困り感に寄り添った支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "衝動買い等の金銭管理の困難を伴うADHD（青年期）",
+    "overview": "衝動性の特性が、金銭管理等の実生活場面での困難として表れるタイプ。",
+    "support": [
+      "視覚化した予算管理の練習",
+      "段階的な自己管理スキルの指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "人間関係の形成",
+        "item": "自己の理解と行動の調整"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "過集中（ハイパーフォーカス）を伴うADHD",
+    "overview": "興味のある対象には極端に集中する一方、それ以外への切り替えが著しく困難なタイプ。",
+    "support": [
+      "活動の切り替えを促す事前予告",
+      "興味を学習活動に生かす工夫"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "時間管理の困難が中心のADHD",
+    "overview": "時間の見積もりや管理に著しい困難があり、遅刻や提出物の遅れが頻発するタイプ。",
+    "support": [
+      "視覚的なタイムタイマーの活用",
+      "余裕を持ったスケジュールの提示"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "女児に多いとされる内向型ADHD（不注意優勢・見過ごされやすいタイプ）",
+    "overview": "多動性が目立たず、ぼんやりしている、忘れ物が多い等の特徴が中心で、周囲から気付かれにくいタイプ。",
+    "support": [
+      "行動観察に基づく早期の気付き",
+      "本人の困り感に寄り添った個別支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "感情調整の困難が前景に立つADHD",
+    "overview": "不注意・多動性に加え、感情の起伏の大きさやかんしゃくが目立つタイプ。",
+    "support": [
+      "感情を言葉で表現する練習の機会",
+      "気持ちを落ち着ける具体的な方法の指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "青年期に持続するADHD（成人期への移行例）",
+    "overview": "小児期の症状の一部が青年期以降も持続し、学業・進路選択に影響を及ぼしているタイプ。",
+    "support": [
+      "自己管理スキル（スケジュール管理等）の指導",
+      "進路選択における特性を踏まえた情報提供"
+    ],
+    "jiritsu": [
+      {
+        "ku": "人間関係の形成",
+        "item": "自己の理解と行動の調整"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ADHDに伴う実行機能の困難（計画・整理整頓の困難）",
+    "overview": "課題の優先順位付けや持ち物の整理等、実行機能に関わる困難が生活面に強く影響しているタイプ。",
+    "support": [
+      "チェックリストやタイマーの活用指導",
+      "整理整頓の手順を視覚化した支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  }
+]

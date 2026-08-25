@@ -1,0 +1,975 @@
+[
+  {
+    "name": "ダウン症候群（21トリソミー）",
+    "overview": "染色体異常による代表的な先天性疾患。心疾患等を合併することもある。",
+    "support": [
+      "視覚的な情報を活用した繰り返し学習",
+      "体力面に配慮した活動量の調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      },
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーションの基礎的能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性代謝異常",
+    "overview": "出生前の要因の一つ。早期の食事療法等により発達への影響を抑えられる場合がある。",
+    "support": [
+      "医療機関と連携した生活管理",
+      "個別の教育支援計画を活用した情報共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "周産期の脳損傷（新生児仮死等）",
+    "overview": "分娩期・新生児期の低酸素状態等による脳への影響。",
+    "support": [
+      "発達の状態に応じた個別の指導計画の作成",
+      "運動面の状態に配慮した活動設計"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "脳炎・髄膜炎の後遺症",
+    "overview": "出生後の感染症による中枢神経系への影響が知的発達に及ぶ状態。",
+    "support": [
+      "発症前後の変化を踏まえた個別対応",
+      "本人・家族への心理的ケア"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "状況の理解と変化への対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "染色体異常（ダウン症候群以外）",
+    "overview": "様々な染色体異常が知的障害の原因となりうる。合併症の有無の確認が重要。",
+    "support": [
+      "医療的な情報の共有と定期的な状態把握",
+      "個々の特性に応じた指導内容の調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "原因不明の知的障害",
+    "overview": "原因が特定されない場合も少なくなく、多くは出生前要因と推定されている。",
+    "support": [
+      "行動観察や検査結果に基づく個別のアセスメント",
+      "得意・不得意を踏まえた指導内容の設定"
+    ],
+    "jiritsu": [
+      {
+        "ku": "人間関係の形成",
+        "item": "自己の理解と行動の調整"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "脆弱X症候群",
+    "overview": "X染色体の異常による遺伝性疾患。知的障害に加え、行動面の特徴を伴うことがある。",
+    "support": [
+      "刺激を整理した学習環境の工夫",
+      "対人関係における段階的な指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "人間関係の形成",
+        "item": "他者との関わりの基礎"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ウィリアムズ症候群",
+    "overview": "染色体微小欠失による疾患。言語面の強さと視空間認知の弱さなど、能力の偏りが特徴的とされる。",
+    "support": [
+      "得意な言語面を生かした学習方法の活用",
+      "視空間認知を要する課題への個別の配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "プラダー・ウィリー症候群",
+    "overview": "染色体異常による疾患で、過食や肥満傾向、筋緊張低下等を伴うことがある。",
+    "support": [
+      "食事管理に関する家庭・給食担当者との連携",
+      "筋力面に配慮した活動内容の調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "甲状腺機能低下症（先天性）",
+    "overview": "早期発見・早期治療により知的発達への影響を抑えられる代謝性疾患の一つ。",
+    "support": [
+      "服薬状況の学校との共有",
+      "発達の状態に応じた個別の指導計画"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "周産期低酸素性虚血性脳症の後遺症",
+    "overview": "出産前後の酸素供給不足により脳に影響が生じ、知的障害を伴うことがある状態。",
+    "support": [
+      "運動面を含めた発達全体の状態把握",
+      "関係機関と連携した個別の支援計画"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "出生後の脳外傷による知的障害",
+    "overview": "学齢期以降の頭部外傷等により、知的機能に影響が生じる場合がある状態。",
+    "support": [
+      "受傷前の状態との違いを踏まえた個別対応",
+      "心理的なショックへの丁寧な配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "状況の理解と変化への対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "栄養障害に起因する発達の遅れ",
+    "overview": "重度の栄養不良等、出生後の環境要因により知的発達に影響が及ぶ場合がある状態。",
+    "support": [
+      "家庭・福祉機関と連携した生活基盤の支援",
+      "個々の発達状況に応じた段階的な指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "アンジェルマン症候群",
+    "overview": "重度の知的障害・言語障害に、特徴的な陽気な様子や失調性の歩行を伴う遺伝性疾患。",
+    "support": [
+      "非言語的なコミュニケーション手段の活用",
+      "てんかん発作への対応の共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーションの基礎的能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "猫鳴き症候群（5p欠失症候群）",
+    "overview": "乳児期の猫のような泣き声を特徴とする染色体欠失症候群。中等度から重度の知的障害を伴う。",
+    "support": [
+      "理解力に対して表出言語が弱い特性を踏まえた指導",
+      "音への過敏さへの配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "コルネリア・デ・ランゲ症候群",
+    "overview": "特徴的な顔貌と成長・発達の遅れを伴う遺伝性疾患。自閉的傾向を併せ有することがある。",
+    "support": [
+      "感覚過敏に配慮した学習環境",
+      "自傷行動が見られる場合の代替手段の指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "22q11.2欠失症候群",
+    "overview": "心疾患・口蓋裂・知的障害等を伴うことがある染色体微小欠失症候群。",
+    "support": [
+      "医療的な合併症を踏まえた総合的な支援計画",
+      "言語発達の状態に応じた指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の形成と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "スミス・マギニス症候群",
+    "overview": "知的障害に加え、睡眠リズムの乱れや自傷行動等の行動特徴を伴う染色体微小欠失症候群。",
+    "support": [
+      "生活リズムを整えるための家庭との連携",
+      "自傷行動への代替手段の指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "生活のリズムや生活習慣の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "結節性硬化症に伴う知的障害",
+    "overview": "全身に過誤腫が生じる疾患で、てんかんや自閉的な特性、知的障害を伴うことがある。",
+    "support": [
+      "てんかん発作への対応の共有",
+      "医療機関との継続的な連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "フェニルケトン尿症（治療後）",
+    "overview": "先天性代謝異常の一つ。新生児期からの食事療法により知的障害の発症を防げる場合が多い。",
+    "support": [
+      "食事療法の継続状況の学校との共有",
+      "除去食品への理解"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ムコ多糖症に伴う知的障害",
+    "overview": "代謝異常により全身に症状が現れる疾患群の一つ。型により知的障害の程度は異なる。",
+    "support": [
+      "進行性の症状を踏まえた指導内容の見直し",
+      "医療機関との連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "低酸素性虚血性脳症による重度知的障害",
+    "overview": "出生時の重度の低酸素状態により、広範な脳への影響が生じた状態。",
+    "support": [
+      "医療的ケアを含めた個別の支援体制",
+      "残存する力を生かした働きかけ"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーションの基礎的能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性甲状腺機能低下症（未治療・晩期発見）",
+    "overview": "早期治療が遅れた場合に、知的発達への影響が残ることがある代謝性疾患。",
+    "support": [
+      "ホルモン補充療法の継続状況の共有",
+      "発達の状態に応じた個別対応"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "胎児性アルコール・スペクトラム障害",
+    "overview": "妊娠中の母体のアルコール摂取の影響により、発達・知的機能に困難が生じることがある状態。",
+    "support": [
+      "得意・不得意の差を踏まえた個別の指導",
+      "生活面での繰り返しによる定着支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "重症新生児仮死後の脳性まひを伴う知的障害",
+    "overview": "出産時の重度の酸素不足により、運動障害と知的障害を併せ有する状態。",
+    "support": [
+      "運動面と認知面双方に応じた個別の指導計画",
+      "医療・福祉との連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "難治性てんかんに伴う知的障害（点頭てんかん等）",
+    "overview": "乳児期発症の難治性てんかんの影響により、知的発達に遅れが生じることがある状態。",
+    "support": [
+      "発作の記録と医療機関への情報提供",
+      "発作後の状態に応じた活動の調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "レット症候群に伴う知的障害",
+    "overview": "主に女児にみられる神経発達症で、発達の退行に伴い重度の知的障害を示すことが多い。",
+    "support": [
+      "スイッチ等を用いた意思表出支援",
+      "医療的ケアを含めた多職種連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーションの基礎的能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "スミス・レムリ・オピッツ症候群",
+    "overview": "コレステロール代謝異常による先天性疾患で、知的障害や複数の身体的特徴を伴う。",
+    "support": [
+      "食事療法（コレステロール補充等）との連携",
+      "発達段階に応じた個別の指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ソトス症候群",
+    "overview": "出生時から成長が著しく、特徴的な顔貌を伴う遺伝性疾患。軽度から中等度の知的障害を伴うことが多い。",
+    "support": [
+      "体格差に関する心理的な配慮",
+      "学習内容の個に応じた調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "コフィン・ローリー症候群",
+    "overview": "X連鎖性の遺伝性疾患で、知的障害と特徴的な骨格の異常を伴う。",
+    "support": [
+      "身体面の特徴に応じた活動内容の調整",
+      "段階的な生活動作の指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "日常生活に必要な基本動作"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ミトコンドリア病に伴う知的障害",
+    "overview": "エネルギー産生に関わるミトコンドリアの機能異常により、多臓器に症状が現れる疾患群の一つ。",
+    "support": [
+      "疲労しやすさに配慮した活動量の調整",
+      "医療機関との継続的な連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "レッシュ・ナイハン症候群",
+    "overview": "プリン代謝異常による遺伝性疾患。知的障害に加え、自傷行動を伴うことが特徴的とされる。",
+    "support": [
+      "自傷行動を防ぐための環境調整（保護具の活用等）",
+      "医療機関と連携した薬物療法との併用"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "18トリソミー症候群に伴う知的障害",
+    "overview": "複数の合併症を伴う染色体異常。医療的ケアを要することが多い重度の知的障害を伴う。",
+    "support": [
+      "医療的ケアを含む個別の支援体制",
+      "残存する反応を生かした働きかけ"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーションの基礎的能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "CHARGE症候群に伴う知的障害",
+    "overview": "視覚・聴覚障害等、複数の障害を併せ有する症候群の一部として知的障害がみられることがある。",
+    "support": [
+      "視覚・聴覚等の複合的な障害を踏まえた総合的支援",
+      "医療的ケアを含む多職種連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性風疹症候群に伴う知的障害",
+    "overview": "胎内感染の影響として、難聴・心疾患等とともに知的障害を伴うことがある状態。",
+    "support": [
+      "複数の障害を踏まえた個別の指導計画",
+      "医療機関との緊密な連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーションの基礎的能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "周産期脳室内出血後遺症による知的障害",
+    "overview": "早産児等にみられる脳室内出血の後遺症として、知的発達に影響が及ぶことがある状態。",
+    "support": [
+      "運動面を含めた発達全体の状態把握",
+      "理学療法等との連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性水頭症に伴う知的障害",
+    "overview": "脳脊髄液の循環異常により脳室が拡大し、知的発達に影響が及ぶことがある状態。",
+    "support": [
+      "シャント機能不全の徴候の共有",
+      "疲労しやすさへの配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "低出生体重児における発達の遅れ",
+    "overview": "極低出生体重等で出生した子供に、知的発達の遅れがみられることがある状態。",
+    "support": [
+      "発達の個人差を踏まえた長期的な見守り",
+      "得意な面を生かした学習支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "重症新生児黄疸後遺症（核黄疸）による知的障害",
+    "overview": "重症の新生児黄疸の後遺症として、知的障害や運動障害を来すことがある状態。",
+    "support": [
+      "聴覚障害の合併有無の確認",
+      "運動面に配慮した個別の指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "自閉スペクトラム症を伴わない特定不能の知的発達症",
+    "overview": "標準化された知能検査等の実施が困難な低年齢児等で用いられる、原因や重症度が確定していない知的障害の分類。",
+    "support": [
+      "行動観察に基づく継続的なアセスメント",
+      "得意・不得意を踏まえた柔軟な指導内容の設定"
+    ],
+    "jiritsu": [
+      {
+        "ku": "人間関係の形成",
+        "item": "自己の理解と行動の調整"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "アペール症候群（頭蓋顔面異骨症）に伴う知的障害",
+    "overview": "頭蓋骨の早期癒合を特徴とする遺伝性疾患。知的発達に影響が及ぶことがある。",
+    "support": [
+      "手術の経過を踏まえた個別対応",
+      "発達の状態に応じた指導内容の調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ヌーナン症候群",
+    "overview": "低身長や心疾患等を伴う遺伝性疾患。軽度の知的障害を伴うことがある。",
+    "support": [
+      "心疾患管理との連携",
+      "得意な面を生かした学習支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "コルネリア・デ・ランゲ症候群（NIPBL遺伝子変異）",
+    "overview": "成長障害・特徴的な顔貌・四肢の異常を伴う遺伝性疾患。自閉的傾向を併せ有することが多い。",
+    "support": [
+      "感覚過敏に配慮した学習環境の調整",
+      "自傷行動がみられる場合の代替行動の指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ミラー・ディーカー症候群（滑脳症）",
+    "overview": "大脳皮質の形成異常（滑脳症）を伴う染色体異常症候群。重度の知的障害とてんかんを伴うことが多い。",
+    "support": [
+      "てんかん管理を含む医療的ケアとの連携",
+      "感覚を活用した働きかけを中心とした指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ダウン症候群に伴う退行（若年性認知機能低下）",
+    "overview": "ダウン症候群のある人の一部にみられる、青年期以降の認知機能の退行。早期のアルツハイマー型変化との関連が指摘される。",
+    "support": [
+      "変化に気付いた際の早期の医療相談",
+      "できることを維持するための継続的な関わり"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "状況の理解と変化への対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "モザイク型染色体異常による知的障害",
+    "overview": "正常な細胞と異常な細胞が混在するモザイク型の染色体異常。症状の程度が非モザイク型より軽いことが多い。",
+    "support": [
+      "個人差の大きさを踏まえた個別のアセスメント",
+      "得意な領域を生かした学習の組み立て"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "胎児性バルプロ酸症候群",
+    "overview": "妊娠中の抗てんかん薬（バルプロ酸）曝露により、発達への影響が生じることがある状態。",
+    "support": [
+      "行動特性を踏まえた個別の指導",
+      "家族への丁寧な情報提供"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "重複障害としての知的障害（視覚・聴覚障害等との重複）",
+    "overview": "知的障害に視覚障害・聴覚障害等、他の障害を複数併せ有する状態。",
+    "support": [
+      "複数の障害特性を踏まえた総合的な指導計画",
+      "専門性の異なる複数の教員・専門家によるチーム対応"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "脳形成異常（脳梁欠損）に伴う知的障害",
+    "overview": "左右の大脳半球をつなぐ脳梁が生まれつき欠損している状態。程度により症状は様々。",
+    "support": [
+      "情報の統合に時間がかかることを踏まえた指導",
+      "得意な感覚経路を生かした学習"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性トキソプラズマ症に伴う知的障害",
+    "overview": "胎内でのトキソプラズマ感染により、知的障害・視覚障害等を伴うことがある状態。",
+    "support": [
+      "複数の障害特性を踏まえた総合的な支援",
+      "定期受診状況の共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "周産期溶血性疾患後遺症（重症Rh不適合等）による知的障害",
+    "overview": "重症の新生児溶血性疾患の後遺症として、知的発達に影響が及ぶことがある状態。",
+    "support": [
+      "聴覚障害の合併有無の確認",
+      "発達の状態に応じた個別対応"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  }
+]

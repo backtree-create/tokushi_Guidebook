@@ -1,0 +1,1051 @@
+[
+  {
+    "name": "感音難聴（内耳性）",
+    "overview": "内耳・聴神経の障害による難聴。音がひずみ、語音の明瞭度が低下しやすい。",
+    "support": [
+      "補聴器・人工内耳の適切な調整",
+      "板書や資料等、視覚的な情報提示の徹底"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      },
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "伝音難聴",
+    "overview": "外耳・中耳の障害による難聴。音が全体的に小さく聞こえる状態が中心。",
+    "support": [
+      "聞き取りやすい座席位置の配慮",
+      "補聴器の適切な活用と定期点検"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚の補助及び代行手段の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "混合性難聴",
+    "overview": "伝音難聴と感音難聴の両方の要素を併せ持つ状態。",
+    "support": [
+      "聴覚活用と視覚的情報提示を組み合わせた指導",
+      "補聴援助機器の活用"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "症候群性難聴（アッシャー症候群等）",
+    "overview": "難聴に加え視力障害等を伴う遺伝性疾患群。",
+    "support": [
+      "視覚障害の進行も見据えた早期からの複合的な支援",
+      "関連する専門医療機関との情報共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性風疹症候群",
+    "overview": "妊娠初期の母体感染により、難聴に心疾患・眼疾患等を伴うことがある。",
+    "support": [
+      "重複障害を踏まえた個別の指導計画の作成",
+      "医療機関との緊密な連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "障害の特性の理解と生活環境の調整"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "人工内耳装用",
+    "overview": "高度難聴で補聴器の効果が不十分な場合に手術で装用するもの。装用後も聞き取りには個人差が大きい。",
+    "support": [
+      "装用後の聴覚活用を促す継続的な指導",
+      "雑音環境での聞き取りを助ける補聴援助機器の活用"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーション手段の選択と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "滲出性中耳炎（慢性）",
+    "overview": "中耳炎の慢性化等により、一時的・断続的な伝音難聴を生じることがある状態。",
+    "support": [
+      "定期的な聴力チェックの実施",
+      "聞こえの変動を踏まえた座席・環境調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性サイトメガロウイルス感染症",
+    "overview": "胎内感染により難聴のほか、まれに知的障害等を伴うことがある疾患。",
+    "support": [
+      "聴力の変動（進行性の場合あり）を踏まえた定期評価",
+      "重複する困難への総合的な支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年発症型両側性感音難聴（遺伝性）",
+    "overview": "GJB2遺伝子変異等による、非症候群性の遺伝性難聴。",
+    "support": [
+      "補聴器・人工内耳の早期からの適合",
+      "家族への遺伝カウンセリング情報の共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の形成と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "突発性難聴（後天性・学齢期発症）",
+    "overview": "ある日突然、片側または両側の聴力が低下する疾患。原因は多くの場合特定されない。",
+    "support": [
+      "発症前後の聞こえの変化への心理的配慮",
+      "座席位置や情報保障の見直し"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "状況の理解と変化への対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "進行性難聴",
+    "overview": "加齢や遺伝的要因等により、時間の経過とともに聴力が低下していく状態。",
+    "support": [
+      "定期的な聴力検査に基づく支援内容の見直し",
+      "将来を見据えたコミュニケーション手段の拡充"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーション手段の選択と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "聴覚情報処理障害（APD）",
+    "overview": "聴力自体に大きな問題はないが、聞いた音声情報の処理に困難がある状態。",
+    "support": [
+      "静かな環境の確保と指示の視覚化",
+      "要点を絞った簡潔な伝え方"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "外耳道閉鎖症（先天性）",
+    "overview": "外耳道が生まれつき形成されていないため生じる伝音難聴。",
+    "support": [
+      "骨導補聴器等、特性に応じた補聴手段の活用",
+      "手術の可能性を含めた医療機関との連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚の補助及び代行手段の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ムンプス難聴（後天性・片側性）",
+    "overview": "流行性耳下腺炎（おたふくかぜ）の合併症として生じる、多くは片側性の高度難聴。",
+    "support": [
+      "健聴耳を活かした座席配置",
+      "片側性難聴による聞こえの偏りへの配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "周囲の状況把握と状況に応じた行動"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ワールデンブルグ症候群",
+    "overview": "虹彩の色素異常や前頭部の白髪等を伴う遺伝性の症候群性難聴。",
+    "support": [
+      "外見に関する心理的配慮",
+      "聴覚活用と視覚的情報提示の併用"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ペンドレッド症候群",
+    "overview": "感音難聴に甲状腺腫を伴う遺伝性疾患。思春期以降に甲状腺症状が顕在化することがある。",
+    "support": [
+      "甲状腺機能の定期チェックとの連携",
+      "進行性難聴を見据えたコミュニケーション手段の検討"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "トリーチャー・コリンズ症候群",
+    "overview": "顔面骨の低形成や外耳・中耳の形態異常を特徴とする先天性疾患。伝音難聴を伴う。",
+    "support": [
+      "摂食・呼吸面への配慮を含む多職種連携",
+      "伝音難聴に応じた補聴手段の活用"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "CHARGE症候群",
+    "overview": "眼のコロボーマ、心疾患、後鼻孔閉鎖、成長発達の遅れ、耳の異常等、複数の症状を伴う症候群。",
+    "support": [
+      "視覚・聴覚等複数の感覚障害を踏まえた総合的な支援",
+      "医療的ケアを含む多職種連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "アルポート症候群",
+    "overview": "進行性の腎炎に感音難聴を伴う遺伝性疾患。",
+    "support": [
+      "腎機能の状態に応じた生活管理との連携",
+      "進行性難聴を踏まえた定期的な聴力評価"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "スティックラー症候群",
+    "overview": "結合組織の異常により、難聴のほか近視や関節の症状を伴うことがある遺伝性疾患。",
+    "support": [
+      "視覚・聴覚双方の状態把握と教材の工夫",
+      "関節への負担に配慮した活動"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "鰓弓耳腎症候群（BOR症候群）",
+    "overview": "外耳・中耳の形態異常に腎機能障害を伴うことがある遺伝性症候群。",
+    "support": [
+      "腎機能の定期評価との連携",
+      "伝音難聴に応じた補聴支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "内耳奇形（Mondini型異形成等）",
+    "overview": "内耳の形成が不完全なために生じる先天性の感音難聴。",
+    "support": [
+      "人工内耳の適応可能性の医療機関での検討",
+      "めまい等前庭症状への配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚の補助及び代行手段の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "側頭骨骨折後の難聴",
+    "overview": "頭部外傷により側頭骨が骨折し、伝音難聴や感音難聴を来すことがある状態。",
+    "support": [
+      "受傷前後の聞こえの変化への心理的ケア",
+      "座席位置・情報保障の見直し"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "状況の理解と変化への対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "高ビリルビン血症後遺症による難聴",
+    "overview": "新生児期の重症黄疸の後遺症として感音難聴が生じることがある状態。",
+    "support": [
+      "早期からの補聴器・人工内耳の適合",
+      "言語発達の状態に応じた継続的評価"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の形成と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "髄膜炎後の両側性高度難聴",
+    "overview": "細菌性髄膜炎の後遺症として、急速に進行する高度感音難聴を来すことがある状態。",
+    "support": [
+      "人工内耳の早期適応の検討",
+      "急な聞こえの変化への心理的支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "状況の理解と変化への対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "聴神経腫瘍による難聴",
+    "overview": "聴神経に生じる腫瘍により、片側性の進行性難聴を来すことがある状態（稀に神経線維腫症2型に伴う）。",
+    "support": [
+      "定期的な聴力・画像検査の状況共有",
+      "片側性難聴による聞こえの偏りへの配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "周囲の状況把握と状況に応じた行動"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "薬剤性難聴（抗がん剤・抗菌薬等）",
+    "overview": "治療に用いる薬剤の副作用として、内耳の有毛細胞が障害され難聴を生じる状態。",
+    "support": [
+      "治療経過を踏まえた聴力の定期評価",
+      "治療優先の中での学習支援の工夫"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "オトフェリン遺伝子異常による難聴（聴覚神経症）",
+    "overview": "内耳の機能は保たれているが、音の情報がうまく神経に伝わらないタイプの難聴。人工内耳の効果が高いとされる。",
+    "support": [
+      "人工内耳の適応評価との連携",
+      "雑音下での聞き取りへの配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーション手段の選択と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年発症型両側性感音難聴（コネキシン26遺伝子変異以外）",
+    "overview": "GJB2以外の遺伝子変異による非症候群性難聴。臨床像はGJB2関連難聴と類似することが多い。",
+    "support": [
+      "補聴器・人工内耳の早期適合",
+      "定期的な聴力評価に基づく指導内容の見直し"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の形成と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ジャーバル・ランゲ・ニールセン症候群",
+    "overview": "高度先天性感音難聴に心臓の不整脈を伴う稀な遺伝性疾患。突然死のリスクがあるため注意を要する。",
+    "support": [
+      "心疾患管理との連携（運動制限等）",
+      "緊急時対応体制の整備"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ノリー病",
+    "overview": "網膜の異常と難聴を伴うことがあるX連鎖性遺伝性疾患。視覚・聴覚両面の支援を要する。",
+    "support": [
+      "視覚・聴覚の複合的な状態把握",
+      "早期からの多職種連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "外リンパ瘻",
+    "overview": "内耳と中耳を隔てる膜が破れ、めまいや難聴を来す状態。外傷や気圧変化が誘因となることがある。",
+    "support": [
+      "めまい発作時の安全確保",
+      "激しい運動や気圧変化を伴う活動の制限"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "メニエール病（若年発症例）",
+    "overview": "内耳のリンパ水腫により、難聴・耳鳴り・めまいを繰り返す疾患。若年での発症は比較的稀。",
+    "support": [
+      "めまい発作時の休息場所の確保",
+      "ストレス管理に関する情報共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "側頭骨形成異常（小耳症・外耳道狭窄を伴う）",
+    "overview": "耳介や外耳道の形成不全により、伝音難聴を伴う先天性疾患。",
+    "support": [
+      "骨導補聴器等、特性に応じた補聴手段",
+      "外見に関する心理的配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚の補助及び代行手段の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "聴神経発育不全",
+    "overview": "聴神経そのものが生まれつき細い、又は欠損しているために生じる高度難聴。人工内耳の効果が限定的な場合がある。",
+    "support": [
+      "触覚や視覚を活用した代替コミュニケーション手段の検討",
+      "早期からの手話等の選択肢の提供"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーション手段の選択と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性サイトメガロウイルス感染症による遅発性難聴",
+    "overview": "出生時は正常聴力でも、乳幼児期以降に進行性の難聴が顕在化することがある状態。",
+    "support": [
+      "定期的な聴力検査の継続",
+      "聴力低下の兆候の早期把握"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "騒音性難聴（若年例）",
+    "overview": "大音量への曝露により生じる感音難聴。近年、イヤホン使用等による若年層での増加が指摘されている。",
+    "support": [
+      "音量管理に関する生活指導",
+      "高音域の聞き取りにくさへの配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "真珠腫性中耳炎",
+    "overview": "中耳に生じた表皮組織の塊が周囲の骨を破壊し、難聴や合併症を来す疾患。",
+    "support": [
+      "手術前後の聞こえの変化への対応",
+      "定期的な耳鼻科受診の状況共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "顔面神経麻痺を伴う難聴",
+    "overview": "顔面神経と近接する内耳の障害が同時に生じ、難聴と顔面の動きの困難を併せ有する状態。",
+    "support": [
+      "表情表出の困難に配慮したコミュニケーション支援",
+      "リハビリテーションとの連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "聴覚過敏を伴う難聴（一部周波数の過敏反応）",
+    "overview": "難聴がある一方で、特定の周波数の音に過敏に反応する状態を併せ持つことがある。",
+    "support": [
+      "音環境の調整（イヤーマフの併用等）",
+      "過敏な音への段階的な慣らし"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "外傷性鼓膜穿孔",
+    "overview": "事故等により鼓膜が破れ、一時的又は永続的な伝音難聴を来す状態。",
+    "support": [
+      "治癒までの活動制限（水泳等）の共有",
+      "聞こえの回復状況に応じた座席配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "耳硬化症（若年発症例）",
+    "overview": "中耳の骨が硬化し、進行性の伝音難聴を来す疾患。若年での発症は比較的稀。",
+    "support": [
+      "進行性難聴を見据えた定期評価",
+      "手術の可能性を含めた医療機関との連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーション手段の選択と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性内耳道狭窄症",
+    "overview": "聴神経が通る内耳道が生まれつき狭く、聴神経の発達に影響が及ぶことがある状態。",
+    "support": [
+      "人工内耳の効果を含む医学的評価との連携",
+      "代替コミュニケーション手段の準備"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚の補助及び代行手段の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ムコ多糖症に伴う難聴",
+    "overview": "代謝異常疾患の症状の一つとして、伝音難聴や感音難聴を来すことがある状態。",
+    "support": [
+      "全身状態を踏まえた総合的な支援計画",
+      "定期的な聴力評価"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "聴覚野の脳損傷による中枢性難聴",
+    "overview": "内耳・聴神経は正常でも、脳の聴覚処理領域の損傷により聞こえに困難が生じる稀な状態。",
+    "support": [
+      "視覚的な情報保障を中心とした指導",
+      "医療機関との連携による状態把握"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性トキソプラズマ症による難聴",
+    "overview": "胎内感染により難聴のほか、視力障害や知的障害を伴うことがある疾患。",
+    "support": [
+      "複数の障害を踏まえた総合的な支援",
+      "医療機関との緊密な連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ミトコンドリア遺伝子変異による難聴（母系遺伝）",
+    "overview": "母系遺伝するミトコンドリアDNA変異により生じる難聴。抗菌薬（アミノグリコシド系）で難聴が誘発されやすい体質を伴うことがある。",
+    "support": [
+      "家族への薬剤感受性に関する情報共有",
+      "進行性難聴を見据えた早期からの支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "障害の特性の理解と生活環境の調整"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "コネキシン26遺伝子変異による難聴（GJB2関連）",
+    "overview": "非症候群性難聴の原因として最も頻度が高いとされる遺伝子変異。出生時から両側性の難聴を示すことが多い。",
+    "support": [
+      "新生児聴覚スクリーニング結果を踏まえた早期支援開始",
+      "補聴器・人工内耳の早期からの適合"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "内耳道形成不全に伴う両側性難聴",
+    "overview": "聴神経の通り道である内耳道が細く形成される先天異常。人工内耳の効果に個人差が大きい。",
+    "support": [
+      "聴覚活用の限界を見据えた複数のコミュニケーション手段の準備",
+      "医療機関での継続的な機能評価"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーション手段の選択と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性サイトメガロウイルス感染症（無症候性）による遅発性難聴",
+    "overview": "出生時に症状がなくても、後になって難聴が顕在化することがある先天感染症のタイプ。",
+    "support": [
+      "就学後も継続する定期的な聴力検査",
+      "聞こえの変動を踏まえた学級担任との情報共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "両側性小耳症・外耳道閉鎖症",
+    "overview": "両側の耳介・外耳道の形成不全により、生まれつき高度の伝音難聴を示す状態。",
+    "support": [
+      "骨導補聴器の早期からの活用",
+      "形成外科的治療のスケジュールとの調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚の補助及び代行手段の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "聴神経腫瘍（両側性・神経線維腫症2型）による進行性難聴",
+    "overview": "神経線維腫症2型に伴い両側の聴神経に腫瘍が生じ、進行性に難聴が悪化する状態。",
+    "support": [
+      "進行を見据えた早期からの手話等の習得",
+      "定期的な聴力・画像検査の結果共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーション手段の選択と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年発症型両側性感音難聴（原因不明・特発性）",
+    "overview": "精査によっても明確な原因が特定されない両側性の感音難聴。",
+    "support": [
+      "原因が不明でも状態像に応じた支援を優先",
+      "定期的な聴力の経過観察"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "外リンパ瘻による変動性難聴",
+    "overview": "内耳と中耳を隔てる膜の損傷により、日によって聞こえが変動する状態。",
+    "support": [
+      "聞こえの変動を踏まえた柔軟な配慮",
+      "めまい symptom時の安全確保"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "人工内耳の効果が限定的なタイプ（聴神経低形成合併例）",
+    "overview": "聴神経が細い等の理由で、人工内耳を装用しても期待される効果が得られにくいタイプ。",
+    "support": [
+      "視覚言語（手話等）を中心とした代替手段の確立",
+      "本人の伸びやすい手段を尊重した指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーション手段の選択と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  }
+]

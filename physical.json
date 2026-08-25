@@ -1,0 +1,1135 @@
+[
+  {
+    "name": "脳性まひ（痙直型）",
+    "overview": "下肢優位の痙性まひを主症状とする、最も多い病型。知的障害・視覚障害・言語障害・てんかんを伴うこともある。",
+    "support": [
+      "座位保持装置等の補装具の活用",
+      "関節拘縮予防のための姿勢管理"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      },
+      {
+        "ku": "身体の動き",
+        "item": "補助的手段の活用"
+      }
+    ],
+    "severity": [
+      {
+        "level": "GMFCS レベルI〜II（軽度）",
+        "criteria": "補助なしで歩行が可能、走る・跳ぶ等に軽度の制限がある程度。",
+        "support": [
+          "体育等での運動内容の一部調整",
+          "疲労しやすさへの配慮"
+        ]
+      },
+      {
+        "level": "GMFCS レベルIII（中等度）",
+        "criteria": "歩行補助具（歩行器・杖等）を使用すれば屋内外の移動が可能。",
+        "support": [
+          "歩行補助具を用いた移動経路の確保",
+          "長距離移動時の車椅子の併用"
+        ]
+      },
+      {
+        "level": "GMFCS レベルIV〜V（重度）",
+        "criteria": "自力移動が非常に制限され、電動車椅子等の使用や介助による移動が必要。",
+        "support": [
+          "姿勢保持装置・車椅子での学習環境の整備",
+          "医療的ケアを含む多職種連携"
+        ]
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "脳性まひ（アテトーゼ型）",
+    "overview": "不随意運動が主症状。知能は比較的高い傾向があり、難聴を伴うこともある。",
+    "support": [
+      "目と手の協応動作を要する場面での時間的余裕",
+      "代替入力機器（スイッチ等）の活用"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      },
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "脳性まひ（失調型）",
+    "overview": "平衡機能障害が主体で、書字等の微細な運動に困難が生じやすい。",
+    "support": [
+      "タブレット端末等、書字の代替手段の活用",
+      "姿勢の安定を助ける机・椅子の使用"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "作業に必要な動作と円滑な遂行"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "脳性まひ（固縮型）",
+    "overview": "四肢の強い抵抗感を伴う病型。知的障害・てんかんを伴うことが多い。",
+    "support": [
+      "筋緊張の緩和を意識した活動設計",
+      "医療機関と連携した経過観察"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "二分脊椎症",
+    "overview": "脊椎管の形成異常により下肢の運動・知覚障害、直腸膀胱障害、水頭症を伴うことがある。",
+    "support": [
+      "自己導尿等の医療的ケアへの環境面の配慮",
+      "褥瘡予防のための定期的な姿勢変換"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      },
+      {
+        "ku": "身体の動き",
+        "item": "日常生活に必要な基本動作"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "筋ジストロフィー（デュシェンヌ型等）",
+    "overview": "進行性の筋萎縮・筋力低下を主症状とする遺伝性疾患。年齢とともに歩行困難、呼吸・心機能の低下が進む。",
+    "support": [
+      "進行段階に応じた学習環境の継続的な見直し",
+      "ICTを活用した学びの継続手段の確保"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      },
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーション手段の選択と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "骨形成不全症",
+    "overview": "骨が脆く、わずかな外力でも骨折を繰り返しやすい全身の結合組織疾患。",
+    "support": [
+      "過度な安静を避けつつ骨折リスクを抑えた活動設計",
+      "本人・家族からの骨折状況の詳細な聞き取り"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "中途障害（事故・疾病後遺症）",
+    "overview": "学齢期に事故や疾病により肢体不自由となったケース。",
+    "support": [
+      "喪失感・心理的ショックへのケア",
+      "新しい生活動作の再学習支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "困難を改善・克服する意欲"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ウェルドニッヒ・ホフマン病（脊髄性筋萎縮症Ⅰ型）",
+    "overview": "運動神経の障害により、乳児期から進行性の筋力低下を示す遺伝性疾患。",
+    "support": [
+      "呼吸管理を含めた医療的ケアとの連携",
+      "残存する動きを生かした意思表出手段の確保"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      },
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーションの基礎的能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "分娩麻痺（腕神経叢麻痺）",
+    "overview": "出産時の神経損傷により、片側の上肢に運動障害が残ることがある状態。",
+    "support": [
+      "利き手の状態に応じた学習用具の工夫",
+      "患側の可動域を維持するための配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "関節拘縮症（先天性多発性）",
+    "overview": "複数の関節が生まれつき硬く動きにくい状態を示す疾患群。",
+    "support": [
+      "関節の可動域に応じた道具・机上環境の調整",
+      "日常生活動作の代替手段の検討"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "日常生活に必要な基本動作"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "外傷性脊髄損傷",
+    "overview": "事故等により脊髄が損傷し、損傷部位以下の運動・感覚障害が生じる状態。",
+    "support": [
+      "車椅子や補助具を用いた学習環境の整備",
+      "受傷後の心理的な変化への継続的なケア"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "困難を改善・克服する意欲"
+      },
+      {
+        "ku": "身体の動き",
+        "item": "補助的手段の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性四肢欠損・形成不全",
+    "overview": "出生時より四肢の一部が欠損又は形成不全である状態。",
+    "support": [
+      "義肢の使用状況に応じた学習・生活動作の工夫",
+      "本人の工夫を尊重した代替動作の指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "作業に必要な動作と円滑な遂行"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "筋緊張低下症候群（低緊張）",
+    "overview": "全身の筋緊張が低く、姿勢保持や運動発達に困難を伴う状態。",
+    "support": [
+      "姿勢保持具を用いた学習姿勢の確保",
+      "体幹を意識した運動プログラムとの連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性関節リウマチに伴う関節障害",
+    "overview": "関節の炎症が慢性的に繰り返され、痛みや可動域制限を伴う疾患。",
+    "support": [
+      "痛みの状態に応じた活動量の調整",
+      "服薬・通院状況の学校との共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "熱傷後拘縮",
+    "overview": "熱傷の治療過程で皮膚や関節が硬くなり、運動が制限される状態。",
+    "support": [
+      "瘢痕部位への負担を避けた活動の工夫",
+      "外見に関する心理的な配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "脊髄性筋萎縮症（Ⅱ型・Ⅲ型）",
+    "overview": "運動神経の変性により進行性の筋力低下を来す遺伝性疾患。発症時期により経過は異なる。",
+    "support": [
+      "進行段階に応じた補助具・呼吸管理との連携",
+      "治療薬の効果を踏まえた継続的な評価"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "補助的手段の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "シャルコー・マリー・トゥース病",
+    "overview": "末梢神経の障害により、手足の筋力低下やしびれが徐々に進行する遺伝性疾患。",
+    "support": [
+      "装具を用いた歩行支援",
+      "巧緻動作の困難に応じた学習用具の工夫"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "日常生活に必要な基本動作"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性多発性関節拘縮症",
+    "overview": "複数の関節が出生時から可動域制限を示す疾患群の総称。",
+    "support": [
+      "関節可動域に応じた姿勢保持具の活用",
+      "日常動作の代替手段の検討"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "二分脊椎に伴う水頭症",
+    "overview": "二分脊椎症に合併しやすい脳脊髄液循環の異常。シャント手術で管理されることが多い。",
+    "support": [
+      "シャント機能不全の徴候（頭痛・嘔吐等）の共有",
+      "疲労しやすさへの配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性股関節脱臼後の運動制限",
+    "overview": "股関節の形成不全に対する治療後、可動域や歩容に制限が残ることがある状態。",
+    "support": [
+      "歩行状態に応じた移動方法の工夫",
+      "体育等での運動内容の調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "身体の移動能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ペルテス病後の下肢機能障害",
+    "overview": "大腿骨頭の壊死とその修復過程で、下肢の運動機能に制限が残ることがある状態。",
+    "support": [
+      "装具着用時期に応じた活動の調整",
+      "筋力維持のための自立活動との連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "骨形成不全症（重症型）",
+    "overview": "骨が非常に脆く、乳幼児期から多数の骨折を経験することがある重症型。",
+    "support": [
+      "移動・姿勢保持における骨折リスクの最小化",
+      "過度な安静を避けた適度な活動の確保"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "進行性骨化性線維異形成症",
+    "overview": "軟部組織が徐々に骨化していく非常に稀な疾患で、外傷を避けることが重要となる。",
+    "support": [
+      "外傷を避けるための活動内容の慎重な検討",
+      "医療機関との緊密な連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "腕神経叢損傷（出生時）による上肢機能障害",
+    "overview": "出産時の神経損傷により、片側上肢の運動機能に制限が残ることがある状態。",
+    "support": [
+      "利き手の状態に応じた学習用具の選定",
+      "可動域訓練との連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "作業に必要な動作と円滑な遂行"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "筋強直性ジストロフィー",
+    "overview": "筋肉の異常な収縮の持続（筋強直）と進行性の筋力低下を特徴とする遺伝性疾患。",
+    "support": [
+      "疲労しやすさに応じた活動時間の調整",
+      "嚥下機能への配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "福山型先天性筋ジストロフィー",
+    "overview": "筋力低下に加え、知的障害やてんかんを伴うことが多い、日本人に多いタイプの筋ジストロフィー。",
+    "support": [
+      "運動・認知両面に応じた個別の指導計画",
+      "呼吸・摂食機能への継続的な配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "外傷性切断（四肢）",
+    "overview": "事故等により四肢の一部を失った状態。義肢の使用状況に応じた支援が必要。",
+    "support": [
+      "義肢を用いた動作の習得支援",
+      "受傷後の心理的なケア"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "困難を改善・克服する意欲"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "側弯症（特発性・思春期発症）",
+    "overview": "原因不明の脊柱の側方への弯曲。思春期の女子に多く見られる。",
+    "support": [
+      "装具療法期間中の姿勢に応じた学習環境",
+      "手術前後の学習空白への対応"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "痙性対麻痺（遺伝性）",
+    "overview": "下肢を中心とした痙性まひが緩徐に進行する遺伝性疾患群。",
+    "support": [
+      "歩行状態の変化に応じた移動手段の見直し",
+      "筋緊張緩和のための自立活動"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "身体の移動能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "軟骨無形成症",
+    "overview": "四肢が短い低身長を特徴とする骨系統疾患。関節の可動域制限を伴うことがある。",
+    "support": [
+      "体格に応じた机・椅子等の環境調整",
+      "体育等での活動内容の個別調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "日常生活に必要な基本動作"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "多発性関節拘縮症（アーサログリポーシス）",
+    "overview": "複数の関節が出生時から硬く動きにくい状態を特徴とする疾患群。",
+    "support": [
+      "関節可動域に応じた姿勢保持具の活用",
+      "日常動作の代替手段の検討"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "進行性筋ジストロフィー（肢帯型）",
+    "overview": "体幹に近い筋肉から筋力低下が進行するタイプの筋ジストロフィー。",
+    "support": [
+      "進行段階に応じた移動手段の見直し",
+      "疲労しやすさへの配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性ミオパチー",
+    "overview": "筋線維の構造異常により、出生時から筋力低下がみられる疾患群。",
+    "support": [
+      "姿勢保持具を用いた学習姿勢の確保",
+      "呼吸機能への配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性特発性側弯症（早期発症型）",
+    "overview": "10歳未満で発症する側弯症。進行が速い場合、呼吸機能への影響に注意が必要。",
+    "support": [
+      "装具着用期間の姿勢に配慮した学習環境",
+      "呼吸機能を踏まえた運動強度の調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "末梢神経障害（ギラン・バレー症候群後遺症）",
+    "overview": "急性の末梢神経の炎症の後遺症として、筋力低下や感覚障害が残ることがある状態。",
+    "support": [
+      "回復状況に応じたリハビリテーションとの連携",
+      "疲労しやすさへの配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "日常生活に必要な基本動作"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性下肢欠損（部分・完全）",
+    "overview": "下肢の一部又は全部が生まれつき欠損している状態。義足を使用することが多い。",
+    "support": [
+      "義足を用いた移動の習得支援",
+      "体育等での活動内容の工夫"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "身体の移動能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "脊髄空洞症",
+    "overview": "脊髄内に空洞ができ、進行性に運動・感覚障害を来すことがある疾患。",
+    "support": [
+      "症状の進行に応じた学習環境の見直し",
+      "定期的な神経学的評価との連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "多発性硬化症（小児発症例）",
+    "overview": "中枢神経の様々な部位に炎症が生じ、症状が再発と寛解を繰り返す疾患。小児での発症は稀。",
+    "support": [
+      "症状の変動に応じた柔軟な活動調整",
+      "再発時の心理的なケア"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "状況の理解と変化への対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性股関節形成不全（未治療・重症例）",
+    "overview": "股関節の受け皿が十分に形成されず、跛行や脚長差を来すことがある状態。",
+    "support": [
+      "歩行状態に応じた移動方法の工夫",
+      "体育等での運動内容の調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "身体の移動能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "外傷性脳損傷による運動機能障害",
+    "overview": "頭部外傷後に、片まひ等の運動障害が残ることがある状態。",
+    "support": [
+      "受傷前後の変化を踏まえた個別対応",
+      "リハビリテーションとの連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "困難を改善・克服する意欲"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "骨系統疾患（軟骨低形成症等）",
+    "overview": "骨の成長に関わる遺伝子異常により、低身長や骨変形を来す疾患群。",
+    "support": [
+      "体格に応じた学習環境の整備",
+      "整形外科的な治療スケジュールとの連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "日常生活に必要な基本動作"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性特発性関節炎による関節拘縮",
+    "overview": "関節炎の慢性化により、関節の可動域制限が進行することがある状態。",
+    "support": [
+      "朝のこわばりを踏まえた時間割の配慮",
+      "痛みの状態に応じた活動量の調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "脳血管障害（小児期発症の脳卒中）後遺症",
+    "overview": "小児期に生じた脳血管障害の後遺症として、片まひ等が残ることがある状態。",
+    "support": [
+      "受傷前後の能力の変化への心理的配慮",
+      "リハビリテーションとの連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "困難を改善・克服する意欲"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "低酸素性脳症後の四肢まひ",
+    "overview": "重度の低酸素状態の後遺症として、四肢の運動機能に重い障害が残った状態。",
+    "support": [
+      "医療的ケアを含む個別の支援体制",
+      "スイッチ等を用いた意思表出支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーションの基礎的能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "デュシェンヌ型筋ジストロフィーの進行後期例",
+    "overview": "病状が進行し、呼吸・心機能の管理が生活の中心となる段階。",
+    "support": [
+      "人工呼吸器等の医療機器を踏まえた学習環境",
+      "意思表出手段の継続的な見直し"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーション手段の選択と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性内反足（重症例）",
+    "overview": "足の形が生まれつき内側にねじれている状態。矯正治療後も歩容に影響が残ることがある。",
+    "support": [
+      "装具着用時期に応じた活動調整",
+      "歩行状態に応じた移動方法の工夫"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "身体の移動能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性特発性筋炎（皮膚筋炎）",
+    "overview": "筋肉と皮膚に炎症が生じる自己免疫疾患。筋力低下と皮疹を伴う。",
+    "support": [
+      "日光曝露への対策",
+      "筋力低下に応じた活動内容の調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "アペール症候群に伴う肢体不自由",
+    "overview": "頭蓋骨早期癒合症の一つで、手足の指の癒合（合指症）を伴うことが特徴的な遺伝性疾患。",
+    "support": [
+      "手指の機能に応じた学習用具の工夫",
+      "複数回にわたる手術スケジュールとの調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "作業に必要な動作と円滑な遂行"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "分娩時腕神経叢麻痺（重症型・全型麻痺）",
+    "overview": "出産時の神経損傷が重度で、上肢全体に運動障害が及ぶタイプ。",
+    "support": [
+      "患側上肢を補助する道具の活用",
+      "健側を生かした代替動作の指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "日常生活に必要な基本動作"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性皮膚筋炎に伴う運動機能障害",
+    "overview": "筋肉と皮膚の炎症により筋力低下を来す自己免疫疾患。関節の拘縮を伴うことがある。",
+    "support": [
+      "日光曝露を避ける工夫と筋力に応じた活動調整",
+      "服薬・治療スケジュールとの連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "脊髄髄膜瘤（顕在性二分脊椎）",
+    "overview": "脊髄と髄膜が背部の欠損部から突出する二分脊椎の重症型。下肢麻痺や水頭症を高率に合併する。",
+    "support": [
+      "車椅子を含む複数の移動手段の確保",
+      "自己導尿等の医療的ケアへの環境整備"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "身体の移動能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性頸椎奇形（クリッペル・ファイル症候群）",
+    "overview": "頸椎の癒合異常により、頸部の可動域制限を来す先天性疾患。",
+    "support": [
+      "頸部への負担を避けた活動内容の調整",
+      "姿勢保持を助ける座席等の工夫"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性関節リウマチ（全身型）に伴う肢体不自由",
+    "overview": "発熱・発疹等の全身症状とともに関節炎を来すタイプ。長期化すると関節の変形・拘縮を伴うことがある。",
+    "support": [
+      "体調に応じた柔軟な活動参加",
+      "関節保護を意識した動作指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性強直性脊椎炎",
+    "overview": "脊椎や仙腸関節に炎症を来す自己免疫疾患。腰背部の痛みや可動域制限を伴う。",
+    "support": [
+      "姿勢保持に配慮した机・椅子の調整",
+      "痛みの状態に応じた活動量の調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "脳性まひに伴う二次障害（成長に伴う関節変形）",
+    "overview": "脳性まひの筋緊張の影響が長期間続くことで、成長とともに関節の変形が進行することがある状態。",
+    "support": [
+      "定期的な整形外科的フォローアップ",
+      "装具や手術のタイミングに応じた学習環境の調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性ミオトニー症候群",
+    "overview": "筋肉の弛緩に時間がかかる筋疾患。運動開始時の動作のぎこちなさが特徴。",
+    "support": [
+      "準備運動の時間を十分に確保",
+      "急な動作を求めない活動設計"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  }
+]

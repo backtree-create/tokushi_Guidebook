@@ -1,0 +1,67 @@
+name: link check
+
+# 参考資料のURLが切れていないかを定期的に確認し、切れていたらIssueを立てる。
+# 「生きているが年度が古い」ケースは検出できないため、
+# data/sources.json の policy: latest の資料は毎年の目視確認が別途必要。
+
+on:
+  schedule:
+    - cron: "0 21 1 * *"   # 毎月1日 06:00 JST（UTC 21:00 の前日）
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "data/sources.json"
+      - "index.html"
+      - ".github/workflows/linkcheck.yml"
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # sources.json から URL を取り出して一覧にする
+      - name: collect urls
+        run: |
+          node -e '
+            const s = require("./data/sources.json");
+            const urls = s.flatMap(x => [x.url, x.indexUrl].filter(Boolean));
+            require("fs").writeFileSync("urls.txt", [...new Set(urls)].join("\n") + "\n");
+            console.log("チェック対象:", new Set(urls).size, "本");
+          '
+          cat urls.txt
+
+      - name: lychee
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # --method get : HEAD を弾くサーバ（mext.go.jp 等）での誤検知を防ぐ
+          # --user-agent : 既定UAだとブロックされることがある
+          # --timeout 40 : 手引のPDFは重い
+          # --accept 403 : Bot対策の403をリンク切れと区別する
+          args: >-
+            --no-progress
+            --method get
+            --max-retries 3
+            --timeout 40
+            --accept 200,206,403
+            --user-agent "Mozilla/5.0 (compatible; tokushi-Guidebook-linkcheck/1.0)"
+            --exclude-path dist
+            urls.txt index.html
+          fail: false
+          output: lychee.md
+
+      - name: open issue on failure
+        if: steps.lychee.outputs.exit_code != 0
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "参考資料のリンク切れを検出"
+          content-filepath: lychee.md
+          labels: |
+            リンク切れ
+            自動検出

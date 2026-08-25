@@ -1,0 +1,1284 @@
+[
+  {
+    "name": "小眼球症",
+    "overview": "眼球の発育が未熟なまま生まれる先天性疾患で、他の眼疾患を合併しやすい。",
+    "support": [
+      "保有する視覚を活かす拡大教材の工夫",
+      "視覚以外の感覚（触覚・聴覚）を活用した教材の併用"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      },
+      {
+        "ku": "環境の把握",
+        "item": "感覚の補助及び代行手段の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天白内障",
+    "overview": "水晶体の混濁により視力発達が妨げられる疾患。手術で回復する場合と、合併症により回復が限定的な場合がある。",
+    "support": [
+      "術後の見え方の変化に応じた教材サイズの調整",
+      "遮光眼鏡等によるまぶしさ対策"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      },
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天緑内障",
+    "overview": "眼圧の上昇により視神経が損傷し、視野狭窄や視力低下が進行しうる疾患。",
+    "support": [
+      "眼圧管理を踏まえた学校生活での安全確保",
+      "疲労時の休憩やまぶしさへの配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      },
+      {
+        "ku": "環境の把握",
+        "item": "周囲の状況把握と状況に応じた行動"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "視神経萎縮",
+    "overview": "視神経の障害により視力・視野が低下する状態。原因となる疾患は多岐にわたる。",
+    "support": [
+      "拡大教材や読み上げソフト等ICT機器の活用",
+      "近距離での観察や作業空間の確保"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚の補助及び代行手段の活用"
+      },
+      {
+        "ku": "環境の把握",
+        "item": "概念の形成"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "網膜色素変性症",
+    "overview": "進行性に視野狭窄・夜盲が生じる遺伝性疾患。将来的な見え方の変化を見据えた指導が必要。",
+    "support": [
+      "進行を見据えた白杖歩行等の技能の早期習得",
+      "暗い場所・夕方の活動での安全確保"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "身体の移動能力"
+      },
+      {
+        "ku": "心理的な安定",
+        "item": "困難を改善・克服する意欲"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "未熟児網膜症",
+    "overview": "未熟児への酸素投与等に伴い網膜血管に異常が生じる疾患。",
+    "support": [
+      "視機能の状態に応じた個別の教材調整",
+      "定期的な眼科受診結果を踏まえた指導の見直し"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "網膜芽細胞腫",
+    "overview": "乳幼児期に発症する眼内の悪性腫瘍。摘出により視力を失う場合がある。",
+    "support": [
+      "手術前後の心理的ケア",
+      "片眼視力となった場合の遠近感の困難への配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      },
+      {
+        "ku": "環境の把握",
+        "item": "周囲の状況把握と状況に応じた行動"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "強度近視",
+    "overview": "屈折異常が強く、矯正しても十分な視力が得られにくい場合がある状態。",
+    "support": [
+      "拡大教材・拡大読書器の活用",
+      "黒板や掲示物が見やすい座席位置の配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚の補助及び代行手段の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "白子症（アルビニズム）に伴う視覚障害",
+    "overview": "メラニン色素の欠乏により羞明・視力低下・眼振等を伴う遺伝性疾患。",
+    "support": [
+      "遮光眼鏡やサンバイザー等によるまぶしさ対策",
+      "屋外活動時の照度調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚の補助及び代行手段の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性黄斑変性",
+    "overview": "網膜の中心部（黄斑）が変性し、中心視力が低下する疾患。周辺視野は保たれることが多い。",
+    "support": [
+      "中心外視野を活用する見方の指導",
+      "拡大教材と十分な明るさの確保"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "コロボーマ（脈絡膜・網膜欠損）",
+    "overview": "眼球組織の形成不全により、視野の一部が欠ける先天性疾患。",
+    "support": [
+      "欠損部位に応じた見え方の把握と教材配置の工夫",
+      "視野の状態に応じた座席位置の配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "周囲の状況把握と状況に応じた行動"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性全盲",
+    "overview": "出生時より光を全く感じない状態。点字を中心とした触覚・聴覚を活用する教育が必要となる。",
+    "support": [
+      "点字の読み書き技能の系統的な指導",
+      "触覚教材・立体教材による概念形成"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      },
+      {
+        "ku": "身体の動き",
+        "item": "身体の移動能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "屈折異常による弱視（斜視性・不同視性等）",
+    "overview": "強い遠視・乱視や斜視等により、視力の発達自体が妨げられている状態。",
+    "support": [
+      "眼科での治療（アイパッチ等）と学校生活の連携",
+      "文字の大きさやコントラストの調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "続発性緑内障",
+    "overview": "他の眼疾患や外傷、手術後等に伴って眼圧が上昇する状態。",
+    "support": [
+      "定期受診の状況を踏まえた活動制限の共有",
+      "急な視力変化への注意深い観察"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "視神経形成不全",
+    "overview": "視神経が生まれつき十分に発達していないために生じる視力障害。",
+    "support": [
+      "保有視力を最大限活用する教材の工夫",
+      "他の障害の合併有無の確認"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚の補助及び代行手段の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "糖尿病網膜症（若年発症例）",
+    "overview": "糖尿病の合併症として網膜の血管が障害され、視力低下が進行することがある状態。",
+    "support": [
+      "血糖管理と眼科受診の状況の共有",
+      "視力の変化に応じた教材の見直し"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "レーベル先天黒内障",
+    "overview": "網膜の光受容細胞の遺伝子異常により、乳児期から高度の視覚障害を示す遺伝性疾患。",
+    "support": [
+      "早期からの触覚・聴覚を中心とした教育的対応",
+      "保有する光覚の活用方法の探索"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "スターガルト病",
+    "overview": "若年期に発症する遺伝性の黄斑変性症。中心視力が進行性に低下する。",
+    "support": [
+      "進行を見据えた拡大教材から点字への移行準備",
+      "羞明への対応（遮光眼鏡等）"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "困難を改善・克服する意欲"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "アッシャー症候群（視覚障害を伴う場合）",
+    "overview": "感音難聴と網膜色素変性症を併せ有する遺伝性疾患。視覚と聴覚の両面での配慮が必要。",
+    "support": [
+      "視覚・聴覚双方の状態変化を踏まえた複合的支援",
+      "将来を見据えた点字・手話等の選択肢の提供"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "未熟児無水晶体症",
+    "overview": "未熟児網膜症の治療等に伴い水晶体を摘出した状態。強い遠視となるため矯正が必要。",
+    "support": [
+      "コンタクトレンズ・眼鏡の管理支援",
+      "矯正後の見え方に応じた教材調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "視中枢障害（皮質盲を含む）",
+    "overview": "眼球自体に大きな異常がなくても、脳の視覚中枢の障害により見えにくさが生じる状態。",
+    "support": [
+      "視覚以外の感覚を優先した教材構成",
+      "医療機関と連携した状態把握"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚の補助及び代行手段の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "眼球振盪（先天眼振）",
+    "overview": "眼球が不随意に揺れ動くため、注視や追視に困難が生じる状態。",
+    "support": [
+      "最も見やすい頭位・視距離の把握と教材配置",
+      "作業時間への配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "ぶどう膜炎による視力低下",
+    "overview": "眼内の炎症性疾患により、慢性的に視力低下や羞明を来すことがある状態。",
+    "support": [
+      "炎症の活動性に応じた活動量の調整",
+      "点眼等の治療スケジュールとの連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "未熟児網膜症後の網膜剥離",
+    "overview": "未熟児網膜症の進行により網膜剥離を来し、視力に重い影響が及ぶことがある状態。",
+    "support": [
+      "術後の見え方の変化に応じた教材の見直し",
+      "段階的な保有視覚の活用訓練"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚の補助及び代行手段の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "角膜混濁（先天性・外傷性）",
+    "overview": "角膜が濁ることで光の通過が妨げられ、視力低下が生じる状態。",
+    "support": [
+      "移植・手術の見通しを踏まえた学習計画",
+      "羞明対策"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "色覚異常（強度）",
+    "overview": "色の識別に困難があり、教材や資料の色分けが判別しにくい状態。",
+    "support": [
+      "色以外の情報（形・模様・文字）を併用した教材",
+      "色覚シミュレーションを踏まえた掲示物の配色"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "視野障害（緑内障による末期）",
+    "overview": "緑内障の進行により視野の大部分が失われた状態。中心視力は保たれることもある。",
+    "support": [
+      "残存視野を最大限活かした資料配置",
+      "歩行時の安全確保"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "身体の移動能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "視神経炎後遺症",
+    "overview": "視神経の炎症の後遺症として視力低下が残ることがある状態。",
+    "support": [
+      "視力の変動に応じた柔軟な教材選択",
+      "体調管理との連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "未熟児による皮質視覚障害",
+    "overview": "未熟児として出生した子供に、脳の視覚処理の未熟さに起因する見えにくさが生じる状態。",
+    "support": [
+      "視覚刺激の量や提示速度の調整",
+      "他の感覚と組み合わせた学習支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "外傷性視覚障害",
+    "overview": "事故等による眼球や視神経の損傷によって生じる視覚障害。",
+    "support": [
+      "受傷前後の見え方の変化への心理的ケア",
+      "新しい見え方に応じた学習方法の再構築"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "困難を改善・克服する意欲"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "複視（両眼視機能障害）",
+    "overview": "両眼の視線が一致せず、物が二重に見える状態。眼球運動障害等が原因となる。",
+    "support": [
+      "片眼遮蔽等、見やすくする工夫の共有",
+      "疲労に配慮した学習時間の調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "進行性外眼筋麻痺に伴う視覚障害",
+    "overview": "眼球を動かす筋肉の進行性の機能低下により、視野や見え方に制約が生じる状態。",
+    "support": [
+      "頭部を動かして視野を補う指導",
+      "疲労しやすさへの配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "姿勢と運動・動作の基本的技能"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "黄斑ジストロフィ（ベスト病等）",
+    "overview": "黄斑部に病変が生じる遺伝性疾患群。進行の速度や視力低下の程度は型により異なる。",
+    "support": [
+      "進行状況に応じた教材サイズの見直し",
+      "定期的な視力評価に基づく学習方法の調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "錐体杆体ジストロフィ",
+    "overview": "色覚異常や羞明、視力低下が進行する遺伝性網膜疾患。",
+    "support": [
+      "色以外の情報を併用した教材",
+      "羞明対策（遮光眼鏡等）"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "無虹彩症",
+    "overview": "虹彩が生まれつき欠損又は形成不全であるため、羞明や視力低下を伴う疾患。",
+    "support": [
+      "遮光眼鏡・カラーコンタクトレンズ等の活用",
+      "明るい場所での活動時間の調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚の補助及び代行手段の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "小児白内障術後の水晶体様変化",
+    "overview": "乳幼児期の白内障手術後、眼鏡やコンタクトレンズによる継続的な矯正が必要となる状態。",
+    "support": [
+      "矯正器具の管理支援",
+      "定期受診状況の共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "未熟児網膜症（軽症・自然治癒例の経過観察）",
+    "overview": "軽度の未熟児網膜症で自然治癒した場合も、将来的な近視や網膜合併症のリスクに留意が必要とされる。",
+    "support": [
+      "定期眼科受診の継続的な確認",
+      "近視進行への配慮（座席位置等）"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "健康状態の維持・改善"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "視神経低形成症",
+    "overview": "視神経が生まれつき細く、視力障害を来す疾患。下垂体機能低下を合併することがある。",
+    "support": [
+      "内分泌機能の定期評価との連携",
+      "保有視覚を生かした教材の工夫"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "網膜静脈閉塞症（若年発症例）",
+    "overview": "網膜の血管が詰まることで視力低下や視野欠損を来す疾患。若年での発症は稀。",
+    "support": [
+      "視野の状態に応じた資料配置",
+      "急な見え方の変化への対応体制"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "周囲の状況把握と状況に応じた行動"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "角膜ジストロフィ",
+    "overview": "角膜に混濁が生じ、進行性に視力が低下する遺伝性疾患群。",
+    "support": [
+      "羞明対策と拡大教材の活用",
+      "移植手術の見通しを踏まえた学習計画"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性黄斑円孔",
+    "overview": "黄斑部に孔が生じ、中心視力が低下する疾患。外傷等が誘因となることがある。",
+    "support": [
+      "術後の見え方の変化に応じた教材調整",
+      "中心外視野を活用する見方の指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "視放線・後頭葉損傷による同名半盲",
+    "overview": "脳の視覚経路の損傷により、視野の左右どちらか半分が欠ける状態。",
+    "support": [
+      "欠損側からの情報提示を補う配置の工夫",
+      "頭部を動かして視野を広げる指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "周囲の状況把握と状況に応じた行動"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天性眼瞼下垂による視性刺激遮断弱視",
+    "overview": "まぶたが十分に開かないことにより、視覚刺激が遮断され弱視を生じる状態。",
+    "support": [
+      "手術後の視機能訓練との連携",
+      "保有視覚を最大限活用する教材"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "視神経脊髄炎関連疾患による視力障害",
+    "overview": "自己免疫性の炎症性疾患により、視神経炎を繰り返し視力障害が進行することがある状態。",
+    "support": [
+      "再発時の急な見え方の変化への対応",
+      "治療スケジュールとの連携"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "未熟児黄斑低形成",
+    "overview": "未熟児網膜症等の影響で黄斑部の発達が不十分となり、視力に制約が生じる状態。",
+    "support": [
+      "拡大教材と十分な明るさの確保",
+      "保有視覚の活用方法の個別検討"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "虚血性視神経症",
+    "overview": "視神経への血流が障害され、急激な視力低下を来す状態。",
+    "support": [
+      "急な視力変化への心理的ケア",
+      "新しい見え方に応じた学習方法の再構築"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "困難を改善・克服する意欲"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "デュエイン症候群（眼球運動障害を伴う）",
+    "overview": "外眼筋の発達異常により、眼球の運動が制限される先天性疾患。",
+    "support": [
+      "見やすい頭位を活かした教材配置",
+      "眼精疲労への配慮"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "若年性糖尿病網膜症の増殖期病変",
+    "overview": "糖尿病網膜症が進行し、新生血管や出血を伴う状態。視力への影響が大きい。",
+    "support": [
+      "血糖・眼科治療の状況を踏まえた活動調整",
+      "視力変動に応じた柔軟な教材選択"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "先天無眼球症",
+    "overview": "眼球が生まれつき形成されていない状態。義眼を装用することが多い。",
+    "support": [
+      "点字を中心とした早期からの教育的対応",
+      "義眼の管理に関する情報共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "未熟児による視覚性認知の困難（皮質性視覚障害の軽症例）",
+    "overview": "眼球の機能は保たれているが、脳での視覚情報処理に軽度の困難がある状態。",
+    "support": [
+      "視覚刺激を整理した教材提示",
+      "反応時間に配慮した学習進行"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "未熟児網膜症瘢痕期による斜視・弱視",
+    "overview": "未熟児網膜症の瘢痕化に伴い、斜視や弱視を来すことがある状態。",
+    "support": [
+      "視能訓練との連携",
+      "保有視覚を生かした教材の工夫"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "視神経乳頭低形成",
+    "overview": "視神経の根元部分が生まれつき小さく、視力障害の原因となる状態。",
+    "support": [
+      "拡大教材の活用",
+      "定期的な視機能評価"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "水晶体亜脱臼に伴う視力障害（マルファン症候群等）",
+    "overview": "結合組織の異常により水晶体の位置がずれ、視力障害を来す状態。全身疾患の一症状であることがある。",
+    "support": [
+      "矯正眼鏡の管理支援",
+      "全身状態を踏まえた活動制限の確認"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "レーベル遺伝性視神経症（LHON）",
+    "overview": "ミトコンドリアDNA変異により、青年期に急速な視力低下を来す遺伝性疾患。男性に多く発症する。",
+    "support": [
+      "急激な視力変化への心理的サポート",
+      "進行後の保有視覚活用訓練"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "困難を改善・克服する意欲"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "網膜芽細胞腫の遺伝性タイプ（両側性）",
+    "overview": "RB1遺伝子の生殖細胞変異による遺伝性の網膜芽細胞腫。両眼性に発症しやすく、他のがんの易罹患性にも注意が必要。",
+    "support": [
+      "長期的な健康フォローアップとの連携",
+      "視力を失った場合の空間認知の指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "黄斑低形成を伴う眼皮膚白皮症",
+    "overview": "色素形成の異常により黄斑の発達が不十分となり、視力発達が制限される状態。",
+    "support": [
+      "拡大教材と羞明対策の組み合わせ",
+      "保有視覚を活かした学習方法の確立"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "未熟児網膜症瘢痕期（重症）による高度視覚障害",
+    "overview": "未熟児網膜症の重症例で、瘢痕形成により高度の視覚障害が残った状態。",
+    "support": [
+      "点字を含む複数の情報入手手段の並行指導",
+      "早期からの歩行訓練"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "身体の移動能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "視神経膠腫による視覚障害",
+    "overview": "視神経に生じる腫瘍で、神経線維腫症1型に伴うことが多い小児の脳腫瘍の一種。",
+    "support": [
+      "治療経過に応じた視力変化への対応",
+      "定期的な画像検査結果の共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "視覚失認（大脳性の見えの困難）",
+    "overview": "眼球や視神経に異常がなくても、脳の視覚情報処理の障害により対象物の認識に困難が生じる状態。",
+    "support": [
+      "形よりも色や動きを手がかりにした教材提示",
+      "触覚等他の感覚と組み合わせた確認"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "視覚性運動失調（見た情報と動作の協調の困難）",
+    "overview": "視覚から得た情報を運動に的確に反映させることに困難がある状態。",
+    "support": [
+      "手元を確認しながら行う作業の時間的余裕",
+      "段階的な目と手の協応動作の練習"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "作業に必要な動作と円滑な遂行"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "黄斑ジストロフィ（若年発症網膜分離症）",
+    "overview": "X連鎖性の遺伝性疾患で、網膜の層が分離し中心視力が低下する。男児に多い。",
+    "support": [
+      "両眼视力差に応じた座席配置",
+      "急激な視力低下（硝子体出血等）への注意"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "保有する感覚の活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "視神経低形成septo-optic dysplasia（下垂体機能低下合併型）",
+    "overview": "視神経の低形成に、下垂体機能低下症や脳梁欠損等を伴うことがある症候群。",
+    "support": [
+      "内分泌科との継続的な連携",
+      "低血糖等のリスクに関する情報共有"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "風疹網膜症（先天性風疹症候群の眼症状）",
+    "overview": "胎内での風疹感染により網膜に色素沈着等の変化を来し、視機能に影響が及ぶことがある状態。",
+    "support": [
+      "難聴・心疾患等の合併症を踏まえた総合的支援",
+      "保有視覚の活用訓練"
+    ],
+    "jiritsu": [
+      {
+        "ku": "環境の把握",
+        "item": "感覚や認知の特性についての理解と対応"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "糖尿病を背景とする若年発症網膜症の進行例",
+    "overview": "血糖コントロール不良が続いた場合に、若年でも網膜症が進行し視力に影響が及ぶことがある状態。",
+    "support": [
+      "血糖管理の徹底と定期受診の励行",
+      "視力変動に応じた教材調整"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "病気の状態の理解と生活管理"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "外傷性視神経症（頭部外傷後）",
+    "overview": "頭部への強い衝撃により視神経が損傷し、視力低下を来す状態。",
+    "support": [
+      "受傷後の心理的ケア",
+      "新しい見え方への適応支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "困難を改善・克服する意欲"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "未熟児網膜症に対するレーザー治療後の視野狭窄",
+    "overview": "未熟児網膜症の進行を防ぐレーザー治療の結果として、周辺視野が狭くなることがある状態。",
+    "support": [
+      "周辺からの接近への気付きを補う指導",
+      "安全な移動のための白杖等の活用"
+    ],
+    "jiritsu": [
+      {
+        "ku": "身体の動き",
+        "item": "身体の移動能力"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  }
+]

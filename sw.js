@@ -1,43 +1,107 @@
-// 特別支援教育 障害種別支援 リファレンス — オフライン対応 Service Worker
-const CACHE_NAME = "shishien-hayamichou-v1";
-const ASSETS = [
+/* 特別支援教育 指導支援ハンドブック — Service Worker
+ *
+ * 方針：
+ *   HTML と JSON は「ネットワーク優先」。更新した内容が必ず端末に届くようにする。
+ *   CSS / JS / 画像は「キャッシュ優先」。表示速度を確保する。
+ *   VERSION を変えると古いキャッシュは activate 時に破棄される。
+ *
+ * 注意：VERSION は data/meta.json の "updated" と揃えること。
+ *       内容を更新したらここも必ず書き換える。
+ */
+const VERSION = "2026-08-25";
+const CACHE_NAME = `tokushi-guidebook-${VERSION}`;
+
+const PRECACHE = [
+  "./",
   "./index.html",
   "./manifest.json",
+  "./assets/style.css",
+  "./assets/app.js",
   "./icon-192.png",
-  "./icon-512.png"
+  "./icon-512.png",
+  "./data/meta.json",
+  "./data/sources.json",
+  "./data/jiritsu27.json",
+  "./data/categories.json",
+  "./data/diseases/visual.json",
+  "./data/diseases/hearing.json",
+  "./data/diseases/intellectual.json",
+  "./data/diseases/physical.json",
+  "./data/diseases/health.json",
+  "./data/diseases/language.json",
+  "./data/diseases/autism.json",
+  "./data/diseases/emotional.json",
+  "./data/diseases/ld.json",
+  "./data/diseases/adhd.json",
+  "./data/diseases/futoukou.json"
 ];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
+    caches.open(CACHE_NAME)
+      // 1本でも失敗すると install ごと失敗するため、個別に握りつぶす
+      .then((cache) => Promise.all(
+        PRECACHE.map((url) => cache.add(url).catch(() => null))
+      ))
+      .then(() => self.skipWaiting())
   );
-  self.skipWaiting();
 });
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(
+    caches.keys()
+      .then((keys) => Promise.all(
         keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k))
-      )
-    )
+      ))
+      .then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
-// キャッシュ優先、失敗時はネットワーク（オフラインでも全文閲覧可能に）
-self.addEventListener("fetch", (event) => {
-  if (event.request.method !== "GET") return;
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      if (cached) return cached;
-      return fetch(event.request)
-        .then((response) => {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
-          return response;
-        })
-        .catch(() => cached);
+function networkFirst(request) {
+  return fetch(request)
+    .then((response) => {
+      if (response && response.ok) {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+      }
+      return response;
     })
-  );
+    .catch(() => caches.match(request).then((cached) => {
+      if (cached) return cached;
+      // ドキュメント要求がオフラインで未キャッシュのときはトップを返す
+      if (request.mode === "navigate") return caches.match("./index.html");
+      return Response.error();
+    }));
+}
+
+function cacheFirst(request) {
+  return caches.match(request).then((cached) => {
+    if (cached) return cached;
+    return fetch(request).then((response) => {
+      if (response && response.ok) {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+      }
+      return response;
+    });
+  });
+}
+
+self.addEventListener("fetch", (event) => {
+  const request = event.request;
+  if (request.method !== "GET") return;
+
+  const url = new URL(request.url);
+  // 別オリジン（文科省のPDF等）はSWを通さず、そのままブラウザに任せる
+  if (url.origin !== self.location.origin) return;
+
+  const isDocument = request.mode === "navigate" || request.destination === "document";
+  const isData = url.pathname.endsWith(".json");
+
+  event.respondWith(isDocument || isData ? networkFirst(request) : cacheFirst(request));
+});
+
+// ページ側から更新を促せるようにしておく
+self.addEventListener("message", (event) => {
+  if (event.data === "SKIP_WAITING") self.skipWaiting();
 });

@@ -1,0 +1,557 @@
+[
+  {
+    "name": "器質性構音障害（口蓋裂等）",
+    "overview": "口唇・舌・歯等の構音器官の構造や機能の異常が原因となる構音障害。",
+    "support": [
+      "発語器官の運動機能を高める指導",
+      "呼気の流れを口腔前方に向ける指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "発達性（機能性）構音障害",
+    "overview": "構音器官に器質的な異常はなく、構音の習得過程で誤りが固定した状態（音韻障害とも呼ばれる）。",
+    "support": [
+      "正しい構音への段階的な誘導",
+      "音の聴覚的な弁別力を高める指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "吃音",
+    "overview": "語頭音の繰り返し・引き伸ばし・阻止等、話し言葉の流暢性に困難がある状態。原因は現在のところ不明。",
+    "support": [
+      "自由な雰囲気で「楽に話す」経験を積む環境づくり",
+      "苦手な場面・語音への緊張を段階的に和らげる指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "困難を改善・克服する意欲"
+      },
+      {
+        "ku": "コミュニケーション",
+        "item": "状況に応じたコミュニケーション"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "言語発達の遅れ",
+    "overview": "知的障害、難聴、肢体不自由（脳性まひ）、てんかん等の神経学的問題、自閉症・情緒障害などが背景にあることが多い。",
+    "support": [
+      "実際の生活場面での言語活用の機会の確保",
+      "習得した語彙・言い回しを使う言語活動の工夫"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の形成と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "早口言語症（クラッタリング）",
+    "overview": "話す速度が速く不規則になり、聞き手にとって分かりにくくなる話し言葉の障害。",
+    "support": [
+      "話す速度を意識づける指導",
+      "聞き手の反応を確認しながら話す練習"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "状況に応じたコミュニケーション"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "口蓋裂に伴う構音障害",
+    "overview": "口蓋の形成不全により、呼気の鼻漏れ等から構音に異常が生じる状態。",
+    "support": [
+      "手術後の口腔機能に応じた発語指導",
+      "滲出性中耳炎等の合併症への健康管理"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "運動性構音障害（まひ性構音障害）",
+    "overview": "唇・舌・喉頭等、発語に関わる筋肉の神経性の障害による構音の困難。",
+    "support": [
+      "補助的なコミュニケーション手段（文字盤等）の活用",
+      "発語器官の運動機能を高める指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーション手段の選択と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "音韻障害（発達性）",
+    "overview": "聴覚・構音器官に器質的な問題はなく、音の並べ方や選び方に系統的な誤りが見られる状態。",
+    "support": [
+      "音の弁別・認知を高める段階的な指導",
+      "文字と音を関連付けた指導の併用"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "表出性言語障害",
+    "overview": "言葉の理解に比べ、自分の考えを言葉で表出することに著しい困難がある状態。",
+    "support": [
+      "絵カードやジェスチャーを併用した表出の補助",
+      "話したいことを整理する練習の機会"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "受容性言語障害",
+    "overview": "話し言葉を聞いて理解することそのものに著しい困難がある状態。",
+    "support": [
+      "短く具体的な言葉での指示",
+      "視覚的な情報を併用した説明"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "喉頭軟弱症等による発声の困難",
+    "overview": "喉頭の形態異常により、声の質や発声の持続に困難がある状態。",
+    "support": [
+      "無理のない発声量での活動",
+      "医療機関との連携による経過観察"
+    ],
+    "jiritsu": [
+      {
+        "ku": "健康の保持",
+        "item": "身体各部の状態の理解と養護"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "難聴に起因する言語発達の遅れ",
+    "overview": "聴覚障害により音声言語の獲得が制約され、言語発達に遅れが生じている状態。",
+    "support": [
+      "保有する聴覚を活かした言語指導",
+      "視覚的な情報を併用した語彙学習"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の形成と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "脳性まひに伴う言語障害（構音障害を含む）",
+    "overview": "発語に関わる筋肉の運動障害により、構音や発声に困難が生じている状態。",
+    "support": [
+      "補助的コミュニケーション手段（AAC）の活用",
+      "発語器官の運動機能を高める指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーション手段の選択と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "てんかん性言語退行（ランドウ・クレフナー症候群等）",
+    "overview": "てんかん性の脳波異常に伴い、獲得していた言語機能が退行することがある稀な疾患。",
+    "support": [
+      "医療機関と連携した経過観察",
+      "言語機能の変化に応じた指導内容の見直し"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "選択性かん黙に伴う発話の制限",
+    "overview": "特定の場面で話せない状態が、言語表出の機会そのものを制約している状態。",
+    "support": [
+      "非言語的な意思表示の尊重",
+      "安心できる関係の中での発話機会の拡大"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "構音発達の個人差の範囲内にある遅れ",
+    "overview": "年齢相応の構音発達の途上にあり、経過観察が適切とされる軽微な状態。",
+    "support": [
+      "過度に指摘せず自然な発話機会を増やす関わり",
+      "定期的な発達の見守り"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "構音障害を伴う口唇口蓋裂術後の経過",
+    "overview": "手術後も鼻咽腔閉鎖機能の状態により、構音に影響が残ることがある状態。",
+    "support": [
+      "言語聴覚士による継続的な構音指導との連携",
+      "定期的な機能評価"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "重度難聴に伴う構音の不明瞭さ",
+    "overview": "高度難聴により自己の発話音を聞いてモニターすることが難しく、構音が不明瞭になりやすい状態。",
+    "support": [
+      "視覚的フィードバック（口形の提示等）を用いた指導",
+      "聴覚活用と組み合わせた発語指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "場面緘黙を伴わない極度の内気さによる発話の少なさ",
+    "overview": "診断基準を満たす選択性かん黙ではないが、非常に発話量が少ない性格特性による状態。",
+    "support": [
+      "発話を強要しない安心できる関係づくり",
+      "小集団での発話機会の段階的な提供"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "多言語環境における言語発達の遅れ",
+    "overview": "複数の言語環境で育つ中で、いずれの言語も年齢相応の発達に至っていない状態。",
+    "support": [
+      "家庭で使用する言語の状況把握",
+      "日本語・母語双方の発達支援の検討"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の形成と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "高機能自閉症に伴う語用論的な言語の困難",
+    "overview": "文法や語彙の習得は良好でも、場面に応じた言葉の使い方（語用）に困難がある状態。",
+    "support": [
+      "場面に応じた言葉の使い方の具体的な指導",
+      "比喩や暗黙の了解を要する表現の解説"
+    ],
+    "jiritsu": [
+      {
+        "ku": "人間関係の形成",
+        "item": "他者の意図や感情の理解"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "社会的（語用論的）コミュニケーション症",
+    "overview": "言語そのものの障害はないが、社会的な場面での言語使用に選択的な困難がある状態（DSM-5-TRの診断分類）。",
+    "support": [
+      "会話のルールの明示的な指導",
+      "ロールプレイ等を通じた練習機会"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "状況に応じたコミュニケーション"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "吃音の二次症状（随伴症状）を伴う場合",
+    "overview": "吃音に加え、まばたきや body の動き等の随伴症状がみられる状態。",
+    "support": [
+      "随伴症状を指摘せず見守る学級づくり",
+      "話しやすい場面づくりを優先した支援"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "困難を改善・克服する意欲"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "獲得性失語（小児期発症）",
+    "overview": "脳血管障害や外傷等により、獲得していた言語機能に障害が生じた状態。",
+    "support": [
+      "リハビリテーション（言語聴覚療法）との連携",
+      "代替コミュニケーション手段の活用"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "CAS（発語失行）",
+    "overview": "発語運動の計画・プログラミングに困難がある状態。音の配列を一貫して誤る、発話ごとに誤り方が変わる等の特徴がある。",
+    "support": [
+      "高頻度・短時間の反復発語練習",
+      "視覚的・触覚的な手がかりを用いた指導"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "吃音の遺伝的要因が疑われるタイプ（家族歴あり）",
+    "overview": "家族に吃音のある人がいる等、遺伝的要因の関与が疑われる吃音のタイプ。",
+    "support": [
+      "早期からの言語聴覚士による経過観察",
+      "家族全体への情報提供と関わり方の助言"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "困難を改善・克服する意欲"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "神経学的疾患に伴う後天性の話し言葉の障害",
+    "overview": "脳血管障害や外傷等、学齢期以降に生じた神経学的な原因による話し言葉の障害。",
+    "support": [
+      "リハビリテーション部門との継続的な連携",
+      "代替コミュニケーション手段の並行した検討"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "コミュニケーション手段の選択と活用"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "難聴を伴わない中枢性の言語理解障害",
+    "overview": "聴力は正常でも、脳での言語音の処理に困難があり、話し言葉の理解に著しい遅れを示す状態。",
+    "support": [
+      "視覚的な情報を優先した指導方法",
+      "短く明確な言葉での指示"
+    ],
+    "jiritsu": [
+      {
+        "ku": "コミュニケーション",
+        "item": "言語の受容と表出"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  },
+  {
+    "name": "選択性かん黙に伴う構音の未評価状態",
+    "overview": "発話自体が制限されるため、構音の正確な評価が難しい状態。安心できる場面での評価が必要となる。",
+    "support": [
+      "家庭等での発話の録音等を活用した間接的評価",
+      "評価を急がない段階的なアプローチ"
+    ],
+    "jiritsu": [
+      {
+        "ku": "心理的な安定",
+        "item": "情緒の安定"
+      }
+    ],
+    "basis": {
+      "overview": "unverified",
+      "support": "editorial",
+      "reviewed": false
+    }
+  }
+]
