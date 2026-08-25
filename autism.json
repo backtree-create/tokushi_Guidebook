@@ -13,9 +13,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-autism"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -32,9 +36,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-autism"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -77,9 +85,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -122,9 +132,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -172,9 +184,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "research",
+      "sources": [
+        "ircn-2023",
+        "dsm-icd"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -191,9 +207,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -210,9 +228,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "grj",
+      "sources": [
+        "grj"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "https://grj.umin.jp/grj/rett.htm"
     }
   },
   {
@@ -229,9 +251,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -248,9 +274,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -267,9 +295,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -286,9 +316,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -305,9 +337,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -324,9 +358,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "結節性硬化症／結節性硬化症"
     }
   },
   {
@@ -343,9 +382,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "grj",
+      "sources": [
+        "grj"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "https://grj.umin.jp/grj/fmr1.htm"
     }
   },
   {
@@ -362,9 +405,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -381,9 +426,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -400,9 +447,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -419,9 +468,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -438,9 +489,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -457,9 +510,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -476,9 +531,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -495,9 +552,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -514,9 +575,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -533,9 +596,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -552,9 +617,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -571,9 +638,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -590,9 +659,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -609,9 +680,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -628,9 +701,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -647,9 +722,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -666,9 +743,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -685,9 +764,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -708,9 +789,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "research",
+      "sources": [
+        "natgen-2025"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -731,9 +815,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "research",
+      "sources": [
+        "natgen-2025"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -750,9 +837,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "research",
+      "sources": [
+        "natgen-2025"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -773,9 +863,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "research",
+      "sources": [
+        "natgen-2025"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -796,9 +889,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "grj",
+      "sources": [
+        "grj"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "https://grj.umin.jp/grj/PhM.htm"
     }
   },
   {
@@ -815,9 +912,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "research",
+      "sources": [
+        "sfari"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -834,9 +934,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "grj",
+      "sources": [
+        "grj"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "https://grj.umin.jp/grj/m_dup15q.htm"
     }
   },
   {
@@ -853,9 +957,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "grj",
+      "sources": [
+        "grj"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "https://grj.umin.jp/grj/pten.htm"
     }
   },
   {
@@ -872,9 +980,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "research",
+      "sources": [
+        "sfari"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -891,9 +1002,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "grj",
+      "sources": [
+        "grj"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "https://grj.umin.jp/grj/adnp.htm"
     }
   },
   {
@@ -914,9 +1029,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "research",
+      "sources": [
+        "sfari"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -933,9 +1051,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "research",
+      "sources": [
+        "sfari"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -952,9 +1073,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "research",
+      "sources": [
+        "sfari",
+        "natgen-2025"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -971,9 +1096,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -990,9 +1117,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1009,9 +1140,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1028,9 +1163,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1047,9 +1186,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1066,9 +1209,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1085,9 +1232,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1104,9 +1255,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -1123,9 +1276,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   }
 ]

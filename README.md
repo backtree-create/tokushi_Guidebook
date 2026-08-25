@@ -85,7 +85,7 @@ node build.mjs      # 配布用の単一ファイルを作り直す
 - 疾患に書かれた自立活動の項目名が、27項目と一字一句一致しているか（**タイポしても画面上は静かに表示されるだけなので、これが唯一の防波堤です**）
 - `sourceId` が `sources.json` に存在するか
 - 区分内で病名が重複していないか
-- `sw.js` の `VERSION` と `meta.json` の `updated` が揃っているか
+- `sw.js` の `VERSION` と `meta.json` の `version` が揃っているか
 - `sw.js` の `PRECACHE` に疾患ファイルの記載漏れがないか
 - 全ファイル名が一意か（同名だとアップロード時に衝突するため）
 
@@ -104,7 +104,7 @@ python3 -m http.server 8000
 
 1. 該当する JSON を編集
 2. `meta.json` の `updated` を今日の日付に、`version` を上げる
-3. **`sw.js` の `VERSION` を `updated` と同じ日付に**（揃っていないと `validate.mjs` が落ちます）
+3. **`sw.js` の `VERSION` を `version` と同じ値に**（揃っていないと `validate.mjs` が落ちます）
 4. `meta.json` の `changelog` に1行足す
 5. `node validate.mjs && node build.mjs`（サイト上で編集した場合は不要）
 6. コミット・プッシュ
@@ -145,19 +145,42 @@ URL は `sources.json` にのみ書きます。画面のフッターと「診断
 
 ---
 
-## 出典区分の確認作業
+## 出典区分（各項目がどの資料に基づくか）
 
-514件すべてが未確認の状態から始まります。一度に全部やる必要はありません。
+疾患・状態514件それぞれについて、医学的説明がどの資料に基づくかを特定し、項目を開くと表示されます。
+
+| 区分 | 意味 | 件数 |
+|---|---|---|
+| `academic` | 学会・国立研究機関の一般向け解説 | 144 |
+| `shouman` | 小児慢性特定疾病 対象疾病 | 127 |
+| `editorial` | 対応する公的分類が見当たらず、本ツールが整理した類型 | 81 |
+| `mext` | 文部科学省「教育支援の手引」に記載 | 70 |
+| `dsm-icd` | DSM-5-TR ／ ICD-11 の診断分類 | 59 |
+| `grj` | GeneReviews Japan に日本語解説あり | 14 |
+| `research` | 個別の研究発表に基づく | 11 |
+| `nanbyou` | 指定難病 | 8 |
+
+**`editorial` は「誤り」ではありません。** 「聴覚過敏が特に顕著なタイプ」「漢字の習得に特化した困難」のように、公的な疾患分類には存在しないが教育実務上は区別する意味がある類型です。81件の大半は自閉症・LD・ADHD・不登校の下位類型で、それぞれ理由を `evidence` に書いてあります。
+
+支援内容と自立活動の対応づけは、**どの項目でも `editorial`** です。これはどの資料にも直接書かれていません。
 
 ```bash
-node basis-audit.mjs                 # 進捗を見る
-node basis-audit.mjs --list health   # 未確認の項目を並べる
-node basis-audit.mjs --set health "重症心身障害" public-db editorial
+node basis-audit.mjs                        # 内訳を見る
+node basis-audit.mjs --list ld editorial    # 出典を特定できていない項目を並べる
+node basis-audit.mjs --set health "重症心身障害" academic ncchd "補足"
 ```
 
-- `basis.overview` … `mext`（手引に記載）／ `public-db`（公的DB由来）／ `unverified`（未確認）
-- `basis.support` … `mext`（手引に記載）／ `editorial`（本ツールによる整理）
-- `basis.reviewed` … `true` にすると画面から「出典未確認」の表示が消えます
+`validate.mjs` は、`sources` に書かれたIDが `sources.json` に実在するか、`editorial` 以外に出典が付いているか、`editorial` に理由が書かれているかを検査します。
+
+### 判定に使った資料
+
+- 文部科学省「障害のある子供の教育支援の手引」第3編 各章PDF（記載の有無を確認）
+- 小児慢性特定疾病情報センター 16疾患群別の対象疾病一覧
+- 難病情報センター 五十音別の指定難病一覧
+- GeneReviews Japan 疾患リストおよび個別ページ
+- 日本眼科学会／日本耳鼻咽喉科頭頸部外科学会／国立成育医療研究センター／こころの情報サイト（NCNP）／日本小児心身医学会／日本神経学会／国立障害者リハビリテーションセンター
+
+いずれも `sources.json` に登録し、「診断名・出典」タブから一覧できます。
 
 ---
 

@@ -17,9 +17,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-emotional"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -36,9 +40,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -55,9 +63,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -74,9 +86,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -93,9 +109,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -112,9 +132,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-emotional"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -131,9 +155,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -150,9 +178,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -169,9 +201,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -188,9 +224,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -207,9 +247,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -226,9 +270,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -245,9 +293,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -264,9 +316,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jisinsin"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -283,9 +338,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -302,9 +361,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -321,9 +384,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -340,9 +407,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -359,9 +430,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -378,9 +452,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -397,9 +475,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -416,9 +498,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -435,9 +521,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -454,9 +544,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -473,9 +567,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -492,9 +590,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -511,9 +613,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -530,9 +635,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -549,9 +656,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -568,9 +679,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -587,9 +702,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -606,9 +725,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -625,9 +748,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -644,9 +770,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   }
 ]

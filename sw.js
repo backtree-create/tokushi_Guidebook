@@ -5,10 +5,10 @@
  *   CSS / JS / 画像は「キャッシュ優先」。表示速度を確保する。
  *   VERSION を変えると古いキャッシュは activate 時に破棄される。
  *
- * 注意：VERSION は meta.json の "updated" と揃えること。
+ * 注意：VERSION は meta.json の "version" と揃えること。
  *       内容を更新したらここも必ず書き換える。
  */
-const VERSION = "2026-08-25";
+const VERSION = "2.1.0";
 const CACHE_NAME = `tokushi-guidebook-${VERSION}`;
 
 const PRECACHE = [

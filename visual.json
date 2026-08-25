@@ -17,9 +17,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-visual"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -40,9 +44,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-visual"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -63,9 +71,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-visual"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -86,9 +98,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-visual"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -109,9 +125,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-visual"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -128,9 +148,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-visual"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -151,9 +175,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-visual"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -170,9 +198,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-visual"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -189,9 +221,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "眼皮膚白皮症"
     }
   },
   {
@@ -208,9 +244,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -227,9 +266,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -250,9 +292,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -269,9 +314,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -288,9 +336,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -307,9 +358,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -326,9 +380,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -345,9 +402,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "grj",
+      "sources": [
+        "grj"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "https://grj.umin.jp/grj/LCA-EOSRD.htm"
     }
   },
   {
@@ -364,9 +425,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -383,9 +447,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "grj",
+      "sources": [
+        "grj"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "https://grj.umin.jp/grj/usher1.htm"
     }
   },
   {
@@ -402,9 +470,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -421,9 +492,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -440,9 +514,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -459,9 +536,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -478,9 +558,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -497,9 +580,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -516,9 +602,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -535,9 +624,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -554,9 +646,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -573,9 +668,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -592,9 +690,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -611,9 +712,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -630,9 +734,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -649,9 +756,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -668,9 +778,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -687,9 +800,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "nanbyou",
+      "sources": [
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "無虹彩症"
     }
   },
   {
@@ -706,9 +823,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -725,9 +845,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -744,9 +867,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -763,9 +889,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -782,9 +911,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -801,9 +933,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -820,9 +955,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -839,9 +977,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -858,9 +999,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "nanbyou",
+      "sources": [
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "視神経脊髄炎"
     }
   },
   {
@@ -877,9 +1022,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -896,9 +1044,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -915,9 +1066,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -934,9 +1088,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -953,9 +1110,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -972,9 +1132,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -991,9 +1154,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1010,9 +1176,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1029,9 +1198,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1048,9 +1220,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "grj",
+      "sources": [
+        "grj"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "https://grj.umin.jp/grj/LHON.htm"
     }
   },
   {
@@ -1067,9 +1243,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "網膜芽細胞腫"
     }
   },
   {
@@ -1086,9 +1266,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "眼皮膚白皮症"
     }
   },
   {
@@ -1105,9 +1289,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1124,9 +1311,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "中枢神経系腫瘍"
     }
   },
   {
@@ -1143,9 +1334,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1162,9 +1356,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1181,9 +1378,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1200,9 +1400,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "中隔視神経形成異常症"
     }
   },
   {
@@ -1219,9 +1423,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1238,9 +1445,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1257,9 +1467,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1276,9 +1489,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "nichigan"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   }
 ]

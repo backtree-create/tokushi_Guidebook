@@ -10,16 +10,96 @@
     "checked": "2026-08-25",
     "note": "本ツールの障害種別ページ（教育的ニーズ・指導内容・合理的配慮・学びの場）の一次資料"
   },
-  { "id": "tebiki-3-visual",       "title": "同 第3編 Ⅰ 視覚障害",     "publisher": "文部科学省", "edition": "令和3年6月", "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_05.pdf", "policy": "pinned", "checked": "2026-08-25" },
-  { "id": "tebiki-3-hearing",      "title": "同 第3編 Ⅱ 聴覚障害",     "publisher": "文部科学省", "edition": "令和3年6月", "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_06.pdf", "policy": "pinned", "checked": "2026-08-25" },
-  { "id": "tebiki-3-intellectual", "title": "同 第3編 Ⅲ 知的障害",     "publisher": "文部科学省", "edition": "令和3年6月", "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_07.pdf", "policy": "pinned", "checked": "2026-08-25" },
-  { "id": "tebiki-3-physical",     "title": "同 第3編 Ⅳ 肢体不自由",   "publisher": "文部科学省", "edition": "令和3年6月", "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_08.pdf", "policy": "pinned", "checked": "2026-08-25" },
-  { "id": "tebiki-3-health",       "title": "同 第3編 Ⅴ 病弱・身体虚弱", "publisher": "文部科学省", "edition": "令和3年6月", "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_09.pdf", "policy": "pinned", "checked": "2026-08-25" },
-  { "id": "tebiki-3-language",     "title": "同 第3編 Ⅵ 言語障害",     "publisher": "文部科学省", "edition": "令和3年6月", "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_10.pdf", "policy": "pinned", "checked": "2026-08-25" },
-  { "id": "tebiki-3-autism",       "title": "同 第3編 Ⅶ 自閉症",       "publisher": "文部科学省", "edition": "令和3年6月", "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_11.pdf", "policy": "pinned", "checked": "2026-08-25" },
-  { "id": "tebiki-3-emotional",    "title": "同 第3編 Ⅷ 情緒障害",     "publisher": "文部科学省", "edition": "令和3年6月", "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_12.pdf", "policy": "pinned", "checked": "2026-08-25" },
-  { "id": "tebiki-3-ld",           "title": "同 第3編 Ⅸ 学習障害",     "publisher": "文部科学省", "edition": "令和3年6月", "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_13.pdf", "policy": "pinned", "checked": "2026-08-25" },
-  { "id": "tebiki-3-adhd",         "title": "同 第3編 Ⅹ 注意欠陥多動性障害", "publisher": "文部科学省", "edition": "令和3年6月", "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_14.pdf", "policy": "pinned", "checked": "2026-08-25" },
+  {
+    "id": "tebiki-3-visual",
+    "title": "同 第3編 Ⅰ 視覚障害",
+    "publisher": "文部科学省",
+    "edition": "令和3年6月",
+    "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_05.pdf",
+    "policy": "pinned",
+    "checked": "2026-08-25"
+  },
+  {
+    "id": "tebiki-3-hearing",
+    "title": "同 第3編 Ⅱ 聴覚障害",
+    "publisher": "文部科学省",
+    "edition": "令和3年6月",
+    "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_06.pdf",
+    "policy": "pinned",
+    "checked": "2026-08-25"
+  },
+  {
+    "id": "tebiki-3-intellectual",
+    "title": "同 第3編 Ⅲ 知的障害",
+    "publisher": "文部科学省",
+    "edition": "令和3年6月",
+    "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_07.pdf",
+    "policy": "pinned",
+    "checked": "2026-08-25"
+  },
+  {
+    "id": "tebiki-3-physical",
+    "title": "同 第3編 Ⅳ 肢体不自由",
+    "publisher": "文部科学省",
+    "edition": "令和3年6月",
+    "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_08.pdf",
+    "policy": "pinned",
+    "checked": "2026-08-25"
+  },
+  {
+    "id": "tebiki-3-health",
+    "title": "同 第3編 Ⅴ 病弱・身体虚弱",
+    "publisher": "文部科学省",
+    "edition": "令和3年6月",
+    "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_09.pdf",
+    "policy": "pinned",
+    "checked": "2026-08-25"
+  },
+  {
+    "id": "tebiki-3-language",
+    "title": "同 第3編 Ⅵ 言語障害",
+    "publisher": "文部科学省",
+    "edition": "令和3年6月",
+    "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_10.pdf",
+    "policy": "pinned",
+    "checked": "2026-08-25"
+  },
+  {
+    "id": "tebiki-3-autism",
+    "title": "同 第3編 Ⅶ 自閉症",
+    "publisher": "文部科学省",
+    "edition": "令和3年6月",
+    "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_11.pdf",
+    "policy": "pinned",
+    "checked": "2026-08-25"
+  },
+  {
+    "id": "tebiki-3-emotional",
+    "title": "同 第3編 Ⅷ 情緒障害",
+    "publisher": "文部科学省",
+    "edition": "令和3年6月",
+    "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_12.pdf",
+    "policy": "pinned",
+    "checked": "2026-08-25"
+  },
+  {
+    "id": "tebiki-3-ld",
+    "title": "同 第3編 Ⅸ 学習障害",
+    "publisher": "文部科学省",
+    "edition": "令和3年6月",
+    "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_13.pdf",
+    "policy": "pinned",
+    "checked": "2026-08-25"
+  },
+  {
+    "id": "tebiki-3-adhd",
+    "title": "同 第3編 Ⅹ 注意欠陥多動性障害",
+    "publisher": "文部科学省",
+    "edition": "令和3年6月",
+    "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_14.pdf",
+    "policy": "pinned",
+    "checked": "2026-08-25"
+  },
   {
     "id": "jiritsu-kaisetsu",
     "title": "特別支援学校教育要領・学習指導要領解説 自立活動編（幼稚部・小学部・中学部）",
@@ -64,11 +144,11 @@
     "publisher": "国立成育医療研究センター",
     "edition": "令和7年4月1日改正時点 16疾患群801疾病",
     "url": "https://www.shouman.jp/disease/",
-    "indexUrl": "https://www.shouman.jp/about/history",
+    "indexUrl": "https://www.shouman.jp/disease/search/group/list/01/悪性新生物",
     "policy": "latest",
     "review": "告示改正のたび",
     "checked": "2026-08-25",
-    "note": "疾病数は2015年704→2018年756→2021年788→2025年801と増加。数値には必ず時点を付す"
+    "note": "16疾患群別の一覧から各疾患へ。個別ページは /disease/details/<群>_<大分類>_<番号>/ 形式。疾病数は2015年704→2018年756→2021年788→2025年801と増加しており、数値には必ず時点を付す"
   },
   {
     "id": "nanbyou",
@@ -76,7 +156,9 @@
     "publisher": "公益財団法人 難病医学研究財団",
     "url": "https://www.nanbyou.or.jp/",
     "policy": "latest",
-    "checked": "2026-08-25"
+    "checked": "2026-08-25",
+    "indexUrl": "https://www.nanbyou.or.jp/entry/5461",
+    "note": "五十音別の指定難病一覧（あ行〜ら行の9ページ）から各疾患へ。告示番号付き"
   },
   {
     "id": "grj",
@@ -84,7 +166,9 @@
     "publisher": "GeneReviews Japan",
     "url": "https://grj.umin.jp/",
     "policy": "latest",
-    "checked": "2026-08-25"
+    "checked": "2026-08-25",
+    "note": "個別疾患ページは https://grj.umin.jp/grj/<略号>.htm 形式。疾患リストは https://grj.umin.jp/contents/list.htm",
+    "indexUrl": "https://grj.umin.jp/contents/list.htm"
   },
   {
     "id": "mext-futoukou-tsuchi-r1",
@@ -113,7 +197,8 @@
     "edition": "DSM-5-TR 2022 ／ ICD-11 2019採択",
     "policy": "pinned",
     "checked": "2026-08-25",
-    "note": "ASDとADHDの併存診断の許容はDSM-5（2013）での変更点"
+    "note": "ASDとADHDの併存診断の許容はDSM-5（2013）での変更点",
+    "tier": "pinned"
   },
   {
     "id": "gmfcs-oshima",
@@ -161,5 +246,100 @@
     "policy": "latest",
     "tier": "research",
     "checked": "2026-08-25"
+  },
+  {
+    "id": "nichigan",
+    "title": "目の病気（一般向け疾患解説）",
+    "publisher": "公益財団法人 日本眼科学会",
+    "url": "https://www.nichigan.or.jp/public/disease/index.html",
+    "policy": "latest",
+    "tier": "academic",
+    "checked": "2026-08-25",
+    "note": "個別疾患は ?pdid=<番号> 形式。眼疾患のうち小慢・指定難病に該当しないものの出典"
+  },
+  {
+    "id": "jibika",
+    "title": "代表的な病気（一般向け疾患解説）",
+    "publisher": "一般社団法人 日本耳鼻咽喉科頭頸部外科学会",
+    "url": "https://www.jibika.or.jp/modules/disease/index.php?content_id=1",
+    "indexUrl": "https://www.jibika.or.jp/modules/disease_kids/index.php",
+    "policy": "latest",
+    "tier": "academic",
+    "checked": "2026-08-25",
+    "note": "子ども向けQ&Aあり。中耳炎・伝音難聴など、公的疾病DBの対象外の耳疾患の出典"
+  },
+  {
+    "id": "ncchd",
+    "title": "子どもの病気",
+    "publisher": "国立成育医療研究センター",
+    "url": "https://www.ncchd.go.jp/hospital/sickness/children/index.html",
+    "policy": "latest",
+    "tier": "academic",
+    "checked": "2026-08-25",
+    "note": "小児のありふれた疾患の解説。気管支喘息・アトピー性皮膚炎等"
+  },
+  {
+    "id": "kokoro-ncnp",
+    "title": "こころの情報サイト",
+    "publisher": "国立精神・神経医療研究センター 精神保健研究所",
+    "url": "https://kokoro.ncnp.go.jp/",
+    "policy": "latest",
+    "tier": "academic",
+    "checked": "2026-08-25",
+    "note": "厚生労働省「みんなのメンタルヘルス総合サイト」は2023年4月に当サイトへ統合。精神疾患の一般向け解説の出典"
+  },
+  {
+    "id": "hattatsu-navi",
+    "title": "発達障害ナビポータル",
+    "publisher": "国立障害者リハビリテーションセンター／国立特別支援教育総合研究所（厚生労働省・文部科学省協力）",
+    "url": "https://hattatsu.go.jp/",
+    "indexUrl": "https://www.rehab.go.jp/ddis/",
+    "policy": "latest",
+    "tier": "academic",
+    "checked": "2026-08-25",
+    "note": "発達障害に関する国の情報ポータル"
+  },
+  {
+    "id": "rehab-kitsuon",
+    "title": "吃音について",
+    "publisher": "国立障害者リハビリテーションセンター研究所 感覚機能系障害研究部",
+    "url": "https://www.rehab.go.jp/ri/kankaku/kituon/",
+    "edition": "2012年10月",
+    "policy": "pinned",
+    "tier": "academic",
+    "checked": "2026-08-25",
+    "note": "発達性吃音・獲得性吃音の分類。最終更新が2012年である点に留意"
+  },
+  {
+    "id": "jisinsin",
+    "title": "代表的な疾患（起立性調節障害・チック症ほか）",
+    "publisher": "一般社団法人 日本小児心身医学会",
+    "url": "https://www.jisinsin.jp/general/typical_diseases/",
+    "policy": "latest",
+    "tier": "academic",
+    "checked": "2026-08-25",
+    "note": "起立性調節障害など、小児心身症の学会による解説"
+  },
+  {
+    "id": "neurology-jp",
+    "title": "てんかん（神経内科の主な病気）",
+    "publisher": "公益社団法人 日本神経学会",
+    "url": "https://www.neurology-jp.org/public/disease/tenkan_detail.html",
+    "policy": "latest",
+    "tier": "academic",
+    "checked": "2026-08-25",
+    "note": "日本てんかん学会・全国てんかんセンター協議会には一般向け解説が見当たらないため本ページを用いる"
+  },
+  {
+    "id": "icd11",
+    "title": "ICD-11 for Mortality and Morbidity Statistics",
+    "publisher": "World Health Organization",
+    "url": "https://icd.who.int/browse11/l-m/en",
+    "indexUrl": "https://www.mhlw.go.jp/stf/newpage_58823.html",
+    "edition": "英語版のみ（日本語版は提供なし・2026年8月時点）",
+    "policy": "latest",
+    "tier": "pinned",
+    "checked": "2026-08-25",
+    "note": "日本語版は提供されていない。厚生労働省のICD-11適用報告ページを併記"
   }
 ]

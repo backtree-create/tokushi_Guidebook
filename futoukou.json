@@ -13,9 +13,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "文部科学省の従前の不登校要因分類に由来するとみられるが、本改訂では一次資料での確認に至っていない。令和5年度以降の問題行動等調査では要因の分類方法が変更されている。"
     }
   },
   {
@@ -32,9 +34,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "文部科学省の従前の不登校要因分類に由来するとみられるが、本改訂では一次資料での確認に至っていない。令和5年度以降の問題行動等調査では要因の分類方法が変更されている。"
     }
   },
   {
@@ -51,9 +55,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "文部科学省の従前の不登校要因分類に由来するとみられるが、本改訂では一次資料での確認に至っていない。令和5年度以降の問題行動等調査では要因の分類方法が変更されている。"
     }
   },
   {
@@ -70,9 +76,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "文部科学省の従前の不登校要因分類に由来するとみられるが、本改訂では一次資料での確認に至っていない。令和5年度以降の問題行動等調査では要因の分類方法が変更されている。"
     }
   },
   {
@@ -89,9 +97,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "文部科学省の従前の不登校要因分類に由来するとみられるが、本改訂では一次資料での確認に至っていない。令和5年度以降の問題行動等調査では要因の分類方法が変更されている。"
     }
   },
   {
@@ -108,9 +118,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "文部科学省の従前の不登校要因分類に由来するとみられるが、本改訂では一次資料での確認に至っていない。令和5年度以降の問題行動等調査では要因の分類方法が変更されている。"
     }
   },
   {
@@ -127,9 +139,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "文部科学省の従前の不登校要因分類に由来するとみられるが、本改訂では一次資料での確認に至っていない。令和5年度以降の問題行動等調査では要因の分類方法が変更されている。"
     }
   },
   {
@@ -146,9 +160,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "文部科学省の従前の不登校要因分類に由来するとみられるが、本改訂では一次資料での確認に至っていない。令和5年度以降の問題行動等調査では要因の分類方法が変更されている。"
     }
   },
   {
@@ -165,9 +181,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "文部科学省の従前の不登校要因分類に由来するとみられるが、本改訂では一次資料での確認に至っていない。令和5年度以降の問題行動等調査では要因の分類方法が変更されている。"
     }
   },
   {
@@ -184,9 +202,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jisinsin"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -203,9 +224,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "hattatsu-navi"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -222,9 +246,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "文部科学省の従前の不登校要因分類に由来するとみられるが、本改訂では一次資料での確認に至っていない。令和5年度以降の問題行動等調査では要因の分類方法が変更されている。"
     }
   },
   {
@@ -241,9 +267,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "文部科学省の従前の不登校要因分類に由来するとみられるが、本改訂では一次資料での確認に至っていない。令和5年度以降の問題行動等調査では要因の分類方法が変更されている。"
     }
   },
   {
@@ -260,9 +288,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "文部科学省の従前の不登校要因分類に由来するとみられるが、本改訂では一次資料での確認に至っていない。令和5年度以降の問題行動等調査では要因の分類方法が変更されている。"
     }
   },
   {
@@ -279,9 +309,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "文部科学省の従前の不登校要因分類に由来するとみられるが、本改訂では一次資料での確認に至っていない。令和5年度以降の問題行動等調査では要因の分類方法が変更されている。"
     }
   },
   {
@@ -298,9 +330,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "文部科学省の従前の不登校要因分類に由来するとみられるが、本改訂では一次資料での確認に至っていない。令和5年度以降の問題行動等調査では要因の分類方法が変更されている。"
     }
   },
   {
@@ -317,9 +351,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "文部科学省の従前の不登校要因分類に由来するとみられるが、本改訂では一次資料での確認に至っていない。令和5年度以降の問題行動等調査では要因の分類方法が変更されている。"
     }
   },
   {
@@ -336,9 +372,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "文部科学省の従前の不登校要因分類に由来するとみられるが、本改訂では一次資料での確認に至っていない。令和5年度以降の問題行動等調査では要因の分類方法が変更されている。"
     }
   },
   {
@@ -355,9 +393,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "文部科学省の従前の不登校要因分類に由来するとみられるが、本改訂では一次資料での確認に至っていない。令和5年度以降の問題行動等調査では要因の分類方法が変更されている。"
     }
   }
 ]

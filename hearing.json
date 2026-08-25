@@ -17,9 +17,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-hearing"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -36,9 +40,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-hearing"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -55,9 +63,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-hearing"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -74,9 +86,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "grj",
+      "sources": [
+        "grj"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "https://grj.umin.jp/grj/usher1.htm"
     }
   },
   {
@@ -93,9 +109,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-hearing"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -112,9 +132,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -131,9 +154,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -150,9 +176,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "先天性サイトメガロウイルス感染症"
     }
   },
   {
@@ -169,9 +199,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "nanbyou",
+      "sources": [
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "若年発症型両側性感音難聴"
     }
   },
   {
@@ -188,9 +222,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -207,9 +244,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -226,9 +266,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -245,9 +288,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -264,9 +310,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -283,9 +332,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -302,9 +354,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "grj",
+      "sources": [
+        "grj"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "https://grj.umin.jp/grj/pds_nseva.htm"
     }
   },
   {
@@ -321,9 +377,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "トリーチャーコリンズ症候群"
     }
   },
   {
@@ -340,9 +400,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "チャージ症候群"
     }
   },
   {
@@ -359,9 +423,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "nanbyou",
+      "sources": [
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "アルポート症候群"
     }
   },
   {
@@ -378,9 +446,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "grj",
+      "sources": [
+        "grj"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "https://grj.umin.jp/grj/stickler.htm"
     }
   },
   {
@@ -397,9 +469,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "鰓耳腎症候群／鰓耳腎症候群"
     }
   },
   {
@@ -416,9 +493,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -435,9 +515,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -454,9 +537,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "早産児ビリルビン脳症"
     }
   },
   {
@@ -473,9 +560,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -492,9 +582,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -511,9 +604,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -530,9 +626,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -549,9 +648,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "nanbyou",
+      "sources": [
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "若年発症型両側性感音難聴"
     }
   },
   {
@@ -568,9 +671,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -587,9 +693,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -606,9 +715,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -625,9 +737,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -644,9 +759,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -663,9 +781,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -682,9 +803,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "先天性サイトメガロウイルス感染症"
     }
   },
   {
@@ -701,9 +826,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -720,9 +848,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -739,9 +870,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -758,9 +892,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -777,9 +914,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -796,9 +936,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -815,9 +958,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -834,9 +980,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "ムコ多糖症"
     }
   },
   {
@@ -853,9 +1003,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -872,9 +1025,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "先天性トキソプラズマ感染症"
     }
   },
   {
@@ -891,9 +1048,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "ミトコンドリア病／ミトコンドリア病"
     }
   },
   {
@@ -910,9 +1072,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "nanbyou",
+      "sources": [
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "若年発症型両側性感音難聴"
     }
   },
   {
@@ -929,9 +1095,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -948,9 +1117,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "先天性サイトメガロウイルス感染症"
     }
   },
   {
@@ -967,9 +1140,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -986,9 +1162,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "神経線維腫症／神経線維腫症"
     }
   },
   {
@@ -1005,9 +1186,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "nanbyou",
+      "sources": [
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "若年発症型両側性感音難聴"
     }
   },
   {
@@ -1024,9 +1209,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1043,9 +1231,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jibika"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   }
 ]

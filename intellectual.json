@@ -17,9 +17,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "ダウン症候群"
     }
   },
   {
@@ -36,9 +40,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-intellectual"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -55,9 +63,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-intellectual"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -74,9 +86,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-intellectual"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -93,9 +109,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-intellectual"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -112,9 +132,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-intellectual"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -131,9 +155,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "grj",
+      "sources": [
+        "grj"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "https://grj.umin.jp/grj/fmr1.htm"
     }
   },
   {
@@ -150,9 +178,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "ウィリアムズ症候群"
     }
   },
   {
@@ -169,9 +201,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "プラダー・ウィリ症候群／プラダー・ウィリ症候群"
     }
   },
   {
@@ -188,9 +225,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "先天性甲状腺機能低下症"
     }
   },
   {
@@ -207,9 +248,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-intellectual"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -226,9 +271,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-intellectual"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -245,9 +294,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-intellectual"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -264,9 +317,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "アンジェルマン症候群／アンジェルマン症候群"
     }
   },
   {
@@ -283,9 +341,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "5p-症候群"
     }
   },
   {
@@ -302,9 +364,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "コルネリア・デランゲ症候群"
     }
   },
   {
@@ -321,9 +387,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "22q11.2欠失症候群／22q11.2欠失症候群"
     }
   },
   {
@@ -340,9 +411,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "スミス・マギニス症候群／スミス・マギニス症候群"
     }
   },
   {
@@ -359,9 +435,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "結節性硬化症／結節性硬化症"
     }
   },
   {
@@ -378,9 +459,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "フェニルケトン尿症"
     }
   },
   {
@@ -397,9 +482,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "ムコ多糖症"
     }
   },
   {
@@ -416,9 +505,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-intellectual"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -435,9 +528,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "先天性甲状腺機能低下症"
     }
   },
   {
@@ -454,9 +551,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "ncchd"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -473,9 +573,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-intellectual"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -492,9 +596,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "点頭てんかん"
     }
   },
   {
@@ -511,9 +619,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "grj",
+      "sources": [
+        "grj"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "https://grj.umin.jp/grj/rett.htm"
     }
   },
   {
@@ -530,9 +642,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "スミス・レムリ・オピッツ症候群"
     }
   },
   {
@@ -549,9 +665,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "ソトス症候群"
     }
   },
   {
@@ -568,9 +688,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "コフィン・ローリー症候群／コフィン・ローリー症候群"
     }
   },
   {
@@ -587,9 +712,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "ミトコンドリア病／ミトコンドリア病"
     }
   },
   {
@@ -606,9 +736,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "レッシュ・ナイハン症候群"
     }
   },
   {
@@ -625,9 +759,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "18トリソミー症候群"
     }
   },
   {
@@ -644,9 +782,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "CHARGE症候群／CHARGE症候群"
     }
   },
   {
@@ -663,9 +806,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "先天性風疹症候群"
     }
   },
   {
@@ -682,9 +829,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-intellectual"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -701,9 +852,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "先天性水頭症"
     }
   },
   {
@@ -720,9 +875,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "ncchd"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -739,9 +897,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "早産児ビリルビン脳症"
     }
   },
   {
@@ -758,9 +920,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -777,9 +943,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "アペール症候群"
     }
   },
   {
@@ -796,9 +966,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "ヌーナン症候群／ヌーナン症候群"
     }
   },
   {
@@ -815,9 +990,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "コルネリア・デランゲ症候群"
     }
   },
   {
@@ -834,9 +1013,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "滑脳症"
     }
   },
   {
@@ -853,9 +1036,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "ダウン症候群"
     }
   },
   {
@@ -872,9 +1059,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "ncchd"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -891,9 +1081,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "ncchd"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -910,9 +1103,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -929,9 +1124,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "ncchd"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -948,9 +1146,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "先天性トキソプラズマ感染症"
     }
   },
   {
@@ -967,9 +1169,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "ncchd"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   }
 ]

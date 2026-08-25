@@ -46,6 +46,7 @@ for (const s of sources) {
 const catIds = new Set();
 let totalDiseases = 0;
 let unreviewed = 0;
+const basisTally = {};
 const allNames = new Map();
 
 for (const c of categories) {
@@ -98,6 +99,22 @@ for (const c of categories) {
     if (!b) { err(`${where}: basis がありません`); return; }
     if (!meta.basisLabels.overview[b.overview]) err(`${where}: basis.overview が不正 -> 「${b.overview}」`);
     if (!meta.basisLabels.support[b.support]) err(`${where}: basis.support が不正 -> 「${b.support}」`);
+    if (!Array.isArray(b.sources)) err(`${where}: basis.sources が配列ではありません`);
+    else {
+      for (const sid of b.sources) {
+        if (!srcIds.has(sid)) err(`${where}: basis.sources の "${sid}" が sources.json にありません`);
+      }
+      // editorial 以外は必ず出典を1件以上持つ
+      if (b.overview !== 'editorial' && b.sources.length === 0) {
+        err(`${where}: overview が ${b.overview} なのに出典が空です`);
+      }
+      // editorial は出典を持たない代わりに、その理由を evidence に書く
+      if (b.overview === 'editorial') {
+        if (b.sources.length) err(`${where}: editorial なのに出典が付いています`);
+        if (!b.evidence) err(`${where}: editorial には理由（evidence）が必要です`);
+      }
+    }
+    basisTally[b.overview] = (basisTally[b.overview] || 0) + 1;
     if (b.reviewed !== true) unreviewed++;
   });
 }
@@ -111,9 +128,9 @@ for (const [name, cats] of allNames) {
 const sw = fs.readFileSync(path.join(root, 'sw.js'), 'utf8');
 const m = sw.match(/const VERSION = "([^"]+)"/);
 if (!m) err('sw.js から VERSION を読み取れません');
-else if (m[1] !== meta.updated) {
-  err(`sw.js の VERSION (${m[1]}) と meta.json の updated (${meta.updated}) が一致しません。` +
-      `更新のたびに両方を揃えてください（古いキャッシュが残る原因になります）`);
+else if (m[1] !== meta.version) {
+  err(`sw.js の VERSION (${m[1]}) と meta.json の version (${meta.version}) が一致しません。` +
+      `内容を更新したら version を上げ、両方を揃えてください（古いキャッシュが残る原因になります）`);
 }
 
 /* --- 6. Service Worker のプリキャッシュ漏れ --- */
@@ -126,6 +143,11 @@ for (const c of categories) {
 /* --- 出力 --- */
 console.log(`検査: ${categories.length}区分 / ${totalDiseases}件 / 出典${sources.length}件 / 自立活動${itemCount}項目`);
 console.log(`出典確認が済んでいない疾患: ${unreviewed} / ${totalDiseases} 件`);
+console.log('出典区分の内訳:');
+for (const [k, v] of Object.entries(basisTally).sort((a, b) => b[1] - a[1])) {
+  const pct = (v / totalDiseases * 100).toFixed(1);
+  console.log(`  ${k.padEnd(10)} ${String(v).padStart(4)} 件  ${pct}%`);
+}
 for (const w of warnings) console.log('  注意  ' + w);
 for (const e of errors) console.error('  エラー  ' + e);
 

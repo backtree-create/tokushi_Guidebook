@@ -17,9 +17,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-health"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -36,9 +40,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-health"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -59,9 +67,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-health"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -78,9 +90,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-health"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -101,9 +117,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-health"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -120,9 +140,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-health"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -139,9 +163,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-health"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -158,9 +186,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-health"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -177,9 +209,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-health"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -196,9 +232,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-health"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -215,9 +255,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-health"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -234,9 +278,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-health"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -275,9 +323,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "gmfcs-oshima"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     },
     "note": "重症心身障害は重度の知的障害と重度の肢体不自由が重複する状態であり、学校教育法上の単一の障害種には対応しません。本ツールでは医療的ケアとの関わりの深さから病弱・身体虚弱に収めていますが、実際の就学相談では肢体不自由または重複障害として検討される場合が多くあります。"
   },
@@ -295,9 +346,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "急性リンパ性白血病"
     }
   },
   {
@@ -314,9 +369,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "中枢神経系腫瘍"
     }
   },
   {
@@ -333,9 +392,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "ncchd"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -352,9 +414,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "慢性糸球体腎炎"
     }
   },
   {
@@ -371,9 +437,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "ネフローゼ症候群"
     }
   },
   {
@@ -390,9 +460,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "心室中隔欠損症"
     }
   },
   {
@@ -409,9 +483,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "拡張型心筋症"
     }
   },
   {
@@ -428,9 +506,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "ncchd"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -447,9 +528,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "ncchd"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -466,9 +550,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "ncchd"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -485,9 +572,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "ncchd"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -504,9 +594,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jisinsin"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -523,9 +616,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jisinsin"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -542,9 +638,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -561,9 +661,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "再生不良性貧血／再生不良性貧血"
     }
   },
   {
@@ -580,9 +685,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "リンパ腫"
     }
   },
   {
@@ -599,9 +708,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "骨肉腫"
     }
   },
   {
@@ -618,9 +731,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "ファロー四徴症"
     }
   },
   {
@@ -637,9 +754,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "フォンタン術後症候群"
     }
   },
   {
@@ -656,9 +777,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "若年性特発性関節炎／若年性特発性関節炎"
     }
   },
   {
@@ -675,9 +801,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "全身性エリテマトーデス／全身性エリテマトーデス"
     }
   },
   {
@@ -694,9 +825,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "成長ホルモン分泌不全性低身長症"
     }
   },
   {
@@ -713,9 +848,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "先天性副腎過形成症"
     }
   },
   {
@@ -732,9 +871,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "血友病A"
     }
   },
   {
@@ -751,9 +894,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "慢性肉芽腫症"
     }
   },
   {
@@ -770,9 +917,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "nanbyou",
+      "sources": [
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "原発性免疫不全症候群"
     }
   },
   {
@@ -789,9 +940,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "ウエスト症候群／ウエスト症候群"
     }
   },
   {
@@ -808,9 +964,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "胆道閉鎖症／胆道閉鎖症"
     }
   },
   {
@@ -827,9 +988,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "18トリソミー症候群"
     }
   },
   {
@@ -846,9 +1011,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "色素性乾皮症／色素性乾皮症"
     }
   },
   {
@@ -865,9 +1035,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "リンパ管腫"
     }
   },
   {
@@ -884,9 +1058,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jisinsin"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -903,9 +1080,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-health"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -922,9 +1103,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "1型糖尿病"
     }
   },
   {
@@ -941,9 +1126,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -960,9 +1149,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -979,9 +1172,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -998,9 +1195,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1017,9 +1217,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "jisinsin"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1036,9 +1239,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "ncchd"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1055,9 +1261,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "神経芽腫"
     }
   },
   {
@@ -1074,9 +1284,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "腎芽腫"
     }
   },
   {
@@ -1093,9 +1307,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "横紋筋肉腫"
     }
   },
   {
@@ -1112,9 +1330,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "骨髄異形成症候群"
     }
   },
   {
@@ -1131,9 +1353,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "慢性活動性EBウイルス感染症"
     }
   },
   {
@@ -1150,9 +1376,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "ncchd"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1169,9 +1398,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "クローン病／クローン病"
     }
   },
   {
@@ -1188,9 +1422,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "先天性副腎低形成症"
     }
   },
   {
@@ -1207,9 +1445,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "中枢性尿崩症"
     }
   },
   {
@@ -1226,9 +1468,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "性分化疾患"
     }
   },
   {
@@ -1245,9 +1491,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-health"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1264,9 +1514,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "肥大型心筋症"
     }
   },
   {
@@ -1283,9 +1537,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "不整脈源性右室心筋症"
     }
   },
   {
@@ -1302,9 +1560,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "QT延長症候群"
     }
   },
   {
@@ -1321,9 +1583,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "肺動脈性肺高血圧症／肺動脈性肺高血圧症"
     }
   },
   {
@@ -1340,9 +1607,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "有機酸代謝異常症"
     }
   },
   {
@@ -1359,9 +1630,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "糖原病"
     }
   },
   {
@@ -1378,9 +1653,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "副腎白質ジストロフィー／副腎白質ジストロフィー"
     }
   },
   {
@@ -1397,9 +1677,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "ライソゾーム病"
     }
   },
   {
@@ -1416,9 +1700,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "限局性強皮症"
     }
   },
   {
@@ -1435,9 +1723,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "ncchd"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1454,9 +1745,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1473,9 +1768,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "全身性強皮症／全身性強皮症"
     }
   },
   {
@@ -1492,9 +1792,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "混合性結合組織病"
     }
   },
   {
@@ -1511,9 +1815,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "フォンウィルブランド病"
     }
   },
   {
@@ -1530,9 +1838,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "ncchd"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1549,9 +1860,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "若年性特発性関節炎／若年性特発性関節炎"
     }
   },
   {
@@ -1568,9 +1884,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "川崎病性冠動脈瘤"
     }
   },
   {
@@ -1587,9 +1907,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "1型糖尿病"
     }
   },
   {
@@ -1606,9 +1930,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "ncchd"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1625,9 +1952,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "ネフローゼ症候群"
     }
   },
   {
@@ -1644,9 +1975,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "ncchd"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1663,9 +1997,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "ファンコニ貧血"
     }
   },
   {
@@ -1682,9 +2020,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "research",
+      "sources": [
+        "icd11"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1701,9 +2042,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "心室中隔欠損症"
     }
   },
   {
@@ -1720,9 +2065,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "ビタミンD依存性くる病"
     }
   },
   {
@@ -1739,9 +2088,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1758,9 +2111,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "ncchd"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1777,9 +2133,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "免疫性血小板減少性紫斑病"
     }
   },
   {
@@ -1796,9 +2156,14 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman",
+        "nanbyou"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "ヒルシュスプルング病／ヒルシュスプルング病"
     }
   },
   {
@@ -1815,9 +2180,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "バセドウ病"
     }
   },
   {
@@ -1834,9 +2203,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "周期性嘔吐症候群"
     }
   },
   {
@@ -1853,9 +2226,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "ncchd"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1872,9 +2248,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "先天性プロテインC欠乏症"
     }
   },
   {
@@ -1891,9 +2271,12 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "academic",
+      "sources": [
+        "ncchd"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -1910,9 +2293,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "shouman",
+      "sources": [
+        "shouman"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "複合免疫不全症"
     }
   }
 ]

@@ -9,9 +9,10 @@
  *                                                区分内の未確認項目の overview をまとめて設定
  *                                                （reviewed は変えない）
  *
- * basis.overview : mext | public-db | unverified   医学的説明の出典
- * basis.support  : mext | editorial                支援内容の出典
- * basis.reviewed : true にすると画面から「出典未確認」の表示が消える
+ * basis.overview : mext | shouman | nanbyou | grj | dsm-icd | academic | research | editorial
+ * basis.sources  : sources.json の id の配列（editorial は空）
+ * basis.evidence : 該当ページのURL、または editorial の場合はその理由
+ * basis.support  : mext | editorial
  */
 import fs from 'fs';
 import path from 'path';
@@ -22,53 +23,60 @@ const rj = (p) => JSON.parse(fs.readFileSync(p, 'utf8'));
 const wj = (p, v) => fs.writeFileSync(p, JSON.stringify(v, null, 2) + '\n');
 
 const cats = rj(path.join(root, 'categories.json'));
-const OV = ['mext', 'public-db', 'unverified'];
+const OV = ['mext', 'shouman', 'nanbyou', 'grj', 'dsm-icd', 'academic', 'research', 'editorial'];
 const SP = ['mext', 'editorial'];
 
 const [cmd, ...rest] = process.argv.slice(2);
 
 function summary() {
-  let tot = 0, done = 0;
-  console.log('区分            確認済 / 全件   未確認の内訳');
+  let tot = 0;
+  const grand = {};
+  console.log('区分            件数   出典区分の内訳');
   for (const c of cats) {
     const ds = rj(dp(c.id));
-    const r = ds.filter((d) => d.basis && d.basis.reviewed).length;
-    const unv = ds.filter((d) => d.basis && d.basis.overview === 'unverified').length;
-    tot += ds.length; done += r;
-    console.log(
-      c.id.padEnd(14),
-      String(r).padStart(4) + ' / ' + String(ds.length).padEnd(5),
-      '  医学的説明の出典未確認 ' + unv + '件'
-    );
+    tot += ds.length;
+    const t = {};
+    for (const d of ds) {
+      const k = d.basis ? d.basis.overview : '(なし)';
+      t[k] = (t[k] || 0) + 1;
+      grand[k] = (grand[k] || 0) + 1;
+    }
+    const detail = Object.entries(t).sort((a, b) => b[1] - a[1])
+      .map(([k, v]) => `${k} ${v}`).join('  ');
+    console.log(c.id.padEnd(14), String(ds.length).padStart(4), '  ' + detail);
   }
-  console.log('\n合計 ' + done + ' / ' + tot + ' 件が確認済み（' +
-    Math.round((done / tot) * 100) + '%）');
-  if (done < tot) {
-    console.log('\n手順：文部科学省「教育支援の手引」第3編の該当章に病名が出てくれば mext、');
-    console.log('      小慢・難病情報センター・GeneReviews に記載があれば public-db を指定します。');
-    console.log('      支援内容は、手引に直接書かれていなければ editorial のままで構いません。');
+  console.log('\n合計 ' + tot + ' 件');
+  for (const [k, v] of Object.entries(grand).sort((a, b) => b[1] - a[1])) {
+    console.log('  ' + k.padEnd(10) + String(v).padStart(4) + ' 件  ' +
+      (v / tot * 100).toFixed(1) + '%');
   }
+  console.log('\neditorial は「誤り」ではなく、対応する公的分類が見当たらず');
+  console.log('本ツールが教育実務上まとめた類型であることを示します。');
 }
 
-function list(id) {
+function list(id, only) {
   const ds = rj(dp(id));
   ds.forEach((d, i) => {
-    if (d.basis && d.basis.reviewed) return;
+    if (only && d.basis.overview !== only) return;
+    const src = d.basis.sources.length ? d.basis.sources.join(',') : '—';
     console.log(String(i).padStart(3) + '  ' + d.name +
-      '   [overview=' + d.basis.overview + ' support=' + d.basis.support + ']');
+      '\n       [' + d.basis.overview + '] 出典: ' + src +
+      (d.basis.evidence ? '\n       ' + d.basis.evidence : ''));
   });
 }
 
-function setOne(id, name, ov, sp) {
+function setOne(id, name, ov, srcCsv, evidence) {
   if (!OV.includes(ov)) throw new Error('overview は ' + OV.join(' | '));
-  if (!SP.includes(sp)) throw new Error('support は ' + SP.join(' | '));
   const p = dp(id);
   const ds = rj(p);
   const d = ds.find((x) => x.name === name);
   if (!d) throw new Error('見つかりません: ' + id + ' / ' + name);
-  d.basis = { overview: ov, support: sp, reviewed: true };
+  const sources = (srcCsv || '').split(',').map((s) => s.trim()).filter(Boolean);
+  if (ov !== 'editorial' && !sources.length) throw new Error('editorial 以外は出典が必要です');
+  d.basis = { overview: ov, sources, support: d.basis ? d.basis.support : 'editorial', reviewed: true };
+  if (evidence) d.basis.evidence = evidence;
   wj(p, ds);
-  console.log('確定:', id, '/', name, '→', ov, '/', sp);
+  console.log('更新:', id, '/', name, '→', ov, '[' + sources.join(', ') + ']');
 }
 
 function setAll(id, field, value) {
@@ -85,8 +93,8 @@ function setAll(id, field, value) {
 }
 
 try {
-  if (cmd === '--list') list(rest[0]);
-  else if (cmd === '--set') setOne(rest[0], rest[1], rest[2], rest[3]);
+  if (cmd === '--list') list(rest[0], rest[1]);
+  else if (cmd === '--set') setOne(rest[0], rest[1], rest[2], rest[3], rest[4]);
   else if (cmd === '--set-all') setAll(rest[0], rest[1], rest[2]);
   else summary();
 } catch (e) {

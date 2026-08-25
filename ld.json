@@ -13,9 +13,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-ld"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -32,9 +36,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-ld"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -51,9 +59,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-ld"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -70,9 +82,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-ld"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -89,9 +105,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "mext",
+      "sources": [
+        "tebiki",
+        "tebiki-3-ld"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -126,9 +146,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     },
     "note": "ADHDの項の「学習障害との併存」と対になる項目です。内容を見直す際は両方を揃えて修正してください。"
   },
@@ -146,9 +168,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -165,9 +191,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -184,9 +214,13 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "dsm-icd",
+      "sources": [
+        "dsm-icd",
+        "kokoro-ncnp"
+      ],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true
     }
   },
   {
@@ -203,9 +237,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -222,9 +258,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -241,9 +279,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -260,9 +300,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -279,9 +321,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -298,9 +342,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -317,9 +363,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -336,9 +384,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -355,9 +405,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -374,9 +426,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -393,9 +447,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -412,9 +468,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -431,9 +489,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -450,9 +510,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -469,9 +531,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -488,9 +552,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -507,9 +573,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -526,9 +594,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   },
   {
@@ -545,9 +615,11 @@
       }
     ],
     "basis": {
-      "overview": "unverified",
+      "overview": "editorial",
+      "sources": [],
       "support": "editorial",
-      "reviewed": false
+      "reviewed": true,
+      "evidence": "公的資料に対応する分類が見当たらず、本ツールが教育実務上の必要から整理した類型。"
     }
   }
 ]

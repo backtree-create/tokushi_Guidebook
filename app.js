@@ -189,13 +189,39 @@
   function basisBadges(d) {
     var b = d.basis;
     if (!b) return '';
-    var out = [];
+
     var ov = META.basisLabels.overview[b.overview];
     var sp = META.basisLabels.support[b.support];
-    if (ov) out.push('<span class="basis-tag tone-' + esc(ov.tone) + '">' + esc(ov.label) + '</span>');
-    if (sp) out.push('<span class="basis-tag tone-' + esc(sp.tone) + '">' + esc(sp.label) + '</span>');
-    if (!out.length) return '';
-    return '<div class="basis-row">' + out.join('') + '</div>';
+    var tags = [];
+    if (ov) tags.push('<span class="basis-tag tone-' + esc(ov.tone) + '">' + esc(ov.label) + '</span>');
+    if (sp) tags.push('<span class="basis-tag tone-' + esc(sp.tone) + '">' + esc(sp.label) + '</span>');
+    if (!tags.length) return '';
+
+    // どの資料に基づくのかを、資料名と（あれば）URLで示す
+    var refs = (b.sources || []).map(function (id) {
+      var s = SRC[id];
+      if (!s) return '';
+      var name = esc(s.title) + (s.edition ? '（' + esc(s.edition) + '）' : '');
+      return s.url
+        ? '<li><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + name + '</a>' +
+          '<span class="basis-pub">' + esc(s.publisher || '') + '</span></li>'
+        : '<li>' + name + '<span class="basis-pub">' + esc(s.publisher || '') + '</span></li>';
+    }).filter(Boolean);
+
+    var body = '';
+    if (refs.length) {
+      body += '<p class="basis-label">この項目の医学的説明が基づく資料</p>' +
+              '<ul class="basis-refs">' + refs.join('') + '</ul>';
+    }
+    if (b.evidence) {
+      var isUrl = /^https?:\/\//.test(b.evidence);
+      body += '<p class="basis-evidence">' + (isUrl
+        ? '該当ページ：<a href="' + esc(b.evidence) + '" target="_blank" rel="noopener">' + esc(b.evidence) + '</a>'
+        : esc(b.evidence)) + '</p>';
+    }
+
+    return '<div class="basis-row">' + tags.join('') + '</div>' +
+           (body ? '<div class="basis-detail">' + body + '</div>' : '');
   }
 
   /* ---------- 障害種別ページ ---------- */
