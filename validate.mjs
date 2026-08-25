@@ -140,6 +140,56 @@ for (const c of categories) {
   }
 }
 
+
+/* --- 7. 見た目の下限（文字色のコントラストと文字サイズ） --- */
+const css = fs.readFileSync(path.join(root, 'style.css'), 'utf8');
+
+const hex2rgb = (h) => {
+  h = h.replace('#', '');
+  if (h.length === 3) h = h.split('').map((c) => c + c).join('');
+  return [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16));
+};
+const relLum = (rgb) => {
+  const [r, g, b] = rgb.map((v) => {
+    v /= 255;
+    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+  });
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+};
+const contrast = (a, b) => {
+  const [la, lb] = [relLum(hex2rgb(a)), relLum(hex2rgb(b))];
+  return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
+};
+
+const tokens = {};
+for (const m of css.matchAll(/--([\w-]+)\s*:\s*(#[0-9a-fA-F]{3,6})\s*;/g)) tokens[m[1]] = m[2];
+
+// 明るい背景の上に置く文字色は、いずれの背景でも 4.5:1 以上であること
+const LIGHT_BGS = ['paper', 'card', 'paper2'];
+const TEXT_TOKENS = ['ink', 'ink-soft', 'ink-faint', 'gold', 'teal'];
+for (const t of TEXT_TOKENS) {
+  if (!tokens[t]) { err(`style.css: --${t} が見つかりません`); continue; }
+  for (const bg of LIGHT_BGS) {
+    if (!tokens[bg]) continue;
+    const r = contrast(tokens[t], tokens[bg]);
+    if (r < 4.5) {
+      err(`style.css: --${t} (${tokens[t]}) を --${bg} (${tokens[bg]}) の上に置くとコントラスト比 ${r.toFixed(2)}。` +
+          `4.5 以上が必要です（色を暗くしてください）`);
+    }
+  }
+}
+
+// 本文として読ませる文字は 11px を下回らないこと
+const MIN_PX = 11;
+for (const m of css.matchAll(/font-size:\s*([\d.]+)px/g)) {
+  const px = parseFloat(m[1]);
+  if (px < MIN_PX) {
+    const before = css.slice(Math.max(0, m.index - 220), m.index);
+    const sel = (before.match(/([^{}\n]+)\s*\{[^{}]*$/) || [, '(不明)'])[1].trim();
+    err(`style.css: ${px}px は小さすぎます（下限 ${MIN_PX}px）→ ${sel.slice(0, 50)}`);
+  }
+}
+
 /* --- 出力 --- */
 console.log(`検査: ${categories.length}区分 / ${totalDiseases}件 / 出典${sources.length}件 / 自立活動${itemCount}項目`);
 console.log(`出典確認が済んでいない疾患: ${unreviewed} / ${totalDiseases} 件`);

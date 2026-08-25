@@ -5,10 +5,10 @@
     --paper2:#ebeae3;
     --ink:#1c2126;
     --ink-soft:#565c60;
-    --ink-faint:#8a9096;
+    --ink-faint:#65696e;   /* 4.5:1 を満たすよう補正（旧 #8a9096 は 2.9:1 で不足） */
     --line:#d6d5cb;
     --line-strong:#b9b8ac;
-    --gold:#8a6d2f;
+    --gold:#80652c;        /* 4.5:1 を満たすよう補正（旧 #8a6d2f は 4.4:1 で僅かに不足） */
     --gold-soft:#c9a96b;
     --teal:#2c5a63;
     --card:#ffffff;
@@ -37,7 +37,7 @@
   .top-strip{
     background:var(--navy);
     color:#c9d2da;
-    font-size:11.5px;
+    font-size:12px;
     letter-spacing:.06em;
     padding:7px 24px;
     display:flex;
@@ -88,7 +88,7 @@
   .eyebrow{
     font-family:var(--sans);
     letter-spacing:.28em;
-    font-size:11px;
+    font-size:11.5px;
     color:var(--gold-soft);
     margin:0 0 8px;
     text-transform:uppercase;
@@ -110,7 +110,7 @@
   }
   .credential{
     text-align:right;
-    font-size:11.5px;
+    font-size:12.5px;
     color:#9fb0bb;
     line-height:1.9;
     flex-shrink:0;
@@ -226,7 +226,7 @@
   .index-label{
     font-family:var(--sans);
     font-weight:700;
-    font-size:11px;
+    font-size:12px;
     letter-spacing:.14em;
     color:var(--ink-faint);
     margin:0 0 8px 2px;
@@ -249,7 +249,7 @@
   }
   ul.cat-list button .num{
     font-family:var(--mono);
-    font-size:10.5px;
+    font-size:11.5px;
     color:var(--ink-faint);
     width:18px;
     flex-shrink:0;
@@ -266,7 +266,7 @@
   .idx-hit-count{
     margin-left:auto;
     font-family:var(--mono);
-    font-size:10px;
+    font-size:11px;
     background:var(--gold);
     color:#fff;
     padding:1px 6px;
@@ -299,13 +299,13 @@
     word-break:normal;
   }
   ul.hit-list .hit-cat{
-    font-size:10.5px;
+    font-size:11.5px;
     color:var(--ink-faint);
     overflow-wrap:break-word;
   }
 
   .school-stage{
-    font-size:11.5px;
+    font-size:12.5px;
     color:var(--ink-soft);
     border-top:1px dashed var(--line);
     padding-top:13px;
@@ -314,7 +314,7 @@
   .school-stage b{color:var(--ink);font-weight:700;}
   .stage-flow{
     font-family:var(--mono);
-    font-size:10.5px;
+    font-size:12px;
     color:var(--teal);
     display:block;
     margin:6px 0;
@@ -353,7 +353,7 @@
   .cat-title .en{
     display:block;
     font-family:var(--sans);
-    font-size:11.5px;
+    font-size:12.5px;
     letter-spacing:.12em;
     color:var(--ink-faint);
     margin-top:3px;
@@ -366,7 +366,7 @@
     border:1px solid var(--line);
     border-left:4px solid var(--navy);
     box-shadow:var(--shadow);
-    font-size:14.5px;
+    font-size:15px;
     border-radius:2px;
     color:var(--ink);
   }
@@ -394,7 +394,7 @@
   h3.block-title .tally{
     margin-left:auto;
     font-family:var(--mono);
-    font-size:11px;
+    font-size:12px;
     color:var(--ink-faint);
     font-weight:400;
   }
@@ -405,14 +405,14 @@
     border:1px solid var(--line);
     border-radius:3px;
     padding:12px 14px;
-    font-size:13px;
+    font-size:13.8px;
     box-shadow:var(--shadow);
   }
   .need-card .k{
     display:inline-block;
     font-family:var(--sans);
     font-weight:700;
-    font-size:10.5px;
+    font-size:11.5px;
     color:var(--teal);
     background:#e4ece9;
     padding:2px 8px;
@@ -428,7 +428,7 @@
     gap:16px;
     padding:11px 0;
     border-bottom:1px solid var(--line);
-    font-size:13px;
+    font-size:13.8px;
   }
   @media (max-width:600px){.instr-item{grid-template-columns:1fr;gap:4px;}}
   .instr-item .t{font-weight:700;color:var(--navy);font-size:13px;}
@@ -452,12 +452,12 @@
     padding:16px 18px;
     box-shadow:var(--shadow);
   }
-  .support-panel ul{margin:0;padding-left:1.15em;font-size:13.3px;}
+  .support-panel ul{margin:0;padding-left:1.15em;font-size:14px;}
   .support-panel li{margin-bottom:8px;}
 
   .block-sub{
     margin:0 0 14px;
-    font-size:12px;
+    font-size:13px;
     color:var(--ink-soft);
   }
 
@@ -493,7 +493,7 @@
   }
   .disease-row .d-hint{
     margin-left:auto;
-    font-size:11.5px;
+    font-size:12px;
     color:var(--ink-faint);
     flex-shrink:0;
     display:none;
@@ -511,11 +511,11 @@
   .disease-item.open .disease-detail{opacity:1;}
   .disease-detail-inner{
     padding:4px 20px 20px 32px;
-    font-size:13.2px;
+    font-size:14px;
   }
   .disease-detail-inner .d-overview{color:var(--ink);margin:0 0 12px;}
   .dd-label{
-    font-size:10.5px;
+    font-size:12px;
     font-weight:700;
     letter-spacing:.08em;
     color:var(--teal);
@@ -526,7 +526,7 @@
   .dd-support li{margin-bottom:5px;}
   .dd-jiritsu{display:flex;flex-wrap:wrap;gap:6px;}
   .sev-badge{
-    font-size:10px;
+    font-size:11px;
     font-weight:700;
     color:#fff;
     background:var(--gold);
@@ -554,12 +554,12 @@
     border:1px solid var(--line-strong);
     border-radius:20px;
     padding:4px 12px 4px 4px;
-    font-size:11.5px;
+    font-size:12.5px;
   }
   .jiritsu-chip .ku-mini{
     background:var(--navy);
     color:#fff;
-    font-size:10px;
+    font-size:11px;
     padding:2px 8px;
     border-radius:14px;
   }
@@ -576,7 +576,7 @@
   }
   .jiritsu-row .ku-tag{
     display:inline-block;
-    font-size:10.5px;
+    font-size:11.5px;
     font-weight:700;
     background:var(--paper2);
     color:var(--teal);
@@ -593,7 +593,7 @@
     gap:16px;
     border-top:1px solid var(--line);
     padding:13px 0;
-    font-size:13px;
+    font-size:13.8px;
   }
   @media (max-width:600px){.place-row{grid-template-columns:1fr;gap:4px;}}
   .place-row:last-child{border-bottom:1px solid var(--line);}
@@ -604,7 +604,7 @@
     padding:16px 20px;
     border:1px solid var(--line);
     border-radius:3px;
-    font-size:12px;
+    font-size:13px;
     color:var(--ink-soft);
     background:var(--paper2);
   }
@@ -622,7 +622,7 @@
     max-width:1220px;margin:0 auto;
     padding:24px 26px 70px;
     color:var(--ink-soft);
-    font-size:11.5px;
+    font-size:13px;
     border-top:1px solid var(--line);
   }
   footer a{color:var(--teal);}
@@ -659,10 +659,10 @@
     font-size:26px;
     color:var(--navy);
   }
-  .home-stat span{font-size:11px;color:var(--ink-soft);}
+  .home-stat span{font-size:12px;color:var(--ink-soft);}
 
   .disclaimer{
-    font-size:11px;
+    font-size:12.5px;
     color:var(--ink-soft);
     background:var(--card);
     border:1px solid var(--line);
@@ -700,7 +700,7 @@
   table.item-table{width:100%;min-width:480px;border-collapse:collapse;background:var(--card);box-shadow:var(--shadow);}
   table.item-table th{
     text-align:left;
-    font-size:11px;
+    font-size:12px;
     letter-spacing:.06em;
     color:var(--ink-faint);
     border-bottom:2px solid var(--line-strong);
@@ -773,7 +773,7 @@
     border-radius:3px;
     padding:12px 16px;
     margin:0 0 18px;
-    font-size:12px;
+    font-size:13px;
     color:var(--ink-soft);
     line-height:1.85;
   }
@@ -787,7 +787,7 @@
   .section-disclaimer p{margin:0;}
   .section-disclaimer code{
     font-family:var(--mono);
-    font-size:11px;
+    font-size:12px;
     background:var(--paper2);
     padding:1px 5px;
     border-radius:2px;
@@ -804,7 +804,8 @@
   }
   .basis-tag{
     font-family:var(--sans);
-    font-size:10.5px;
+    font-size:11.5px;
+    line-height:1.7;
     font-weight:600;
     letter-spacing:.02em;
     line-height:1.6;
@@ -816,7 +817,7 @@
     /* 色だけに頼らず、必ず文字で区別が付くようにしている */
   }
   .basis-tag.tone-ok{border-color:#8fa892;color:#3f5b45;background:#eef3ee;}
-  .basis-tag.tone-info{border-color:var(--gold-soft);color:var(--gold);background:#f6f1e6;}
+  .basis-tag.tone-info{border-color:#b99a55;color:#866a2e;background:#f6f1e6;}
   .basis-tag.tone-warn{border-color:#c0a15c;color:#7a5c15;background:#f8f2e2;}
 
   /* --- 編集上の注記 --- */
@@ -826,7 +827,7 @@
     background:var(--paper2);
     border-left:2px solid var(--line-strong);
     border-radius:2px;
-    font-size:11.8px;
+    font-size:13px;
     color:var(--ink-soft);
     line-height:1.85;
   }
@@ -841,7 +842,7 @@
   /* --- 出典一覧の補足表示 --- */
   .src-note,.src-index{
     display:inline-block;
-    font-size:11px;
+    font-size:12px;
     color:var(--ink-faint);
     line-height:1.7;
     margin-top:3px;
@@ -849,7 +850,7 @@
   .src-index a{word-break:break-all;}
   .policy-tag{
     display:inline-block;
-    font-size:10.5px;
+    font-size:11.5px;
     font-weight:600;
     padding:2px 8px;
     border-radius:2px;
@@ -863,7 +864,7 @@
   footer p{margin:0 0 10px;}
   .footer-meta{
     font-family:var(--mono);
-    font-size:11px;
+    font-size:12px;
     color:var(--ink-faint);
     padding-top:10px;
     border-top:1px solid var(--line);
@@ -905,7 +906,7 @@
     display:block;
     font-family:var(--sans);
     font-weight:400;
-    font-size:10.5px;
+    font-size:12px;
     color:var(--ink-faint);
     line-height:1.65;
     margin-top:3px;
@@ -913,18 +914,18 @@
 
   /* --- 出典の内訳（疾患カード内） --- */
   .basis-detail{
-    margin-top:10px;
+    margin-top:12px;
     padding:11px 14px;
     background:var(--paper2);
     border-radius:2px;
-    font-size:11.8px;
+    font-size:13px;
     color:var(--ink-soft);
     line-height:1.8;
   }
   .basis-label{
     margin:0 0 6px;
     font-family:var(--serif);
-    font-size:12px;
+    font-size:13px;
     color:var(--ink);
   }
   .basis-refs{
@@ -945,14 +946,40 @@
   .basis-refs a{word-break:break-word;}
   .basis-pub{
     display:block;
-    font-size:10.5px;
+    font-size:12px;
     color:var(--ink-faint);
   }
   .basis-evidence{
     margin:8px 0 0;
     padding-top:8px;
     border-top:1px dashed var(--line);
-    font-size:11.3px;
+    font-size:12.5px;
     color:var(--ink-faint);
   }
   .basis-evidence a{word-break:break-all;}
+
+
+  /* ==========================================================
+     2026-08-25 視認性の調整
+     小さい文字ほど行間を確保し、字面を詰めない。
+     色は --ink-faint / --gold を暗くしてコントラスト比4.5以上を確保済み。
+     ========================================================== */
+  .dd-label{ line-height:1.7; }
+  .d-overview{ line-height:1.85; }
+  .dd-support li,.sv-support li{ line-height:1.8; margin-bottom:6px; }
+  .disease-detail-inner .dd-support li{ margin-bottom:7px; }
+  .home-card p{ line-height:1.8; }
+  .src-note,.src-index{ line-height:1.75; }
+  .item-table td{ line-height:1.8; }
+  .credential{ line-height:1.85; }
+
+  /* 数字・番号のような要素は等幅数字にして揃える */
+  .home-stat b,.block-title .tally,.idx-hit-count,
+  ul.cat-list button .num,.home-card .num,.article-num{
+    font-variant-numeric:tabular-nums;
+  }
+
+  /* 端末側で文字を大きくしている利用者の設定を妨げない */
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.01ms !important;transition-duration:.01ms !important;}
+  }
