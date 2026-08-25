@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 /* 疾患ごとの出典区分（basis）の確認作業を進めるための道具。
  *
- *   node tools/basis-audit.mjs                    未確認の件数を区分ごとに表示
- *   node tools/basis-audit.mjs --list health      未確認の項目名を並べる
- *   node tools/basis-audit.mjs --set health "重症心身障害" public-db editorial
+ *   node basis-audit.mjs                    未確認の件数を区分ごとに表示
+ *   node basis-audit.mjs --list health      未確認の項目名を並べる
+ *   node basis-audit.mjs --set health "重症心身障害" public-db editorial
  *                                                1件の区分を確定して reviewed:true にする
- *   node tools/basis-audit.mjs --set-all visual overview public-db
+ *   node basis-audit.mjs --set-all visual overview public-db
  *                                                区分内の未確認項目の overview をまとめて設定
  *                                                （reviewed は変えない）
  *
@@ -16,12 +16,12 @@
 import fs from 'fs';
 import path from 'path';
 
-const root = path.resolve(import.meta.dirname, '..');
-const dp = (id) => path.join(root, 'data/diseases', id + '.json');
+const root = import.meta.dirname;
+const dp = (id) => path.join(root, id + '.json');
 const rj = (p) => JSON.parse(fs.readFileSync(p, 'utf8'));
 const wj = (p, v) => fs.writeFileSync(p, JSON.stringify(v, null, 2) + '\n');
 
-const cats = rj(path.join(root, 'data/categories.json'));
+const cats = rj(path.join(root, 'categories.json'));
 const OV = ['mext', 'public-db', 'unverified'];
 const SP = ['mext', 'editorial'];
 

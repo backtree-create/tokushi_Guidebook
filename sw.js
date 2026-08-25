@@ -5,7 +5,7 @@
  *   CSS / JS / 画像は「キャッシュ優先」。表示速度を確保する。
  *   VERSION を変えると古いキャッシュは activate 時に破棄される。
  *
- * 注意：VERSION は data/meta.json の "updated" と揃えること。
+ * 注意：VERSION は meta.json の "updated" と揃えること。
  *       内容を更新したらここも必ず書き換える。
  */
 const VERSION = "2026-08-25";
@@ -15,25 +15,26 @@ const PRECACHE = [
   "./",
   "./index.html",
   "./manifest.json",
-  "./assets/style.css",
-  "./assets/app.js",
+  "./style.css",
+  "./app.js",
+  "./sw-register.js",
   "./icon-192.png",
   "./icon-512.png",
-  "./data/meta.json",
-  "./data/sources.json",
-  "./data/jiritsu27.json",
-  "./data/categories.json",
-  "./data/diseases/visual.json",
-  "./data/diseases/hearing.json",
-  "./data/diseases/intellectual.json",
-  "./data/diseases/physical.json",
-  "./data/diseases/health.json",
-  "./data/diseases/language.json",
-  "./data/diseases/autism.json",
-  "./data/diseases/emotional.json",
-  "./data/diseases/ld.json",
-  "./data/diseases/adhd.json",
-  "./data/diseases/futoukou.json"
+  "./meta.json",
+  "./sources.json",
+  "./jiritsu27.json",
+  "./categories.json",
+  "./visual.json",
+  "./hearing.json",
+  "./intellectual.json",
+  "./physical.json",
+  "./health.json",
+  "./language.json",
+  "./autism.json",
+  "./emotional.json",
+  "./ld.json",
+  "./adhd.json",
+  "./futoukou.json"
 ];
 
 self.addEventListener("install", (event) => {

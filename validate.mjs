@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 /* データの整合性チェック。CIとローカルの両方で使う。
- *   node tools/validate.mjs
+ *   node validate.mjs
  * 問題があれば終了コード1で落ちる。
  */
 import fs from 'fs';
 import path from 'path';
 
-const root = path.resolve(import.meta.dirname, '..');
+const root = import.meta.dirname;
 const rj = (p) => JSON.parse(fs.readFileSync(path.join(root, p), 'utf8'));
 
 const errors = [];
@@ -14,10 +14,10 @@ const warnings = [];
 const err = (m) => errors.push(m);
 const warn = (m) => warnings.push(m);
 
-const meta = rj('data/meta.json');
-const sources = rj('data/sources.json');
-const jiritsu27 = rj('data/jiritsu27.json');
-const categories = rj('data/categories.json');
+const meta = rj('meta.json');
+const sources = rj('sources.json');
+const jiritsu27 = rj('jiritsu27.json');
+const categories = rj('categories.json');
 
 /* --- 1. 自立活動 6区分27項目 --- */
 if (jiritsu27.length !== 6) err(`自立活動の区分が6ではありません: ${jiritsu27.length}`);
@@ -63,7 +63,7 @@ for (const c of categories) {
     }
   }
 
-  const dp = `data/diseases/${c.id}.json`;
+  const dp = `${c.id}.json`;
   if (!fs.existsSync(path.join(root, dp))) { err(`${dp} がありません`); continue; }
   const diseases = rj(dp);
   totalDiseases += diseases.length;
@@ -112,14 +112,14 @@ const sw = fs.readFileSync(path.join(root, 'sw.js'), 'utf8');
 const m = sw.match(/const VERSION = "([^"]+)"/);
 if (!m) err('sw.js から VERSION を読み取れません');
 else if (m[1] !== meta.updated) {
-  err(`sw.js の VERSION (${m[1]}) と data/meta.json の updated (${meta.updated}) が一致しません。` +
+  err(`sw.js の VERSION (${m[1]}) と meta.json の updated (${meta.updated}) が一致しません。` +
       `更新のたびに両方を揃えてください（古いキャッシュが残る原因になります）`);
 }
 
 /* --- 6. Service Worker のプリキャッシュ漏れ --- */
 for (const c of categories) {
-  if (!sw.includes(`data/diseases/${c.id}.json`)) {
-    err(`sw.js の PRECACHE に data/diseases/${c.id}.json がありません`);
+  if (!sw.includes(`${c.id}.json`)) {
+    err(`sw.js の PRECACHE に ${c.id}.json がありません`);
   }
 }
 

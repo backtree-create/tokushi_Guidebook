@@ -22,28 +22,45 @@
 
 ## ファイル構成
 
+**フォルダを作らず、すべてルート直下に置いています。** GitHub のサイト上でファイルをまとめてアップロードすると、ブラウザがフォルダ構造を落としてしまうためです。実際にそれで一度壊れました。整理された見た目より、更新できることを優先しています。
+
 ```
 index.html            画面の骨組み（GitHub Pages が配信するのはこれ）
-assets/style.css      スタイル
-assets/app.js         描画ロジック
-assets/sw-register.js Service Worker の登録
+style.css             スタイル
+app.js                描画ロジック
+sw-register.js        Service Worker の登録
 sw.js                 オフライン対応
 manifest.json         PWA 設定
 
-data/meta.json        版・更新日・免責文・診断名対応表
-data/sources.json     参考資料の一元管理（URL はここにしか書かない）
-data/categories.json  障害種別 11区分（疾患は含まない）
-data/jiritsu27.json   自立活動 6区分27項目
-data/diseases/*.json  疾患・状態 514件（区分ごとに1ファイル）
+meta.json             版・更新日・免責文・診断名対応表
+sources.json          参考資料の一元管理（URL はここにしか書かない）
+categories.json       障害種別 11区分（疾患は含まない）
+jiritsu27.json        自立活動 6区分27項目
 
-tools/build.mjs       配布用の単一ファイルを生成
-tools/validate.mjs    データ整合性チェック
-tools/basis-audit.mjs 出典区分の確認作業を進める道具
-dist/tokushi-guidebook-standalone.html
+visual.json           疾患・状態 514件。区分ごとに1ファイル
+hearing.json          （visual / hearing / intellectual / physical /
+intellectual.json       health / language / autism / emotional /
+physical.json           ld / adhd / futoukou の11本）
+health.json
+language.json
+autism.json
+emotional.json
+ld.json
+adhd.json
+futoukou.json
+
+build.mjs             配布用の単一ファイルを生成
+validate.mjs          データ整合性チェック
+basis-audit.mjs       出典区分の確認作業を進める道具
+
+tokushi-guidebook-standalone.html
                       配布用の単一ファイル（USB・メール添付向け）
-                      ルートの index.html と名前を分けてあるのは、同名だと
-                      まとめてアップロードするときに衝突するため
+
+.github/workflows/    GitHub Actions の設定
+                      ここだけはフォルダが必須（GitHub の決まり）
 ```
+
+疾患ファイルの名前は `categories.json` の `id` と一致させる決まりです。区分を増やすときは、`categories.json` に追記し、同じ名前の `<id>.json` をルートに置き、`sw.js` の `PRECACHE` にも1行足してください（足し忘れは `validate.mjs` が検出します）。
 
 ---
 
@@ -51,13 +68,13 @@ dist/tokushi-guidebook-standalone.html
 
 ### 内容を直す
 
-`data/` 以下の JSON を直接編集します。`index.html` に内容は書かれていません。
+ルート直下の JSON を直接編集します。`index.html` に内容は書かれていません。
 
 編集したら **必ず** 次を実行してください。
 
 ```bash
-node tools/validate.mjs   # 整合性チェック
-node tools/build.mjs      # 配布用の単一ファイルを作り直す
+node validate.mjs   # 整合性チェック
+node build.mjs      # 配布用の単一ファイルを作り直す
 ```
 
 **GitHub のサイト上で編集した場合は、これらを自分で実行する必要はありません。**
@@ -70,6 +87,7 @@ node tools/build.mjs      # 配布用の単一ファイルを作り直す
 - 区分内で病名が重複していないか
 - `sw.js` の `VERSION` と `meta.json` の `updated` が揃っているか
 - `sw.js` の `PRECACHE` に疾患ファイルの記載漏れがないか
+- 全ファイル名が一意か（同名だとアップロード時に衝突するため）
 
 ### 動作を確認する
 
@@ -80,15 +98,15 @@ python3 -m http.server 8000
 # → http://localhost:8000/
 ```
 
-単一ファイル版（`dist/tokushi-guidebook-standalone.html`）はダブルクリックで開けます。
+単一ファイル版（`tokushi-guidebook-standalone.html`）はダブルクリックで開けます。
 
 ### 内容を更新したときのチェックリスト
 
-1. `data/` を編集
-2. `data/meta.json` の `updated` を今日の日付に、`version` を上げる
+1. 該当する JSON を編集
+2. `meta.json` の `updated` を今日の日付に、`version` を上げる
 3. **`sw.js` の `VERSION` を `updated` と同じ日付に**（揃っていないと `validate.mjs` が落ちます）
 4. `meta.json` の `changelog` に1行足す
-5. `node tools/validate.mjs && node tools/build.mjs`（サイト上で編集した場合は不要）
+5. `node validate.mjs && node build.mjs`（サイト上で編集した場合は不要）
 6. コミット・プッシュ
 
 ---
@@ -105,7 +123,7 @@ python3 -m http.server 8000
 
 ## 参考資料の管理
 
-URL は `data/sources.json` にのみ書きます。画面のフッターと「診断名・出典」タブは、このファイルから自動生成されます。
+URL は `sources.json` にのみ書きます。画面のフッターと「診断名・出典」タブは、このファイルから自動生成されます。
 
 各資料には更新方針を持たせています。
 
@@ -119,7 +137,7 @@ URL は `data/sources.json` にのみ書きます。画面のフッターと「�
 | ワークフロー | 実行時期 | 内容 |
 |---|---|---|
 | `validate.yml` | push / PR ごと | データ整合性チェック、ビルド確認 |
-| `build.yml` | `data/` 等の変更時 | 配布用の単一ファイルを再生成して自動コミット |
+| `build.yml` | JSON 等の変更時 | 配布用の単一ファイルを再生成して自動コミット |
 | `linkcheck.yml` | 毎月1日 | URL の到達性確認。切れていたら Issue を自動作成 |
 | `annual-review.yml` | 毎年3月1日 | `policy: latest` の資料の見直し Issue を自動作成 |
 
@@ -132,9 +150,9 @@ URL は `data/sources.json` にのみ書きます。画面のフッターと「�
 514件すべてが未確認の状態から始まります。一度に全部やる必要はありません。
 
 ```bash
-node tools/basis-audit.mjs                 # 進捗を見る
-node tools/basis-audit.mjs --list health   # 未確認の項目を並べる
-node tools/basis-audit.mjs --set health "重症心身障害" public-db editorial
+node basis-audit.mjs                 # 進捗を見る
+node basis-audit.mjs --list health   # 未確認の項目を並べる
+node basis-audit.mjs --set health "重症心身障害" public-db editorial
 ```
 
 - `basis.overview` … `mext`（手引に記載）／ `public-db`（公的DB由来）／ `unverified`（未確認）

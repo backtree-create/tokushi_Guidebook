@@ -1,5 +1,5 @@
 /* 特別支援教育 指導支援ハンドブック — アプリ本体
-   データは data/*.json から読み込みます（結合ビルド時は window.__BUNDLE__ に埋め込み）。 */
+   データはルート直下の *.json から読み込みます（結合ビルド時は window.__BUNDLE__ に埋め込み）。 */
 (function () {
   'use strict';
 
@@ -569,18 +569,18 @@
   }
 
   function start() {
-    // 結合ビルド（dist/index.html）ではデータが埋め込み済み
+    // 結合ビルド（tokushi-guidebook-standalone.html）ではデータが埋め込み済み
     if (window.__BUNDLE__) { boot(window.__BUNDLE__); return; }
 
     Promise.all([
-      loadJson('data/meta.json'),
-      loadJson('data/sources.json'),
-      loadJson('data/jiritsu27.json'),
-      loadJson('data/categories.json')
+      loadJson('meta.json'),
+      loadJson('sources.json'),
+      loadJson('jiritsu27.json'),
+      loadJson('categories.json')
     ]).then(function (r) {
       var meta = r[0], sources = r[1], jiritsu27 = r[2], categories = r[3];
       return Promise.all(categories.map(function (c) {
-        return loadJson('data/diseases/' + c.id + '.json').then(function (ds) {
+        return loadJson(c.id + '.json').then(function (ds) {
           c.diseases = ds;
           return c;
         });

@@ -1,25 +1,25 @@
 #!/usr/bin/env node
-/* index.html + assets/ + data/ を1ファイルに結合する。
+/* index.html + style.css + app.js + 各JSON を1ファイルに結合する。
  * GitHub Pages には分割版（ルート直下の index.html）を置き、
- * USB配布やメール添付には dist/tokushi-guidebook-standalone.html を使う。
+ * USB配布やメール添付には tokushi-guidebook-standalone.html を使う。
  * ファイル名をルートの index.html と変えてあるのは、
  * 同名だとまとめてアップロードするときに衝突するため。
  *
- *   node tools/build.mjs
+ *   node build.mjs
  */
 import fs from 'fs';
 import path from 'path';
 
-const root = path.resolve(import.meta.dirname, '..');
+const root = import.meta.dirname;
 const rd = (p) => fs.readFileSync(path.join(root, p), 'utf8');
 const rj = (p) => JSON.parse(rd(p));
 
-const meta = rj('data/meta.json');
-const sources = rj('data/sources.json');
-const jiritsu27 = rj('data/jiritsu27.json');
-const categories = rj('data/categories.json');
+const meta = rj('meta.json');
+const sources = rj('sources.json');
+const jiritsu27 = rj('jiritsu27.json');
+const categories = rj('categories.json');
 for (const c of categories) {
-  c.diseases = rj(`data/diseases/${c.id}.json`);
+  c.diseases = rj(`${c.id}.json`);
 }
 
 const bundle = { meta, sources, jiritsu27, categories };
@@ -34,7 +34,7 @@ let html = rd('index.html');
 
 html = html.replace(
   /<!--BUILD:STYLE-->[\s\S]*?<!--\/BUILD:STYLE-->/,
-  '<style>\n' + rd('assets/style.css') + '\n</style>'
+  '<style>\n' + rd('style.css') + '\n</style>'
 );
 html = html.replace(
   /<!--BUILD:DATA-->[\s\S]*?<!--\/BUILD:DATA-->/,
@@ -42,10 +42,10 @@ html = html.replace(
 );
 html = html.replace(
   /<!--BUILD:SCRIPT-->[\s\S]*?<!--\/BUILD:SCRIPT-->/,
-  '<script>\n' + rd('assets/app.js') + '\n</script>'
+  '<script>\n' + rd('app.js') + '\n</script>'
 );
 // 単一ファイル版に Service Worker と manifest は不要
-html = html.replace(/^\s*<script src="assets\/sw-register\.js"><\/script>\s*$/m, '');
+html = html.replace(/^\s*<script src="sw-register\.js"><\/script>\s*$/m, '');
 html = html.replace(/^\s*<link rel="manifest" href="manifest\.json">\s*$/m, '');
 
 // アイコンを data URI で埋め込み、外部ファイルへの依存をなくす
@@ -53,8 +53,7 @@ const iconDataUri = 'data:image/png;base64,' +
   fs.readFileSync(path.join(root, 'icon-192.png')).toString('base64');
 html = html.replace(/(href|src)="icon-192\.png"/g, '$1="' + iconDataUri + '"');
 
-const OUT = 'dist/tokushi-guidebook-standalone.html';
-fs.mkdirSync(path.join(root, 'dist'), { recursive: true });
+const OUT = 'tokushi-guidebook-standalone.html';
 fs.writeFileSync(path.join(root, OUT), html);
 
 const kb = (Buffer.byteLength(html) / 1024).toFixed(0);
