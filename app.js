@@ -30,7 +30,7 @@
   /* ---------- DOM 参照 ---------- */
 
   var catList, mainContent, searchBox, sideNav,
-      tabGuide, tabJiritsu, tabTerms, layoutRoot, homeBtn, homeLink, siteFooter;
+      tabGuide, tabJiritsu, tabTerms, layoutRoot, homeBtn, homeLink, homeEmblem, siteFooter;
 
   var currentId = null;
   var mode = 'guide'; // 'guide' | 'jiritsu' | 'terms'
@@ -550,13 +550,14 @@
     layoutRoot = document.getElementById('layoutRoot');
     homeBtn = document.getElementById('homeBtn');
     homeLink = document.getElementById('homeLink');
+    homeEmblem = document.getElementById('homeEmblem');
     siteFooter = document.getElementById('siteFooter');
 
+    // ホームへ戻る操作は3か所。いずれも button 要素なので、
+    // Enter / Space の処理はブラウザに任せられる。
     homeBtn.onclick = goHome;
     homeLink.onclick = goHome;
-    homeLink.onkeydown = function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goHome(); }
-    };
+    if (homeEmblem) homeEmblem.onclick = goHome;
     tabGuide.onclick = function () { setMode('guide'); };
     tabJiritsu.onclick = function () { setMode('jiritsu'); };
     tabTerms.onclick = function () { setMode('terms'); };
