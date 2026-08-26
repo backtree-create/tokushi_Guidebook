@@ -6,7 +6,206 @@ name: link check
 
 on:name: link check
 
-# 参考資料のURLが切れていないかを定期的に確認し、切れていたらIssueを立てる。
+# 参考資料のURLが切れてname: link check
+
+# 参考資料のURLが切れていないかを毎月確認する。
+#
+# このワークフローが直すべきだった3つの欠点（2026-08-26 修正）:
+#   1. 失敗するたび同じ表題のIssueが増えていた → 既存のIssueがあれば書き換える
+#   2. リンクが直ってもIssueが開きっぱなしだった → 全部生きていたら自動で閉じる
+#   3. どのURLがどの出典のものか分からず、行番号から探す必要があった
+#      → sources.json と突き合わせて「どの出典か」を本文に書く
+#
+# 「生きているが年度が古い」ケースはここでは検出できない。
+# それは annual-review.yml（年次の目視）と source-watch.yml（更新検知）が受け持つ。
+
+on:
+  schedule:
+    - cron: "0 21 1 * *"   # 毎月2日 06:00 JST（UTC 前日21:00）
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "sources.json"
+      - ".github/workflows/linkcheck.yml"
+
+permissions:
+  contents: write   # 実行記録のコミット（60日無活動によるスケジュール停止を防ぐ）
+  issues: write
+
+concurrency:
+  group: linkcheck
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: URLの一覧を作る
+        run: |
+          node -e '
+            const s = require("./sources.json");
+            const urls = s.flatMap(x => [x.url, x.indexUrl].filter(Boolean));
+            const uniq = [...new Set(urls)];
+            require("fs").writeFileSync("urls.txt", uniq.join("\n") + "\n");
+            console.log("チェック対象:", uniq.length, "本 /", s.length, "出典");
+          '
+
+      - name: lychee
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # --method get   : HEAD を弾くサーバ（mext.go.jp 等）での誤検知を防ぐ
+          # --user-agent   : 既定UAだとブロックされることがある
+          # --timeout 40   : 手引のPDFは重い
+          # --accept 429   : レート制限は「切れている」ではない
+          args: >-
+            --no-progress
+            --method get
+            --max-retries 3
+            --retry-wait-time 5
+            --timeout 40
+            --accept 200,206,403,429
+            --user-agent "Mozilla/5.0 (compatible; tokushi-Guidebook-linkcheck/1.0)"
+            urls.txt
+          fail: false
+          output: lychee.md
+
+      - name: どの出典のURLが切れたのかを本文に書く
+        id: body
+        run: |
+          node -e '
+            const fs = require("fs");
+            const md = fs.existsSync("lychee.md") ? fs.readFileSync("lychee.md", "utf8") : "";
+            const s = require("./sources.json");
+            // lychee の出力に載っているURLを持つ出典を拾う。
+            // 出力形式に依存しない単純な文字列一致にしてある。
+            const hit = [];
+            for (const x of s) {
+              for (const key of ["url", "indexUrl"]) {
+                const u = x[key];
+                if (u && md.includes(u)) {
+                  hit.push({ id: x.id, title: x.title, key, url: u, policy: x.policy });
+                }
+              }
+            }
+            let out = "";
+            if (hit.length) {
+              out += "## 直すべき出典\n\n";
+              out += "| sources.json の id | 資料名 | 項目 | URL |\n| --- | --- | --- | --- |\n";
+              for (const h of hit) {
+                out += `| \`${h.id}\` | ${h.title} | ${h.key} | ${h.url} |\n`;
+              }
+              out += "\n**直し方**：GitHub のサイト上で `sources.json` を開き、上の id を検索して ";
+              out += "`url`（または `indexUrl`）を現在の所在に書き換え、`checked` を今日の日付にしてください。";
+              out += "資料そのものが無くなっている場合は、代わりの一次資料を探すか、";
+              out += "その出典を参照している記述の扱いを見直してください。\n\n---\n\n";
+            } else {
+              out += "（lychee の出力と sources.json を突き合わせましたが、";
+              out += "該当する出典を特定できませんでした。下の生の出力を確認してください。）\n\n---\n\n";
+            }
+            fs.writeFileSync("issue.md", out + md);
+            console.log(out);
+          '
+
+      - name: Issueを立てる／書き換える
+        if: steps.lychee.outputs.exit_code != 0
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('issue.md', 'utf8').slice(0, 60000);
+            const title = '参考資料のリンク切れを検出';
+            const { data: open } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', labels: 'リンク切れ', per_page: 100,
+            });
+            const found = open.find(i => i.title === title);
+            if (found) {
+              await github.rest.issues.update({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: found.number, body,
+              });
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: found.number,
+                body: `${new Date().toISOString().slice(0, 10)} の実行でも、まだリンク切れがあります。本文を最新の結果に更新しました。`,
+              });
+              core.notice(`既存の Issue #${found.number} を更新しました`);
+            } else {
+              const { data: made } = await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title, body, labels: ['リンク切れ', '自動検出'],
+              });
+              core.notice(`Issue #${made.number} を作成しました`);
+            }
+
+      - name: 直っていたらIssueを閉じる
+        if: steps.lychee.outputs.exit_code == 0
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = '参考資料のリンク切れを検出';
+            const { data: open } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', labels: 'リンク切れ', per_page: 100,
+            });
+            for (const i of open.filter(x => x.title === title)) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: i.number,
+                body: `${new Date().toISOString().slice(0, 10)} の実行で、すべてのURLが生きていることを確認しました。自動で閉じます。`,
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: i.number, state: 'closed',
+              });
+              core.notice(`Issue #${i.number} を閉じました`);
+            }
+
+      - name: 実行記録を残す
+        # sources.json を編集するたびに記録が増えると読みにくいので、
+        # 定期実行と手動実行のときだけ残す。
+        if: github.event_name != 'push'
+        # スケジュール実行のワークフローは、リポジトリが60日間無活動だと止められる。
+        # 毎月ここでコミットしておくことで、更新が途絶えても止まらないようにする。
+        # 同時に、いつ点検したかの記録そのものにもなる。
+        run: |
+          RESULT="すべて生存"
+          if [ "${{ steps.lychee.outputs.exit_code }}" != "0" ]; then RESULT="リンク切れあり"; fi
+          COUNT=$(wc -l < urls.txt | tr -d ' ')
+          {
+            echo "# リンクチェックの実行記録"
+            echo
+            echo "sources.json のURLが生きているかを毎月確認した記録です。このファイルは link check ワークフローが自動で追記します。"
+            echo
+            echo "| 実行日（UTC） | 対象URL数 | 結果 |"
+            echo "| --- | --- | --- |"
+          } > linkcheck-log.new
+          if [ -f linkcheck-log.md ]; then
+            grep -E '^\| 20[0-9]{2}-' linkcheck-log.md >> linkcheck-log.new || true
+          fi
+          # 最新行を先頭に入れ直す
+          {
+            head -n 6 linkcheck-log.new
+            echo "| $(date -u +%Y-%m-%d) | ${COUNT} | ${RESULT} |"
+            tail -n +7 linkcheck-log.new
+          } > linkcheck-log.md
+          rm -f linkcheck-log.new
+          head -20 linkcheck-log.md
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add linkcheck-log.md
+          git diff --cached --quiet && { echo "変更なし"; exit 0; }
+          git commit -m "リンクチェックの実行記録（${RESULT}） [skip ci]"
+          git pull --rebase --autostash
+          git push
+いないかを定期的に確認し、切れていたらIssueを立てる。
 # 「生きているが年度が古い」ケースは検出できないため、
 # sources.json の policy: latest の資料は毎年の目視確認が別途必要。
 
