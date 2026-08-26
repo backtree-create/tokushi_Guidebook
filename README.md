@@ -168,12 +168,22 @@ URL は `sources.json` にのみ書きます。画面のフッターと「診断
 
 | ワークフロー | 実行時期 | 内容 |
 |---|---|---|
-| `validate.yml` | push / PR ごと | データ整合性チェック、ビルド確認 |
+| `validate.yml` | push / PR ごと | データ整合性チェック、ビルド確認、URLの書式確認 |
 | `build.yml` | JSON 等の変更時 | 配布用の単一ファイルを再生成して自動コミット |
-| `linkcheck.yml` | 毎月1日 | URL の到達性確認。切れていたら Issue を自動作成 |
-| `annual-review.yml` | 毎年3月1日 | `policy: latest` の資料の見直し Issue を自動作成 |
+| `linkcheck.yml` | 毎月2日 ＋ `sources.json` の変更時 | URL の到達性確認。切れていたら Issue を作成／更新し、直ったら自動で閉じる |
+| `source-watch.yml` | 毎月15日 | `policy: latest` の一覧ページのハッシュを比較し、中身が変わっていたら Issue |
+| `annual-review.yml` | 毎年3月1日 | `policy: latest` の資料を人の目で見直す Issue |
+
+資料が古くなる形は3つあり、それぞれ受け持ちが違います。**消えた**のは `linkcheck.yml`、**中身が新版に差し替わった**のは `source-watch.yml`、**生きているが今は別の資料のほうが適切**は人にしか判断できないので `annual-review.yml` が年に一度うながします。
 
 重要な PDF は [web.archive.org の Save Page Now](https://web.archive.org/save) に手動保存しておくことをおすすめします。mext.go.jp は PDF の URL をよく変えます。
+
+### 自動化についての決まりごと
+
+- **Issue は増やさず、書き換える。** 同じ表題の未解決 Issue があれば本文を最新の結果に差し替えます。毎月同じ Issue が積み上がると誰も読まなくなるためです。
+- **`linkcheck.yml` は毎月コミットを残します**（`linkcheck-log.md`）。GitHub のスケジュール実行はリポジトリが60日間無活動だと止められるので、更新が途絶えても自動点検が生き続けるようにするためです。点検の記録そのものにもなります。
+- **`source-hashes.json` と `linkcheck-log.md` は CI が書くファイルです。** 手で編集したり、zip から上書きしたりしないでください。台帳を消すと、次回すべてが「新規」になって変化を検知できなくなります。
+- **CI が生成・追記するファイル**：`tokushi-guidebook-standalone.html`、`linkcheck-log.md`、`source-hashes.json`。
 
 ---
 

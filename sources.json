@@ -345,14 +345,14 @@
   },
   {
     "id": "gmfcs",
-    "title": "GMFCS-E&R 粗大運動能力分類システム 拡張・改訂版 日本語版",
+    "title": "GMFCS - E & R 粗大運動能力分類システム 拡張・改訂されたもの 日本語版",
     "publisher": "藤田医科大学（近藤和泉・藪中良彦・楠本敬二 訳／原版 CanChild, McMaster University）",
-    "url": "https://www.fujita-hu.ac.jp/FMIP/GMFCS_ER_J.pdf",
+    "url": "https://www.fujita-hu.ac.jp/FMIP/GMFCS_%20ER_J.pdf",
     "indexUrl": "https://www.fujita-hu.ac.jp/FMIP/Reha_gmfcs.html",
     "policy": "pinned",
     "tier": "academic",
     "checked": "2026-08-26",
-    "note": "レベルI〜Vの5段階。記述は年齢帯（2歳未満／2〜4／4〜6／6〜12／12〜18歳）ごとに異なる。粗大運動のみを対象とし、手指操作はMACS、意思疎通はCFCSが別にある"
+    "note": "レベルI〜Vの5段階。記述は年齢帯（2歳未満／2〜4／4〜6／6〜12／12〜18歳）ごとに異なる。粗大運動のみを対象とし、手指操作はMACS、意思疎通はCFCSが別にある。PDFのファイル名に空白が含まれるためURLは %20 を含む（空白を詰めたURLは404）"
   },
   {
     "id": "oshima",
@@ -515,11 +515,12 @@
     "id": "jspccs-hf2015",
     "title": "小児心不全薬物治療ガイドライン（平成27年改訂版）",
     "publisher": "日本小児循環器学会（日本小児循環器学会雑誌 31巻S2号・2015年7月15日）",
-    "url": "https://jpccs.jp/wp-content/uploads/31-S2-1.pdf",
+    "url": "https://jpccs.jp/10.9794/jspccs.31.S2_1/data/index.pdf",
     "policy": "latest",
     "tier": "academic",
     "checked": "2026-08-26",
-    "note": "「成人ではNYHA分類，小児ではROSSスコアなどの指標が用いられてきた」と記載。ただしクラスI〜IVの定義表は本ガイドラインには収載されていない"
+    "note": "「成人ではNYHA分類，小児ではROSSスコアなどの指標が用いられてきた」と記載。ただしクラスI〜IVの定義表は本ガイドラインには収載されていない",
+    "indexUrl": "https://jpccs.jp/10.9794/jspccs.31.S2_1/data/index.html"
   },
   {
     "id": "ross-2012",
