@@ -3,7 +3,30 @@ name: validate data
 # データの整合性(自立活動27項目との名称一致、出典IDの参照、
 # sw.js の VERSION と meta.json のずれ等)を毎回確認する。
 
+on:name: validate data
+
+# データの整合性（自立活動27項目との名称一致、出典IDの参照、
+# sw.js の VERSION と meta.json の updated のずれ等）を毎回確認する。
+
 on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: データ整合性チェック
+        run: node validate.mjs
+      - name: 単一ファイル版のビルド確認
+        run: node build.mjs
+
   push:
     branches: [main]
   pull_request:
