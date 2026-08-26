@@ -2,7 +2,101 @@ name: annual source review
 
 # リンクチェックでは検出できない「生きているが年度が古い」資料を
 # 人の目で見直すためのリマインダー。毎年3月1日にIssueを立てる。
-name: annual source review
+name: annual source reviename: annual source review
+
+# リンクチェックでも更新検知でも拾いきれない「そもそも今もこれが最善の出典か」を
+# 人の目で見直すための、年に一度のリマインダー。
+# 2026-08-26 修正：毎年同じ表題のIssueが増えないよう、年を表題に入れる。
+
+on:
+  schedule:
+    - cron: "0 0 1 3 *"   # 毎年3月1日 09:00 JST
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: 見直し対象の一覧を作る
+        run: |
+          node -e '
+            const s = require("./sources.json");
+            const t = s.filter(x => x.policy === "latest");
+            const today = new Date().toISOString().slice(0, 10);
+            const old = (d) => {
+              if (!d) return true;
+              return (new Date(today) - new Date(d)) / 86400000 > 365;
+            };
+            let md = "毎年の出典の棚卸しです。リンクチェック（毎月）と更新検知（毎月）で拾えるのは";
+            md += "「消えた」「一覧ページが変わった」までで、**今もこれが最善の出典か**は人にしか判断できません。\n\n";
+            md += `対象は policy: latest の ${t.length} 件です。\n\n`;
+            const stale = t.filter(x => old(x.checked));
+            if (stale.length) {
+              md += `### 確認から1年以上たっているもの（${stale.length}件）\n\n`;
+              for (const x of stale) {
+                md += `- [ ] **${x.title}**（\`${x.id}\`）　最終確認：${x.checked || "記録なし"}\n`;
+                if (x.edition) md += `      現在の記載：${x.edition}\n`;
+                md += `      ${x.indexUrl || x.url}\n`;
+              }
+              md += "\n";
+            }
+            const fresh = t.filter(x => !old(x.checked));
+            if (fresh.length) {
+              md += `### 1年以内に確認済みのもの（${fresh.length}件）\n\n`;
+              for (const x of fresh) {
+                md += `- [ ] ${x.title}（\`${x.id}\`）　最終確認：${x.checked}\n`;
+              }
+              md += "\n";
+            }
+            const noEdition = t.filter(x => !x.edition);
+            if (noEdition.length) {
+              md += `### 版の記載がないもの（${noEdition.length}件）\n\n`;
+              md += "何年版を見て書いたのかが残っていない出典です。分かる範囲で `edition` を足してください。\n\n";
+              for (const x of noEdition) md += `- [ ] ${x.title}（\`${x.id}\`）\n`;
+              md += "\n";
+            }
+            md += "---\n\n";
+            md += "更新したら sources.json の `edition` と `checked` を直し、本文中の年度表記も揃えてください。\n";
+            require("fs").writeFileSync("review.md", md);
+            console.log(`対象 ${t.length} / 1年以上未確認 ${stale.length} / 版の記載なし ${noEdition.length}`);
+          '
+
+      - name: Issueを立てる
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('review.md', 'utf8').slice(0, 60000);
+            const year = new Date().getFullYear();
+            const title = `年次：出典の版を見直す（${year}年）`;
+            const { data: open } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', labels: '出典見直し', per_page: 100,
+            });
+            const found = open.find(i => i.title === title);
+            if (found) {
+              await github.rest.issues.update({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: found.number, body,
+              });
+              core.notice(`既存の Issue #${found.number} を更新しました`);
+            } else {
+              const { data: made } = await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title, body, labels: ['出典見直し'],
+              });
+              core.notice(`Issue #${made.number} を作成しました`);
+            }
+w
 
 # リンクチェックでは検出できない「生きているが年度が古い」資料を
 # 人の目で見直すためのリマインダー。毎年3月1日にIssueを立てる。
