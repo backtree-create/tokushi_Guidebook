@@ -47,6 +47,7 @@ const catIds = new Set();
 let totalDiseases = 0;
 let unreviewed = 0;
 const basisTally = {};
+let formCount = 0;
 const allNames = new Map();
 
 for (const c of categories) {
@@ -123,6 +124,25 @@ for (const c of categories) {
         }
       }
     }
+    // 学校生活管理指導表の印は、様式に根拠のあるものだけに付ける約束。
+    // 根拠（ground）を書かずに印を増やせないようにする。
+    if (d.guidanceForm) {
+      const g = d.guidanceForm;
+      if (!['general', 'allergy'].includes(g.form)) {
+        err(`${where}: guidanceForm.form が不正 -> 「${g.form}」`);
+      }
+      if (!srcIds.has(g.sourceId)) {
+        err(`${where}: guidanceForm.sourceId "${g.sourceId}" が sources.json にありません`);
+      }
+      if (g.alsoSourceId && !srcIds.has(g.alsoSourceId)) {
+        err(`${where}: guidanceForm.alsoSourceId "${g.alsoSourceId}" が sources.json にありません`);
+      }
+      if (!g.ground) {
+        err(`${where}: guidanceForm に ground（様式のどこに根拠があるか）が必要です`);
+      }
+      formCount++;
+    }
+
     if (d.severityScale && !(d.severity || []).length) {
       err(`${where}: severityScale だけあって severity がありません`);
     }
@@ -278,6 +298,7 @@ for (const m of css.matchAll(/font-size:\s*([\d.]+)px/g)) {
 /* --- 出力 --- */
 console.log(`検査: ${categories.length}区分 / ${totalDiseases}件 / 出典${sources.length}件 / 自立活動${itemCount}項目`);
 console.log(`出典確認が済んでいない疾患: ${unreviewed} / ${totalDiseases} 件`);
+console.log(`学校生活管理指導表の対象として印を付けた疾患: ${formCount}件`);
 console.log('出典区分の内訳:');
 for (const [k, v] of Object.entries(basisTally).sort((a, b) => b[1] - a[1])) {
   const pct = (v / totalDiseases * 100).toFixed(1);

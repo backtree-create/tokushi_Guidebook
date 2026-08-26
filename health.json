@@ -47,6 +47,11 @@
       ],
       "support": "editorial",
       "reviewed": true
+    },
+    "guidanceForm": {
+      "form": "general",
+      "sourceId": "gakko-hoken",
+      "ground": "中学・高校生用の別表に腎臓検診関連の診断区分がある"
     }
   },
   {
@@ -74,6 +79,11 @@
       ],
       "support": "editorial",
       "reviewed": true
+    },
+    "guidanceForm": {
+      "form": "allergy",
+      "sourceId": "gakko-hoken-allergy",
+      "ground": "アレルギー疾患用の様式に疾患名が明記されている"
     }
   },
   {
@@ -97,6 +107,11 @@
       ],
       "support": "editorial",
       "reviewed": true
+    },
+    "guidanceForm": {
+      "form": "general",
+      "sourceId": "gakko-hoken",
+      "ground": "様式本文の「強い運動」の定義に心疾患に関する記載がある"
     }
   },
   {
@@ -124,6 +139,13 @@
       ],
       "support": "editorial",
       "reviewed": true
+    },
+    "guidanceForm": {
+      "form": "general",
+      "sourceId": "gakko-hoken",
+      "ground": "中学・高校生用の別表に糖尿病関連の診断区分がある",
+      "alsoSourceId": "gakko-hoken-diabetes",
+      "alsoNote": "糖尿病には専用の「糖尿病患児用連絡表」もある"
     }
   },
   {
@@ -170,6 +192,11 @@
       ],
       "support": "editorial",
       "reviewed": true
+    },
+    "guidanceForm": {
+      "form": "allergy",
+      "sourceId": "gakko-hoken-allergy",
+      "ground": "アレルギー疾患用の様式に疾患名が明記されている"
     }
   },
   {
@@ -408,6 +435,11 @@
       ],
       "support": "editorial",
       "reviewed": true
+    },
+    "guidanceForm": {
+      "form": "general",
+      "sourceId": "gakko-hoken",
+      "ground": "中学・高校生用の別表に腎臓検診関連の診断区分がある"
     }
   },
   {
@@ -431,6 +463,11 @@
       "support": "editorial",
       "reviewed": true,
       "evidence": "慢性糸球体腎炎"
+    },
+    "guidanceForm": {
+      "form": "general",
+      "sourceId": "gakko-hoken",
+      "ground": "中学・高校生用の別表に腎臓検診関連の診断区分がある"
     }
   },
   {
@@ -454,6 +491,11 @@
       "support": "editorial",
       "reviewed": true,
       "evidence": "ネフローゼ症候群"
+    },
+    "guidanceForm": {
+      "form": "general",
+      "sourceId": "gakko-hoken",
+      "ground": "中学・高校生用の別表に腎臓検診関連の診断区分がある"
     }
   },
   {
@@ -477,6 +519,11 @@
       "support": "editorial",
       "reviewed": true,
       "evidence": "心室中隔欠損症"
+    },
+    "guidanceForm": {
+      "form": "general",
+      "sourceId": "gakko-hoken",
+      "ground": "様式本文の「強い運動」の定義に心疾患に関する記載がある"
     }
   },
   {
@@ -500,6 +547,11 @@
       "support": "editorial",
       "reviewed": true,
       "evidence": "拡張型心筋症"
+    },
+    "guidanceForm": {
+      "form": "general",
+      "sourceId": "gakko-hoken",
+      "ground": "様式本文の「強い運動」の定義に心疾患に関する記載がある"
     }
   },
   {
@@ -522,6 +574,11 @@
       ],
       "support": "editorial",
       "reviewed": true
+    },
+    "guidanceForm": {
+      "form": "general",
+      "sourceId": "gakko-hoken",
+      "ground": "様式本文の「強い運動」の定義に心疾患に関する記載がある"
     }
   },
   {
@@ -544,6 +601,13 @@
       ],
       "support": "editorial",
       "reviewed": true
+    },
+    "guidanceForm": {
+      "form": "general",
+      "sourceId": "gakko-hoken",
+      "ground": "中学・高校生用の別表に糖尿病関連の診断区分がある",
+      "alsoSourceId": "gakko-hoken-diabetes",
+      "alsoNote": "糖尿病には専用の「糖尿病患児用連絡表」もある"
     }
   },
   {
@@ -566,6 +630,11 @@
       ],
       "support": "editorial",
       "reviewed": true
+    },
+    "guidanceForm": {
+      "form": "allergy",
+      "sourceId": "gakko-hoken-allergy",
+      "ground": "アレルギー疾患用の様式に疾患名が明記されている"
     }
   },
   {
@@ -588,6 +657,11 @@
       ],
       "support": "editorial",
       "reviewed": true
+    },
+    "guidanceForm": {
+      "form": "allergy",
+      "sourceId": "gakko-hoken-allergy",
+      "ground": "アレルギー疾患用の様式に疾患名が明記されている"
     }
   },
   {
@@ -748,6 +822,11 @@
       "support": "editorial",
       "reviewed": true,
       "evidence": "ファロー四徴症"
+    },
+    "guidanceForm": {
+      "form": "general",
+      "sourceId": "gakko-hoken",
+      "ground": "様式本文の「強い運動」の定義に心疾患に関する記載がある"
     }
   },
   {
@@ -771,6 +850,11 @@
       "support": "editorial",
       "reviewed": true,
       "evidence": "フォンタン術後症候群"
+    },
+    "guidanceForm": {
+      "form": "general",
+      "sourceId": "gakko-hoken",
+      "ground": "様式本文の「強い運動」の定義に心疾患に関する記載がある"
     }
   },
   {
@@ -1120,6 +1204,13 @@
       "support": "editorial",
       "reviewed": true,
       "evidence": "1型糖尿病"
+    },
+    "guidanceForm": {
+      "form": "general",
+      "sourceId": "gakko-hoken",
+      "ground": "中学・高校生用の別表に糖尿病関連の診断区分がある",
+      "alsoSourceId": "gakko-hoken-diabetes",
+      "alsoNote": "糖尿病には専用の「糖尿病患児用連絡表」もある"
     }
   },
   {
@@ -1255,6 +1346,11 @@
       ],
       "support": "editorial",
       "reviewed": true
+    },
+    "guidanceForm": {
+      "form": "allergy",
+      "sourceId": "gakko-hoken-allergy",
+      "ground": "アレルギー疾患用の様式に疾患名が明記されている"
     }
   },
   {
@@ -1531,6 +1627,11 @@
       "support": "editorial",
       "reviewed": true,
       "evidence": "肥大型心筋症"
+    },
+    "guidanceForm": {
+      "form": "general",
+      "sourceId": "gakko-hoken",
+      "ground": "様式本文の「強い運動」の定義に心疾患に関する記載がある"
     }
   },
   {
@@ -1554,6 +1655,11 @@
       "support": "editorial",
       "reviewed": true,
       "evidence": "不整脈源性右室心筋症"
+    },
+    "guidanceForm": {
+      "form": "general",
+      "sourceId": "gakko-hoken",
+      "ground": "様式本文の「強い運動」の定義に心疾患に関する記載がある"
     }
   },
   {
@@ -1577,6 +1683,11 @@
       "support": "editorial",
       "reviewed": true,
       "evidence": "QT延長症候群"
+    },
+    "guidanceForm": {
+      "form": "general",
+      "sourceId": "gakko-hoken",
+      "ground": "様式本文の「強い運動」の定義に心疾患に関する記載がある"
     }
   },
   {
@@ -1601,6 +1712,11 @@
       "support": "editorial",
       "reviewed": true,
       "evidence": "肺動脈性肺高血圧症／肺動脈性肺高血圧症"
+    },
+    "guidanceForm": {
+      "form": "general",
+      "sourceId": "gakko-hoken",
+      "ground": "様式本文の「強い運動」の定義に心疾患に関する記載がある"
     }
   },
   {
@@ -1901,6 +2017,11 @@
       "support": "editorial",
       "reviewed": true,
       "evidence": "川崎病性冠動脈瘤"
+    },
+    "guidanceForm": {
+      "form": "general",
+      "sourceId": "gakko-hoken",
+      "ground": "様式本文の「強い運動」の定義に心疾患に関する記載がある"
     }
   },
   {
@@ -1924,6 +2045,13 @@
       "support": "editorial",
       "reviewed": true,
       "evidence": "1型糖尿病"
+    },
+    "guidanceForm": {
+      "form": "general",
+      "sourceId": "gakko-hoken",
+      "ground": "中学・高校生用の別表に糖尿病関連の診断区分がある",
+      "alsoSourceId": "gakko-hoken-diabetes",
+      "alsoNote": "糖尿病には専用の「糖尿病患児用連絡表」もある"
     }
   },
   {
@@ -1946,6 +2074,11 @@
       ],
       "support": "editorial",
       "reviewed": true
+    },
+    "guidanceForm": {
+      "form": "allergy",
+      "sourceId": "gakko-hoken-allergy",
+      "ground": "アレルギー疾患用の様式に疾患名が明記されている"
     }
   },
   {
@@ -1969,6 +2102,11 @@
       "support": "editorial",
       "reviewed": true,
       "evidence": "ネフローゼ症候群"
+    },
+    "guidanceForm": {
+      "form": "general",
+      "sourceId": "gakko-hoken",
+      "ground": "中学・高校生用の別表に腎臓検診関連の診断区分がある"
     }
   },
   {
@@ -2059,6 +2197,11 @@
       "support": "editorial",
       "reviewed": true,
       "evidence": "心室中隔欠損症"
+    },
+    "guidanceForm": {
+      "form": "general",
+      "sourceId": "gakko-hoken",
+      "ground": "様式本文の「強い運動」の定義に心疾患に関する記載がある"
     }
   },
   {

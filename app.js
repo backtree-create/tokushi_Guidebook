@@ -339,6 +339,34 @@
            (body ? '<div class="basis-detail">' + body + '</div>' : '');
   }
 
+  // 学校生活管理指導表。運動制限は実際にはこの書式で学校に伝わるので、
+  // 対象になる疾患にはその旨を出す。様式に根拠のあるものだけに付けている。
+  function guidanceFormLine(d) {
+    var g = d.guidanceForm;
+    if (!g) return '';
+    var src = SRC[g.sourceId];
+    var also = g.alsoSourceId ? SRC[g.alsoSourceId] : null;
+    var link = function (x) {
+      if (!x) return '';
+      return x.url
+        ? '<a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(x.title) + '</a>'
+        : esc(x.title);
+    };
+    return '<div class="form-line">' +
+      '<p class="form-head">' +
+        (g.form === 'allergy' ? 'アレルギー疾患用の' : '') +
+        '学校生活管理指導表の対象です</p>' +
+      '<p class="form-body">' +
+        '主治医が指導区分（A 在宅医療・入院が必要／B 登校はできるが運動は不可／' +
+        'C 軽い運動は可／D 中等度の運動まで可／E 強い運動も可）を記入し、' +
+        '保護者を通じて学校に提出されます。学校での運動の可否は、この書式の指示に従ってください。</p>' +
+      '<p class="form-src">' + link(src) +
+        (also ? '／' + link(also) : '') + '</p>' +
+      (g.ground ? '<p class="form-ground">対象とした根拠：' + esc(g.ground) +
+        (g.alsoNote ? '。' + esc(g.alsoNote) : '') + '</p>' : '') +
+      '</div>';
+  }
+
   // 現場の先生が気づいた誤りを送れるようにする。
   // 何について書けばよいか迷わないよう、対象の名前を画面に出しておく。
   function feedbackLink(catName, diseaseName) {
@@ -445,6 +473,9 @@
         : '';
 
       var badge = d.severity ? '<span class="sev-badge">程度別あり</span>' : '';
+      if (d.guidanceForm) {
+        badge += '<span class="form-badge">学校生活管理指導表</span>';
+      }
 
       return '<div class="disease-item" data-idx="' + i + '">' +
         '<button class="disease-row" type="button">' +
@@ -461,6 +492,7 @@
           severityBlock +
           noteBlock +
           basisBadges(d) +
+          guidanceFormLine(d) +
           feedbackLink(cat.name, d.name) +
         '</div></div>' +
       '</div>';

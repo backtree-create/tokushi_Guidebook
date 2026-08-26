@@ -397,12 +397,36 @@
   },
   {
     "id": "gakko-hoken",
-    "title": "学校生活管理指導表",
+    "title": "学校生活管理指導表（幼稚園用・小学生用・中学・高校生用）",
     "publisher": "公益財団法人 日本学校保健会",
-    "url": "https://www.gakkohoken.jp/book/ebook/ebook_H130030/H130030.pdf",
+    "url": "https://www.hokenkai.or.jp/publication/guidance.html",
     "policy": "latest",
     "tier": "academic",
     "checked": "2026-08-26",
-    "note": "心疾患・腎疾患等について、主治医が運動強度の区分を記入して学校に伝える書式。現場の運動制限は実質これで決まる"
+    "note": "医師が指導区分（A 在宅医療・入院が必要／B 登校はできるが運動は不可／C 軽い運動は可／D 中等度の運動まで可／E 強い運動も可）を記入し、保護者の署名を経て学校に提出される。様式に対象疾患の一覧はなく診断名は自由記入だが、本文に心疾患、別表に腎臓検診関連・糖尿病関連の記載がある",
+    "edition": "令和2年度改訂"
+  },
+  {
+    "id": "gakko-hoken-allergy",
+    "title": "学校生活管理指導表（アレルギー疾患用）",
+    "publisher": "公益財団法人 日本学校保健会",
+    "edition": "令和元年度改訂",
+    "url": "https://www.gakkohoken.jp/book/pdf/02sidou.pdf",
+    "indexUrl": "https://www.hokenkai.or.jp/publication/guidance.html",
+    "policy": "latest",
+    "tier": "academic",
+    "checked": "2026-08-26",
+    "note": "表面に気管支ぜん息・アトピー性皮膚炎・アレルギー性結膜炎、裏面に食物アレルギー・アナフィラキシー・アレルギー性鼻炎。通常版とは別様式で、こちらは対象疾患が様式に明記されている"
+  },
+  {
+    "id": "gakko-hoken-diabetes",
+    "title": "糖尿病患児用連絡表",
+    "publisher": "公益財団法人 日本学校保健会",
+    "url": "https://www.hokenkai.or.jp/publication/pdf/kanri_03.pdf",
+    "indexUrl": "https://www.hokenkai.or.jp/publication/guidance.html",
+    "policy": "latest",
+    "tier": "academic",
+    "checked": "2026-08-26",
+    "note": "糖尿病については管理指導表とは別に専用の連絡表がある"
   }
 ]

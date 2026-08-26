@@ -1373,3 +1373,47 @@
     .legal-box{background:#fff !important;border-color:#666 !important;}
     .scale-box{background:#fff !important;border-color:#666 !important;}
   }
+
+  /* ---- 学校生活管理指導表 ---- */
+  .form-badge{
+    font-size:11px;
+    font-weight:700;
+    color:#fff;
+    background:var(--ink-strong);
+    padding:2px 8px;
+    border-radius:10px;
+    flex-shrink:0;
+    margin-left:6px;
+  }
+  .form-line{
+    margin:14px 0 0;
+    padding:12px 15px;
+    background:var(--paper2);
+    border:1px solid var(--line-strong);
+    border-left:3px solid var(--ink-strong);
+    border-radius:2px;
+  }
+  .form-head{
+    margin:0 0 6px;
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:13.5px;
+    color:var(--ink-strong);
+  }
+  .form-body{
+    margin:0;
+    font-size:12.8px;
+    line-height:1.85;
+    color:var(--ink-soft);
+  }
+  .form-src{margin:7px 0 0;font-size:12px;}
+  .form-src a{word-break:break-word;}
+  .form-ground{
+    margin:6px 0 0;
+    font-size:12px;
+    color:var(--ink-faint);
+    line-height:1.75;
+  }
+  @media print{
+    .form-line{background:#fff !important;border-color:#666 !important;}
+  }
