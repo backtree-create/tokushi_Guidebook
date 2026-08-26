@@ -347,7 +347,7 @@
     "id": "gmfcs",
     "title": "GMFCS-E&R 粗大運動能力分類システム 拡張・改訂版 日本語版",
     "publisher": "藤田医科大学（近藤和泉・藪中良彦・楠本敬二 訳／原版 CanChild, McMaster University）",
-    "url": "https://www.fujita-hu.ac.jp/FMIP/GMFCS_%20ER_J.pdf",
+    "url": "https://www.fujita-hu.ac.jp/FMIP/GMFCS_ER_J.pdf",
     "indexUrl": "https://www.fujita-hu.ac.jp/FMIP/Reha_gmfcs.html",
     "policy": "pinned",
     "tier": "academic",
@@ -428,5 +428,137 @@
     "tier": "academic",
     "checked": "2026-08-26",
     "note": "糖尿病については管理指導表とは別に専用の連絡表がある"
+  },
+  {
+    "id": "mext-756",
+    "title": "障害のある児童生徒等に対する早期からの一貫した支援について（通知）（25文科初第756号）",
+    "publisher": "文部科学省初等中等教育局長（平成25年10月4日）",
+    "url": "https://www.mext.go.jp/a_menu/shotou/tokubetu/material/1340331.htm",
+    "policy": "pinned",
+    "checked": "2026-08-26",
+    "tier": "primary",
+    "note": "特別支援学級（7区分）・通級による指導（8区分）の対象となる障害の程度を別紙で示した通知。平成14年5月27日付け14文科初第291号「障害のある児童生徒の就学について（通知）」は本通知により廃止された"
+  },
+  {
+    "id": "mhlw-asthma",
+    "title": "小児気管支喘息の重症度分類（治療前の臨床症状に基づく）",
+    "publisher": "厚生労働省 リウマチ・アレルギー対策情報（出典表記：日本小児アレルギー学会 2008年版）",
+    "url": "https://www.mhlw.go.jp/new-info/kobetu/kenkou/ryumachi/dl/jouhou01-06.pdf",
+    "policy": "pinned",
+    "tier": "academic",
+    "checked": "2026-08-26",
+    "note": "間欠型・軽症持続型・中等症持続型・重症持続型の4区分の定義を原文で確認できる資料。ガイドライン最新版は2023年版だが書籍のみで本文未確認のため、区分の文言はこの資料に基づく"
+  },
+  {
+    "id": "jpgl2023",
+    "title": "小児気管支喘息治療・管理ガイドライン2023（JPGL2023）",
+    "publisher": "日本小児アレルギー学会 気管支喘息委員会（2023年11月18日発刊）",
+    "url": "https://www.jspaci.jp/news/both/20231109-4381/",
+    "policy": "latest",
+    "tier": "academic",
+    "checked": "2026-08-26",
+    "note": "現行版。書籍のみの提供で、学会公開のWeb版PDFには重症度分類表が含まれていないため本文は未確認。本ツールの区分の文言はmhlw-asthmaに基づく"
+  },
+  {
+    "id": "jsth-hemophilia",
+    "title": "インヒビターのない血友病患者に対する止血治療ガイドライン：2013年改訂版",
+    "publisher": "日本血栓止血学会",
+    "url": "https://www.jsth.org/wordpress/wp-content/uploads/2015/04/03_inhibitor_H1_B.pdf",
+    "indexUrl": "https://www.jsth.org/wordpress/guideline/index.html",
+    "policy": "latest",
+    "tier": "academic",
+    "checked": "2026-08-26",
+    "note": "「3. 用語の定義」に重症度の区切りを明記。凝固因子活性トラフ値（複数回検査時の最低値）で判定し、軽症の上限は40%とする。重症度は出血頻度や関節症の重症度と必ずしも一致しない旨も併記されている"
+  },
+  {
+    "id": "jspho-hemophilia",
+    "title": "血友病（小児血液・がん疾患診療ガイドライン）",
+    "publisher": "日本小児血液・がん学会／日本小児科学会",
+    "url": "https://www.jpeds.or.jp/uploads/files/20240318_GL069.pdf",
+    "policy": "latest",
+    "tier": "academic",
+    "checked": "2026-08-26",
+    "note": "「重症度はFVIII あるいはFIX活性で規定され、1％未満が重症、1-5％未満が中等症、5-40％未満が軽症と分類される」と記載。日本血栓止血学会の区切りと一致する"
+  },
+  {
+    "id": "jspn-ckd2019",
+    "title": "小児慢性腎臓病（小児CKD）：小児の「腎機能障害の診断」と「腎機能評価」の手引き",
+    "publisher": "日本小児腎臓病学会・日本小児科学会・日本小児泌尿器科学会（2019年8月31日）",
+    "url": "https://jspn01.umin.jp/guideline/pdf/20191003_01.pdf",
+    "policy": "latest",
+    "tier": "academic",
+    "checked": "2026-08-26",
+    "note": "GFR区分G1〜G5は2歳以上に適用。2歳未満は生理的にGFRが低くeGFRの絶対値では評価できないため、血清クレアチニンによる判定表を用いる。日本では小児に蛋白尿区分（CGA分類）を用いない"
+  },
+  {
+    "id": "jspn-nephrotic2013",
+    "title": "小児特発性ネフローゼ症候群診療ガイドライン2013 第1部 語句の定義",
+    "publisher": "日本小児腎臓病学会",
+    "url": "https://jspn01.umin.jp/guideline/2013_nephrotic/1.pdf",
+    "indexUrl": "https://jspn01.umin.jp/guideline/2013_nephrotic/index.html",
+    "policy": "pinned",
+    "tier": "academic",
+    "checked": "2026-08-26",
+    "note": "頻回再発・ステロイド依存性・ステロイド抵抗性の定義を原文で確認できる資料。現行版は2020年版だが本文に到達できず、区分の文言はこの2013年版に基づく"
+  },
+  {
+    "id": "jspn-nephrotic2020",
+    "title": "小児特発性ネフローゼ症候群診療ガイドライン2020",
+    "publisher": "日本小児腎臓病学会／厚生労働科学研究費補助金 難治性疾患政策研究事業（2020年3月30日）",
+    "url": "https://mhlw-grants.niph.go.jp/system/files/2019/192051/201911032B_upload/201911032B202007161223573470004.pdf",
+    "policy": "latest",
+    "tier": "academic",
+    "checked": "2026-08-26",
+    "note": "現行版。全文PDFは公開されているが定義節の本文に到達できず未確認。国際的にはIPNAガイドラインが頻回再発を「12か月間に3回以上」とし、日本の「12か月以内に4回以上」と食い違う点に注意"
+  },
+  {
+    "id": "jspccs-hf2015",
+    "title": "小児心不全薬物治療ガイドライン（平成27年改訂版）",
+    "publisher": "日本小児循環器学会（日本小児循環器学会雑誌 31巻S2号・2015年7月15日）",
+    "url": "https://jpccs.jp/wp-content/uploads/31-S2-1.pdf",
+    "policy": "latest",
+    "tier": "academic",
+    "checked": "2026-08-26",
+    "note": "「成人ではNYHA分類，小児ではROSSスコアなどの指標が用いられてきた」と記載。ただしクラスI〜IVの定義表は本ガイドラインには収載されていない"
+  },
+  {
+    "id": "ross-2012",
+    "title": "The Ross Classification for Heart Failure in Children After 25 Years: A Review and an Age-Stratified Revision",
+    "publisher": "Ross RD, Pediatric Cardiology 33:1295-1300（2012年）",
+    "url": "https://link.springer.com/article/10.1007/s00246-012-0306-8",
+    "policy": "pinned",
+    "tier": "research",
+    "checked": "2026-08-26",
+    "note": "Ross分類の原典。本文は有料で抄録のみ確認。抄録に「乳児と年長児で心不全の現れ方が異なるため、徴候・症状の評価は年齢に依存する」旨の記載がある"
+  },
+  {
+    "id": "ross-secondary",
+    "title": "NYHA / Modified Ross Classification（二次情報）",
+    "publisher": "Medical Criteria（学会等の一次資料ではない）",
+    "url": "https://medicalcriteria.com/web/carross/",
+    "policy": "latest",
+    "tier": "research",
+    "checked": "2026-08-26",
+    "note": "★二次情報。クラスI〜IVの定義を掲載した日本語の公式資料が見つからなかったため、暫定的にこの英語の二次情報を参照している。原典（ross-2012）または日本小児循環器学会への確認が望ましい"
+  },
+  {
+    "id": "ncnp-nmd",
+    "title": "神経筋疾患ポータルサイト 脊髄性筋萎縮症",
+    "publisher": "国立精神・神経医療研究センター",
+    "url": "https://nmdportal.ncnp.go.jp/information/sma.html",
+    "policy": "latest",
+    "tier": "academic",
+    "checked": "2026-08-26",
+    "note": "「発症時期や最大獲得運動機能といった臨床的特徴によりⅠ，Ⅱ，Ⅲ，Ⅳ型に分類されます」と明記。重症度の段階ではなく病型の区分であることの根拠"
+  },
+  {
+    "id": "nanbyou-sma",
+    "title": "難病情報センター 脊髄性筋萎縮症（指定難病3）診断・治療指針",
+    "publisher": "厚生労働省 特定疾患調査研究班（神経変性疾患調査研究班）",
+    "url": "https://www.nanbyou.or.jp/entry/285",
+    "policy": "latest",
+    "tier": "academic",
+    "checked": "2026-08-26",
+    "note": "I〜IV型それぞれの発症時期と到達運動機能を本文テキストで確認できる。なお指定難病としての重症度分類は型ではなくmRS等の評価スケールによる"
   }
 ]

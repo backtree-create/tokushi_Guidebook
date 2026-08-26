@@ -68,6 +68,35 @@ for (const c of categories) {
     if (!lc.note) err(`${c.id}: legalCriteria に note（就学先を決めるものではない旨）が必要です`);
   }
 
+  // 通知が定める学級・通級の程度。これも条文の引用なので同じ扱い
+  if (c.programCriteria) {
+    const pc = c.programCriteria;
+    const PROGS = ['特別支援学級', '通級による指導'];
+    if (!pc.notice) err(`${c.id}: programCriteria.notice がありません`);
+    if (!srcIds.has(pc.sourceId)) err(`${c.id}: programCriteria.sourceId "${pc.sourceId}" が sources.json にありません`);
+    if (!pc.note) err(`${c.id}: programCriteria に note（該当すれば必ず利用できるわけではない旨）が必要です`);
+    if (!Array.isArray(pc.entries) || !pc.entries.length) err(`${c.id}: programCriteria.entries が空です`);
+    for (const e of pc.entries || []) {
+      if (!PROGS.includes(e.program)) err(`${c.id}: programCriteria の program「${e.program}」は ${PROGS.join('／')} のいずれかにしてください`);
+      if (!e.term) err(`${c.id}: programCriteria に term（通知の見出し語）がありません`);
+      if (!e.text) err(`${c.id}: programCriteria「${e.term}」に本文がありません`);
+      // 別紙の読点は全角カンマ。通常の読点が混ざっていたら引用ミスを疑う
+      if (e.text && e.text.includes('、')) {
+        err(`${c.id}: programCriteria「${e.term}」の本文に「、」が含まれます（別紙の読点は「，」）`);
+      }
+    }
+    // 学級・通級のどちらも、収録するか「定めなし」と書くかのいずれかにする
+    for (const prog of PROGS) {
+      const has = (pc.entries || []).some((e) => e.program === prog);
+      const abs = (pc.absent || []).some((a) => a.program === prog);
+      if (!has && !abs) err(`${c.id}: programCriteria に「${prog}」の程度も「定めなし」の記載もありません`);
+      if (has && abs) err(`${c.id}: programCriteria の「${prog}」が本文と「定めなし」の両方にあります`);
+    }
+    for (const a of pc.absent || []) {
+      if (!a.reason) err(`${c.id}: programCriteria.absent「${a.program}」に reason がありません`);
+    }
+  }
+
   for (const j of c.jiritsu || []) {
     if (!validPairs.has(j.ku + ' ' + j.item)) {
       err(`${c.id}: 自立活動の名称が27項目と一致しません -> 「${j.ku}／${j.item}」`);

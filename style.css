@@ -1337,6 +1337,50 @@
   }
   .legal-src a{word-break:break-all;}
 
+  /* 通知が定める学級・通級の程度 */
+  .prog-item + .prog-item{
+    margin-top:16px;
+    padding-top:16px;
+    border-top:1px dashed var(--line-strong);
+  }
+  .prog-head{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:baseline;
+    gap:8px;
+    margin:0 0 8px;
+  }
+  .prog-name{
+    font-size:13px;
+    font-weight:700;
+    color:#ffffff;
+    background:var(--navy);
+    border-radius:2px;
+    padding:3px 10px;
+    letter-spacing:.04em;
+  }
+  .prog-term{
+    font-size:13.5px;
+    font-weight:700;
+    color:var(--ink-strong);
+  }
+  .prog-none{
+    font-weight:600;
+    color:var(--ink-soft);
+  }
+  .prog-absent .prog-name{
+    background:transparent;
+    color:var(--ink-soft);
+    border:1px solid var(--line-strong);
+    padding:2px 9px;
+  }
+  .prog-reason{
+    font-size:13.5px;
+    line-height:1.85;
+    color:var(--ink-soft);
+    margin:0;
+  }
+
   .scale-box{
     background:var(--accent-soft);
     border:1px solid var(--line);

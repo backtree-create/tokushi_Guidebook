@@ -407,6 +407,57 @@
       '</section>';
   }
 
+  /* ---------- 通知が定める学級・通級の程度 ---------- */
+
+  // 25文科初第756号 通知（別紙）。特別支援学級と通級による指導の対象となる
+  // 障害の程度で、施行令第22条の3（特別支援学校）とは別の基準。
+  // これも条文の引用なので言い換えない。
+  function programBlock(cat) {
+    var pc = cat.programCriteria;
+    if (!pc) return '';
+    var src = SRC[pc.sourceId];
+    var byProgram = ['特別支援学級', '通級による指導'].map(function (prog) {
+      var hit = (pc.entries || []).filter(function (e) { return e.program === prog; });
+      if (hit.length) {
+        return '<div class="prog-item">' +
+          '<p class="prog-head"><span class="prog-name">' + esc(prog) + '</span>' +
+            hit.map(function (e) {
+              return '<span class="prog-term">' + esc(e.term) +
+                (e.part ? '　第' + esc(e.part) + '号' : '') + '</span>';
+            }).join('') +
+          '</p>' +
+          hit.map(function (e) {
+            return e.text.split('\n').map(function (line) {
+              return '<p class="legal-clause">' + esc(line) + '</p>';
+            }).join('');
+          }).join('') +
+        '</div>';
+      }
+      var ab = (pc.absent || []).filter(function (a) { return a.program === prog; })[0];
+      if (!ab) return '';
+      return '<div class="prog-item prog-absent">' +
+        '<p class="prog-head"><span class="prog-name">' + esc(prog) + '</span>' +
+          '<span class="prog-term prog-none">この通知には定めなし</span></p>' +
+        '<p class="prog-reason">' + esc(ab.reason) + '</p>' +
+      '</div>';
+    }).join('');
+
+    return '<section class="block">' +
+      '<h3 class="block-title">特別支援学級・通級による指導の対象となる障害の程度' +
+        '<span class="tally">通知</span></h3>' +
+      '<p class="block-sub">' + esc(pc.notice) + 'が示す程度です。条文をそのまま引用しています。</p>' +
+      (pc.headNote ? '<p class="block-sub">' + esc(pc.headNote) + '</p>' : '') +
+      '<div class="legal-box">' + byProgram + '</div>' +
+      '<div class="section-disclaimer"><b>該当すれば必ず利用できる、というものではありません</b>' +
+        '<p>' + esc(pc.note) + '</p></div>' +
+      (src ? '<p class="legal-src">出典：' +
+        (src.url
+          ? '<a href="' + esc(src.url) + '" target="_blank" rel="noopener">' + esc(src.title) + '</a>'
+          : esc(src.title)) +
+        '（' + esc(src.publisher || '') + '）</p>' : '') +
+      '</section>';
+  }
+
   /* ---------- 障害種別ページ ---------- */
 
   function renderMain(id, openDiseaseName) {
@@ -542,6 +593,7 @@
         '<h3 class="block-title">学びの場</h3>' + placesHtml +
       '</section>' +
       legalBlock(cat) +
+      programBlock(cat) +
 
       '<div class="source-box">' +
         '<p class="quote">「' + esc(cat.quote) + '」</p>' +
