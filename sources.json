@@ -201,14 +201,6 @@
     "tier": "pinned"
   },
   {
-    "id": "gmfcs-oshima",
-    "title": "GMFCS（粗大運動能力分類システム）／大島分類",
-    "publisher": "—",
-    "policy": "pinned",
-    "checked": "2026-08-25",
-    "note": "重症度の目安として使用。GMFCSは脳性まひ、大島分類は重症心身障害の分類指標"
-  },
-  {
     "id": "ircn-2023",
     "title": "ASDとADHDの併存に関する研究発表",
     "publisher": "東京大学 ニューロインテリジェンス国際研究機構（WPI-IRCN）",
@@ -341,5 +333,76 @@
     "tier": "pinned",
     "checked": "2026-08-25",
     "note": "日本語版は提供されていない。厚生労働省のICD-11適用報告ページを併記"
+  },
+  {
+    "id": "shikkourei-22-3",
+    "title": "学校教育法施行令 第22条の3（特別支援学校に就学する障害の程度）",
+    "publisher": "内閣（昭和28年政令第340号）",
+    "url": "https://laws.e-gov.go.jp/law/328CO0000000340",
+    "policy": "latest",
+    "checked": "2026-08-26",
+    "note": "視覚障害者・聴覚障害者・知的障害者・肢体不自由者・病弱者の5区分について程度を定めた別表。就学先を検討する際の法令上の基準"
+  },
+  {
+    "id": "gmfcs",
+    "title": "GMFCS-E&R 粗大運動能力分類システム 拡張・改訂版 日本語版",
+    "publisher": "藤田医科大学（近藤和泉・藪中良彦・楠本敬二 訳／原版 CanChild, McMaster University）",
+    "url": "https://www.fujita-hu.ac.jp/FMIP/GMFCS_ER_J.pdf",
+    "indexUrl": "https://www.fujita-hu.ac.jp/FMIP/Reha_gmfcs.html",
+    "policy": "pinned",
+    "tier": "academic",
+    "checked": "2026-08-26",
+    "note": "レベルI〜Vの5段階。記述は年齢帯（2歳未満／2〜4／4〜6／6〜12／12〜18歳）ごとに異なる。粗大運動のみを対象とし、手指操作はMACS、意思疎通はCFCSが別にある"
+  },
+  {
+    "id": "oshima",
+    "title": "大島分類（重症心身障害の判定）",
+    "publisher": "—",
+    "policy": "pinned",
+    "tier": "academic",
+    "checked": "2026-08-26",
+    "note": "縦軸に知的能力、横軸に運動機能をとった5×5＝25区分。1〜4が重症心身障害、5〜9が周辺児。より具体的な横地分類（日本重症心身障害福祉協会・2014年改訂）や、医療的ケアの必要度を示す超重症児判定スコアも併せて参照されたい"
+  },
+  {
+    "id": "jushojisha",
+    "title": "横地分類（大島分類の改訂）",
+    "publisher": "公益社団法人 日本重症心身障害福祉協会",
+    "url": "https://jushojisha.jp/yokochibunrui/",
+    "edition": "2014年7月17日改訂",
+    "policy": "latest",
+    "tier": "academic",
+    "checked": "2026-08-26",
+    "note": "移動機能（1〜6）・知的発達（A〜E）・特記事項の3項目で評価する"
+  },
+  {
+    "id": "dmd-guideline",
+    "title": "デュシェンヌ型筋ジストロフィー診療ガイドライン",
+    "publisher": "日本神経学会",
+    "url": "https://www.neurology-jp.org/guidelinem/pdf/dmd_03.pdf",
+    "policy": "latest",
+    "tier": "academic",
+    "checked": "2026-08-26",
+    "note": "厚生省研究班による機能障害度分類（ステージI〜VIII）を収載。海外で用いられるVignos分類は10段階で別systemである"
+  },
+  {
+    "id": "ilae-jes",
+    "title": "ILAE 2017年てんかん分類・発作型分類 日本語訳",
+    "publisher": "日本てんかん学会 分類・用語委員会",
+    "url": "https://jes-jp.org/jes/pdf/ILAE_case2017_ja.pdf",
+    "indexUrl": "https://www.ilae.org/translated-content/japanese",
+    "policy": "latest",
+    "tier": "academic",
+    "checked": "2026-08-26",
+    "note": "薬剤抵抗性てんかんは「適切に選択され使用された2種類の抗てんかん薬で発作抑制に至らないもの」と定義される。発作頻度による区分ではない"
+  },
+  {
+    "id": "gakko-hoken",
+    "title": "学校生活管理指導表",
+    "publisher": "公益財団法人 日本学校保健会",
+    "url": "https://www.gakkohoken.jp/book/ebook/ebook_H130030/H130030.pdf",
+    "policy": "latest",
+    "tier": "academic",
+    "checked": "2026-08-26",
+    "note": "心疾患・腎疾患等について、主治医が運動強度の区分を記入して学校に伝える書式。現場の運動制限は実質これで決まる"
   }
 ]

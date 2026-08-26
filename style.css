@@ -1113,32 +1113,6 @@
   .rev-list a:hover{text-decoration:underline;}
   .rev-ov{color:var(--ink-soft);font-size:12.8px;flex:1 1 260px;min-width:0;}
 
-  .place-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;}
-  .place-chip{
-    display:inline-flex;align-items:center;gap:8px;
-    border:1px solid var(--line-strong);
-    border-radius:3px;
-    padding:7px 13px;
-    font-size:13px;
-    color:var(--ink);
-    text-decoration:none;
-    background:var(--card);
-  }
-  .place-chip span{
-    font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);
-    font-variant-numeric:tabular-nums;
-  }
-  .place-chip:hover{border-color:var(--accent);color:var(--accent);}
-  .place-chip.on{background:var(--navy);color:#fbfaf6;border-color:var(--navy);}
-  .place-chip.on span{color:var(--gold-soft);}
-
-  .stage-link{
-    display:inline-block;
-    margin-top:10px;
-    font-size:12.5px;
-    color:var(--accent);
-    font-weight:700;
-  }
 
   .fb-line{
     margin:12px 0 0;
@@ -1164,11 +1138,6 @@
     padding:0 5px;
   }
 
-  .stage-flowline{
-    display:flex;flex-wrap:wrap;align-items:center;gap:8px;
-    margin:0 0 14px;
-  }
-  .stage-flowline .arrow{color:var(--ink-faint);font-size:14px;}
 
   /* ==========================================================
      印刷
@@ -1190,7 +1159,7 @@
     /* 画面の操作部品は紙に出さない */
     .top-strip,.mode-tabs,.fab-home,.install-banner,
     .index,.search-wrap,.disease-hits,.school-stage,
-    .support-tabs,.place-chips,.stage-flowline,.crumb,
+    .support-tabs,.crumb,
     .fb-line,.rev-count,.d-hint,.chevron{
       display:none !important;
     }
@@ -1329,8 +1298,6 @@
     ul.cat-list li.active button .num{color:var(--gold-soft);}
     .support-panel{background:var(--card);}
     .support-tabs button.on{background:var(--accent);color:#0b131c;border-color:var(--accent);}
-    .place-chip.on{background:var(--accent);color:#0b131c;border-color:var(--accent);}
-    .place-chip.on span{color:#0b131c;}
     .ku-mini{background:var(--accent);color:#0b131c;}
     .mode-tabs button.on{background:var(--paper);color:var(--ink);}
     .idx-hit-count{background:var(--accent);color:#0b131c;}
@@ -1342,3 +1309,67 @@
     /* 印刷は常に明るい配色で出す（下の @media print が優先される） */
   }
 
+
+  /* ==========================================================
+     法令が定める障害の程度／程度別支援の尺度
+     ========================================================== */
+  .legal-box{
+    background:var(--paper2);
+    border:1px solid var(--line-strong);
+    border-left:4px solid var(--navy);
+    border-radius:2px;
+    padding:14px 18px;
+    margin:0 0 16px;
+  }
+  .legal-clause{
+    font-family:var(--serif);
+    font-size:14.5px;
+    line-height:2;
+    color:var(--ink);
+    margin:0;
+    text-indent:0;
+  }
+  .legal-clause + .legal-clause{margin-top:10px;}
+  .legal-src{
+    font-size:12px;
+    color:var(--ink-faint);
+    margin:0;
+  }
+  .legal-src a{word-break:break-all;}
+
+  .scale-box{
+    background:var(--accent-soft);
+    border:1px solid var(--line);
+    border-left:3px solid var(--accent);
+    border-radius:2px;
+    padding:11px 14px;
+    margin:0 0 12px;
+  }
+  /* 確立した尺度ではないものは、色を変えて同じに見せない */
+  .scale-box.editorial{
+    background:var(--tone-warn-bg);
+    border-left-color:var(--tone-warn-fg);
+  }
+  .scale-name{
+    margin:0 0 5px;
+    font-weight:700;
+    font-size:13px;
+    color:var(--ink-strong);
+  }
+  .scale-note{
+    margin:0;
+    font-size:12.5px;
+    line-height:1.85;
+    color:var(--ink-soft);
+  }
+  .scale-src{
+    margin:7px 0 0;
+    font-size:12px;
+    color:var(--ink-faint);
+  }
+  .scale-src a{word-break:break-word;}
+
+  @media print{
+    .legal-box{background:#fff !important;border-color:#666 !important;}
+    .scale-box{background:#fff !important;border-color:#666 !important;}
+  }

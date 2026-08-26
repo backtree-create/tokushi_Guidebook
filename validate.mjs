@@ -58,6 +58,15 @@ for (const c of categories) {
   }
   if (!srcIds.has(c.sourceId)) err(`${c.id}: sourceId "${c.sourceId}" が sources.json にありません`);
 
+  // 法令が定める程度は条文の引用。出典と注意書きを必ず伴わせる
+  if (c.legalCriteria) {
+    const lc = c.legalCriteria;
+    if (!lc.law || !lc.term) err(`${c.id}: legalCriteria の law / term がありません`);
+    if (!Array.isArray(lc.clauses) || !lc.clauses.length) err(`${c.id}: legalCriteria.clauses が空です`);
+    if (!srcIds.has(lc.sourceId)) err(`${c.id}: legalCriteria.sourceId "${lc.sourceId}" が sources.json にありません`);
+    if (!lc.note) err(`${c.id}: legalCriteria に note（就学先を決めるものではない旨）が必要です`);
+  }
+
   for (const j of c.jiritsu || []) {
     if (!validPairs.has(j.ku + ' ' + j.item)) {
       err(`${c.id}: 自立活動の名称が27項目と一致しません -> 「${j.ku}／${j.item}」`);
@@ -93,6 +102,29 @@ for (const c of categories) {
       if (!sv.level || !sv.criteria || !Array.isArray(sv.support)) {
         err(`${where}: severity の形式が不正です`);
       }
+    }
+    // 程度別支援は「確立した尺度があるから段階に意味がある」機能。
+    // どの尺度に基づくかを書かずに段階だけ足せないようにする。
+    if (d.severity && d.severity.length) {
+      const sc = d.severityScale;
+      if (!sc) {
+        err(`${where}: severity があるのに severityScale がありません。` +
+            `どの尺度に基づく段階なのかを必ず書いてください（確立した分類がない場合は basis:"editorial"）`);
+      } else {
+        if (!sc.name) err(`${where}: severityScale.name がありません`);
+        if (!meta.basisLabels.overview[sc.basis]) {
+          err(`${where}: severityScale.basis が不正 -> 「${sc.basis}」`);
+        }
+        for (const sid of sc.sources || []) {
+          if (!srcIds.has(sid)) err(`${where}: severityScale.sources の "${sid}" が sources.json にありません`);
+        }
+        if (sc.basis !== 'editorial' && !(sc.sources || []).length) {
+          err(`${where}: severityScale が ${sc.basis} なのに出典が空です`);
+        }
+      }
+    }
+    if (d.severityScale && !(d.severity || []).length) {
+      err(`${where}: severityScale だけあって severity がありません`);
     }
 
     const b = d.basis;

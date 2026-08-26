@@ -19,21 +19,6 @@
   var DATA = [], JIRITSU27 = [], SOURCES = [], META = {};
   var SRC = {};   // id -> source
   var REV = {};    // 「区分／項目」-> [{cat, disease}]  自立活動からの逆引き
-  var PLACES = {}; // 学びの場の段階 -> [{cat, name, note}]
-
-  // 学びの場は障害種ごとに細かい名前（通級による指導（弱視）等）で入っている。
-  // 一覧では「学びの場の連続性」の4段階に束ね、細かい名前は各行に残す。
-  var STAGES = [
-    { key: '通常の学級',     test: function (n) { return /^通常の学級/.test(n); } },
-    { key: '通級による指導', test: function (n) { return /^通級による指導/.test(n); } },
-    { key: '特別支援学級',   test: function (n) { return /特別支援学級$/.test(n); } },
-    { key: '特別支援学校',   test: function (n) { return /^特別支援学校/.test(n); } },
-    { key: 'その他の学びの場', test: function () { return true; } }
-  ];
-  function stageOf(name) {
-    for (var i = 0; i < STAGES.length; i++) if (STAGES[i].test(name)) return STAGES[i].key;
-    return 'その他の学びの場';
-  }
 
   function srcLink(id) {
     var s = SRC[id];
@@ -49,7 +34,7 @@
       tabGuide, tabJiritsu, tabTerms, layoutRoot, homeBtn, homeLink, homeEmblem, siteFooter;
 
   var currentId = null;
-  var mode = 'guide'; // 'guide' | 'jiritsu' | 'terms' | 'places'
+  var mode = 'guide'; // 'guide' | 'jiritsu' | 'terms'
   var openDisease = null;   // 開いている疾患名（URLに載せる）
   var routing = false;      // 描画中の navigate を無視するための印
 
@@ -85,9 +70,6 @@
     kumoku:  function (ku, item) {
       return '#/jiritsu/' + encodeURIComponent(ku) + '/' + encodeURIComponent(item);
     },
-    places:  function (name) {
-      return '#/place' + (name ? '/' + encodeURIComponent(name) : '');
-    },
     terms:   function () { return '#/terms'; }
   };
 
@@ -103,7 +85,6 @@
       case 'jiritsu': return seg[1]
         ? { view: 'kumoku', ku: seg[1], item: seg[2] }
         : { view: 'jiritsu' };
-      case 'place':   return { view: 'places', place: seg[1] || null };
       case 'terms':   return { view: 'terms' };
       default:        return { view: 'home' };
     }
@@ -121,7 +102,7 @@
   }
 
   function setTabs(m) {
-    tabGuide.classList.toggle('on', m === 'guide' || m === 'places');
+    tabGuide.classList.toggle('on', m === 'guide');
     tabJiritsu.classList.toggle('on', m === 'jiritsu');
     tabTerms.classList.toggle('on', m === 'terms');
   }
@@ -133,7 +114,7 @@
       var r = parseHash();
       mode = (r.view === 'jiritsu' || r.view === 'kumoku') ? 'jiritsu'
            : r.view === 'terms' ? 'terms'
-           : r.view === 'places' ? 'places' : 'guide';
+           : 'guide';
       setTabs(mode);
 
       var wide = (mode !== 'guide');
@@ -155,8 +136,6 @@
         renderJiritsuTable();
       } else if (r.view === 'kumoku') {
         renderKumoku(r.ku, r.item);
-      } else if (r.view === 'places') {
-        renderPlaces(r.place);
       } else if (r.view === 'terms') {
         renderTerms();
       }
@@ -175,7 +154,6 @@
     if (r.view === 'search') return '「' + r.q + '」の検索結果｜' + base;
     if (r.view === 'jiritsu') return '自立活動 6区分27項目｜' + base;
     if (r.view === 'kumoku') return r.item + '｜自立活動から探す｜' + base;
-    if (r.view === 'places') return '学びの場から探す｜' + base;
     if (r.view === 'terms') return '診断名・出典｜' + base;
     return base;
   }
@@ -184,7 +162,6 @@
   function setMode(m) {
     navigate(m === 'guide' ? ROUTES.home()
            : m === 'jiritsu' ? ROUTES.jiritsu()
-           : m === 'places' ? ROUTES.places()
            : ROUTES.terms());
   }
 
@@ -374,6 +351,34 @@
       esc(catName) + '／' + esc(diseaseName) + '</span></p>';
   }
 
+  /* ---------- 法令が定める障害の程度 ---------- */
+
+  // 学校教育法施行令第22条の3。就学先を検討するときの法令上の基準で、
+  // 条文をそのまま引用する。要約すると意味が変わるため言い換えない。
+  function legalBlock(cat) {
+    var lc = cat.legalCriteria;
+    if (!lc) return '';
+    var src = SRC[lc.sourceId];
+    return '<section class="block">' +
+      '<h3 class="block-title">特別支援学校の対象となる障害の程度' +
+        '<span class="tally">政令</span></h3>' +
+      '<p class="block-sub">' + esc(lc.law) + 'が定める「' + esc(lc.term) + '」の程度です。' +
+        '条文をそのまま引用しています。</p>' +
+      '<div class="legal-box">' +
+        lc.clauses.map(function (t) {
+          return '<p class="legal-clause">' + esc(t) + '</p>';
+        }).join('') +
+      '</div>' +
+      '<div class="section-disclaimer"><b>この程度に該当することが、就学先を決めるわけではありません</b>' +
+        '<p>' + esc(lc.note) + '</p></div>' +
+      (src ? '<p class="legal-src">出典：' +
+        (src.url
+          ? '<a href="' + esc(src.url) + '" target="_blank" rel="noopener">' + esc(src.title) + '</a>'
+          : esc(src.title)) +
+        '（' + esc(src.publisher || '') + '）</p>' : '') +
+      '</section>';
+  }
+
   /* ---------- 障害種別ページ ---------- */
 
   function renderMain(id, openDiseaseName) {
@@ -405,8 +410,27 @@
 
       var supportLis = d.support.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('');
 
+      var scale = d.severityScale;
+      var scaleBlock = scale ? (
+        '<div class="scale-box' + (scale.basis === 'editorial' ? ' editorial' : '') + '">' +
+          '<p class="scale-name">' +
+            (scale.basis === 'editorial' ? '目安の立て方：' : '用いている尺度：') +
+            esc(scale.name) + '</p>' +
+          (scale.note ? '<p class="scale-note">' + esc(scale.note) + '</p>' : '') +
+          ((scale.sources || []).length
+            ? '<p class="scale-src">' + scale.sources.map(function (id) {
+                var x = SRC[id];
+                if (!x) return '';
+                return x.url
+                  ? '<a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(x.title) + '</a>'
+                  : esc(x.title);
+              }).filter(Boolean).join('／') + '</p>'
+            : '') +
+        '</div>'
+      ) : '';
+
       var severityBlock = d.severity ? (
-        '<p class="dd-label">程度別の支援（重症度分類に基づく細分化）</p>' +
+        '<p class="dd-label">程度別の支援</p>' + scaleBlock +
         '<div class="severity-list">' + d.severity.map(function (sv) {
           return '<div class="severity-item">' +
             '<div class="sv-level">' + esc(sv.level) + '</div>' +
@@ -485,6 +509,7 @@
       '<section class="block">' +
         '<h3 class="block-title">学びの場</h3>' + placesHtml +
       '</section>' +
+      legalBlock(cat) +
 
       '<div class="source-box">' +
         '<p class="quote">「' + esc(cat.quote) + '」</p>' +
@@ -660,60 +685,6 @@
     playFadeIn();
   }
 
-  /* ---------- 学びの場から探す ---------- */
-
-  function renderPlaces(selected) {
-    var stages = STAGES.map(function (x) { return x.key; })
-      .filter(function (k) { return PLACES[k] && PLACES[k].length; });
-
-    var html = '<div class="jiritsu-table-wrap">' +
-      '<div class="article-head">' +
-        '<div class="article-num" style="border-radius:3px;">場</div>' +
-        '<h2 class="cat-title">学びの場から探す<span class="en">Continuum of Placements</span></h2>' +
-      '</div>' +
-      '<div class="overview">通常の学級から特別支援学校まで、連続性のある多様な学びの場の中から、' +
-      '一人一人の教育的ニーズに応じて検討されます。ここでは場の側から、' +
-      'どの障害種でその場が想定されているかを見渡せます。</div>' +
-      '<div class="section-disclaimer"><b>就学先を決めるものではありません</b>' +
-      '<p>実際の就学先は、本人・保護者の意向、専門家の意見、学校や地域の状況等を' +
-      '総合的に判断して市町村教育委員会が決定します。この一覧は検討の手がかりです。</p></div>' +
-
-      '<div class="stage-flowline">' +
-        stages.filter(function (k) { return k !== 'その他の学びの場'; })
-          .map(function (k, i) {
-            return (i ? '<span class="arrow">→</span>' : '') +
-              '<a class="place-chip' + (k === selected ? ' on' : '') + '" href="' +
-              ROUTES.places(k === selected ? null : k) + '">' + esc(k) +
-              '<span>' + PLACES[k].length + '</span></a>';
-          }).join('') +
-      '</div>';
-
-    if (PLACES['その他の学びの場']) {
-      html += '<div class="place-chips">' +
-        '<a class="place-chip' + ('その他の学びの場' === selected ? ' on' : '') + '" href="' +
-        ROUTES.places('その他の学びの場' === selected ? null : 'その他の学びの場') + '">' +
-        'その他の学びの場<span>' + PLACES['その他の学びの場'].length + '</span></a></div>';
-    }
-
-    var show = selected && PLACES[selected] ? [selected] : stages;
-    show.forEach(function (k) {
-      html += '<div class="rev-group">' +
-        '<p class="rev-cat">' + esc(k) +
-          '<span class="rev-n">' + PLACES[k].length + '件</span></p>' +
-        '<ul class="rev-list">' +
-        PLACES[k].map(function (x) {
-          return '<li><a href="' + ROUTES.cat(x.cat.id) + '">' +
-                 '<span class="rev-num">' + esc(x.cat.num) + '</span>' + esc(x.name) + '</a>' +
-                 '<span class="rev-ov">' + esc(x.note) + '</span></li>';
-        }).join('') +
-        '</ul></div>';
-    });
-
-    html += '<div class="source-box"><p>出典：' + srcLink('tebiki') + '</p></div></div>';
-    mainContent.innerHTML = html;
-    playFadeIn();
-  }
-
   /* ---------- 診断名・出典 ---------- */
 
   function renderTerms() {
@@ -778,18 +749,6 @@
   }
 
   /* ---------- フッター ---------- */
-
-  // 左の索引にある「学びの場の連続性」を、そのまま入口にする
-  function wireSideNav() {
-    var box = document.querySelector('.school-stage');
-    if (!box || box.dataset.wired) return;
-    box.dataset.wired = '1';
-    var a = document.createElement('a');
-    a.className = 'stage-link';
-    a.href = ROUTES.places();
-    a.textContent = '学びの場から探す →';
-    box.appendChild(a);
-  }
 
   function renderFooter() {
     var fb = META.feedback;
@@ -882,14 +841,9 @@
           (REV[k] = REV[k] || []).push({ cat: c, disease: d });
         });
       });
-      (c.places || []).forEach(function (pl) {
-        var st = stageOf(pl.name);
-        (PLACES[st] = PLACES[st] || []).push({ cat: c, name: pl.name, note: pl.note });
-      });
     });
 
     bindDom();
-    wireSideNav();
     renderFooter();
     installBanner();
 
