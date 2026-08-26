@@ -1,0 +1,102 @@
+name: source watch
+
+# 「リンクは生きているが、新しい版が出ている」を一次検知する。
+# policy: latest の資料について、発行元の一覧ページ(indexUrl、なければurl)を
+# 毎月取得して前回とのハッシュ比較を行い、変化があった資料だけIssueに挙げる。
+# 変化=新版とは限らないため、最終判断は人が行う(Issueのチェックリストを確認)。
+
+on:
+  schedule:
+    - cron: "0 21 14 * *"   # 毎月15日 06:00 JST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: 一覧ページの変化を検査
+        id: watch
+        run: |
+          node --input-type=module -e '
+            import fs from "fs";
+            import crypto from "crypto";
+
+            const sources = JSON.parse(fs.readFileSync("sources.json", "utf8"));
+            const targets = sources.filter(x => x.policy === "latest");
+            const hashFile = "source-watch-hashes.json";
+            const prev = fs.existsSync(hashFile) ? JSON.parse(fs.readFileSync(hashFile, "utf8")) : {};
+            const next = {};
+            const changed = [];
+            const failed = [];
+
+            const normalize = (html) => html
+              .replace(/<script[\s\S]*?<\/script>/gi, "")
+              .replace(/<!--[\s\S]*?-->/g, "")
+              .replace(/\s+/g, " ");
+
+            for (const x of targets) {
+              const url = x.indexUrl || x.url;
+              if (!url) continue;
+              try {
+                const res = await fetch(url, {
+                  headers: { "user-agent": "Mozilla/5.0 (compatible; tokushi-Guidebook-sourcewatch/1.0)" },
+                  redirect: "follow",
+                });
+                if (!res.ok) { failed.push({ x, url, why: "HTTP " + res.status }); continue; }
+                const body = normalize(await res.text());
+                const hash = crypto.createHash("sha256").update(body).digest("hex");
+                next[x.id] = hash;
+                if (prev[x.id] && prev[x.id] !== hash) changed.push({ x, url });
+              } catch (e) {
+                failed.push({ x, url, why: String(e.message || e) });
+              }
+            }
+
+            // 取得に失敗した資料は前回のハッシュを引き継ぐ(誤検知を防ぐ)
+            for (const id of Object.keys(prev)) if (!(id in next)) next[id] = prev[id];
+            fs.writeFileSync(hashFile, JSON.stringify(next, null, 2) + "\n");
+
+            let md = "";
+            if (changed.length) {
+              md += "以下の資料の一覧ページに変化がありました。**新しい版が公表された可能性があります。**\n";
+              md += "変化=新版とは限りません(お知らせの追記等でも変わります)。ページを開いて確認してください。\n\n";
+              for (const { x, url } of changed) {
+                md += `- [ ] **${x.title}**（現在の記載：${x.edition || "―"}）\n      確認先: ${url}\n`;
+              }
+              md += "\n新版だった場合は、sources.json の `url`・`edition`・`checked` を更新し、本文中の数値・年度表記も揃えてください。\n";
+            }
+            if (failed.length) {
+              md += "\n取得できなかった資料(次回に持ち越し):\n";
+              for (const { x, url, why } of failed) md += `- ${x.title}: ${why}（${url}）\n`;
+            }
+            fs.writeFileSync("watch-report.md", md);
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, "changed=" + changed.length + "\n");
+            console.log("監視対象:", targets.length, "/ 変化:", changed.length, "/ 取得失敗:", failed.length);
+          '
+
+      - name: 変化があればIssueを立てる
+        if: steps.watch.outputs.changed != '0'
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "出典の一覧ページに変化を検出(新版の可能性)"
+          content-filepath: watch-report.md
+          labels: |
+            出典見直し
+            自動検出
+
+      - name: ハッシュを保存(60日ルール対策を兼ねる)
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add source-watch-hashes.json
+          git commit -m "出典監視のハッシュを更新 [skip ci]" || exit 0
+          git push
