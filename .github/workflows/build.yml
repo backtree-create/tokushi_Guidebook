@@ -1,0 +1,51 @@
+name: build standalone
+
+# GitHub のサイト上でデータを編集したとき、配布用の単一ファイル
+# (tokushi-guidebook-standalone.html)を CI が生成してコミットする。
+# これがあるので単一ファイル版を手でアップロードする必要はありません。
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "*.json"
+      - "index.html"
+      - "app.js"
+      - "style.css"
+      - "sw.js"
+      - "build.mjs"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-standalone
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: データ整合性チェック
+        run: node validate.mjs
+
+      - name: 単一ファイル版を生成
+        run: node build.mjs
+
+      - name: 変更があればコミット
+        run: |
+          if git diff --quiet -- tokushi-guidebook-standalone.html; then
+            echo "配布用ファイルに変更はありません。"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tokushi-guidebook-standalone.html
+          git commit -m "配布用の単一ファイルを再生成 [skip ci]"
+          git push
