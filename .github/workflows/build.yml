@@ -1,10 +1,5 @@
+# ================= このファイルの先頭 =================
 name: build standalone
-
-# GitHub のサイト上でデータを編集したとき、配布用の単一ファイル
-# (tokushi-guidebook-standalone.html)を CI が生成してコミットする。
-# これがあるので単一ファイル版を手でアップロードする必要はありません。
-
-on:name: buildname: build standalone
 
 # GitHub のサイト上で JSON を編集したとき、配布用の単一ファイルを
 # 自分で作り直さなくて済むよう、CI が生成してコミットする。
@@ -64,98 +59,9 @@ jobs:
           done
           echo "::error::配布用ファイルを反映できませんでした。手動で build.mjs を実行してください。"
           exit 1
- standalone
 
-# GitHub のサイト上で JSON を編集したとき、配布用の単一ファイルを
-# 自分で作り直さなくて済むよう、CI が生成してコミットする。
-# これがあるので配布用ファイルを手で作り直す必要はありません。
-
-on:
-  push:
-    branches: [main]
-    paths:
-      - "*.json"
-      - "index.html"
-      - "app.js"
-      - "style.css"
-      - "build.mjs"
-  workflow_dispatch:
-
-permissions:
-  contents: write
-
-concurrency:
-  group: build-standalone
-  cancel-in-progress: true
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-
-      - name: データ整合性チェック
-        run: node validate.mjs
-
-      - name: 単一ファイル版を生成
-        run: node build.mjs
-
-      - name: 変更があればコミット
-        run: |
-          if git diff --quiet -- tokushi-guidebook-standalone.html; then
-            echo "配布用ファイルに変更はありません。"
-            exit 0
-          fi
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tokushi-guidebook-standalone.html
-          git commit -m "配布用の単一ファイルを再生成 [skip ci]"
-          git push
-
-  push:
-    branches: [main]
-    paths:
-      - "*.json"
-      - "index.html"
-      - "app.js"
-      - "style.css"
-      - "sw.js"
-      - "build.mjs"
-  workflow_dispatch:
-
-permissions:
-  contents: write
-
-concurrency:
-  group: build-standalone
-  cancel-in-progress: true
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-
-      - name: データ整合性チェック
-        run: node validate.mjs
-
-      - name: 単一ファイル版を生成
-        run: node build.mjs
-
-      - name: 変更があればコミット
-        run: |
-          if git diff --quiet -- tokushi-guidebook-standalone.html; then
-            echo "配布用ファイルに変更はありません。"
-            exit 0
-          fi
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tokushi-guidebook-standalone.html
-          git commit -m "配布用の単一ファイルを再生成 [skip ci]"
-          git push
+# ================= このファイルの末尾 =================
+# この行より下に何か書かれていたら、貼り付けが二重になっています。
+# GitHub のサイト上で編集するとき、既存の中身を選択して消さずに貼ると
+# 後ろに足されてしまい、「Invalid workflow file」になります。
+# その場合は、この行より下をすべて削除してください。

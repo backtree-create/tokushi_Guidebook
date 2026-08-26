@@ -1,7 +1,5 @@
+# ================= このファイルの先頭 =================
 name: validate data
-
-# データの整合性(自立活動27項目との名称一致、出典IDの参照、
-# sw.js の VERname: validate data
 
 # データの整合性を毎回確認する。落ちたら中身がおかしいということなので、
 # サイト上で編集したあとは必ずここが緑になっていることを確かめてください。
@@ -54,46 +52,9 @@ jobs:
             if (bad) { console.log(`\nURLの書式に問題が ${bad} 件あります。`); process.exit(1); }
             console.log("URLの書式は問題ありません。");
           '
-SION と meta.json のずれ等)を毎回確認する。
 
-on:name: validate data
-
-# データの整合性（自立活動27項目との名称一致、出典IDの参照、
-# sw.js の VERSION と meta.json の updated のずれ等）を毎回確認する。
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-  workflow_dispatch:
-
-jobs:
-  validate:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-      - name: データ整合性チェック
-        run: node validate.mjs
-      - name: 単一ファイル版のビルド確認
-        run: node build.mjs
-
-  push:
-    branches: [main]
-  pull_request:
-  workflow_dispatch:
-
-jobs:
-  validate:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-      - name: データ整合性チェック
-        run: node validate.mjs
-      - name: 単一ファイル版のビルド確認
-        run: node build.mjs
+# ================= このファイルの末尾 =================
+# この行より下に何か書かれていたら、貼り付けが二重になっています。
+# GitHub のサイト上で編集するとき、既存の中身を選択して消さずに貼ると
+# 後ろに足されてしまい、「Invalid workflow file」になります。
+# その場合は、この行より下をすべて削除してください。

@@ -1,8 +1,5 @@
+# ================= このファイルの先頭 =================
 name: annual source review
-
-# リンクチェックでは検出できない「生きているが年度が古い」資料を
-# 人の目で見直すためのリマインダー。毎年3月1日にIssueを立てる。
-name: annual source reviename: annual source review
 
 # リンクチェックでも更新検知でも拾いきれない「そもそも今もこれが最善の出典か」を
 # 人の目で見直すための、年に一度のリマインダー。
@@ -78,6 +75,7 @@ jobs:
             const body = fs.readFileSync('review.md', 'utf8').slice(0, 60000);
             const year = new Date().getFullYear();
             const title = `年次：出典の版を見直す（${year}年）`;
+            try {
             const { data: open } = await github.rest.issues.listForRepo({
               owner: context.repo.owner, repo: context.repo.repo,
               state: 'open', labels: '出典見直し', per_page: 100,
@@ -96,89 +94,13 @@ jobs:
               });
               core.notice(`Issue #${made.number} を作成しました`);
             }
-w
-
-# リンクチェックでは検出できない「生きているが年度が古い」資料を
-# 人の目で見直すためのリマインダー。毎年3月1日にIssueを立てる。
-
-on:
-  schedule:
-    - cron: "0 0 1 3 *"   # 毎年3月1日 09:00 JST
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  issues: write
-
-jobs:
-  remind:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: 見直し対象の一覧を作る
-        run: |
-          node -e '
-            const s = require("./sources.json");
-            const t = s.filter(x => x.policy === "latest");
-            let md = "リンクチェックでは陳腐化を検出できない資料です。最新版が出ていないか確認してください。\n\n";
-            for (const x of t) {
-              md += `- [ ] **${x.title}**`;
-              if (x.edition) md += `（現在の記載：${x.edition}）`;
-              md += "\n";
-              if (x.url) md += `      現在のURL: ${x.url}\n`;
-              if (x.indexUrl) md += `      一覧ページ: ${x.indexUrl}\n`;
-              if (x.review) md += `      見直し時期: ${x.review}\n`;
-              if (x.note) md += `      メモ: ${x.note}\n`;
+            } catch (e) {
+              core.warning(`Issueを操作できませんでした: ${e.message}`);
+              core.warning('Settings → Actions → General → Workflow permissions が「Read and write permissions」になっているか確認してください。');
             }
-            md += "\n更新したら sources.json の `edition` と `checked` を直し、";
-            md += "本文中の年度表記も揃えてください。\n";
-            require("fs").writeFileSync("review.md", md);
-          '
-          cat review.md
-      - uses: peter-evans/create-issue-from-file@v5
-        with:
-          title: "年次：出典の版を見直す"
-          content-filepath: review.md
-          labels: |
-            出典見直し
 
-on:
-  schedule:
-    - cron: "0 0 1 3 *"   # 毎年3月1日 09:00 JST
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  issues: write
-
-jobs:
-  remind:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: 見直し対象の一覧を作る
-        run: |
-          node -e '
-            const s = require("./sources.json");
-            const t = s.filter(x => x.policy === "latest");
-            let md = "リンクチェックでは陳腐化を検出できない資料です。最新版が出ていないか確認してください。\n\n";
-            for (const x of t) {
-              md += `- [ ] **${x.title}**`;
-              if (x.edition) md += `（現在の記載：${x.edition}）`;
-              md += "\n";
-              if (x.url) md += `      現在のURL: ${x.url}\n`;
-              if (x.indexUrl) md += `      一覧ページ: ${x.indexUrl}\n`;
-              if (x.review) md += `      見直し時期: ${x.review}\n`;
-              if (x.note) md += `      メモ: ${x.note}\n`;
-            }
-            md += "\n更新したら sources.json の `edition` と `checked` を直し、";
-            md += "本文中の年度表記も揃えてください。\n";
-            require("fs").writeFileSync("review.md", md);
-          '
-          cat review.md
-      - uses: peter-evans/create-issue-from-file@v5
-        with:
-          title: "年次：出典の版を見直す"
-          content-filepath: review.md
-          labels: |
-            出典見直し
+# ================= このファイルの末尾 =================
+# この行より下に何か書かれていたら、貼り付けが二重になっています。
+# GitHub のサイト上で編集するとき、既存の中身を選択して消さずに貼ると
+# 後ろに足されてしまい、「Invalid workflow file」になります。
+# その場合は、この行より下をすべて削除してください。
