@@ -1,7 +1,60 @@
 name: validate data
 
 # データの整合性(自立活動27項目との名称一致、出典IDの参照、
-# sw.js の VERSION と meta.json のずれ等)を毎回確認する。
+# sw.js の VERname: validate data
+
+# データの整合性を毎回確認する。落ちたら中身がおかしいということなので、
+# サイト上で編集したあとは必ずここが緑になっていることを確かめてください。
+#
+# validate.mjs が見ているもの：
+#   - 自立活動27項目との名称一致
+#   - 出典IDの参照（sources.json に無いIDを指していないか）
+#   - sw.js の VERSION と meta.json の version のずれ
+#   - 明暗どちらの配色でも文字が読めるか（コントラスト比・文字サイズ）
+#   - 程度別支援に尺度の明示があるか、法令・通知の引用に出典と注意書きがあるか
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: データ整合性チェック
+        run: node validate.mjs
+      - name: 単一ファイル版のビルド確認
+        run: node build.mjs
+      - name: sources.json のURLの書式を確認
+        run: |
+          node -e '
+            const s = require("./sources.json");
+            let bad = 0;
+            for (const x of s) {
+              for (const k of ["url", "indexUrl"]) {
+                const u = x[k];
+                if (!u) continue;
+                if (!/^https:\/\//.test(u)) {
+                  console.log(`  ${x.id}: ${k} が https で始まっていません -> ${u}`); bad++;
+                }
+                if (/\s/.test(u)) {
+                  console.log(`  ${x.id}: ${k} に生の空白が含まれます（%20 に置き換えてください） -> ${u}`); bad++;
+                }
+              }
+            }
+            if (bad) { console.log(`\nURLの書式に問題が ${bad} 件あります。`); process.exit(1); }
+            console.log("URLの書式は問題ありません。");
+          '
+SION と meta.json のずれ等)を毎回確認する。
 
 on:name: validate data
 
