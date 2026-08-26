@@ -4,6 +4,160 @@ name: source watch
 # policy: latest の資料について、発行元の一覧ページ(indexUrl、なければurl)を
 # 毎月取得して前回とのハッシュ比較を行い、変化があった資料だけIssueに挙げる。
 # 変化=新版とは限らないため、最終判断は人が行う(Issueのチェックリストを確認)。
+name: source watch
+
+# 「URLは生きているが、中身が新しい版に差し替わっている」を検知する。
+# リンクチェックでは絶対に見つからない種類の陳腐化がこれで、
+# 特別支援教育の資料はこの形で古くなることが多い
+# （例：教育支援の手引、特別支援教育資料、小児慢性特定疾病の対象疾病）。
+#
+# policy: latest の出典について、一覧ページ（indexUrl。無ければ url）の
+# 中身のハッシュを毎月とり、前回と変わっていたらIssueで知らせる。
+# 変わった＝新版とは限らないので、判断は人がする。
+
+on:
+  schedule:
+    - cron: "0 21 14 * *"   # 毎月15日 06:00 JST（UTC 前日21:00）
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: source-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: 監視対象を書き出す
+        run: |
+          node -e '
+            const s = require("./sources.json");
+            const t = s.filter(x => x.policy === "latest")
+                       .map(x => ({ id: x.id, title: x.title, url: x.indexUrl || x.url }))
+                       .filter(x => x.url);
+            require("fs").writeFileSync("watch-targets.json", JSON.stringify(t, null, 2));
+            console.log("監視対象:", t.length, "件");
+          '
+
+      - name: 取得してハッシュをとる
+        run: |
+          node -e '
+            const t = require("./watch-targets.json");
+            console.log(t.map(x => x.id + "\t" + x.url).join("\n"));
+          ' > targets.tsv
+          : > hashes.tsv
+          while IFS=$'\t' read -r id url; do
+            [ -z "$id" ] && continue
+            # 取得できなかったものは "取得失敗" として記録し、差分扱いにはしない
+            if curl -sSL --max-time 45 --retry 2 \
+                 -A "Mozilla/5.0 (compatible; tokushi-Guidebook-source-watch/1.0)" \
+                 "$url" -o page.bin 2>/dev/null; then
+              # 日付やアクセスカウンタで毎回変わるのを避けるため、
+              # 数字の並びを潰したうえでハッシュをとる
+              H=$(tr -d '\r' < page.bin | sed -E 's/[0-9]+/N/g' | sha256sum | cut -c1-16)
+            else
+              H="取得失敗"
+            fi
+            printf '%s\t%s\n' "$id" "$H" >> hashes.tsv
+            rm -f page.bin
+          done < targets.tsv
+          cat hashes.tsv
+
+      - name: 前回と比べる
+        id: diff
+        run: |
+          node -e '
+            const fs = require("fs");
+            const targets = require("./watch-targets.json");
+            const now = Object.fromEntries(
+              fs.readFileSync("hashes.tsv", "utf8").trim().split("\n")
+                .filter(Boolean).map(l => l.split("\t"))
+            );
+            const prev = fs.existsSync("source-hashes.json")
+              ? JSON.parse(fs.readFileSync("source-hashes.json", "utf8")) : {};
+            const changed = [], added = [], failed = [];
+            for (const t of targets) {
+              const h = now[t.id];
+              if (h === "取得失敗") { failed.push(t); continue; }
+              if (!(t.id in prev)) { added.push(t); continue; }
+              if (prev[t.id] !== h) changed.push(t);
+            }
+            // 台帳は取得失敗を上書きしない（前回の値を残す）
+            const ledger = { ...prev };
+            for (const [id, h] of Object.entries(now)) if (h !== "取得失敗") ledger[id] = h;
+            fs.writeFileSync("source-hashes.json", JSON.stringify(ledger, null, 2) + "\n");
+
+            let md = "";
+            if (changed.length) {
+              md += "## 中身が変わった資料\n\n";
+              md += "一覧ページの内容が前回と変わっています。**新しい版が出ている可能性があります。**\n";
+              md += "確認して、新版が出ていれば sources.json の `edition` と `checked` を、";
+              md += "本文中の年度表記もあわせて直してください。変わっていなければ `checked` だけ今日の日付にしてください。\n\n";
+              for (const t of changed) md += `- [ ] **${t.title}**（\`${t.id}\`）\n      ${t.url}\n`;
+              md += "\n";
+            }
+            if (added.length) {
+              md += "## 今回から監視を始めた資料\n\n";
+              for (const t of added) md += `- ${t.title}（\`${t.id}\`）\n`;
+              md += "\n";
+            }
+            if (failed.length) {
+              md += "## 取得できなかった資料\n\n";
+              md += "一時的な障害のこともあります。続くようなら所在を確認してください。\n\n";
+              for (const t of failed) md += `- ${t.title}（\`${t.id}\`）\n      ${t.url}\n`;
+              md += "\n";
+            }
+            fs.writeFileSync("watch.md", md);
+            const notify = changed.length > 0 || failed.length > 0;
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `notify=${notify}\n`);
+            console.log(`変化 ${changed.length} / 新規 ${added.length} / 取得失敗 ${failed.length}`);
+          '
+
+      - name: Issueを立てる／書き換える
+        if: steps.diff.outputs.notify == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('watch.md', 'utf8').slice(0, 60000);
+            const title = '出典の一覧ページに変化を検出';
+            const { data: open } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', labels: '出典見直し', per_page: 100,
+            });
+            const found = open.find(i => i.title === title);
+            if (found) {
+              await github.rest.issues.update({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: found.number, body,
+              });
+              core.notice(`既存の Issue #${found.number} を更新しました`);
+            } else {
+              const { data: made } = await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title, body, labels: ['出典見直し', '自動検出'],
+              });
+              core.notice(`Issue #${made.number} を作成しました`);
+            }
+
+      - name: 台帳を保存する
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add source-hashes.json
+          git diff --cached --quiet && { echo "台帳に変更なし"; exit 0; }
+          git commit -m "出典の監視台帳を更新 [skip ci]"
+          git pull --rebase --autostash
+          git push
 
 on:
   schedule:
