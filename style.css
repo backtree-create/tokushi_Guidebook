@@ -144,6 +144,66 @@
   }
   .credential b{color:#e9e4d5;font-weight:600;}
 
+  /* ---------- ヘッダーのお知らせ（作成の趣旨と問い合わせフォーム） ---------- */
+  .header-notice{
+    max-width:1220px;
+    margin:0 auto 18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:24px;
+    padding:16px 20px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(201,169,107,.35);
+    border-left:4px solid var(--gold-soft);
+    border-radius:6px;
+  }
+  .header-notice .notice-text{min-width:0;flex:1 1 480px;}
+  .header-notice .notice-heading{
+    margin:0 0 6px;
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:.06em;
+    color:var(--gold-soft);
+  }
+  .header-notice .notice-text p:not(.notice-heading){
+    margin:0 0 4px;
+    font-size:14px;
+    line-height:1.85;
+    color:#e6e9ea;
+    overflow-wrap:break-word;
+  }
+  .header-notice .notice-text p:last-child{margin-bottom:0;}
+  .header-notice .notice-action{flex:0 0 auto;}
+  .notice-btn{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:3px;
+    min-width:240px;
+    padding:12px 22px;
+    background:var(--gold-soft);
+    color:#1b1a14;
+    border-radius:6px;
+    text-decoration:none;
+    box-shadow:0 2px 8px rgba(0,0,0,.25);
+    transition:transform .15s, box-shadow .15s, background .15s;
+  }
+  .notice-btn:hover,.notice-btn:focus-visible{
+    background:#e0c68a;
+    transform:translateY(-1px);
+    box-shadow:0 4px 14px rgba(0,0,0,.3);
+    outline:none;
+  }
+  .notice-btn:focus-visible{outline:2px solid #fff;outline-offset:2px;}
+  .notice-btn-main{font-weight:700;font-size:15px;letter-spacing:.04em;}
+  .notice-btn-sub{font-size:11.5px;color:#3d3828;}
+  @media (max-width:760px){
+    .header-notice{flex-direction:column;align-items:stretch;gap:14px;padding:14px 16px;}
+    .notice-btn{width:100%;min-width:0;}
+  }
+
   /* ---------- モード切り替えタブ ---------- */
   .mode-tabs{
     max-width:1220px;
@@ -1160,7 +1220,7 @@
     .top-strip,.mode-tabs,.fab-home,.install-banner,
     .index,.search-wrap,.disease-hits,.school-stage,
     .support-tabs,.crumb,
-    .fb-line,.rev-count,.d-hint,.chevron{
+    .fb-line,.rev-count,.d-hint,.chevron,.header-notice{
       display:none !important;
     }
 
