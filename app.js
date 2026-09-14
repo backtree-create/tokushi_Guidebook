@@ -17,6 +17,7 @@
   }
 
   var DATA = [], JIRITSU27 = [], SOURCES = [], META = {};
+  var HAIKEI = [];  // 配慮を要する背景（障害以外の教育的ニーズ）。区分とは別の型
   var SRC = {};   // id -> source
   var REV = {};    // 「区分／項目」-> [{cat, disease}]  自立活動からの逆引き
 
@@ -31,10 +32,10 @@
   /* ---------- DOM 参照 ---------- */
 
   var catList, mainContent, searchBox, sideNav,
-      tabGuide, tabJiritsu, tabTerms, layoutRoot, homeBtn, homeLink, homeEmblem, siteFooter;
+      tabGuide, tabHaikei, tabJiritsu, tabTerms, layoutRoot, homeBtn, homeLink, homeEmblem, siteFooter;
 
   var currentId = null;
-  var mode = 'guide'; // 'guide' | 'jiritsu' | 'terms'
+  var mode = 'guide'; // 'guide' | 'haikei' | 'jiritsu' | 'terms'
   var openDisease = null;   // 開いている疾患名（URLに載せる）
   var routing = false;      // 描画中の navigate を無視するための印
 
@@ -70,7 +71,8 @@
     kumoku:  function (ku, item) {
       return '#/jiritsu/' + encodeURIComponent(ku) + '/' + encodeURIComponent(item);
     },
-    terms:   function () { return '#/terms'; }
+    terms:   function () { return '#/terms'; },
+    haikei:  function (id) { return '#/haikei' + (id ? '/' + encodeURIComponent(id) : ''); }
   };
 
   function parseHash() {
@@ -86,6 +88,7 @@
         ? { view: 'kumoku', ku: seg[1], item: seg[2] }
         : { view: 'jiritsu' };
       case 'terms':   return { view: 'terms' };
+      case 'haikei':  return seg[1] ? { view: 'haikei-item', id: seg[1] } : { view: 'haikei' };
       default:        return { view: 'home' };
     }
   }
@@ -103,6 +106,7 @@
 
   function setTabs(m) {
     tabGuide.classList.toggle('on', m === 'guide');
+    tabHaikei.classList.toggle('on', m === 'haikei');
     tabJiritsu.classList.toggle('on', m === 'jiritsu');
     tabTerms.classList.toggle('on', m === 'terms');
   }
@@ -114,6 +118,7 @@
       var r = parseHash();
       mode = (r.view === 'jiritsu' || r.view === 'kumoku') ? 'jiritsu'
            : r.view === 'terms' ? 'terms'
+           : (r.view === 'haikei' || r.view === 'haikei-item') ? 'haikei'
            : 'guide';
       setTabs(mode);
 
@@ -138,6 +143,11 @@
         renderKumoku(r.ku, r.item);
       } else if (r.view === 'terms') {
         renderTerms();
+      } else if (r.view === 'haikei') {
+        renderHaikeiIndex();
+      } else if (r.view === 'haikei-item') {
+        var hk = HAIKEI.find(function (x) { return x.id === r.id; });
+        if (hk) renderHaikeiItem(hk); else renderHaikeiIndex();
       }
       document.title = pageTitle(r);
     } finally {
@@ -155,6 +165,11 @@
     if (r.view === 'jiritsu') return '自立活動 6区分27項目｜' + base;
     if (r.view === 'kumoku') return r.item + '｜自立活動から探す｜' + base;
     if (r.view === 'terms') return '診断名・出典｜' + base;
+    if (r.view === 'haikei') return '配慮を要する背景｜' + base;
+    if (r.view === 'haikei-item') {
+      var h = HAIKEI.find(function (x) { return x.id === r.id; });
+      if (h) return h.name + '｜配慮を要する背景｜' + base;
+    }
     return base;
   }
 
@@ -162,6 +177,7 @@
   function setMode(m) {
     navigate(m === 'guide' ? ROUTES.home()
            : m === 'jiritsu' ? ROUTES.jiritsu()
+           : m === 'haikei' ? ROUTES.haikei()
            : ROUTES.terms());
   }
 
@@ -290,7 +306,14 @@
         '</div>';
     });
 
-    html += '</div><div class="disclaimer">' + esc(META.disclaimer.long) + '</div></div>';
+    html += '</div>';
+    if (HAIKEI.length) {
+      html += '<div class="hk-home-note">' +
+        '<b>障害以外の教育的ニーズ</b>' +
+        '<span>' + HAIKEI.map(function (h) { return esc(h.name); }).join('／') + ' は、上部タブ「配慮を要する背景」にまとめています。</span>' +
+        '<a href="' + ROUTES.haikei() + '">配慮を要する背景を開く</a></div>';
+    }
+    html += '<div class="disclaimer">' + esc(META.disclaimer.long) + '</div></div>';
 
     mainContent.innerHTML = html;
     playFadeIn();
@@ -832,6 +855,157 @@
     playFadeIn();
   }
 
+  /* ---------- 配慮を要する背景（障害以外の教育的ニーズ） ---------- */
+
+  // 区分（DATA）とは別の型。自立活動27項目との対応は持たず、
+  // 「関連する障害種別」で既存区分へ内部リンクする。
+
+  function hkStatusTag(h) {
+    var st = h.status || {};
+    return '<span class="basis-tag tone-' + esc(st.tone || 'info') + '">' + esc(st.label || '') + '</span>';
+  }
+
+  function hkSourceRef(id) {
+    var s = SRC[id];
+    if (!s) return '';
+    var name = esc(s.title) + (s.edition ? '（' + esc(s.edition) + '）' : '');
+    return '<li>' + (s.url
+      ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + name + '</a>'
+      : name) +
+      '<span class="basis-pub">' + esc(s.publisher || '') + '</span></li>';
+  }
+
+  function renderHaikeiIndex() {
+    var html = '<div class="jiritsu-table-wrap hk-view">' +
+      '<div class="article-head">' +
+        '<div class="article-num" style="border-radius:3px;">背</div>' +
+        '<h2 class="cat-title">配慮を要する背景<span class="en">Backgrounds Requiring Special Consideration</span></h2>' +
+      '</div>' +
+      '<div class="overview">障害ではないが、置かれた状況が学びの困難を生んでいる児童生徒についての整理です。' +
+        '学習指導要領 総則の「特別な配慮を必要とする児童生徒への指導」に沿い、障害種別ガイドとは別の枠で扱います。' +
+        '自立活動の27項目とは対応付けず、代わりに「関連する障害種別」で障害種別ガイドへ橋をかけています。</div>' +
+      '<div class="section-disclaimer"><b>3つの項目は性格が違います</b>' +
+        '<p>日本語指導は「特別の教育課程」として制度が整っています。特異な才能（2E）は制度化の直前で、記述は検討中の資料に基づきます。' +
+        'ヤングケアラーは「指導」ではなく「気づいて、つなぐ」対象で、指導計画の項目を持ちません。</p></div>' +
+      '<div class="hk-grid">';
+
+    HAIKEI.forEach(function (h) {
+      html += '<a class="hk-card" href="' + ROUTES.haikei(h.id) + '">' +
+        '<span class="num">' + esc(h.num) + '</span>' +
+        '<h4>' + esc(h.name) + '</h4>' +
+        '<p>' + esc(h.subtitle) + '</p>' +
+        '<div class="hk-card-foot">' + hkStatusTag(h) +
+          '<span class="hk-card-cnt">' + (h.signs || []).length + 'の気づき／' +
+          (h.supports || []).reduce(function (n, g) { return n + g.items.length; }, 0) + 'の要点</span></div>' +
+        '</a>';
+    });
+    html += '</div>';
+
+    html += '<div class="source-box">' +
+      '<p>一次資料は文部科学省・こども家庭庁などの公的資料に限っています。個別の研究成果は本文の根拠にしていません。' +
+        '各項目の末尾に出典を示しています。</p></div></div>';
+
+    mainContent.innerHTML = html;
+    playFadeIn();
+  }
+
+  function renderHaikeiItem(h) {
+    var st = h.status || {};
+
+    var basisHtml = (h.basis || []).map(function (b) {
+      var s = b.sourceId ? SRC[b.sourceId] : null;
+      var ref = s
+        ? ' <span class="hk-ref">' + (s.url
+            ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + '</a>'
+            : esc(s.title)) + (s.edition ? '（' + esc(s.edition) + '）' : '') + '</span>'
+        : '';
+      return '<li>' + esc(b.text) + ref + '</li>';
+    }).join('');
+
+    var pointsHtml = (h.points || []).map(function (p, i) {
+      return '<li><span class="hk-pt-n">' + (i + 1) + '</span><span>' + esc(p) + '</span></li>';
+    }).join('');
+
+    var frameworkHtml = '';
+    if (h.framework) {
+      frameworkHtml = '<section class="block">' +
+        '<h3 class="block-title">' + esc(h.framework.title) + '<span class="tally">検討中</span></h3>' +
+        (h.framework.intro ? '<p class="block-sub">' + esc(h.framework.intro) + '</p>' : '') +
+        '<dl class="hk-dl">' + h.framework.items.map(function (it) {
+          return '<div class="hk-dl-row"><dt>' + esc(it.k) + '</dt><dd>' + esc(it.v) + '</dd></div>';
+        }).join('') + '</dl></section>';
+    }
+
+    var signsHtml = '<section class="block">' +
+      '<h3 class="block-title">' + esc(h.signsLabel) + '<span class="tally">' + h.signs.length + '項目</span></h3>' +
+      (h.signsNote ? '<p class="block-sub">' + esc(h.signsNote) + '</p>' : '') +
+      '<ul class="hk-list">' + h.signs.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' +
+      '</section>';
+
+    var supportsHtml = '<section class="block">' +
+      '<h3 class="block-title">' + esc(h.supportsLabel) + '</h3>' +
+      '<div class="hk-groups">' + h.supports.map(function (g) {
+        return '<div class="hk-group"><h4>' + esc(g.title) + '</h4>' +
+          '<ul class="hk-list">' + g.items.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div>';
+      }).join('') + '</div></section>';
+
+    var planningHtml = '';
+    if (h.planning) {
+      planningHtml = '<section class="block">' +
+        '<h3 class="block-title">' + esc(h.planningLabel) + '</h3>' +
+        '<ul class="hk-list">' + h.planning.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' +
+        '</section>';
+    } else {
+      planningHtml = '<section class="block">' +
+        '<h3 class="block-title">計画への落とし込み<span class="tally">対象外</span></h3>' +
+        '<div class="section-disclaimer"><b>この項目は個別の指導計画の対象ではありません</b>' +
+        '<p>指導ではなく、気づいて関係機関につなぐことが学校の役割です。校内での情報共有と経過の記録は上の要点に沿って行い、計画の様式には載せません。</p></div>' +
+        '</section>';
+    }
+
+    var relatedHtml = '<section class="block">' +
+      '<h3 class="block-title">関連する障害種別<span class="tally">障害種別ガイドへ</span></h3>' +
+      '<p class="block-sub">見立てを分ける、または重なりを確認するときに参照する区分です。</p>' +
+      '<div class="hk-rel">' + (h.related || []).map(function (r) {
+        var c = DATA.find(function (x) { return x.id === r.catId; });
+        if (!c) return '';
+        return '<a class="hk-rel-card" href="' + ROUTES.cat(c.id) + '">' +
+          '<span class="num">' + esc(c.num) + '</span><b>' + esc(c.name) + '</b><span>' + esc(r.note) + '</span></a>';
+      }).join('') + '</div>' +
+      (h.relatedNote ? '<p class="hk-rel-note">' + esc(h.relatedNote) + '</p>' : '') +
+      '</section>';
+
+    var srcHtml = '<div class="source-box">' +
+      '<p class="basis-label">この項目が基づく資料</p>' +
+      '<ul class="basis-refs">' + (h.sources || []).map(hkSourceRef).join('') + '</ul>' +
+      '<p style="margin-top:10px;">出典確認 ' + esc(h.reviewed) + '。制度や資料の要旨は本ツールによる整理で、原文の言い換えを含みます。指導計画や会議の根拠にする際は原文をご確認ください。</p>' +
+      feedbackLink('配慮を要する背景', h.name) +
+      '</div>';
+
+    var html = '<div class="jiritsu-table-wrap hk-view">' +
+      '<p class="crumb"><a href="' + ROUTES.haikei() + '">配慮を要する背景</a> › ' + esc(h.name) + '</p>' +
+      '<div class="article-head">' +
+        '<div class="article-num" style="border-radius:3px;">' + esc(h.num) + '</div>' +
+        '<h2 class="cat-title">' + esc(h.name) + '<span class="en">' + esc(h.en) + '</span></h2>' +
+      '</div>' +
+      '<p class="hk-subtitle">' + esc(h.subtitle) + '</p>' +
+      '<div class="hk-status tone-' + esc(st.tone || 'info') + '">' + hkStatusTag(h) + '<span>' + esc(st.text || '') + '</span></div>' +
+      '<div class="overview">' + esc(h.overview) + '</div>' +
+      '<section class="block">' +
+        '<h3 class="block-title">公的な位置づけ</h3>' +
+        '<ul class="hk-list hk-basis">' + basisHtml + '</ul>' +
+      '</section>' +
+      '<section class="block">' +
+        '<h3 class="block-title">押さえておきたい点</h3>' +
+        '<ol class="hk-points">' + pointsHtml + '</ol>' +
+      '</section>' +
+      frameworkHtml + signsHtml + supportsHtml + planningHtml + relatedHtml + srcHtml +
+      '</div>';
+
+    mainContent.innerHTML = html;
+    playFadeIn();
+  }
+
   /* ---------- フッター ---------- */
 
   function renderFooter() {
@@ -842,6 +1016,7 @@
         '最終更新 ' + esc(META.updated) + '（版 ' + esc(META.version) + '）／ ' +
         '収録 ' + DATA.length + '区分・' +
         DATA.reduce(function (s, c) { return s + c.diseases.length; }, 0) + '件／ ' +
+        '配慮を要する背景 ' + HAIKEI.length + '件／ ' +
         '出典 ' + SOURCES.length + '件（詳細は上部タブ「診断名・出典」）' +
       '</p>' +
       '<p class="footer-feedback"><b>' + esc(fb.label) + '</b>：' + esc(fb.note) +
@@ -879,6 +1054,7 @@
     searchBox = document.getElementById('searchBox');
     sideNav = document.getElementById('sideNav');
     tabGuide = document.getElementById('tabGuide');
+    tabHaikei = document.getElementById('tabHaikei');
     tabJiritsu = document.getElementById('tabJiritsu');
     tabTerms = document.getElementById('tabTerms');
     layoutRoot = document.getElementById('layoutRoot');
@@ -893,6 +1069,7 @@
     homeLink.onclick = goHome;
     if (homeEmblem) homeEmblem.onclick = goHome;
     tabGuide.onclick = function () { setMode('guide'); };
+    tabHaikei.onclick = function () { setMode('haikei'); };
     tabJiritsu.onclick = function () { setMode('jiritsu'); };
     tabTerms.onclick = function () { setMode('terms'); };
 
@@ -914,6 +1091,7 @@
     SOURCES = bundle.sources;
     JIRITSU27 = bundle.jiritsu27;
     DATA = bundle.categories;
+    HAIKEI = bundle.haikei || [];
     SOURCES.forEach(function (s) { SRC[s.id] = s; });
 
     // 自立活動の項目 → その項目を要する疾患、の索引を作る。
@@ -964,16 +1142,17 @@
       loadJson('meta.json'),
       loadJson('sources.json'),
       loadJson('jiritsu27.json'),
-      loadJson('categories.json')
+      loadJson('categories.json'),
+      loadJson('haikei.json')
     ]).then(function (r) {
-      var meta = r[0], sources = r[1], jiritsu27 = r[2], categories = r[3];
+      var meta = r[0], sources = r[1], jiritsu27 = r[2], categories = r[3], haikei = r[4];
       return Promise.all(categories.map(function (c) {
         return loadJson(c.id + '.json').then(function (ds) {
           c.diseases = ds;
           return c;
         });
       })).then(function (cats) {
-        boot({ meta: meta, sources: sources, jiritsu27: jiritsu27, categories: cats });
+        boot({ meta: meta, sources: sources, jiritsu27: jiritsu27, categories: cats, haikei: haikei });
       });
     }).catch(fail);
   }

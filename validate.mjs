@@ -205,6 +205,54 @@ for (const [name, cats] of allNames) {
   if (cats.length > 1) warn(`複数カテゴリに同じ病名: 「${name}」-> ${cats.join(', ')}`);
 }
 
+/* --- 4b. 配慮を要する背景（haikei.json） ---
+   区分（categories）とは別の型。自立活動との対応は持たず、既存区分への
+   内部リンク（related.catId）と出典IDで整合を取る。素通りを防ぐため
+   必須項目と参照先を検査する。 */
+const haikei = rj('haikei.json');
+if (!Array.isArray(haikei) || haikei.length === 0) err('haikei.json が配列ではないか空です');
+const hkIds = new Set();
+const HK_REQUIRED = ['id', 'num', 'name', 'en', 'subtitle', 'status', 'basis', 'overview', 'points',
+                     'signsLabel', 'signs', 'supportsLabel', 'supports', 'related', 'sources', 'reviewed'];
+const HK_TONES = ['ok', 'info', 'warn'];
+for (const h of haikei) {
+  const where = `haikei.json ${h.id || '(id なし)'}`;
+  if (hkIds.has(h.id)) err(`haikei.json に重複ID: ${h.id}`);
+  hkIds.add(h.id);
+  if (catIds.has(h.id)) err(`${where}: id が categories.json の区分IDと重複しています`);
+  if (!/^[a-z][a-z0-9-]*$/.test(h.id || '')) err(`${where}: id は半角英小文字・数字・ハイフンのみ`);
+  for (const k of HK_REQUIRED) {
+    if (h[k] == null || (Array.isArray(h[k]) && h[k].length === 0)) err(`${where}: ${k} がありません`);
+  }
+  if (h.status && !HK_TONES.includes(h.status.tone)) err(`${where}: status.tone が不正 (${h.status.tone})`);
+  if (h.status && (!h.status.label || !h.status.text)) err(`${where}: status に label / text が必要です`);
+  for (const b of h.basis || []) {
+    if (!b.text) err(`${where}: basis に text のない行があります`);
+    if (b.sourceId && !srcIds.has(b.sourceId)) err(`${where}: basis.sourceId "${b.sourceId}" が sources.json にありません`);
+  }
+  for (const g of h.supports || []) {
+    if (!g.title || !Array.isArray(g.items) || g.items.length === 0) err(`${where}: supports の各グループには title と items が必要です`);
+  }
+  if (h.framework) {
+    if (!h.framework.title || !Array.isArray(h.framework.items)) err(`${where}: framework には title と items が必要です`);
+    for (const it of h.framework.items || []) if (!it.k || !it.v) err(`${where}: framework.items には k と v が必要です`);
+  }
+  if ((h.planning == null) !== (h.planningLabel == null)) err(`${where}: planning と planningLabel は対で持ってください`);
+  for (const r of h.related || []) {
+    if (!catIds.has(r.catId)) err(`${where}: related.catId "${r.catId}" が categories.json にありません`);
+    if (!r.note) err(`${where}: related "${r.catId}" に note がありません`);
+  }
+  for (const sid of h.sources || []) {
+    if (!srcIds.has(sid)) err(`${where}: sources の "${sid}" が sources.json にありません`);
+  }
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(h.reviewed || '')) err(`${where}: reviewed が YYYY-MM-DD ではありません`);
+  // 下書きの目印が公開データに残っていないか
+  const flat = JSON.stringify(h);
+  if (/要確認|TODO|TBD/.test(flat)) err(`${where}: 「要確認」「TODO」「TBD」が本文に残っています`);
+  // ヤングケアラーは指導計画の対象ではないので planning を持たない
+  if (h.id === 'young-carer' && h.planning) err(`${where}: ヤングケアラーには planning を付けません（指導ではなく気づきと連携）`);
+}
+
 /* --- 5. メタ情報と Service Worker の版ずれ --- */
 const sw = fs.readFileSync(path.join(root, 'sw.js'), 'utf8');
 const m = sw.match(/const VERSION = "([^"]+)"/);
@@ -220,6 +268,7 @@ for (const c of categories) {
     err(`sw.js の PRECACHE に ${c.id}.json がありません`);
   }
 }
+if (!sw.includes('haikei.json')) err('sw.js の PRECACHE に haikei.json がありません');
 
 
 /* --- 7. 見た目の下限（文字色のコントラストと文字サイズ） --- */
@@ -325,7 +374,7 @@ for (const m of css.matchAll(/font-size:\s*([\d.]+)px/g)) {
 }
 
 /* --- 出力 --- */
-console.log(`検査: ${categories.length}区分 / ${totalDiseases}件 / 出典${sources.length}件 / 自立活動${itemCount}項目`);
+console.log(`検査: ${categories.length}区分 / ${totalDiseases}件 / 配慮を要する背景${haikei.length}件 / 出典${sources.length}件 / 自立活動${itemCount}項目`);
 console.log(`出典確認が済んでいない疾患: ${unreviewed} / ${totalDiseases} 件`);
 console.log(`学校生活管理指導表の対象として印を付けた疾患: ${formCount}件`);
 console.log('出典区分の内訳:');

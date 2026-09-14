@@ -21,8 +21,10 @@ const categories = rj('categories.json');
 for (const c of categories) {
   c.diseases = rj(`${c.id}.json`);
 }
+// 障害以外の教育的ニーズ（配慮を要する背景）。区分とは別の型なので categories には入れない
+const haikei = rj('haikei.json');
 
-const bundle = { meta, sources, jiritsu27, categories };
+const bundle = { meta, sources, jiritsu27, categories, haikei };
 
 // </script> がデータ中に現れてもHTMLが壊れないようにエスケープする
 const bundleJson = JSON.stringify(bundle)
@@ -58,4 +60,4 @@ fs.writeFileSync(path.join(root, OUT), html);
 
 const kb = (Buffer.byteLength(html) / 1024).toFixed(0);
 const n = categories.reduce((s, c) => s + c.diseases.length, 0);
-console.log(`${OUT} を出力しました（${kb} KB／${categories.length}区分・${n}件・版 ${meta.version}）`);
+console.log(`${OUT} を出力しました（${kb} KB／${categories.length}区分・${n}件・配慮を要する背景${haikei.length}件・版 ${meta.version}）`);

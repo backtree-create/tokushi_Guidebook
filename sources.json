@@ -561,5 +561,120 @@
     "tier": "academic",
     "checked": "2026-08-26",
     "note": "I〜IV型それぞれの発症時期と到達運動機能を本文テキストで確認できる。なお指定難病としての重症度分類は型ではなくmRS等の評価スケールによる"
+  },
+  {
+    "id": "mext-clarinet-tebiki",
+    "title": "外国人児童生徒受入れの手引",
+    "publisher": "文部科学省",
+    "edition": "改訂版・2019年3月",
+    "url": "https://www.mext.go.jp/a_menu/shotou/clarinet/002/1304668.htm",
+    "indexUrl": "https://www.mext.go.jp/a_menu/shotou/clarinet/003.htm",
+    "policy": "pinned",
+    "checked": "2026-09-14",
+    "note": "「配慮を要する背景」日本語指導の項の一次資料。受入れから指導・保護者対応までを扱う"
+  },
+  {
+    "id": "mext-clarinet-info",
+    "title": "帰国・外国人児童生徒教育情報（特別の教育課程、DLA、個別の指導計画作成参考資料）",
+    "publisher": "文部科学省",
+    "url": "https://www.mext.go.jp/a_menu/shotou/clarinet/003.htm",
+    "policy": "latest",
+    "review": "年次",
+    "checked": "2026-09-14",
+    "note": "日本語指導に関する制度・ツールの入口ページ。新しい資料はここに追加される"
+  },
+  {
+    "id": "mext-sainou-matome",
+    "title": "特定分野に特異な才能のある児童生徒に対する学校における指導・支援の在り方等に関する有識者会議 審議のまとめ",
+    "publisher": "文部科学省",
+    "edition": "令和4年9月",
+    "url": "https://www.mext.go.jp/content/20220928-mxt_kyoiku02_000016594_01.pdf",
+    "indexUrl": "https://www.mext.go.jp/b_menu/shingi/chousa/shotou/169/index.html",
+    "policy": "pinned",
+    "checked": "2026-09-14",
+    "note": "「配慮を要する背景」2Eの項の一次資料。才能を基準や数値で定義しない立場を示した"
+  },
+  {
+    "id": "mext-sainou-wg",
+    "title": "教育課程部会 特定分野に特異な才能のある児童生徒に係る特別の教育課程ワーキンググループ",
+    "publisher": "文部科学省（中央教育審議会）",
+    "url": "https://www.mext.go.jp/b_menu/shingi/chukyo/chukyo3/120/index.html",
+    "policy": "latest",
+    "review": "月次",
+    "checked": "2026-09-14",
+    "note": "取りまとめの最終版や運用の手引きはここに掲載される見込み。変化があれば2Eの項を見直す"
+  },
+  {
+    "id": "mext-sainou-wg-r8-08",
+    "title": "特定分野に特異な才能のある児童生徒に係る特別の教育課程WG 取りまとめ（案）※会議後修正",
+    "publisher": "文部科学省（中央教育審議会）",
+    "edition": "令和8年8月4日",
+    "url": "https://www.mext.go.jp/content/20260804-mxt_kyoiku01-000051416_1.pdf",
+    "indexUrl": "https://www.mext.go.jp/b_menu/shingi/chukyo/chukyo3/120/attach/mext_00021.html",
+    "policy": "pinned",
+    "checked": "2026-09-14",
+    "note": "2Eの項「検討中の制度の骨子」の出典。令和8年9月14日時点でWGトップの「報告等」に載る最新版だが、「案」の付かない最終版は未掲載。6月16日の第9回資料を会議後に修正したもの"
+  },
+  {
+    "id": "mhlw-mext-yc-pt",
+    "title": "ヤングケアラーの支援に向けた福祉・介護・医療・教育の連携プロジェクトチーム報告",
+    "publisher": "厚生労働省・文部科学省",
+    "edition": "令和3年5月17日",
+    "url": "https://www.mhlw.go.jp/content/000780549.pdf",
+    "indexUrl": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/mext_01453.html",
+    "policy": "pinned",
+    "checked": "2026-09-14",
+    "note": "「配慮を要する背景」ヤングケアラーの項の一次資料。早期発見・把握、支援策の推進、社会的認知度の向上の3本柱"
+  },
+  {
+    "id": "cfa-yc",
+    "title": "ヤングケアラーについて",
+    "publisher": "こども家庭庁",
+    "url": "https://www.cfa.go.jp/policies/young-carer",
+    "policy": "latest",
+    "review": "年次",
+    "checked": "2026-09-14",
+    "note": "法改正（令和6年6月）、実態調査、支援ガイドライン、啓発ツールの入口ページ"
+  },
+  {
+    "id": "mext-yc-renkei-r7",
+    "title": "ヤングケアラー支援における学校等とヤングケアラー支援担当部署との連携について（事務連絡）",
+    "publisher": "文部科学省",
+    "edition": "令和7年8月",
+    "url": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/mext_00009.html",
+    "policy": "pinned",
+    "checked": "2026-09-14",
+    "note": "こども家庭庁のガイドラインをもとに学校の役割を示した通知"
+  },
+  {
+    "id": "mext-yc-yakuwari-r7",
+    "title": "ヤングケアラー支援における学校等の役割について（別添1）",
+    "publisher": "文部科学省",
+    "edition": "令和7年8月",
+    "url": "https://www.mext.go.jp/content/20250801-mxt_jidou01-000044051_1.pdf",
+    "policy": "pinned",
+    "checked": "2026-09-14",
+    "note": "学校の役割を「気づき」「情報集約」「支援」「見守り」の4段階で整理。同意が得られない場合の相談の考え方も明記"
+  },
+  {
+    "id": "cfa-yc-plan-r8",
+    "title": "ヤングケアラー支援プラン",
+    "publisher": "こども家庭庁（ヤングケアラーの支援に向けた福祉・介護・医療・就労・教育の連携プロジェクトチーム）",
+    "edition": "令和8年7月23日版",
+    "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/7e905491-e68b-4ff9-a0ea-de037f9e2e28/22d106f4/20260717_policies_young-carer_support-project_02_02.pdf",
+    "indexUrl": "https://www.cfa.go.jp/policies/young-carer",
+    "policy": "pinned",
+    "checked": "2026-09-14",
+    "note": "令和8〜10年度の施策計画"
+  },
+  {
+    "id": "seito-shido-teiyo",
+    "title": "生徒指導提要",
+    "publisher": "文部科学省",
+    "edition": "令和4年12月改訂",
+    "url": "https://www.mext.go.jp/content/20230220-mxt_jidou01-000024699-201-1.pdf",
+    "policy": "pinned",
+    "checked": "2026-09-14",
+    "note": "第13章「多様な背景を持つ児童生徒への生徒指導」でヤングケアラーを扱う"
   }
 ]
