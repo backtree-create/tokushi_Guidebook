@@ -164,11 +164,11 @@
     "id": "grj",
     "title": "GeneReviews Japan（日本語版）",
     "publisher": "GeneReviews Japan",
-    "url": "https://grj.umin.jp/",
+    "url": "https://plaza.umin.ac.jp/~grj/contents/begin.htm",
     "policy": "latest",
-    "checked": "2026-08-25",
-    "note": "個別疾患ページは https://grj.umin.jp/grj/<略号>.htm 形式。疾患リストは https://grj.umin.jp/contents/list.htm",
-    "indexUrl": "https://grj.umin.jp/contents/list.htm"
+    "checked": "2026-09-14",
+    "note": "旧 grj.umin.jp から plaza.umin.ac.jp/~grj/ へ移転（2026年8月20日改訂の入口ページで確認）。入口で「承諾する」を押すと病名リストに進む。個別疾患ページは /grj/<略号>.htm 形式",
+    "indexUrl": "https://plaza.umin.ac.jp/~grj/contents/begin.htm"
   },
   {
     "id": "mext-futoukou-tsuchi-r1",
@@ -487,19 +487,19 @@
     "url": "https://jspn01.umin.jp/guideline/pdf/20191003_01.pdf",
     "policy": "latest",
     "tier": "academic",
-    "checked": "2026-08-26",
-    "note": "GFR区分G1〜G5は2歳以上に適用。2歳未満は生理的にGFRが低くeGFRの絶対値では評価できないため、血清クレアチニンによる判定表を用いる。日本では小児に蛋白尿区分（CGA分類）を用いない"
+    "checked": "2026-09-14",
+    "note": "GFR区分G1〜G5は2歳以上に適用。2歳未満は生理的にGFRが低くeGFRの絶対値では評価できないため、血清クレアチニンによる判定表を用いる。日本では小児に蛋白尿区分（CGA分類）を用いない。umin.jp のサーバーは一時的に応答しないことがあり、2026-09の自動検査で切れと判定されたが同日に手動で到達を確認"
   },
   {
     "id": "jspn-nephrotic2013",
     "title": "小児特発性ネフローゼ症候群診療ガイドライン2013 第1部 語句の定義",
     "publisher": "日本小児腎臓病学会",
     "url": "https://jspn01.umin.jp/guideline/2013_nephrotic/1.pdf",
-    "indexUrl": "https://jspn01.umin.jp/guideline/2013_nephrotic/index.html",
+    "indexUrl": "https://minds.jcqhc.or.jp/summary/c00221/",
     "policy": "pinned",
     "tier": "academic",
-    "checked": "2026-08-26",
-    "note": "頻回再発・ステロイド依存性・ステロイド抵抗性の定義を原文で確認できる資料。現行版は2020年版だが本文に到達できず、区分の文言はこの2013年版に基づく"
+    "checked": "2026-09-14",
+    "note": "頻回再発・ステロイド依存性・ステロイド抵抗性の定義を原文で確認できる資料。現行版は2020年版だが本文に到達できず、区分の文言はこの2013年版に基づく。一覧URLはMinds（日本医療機能評価機構）の掲載ページに変更（旧版として本文公開中）。学会サイトのPDFは一時的に応答しないことがある"
   },
   {
     "id": "jspn-nephrotic2020",

@@ -188,8 +188,51 @@
       history.replaceState(null, '', hash);
       applyRoute();
     } else {
+      navIntent = 'push';     // 自分で押した遷移。戻る／進むと区別する
       location.hash = hash;   // hashchange が発火して applyRoute が走る
     }
+  }
+
+  /* ---------- スクロール位置の扱い ----------
+     方針: 画面の最上部には戻さない。
+     ・自分で押して別の画面に移ったとき → 本文の先頭（タブの直下）が見えるところまで。すでに見えていれば動かさない
+     ・戻る／進む → 離れたときの位置に戻す
+     ・同じ画面の中の操作（疾患を開く、検索、タブ内の切替）→ 動かさない。開いた疾患が画面外なら最小限だけ寄せる */
+  var navIntent = null;           // 'push' | null（null は戻る／進む・URL直打ち）
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';  // ブラウザ任せの復元と競合させない
+  var scrollMemo = {};            // hash → 離れたときの scrollY
+  var lastHash = location.hash || '#/';
+
+  function contentTop(preferMain) {
+    var t = document.querySelector('.mode-tabs');
+    var anchor = t ? t.getBoundingClientRect().bottom + window.scrollY : mainContent.getBoundingClientRect().top + window.scrollY;
+    // スマホ幅では索引（sideNav）が本文の上に積まれる。障害種別ページを開いたときは索引ではなく本文の先頭へ
+    if (preferMain && sideNav.style.display !== 'none') {
+      var nav = sideNav.getBoundingClientRect(), main = mainContent.getBoundingClientRect();
+      if (nav.bottom <= main.top + 1) anchor = main.top + window.scrollY;
+    }
+    return Math.max(0, Math.round(anchor - 8));
+  }
+  function scrollToContent(preferMain) {
+    var top = contentTop(preferMain);
+    // 本文の先頭が画面の上半分に見えているなら動かさない
+    if (window.scrollY <= top && (top - window.scrollY) < window.innerHeight * 0.5) return;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  }
+  function afterRouteScroll(prevHash, newHash) {
+    if (prevHash === newHash) return;
+    var isCat = /^#\/c\//.test(newHash);
+    if (navIntent === 'push') {
+      scrollToContent(isCat);
+    } else if (scrollMemo[newHash] != null) {
+      var y = scrollMemo[newHash];
+      // 描画直後は高さが確定していないことがあるので、少し待ってから戻す
+      window.scrollTo({ top: y, behavior: 'auto' });
+      setTimeout(function () { window.scrollTo({ top: y, behavior: 'auto' }); }, 60);
+    } else {
+      scrollToContent(isCat);
+    }
+    navIntent = null;
   }
 
   function setTabs(m) {
@@ -771,7 +814,16 @@
         // 開いている疾患をURLに載せる。履歴は積まない（戻るは前の画面へ）
         var name = cat.diseases[Number(item.dataset.idx)].name;
         openDisease = willOpen ? name : null;
-        navigate(willOpen ? ROUTES.cat(cat.id, name) : ROUTES.cat(cat.id), true);
+        // 画面は描き直さない（描き直すと位置が飛ぶ）。URLだけ差し替える
+        var h = willOpen ? ROUTES.cat(cat.id, name) : ROUTES.cat(cat.id);
+        if (history.replaceState) { history.replaceState(null, '', h); lastHash = h; }
+        // 開いた詳細が画面の外にはみ出すなら、最小限だけ寄せる
+        if (willOpen) {
+          setTimeout(function () {
+            var r = item.getBoundingClientRect();
+            if (r.top < 0 || r.bottom > window.innerHeight) item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }, 320);
+        }
       };
     });
 
@@ -780,8 +832,11 @@
       if (idx >= 0) {
         var target = mainContent.querySelector('.disease-item[data-idx="' + idx + '"]');
         if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          setTimeout(function () { openDiseaseItem(target); }, 280);
+          openDiseaseItem(target);
+          setTimeout(function () {
+            var rr = target.getBoundingClientRect();
+            if (rr.top < 0 || rr.top > window.innerHeight * 0.6) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 320);
         }
       }
     }
@@ -1494,8 +1549,11 @@
 
     // 戻る／進む、URL直打ち、リンク経由のいずれもここで拾う
     window.addEventListener('hashchange', function () {
+      var prev = lastHash, next = location.hash || '#/';
+      scrollMemo[prev] = window.scrollY;   // 離れる画面の位置を覚える（戻る用）
       applyRoute();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      lastHash = next;
+      afterRouteScroll(prev, next);
     });
     applyRoute();
   }
