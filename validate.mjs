@@ -255,7 +255,8 @@ for (const [key, list] of Object.entries(topics)) {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(h.reviewed || '')) err(`${where}: reviewed が YYYY-MM-DD ではありません`);
     const flat = JSON.stringify(h);
     if (/要確認|TODO|TBD/.test(flat)) err(`${where}: 「要確認」「TODO」「TBD」が本文に残っています`);
-    if (h.id === 'young-carer' && h.planning) err(`${where}: ヤングケアラーには planning を付けません（指導ではなく気づきと連携）`);
+    // 「指導」ではなく「気づいて、つなぐ／守る」対象は planning を持たない
+    if (['young-carer', 'child-abuse', 'suicide-prevention'].includes(h.id) && h.planning) err(`${where}: この項目には planning を付けません（指導ではなく気づきと連携）`);
   }
 }
 // 不登校は版3.0.0で障害種別から生徒指導上の課題へ移した。戻さない

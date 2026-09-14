@@ -716,5 +716,137 @@
     "review": "年次",
     "checked": "2026-09-14",
     "note": "文部科学省のモデル事業で得られた合理的配慮の実践事例を、障害種・校種・キーワードで検索できる。リンク集の「合理的配慮の事例を探す」から案内"
+  },
+  {
+    "id": "mext-gyakutai-tebiki-r8",
+    "title": "学校・教育委員会等向け 虐待対応の手引き",
+    "publisher": "文部科学省",
+    "edition": "令和8年5月 第二次改訂版",
+    "url": "https://www.mext.go.jp/content/20260601-mxt_jidou01-100002838-002.pdf",
+    "policy": "pinned",
+    "checked": "2026-09-14",
+    "note": "指導提要ガイドブック「児童虐待」の一次資料。「障害のある子供について」の節、通告先の振り分け、要保護児童等の7日以上欠席の情報提供"
+  },
+  {
+    "id": "ijime-law",
+    "title": "いじめ防止対策推進法（平成25年法律第71号）",
+    "publisher": "文部科学省（条文掲載ページ）",
+    "url": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/1406848.htm",
+    "policy": "pinned",
+    "checked": "2026-09-14"
+  },
+  {
+    "id": "mext-ijime-tsuchi-h29",
+    "title": "「いじめの防止等のための基本的な方針」の改定及び「いじめの重大事態の調査に関するガイドライン」の策定について（通知）",
+    "publisher": "文部科学省",
+    "edition": "平成29年3月16日（基本方針の最終改定は同年3月14日）",
+    "url": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/1400142.htm",
+    "policy": "pinned",
+    "checked": "2026-09-14",
+    "note": "国の基本方針の本文（別添）はこのページから。「特に配慮が必要な児童生徒」の記述の根拠"
+  },
+  {
+    "id": "mext-ijime-gl-r6",
+    "title": "いじめの重大事態の調査に関するガイドライン",
+    "publisher": "文部科学省",
+    "edition": "令和6年8月改訂版",
+    "url": "https://www.mext.go.jp/content/20240830-mext_jidou01-1336275_3.pdf",
+    "policy": "pinned",
+    "checked": "2026-09-14"
+  },
+  {
+    "id": "mext-ijime-kyoka-r6",
+    "title": "いじめ防止対策の更なる強化等について（事務連絡）",
+    "publisher": "文部科学省",
+    "edition": "令和6年12月25日",
+    "url": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/1414737_00012.htm",
+    "policy": "pinned",
+    "checked": "2026-09-14"
+  },
+  {
+    "id": "cfa-ijime-ryui-r7",
+    "title": "いじめの重大化を防ぐための留意事項集",
+    "publisher": "こども家庭庁・文部科学省",
+    "edition": "令和7年11月",
+    "url": "https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/d614d2ed-c695-4fd6-8dc2-2e1662f5ead6/f4cdae28/20251121-councils-ijime-kaigi-d614d2ed-11.pdf",
+    "policy": "pinned",
+    "checked": "2026-09-14",
+    "note": "発達障害の特性や家庭環境が背景にある場合はSSWを調整役に関係機関へ、と明記"
+  },
+  {
+    "id": "mext-jisatsu-page",
+    "title": "自殺予防（法令・手引き・通知の一覧）",
+    "publisher": "文部科学省",
+    "url": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/1302907.htm",
+    "policy": "latest",
+    "review": "年次",
+    "checked": "2026-09-14",
+    "note": "毎年の通知と手引きの改訂はここに載る。変化があれば自殺予防の項を見直す"
+  },
+  {
+    "id": "mext-jisatsu-kaisei-r8",
+    "title": "自殺対策基本法の一部を改正する法律の施行について（通知）",
+    "publisher": "こども家庭庁・文部科学省・厚生労働省",
+    "edition": "令和8年3月31日（改正法は令和7年法律第64号、令和8年4月1日施行）",
+    "url": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/1414737_00031.htm",
+    "policy": "pinned",
+    "checked": "2026-09-14",
+    "note": "学校の責務（第5条）、心の健康の保持のための健康診断・保健指導（第17条第3項）、こどもの自殺対策の協議会（第23〜25条）"
+  },
+  {
+    "id": "mext-jisatsu-tebiki-h26",
+    "title": "子供に伝えたい自殺予防（学校における自殺予防教育導入の手引）",
+    "publisher": "文部科学省",
+    "edition": "平成26年7月",
+    "url": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/1408017.htm",
+    "policy": "pinned",
+    "checked": "2026-09-14"
+  },
+  {
+    "id": "mext-jisatsu-kinkyu-h22",
+    "title": "子供の自殺が起きたときの緊急対応の手引き",
+    "publisher": "文部科学省",
+    "edition": "平成22年3月",
+    "url": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/1408018.htm",
+    "policy": "pinned",
+    "checked": "2026-09-14"
+  },
+  {
+    "id": "mext-jisatsu-haikei-r7",
+    "title": "児童生徒の自殺が起きたときの背景調査の指針",
+    "publisher": "文部科学省",
+    "edition": "令和7年12月改訂",
+    "url": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/1408019.htm",
+    "policy": "pinned",
+    "checked": "2026-09-14"
+  },
+  {
+    "id": "mext-sos-h30",
+    "title": "児童生徒の自殺予防に向けた困難な事態、強い心理的負担を受けた場合などにおける対処の仕方を身につける等のための教育の推進について（通知）",
+    "publisher": "文部科学省・厚生労働省",
+    "edition": "平成30年1月23日",
+    "url": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/1408025.htm",
+    "policy": "pinned",
+    "checked": "2026-09-14",
+    "note": "「SOSの出し方に関する教育」の推進"
+  },
+  {
+    "id": "mext-jisatsu-tsuchi-r8",
+    "title": "児童生徒の自殺予防に係る取組について（通知）",
+    "publisher": "文部科学省",
+    "edition": "令和8年7月3日",
+    "url": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/1414737_00033.htm",
+    "policy": "pinned",
+    "checked": "2026-09-14",
+    "note": "長期休業前後の通知。相談窓口の周知、自殺予防教育、心の健康観察、保護者への見守り依頼"
+  },
+  {
+    "id": "mhlw-jisatsu-taiko-r4",
+    "title": "自殺総合対策大綱",
+    "publisher": "厚生労働省（閣議決定）",
+    "edition": "令和4年10月14日",
+    "url": "https://www.mhlw.go.jp/stf/taikou_r041014.html",
+    "policy": "pinned",
+    "checked": "2026-09-14"
   }
 ]

@@ -225,5 +225,77 @@
         "note": "診断分類の出典"
       }
     ]
+  },
+  {
+    "id": "ijime",
+    "title": "いじめ",
+    "lead": "法の定義は広い。認知して組織で対応する。障害のある子は「特に配慮が必要な児童生徒」。",
+    "items": [
+      {
+        "sourceId": "ijime-law",
+        "note": "定義（第2条）、対策組織（第22条）、重大事態（第28条）"
+      },
+      {
+        "sourceId": "mext-ijime-tsuchi-h29",
+        "note": "国の基本方針（平成29年最終改定）。特に配慮が必要な児童生徒の記述"
+      },
+      {
+        "sourceId": "mext-ijime-gl-r6",
+        "note": "重大事態の調査ガイドライン（令和6年8月改訂）"
+      },
+      {
+        "sourceId": "cfa-ijime-ryui-r7",
+        "note": "重大化を防ぐための留意事項集（令和7年11月）。発達障害の特性が背景にある場合の連携"
+      },
+      {
+        "route": "#/seito/bullying",
+        "label": "本ツールの整理を読む",
+        "note": "気づき、未然防止、初動、外部連携、障害種別との重なり"
+      }
+    ]
+  },
+  {
+    "id": "gyakutai",
+    "title": "児童虐待",
+    "lead": "学校の役割は気づいて通告すること。迷ったら市町村（こども家庭センター等）、重篤なら児童相談所（189）。",
+    "items": [
+      {
+        "sourceId": "mext-gyakutai-tebiki-r8",
+        "note": "学校・教育委員会等向け 虐待対応の手引き（令和8年5月第二次改訂版）。障害のある子供についての節あり"
+      },
+      {
+        "route": "#/seito/child-abuse",
+        "label": "本ツールの整理を読む",
+        "note": "気づきのサイン、初動、通告先の振り分け、通告後の対応"
+      }
+    ]
+  },
+  {
+    "id": "jisatsu",
+    "title": "自殺予防",
+    "lead": "予防・危機介入・事後対応の3段階。改正法（令和8年4月施行）で学校の責務が明記。",
+    "items": [
+      {
+        "sourceId": "mext-jisatsu-page",
+        "note": "文科省の自殺予防ページ。法令・手引き・毎年の通知の一覧"
+      },
+      {
+        "sourceId": "mext-jisatsu-kaisei-r8",
+        "note": "改正自殺対策基本法の施行通知（令和8年3月31日）"
+      },
+      {
+        "sourceId": "mext-jisatsu-tebiki-h26",
+        "note": "子供に伝えたい自殺予防（自殺予防教育導入の手引）"
+      },
+      {
+        "sourceId": "mext-jisatsu-kinkyu-h22",
+        "note": "自殺が起きたときの緊急対応の手引き"
+      },
+      {
+        "route": "#/seito/suicide-prevention",
+        "label": "本ツールの整理を読む",
+        "note": "TALKの原則、気づきのサイン、初動、予防、事後対応"
+      }
+    ]
   }
 ]
