@@ -54,7 +54,7 @@ for (const c of categories) {
   if (catIds.has(c.id)) err(`categories.json に重複ID: ${c.id}`);
   catIds.add(c.id);
 
-  for (const k of ['num', 'name', 'en', 'overview', 'needs', 'instruction', 'support', 'places', 'jiritsu', 'quote', 'sourceId']) {
+  for (const k of ['num', 'name', 'en', 'overview', 'needs', 'instruction', 'support', 'places', 'quote', 'sourceId']) {
     if (c[k] == null) err(`${c.id}: ${k} がありません`);
   }
   if (!srcIds.has(c.sourceId)) err(`${c.id}: sourceId "${c.sourceId}" が sources.json にありません`);
@@ -97,11 +97,8 @@ for (const c of categories) {
     }
   }
 
-  for (const j of c.jiritsu || []) {
-    if (!validPairs.has(j.ku + ' ' + j.item)) {
-      err(`${c.id}: 自立活動の名称が27項目と一致しません -> 「${j.ku}／${j.item}」`);
-    }
-  }
+  // 版3.2.0で障害種・疾患ごとの自立活動の対応付けを廃止した（根拠のない編集整理だったため）。戻さない
+  if (c.jiritsu) err(`${c.id}: 区分に jiritsu があります。障害種ごとの項目候補は版3.2.0で廃止しました`);
 
   const dp = `${c.id}.json`;
   if (!fs.existsSync(path.join(root, dp))) { err(`${dp} がありません`); continue; }
@@ -114,19 +111,13 @@ for (const c of categories) {
     if (!d.name) err(`${where}: name がありません`);
     if (!d.overview) err(`${where}: overview がありません`);
     if (!Array.isArray(d.support) || !d.support.length) err(`${where}: support が空です`);
-    if (!Array.isArray(d.jiritsu)) err(`${where}: jiritsu がありません`);
+    if (d.jiritsu) err(`${where}: jiritsu があります。疾患ごとの項目候補は版3.2.0で廃止しました`);
 
     if (seen.has(d.name)) err(`${where}: 同じカテゴリ内で病名が重複しています`);
     seen.add(d.name);
     if (!allNames.has(d.name)) allNames.set(d.name, []);
     allNames.get(d.name).push(c.id);
 
-    for (const j of d.jiritsu || []) {
-      if (!validKu.has(j.ku)) err(`${where}: 区分名が不正 -> 「${j.ku}」`);
-      else if (!validPairs.has(j.ku + ' ' + j.item)) {
-        err(`${where}: 自立活動の項目名が27項目と一致しません -> 「${j.ku}／${j.item}」`);
-      }
-    }
 
     for (const sv of d.severity || []) {
       if (!sv.level || !sv.criteria || !Array.isArray(sv.support)) {
@@ -276,7 +267,7 @@ if (!(topics.seito || []).some(x => x.id === 'futoukou')) err('seito.json に fu
    ハッシュ、anchor は出典ページ内の要素id。 */
 const links = rj('links.json');
 if (!Array.isArray(links) || links.length === 0) err('links.json が配列ではないか空です');
-const topicRoutes = new Set(['#/jiritsu', '#/terms', '#/haikei', '#/seito']);
+const topicRoutes = new Set(['#/jiritsu', '#/jiritsu/support', '#/terms', '#/haikei', '#/seito']);
 for (const [key, list] of Object.entries(topics)) for (const h of list) topicRoutes.add(`#/${key}/${h.id}`);
 for (const c of categories) topicRoutes.add(`#/c/${c.id}`);
 const lkIds = new Set();

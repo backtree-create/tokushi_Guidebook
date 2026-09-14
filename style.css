@@ -660,7 +660,6 @@
   }
   .dd-support{margin:0 0 14px;padding-left:1.1em;}
   .dd-support li{margin-bottom:5px;}
-  .dd-jiritsu{display:flex;flex-wrap:wrap;gap:6px;}
   .sev-badge{
     font-size:11px;
     font-weight:700;
@@ -682,47 +681,6 @@
   .sv-criteria{color:var(--ink-soft);font-size:12.5px;margin-bottom:8px;}
   .sv-support{margin:0;padding-left:1.1em;font-size:12.5px;}
   .sv-support li{margin-bottom:3px;}
-  .jiritsu-chip{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    background:var(--card);
-    border:1px solid var(--line-strong);
-    border-radius:20px;
-    padding:4px 12px 4px 4px;
-    font-size:12.5px;
-  }
-  .jiritsu-chip .ku-mini{
-    background:var(--navy);
-    color:#fff;
-    font-size:11px;
-    padding:2px 8px;
-    border-radius:14px;
-  }
-
-  .jiritsu-list{display:flex;flex-direction:column;gap:8px;margin-top:14px;}
-  .jiritsu-row{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-left:3px solid var(--accent);
-    border-radius:2px;
-    padding:10px 14px;
-    font-size:13px;
-    box-shadow:var(--shadow);
-  }
-  .jiritsu-row .ku-tag{
-    display:inline-block;
-    font-size:11.5px;
-    font-weight:700;
-    background:var(--paper2);
-    color:var(--accent);
-    padding:2px 9px;
-    border-radius:2px;
-    margin-right:8px;
-  }
-  .jiritsu-row .item-name{font-weight:700;color:var(--ink-strong);}
-  .jiritsu-row .j-note{margin-top:5px;color:var(--ink-soft);}
-
   .place-row{
     display:grid;
     grid-template-columns:190px 1fr;
@@ -1192,6 +1150,85 @@
     .lk-note{grid-column:1 / -1;}
   }
 
+  /* ---------- 自立活動サポートシート（AIと考える） ---------- */
+  .sp-entry{
+    display:flex;align-items:center;gap:16px;
+    margin:0 0 16px;
+    padding:16px 20px;
+    background:var(--card);
+    border:1px solid var(--line-strong);
+    border-left:5px solid var(--accent);
+    border-radius:3px;
+    text-decoration:none;color:var(--ink);
+    transition:border-color .12s, transform .12s;
+  }
+  .sp-entry:hover{border-color:var(--accent);transform:translateY(-1px);}
+  .sp-entry-main{display:flex;flex-direction:column;gap:4px;flex:1;}
+  .sp-entry-main b{font-family:var(--serif);font-size:17px;color:var(--ink-strong);}
+  .sp-entry-main span{font-size:13px;line-height:1.75;color:var(--ink-soft);}
+  .sp-entry-mark{font-size:24px;color:var(--accent);}
+
+  .sp-num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:26px;height:26px;margin-right:10px;
+    font-family:var(--serif);font-size:13px;font-weight:700;
+    color:#fff;background:var(--navy);border-radius:50%;
+    vertical-align:middle;
+  }
+  .sp-form{display:block;}
+  .sp-field{display:flex;flex-direction:column;gap:5px;margin:12px 0;}
+  .sp-label{font-size:14px;font-weight:700;color:var(--ink-strong);display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;}
+  .sp-hint{font-size:12px;font-weight:400;color:var(--ink-faint);}
+  .sp-field textarea,.sp-field input[type="text"]{
+    width:100%;
+    box-sizing:border-box;
+    padding:9px 12px;
+    font:inherit;
+    font-size:14px;
+    line-height:1.7;
+    color:var(--ink);
+    background:var(--card);
+    border:1px solid var(--line-strong);
+    border-radius:3px;
+    resize:vertical;
+  }
+  .sp-field textarea:focus,.sp-field input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent);}
+  .sp-two{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;}
+  @media (max-width:640px){.sp-two{grid-template-columns:1fr;}}
+
+  .sp-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:12px 0;}
+  .sp-btn{
+    padding:9px 16px;
+    font:inherit;font-size:13.5px;font-weight:700;
+    color:var(--ink-strong);
+    background:var(--card);
+    border:1px solid var(--line-strong);
+    border-radius:3px;
+    cursor:pointer;
+  }
+  .sp-btn:hover{border-color:var(--navy);}
+  .sp-btn.primary{color:#fff;background:var(--navy);border-color:var(--navy);}
+  .sp-btn.primary:hover{background:var(--accent);border-color:var(--accent);}
+  .sp-btn.danger{color:var(--tone-warn-fg);}
+  .sp-copied{font-size:13px;color:var(--tone-ok-fg);font-weight:700;}
+  .sp-out{
+    width:100%;box-sizing:border-box;
+    padding:12px 14px;
+    font-family:var(--mono);
+    font-size:12.5px;
+    line-height:1.7;
+    color:var(--ink);
+    background:var(--card);
+    border:1px solid var(--line-strong);
+    border-radius:3px;
+  }
+
+  .sp-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px;}
+  .sp-table th,.sp-table td{border:1px solid var(--line-strong);padding:8px 10px;vertical-align:top;line-height:1.7;}
+  .sp-table th{width:190px;text-align:left;background:var(--paper2);color:var(--ink-strong);font-weight:700;}
+  .sp-table td.sp-basis{width:150px;color:var(--ink-faint);font-size:12px;}
+  .sp-sheet-note{margin:10px 0 0;font-size:12.5px;color:var(--ink-soft);}
+
   /* --- フッター --- */
   footer p{margin:0 0 10px;}
   .footer-meta{
@@ -1352,77 +1389,6 @@
   /* 逆引き(.rev-*)のスタイルは版3.0.0で機能ごと削除した */
   .item-label{font-weight:700;color:var(--ink-strong);}
 
-  /* ---------- 自立活動の対応付けについての注記 ---------- */
-  .edit-tag{
-    position:relative;
-    display:inline-block;
-    margin-left:8px;
-    padding:1px 7px;
-    font-family:var(--sans);
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:.04em;
-    color:var(--tone-warn-fg);
-    background:var(--tone-warn-bg);
-    border:1px solid var(--tone-warn-bd);
-    border-radius:3px;
-    vertical-align:middle;
-    cursor:help;
-  }
-  .edit-tag-tip{
-    display:none;
-    position:absolute;
-    left:0;top:calc(100% + 6px);
-    z-index:5;
-    width:min(340px,80vw);
-    padding:10px 12px;
-    font-size:12.5px;
-    font-weight:400;
-    line-height:1.7;
-    letter-spacing:0;
-    color:var(--ink);
-    background:var(--card);
-    border:1px solid var(--line-strong);
-    border-radius:3px;
-    box-shadow:0 4px 14px rgba(0,0,0,.14);
-  }
-  .edit-tag:hover .edit-tag-tip,.edit-tag:focus .edit-tag-tip,.edit-tag:focus-within .edit-tag-tip{display:block;}
-  .edit-tag:focus{outline:2px solid var(--accent);outline-offset:2px;}
-
-  .j-flow{
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    gap:6px 8px;
-    margin:10px 0 14px;
-    padding:10px 14px;
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:3px;
-    font-size:13px;
-  }
-  .j-step{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    padding:4px 10px 4px 6px;
-    border:1px solid var(--line);
-    border-radius:3px;
-    color:var(--ink-soft);
-  }
-  .j-step b{
-    width:18px;height:18px;
-    display:inline-flex;align-items:center;justify-content:center;
-    font-family:var(--mono);font-size:11px;
-    color:var(--ink-soft);
-    border:1px solid var(--line-strong);
-    border-radius:50%;
-  }
-  .j-step.on{color:var(--ink-strong);border-color:var(--navy);font-weight:700;}
-  .j-step.on b{color:#fff;background:var(--navy);border-color:var(--navy);}
-  .j-arrow{color:var(--ink-faint);}
-  .j-flow-note{flex:1 1 100%;font-size:12.5px;color:var(--ink-soft);}
-
   .fb-line{
     margin:12px 0 0;
     padding-top:12px;
@@ -1455,6 +1421,13 @@
      紙の上でも辿れるよう本文の後ろに出す。
      ========================================================== */
   @media print{
+    /* サポートシートの「枠を印刷」: 本体だけを出す */
+    body.sp-print header,body.sp-print .mode-tabs,body.sp-print .index,body.sp-print footer,
+    body.sp-print .crumb,body.sp-print .article-head,body.sp-print .overview,body.sp-print .section-disclaimer,
+    body.sp-print .sp-form,body.sp-print .source-box,body.sp-print .block:not(.sp-sheet){display:none !important;}
+    body.sp-print .sp-sheet{display:block !important;}
+    .sp-table th,.sp-table td{border:.5pt solid #000 !important;color:#000 !important;background:#fff !important;}
+    .sp-table tr.sp-empty td{height:60pt;}
     @page{ margin:16mm 14mm; }
 
     html,body{
@@ -1469,7 +1442,7 @@
     .top-strip,.mode-tabs,.fab-home,.install-banner,
     .index,.search-wrap,.disease-hits,.school-stage,
     .support-tabs,.crumb,
-    .fb-line,.d-hint,.chevron,.header-notice,.edit-tag-tip{
+    .fb-line,.d-hint,.chevron,.header-notice{
       display:none !important;
     }
 
@@ -1538,8 +1511,6 @@
       border-color:#999 !important;background:#fff !important;
       break-inside:avoid;page-break-inside:avoid;
     }
-    .jiritsu-chip{border:.5pt solid #666 !important;background:#fff !important;color:#000 !important;}
-    .ku-mini{background:#000 !important;color:#fff !important;}
     .basis-tag{border:.5pt solid #666 !important;background:#fff !important;color:#000 !important;}
 
     /* リンクは紙では押せないので、URLを添える */
@@ -1617,10 +1588,11 @@
     .hk-home-note{border-left-color:var(--accent);}
     .j-step.on{border-color:var(--accent);}
     .lk-title{border-left-color:var(--accent);}
+    .sp-num{background:var(--accent);color:#0b131c;}
+    .sp-btn.primary{background:var(--accent);color:#0b131c;border-color:var(--accent);}
     .lk-jump a:hover{border-color:var(--accent);}
     .j-step.on b{background:var(--accent);color:#0b131c;border-color:var(--accent);}
     .hk-card:hover,.hk-rel-card:hover{border-color:var(--accent);}
-    .ku-mini{background:var(--accent);color:#0b131c;}
     .mode-tabs button.on{background:var(--paper);color:var(--ink);}
     .idx-hit-count{background:var(--accent);color:#0b131c;}
     .sev-badge{background:var(--accent);color:#0b131c;}

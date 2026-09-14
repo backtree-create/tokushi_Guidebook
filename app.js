@@ -100,6 +100,7 @@
     },
     search:  function (q) { return '#/q/' + encodeURIComponent(q); },
     jiritsu: function () { return '#/jiritsu'; },
+    support: function () { return '#/jiritsu/support'; },
     terms:   function () { return '#/terms'; },
     haikei:  function (id) { return '#/haikei' + (id ? '/' + encodeURIComponent(id) : ''); },
     seito:   function (id) { return '#/seito'  + (id ? '/' + encodeURIComponent(id) : ''); },
@@ -115,7 +116,7 @@
     switch (seg[0]) {
       case 'c':       return { view: 'cat', catId: seg[1], disease: seg[2] || null };
       case 'q':       return { view: 'search', q: seg.slice(1).join('/') };
-      case 'jiritsu': return { view: 'jiritsu' };  // 「項目→疾患」の逆引き(#/jiritsu/区分/項目)は版3.0.0で廃止
+      case 'jiritsu': return seg[1] === 'support' ? { view: 'support' } : { view: 'jiritsu' };  // 旧逆引き(#/jiritsu/区分/項目)は一覧へ
       case 'terms':   return { view: 'terms' };
       case 'haikei':  return seg[1] ? { view: 'topic-item', topic: 'haikei', id: seg[1] } : { view: 'topic', topic: 'haikei' };
       case 'seito':   return seg[1] ? { view: 'topic-item', topic: 'seito',  id: seg[1] } : { view: 'topic', topic: 'seito' };
@@ -147,7 +148,7 @@
     routing = true;
     try {
       var r = parseHash();
-      mode = r.view === 'jiritsu' ? 'jiritsu'
+      mode = (r.view === 'jiritsu' || r.view === 'support') ? 'jiritsu'
            : r.view === 'terms' ? 'terms'
            : (r.view === 'topic' || r.view === 'topic-item') ? r.topic
            : 'guide';
@@ -172,6 +173,8 @@
         }
       } else if (r.view === 'jiritsu') {
         renderJiritsuTable();
+      } else if (r.view === 'support') {
+        renderSupport();
       } else if (r.view === 'terms') {
         renderTerms();
       } else if (r.view === 'topic') {
@@ -194,6 +197,7 @@
     }
     if (r.view === 'search') return '「' + r.q + '」の検索結果｜' + base;
     if (r.view === 'jiritsu') return '自立活動 6区分27項目｜' + base;
+    if (r.view === 'support') return '自立活動サポートシート｜' + base;
     if (r.view === 'terms') return '出典・リンク集｜' + base;
     if (r.view === 'topic') return topicOf(r.topic).title + '｜' + base;
     if (r.view === 'topic-item') {
@@ -216,7 +220,7 @@
 
   var HIT_LABEL = {
     name: '病名', overview: '説明', support: '支援内容',
-    severity: '程度別', jiritsu: '自立活動'
+    severity: '程度別'
   };
 
   // どのフィールドで当たったかを返す。当たらなければ null。
@@ -233,9 +237,6 @@
       for (j = 0; j < (sv.support || []).length; j++) {
         if (sv.support[j].toLowerCase().indexOf(f) >= 0) return 'severity';
       }
-    }
-    for (i = 0; i < (d.jiritsu || []).length; i++) {
-      if ((d.jiritsu[i].ku + d.jiritsu[i].item).toLowerCase().indexOf(f) >= 0) return 'jiritsu';
     }
     return null;
   }
@@ -321,7 +322,7 @@
     var html = '<div class="home-view">' +
       '<p class="eyebrow" style="color:var(--gold);font-family:var(--sans);letter-spacing:.28em;font-size:11px;">INDEX</p>' +
       '<h2 class="cat-title">障害種別 索引</h2>' +
-      '<p>' + DATA.length + 'の障害種別について、原因となる病気・状態別の分類、教育的ニーズ、合理的配慮を含む必要な支援内容、自立活動、学びの場を整理しています。左の索引または下の一覧から選んでください。</p>' +
+      '<p>' + DATA.length + 'の障害種別について、原因となる病気・状態別の分類、教育的ニーズ、合理的配慮を含む必要な支援内容、学びの場を整理しています。自立活動の項目は、疾患から引くのではなく、サポートシートの手順で子どもの実態から選びます。左の索引または下の一覧から選んでください。</p>' +
       '<div class="home-stats">' +
         '<div class="home-stat"><b>' + DATA.length + '</b><span>障害種別</span></div>' +
         '<div class="home-stat"><b>' + total + '</b><span>原因疾患・状態の分類</span></div>' +
@@ -533,17 +534,7 @@
       return '<div class="place-row"><div class="p-name">' + esc(p.name) + '</div><div>' + esc(p.note) + '</div></div>';
     }).join('');
 
-    var jiritsuHtml = cat.jiritsu.map(function (j) {
-      return '<div class="jiritsu-row"><span class="ku-tag">' + esc(j.ku) + '</span>' +
-             '<span class="item-name">' + esc(j.item) + '</span>' +
-             '<div class="j-note">' + esc(j.note) + '</div></div>';
-    }).join('');
-
     var diseaseHtml = cat.diseases.map(function (d, i) {
-      var chips = d.jiritsu.map(function (j) {
-        return '<span class="jiritsu-chip"><span class="ku-mini">' + esc(j.ku) + '</span>' + esc(j.item) + '</span>';
-      }).join('');
-
       var supportLis = d.support.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('');
 
       var scale = d.severityScale;
@@ -595,8 +586,6 @@
           '<p class="d-overview">' + esc(d.overview) + '</p>' +
           '<p class="dd-label">個別に求められる支援</p>' +
           '<ul class="dd-support">' + supportLis + '</ul>' +
-          '<p class="dd-label">検討の出発点となりうる自立活動の項目' + editTag() + '</p>' +
-          '<div class="dd-jiritsu">' + chips + '</div>' +
           severityBlock +
           noteBlock +
           basisBadges(d) +
@@ -615,7 +604,7 @@
 
       '<section class="block">' +
         '<h3 class="block-title">基となる病気・状態による分類<span class="tally">' + cat.diseases.length + '件</span></h3>' +
-        '<p class="block-sub">同じ障害種でも、原因となる疾患や状態の違いによって必要な配慮は異なります。各項目をクリックすると、個別に求められる支援と関連する自立活動項目が表示されます。</p>' +
+        '<p class="block-sub">同じ障害種でも、原因となる疾患や状態の違いによって必要な配慮は異なります。各項目をクリックすると、個別に求められる支援と出典が表示されます。</p>' +
         // 出典の性質はリストを読む前に示す（フッターまでスクロールしないと読めない状態を避ける）
         '<div class="section-disclaimer">' +
           '<b>この分類についての出典表示</b>' +
@@ -641,9 +630,11 @@
       '</section>' +
 
       '<section class="block">' +
-        '<h3 class="block-title">検討の出発点となりうる自立活動の項目' + editTag() + '</h3>' +
-        jiritsuFlow() +
-        '<div class="jiritsu-list">' + jiritsuHtml + '</div>' +
+        '<h3 class="block-title">自立活動<span class="tally">手順で考える</span></h3>' +
+        '<div class="section-disclaimer"><b>疾患・障害種から項目を引く一覧は置いていません</b>' +
+        '<p>自立活動の項目は、この子の実態把握と課題の整理から選ぶものです。版3.2.0で、疾患・障害種ごとの項目候補（本ツールの編集上の整理で、手引・解説に根拠のないもの）を廃止しました。' +
+        '<a href="' + ROUTES.support() + '">自立活動サポートシートをAIと考える</a>で、解説の手順（実態把握 → 課題の整理 → 項目の選定 → 指導内容）に沿って進められます。' +
+        '27項目の正式名称と要旨は<a href="' + ROUTES.jiritsu() + '">一覧</a>にあります。</p></div>' +
       '</section>' +
 
       '<section class="block">' +
@@ -655,7 +646,6 @@
       '<div class="source-box">' +
         '<p class="quote">「' + esc(cat.quote) + '」</p>' +
         '<p>出典：' + srcLink(cat.sourceId) + '</p>' +
-        '<p style="margin-top:10px;">自立活動の区分・項目は次に基づきます。<br>' + srcLink('jiritsu-kaisetsu') + '</p>' +
       '</div>';
 
     playFadeIn();
@@ -728,10 +718,14 @@
         '<h2 class="cat-title">自立活動 6区分27項目 一覧<span class="en">Six Categories, 27 Items of Jiritsu Katsudo</span></h2>' +
       '</div>' +
       '<div class="overview">自立活動は、障害のある子供が自立を目指し、学習上又は生活上の困難を主体的に改善・克服するために設けられた特別な指導領域です。27項目すべてを一律に指導するのではなく、子供一人一人の実態に応じて必要な項目を選定し、相互に関連付けて具体的な指導内容を組み立てます。</div>' +
+      '<a class="sp-entry" href="' + ROUTES.support() + '">' +
+        '<span class="sp-entry-main"><b>自立活動サポートシートをAIと考える</b>' +
+        '<span>実態把握 → 課題の整理 → 項目の選定 → 指導内容、の手順で入力し、Copilot・Gemini に渡す指示書を作ります。項目は最後に出てきます。</span></span>' +
+        '<span class="sp-entry-mark" aria-hidden="true">›</span></a>' +
       '<div class="section-disclaimer"><b>項目の選び方</b>' +
       '<p>自立活動編解説が示す手順は、実態把握 → 課題の整理 → 項目の選定 → 具体的な指導内容、の順です。' +
-      '障害種別ガイドの各ページに載せている項目は3段目の候補で、1・2段目は目の前の子どもからしか出ません。' +
-      '「この疾患だからこの項目」と決める使い方はしないでください。項目から疾患をたどる逆引きは、その使い方を誘発するため版3.0.0で廃止しました。</p></div>' +
+      '項目は目の前の子どもの実態と課題から選ぶもので、疾患や障害種から引くものではありません。' +
+      'そのため本ツールは、疾患・障害種ごとの項目候補と、項目から疾患をたどる逆引きを廃止しました（版3.0.0〜3.2.0）。この一覧は正式名称と要旨の確認用です。</p></div>' +
       '<div class="section-disclaimer"><b>項目名の表記について</b>' +
       '<p>本ツールでは画面上の読みやすさのため短縮した項目名を用いています。学習指導要領の正式名称（「〜に関すること」）は各項目に併記しました。指導計画等の書類に記載する際は正式名称をお使いください。</p></div>';
 
@@ -881,22 +875,269 @@
     return html + '</div>';
   }
 
-  /* ---------- 自立活動の対応付けについての注記 ---------- */
+  /* ---------- 自立活動サポートシート（AIと考える） ---------- */
 
-  // 疾患・状態と自立活動の対応は本ツールの整理で、手引・解説に直接の記載はない。
-  // 使う場所にその旨を出す（READMEにだけ書いてあっても読まれない）。
-  function editTag() {
-    return '<span class="edit-tag" tabindex="0" role="note">編集整理' +
-      '<span class="edit-tag-tip">この対応は本ツールによる整理で、手引・自立活動編解説に直接の記載はありません。' +
-      '子どもの実態把握と課題の整理から選び直してください。</span></span>';
+  // 解説の流れ図に沿って ①〜④ を教員が書き、⑤〜⑦ を AI と考えるための指示書を作る。
+  // AI の役割は「書く人」ではなく「問い返す人」。入力はこのページの中だけで組み立て、保存も送信もしない。
+
+  var SP_KU_HINT = {
+    '健康の保持': '生活リズム、体調、病気の理解と自己管理、身体の状態、運動量',
+    '心理的な安定': '情緒の安定、状況の変化への対応、困難を改善しようとする意欲',
+    '人間関係の形成': '他者との関わり、意図や感情の理解、自己理解と行動の調整、集団への参加',
+    '環境の把握': '感覚の活用、感覚や認知の特性、感覚の補助・代行手段、周囲の状況の把握、概念の形成',
+    '身体の動き': '姿勢と運動・動作、基本動作、日常生活に必要な動作、身体の移動、作業に必要な動作',
+    'コミュニケーション': '基礎的な能力、言語の受容と表出、言語の形成と活用、手段の選択と活用、状況に応じたコミュニケーション'
+  };
+
+  var SP = null;  // 入力の状態（ページ内のみ）
+  function spBlank() {
+    var byKu = {};
+    JIRITSU27.forEach(function (g) { byKu[g.ku] = ''; });
+    return {
+      stage: '', disability: '',
+      status: '', development: '', interest: '', environment: '',
+      byKu: byKu,
+      issues: '', relations: '',
+      central: '', goal: '',
+      ask: ''
+    };
   }
-  function jiritsuFlow() {
-    return '<div class="j-flow" aria-label="自立活動の項目を選ぶ手順">' +
-      '<span class="j-step"><b>1</b>実態把握</span><span class="j-arrow" aria-hidden="true">›</span>' +
-      '<span class="j-step"><b>2</b>課題の整理</span><span class="j-arrow" aria-hidden="true">›</span>' +
-      '<span class="j-step on"><b>3</b>項目の選定</span><span class="j-arrow" aria-hidden="true">›</span>' +
-      '<span class="j-step"><b>4</b>具体的な指導内容</span>' +
-      '<span class="j-flow-note">ここに載るのは3の候補です。1と2は目の前の子どもからしか出ません。</span></div>';
+
+  function spItemsText(withDesc) {
+    return JIRITSU27.map(function (g, gi) {
+      return (gi + 1) + ' ' + g.ku + '\n' + g.items.map(function (it, ii) {
+        return '  (' + (ii + 1) + ') ' + it.official + (withDesc && it.desc ? '：' + it.desc : '');
+      }).join('\n');
+    }).join('\n');
+  }
+
+  function spInputBlock(d) {
+    var lines = [];
+    lines.push('①実態把握');
+    lines.push('・校種・学年：' + (d.stage || '（未記入）'));
+    lines.push('・主たる障害・状態（診断名は不要）：' + (d.disability || '（未記入）'));
+    lines.push('・障害の状態：' + (d.status || '（未記入）'));
+    lines.push('・発達や経験の程度：' + (d.development || '（未記入）'));
+    lines.push('・興味・関心、得意なこと：' + (d.interest || '（未記入）'));
+    lines.push('・生活や学習の環境（家庭・学級・学びの場）：' + (d.environment || '（未記入）'));
+    lines.push('');
+    lines.push('②実態を6区分の観点で整理したもの');
+    JIRITSU27.forEach(function (g) {
+      lines.push('・' + g.ku + '：' + (d.byKu[g.ku] || '（未記入）'));
+    });
+    lines.push('');
+    lines.push('③指導すべき課題（1行に1つ）');
+    lines.push(d.issues ? d.issues : '（未記入）');
+    lines.push('・課題同士の関係（原因と結果、優先順位など）：' + (d.relations || '（未記入）'));
+    lines.push('');
+    lines.push('④中心となる課題と指導目標');
+    lines.push('・中心となる課題：' + (d.central || '（未記入）'));
+    lines.push('・指導目標（この期間で目指すこと）：' + (d.goal || '（未記入）'));
+    if (d.ask) { lines.push(''); lines.push('特に相談したいこと：' + d.ask); }
+    return lines.join('\n');
+  }
+
+  function buildSupportPrompt(target, d) {
+    var full = target === 'gemini';
+    var rules = [
+      '児童生徒の氏名は扱いません。「本児」と呼びます。私が氏名を書いていたら指摘し、以後は本児と呼び替えてください。',
+      '手順は ①実態把握 → ②実態の整理（6区分の観点）→ ③指導すべき課題の整理 → ④中心となる課題と指導目標 → ⑤項目の選定 → ⑥項目の関連付け → ⑦具体的な指導内容 の順です。私は①〜④を書きました。⑤〜⑦を一緒に考えてください。',
+      '①〜④に不足や矛盾があれば、⑤に進む前に質問してください。特に、課題（③）がどの実態（①②）から出ているか分からないものは、そのまま通さないでください。',
+      '項目は、末尾の「自立活動 6区分27項目」の正式名称だけを使ってください。項目名を創作したり、言い換えたりしないでください。',
+      '候補を挙げるときは、選んだ理由と、有力だが選ばなかった項目とその理由も書いてください。',
+      '出力の各行に「根拠」（どの実態・どの課題から導いたか）を付けてください。私の入力にない前提を置くときは「仮定」と明示してください。',
+      '断定しないでください。最終判断は私（教員）と校内の検討で行います。医学的な診断や治療の判断はしないでください。'
+    ];
+    var out = [];
+    out.push('あなたは特別支援教育で自立活動を担当する教員の同僚として、「自立活動サポートシート」の作成を手伝ってください。' +
+      'あなたの役割は、シートを代わりに書くことではなく、問い返しながら一緒に考えることです。');
+    out.push('');
+    out.push('【守ること】');
+    rules.forEach(function (r, i) { out.push((i + 1) + '. ' + r); });
+    out.push('');
+    out.push('【本児について（私の入力）】');
+    out.push(spInputBlock(d));
+    out.push('');
+    out.push('【お願いすること】');
+    out.push('まず、①〜④を読んで、足りない点・確認したい点を最大5つ、質問の形で挙げてください。私が答えるまで⑤に進まないでください。');
+    out.push('答えが揃ったら、次の形式でシート（案）を出してください。');
+    out.push('・⑤ 選定した項目（正式名称）｜区分｜選んだ理由｜根拠');
+    out.push('・⑤′ 検討したが選ばなかった項目｜理由');
+    out.push('・⑥ 項目の関連付け：選んだ項目同士をどう結び付けて指導するか｜根拠');
+    out.push('・⑦ 具体的な指導内容（2〜3案）｜ねらい｜関連する項目｜根拠｜評価の観点');
+    out.push('・最後に「教員が確認すべき点」を箇条書きで。');
+    out.push('');
+    out.push('【自立活動 6区分27項目（' + (full ? '正式名称と要旨' : '正式名称') + '）】');
+    out.push('出典：特別支援学校教育要領・学習指導要領解説 自立活動編（平成30年3月）');
+    out.push(spItemsText(full));
+    return out.join('\n');
+  }
+
+  function spField(id, label, hint, rows) {
+    return '<label class="sp-field"><span class="sp-label">' + esc(label) +
+      (hint ? '<span class="sp-hint">' + esc(hint) + '</span>' : '') + '</span>' +
+      '<textarea data-sp="' + esc(id) + '" rows="' + (rows || 2) + '"></textarea></label>';
+  }
+
+  function renderSupport() {
+    if (!SP) SP = spBlank();
+    var d = SP;
+
+    var kuFields = JIRITSU27.map(function (g) {
+      return spField('ku:' + g.ku, g.ku, SP_KU_HINT[g.ku] || '', 2);
+    }).join('');
+
+    var html = '<div class="jiritsu-table-wrap sp-view">' +
+      '<p class="crumb"><a href="' + ROUTES.jiritsu() + '">自立活動 6区分27項目 一覧</a> › 自立活動サポートシート</p>' +
+      '<div class="article-head">' +
+        '<div class="article-num" style="border-radius:3px;">AI</div>' +
+        '<h2 class="cat-title">自立活動サポートシートをAIと考える<span class="en">Jiritsu Katsudo Support Sheet with AI</span></h2>' +
+      '</div>' +
+      '<div class="overview">自立活動編解説の手順に沿って、①実態把握 から ④指導目標 までを先生が書き、⑤項目の選定 から ⑦具体的な指導内容 までを Copilot または Gemini と一緒に考えるための指示書を作ります。' +
+        'AIには「書く人」ではなく「問い返す人」の役割を指定します。足りない実態があれば、AIは項目を出す前に質問します。</div>' +
+      '<div class="section-disclaimer"><b>氏名を書かないでください</b>' +
+        '<p>「本児」「生徒A」で書きます。入力はこのページの中だけで組み立て、どこにも送信・保存しません。ページを離れると消えます。' +
+        'AIに貼るのは先生自身です。校内で許可されたAI（学校アカウントの Copilot など）を使ってください。</p></div>' +
+
+      '<form class="sp-form" id="spForm" autocomplete="off">' +
+
+      '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">1</span>実態把握</h3>' +
+        '<p class="block-sub">解説が挙げる4つの観点。障害名だけでなく、本児が何をどのようにしているかを書きます。</p>' +
+        '<div class="sp-two">' +
+          '<label class="sp-field"><span class="sp-label">校種・学年（任意）</span><input type="text" data-sp="stage" placeholder="例：中学部2年"></label>' +
+          '<label class="sp-field"><span class="sp-label">主たる障害・状態（任意）<span class="sp-hint">診断名の細部は不要</span></span><input type="text" data-sp="disability" placeholder="例：知的障害を伴う自閉症"></label>' +
+        '</div>' +
+        spField('status', '障害の状態', '見え方、聞こえ方、身体の動き、理解の仕方など、学習や生活に関わる状態', 3) +
+        spField('development', '発達や経験の程度', 'できていること、これまでの学習・生活経験、身に付いている力', 3) +
+        spField('interest', '興味・関心、得意なこと', '好きな活動、集中できること、人との関わりで好むこと', 2) +
+        spField('environment', '生活や学習の環境', '家庭、学級、学びの場、支援者、使っている補助手段', 2) +
+      '</section>' +
+
+      '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">2</span>実態を6区分の観点で整理する</h3>' +
+        '<p class="block-sub">①で書いたことを、6つの区分の観点で見直します。当てはまらない区分は空欄でかまいません。</p>' +
+        kuFields +
+      '</section>' +
+
+      '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">3</span>指導すべき課題を整理する</h3>' +
+        '<p class="block-sub">①②から見えてきた困難を課題の形にします。1行に1つ。どの実態から出た課題かが分かるように書くと、AIの問い返しが減ります。</p>' +
+        spField('issues', '課題（1行に1つ）', '例：気持ちが高ぶると切り替えに時間がかかる（①障害の状態、②心理的な安定から）', 4) +
+        spField('relations', '課題同士の関係', '原因と結果、どれが先か、複数の課題に共通する背景', 2) +
+      '</section>' +
+
+      '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">4</span>中心となる課題と指導目標</h3>' +
+        '<p class="block-sub">課題同士の関係から、今この期間に取り組む中心の課題を1つに絞ります。</p>' +
+        spField('central', '中心となる課題', '', 2) +
+        spField('goal', '指導目標（この期間で目指すこと）', '評価できる形で。例：〜の場面で、〜を使って、〜できる', 2) +
+        spField('ask', '特に相談したいこと（任意）', '迷っている点、校内で意見が分かれている点など', 2) +
+      '</section>' +
+
+      '</form>' +
+
+      '<section class="block"><h3 class="block-title"><span class="sp-num">5</span>指示書を作る<span class="tally">⑤〜⑦はAIと</span></h3>' +
+        '<p class="block-sub">下の指示書をコピーしてAIに貼ります。AIはまず質問を返します。答えると、項目の選定・関連付け・指導内容の案が根拠付きで出ます。</p>' +
+        '<div class="support-tabs sp-tabs">' +
+          '<button type="button" class="on" data-target="copilot">Copilot 用（短め）</button>' +
+          '<button type="button" data-target="gemini">Gemini 用（要旨付き）</button>' +
+        '</div>' +
+        '<div class="sp-actions">' +
+          '<button type="button" class="sp-btn primary" id="spCopy">指示書をコピー</button>' +
+          '<button type="button" class="sp-btn" id="spSheet">シート（案）の枠を印刷</button>' +
+          '<button type="button" class="sp-btn danger" id="spReset">入力を消す</button>' +
+          '<span class="sp-copied" id="spCopied" aria-live="polite"></span>' +
+        '</div>' +
+        '<textarea class="sp-out" id="spOut" readonly rows="18"></textarea>' +
+      '</section>' +
+
+      '<section class="block sp-sheet" id="spSheetArea">' +
+        '<h3 class="block-title">自立活動サポートシート（案）</h3>' +
+        '<div id="spSheetBody"></div>' +
+      '</section>' +
+
+      '<div class="source-box">' +
+        '<p>手順と観点は次に基づきます。<br>' + srcLink('jiritsu-kaisetsu') + '</p>' +
+        '<p style="margin-top:8px;">AIの出力は案です。根拠欄が「仮定」になっている行、AIが「教員が確認すべき点」に挙げた点は、校内の検討で必ず確かめてください。</p>' +
+      '</div>' +
+      '</div>';
+
+    mainContent.innerHTML = html;
+    playFadeIn();
+
+    var target = 'copilot';
+    var out = document.getElementById('spOut');
+
+    function readForm() {
+      mainContent.querySelectorAll('[data-sp]').forEach(function (el) {
+        var k = el.getAttribute('data-sp');
+        if (k.indexOf('ku:') === 0) d.byKu[k.slice(3)] = el.value.trim();
+        else d[k] = el.value.trim();
+      });
+    }
+    function fillForm() {
+      mainContent.querySelectorAll('[data-sp]').forEach(function (el) {
+        var k = el.getAttribute('data-sp');
+        el.value = k.indexOf('ku:') === 0 ? (d.byKu[k.slice(3)] || '') : (d[k] || '');
+      });
+    }
+    function refresh() {
+      readForm();
+      out.value = buildSupportPrompt(target, d);
+      renderSheet();
+    }
+    function renderSheet() {
+      var rows = [
+        ['①実態把握', ['校種・学年：' + d.stage, '主たる障害・状態：' + d.disability, '障害の状態：' + d.status, '発達や経験の程度：' + d.development, '興味・関心：' + d.interest, '環境：' + d.environment]],
+        ['②6区分の観点', JIRITSU27.map(function (g) { return g.ku + '：' + (d.byKu[g.ku] || ''); })],
+        ['③指導すべき課題', (d.issues ? d.issues.split('\n') : []).concat(d.relations ? ['関係：' + d.relations] : [])],
+        ['④中心となる課題と指導目標', ['中心となる課題：' + d.central, '指導目標：' + d.goal]]
+      ];
+      var h = '<table class="sp-table"><tbody>';
+      rows.forEach(function (r) {
+        h += '<tr><th>' + esc(r[0]) + '</th><td>' + r[1].map(function (x) { return esc(x); }).join('<br>') + '</td><td class="sp-basis">根拠・備考</td></tr>';
+      });
+      ['⑤選定した項目（正式名称）', '⑤′検討したが選ばなかった項目', '⑥項目の関連付け', '⑦具体的な指導内容（ねらい・関連する項目・評価の観点）', '教員が確認すべき点'].forEach(function (lab) {
+        h += '<tr class="sp-empty"><th>' + esc(lab) + '</th><td>&nbsp;<br>&nbsp;<br>&nbsp;</td><td class="sp-basis">根拠</td></tr>';
+      });
+      h += '</tbody></table><p class="sp-sheet-note">作成日：　　　　　　　　　　記入者：　　　　　　　　　　（氏名は書かず「本児」で記入）</p>';
+      document.getElementById('spSheetBody').innerHTML = h;
+    }
+
+    fillForm();
+    refresh();
+
+    mainContent.querySelectorAll('[data-sp]').forEach(function (el) {
+      el.addEventListener('input', refresh);
+    });
+    mainContent.querySelectorAll('.sp-tabs button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        mainContent.querySelectorAll('.sp-tabs button').forEach(function (x) { x.classList.remove('on'); });
+        b.classList.add('on');
+        target = b.getAttribute('data-target');
+        refresh();
+      });
+    });
+    document.getElementById('spCopy').addEventListener('click', function () {
+      refresh();
+      var note = document.getElementById('spCopied');
+      function done(ok) { note.textContent = ok ? 'コピーしました。AIに貼ってください。' : 'コピーできませんでした。指示書を選択して手動でコピーしてください。'; setTimeout(function () { note.textContent = ''; }, 4000); }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(out.value).then(function () { done(true); }, function () { done(false); });
+      } else {
+        out.select(); try { done(document.execCommand('copy')); } catch (e) { done(false); }
+      }
+    });
+    document.getElementById('spSheet').addEventListener('click', function () {
+      refresh();
+      document.body.classList.add('sp-print');
+      var off = function () { document.body.classList.remove('sp-print'); window.removeEventListener('afterprint', off); };
+      window.addEventListener('afterprint', off);
+      window.print();
+      setTimeout(off, 2000);
+    });
+    document.getElementById('spReset').addEventListener('click', function () {
+      if (!window.confirm('入力をすべて消します。よろしいですか。')) return;
+      SP = d = spBlank();
+      fillForm(); refresh();
+    });
   }
 
   /* ---------- 主題のタブ（配慮を要する背景／生徒指導上の課題） ---------- */
