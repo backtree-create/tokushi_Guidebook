@@ -17,9 +17,40 @@
   }
 
   var DATA = [], JIRITSU27 = [], SOURCES = [], META = {};
-  var HAIKEI = [];  // 配慮を要する背景（障害以外の教育的ニーズ）。区分とは別の型
+  // 区分（DATA）とは別の型で持つ「主題」のタブ。自立活動との対応は持たない。
+  //   haikei: 配慮を要する背景（学習指導要領 総則「特別な配慮を必要とする児童生徒」）
+  //   seito : 生徒指導上の課題（生徒指導提要）
+  var TOPICS = {
+    haikei: {
+      key: 'haikei', tab: 'tabHaikei', mark: '背',
+      title: '配慮を要する背景', en: 'Backgrounds Requiring Special Consideration',
+      intro: '障害ではないが、置かれた状況が学びの困難を生んでいる児童生徒についての整理です。' +
+        '学習指導要領 総則の「特別な配慮を必要とする児童生徒への指導」に沿い、障害種別ガイドとは別の枠で扱います。' +
+        '自立活動の27項目とは対応付けず、代わりに「関連する障害種別」で障害種別ガイドへ橋をかけています。',
+      noteHead: '3つの項目は性格が違います',
+      note: '日本語指導は「特別の教育課程」として制度が整っています。特異な才能（2E）は制度化の直前で、記述は検討中の資料に基づきます。' +
+        'ヤングケアラーは「指導」ではなく「気づいて、つなぐ」対象で、指導計画の項目を持ちません。',
+      foot: '一次資料は文部科学省・こども家庭庁などの公的資料に限っています。個別の研究成果は本文の根拠にしていません。',
+      items: []
+    },
+    seito: {
+      key: 'seito', tab: 'tabSeito', mark: '生',
+      title: '生徒指導上の課題', en: 'Student Guidance Issues (Seito Shido Teiyo)',
+      intro: '生徒指導提要（令和4年12月改訂）を一次資料とし、障害ではないが学校が組織的に対応する課題を扱います。' +
+        '障害種別ガイドと同じ自立活動の枠には載せず、提要の重層的支援構造（発達支持的・課題予防的・困難課題対応的）で整理しています。',
+      noteHead: 'まず不登校から',
+      note: '以前は障害種別ガイドの11番目に置いていた不登校を、版3.0.0でこのタブに移しました。' +
+        '不登校は障害ではなく、自立活動の対応付けは根拠を持たないためです。提要の他の章（いじめ、児童虐待、自殺予防など）に広げるかどうかは別途判断します。',
+      foot: '一次資料は生徒指導提要と文部科学省の法令・通知・施策文書に限っています。',
+      items: []
+    }
+  };
+  function topicOf(key) { return TOPICS[key]; }
+  function topicItem(key, id) {
+    var t = TOPICS[key];
+    return t ? t.items.find(function (x) { return x.id === id; }) : null;
+  }
   var SRC = {};   // id -> source
-  var REV = {};    // 「区分／項目」-> [{cat, disease}]  自立活動からの逆引き
 
   function srcLink(id) {
     var s = SRC[id];
@@ -32,10 +63,10 @@
   /* ---------- DOM 参照 ---------- */
 
   var catList, mainContent, searchBox, sideNav,
-      tabGuide, tabHaikei, tabJiritsu, tabTerms, layoutRoot, homeBtn, homeLink, homeEmblem, siteFooter;
+      tabGuide, tabHaikei, tabSeito, tabJiritsu, tabTerms, layoutRoot, homeBtn, homeLink, homeEmblem, siteFooter;
 
   var currentId = null;
-  var mode = 'guide'; // 'guide' | 'haikei' | 'jiritsu' | 'terms'
+  var mode = 'guide'; // 'guide' | 'haikei' | 'seito' | 'jiritsu' | 'terms'
   var openDisease = null;   // 開いている疾患名（URLに載せる）
   var routing = false;      // 描画中の navigate を無視するための印
 
@@ -68,11 +99,10 @@
     },
     search:  function (q) { return '#/q/' + encodeURIComponent(q); },
     jiritsu: function () { return '#/jiritsu'; },
-    kumoku:  function (ku, item) {
-      return '#/jiritsu/' + encodeURIComponent(ku) + '/' + encodeURIComponent(item);
-    },
     terms:   function () { return '#/terms'; },
-    haikei:  function (id) { return '#/haikei' + (id ? '/' + encodeURIComponent(id) : ''); }
+    haikei:  function (id) { return '#/haikei' + (id ? '/' + encodeURIComponent(id) : ''); },
+    seito:   function (id) { return '#/seito'  + (id ? '/' + encodeURIComponent(id) : ''); },
+    topic:   function (key, id) { return key === 'seito' ? ROUTES.seito(id) : ROUTES.haikei(id); }
   };
 
   function parseHash() {
@@ -84,11 +114,10 @@
     switch (seg[0]) {
       case 'c':       return { view: 'cat', catId: seg[1], disease: seg[2] || null };
       case 'q':       return { view: 'search', q: seg.slice(1).join('/') };
-      case 'jiritsu': return seg[1]
-        ? { view: 'kumoku', ku: seg[1], item: seg[2] }
-        : { view: 'jiritsu' };
+      case 'jiritsu': return { view: 'jiritsu' };  // 「項目→疾患」の逆引き(#/jiritsu/区分/項目)は版3.0.0で廃止
       case 'terms':   return { view: 'terms' };
-      case 'haikei':  return seg[1] ? { view: 'haikei-item', id: seg[1] } : { view: 'haikei' };
+      case 'haikei':  return seg[1] ? { view: 'topic-item', topic: 'haikei', id: seg[1] } : { view: 'topic', topic: 'haikei' };
+      case 'seito':   return seg[1] ? { view: 'topic-item', topic: 'seito',  id: seg[1] } : { view: 'topic', topic: 'seito' };
       default:        return { view: 'home' };
     }
   }
@@ -107,6 +136,7 @@
   function setTabs(m) {
     tabGuide.classList.toggle('on', m === 'guide');
     tabHaikei.classList.toggle('on', m === 'haikei');
+    tabSeito.classList.toggle('on', m === 'seito');
     tabJiritsu.classList.toggle('on', m === 'jiritsu');
     tabTerms.classList.toggle('on', m === 'terms');
   }
@@ -116,9 +146,9 @@
     routing = true;
     try {
       var r = parseHash();
-      mode = (r.view === 'jiritsu' || r.view === 'kumoku') ? 'jiritsu'
+      mode = r.view === 'jiritsu' ? 'jiritsu'
            : r.view === 'terms' ? 'terms'
-           : (r.view === 'haikei' || r.view === 'haikei-item') ? 'haikei'
+           : (r.view === 'topic' || r.view === 'topic-item') ? r.topic
            : 'guide';
       setTabs(mode);
 
@@ -126,6 +156,8 @@
       sideNav.style.display = wide ? 'none' : '';
       layoutRoot.classList.toggle('wide', wide);
 
+      // 版3.0.0で不登校を障害種別から生徒指導上の課題へ移した。古いURL(#/c/futoukou)は転送する
+      if (r.view === 'cat' && r.catId === 'futoukou') { navigate(ROUTES.seito('futoukou'), true); return; }
       if (r.view === 'cat' || r.view === 'search' || r.view === 'home') {
         searchBox.value = (r.view === 'search') ? (r.q || '') : '';
         currentId = (r.view === 'cat') ? r.catId : null;
@@ -139,15 +171,13 @@
         }
       } else if (r.view === 'jiritsu') {
         renderJiritsuTable();
-      } else if (r.view === 'kumoku') {
-        renderKumoku(r.ku, r.item);
       } else if (r.view === 'terms') {
         renderTerms();
-      } else if (r.view === 'haikei') {
-        renderHaikeiIndex();
-      } else if (r.view === 'haikei-item') {
-        var hk = HAIKEI.find(function (x) { return x.id === r.id; });
-        if (hk) renderHaikeiItem(hk); else renderHaikeiIndex();
+      } else if (r.view === 'topic') {
+        renderTopicIndex(topicOf(r.topic));
+      } else if (r.view === 'topic-item') {
+        var tp = topicItem(r.topic, r.id);
+        if (tp) renderTopicItem(topicOf(r.topic), tp); else renderTopicIndex(topicOf(r.topic));
       }
       document.title = pageTitle(r);
     } finally {
@@ -163,12 +193,11 @@
     }
     if (r.view === 'search') return '「' + r.q + '」の検索結果｜' + base;
     if (r.view === 'jiritsu') return '自立活動 6区分27項目｜' + base;
-    if (r.view === 'kumoku') return r.item + '｜自立活動から探す｜' + base;
     if (r.view === 'terms') return '診断名・出典｜' + base;
-    if (r.view === 'haikei') return '配慮を要する背景｜' + base;
-    if (r.view === 'haikei-item') {
-      var h = HAIKEI.find(function (x) { return x.id === r.id; });
-      if (h) return h.name + '｜配慮を要する背景｜' + base;
+    if (r.view === 'topic') return topicOf(r.topic).title + '｜' + base;
+    if (r.view === 'topic-item') {
+      var h = topicItem(r.topic, r.id);
+      if (h) return h.name + '｜' + topicOf(r.topic).title + '｜' + base;
     }
     return base;
   }
@@ -178,6 +207,7 @@
     navigate(m === 'guide' ? ROUTES.home()
            : m === 'jiritsu' ? ROUTES.jiritsu()
            : m === 'haikei' ? ROUTES.haikei()
+           : m === 'seito' ? ROUTES.seito()
            : ROUTES.terms());
   }
 
@@ -290,9 +320,9 @@
     var html = '<div class="home-view">' +
       '<p class="eyebrow" style="color:var(--gold);font-family:var(--sans);letter-spacing:.28em;font-size:11px;">INDEX</p>' +
       '<h2 class="cat-title">障害種別 索引</h2>' +
-      '<p>' + DATA.length + 'の障害種別・状態について、原因となる病気・状態別の分類、教育的ニーズ、合理的配慮を含む必要な支援内容、自立活動、学びの場を整理しています。左の索引または下の一覧から選んでください。</p>' +
+      '<p>' + DATA.length + 'の障害種別について、原因となる病気・状態別の分類、教育的ニーズ、合理的配慮を含む必要な支援内容、自立活動、学びの場を整理しています。左の索引または下の一覧から選んでください。</p>' +
       '<div class="home-stats">' +
-        '<div class="home-stat"><b>' + DATA.length + '</b><span>障害種別・状態</span></div>' +
+        '<div class="home-stat"><b>' + DATA.length + '</b><span>障害種別</span></div>' +
         '<div class="home-stat"><b>' + total + '</b><span>原因疾患・状態の分類</span></div>' +
         '<div class="home-stat"><b>27</b><span>自立活動 項目数</span></div>' +
       '</div>' +
@@ -307,12 +337,15 @@
     });
 
     html += '</div>';
-    if (HAIKEI.length) {
+    ['haikei', 'seito'].forEach(function (key) {
+      var t = TOPICS[key];
+      if (!t.items.length) return;
       html += '<div class="hk-home-note">' +
-        '<b>障害以外の教育的ニーズ</b>' +
-        '<span>' + HAIKEI.map(function (h) { return esc(h.name); }).join('／') + ' は、上部タブ「配慮を要する背景」にまとめています。</span>' +
-        '<a href="' + ROUTES.haikei() + '">配慮を要する背景を開く</a></div>';
-    }
+        '<b>' + esc(t.title) + '</b>' +
+        '<span>' + t.items.map(function (h) { return esc(h.name); }).join('／') +
+          ' は障害ではないため、上部タブ「' + esc(t.title) + '」にまとめています。</span>' +
+        '<a href="' + ROUTES.topic(key) + '">' + esc(t.title) + 'を開く</a></div>';
+    });
     html += '<div class="disclaimer">' + esc(META.disclaimer.long) + '</div></div>';
 
     mainContent.innerHTML = html;
@@ -561,7 +594,7 @@
           '<p class="d-overview">' + esc(d.overview) + '</p>' +
           '<p class="dd-label">個別に求められる支援</p>' +
           '<ul class="dd-support">' + supportLis + '</ul>' +
-          '<p class="dd-label">関連する自立活動項目</p>' +
+          '<p class="dd-label">検討の出発点となりうる自立活動の項目' + editTag() + '</p>' +
           '<div class="dd-jiritsu">' + chips + '</div>' +
           severityBlock +
           noteBlock +
@@ -607,8 +640,8 @@
       '</section>' +
 
       '<section class="block">' +
-        '<h3 class="block-title">求められる自立活動（障害種として選定されることが多い項目）</h3>' +
-        '<p class="block-sub">自立活動は27項目すべてを行うものではなく、子供一人一人の実態に応じて必要な項目を選定し関連付けて指導します。詳細な全項目は上部タブ「自立活動 6区分27項目 一覧」をご覧ください。</p>' +
+        '<h3 class="block-title">検討の出発点となりうる自立活動の項目' + editTag() + '</h3>' +
+        jiritsuFlow() +
         '<div class="jiritsu-list">' + jiritsuHtml + '</div>' +
       '</section>' +
 
@@ -694,6 +727,10 @@
         '<h2 class="cat-title">自立活動 6区分27項目 一覧<span class="en">Six Categories, 27 Items of Jiritsu Katsudo</span></h2>' +
       '</div>' +
       '<div class="overview">自立活動は、障害のある子供が自立を目指し、学習上又は生活上の困難を主体的に改善・克服するために設けられた特別な指導領域です。27項目すべてを一律に指導するのではなく、子供一人一人の実態に応じて必要な項目を選定し、相互に関連付けて具体的な指導内容を組み立てます。</div>' +
+      '<div class="section-disclaimer"><b>項目の選び方</b>' +
+      '<p>自立活動編解説が示す手順は、実態把握 → 課題の整理 → 項目の選定 → 具体的な指導内容、の順です。' +
+      '障害種別ガイドの各ページに載せている項目は3段目の候補で、1・2段目は目の前の子どもからしか出ません。' +
+      '「この疾患だからこの項目」と決める使い方はしないでください。項目から疾患をたどる逆引きは、その使い方を誘発するため版3.0.0で廃止しました。</p></div>' +
       '<div class="section-disclaimer"><b>項目名の表記について</b>' +
       '<p>本ツールでは画面上の読みやすさのため短縮した項目名を用いています。学習指導要領の正式名称（「〜に関すること」）は各項目に併記しました。指導計画等の書類に記載する際は正式名称をお使いください。</p></div>';
 
@@ -707,16 +744,9 @@
         var official = it.official
           ? '<span class="item-official">正式名称：' + esc(it.official) + '</span>'
           : '';
-        var n = (REV[group.ku + '／' + it.name] || []).length;
         html += '<tr><td class="item-no">(' + (ii + 1) + ')</td>' +
-                '<td class="item-name">' +
-                  '<a class="ku-link" href="' + ROUTES.kumoku(group.ku, it.name) + '">' +
-                    esc(it.name) + '</a>' + official +
-                '</td>' +
-                '<td>' + esc(it.desc) +
-                  '<a class="rev-count" href="' + ROUTES.kumoku(group.ku, it.name) + '">' +
-                  'この項目を要する状態を見る（' + n + '件）</a>' +
-                '</td></tr>';
+                '<td class="item-name"><span class="item-label">' + esc(it.name) + '</span>' + official + '</td>' +
+                '<td>' + esc(it.desc) + '</td></tr>';
       });
       html += '</tbody></table></div></div>';
     });
@@ -725,68 +755,6 @@
       '<p>出典：' + srcLink('jiritsu-kaisetsu') + '</p>' +
       '<p style="margin-top:8px;">項目の説明は原文を要約・言い換えたものです。指導計画作成の際は原文をご確認ください。</p>' +
       '</div></div>';
-
-    mainContent.innerHTML = html;
-    playFadeIn();
-  }
-
-  /* ---------- 自立活動から疾患を逆引き ---------- */
-
-  function renderKumoku(ku, item) {
-    var key = ku + '／' + item;
-    var list = REV[key] || [];
-    var group = JIRITSU27.find(function (g) { return g.ku === ku; });
-    var def = group && group.items.find(function (x) { return x.name === item; });
-
-    if (!def) { navigate(ROUTES.jiritsu(), true); return; }
-
-    // 障害種ごとにまとめる
-    var byCat = {};
-    list.forEach(function (x) {
-      (byCat[x.cat.id] = byCat[x.cat.id] || { cat: x.cat, items: [] }).items.push(x.disease);
-    });
-
-    var html = '<div class="jiritsu-table-wrap">' +
-      '<p class="crumb"><a href="' + ROUTES.jiritsu() + '">← 自立活動 6区分27項目 一覧</a></p>' +
-      '<div class="article-head">' +
-        '<div class="article-num" style="border-radius:3px;">' + esc(ku.slice(0, 2)) + '</div>' +
-        '<h2 class="cat-title">' + esc(item) +
-          '<span class="en">' + esc(ku) + '</span></h2>' +
-      '</div>' +
-      '<div class="overview">' + esc(def.desc) + '</div>' +
-      (def.official
-        ? '<p class="official-line">学習指導要領の正式名称：' + esc(def.official) + '</p>' : '') +
-
-      '<section class="block">' +
-        '<h3 class="block-title">この項目を要することが多い状態' +
-          '<span class="tally">' + list.length + '件</span></h3>' +
-        '<p class="block-sub">自立活動は27項目すべてを行うものではなく、一人一人の実態に応じて選定します。' +
-          'この一覧は「この項目を選定するとき、他にどのような背景が考えられるか」を見渡すためのものです。' +
-          '掲載されている状態に当てはまるからといって、この項目を選定すべきという意味ではありません。</p>';
-
-    if (!list.length) {
-      html += '<p class="block-sub">現在この項目に紐づく状態は登録されていません。</p>';
-    }
-
-    Object.keys(byCat).forEach(function (cid) {
-      var g = byCat[cid];
-      html += '<div class="rev-group">' +
-        '<p class="rev-cat"><a href="' + ROUTES.cat(g.cat.id) + '">' +
-          '<span class="rev-num">' + esc(g.cat.num) + '</span>' + esc(g.cat.name) + '</a>' +
-          '<span class="rev-n">' + g.items.length + '件</span></p>' +
-        '<ul class="rev-list">' +
-        g.items.map(function (d) {
-          return '<li><a href="' + ROUTES.cat(g.cat.id, d.name) + '">' + esc(d.name) + '</a>' +
-                 '<span class="rev-ov">' + esc(d.overview) + '</span></li>';
-        }).join('') +
-        '</ul></div>';
-    });
-
-    html += '</section>' +
-      '<div class="source-box"><p>自立活動の区分・項目は次に基づきます。<br>' +
-      srcLink('jiritsu-kaisetsu') + '</p>' +
-      '<p style="margin-top:8px;">状態との対応づけは本ツールによる教育的整理であり、' +
-      'いずれの資料にも直接記載されているものではありません。</p></div></div>';
 
     mainContent.innerHTML = html;
     playFadeIn();
@@ -855,7 +823,25 @@
     playFadeIn();
   }
 
-  /* ---------- 配慮を要する背景（障害以外の教育的ニーズ） ---------- */
+  /* ---------- 自立活動の対応付けについての注記 ---------- */
+
+  // 疾患・状態と自立活動の対応は本ツールの整理で、手引・解説に直接の記載はない。
+  // 使う場所にその旨を出す（READMEにだけ書いてあっても読まれない）。
+  function editTag() {
+    return '<span class="edit-tag" tabindex="0" role="note">編集整理' +
+      '<span class="edit-tag-tip">この対応は本ツールによる整理で、手引・自立活動編解説に直接の記載はありません。' +
+      '子どもの実態把握と課題の整理から選び直してください。</span></span>';
+  }
+  function jiritsuFlow() {
+    return '<div class="j-flow" aria-label="自立活動の項目を選ぶ手順">' +
+      '<span class="j-step"><b>1</b>実態把握</span><span class="j-arrow" aria-hidden="true">›</span>' +
+      '<span class="j-step"><b>2</b>課題の整理</span><span class="j-arrow" aria-hidden="true">›</span>' +
+      '<span class="j-step on"><b>3</b>項目の選定</span><span class="j-arrow" aria-hidden="true">›</span>' +
+      '<span class="j-step"><b>4</b>具体的な指導内容</span>' +
+      '<span class="j-flow-note">ここに載るのは3の候補です。1と2は目の前の子どもからしか出ません。</span></div>';
+  }
+
+  /* ---------- 主題のタブ（配慮を要する背景／生徒指導上の課題） ---------- */
 
   // 区分（DATA）とは別の型。自立活動27項目との対応は持たず、
   // 「関連する障害種別」で既存区分へ内部リンクする。
@@ -875,22 +861,18 @@
       '<span class="basis-pub">' + esc(s.publisher || '') + '</span></li>';
   }
 
-  function renderHaikeiIndex() {
+  function renderTopicIndex(t) {
     var html = '<div class="jiritsu-table-wrap hk-view">' +
       '<div class="article-head">' +
-        '<div class="article-num" style="border-radius:3px;">背</div>' +
-        '<h2 class="cat-title">配慮を要する背景<span class="en">Backgrounds Requiring Special Consideration</span></h2>' +
+        '<div class="article-num" style="border-radius:3px;">' + esc(t.mark) + '</div>' +
+        '<h2 class="cat-title">' + esc(t.title) + '<span class="en">' + esc(t.en) + '</span></h2>' +
       '</div>' +
-      '<div class="overview">障害ではないが、置かれた状況が学びの困難を生んでいる児童生徒についての整理です。' +
-        '学習指導要領 総則の「特別な配慮を必要とする児童生徒への指導」に沿い、障害種別ガイドとは別の枠で扱います。' +
-        '自立活動の27項目とは対応付けず、代わりに「関連する障害種別」で障害種別ガイドへ橋をかけています。</div>' +
-      '<div class="section-disclaimer"><b>3つの項目は性格が違います</b>' +
-        '<p>日本語指導は「特別の教育課程」として制度が整っています。特異な才能（2E）は制度化の直前で、記述は検討中の資料に基づきます。' +
-        'ヤングケアラーは「指導」ではなく「気づいて、つなぐ」対象で、指導計画の項目を持ちません。</p></div>' +
+      '<div class="overview">' + esc(t.intro) + '</div>' +
+      '<div class="section-disclaimer"><b>' + esc(t.noteHead) + '</b><p>' + esc(t.note) + '</p></div>' +
       '<div class="hk-grid">';
 
-    HAIKEI.forEach(function (h) {
-      html += '<a class="hk-card" href="' + ROUTES.haikei(h.id) + '">' +
+    t.items.forEach(function (h) {
+      html += '<a class="hk-card" href="' + ROUTES.topic(t.key, h.id) + '">' +
         '<span class="num">' + esc(h.num) + '</span>' +
         '<h4>' + esc(h.name) + '</h4>' +
         '<p>' + esc(h.subtitle) + '</p>' +
@@ -901,15 +883,13 @@
     });
     html += '</div>';
 
-    html += '<div class="source-box">' +
-      '<p>一次資料は文部科学省・こども家庭庁などの公的資料に限っています。個別の研究成果は本文の根拠にしていません。' +
-        '各項目の末尾に出典を示しています。</p></div></div>';
+    html += '<div class="source-box"><p>' + esc(t.foot) + ' 各項目の末尾に出典を示しています。</p></div></div>';
 
     mainContent.innerHTML = html;
     playFadeIn();
   }
 
-  function renderHaikeiItem(h) {
+  function renderTopicItem(t, h) {
     var st = h.status || {};
 
     var basisHtml = (h.basis || []).map(function (b) {
@@ -975,15 +955,27 @@
       (h.relatedNote ? '<p class="hk-rel-note">' + esc(h.relatedNote) + '</p>' : '') +
       '</section>';
 
+    // 他の主題タブの項目への横リンク（不登校↔ヤングケアラー など）
+    if (h.relatedTopics && h.relatedTopics.length) {
+      relatedHtml += '<section class="block">' +
+        '<h3 class="block-title">関連する主題<span class="tally">他のタブへ</span></h3>' +
+        '<div class="hk-rel">' + h.relatedTopics.map(function (r) {
+          var it = topicItem(r.tab, r.id), tt = topicOf(r.tab);
+          if (!it || !tt) return '';
+          return '<a class="hk-rel-card" href="' + ROUTES.topic(r.tab, it.id) + '">' +
+            '<span class="num">' + esc(tt.title) + '</span><b>' + esc(it.name) + '</b><span>' + esc(r.note) + '</span></a>';
+        }).join('') + '</div></section>';
+    }
+
     var srcHtml = '<div class="source-box">' +
       '<p class="basis-label">この項目が基づく資料</p>' +
       '<ul class="basis-refs">' + (h.sources || []).map(hkSourceRef).join('') + '</ul>' +
       '<p style="margin-top:10px;">出典確認 ' + esc(h.reviewed) + '。制度や資料の要旨は本ツールによる整理で、原文の言い換えを含みます。指導計画や会議の根拠にする際は原文をご確認ください。</p>' +
-      feedbackLink('配慮を要する背景', h.name) +
+      feedbackLink(t.title, h.name) +
       '</div>';
 
     var html = '<div class="jiritsu-table-wrap hk-view">' +
-      '<p class="crumb"><a href="' + ROUTES.haikei() + '">配慮を要する背景</a> › ' + esc(h.name) + '</p>' +
+      '<p class="crumb"><a href="' + ROUTES.topic(t.key) + '">' + esc(t.title) + '</a> › ' + esc(h.name) + '</p>' +
       '<div class="article-head">' +
         '<div class="article-num" style="border-radius:3px;">' + esc(h.num) + '</div>' +
         '<h2 class="cat-title">' + esc(h.name) + '<span class="en">' + esc(h.en) + '</span></h2>' +
@@ -1016,7 +1008,7 @@
         '最終更新 ' + esc(META.updated) + '（版 ' + esc(META.version) + '）／ ' +
         '収録 ' + DATA.length + '区分・' +
         DATA.reduce(function (s, c) { return s + c.diseases.length; }, 0) + '件／ ' +
-        '配慮を要する背景 ' + HAIKEI.length + '件／ ' +
+        '配慮を要する背景 ' + TOPICS.haikei.items.length + '件／ 生徒指導上の課題 ' + TOPICS.seito.items.length + '件／ ' +
         '出典 ' + SOURCES.length + '件（詳細は上部タブ「診断名・出典」）' +
       '</p>' +
       '<p class="footer-feedback"><b>' + esc(fb.label) + '</b>：' + esc(fb.note) +
@@ -1055,6 +1047,7 @@
     sideNav = document.getElementById('sideNav');
     tabGuide = document.getElementById('tabGuide');
     tabHaikei = document.getElementById('tabHaikei');
+    tabSeito = document.getElementById('tabSeito');
     tabJiritsu = document.getElementById('tabJiritsu');
     tabTerms = document.getElementById('tabTerms');
     layoutRoot = document.getElementById('layoutRoot');
@@ -1070,6 +1063,7 @@
     if (homeEmblem) homeEmblem.onclick = goHome;
     tabGuide.onclick = function () { setMode('guide'); };
     tabHaikei.onclick = function () { setMode('haikei'); };
+    tabSeito.onclick = function () { setMode('seito'); };
     tabJiritsu.onclick = function () { setMode('jiritsu'); };
     tabTerms.onclick = function () { setMode('terms'); };
 
@@ -1091,19 +1085,9 @@
     SOURCES = bundle.sources;
     JIRITSU27 = bundle.jiritsu27;
     DATA = bundle.categories;
-    HAIKEI = bundle.haikei || [];
+    TOPICS.haikei.items = bundle.haikei || [];
+    TOPICS.seito.items = bundle.seito || [];
     SOURCES.forEach(function (s) { SRC[s.id] = s; });
-
-    // 自立活動の項目 → その項目を要する疾患、の索引を作る。
-    // データはすでに疾患側に持っているので、向きを変えるだけ。
-    DATA.forEach(function (c) {
-      c.diseases.forEach(function (d) {
-        (d.jiritsu || []).forEach(function (j) {
-          var k = j.ku + '／' + j.item;
-          (REV[k] = REV[k] || []).push({ cat: c, disease: d });
-        });
-      });
-    });
 
     bindDom();
     renderFooter();
@@ -1143,16 +1127,17 @@
       loadJson('sources.json'),
       loadJson('jiritsu27.json'),
       loadJson('categories.json'),
-      loadJson('haikei.json')
+      loadJson('haikei.json'),
+      loadJson('seito.json')
     ]).then(function (r) {
-      var meta = r[0], sources = r[1], jiritsu27 = r[2], categories = r[3], haikei = r[4];
+      var meta = r[0], sources = r[1], jiritsu27 = r[2], categories = r[3], haikei = r[4], seito = r[5];
       return Promise.all(categories.map(function (c) {
         return loadJson(c.id + '.json').then(function (ds) {
           c.diseases = ds;
           return c;
         });
       })).then(function (cats) {
-        boot({ meta: meta, sources: sources, jiritsu27: jiritsu27, categories: cats, haikei: haikei });
+        boot({ meta: meta, sources: sources, jiritsu27: jiritsu27, categories: cats, haikei: haikei, seito: seito });
       });
     }).catch(fail);
   }

@@ -271,10 +271,6 @@
       {
         "catId": "emotional",
         "note": "才能に見合った学びがないことによる不適応が、情緒面の困難として現れることがある"
-      },
-      {
-        "catId": "futoukou",
-        "note": "取りまとめ案の事例でも不登校期間・保健室登校が描かれている"
       }
     ],
     "sources": [
@@ -282,7 +278,14 @@
       "mext-sainou-wg",
       "mext-sainou-wg-r8-08"
     ],
-    "reviewed": "2026-09-14"
+    "reviewed": "2026-09-14",
+    "relatedTopics": [
+      {
+        "tab": "seito",
+        "id": "futoukou",
+        "note": "取りまとめ案の事例でも不登校期間・保健室登校が描かれている"
+      }
+    ]
   },
   {
     "id": "young-carer",
@@ -372,10 +375,6 @@
       {
         "catId": "intellectual",
         "note": "家族に知的障害のある児童生徒。同上"
-      },
-      {
-        "catId": "futoukou",
-        "note": "ケアの負担が、不登校の形で現れることがある。不登校対応の中で家庭の状況を確認する視点"
       }
     ],
     "relatedNote": "日本語指導が必要な児童生徒（本タブ）とも重なる。家族の通訳・翻訳を担うことがヤングケアラーの一形態になる。",
@@ -387,6 +386,13 @@
       "cfa-yc-plan-r8",
       "seito-shido-teiyo"
     ],
-    "reviewed": "2026-09-14"
+    "reviewed": "2026-09-14",
+    "relatedTopics": [
+      {
+        "tab": "seito",
+        "id": "futoukou",
+        "note": "ケアの負担が、不登校の形で現れることがある。不登校対応の中で家庭の状況を確認する視点"
+      }
+    ]
   }
 ]

@@ -676,5 +676,35 @@
     "policy": "pinned",
     "checked": "2026-09-14",
     "note": "第13章「多様な背景を持つ児童生徒への生徒指導」でヤングケアラーを扱う"
+  },
+  {
+    "id": "mext-kakuho-ho",
+    "title": "義務教育の段階における普通教育に相当する教育の機会の確保等に関する法律の公布について（通知）",
+    "publisher": "文部科学省",
+    "edition": "平成28年12月22日（法律は平成28年法律第105号）",
+    "url": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/1380952.htm",
+    "policy": "pinned",
+    "checked": "2026-09-14",
+    "note": "教育機会確保法。不登校児童生徒への教育機会の確保を国・自治体の責務とした"
+  },
+  {
+    "id": "mext-kakuho-shishin",
+    "title": "義務教育の段階における普通教育に相当する教育の機会の確保等に関する基本指針の策定について（通知）",
+    "publisher": "文部科学省",
+    "edition": "平成29年4月4日（基本指針は平成29年3月31日）",
+    "url": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/1384370.htm",
+    "policy": "pinned",
+    "checked": "2026-09-14",
+    "note": "教育機会確保法第7条に基づく基本指針"
+  },
+  {
+    "id": "mext-cocolo",
+    "title": "誰一人取り残されない学びの保障に向けた不登校対策（COCOLOプラン）",
+    "publisher": "文部科学省",
+    "edition": "令和5年3月31日",
+    "url": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/1397802_00005.htm",
+    "policy": "pinned",
+    "checked": "2026-09-14",
+    "note": "学びの場の確保・チーム学校・学校風土の見える化の3本柱。不登校特例校は令和5年8月31日に「学びの多様化学校」へ名称変更"
   }
 ]

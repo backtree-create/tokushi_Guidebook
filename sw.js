@@ -8,7 +8,7 @@
  * 注意：VERSION は meta.json の "version" と揃えること。
  *       内容を更新したらここも必ず書き換える。
  */
-const VERSION = "2.9.0";
+const VERSION = "3.0.0";
 const CACHE_NAME = `tokushi-guidebook-${VERSION}`;
 
 const PRECACHE = [
@@ -25,6 +25,7 @@ const PRECACHE = [
   "./jiritsu27.json",
   "./categories.json",
   "./haikei.json",
+  "./seito.json",
   "./visual.json",
   "./hearing.json",
   "./intellectual.json",
@@ -34,8 +35,7 @@ const PRECACHE = [
   "./autism.json",
   "./emotional.json",
   "./ld.json",
-  "./adhd.json",
-  "./futoukou.json"
+  "./adhd.json"
 ];
 
 self.addEventListener("install", (event) => {
