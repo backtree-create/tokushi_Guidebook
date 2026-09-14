@@ -964,6 +964,7 @@
     var byKu = {};
     JIRITSU27.forEach(function (g) { byKu[g.ku] = ''; });
     return {
+      seed: '',
       stage: '', disability: '',
       status: '', development: '', interest: '', environment: '',
       byKu: byKu,
@@ -981,28 +982,29 @@
     }).join('\n');
   }
 
+  // 詳しい欄に何か書いてあるか
+  function spHasAdvanced(d) {
+    if (d.status || d.development || d.interest || d.environment || d.issues || d.relations || d.central || d.goal) return true;
+    return JIRITSU27.some(function (g) { return !!d.byKu[g.ku]; });
+  }
   function spInputBlock(d) {
     var lines = [];
-    lines.push('①実態把握');
-    lines.push('・校種・学年：' + (d.stage || '（未記入）'));
-    lines.push('・主たる障害・状態（診断名は不要）：' + (d.disability || '（未記入）'));
-    lines.push('・障害の状態：' + (d.status || '（未記入）'));
-    lines.push('・発達や経験の程度：' + (d.development || '（未記入）'));
-    lines.push('・興味・関心、得意なこと：' + (d.interest || '（未記入）'));
-    lines.push('・生活や学習の環境（家庭・学級・学びの場）：' + (d.environment || '（未記入）'));
-    lines.push('');
-    lines.push('②実態を6区分の観点で整理したもの');
-    JIRITSU27.forEach(function (g) {
-      lines.push('・' + g.ku + '：' + (d.byKu[g.ku] || '（未記入）'));
-    });
-    lines.push('');
-    lines.push('③指導すべき課題（1行に1つ）');
-    lines.push(d.issues ? d.issues : '（未記入）');
-    lines.push('・課題同士の関係（原因と結果、優先順位など）：' + (d.relations || '（未記入）'));
-    lines.push('');
-    lines.push('④中心となる課題と指導目標');
-    lines.push('・中心となる課題：' + (d.central || '（未記入）'));
-    lines.push('・指導目標（この期間で目指すこと）：' + (d.goal || '（未記入）'));
+    lines.push('今、困っていること：' + (d.seed || '（未記入）'));
+    if (d.stage) lines.push('校種・学年：' + d.stage);
+    if (d.disability) lines.push('主たる障害・状態：' + d.disability);
+    if (spHasAdvanced(d)) {
+      lines.push('');
+      lines.push('既に分かっていること（書けたところだけ。ここに書いてあることは聞き直さなくてよい）');
+      if (d.status) lines.push('・①障害の状態：' + d.status);
+      if (d.development) lines.push('・①発達や経験の程度：' + d.development);
+      if (d.interest) lines.push('・①興味・関心、得意なこと：' + d.interest);
+      if (d.environment) lines.push('・①生活や学習の環境：' + d.environment);
+      JIRITSU27.forEach(function (g) { if (d.byKu[g.ku]) lines.push('・②' + g.ku + '：' + d.byKu[g.ku]); });
+      if (d.issues) lines.push('・③指導すべき課題：' + d.issues.replace(/\n+/g, '／'));
+      if (d.relations) lines.push('・③課題同士の関係：' + d.relations);
+      if (d.central) lines.push('・④中心となる課題：' + d.central);
+      if (d.goal) lines.push('・④指導目標：' + d.goal);
+    }
     if (d.ask) { lines.push(''); lines.push('特に相談したいこと：' + d.ask); }
     return lines.join('\n');
   }
@@ -1011,8 +1013,10 @@
     var full = target === 'gemini';
     var rules = [
       '児童生徒の氏名は扱いません。「本児」と呼びます。私が氏名を書いていたら指摘し、以後は本児と呼び替えてください。',
-      '手順は ①実態把握 → ②実態の整理（6区分の観点）→ ③指導すべき課題の整理 → ④中心となる課題と指導目標 → ⑤項目の選定 → ⑥項目の関連付け → ⑦具体的な指導内容 の順です。私は①〜④を書きました。⑤〜⑦を一緒に考えてください。',
-      '①〜④に不足や矛盾があれば、⑤に進む前に質問してください。特に、課題（③）がどの実態（①②）から出ているか分からないものは、そのまま通さないでください。',
+      '手順は ①実態把握 → ②実態の整理（6区分の観点）→ ③指導すべき課題の整理 → ④中心となる課題と指導目標 → ⑤項目の選定 → ⑥項目の関連付け → ⑦具体的な指導内容 の順です。私は「今、困っていること」だけを書きました。①から④までは、あなたが質問して私から聞き出してください。',
+      '質問は1回に1つだけ。私の答えを短く要約して「こういうことですね」と確認してから、次の質問に進んでください。①は4つの観点（障害の状態／発達や経験の程度／興味・関心、得意なこと／生活や学習の環境）を、②は6区分の観点のうち関係しそうなものだけを聞いてください。全部で5〜8往復を目安にし、細かく聞きすぎないでください。',
+      '私が「分からない」「まだ見ていない」と答えたら、そこで止めずに次へ進み、最後に「確認すべき点」として残してください。分からないことを推測で埋めないでください。',
+      '④の指導目標まで揃ってから⑤に進んでください。課題（③）がどの実態（①②）から出ているか分からないものは、そのまま通さないでください。',
       '項目は、末尾の「自立活動 6区分27項目」の正式名称だけを使ってください。項目名を創作したり、言い換えたりしないでください。',
       '候補を挙げるときは、選んだ理由と、有力だが選ばなかった項目とその理由も書いてください。',
       '出力の各行に「根拠」（どの実態・どの課題から導いたか）を付けてください。私の入力にない前提を置くときは「仮定」と明示してください。',
@@ -1029,13 +1033,14 @@
     out.push(spInputBlock(d));
     out.push('');
     out.push('【お願いすること】');
-    out.push('まず、①〜④を読んで、足りない点・確認したい点を最大5つ、質問の形で挙げてください。私が答えるまで⑤に進まないでください。');
-    out.push('答えが揃ったら、次の形式でシート（案）を出してください。');
+    out.push('まず「今、困っていること」を受け止めて、①実態把握の最初の質問を1つだけしてください。私が答えたら要約して確認し、次の質問へ。④の指導目標まで揃ったら、そこまでを一度まとめて見せてください。');
+    out.push('私が「それでいい」と言ったら、次の形式でシート（案）を出してください。');
     out.push('・⑤ 選定した項目（正式名称）｜区分｜選んだ理由｜根拠');
     out.push('・⑤′ 検討したが選ばなかった項目｜理由');
     out.push('・⑥ 項目の関連付け：選んだ項目同士をどう結び付けて指導するか｜根拠');
     out.push('・⑦ 具体的な指導内容（2〜3案）｜ねらい｜関連する項目｜根拠｜評価の観点');
-    out.push('・最後に「教員が確認すべき点」を箇条書きで。');
+    out.push('・最後に「教員が確認すべき点」を箇条書きで。私が「分からない」と答えた事項は必ずここに入れてください。');
+    out.push('・シートの冒頭に、聞き取りで分かった①〜④の要約も付けてください（校内の検討で使います）。');
     out.push('');
     out.push('【自立活動 6区分27項目（' + (full ? '正式名称と要旨' : '正式名称') + '）】');
     out.push('出典：特別支援学校教育要領・学習指導要領解説 自立活動編（平成30年3月）');
@@ -1063,48 +1068,53 @@
         '<div class="article-num" style="border-radius:3px;">AI</div>' +
         '<h2 class="cat-title">自立活動サポートシートをAIと考える<span class="en">Jiritsu Katsudo Support Sheet with AI</span></h2>' +
       '</div>' +
-      '<div class="overview">自立活動編解説の手順に沿って、①実態把握 から ④指導目標 までを先生が書き、⑤項目の選定 から ⑦具体的な指導内容 までを Copilot または Gemini と一緒に考えるための指示書を作ります。' +
-        'AIには「書く人」ではなく「問い返す人」の役割を指定します。足りない実態があれば、AIは項目を出す前に質問します。</div>' +
+      '<div class="overview">「今、困っていること」を一言書くところから始めます。そこから先の実態把握・課題の整理・指導目標は、Copilot または Gemini が自立活動編解説の手順に沿って1つずつ質問して聞き出し、揃ったところで項目の選定・関連付け・指導内容の案を根拠付きで出します。' +
+        'AIの役割は「書く人」ではなく「聞き取り、問い返す人」です。</div>' +
       '<div class="section-disclaimer"><b>氏名を書かないでください</b>' +
         '<p>「本児」「生徒A」で書きます。入力はこのページの中だけで組み立て、どこにも送信・保存しません。ページを離れると消えます。' +
         'AIに貼るのは先生自身です。校内で許可されたAI（学校アカウントの Copilot など）を使ってください。</p></div>' +
 
       '<form class="sp-form" id="spForm" autocomplete="off">' +
 
-      '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">1</span>実態把握</h3>' +
-        '<p class="block-sub">解説が挙げる4つの観点。障害名だけでなく、本児が何をどのようにしているかを書きます。</p>' +
+      '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">1</span>今、困っていることを書く</h3>' +
+        '<p class="block-sub">1〜3行でかまいません。ここから先の実態把握と課題の整理は、AIが1つずつ質問して聞き出します。書けない欄を埋める必要はありません。</p>' +
+        spField('seed', '今、困っていること', '例：授業中に急に立ち歩く。注意すると余計に興奮する。どこから手を付けていいか分からない', 3) +
         '<div class="sp-two">' +
           '<label class="sp-field"><span class="sp-label">校種・学年（任意）</span><input type="text" data-sp="stage" placeholder="例：中学部2年"></label>' +
           '<label class="sp-field"><span class="sp-label">主たる障害・状態（任意）<span class="sp-hint">診断名の細部は不要</span></span><input type="text" data-sp="disability" placeholder="例：知的障害を伴う自閉症"></label>' +
         '</div>' +
-        spField('status', '障害の状態', '見え方、聞こえ方、身体の動き、理解の仕方など、学習や生活に関わる状態', 3) +
-        spField('development', '発達や経験の程度', 'できていること、これまでの学習・生活経験、身に付いている力', 3) +
-        spField('interest', '興味・関心、得意なこと', '好きな活動、集中できること、人との関わりで好むこと', 2) +
-        spField('environment', '生活や学習の環境', '家庭、学級、学びの場、支援者、使っている補助手段', 2) +
-      '</section>' +
-
-      '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">2</span>実態を6区分の観点で整理する</h3>' +
-        '<p class="block-sub">①で書いたことを、6つの区分の観点で見直します。当てはまらない区分は空欄でかまいません。</p>' +
-        kuFields +
-      '</section>' +
-
-      '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">3</span>指導すべき課題を整理する</h3>' +
-        '<p class="block-sub">①②から見えてきた困難を課題の形にします。1行に1つ。どの実態から出た課題かが分かるように書くと、AIの問い返しが減ります。</p>' +
-        spField('issues', '課題（1行に1つ）', '例：気持ちが高ぶると切り替えに時間がかかる（①障害の状態、②心理的な安定から）', 4) +
-        spField('relations', '課題同士の関係', '原因と結果、どれが先か、複数の課題に共通する背景', 2) +
-      '</section>' +
-
-      '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">4</span>中心となる課題と指導目標</h3>' +
-        '<p class="block-sub">課題同士の関係から、今この期間に取り組む中心の課題を1つに絞ります。</p>' +
-        spField('central', '中心となる課題', '', 2) +
-        spField('goal', '指導目標（この期間で目指すこと）', '評価できる形で。例：〜の場面で、〜を使って、〜できる', 2) +
         spField('ask', '特に相談したいこと（任意）', '迷っている点、校内で意見が分かれている点など', 2) +
       '</section>' +
 
+      '<details class="sp-adv"><summary>書けるところまで書いておく（任意）<span class="sp-hint">書いてある欄はAIが聞き直しません。空欄のままでかまいません</span></summary>' +
+
+      '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">①</span>実態把握</h3>' +
+        spField('status', '障害の状態', '見え方、聞こえ方、身体の動き、理解の仕方など', 2) +
+        spField('development', '発達や経験の程度', 'できていること、これまでの学習・生活経験', 2) +
+        spField('interest', '興味・関心、得意なこと', '', 2) +
+        spField('environment', '生活や学習の環境', '家庭、学級、学びの場、支援者、補助手段', 2) +
+      '</section>' +
+
+      '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">②</span>実態を6区分の観点で整理する</h3>' +
+        kuFields +
+      '</section>' +
+
+      '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">③</span>指導すべき課題を整理する</h3>' +
+        spField('issues', '課題（1行に1つ）', '', 3) +
+        spField('relations', '課題同士の関係', '原因と結果、どれが先か', 2) +
+      '</section>' +
+
+      '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">④</span>中心となる課題と指導目標</h3>' +
+        spField('central', '中心となる課題', '', 2) +
+        spField('goal', '指導目標（この期間で目指すこと）', '評価できる形で', 2) +
+      '</section>' +
+
+      '</details>' +
+
       '</form>' +
 
-      '<section class="block"><h3 class="block-title"><span class="sp-num">5</span>指示書を作る<span class="tally">⑤〜⑦はAIと</span></h3>' +
-        '<p class="block-sub">下の指示書をコピーしてAIに貼ります。AIはまず質問を返します。答えると、項目の選定・関連付け・指導内容の案が根拠付きで出ます。</p>' +
+      '<section class="block"><h3 class="block-title"><span class="sp-num">2</span>指示書をコピーしてAIに貼る</h3>' +
+        '<p class="block-sub">AIは「今、困っていること」を受け止めて質問を1つ返します。1つずつ答えていくと（目安5〜8往復）、実態把握から指導目標までがまとまり、そのあと項目の選定・関連付け・指導内容の案が根拠付きで出ます。分からないことは「分からない」でかまいません。</p>' +
         '<div class="support-tabs sp-tabs">' +
           '<button type="button" class="on" data-target="copilot">Copilot 用（短め）</button>' +
           '<button type="button" data-target="gemini">Gemini 用（要旨付き）</button>' +

@@ -1238,6 +1238,11 @@
   .sp-two{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;}
   @media (max-width:640px){.sp-two{grid-template-columns:1fr;}}
 
+  .sp-adv{margin:6px 0 18px;border:1px dashed var(--line-strong);border-radius:3px;padding:0 16px;background:var(--card);}
+  .sp-adv summary{cursor:pointer;padding:12px 0;font-weight:700;color:var(--ink-strong);display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;}
+  .sp-adv summary .sp-hint{font-weight:400;}
+  .sp-adv[open] summary{border-bottom:1px solid var(--line);margin-bottom:6px;}
+  .sp-adv .block{padding-top:6px;}
   .sp-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:12px 0;}
   .sp-btn{
     padding:9px 16px;
