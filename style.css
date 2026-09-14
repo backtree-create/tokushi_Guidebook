@@ -1223,11 +1223,54 @@
     border-radius:3px;
   }
 
-  .sp-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px;}
-  .sp-table th,.sp-table td{border:1px solid var(--line-strong);padding:8px 10px;vertical-align:top;line-height:1.7;}
-  .sp-table th{width:190px;text-align:left;background:var(--paper2);color:var(--ink-strong);font-weight:700;}
-  .sp-table td.sp-basis{width:150px;color:var(--ink-faint);font-size:12px;}
-  .sp-sheet-note{margin:10px 0 0;font-size:12.5px;color:var(--ink-soft);}
+  .preview-bar{
+    position:sticky;top:0;z-index:50;
+    display:flex;align-items:center;justify-content:center;gap:14px;
+    padding:8px 14px;
+    font-size:13px;font-weight:700;
+    color:#1b1a14;background:var(--gold-soft);
+    border-bottom:2px solid #a88a4c;
+  }
+  .preview-bar button{
+    padding:4px 12px;font:inherit;font-size:12.5px;font-weight:700;
+    color:#1b1a14;background:#fff;border:1px solid #7a6636;border-radius:3px;cursor:pointer;
+  }
+  @media print{.preview-bar{display:none !important;}}
+
+  /* ---------- メンテナンス中の覆い ---------- */
+  .maint{
+    margin:8px 0 24px;
+    padding:28px 26px;
+    background:var(--card);
+    border:1px dashed var(--line-strong);
+    border-left:5px solid var(--tone-warn-bd);
+    border-radius:3px;
+    text-align:left;
+  }
+  .maint.compact{padding:18px 20px;margin:12px 0 0;}
+  .maint-tag{
+    display:inline-block;
+    padding:2px 10px;
+    font-size:12px;font-weight:700;letter-spacing:.06em;
+    color:var(--tone-warn-fg);background:var(--tone-warn-bg);
+    border:1px solid var(--tone-warn-bd);border-radius:3px;
+  }
+  .maint h3{margin:10px 0 8px;font-family:var(--serif);font-size:19px;color:var(--ink-strong);}
+  .maint.compact h3{font-size:16px;}
+  .maint p{margin:0 0 6px;font-size:14px;line-height:1.85;color:var(--ink);}
+  .maint-until{color:var(--ink-soft);font-size:13px;}
+  .maint a{color:var(--accent);font-weight:700;}
+  .maint-mini{
+    display:inline-block;
+    margin-left:8px;
+    padding:1px 7px;
+    font-size:11px;font-weight:700;letter-spacing:.04em;
+    color:var(--tone-warn-fg);background:var(--tone-warn-bg);
+    border:1px solid var(--tone-warn-bd);border-radius:3px;
+    vertical-align:middle;
+  }
+  .mode-tabs button .maint-mini{margin-left:6px;}
+  .sp-entry.maint-on{border-left-color:var(--tone-warn-bd);}
 
   /* --- フッター --- */
   footer p{margin:0 0 10px;}
@@ -1421,13 +1464,6 @@
      紙の上でも辿れるよう本文の後ろに出す。
      ========================================================== */
   @media print{
-    /* サポートシートの「枠を印刷」: 本体だけを出す */
-    body.sp-print header,body.sp-print .mode-tabs,body.sp-print .index,body.sp-print footer,
-    body.sp-print .crumb,body.sp-print .article-head,body.sp-print .overview,body.sp-print .section-disclaimer,
-    body.sp-print .sp-form,body.sp-print .source-box,body.sp-print .block:not(.sp-sheet){display:none !important;}
-    body.sp-print .sp-sheet{display:block !important;}
-    .sp-table th,.sp-table td{border:.5pt solid #000 !important;color:#000 !important;background:#fff !important;}
-    .sp-table tr.sp-empty td{height:60pt;}
     @page{ margin:16mm 14mm; }
 
     html,body{

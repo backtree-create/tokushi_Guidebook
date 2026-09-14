@@ -288,6 +288,34 @@ for (const g of links) {
   }
 }
 
+/* --- 4d. メンテナンス中スイッチ（meta.json maintenance） --- */
+const MAINT_KEYS = ['support', 'jiritsu-block', 'haikei', 'seito', 'links'];
+if (meta.maintenance) {
+  for (const [k, v] of Object.entries(meta.maintenance)) {
+    if (k === '_note' || k === 'previewKey') continue;
+    if (!MAINT_KEYS.includes(k)) err(`meta.json maintenance: 不明なキー "${k}"（使えるのは ${MAINT_KEYS.join(' / ')}）`);
+    if (typeof v.on !== 'boolean') err(`meta.json maintenance.${k}: on は true/false で書きます`);
+    if (v.on && !v.title) err(`meta.json maintenance.${k}: on のときは title が必要です`);
+    for (const f of ['label', 'place', 'scope']) if (!v[f]) err(`meta.json maintenance.${k}: ${f}（${{label:'呼び名',place:'画面上の場所',scope:'覆われる範囲'}[f]}）がありません`);
+  }
+  const anyOn = MAINT_KEYS.some(k => meta.maintenance[k] && meta.maintenance[k].on);
+  const pk = meta.maintenance.previewKey;
+  if (anyOn && (!pk || typeof pk !== 'string' || pk.length < 8)) err('meta.json maintenance.previewKey: 覆いを外して確認するための合言葉（8文字以上）が必要です');
+  if (pk && /[?&#\s]/.test(pk)) err('meta.json maintenance.previewKey: 合言葉に ? & # や空白は使えません');
+}
+
+/* --- 4e. 検索避け --- */
+{
+  const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  if (!/<meta\s+name="robots"\s+content="[^"]*noindex[^"]*"/i.test(html)) err('index.html に <meta name="robots" content="noindex, ..."> がありません（検索避け）');
+  const rp = path.join(root, 'robots.txt');
+  if (!fs.existsSync(rp)) err('robots.txt がありません（検索避け）');
+  else {
+    const r = fs.readFileSync(rp, 'utf8');
+    if (!/User-agent:\s*\*/i.test(r) || !/Disallow:\s*\/\s*$/im.test(r)) err('robots.txt に「User-agent: *」と「Disallow: /」が必要です');
+  }
+}
+
 /* --- 5. メタ情報と Service Worker の版ずれ --- */
 const sw = fs.readFileSync(path.join(root, 'sw.js'), 'utf8');
 const m = sw.match(/const VERSION = "([^"]+)"/);

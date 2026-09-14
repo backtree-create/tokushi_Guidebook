@@ -46,6 +46,53 @@
     }
   };
   var LINKS = [];   // 目的別リンク集（links.json）。URLは持たず sources.json の id を参照する
+
+  /* ---------- メンテナンス中の覆い ---------- */
+  // meta.json の maintenance[key].on が true なら、その箇所の中身の代わりに案内を出す。
+  // プレビュー: URL に ?preview=合言葉 を付けて開くと、このタブの間だけ覆いを外す。
+  var PREVIEW = false;
+  function initPreview() {
+    var key = META.maintenance && META.maintenance.previewKey;
+    var q = location.search.match(/[?&]preview=([^&]*)/);
+    try {
+      if (q && key && decodeURIComponent(q[1]) === key) {
+        sessionStorage.setItem('tk-preview', '1');
+        // 合言葉を URL に残さない
+        history.replaceState(null, '', location.pathname + location.hash);
+      }
+      PREVIEW = sessionStorage.getItem('tk-preview') === '1';
+    } catch (e) { PREVIEW = !!(q && key && q[1] === key); }
+    if (PREVIEW) {
+      var bar = document.createElement('div');
+      bar.className = 'preview-bar';
+      bar.innerHTML = '<span>プレビュー表示中：メンテナンス中の箇所の中身を表示しています（このタブだけ）</span>' +
+        '<button type="button" id="previewOff">解除</button>';
+      document.body.insertBefore(bar, document.body.firstChild);
+      document.getElementById('previewOff').onclick = function () {
+        try { sessionStorage.removeItem('tk-preview'); } catch (e) {}
+        location.reload();
+      };
+    }
+  }
+  function maint(key) {
+    if (PREVIEW) return null;
+    var m = META.maintenance && META.maintenance[key];
+    return (m && m.on) ? m : null;
+  }
+  function maintCover(m, opts) {
+    opts = opts || {};
+    return '<div class="maint' + (opts.compact ? ' compact' : '') + '" role="status">' +
+      '<span class="maint-tag">メンテナンス中</span>' +
+      '<h3>' + esc(m.title || '整備中です') + '</h3>' +
+      (m.note ? '<p>' + esc(m.note) + '</p>' : '') +
+      (m.until ? '<p class="maint-until">再開の目安：' + esc(m.until) + '</p>' : '') +
+      (opts.back ? '<p><a href="' + opts.back.href + '">' + esc(opts.back.label) + '</a></p>' : '') +
+      '</div>';
+  }
+  function renderMaintPage(m, back) {
+    mainContent.innerHTML = '<div class="jiritsu-table-wrap">' + maintCover(m, { back: back }) + '</div>';
+    playFadeIn();
+  }
   function topicOf(key) { return TOPICS[key]; }
   function topicItem(key, id) {
     var t = TOPICS[key];
@@ -174,14 +221,19 @@
       } else if (r.view === 'jiritsu') {
         renderJiritsuTable();
       } else if (r.view === 'support') {
-        renderSupport();
+        if (maint('support')) renderMaintPage(maint('support'), { href: ROUTES.jiritsu(), label: '自立活動 6区分27項目 一覧へ戻る' });
+        else renderSupport();
       } else if (r.view === 'terms') {
         renderTerms();
-      } else if (r.view === 'topic') {
-        renderTopicIndex(topicOf(r.topic));
-      } else if (r.view === 'topic-item') {
-        var tp = topicItem(r.topic, r.id);
-        if (tp) renderTopicItem(topicOf(r.topic), tp); else renderTopicIndex(topicOf(r.topic));
+      } else if (r.view === 'topic' || r.view === 'topic-item') {
+        if (maint(r.topic)) {
+          renderMaintPage(maint(r.topic), { href: ROUTES.home(), label: 'ホームへ戻る' });
+        } else if (r.view === 'topic') {
+          renderTopicIndex(topicOf(r.topic));
+        } else {
+          var tp = topicItem(r.topic, r.id);
+          if (tp) renderTopicItem(topicOf(r.topic), tp); else renderTopicIndex(topicOf(r.topic));
+        }
       }
       document.title = pageTitle(r);
     } finally {
@@ -343,9 +395,9 @@
       var t = TOPICS[key];
       if (!t.items.length) return;
       html += '<div class="hk-home-note">' +
-        '<b>' + esc(t.title) + '</b>' +
-        '<span>' + t.items.map(function (h) { return esc(h.name); }).join('／') +
-          ' は障害ではないため、上部タブ「' + esc(t.title) + '」にまとめています。</span>' +
+        '<b>' + esc(t.title) + (maint(key) ? '<span class="maint-mini">整備中</span>' : '') + '</b>' +
+        '<span>' + (maint(key) ? esc(maint(key).title) : t.items.map(function (h) { return esc(h.name); }).join('／') +
+          ' は障害ではないため、上部タブ「' + esc(t.title) + '」にまとめています。') + '</span>' +
         '<a href="' + ROUTES.topic(key) + '">' + esc(t.title) + 'を開く</a></div>';
     });
     html += '<div class="disclaimer">' + esc(META.disclaimer.long) + '</div></div>';
@@ -631,10 +683,11 @@
 
       '<section class="block">' +
         '<h3 class="block-title">自立活動<span class="tally">手順で考える</span></h3>' +
+        (maint('jiritsu-block') ? maintCover(maint('jiritsu-block'), { compact: true }) :
         '<div class="section-disclaimer"><b>疾患・障害種から項目を引く一覧は置いていません</b>' +
         '<p>自立活動の項目は、この子の実態把握と課題の整理から選ぶものです。版3.2.0で、疾患・障害種ごとの項目候補（本ツールの編集上の整理で、手引・解説に根拠のないもの）を廃止しました。' +
         '<a href="' + ROUTES.support() + '">自立活動サポートシートをAIと考える</a>で、解説の手順（実態把握 → 課題の整理 → 項目の選定 → 指導内容）に沿って進められます。' +
-        '27項目の正式名称と要旨は<a href="' + ROUTES.jiritsu() + '">一覧</a>にあります。</p></div>' +
+        '27項目の正式名称と要旨は<a href="' + ROUTES.jiritsu() + '">一覧</a>にあります。</p></div>') +
       '</section>' +
 
       '<section class="block">' +
@@ -718,8 +771,8 @@
         '<h2 class="cat-title">自立活動 6区分27項目 一覧<span class="en">Six Categories, 27 Items of Jiritsu Katsudo</span></h2>' +
       '</div>' +
       '<div class="overview">自立活動は、障害のある子供が自立を目指し、学習上又は生活上の困難を主体的に改善・克服するために設けられた特別な指導領域です。27項目すべてを一律に指導するのではなく、子供一人一人の実態に応じて必要な項目を選定し、相互に関連付けて具体的な指導内容を組み立てます。</div>' +
-      '<a class="sp-entry" href="' + ROUTES.support() + '">' +
-        '<span class="sp-entry-main"><b>自立活動サポートシートをAIと考える</b>' +
+      '<a class="sp-entry' + (maint('support') ? ' maint-on' : '') + '" href="' + ROUTES.support() + '">' +
+        '<span class="sp-entry-main"><b>自立活動サポートシートをAIと考える' + (maint('support') ? '<span class="maint-mini">整備中</span>' : '') + '</b>' +
         '<span>実態把握 → 課題の整理 → 項目の選定 → 指導内容、の手順で入力し、Copilot・Gemini に渡す指示書を作ります。項目は最後に出てきます。</span></span>' +
         '<span class="sp-entry-mark" aria-hidden="true">›</span></a>' +
       '<div class="section-disclaimer"><b>項目の選び方</b>' +
@@ -839,6 +892,7 @@
   // 「○○についてはここから」。行を大きく、押しやすく。
   // 資料の URL は sources.json から引く。route は本ツール内のページ、anchor はこのページ内。
   function linkGuideHtml() {
+    if (maint('links')) return '<div class="lk-guide" id="lk-guide">' + maintCover(maint('links')) + '</div>';
     if (!LINKS.length) return '';
     var html = '<div class="lk-guide" id="lk-guide">';
     LINKS.forEach(function (g) {
@@ -1041,16 +1095,10 @@
         '</div>' +
         '<div class="sp-actions">' +
           '<button type="button" class="sp-btn primary" id="spCopy">指示書をコピー</button>' +
-          '<button type="button" class="sp-btn" id="spSheet">シート（案）の枠を印刷</button>' +
           '<button type="button" class="sp-btn danger" id="spReset">入力を消す</button>' +
           '<span class="sp-copied" id="spCopied" aria-live="polite"></span>' +
         '</div>' +
         '<textarea class="sp-out" id="spOut" readonly rows="18"></textarea>' +
-      '</section>' +
-
-      '<section class="block sp-sheet" id="spSheetArea">' +
-        '<h3 class="block-title">自立活動サポートシート（案）</h3>' +
-        '<div id="spSheetBody"></div>' +
       '</section>' +
 
       '<div class="source-box">' +
@@ -1081,26 +1129,7 @@
     function refresh() {
       readForm();
       out.value = buildSupportPrompt(target, d);
-      renderSheet();
     }
-    function renderSheet() {
-      var rows = [
-        ['①実態把握', ['校種・学年：' + d.stage, '主たる障害・状態：' + d.disability, '障害の状態：' + d.status, '発達や経験の程度：' + d.development, '興味・関心：' + d.interest, '環境：' + d.environment]],
-        ['②6区分の観点', JIRITSU27.map(function (g) { return g.ku + '：' + (d.byKu[g.ku] || ''); })],
-        ['③指導すべき課題', (d.issues ? d.issues.split('\n') : []).concat(d.relations ? ['関係：' + d.relations] : [])],
-        ['④中心となる課題と指導目標', ['中心となる課題：' + d.central, '指導目標：' + d.goal]]
-      ];
-      var h = '<table class="sp-table"><tbody>';
-      rows.forEach(function (r) {
-        h += '<tr><th>' + esc(r[0]) + '</th><td>' + r[1].map(function (x) { return esc(x); }).join('<br>') + '</td><td class="sp-basis">根拠・備考</td></tr>';
-      });
-      ['⑤選定した項目（正式名称）', '⑤′検討したが選ばなかった項目', '⑥項目の関連付け', '⑦具体的な指導内容（ねらい・関連する項目・評価の観点）', '教員が確認すべき点'].forEach(function (lab) {
-        h += '<tr class="sp-empty"><th>' + esc(lab) + '</th><td>&nbsp;<br>&nbsp;<br>&nbsp;</td><td class="sp-basis">根拠</td></tr>';
-      });
-      h += '</tbody></table><p class="sp-sheet-note">作成日：　　　　　　　　　　記入者：　　　　　　　　　　（氏名は書かず「本児」で記入）</p>';
-      document.getElementById('spSheetBody').innerHTML = h;
-    }
-
     fillForm();
     refresh();
 
@@ -1124,14 +1153,6 @@
       } else {
         out.select(); try { done(document.execCommand('copy')); } catch (e) { done(false); }
       }
-    });
-    document.getElementById('spSheet').addEventListener('click', function () {
-      refresh();
-      document.body.classList.add('sp-print');
-      var off = function () { document.body.classList.remove('sp-print'); window.removeEventListener('afterprint', off); };
-      window.addEventListener('afterprint', off);
-      window.print();
-      setTimeout(off, 2000);
     });
     document.getElementById('spReset').addEventListener('click', function () {
       if (!window.confirm('入力をすべて消します。よろしいですか。')) return;
@@ -1390,6 +1411,11 @@
     SOURCES.forEach(function (s) { SRC[s.id] = s; });
 
     bindDom();
+    initPreview();
+    // 整備中のタブに印を付ける
+    [['haikei', tabHaikei], ['seito', tabSeito]].forEach(function (pair) {
+      if (maint(pair[0])) pair[1].insertAdjacentHTML('beforeend', '<span class="maint-mini">整備中</span>');
+    });
     renderFooter();
     installBanner();
 
