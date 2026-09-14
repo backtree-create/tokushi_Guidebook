@@ -45,6 +45,7 @@
       items: []
     }
   };
+  var LINKS = [];   // 目的別リンク集（links.json）。URLは持たず sources.json の id を参照する
   function topicOf(key) { return TOPICS[key]; }
   function topicItem(key, id) {
     var t = TOPICS[key];
@@ -193,7 +194,7 @@
     }
     if (r.view === 'search') return '「' + r.q + '」の検索結果｜' + base;
     if (r.view === 'jiritsu') return '自立活動 6区分27項目｜' + base;
-    if (r.view === 'terms') return '診断名・出典｜' + base;
+    if (r.view === 'terms') return '出典・リンク集｜' + base;
     if (r.view === 'topic') return topicOf(r.topic).title + '｜' + base;
     if (r.view === 'topic-item') {
       var h = topicItem(r.topic, r.id);
@@ -760,20 +761,30 @@
     playFadeIn();
   }
 
-  /* ---------- 診断名・出典 ---------- */
+  /* ---------- 出典・リンク集（旧 診断名・出典） ---------- */
 
   function renderTerms() {
     var tm = META.termMap;
 
     var html = '<div class="jiritsu-table-wrap">' +
       '<div class="article-head">' +
-        '<div class="article-num" style="border-radius:3px;">対</div>' +
-        '<h2 class="cat-title">診断名の対応と出典一覧<span class="en">Terminology Map &amp; Sources</span></h2>' +
+        '<div class="article-num" style="border-radius:3px;">典</div>' +
+        '<h2 class="cat-title">出典・リンク集<span class="en">Sources &amp; Links by Purpose</span></h2>' +
       '</div>' +
-      '<div class="overview">' + esc(tm.note) + '</div>' +
+      '<div class="overview">「○○についてはここから」の順に、目的別に公的資料を並べています。' +
+        '本ツールが参照している資料の一覧と、診断名と教育上の区分の対応表はページの後半にあります。' +
+        'URLはすべて sources.json で一元管理し、毎月リンク切れと新版の有無を自動で確認しています。</div>' +
+      '<nav class="lk-jump" aria-label="ページ内の移動">' +
+        '<a href="javascript:void(0)" data-jump="lk-guide">目的別リンク</a>' +
+        '<a href="javascript:void(0)" data-jump="termmap">診断名の対応表</a>' +
+        '<a href="javascript:void(0)" data-jump="srclist">参照資料の一覧</a>' +
+        '<a href="javascript:void(0)" data-jump="research">研究段階の知見</a>' +
+      '</nav>' +
+      linkGuideHtml() +
 
-      '<div class="ku-group">' +
+      '<div class="ku-group" id="termmap">' +
         '<div class="ku-heading"><span class="ku-index">1</span><h3>教育上の区分と医学的診断名の対応</h3></div>' +
+        '<p class="block-sub">' + esc(tm.note) + '</p>' +
         '<div class="table-scroll"><table class="item-table">' +
         '<thead><tr><th>本ツールの見出し（学校教育法・文部科学省）</th><th>医学的診断名（DSM-5-TR ／ ICD-11）</th><th>補足</th></tr></thead><tbody>';
     tm.rows.forEach(function (r) {
@@ -807,11 +818,11 @@
     var established = SOURCES.filter(function (s) { return s.tier !== 'research'; });
     var research = SOURCES.filter(function (s) { return s.tier === 'research'; });
 
-    html += '<div class="ku-group">' +
-      '<div class="ku-heading"><span class="ku-index">2</span><h3>一次資料・公的データベース</h3></div>' +
+    html += '<div class="ku-group" id="srclist">' +
+      '<div class="ku-heading"><span class="ku-index">2</span><h3>参照資料の一覧（一次資料・公的データベース・学会等）</h3></div>' +
       sourceTable(established) + '</div>';
 
-    html += '<div class="ku-group">' +
+    html += '<div class="ku-group" id="research">' +
       '<div class="ku-heading"><span class="ku-index">3</span><h3>研究段階の知見</h3></div>' +
       '<div class="section-disclaimer"><b>診断・指導の基準ではありません</b>' +
       '<p>以下は個別の研究発表です。DSM-5-TR／ICD-11 のような確立した診断分類とは位置づけが異なります。本ツールの記述の背景として挙げているもので、就学相談や指導計画の根拠として用いるものではありません。</p></div>' +
@@ -821,6 +832,53 @@
 
     mainContent.innerHTML = html;
     playFadeIn();
+    mainContent.querySelectorAll('[data-jump]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        var el = document.getElementById(a.getAttribute('data-jump'));
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  }
+
+  /* ---------- 目的別リンク集 ---------- */
+
+  // 「○○についてはここから」。行を大きく、押しやすく。
+  // 資料の URL は sources.json から引く。route は本ツール内のページ、anchor はこのページ内。
+  function linkGuideHtml() {
+    if (!LINKS.length) return '';
+    var html = '<div class="lk-guide" id="lk-guide">';
+    LINKS.forEach(function (g) {
+      html += '<section class="lk-group">' +
+        '<h3 class="lk-title">' + esc(g.title) + '</h3>' +
+        (g.lead ? '<p class="lk-lead">' + esc(g.lead) + '</p>' : '') +
+        '<div class="lk-list">';
+      g.items.forEach(function (it) {
+        var s = it.sourceId ? SRC[it.sourceId] : null;
+        if (it.sourceId && !s) return;
+        var label, sub, href, ext = false, cls = 'lk-row';
+        if (s) {
+          label = it.label || s.title;
+          sub = [s.publisher, s.edition].filter(Boolean).join('　');
+          href = s.url; ext = !!s.url;
+          if (!s.url) cls += ' nolink';
+        } else if (it.route) {
+          label = it.label; sub = '本ツール内'; href = it.route; cls += ' internal';
+        } else {
+          label = it.label; sub = 'このページ内'; href = 'javascript:void(0)'; cls += ' internal';
+        }
+        html += '<a class="' + cls + '"' +
+          (href ? ' href="' + esc(href) + '"' : '') +
+          (ext ? ' target="_blank" rel="noopener"' : '') +
+          (it.anchor ? ' data-jump="' + esc(it.anchor) + '"' : '') + '>' +
+          '<span class="lk-main"><span class="lk-label">' + esc(label) + '</span>' +
+            (sub ? '<span class="lk-sub">' + esc(sub) + '</span>' : '') + '</span>' +
+          (it.note ? '<span class="lk-note">' + esc(it.note) + '</span>' : '') +
+          '<span class="lk-mark" aria-hidden="true">' + (ext ? '↗' : '›') + '</span>' +
+          '</a>';
+      });
+      html += '</div></section>';
+    });
+    return html + '</div>';
   }
 
   /* ---------- 自立活動の対応付けについての注記 ---------- */
@@ -1009,7 +1067,7 @@
         '収録 ' + DATA.length + '区分・' +
         DATA.reduce(function (s, c) { return s + c.diseases.length; }, 0) + '件／ ' +
         '配慮を要する背景 ' + TOPICS.haikei.items.length + '件／ 生徒指導上の課題 ' + TOPICS.seito.items.length + '件／ ' +
-        '出典 ' + SOURCES.length + '件（詳細は上部タブ「診断名・出典」）' +
+        '出典 ' + SOURCES.length + '件（詳細は上部タブ「出典・リンク集」）' +
       '</p>' +
       '<p class="footer-feedback"><b>' + esc(fb.label) + '</b>：' + esc(fb.note) +
         ' <a href="' + esc(fb.url) + '" target="_blank" rel="noopener">' + esc(fb.url) + '</a></p>';
@@ -1087,6 +1145,7 @@
     DATA = bundle.categories;
     TOPICS.haikei.items = bundle.haikei || [];
     TOPICS.seito.items = bundle.seito || [];
+    LINKS = bundle.links || [];
     SOURCES.forEach(function (s) { SRC[s.id] = s; });
 
     bindDom();
@@ -1128,16 +1187,17 @@
       loadJson('jiritsu27.json'),
       loadJson('categories.json'),
       loadJson('haikei.json'),
-      loadJson('seito.json')
+      loadJson('seito.json'),
+      loadJson('links.json')
     ]).then(function (r) {
-      var meta = r[0], sources = r[1], jiritsu27 = r[2], categories = r[3], haikei = r[4], seito = r[5];
+      var meta = r[0], sources = r[1], jiritsu27 = r[2], categories = r[3], haikei = r[4], seito = r[5], links = r[6];
       return Promise.all(categories.map(function (c) {
         return loadJson(c.id + '.json').then(function (ds) {
           c.diseases = ds;
           return c;
         });
       })).then(function (cats) {
-        boot({ meta: meta, sources: sources, jiritsu27: jiritsu27, categories: cats, haikei: haikei, seito: seito });
+        boot({ meta: meta, sources: sources, jiritsu27: jiritsu27, categories: cats, haikei: haikei, seito: seito, links: links });
       });
     }).catch(fail);
   }

@@ -55,6 +55,22 @@
     line-break:strict;
   }
   a{color:var(--accent); overflow-wrap:break-word; word-break:break-word;}
+  /* 文中のリンクは下線を太めに。カード型のリンク(.hk-card等)は各自で text-decoration:none にしている */
+  .source-box a,.basis-refs a,.hk-ref a,.src-index a,.item-table a,.block-sub a,.crumb a,.hk-rel-note a{
+    text-decoration:underline;
+    text-decoration-thickness:1.5px;
+    text-underline-offset:3px;
+    font-weight:600;
+  }
+  .source-box a:hover,.basis-refs a:hover,.item-table a:hover{background:var(--tone-info-bg);}
+  /* 外部リンクの印 */
+  .source-box a[target="_blank"]::after,.basis-refs a[target="_blank"]::after,
+  .hk-ref a[target="_blank"]::after,.item-table a[target="_blank"]::after{
+    content:"\2197";
+    font-size:.8em;
+    margin-left:3px;
+    color:var(--ink-faint);
+  }
   img, table, pre, .source-box, .credential, .top-strip{max-width:100%;}
 
   /* ---------- 上部帯（機関名） ---------- */
@@ -1114,6 +1130,68 @@
   .hk-rel-card span:last-child{font-size:12.5px;line-height:1.75;color:var(--ink-soft);}
   .hk-rel-note{margin:12px 0 0;font-size:13px;color:var(--ink-soft);}
 
+  /* ---------- 目的別リンク集（出典・リンク集タブ） ---------- */
+  .lk-jump{
+    display:flex;flex-wrap:wrap;gap:8px;
+    margin:0 0 22px;
+  }
+  .lk-jump a{
+    padding:7px 14px;
+    font-size:13px;font-weight:700;
+    color:var(--ink-strong);
+    background:var(--card);
+    border:1px solid var(--line-strong);
+    border-radius:3px;
+    text-decoration:none;
+  }
+  .lk-jump a:hover{border-color:var(--navy);}
+  .lk-guide{display:grid;gap:22px;margin:0 0 30px;}
+  .lk-group{margin:0;}
+  .lk-title{
+    margin:0 0 4px;
+    font-family:var(--serif);
+    font-size:17px;
+    color:var(--ink-strong);
+    padding-left:12px;
+    border-left:4px solid var(--navy);
+  }
+  .lk-lead{margin:0 0 10px 16px;font-size:13px;color:var(--ink-soft);line-height:1.8;}
+  .lk-list{display:grid;gap:8px;}
+  .lk-row{
+    display:grid;
+    grid-template-columns:minmax(220px,2fr) 3fr auto;
+    align-items:center;
+    gap:6px 18px;
+    padding:12px 16px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:3px;
+    text-decoration:none;
+    color:var(--ink);
+    transition:border-color .12s, background .12s;
+  }
+  .lk-row:hover,.lk-row:focus-visible{border-color:var(--accent);background:var(--tone-info-bg);outline:none;}
+  .lk-row.internal{border-style:dashed;}
+  .lk-main{display:flex;flex-direction:column;gap:2px;min-width:0;}
+  .lk-label{
+    font-size:15px;font-weight:700;
+    color:var(--accent);
+    text-decoration:underline;
+    text-decoration-thickness:1.5px;
+    text-underline-offset:3px;
+    line-height:1.5;
+  }
+  .lk-row.internal .lk-label{color:var(--ink-strong);text-decoration:none;}
+  .lk-sub{font-size:12px;color:var(--ink-faint);}
+  .lk-note{font-size:13px;line-height:1.75;color:var(--ink-soft);}
+  .lk-mark{font-size:18px;color:var(--ink-faint);}
+  .lk-row:hover .lk-mark{color:var(--accent);}
+  @media (max-width:760px){
+    .lk-row{grid-template-columns:1fr auto;}
+    .lk-mark{grid-row:1;grid-column:2;}
+    .lk-note{grid-column:1 / -1;}
+  }
+
   /* --- フッター --- */
   footer p{margin:0 0 10px;}
   .footer-meta{
@@ -1465,6 +1543,8 @@
     .basis-tag{border:.5pt solid #666 !important;background:#fff !important;color:#000 !important;}
 
     /* リンクは紙では押せないので、URLを添える */
+    .lk-jump{display:none !important;}
+    .lk-row{border-color:#999 !important;}
     .source-box a[href^="http"]::after,
     .basis-refs a[href^="http"]::after{
       content:" 〈" attr(href) "〉";
@@ -1536,6 +1616,8 @@
     .hk-pt-n{background:var(--accent);color:#0b131c;}
     .hk-home-note{border-left-color:var(--accent);}
     .j-step.on{border-color:var(--accent);}
+    .lk-title{border-left-color:var(--accent);}
+    .lk-jump a:hover{border-color:var(--accent);}
     .j-step.on b{background:var(--accent);color:#0b131c;border-color:var(--accent);}
     .hk-card:hover,.hk-rel-card:hover{border-color:var(--accent);}
     .ku-mini{background:var(--accent);color:#0b131c;}

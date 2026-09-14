@@ -271,6 +271,32 @@ for (const [key, list] of Object.entries(topics)) {
 if (catIds.has('futoukou')) err('categories.json に futoukou があります。不登校は seito.json（生徒指導上の課題）で扱います');
 if (!(topics.seito || []).some(x => x.id === 'futoukou')) err('seito.json に futoukou がありません');
 
+/* --- 4c. 目的別リンク集（links.json） ---
+   URL を持たず sources.json の id を参照する。route は本ツール内の
+   ハッシュ、anchor は出典ページ内の要素id。 */
+const links = rj('links.json');
+if (!Array.isArray(links) || links.length === 0) err('links.json が配列ではないか空です');
+const topicRoutes = new Set(['#/jiritsu', '#/terms', '#/haikei', '#/seito']);
+for (const [key, list] of Object.entries(topics)) for (const h of list) topicRoutes.add(`#/${key}/${h.id}`);
+for (const c of categories) topicRoutes.add(`#/c/${c.id}`);
+const lkIds = new Set();
+for (const g of links) {
+  const where = `links.json ${g.id || '(id なし)'}`;
+  if (lkIds.has(g.id)) err(`links.json に重複ID: ${g.id}`);
+  lkIds.add(g.id);
+  if (!g.title) err(`${where}: title がありません`);
+  if (!Array.isArray(g.items) || g.items.length === 0) err(`${where}: items がありません`);
+  for (const it of g.items || []) {
+    const kinds = ['sourceId', 'route', 'anchor'].filter(k => it[k]);
+    if (kinds.length !== 1) err(`${where}: 各行は sourceId / route / anchor のどれか1つを持ちます`);
+    if (it.sourceId && !srcIds.has(it.sourceId)) err(`${where}: sourceId "${it.sourceId}" が sources.json にありません`);
+    if (it.sourceId && it.url) err(`${where}: url は sources.json にだけ書きます`);
+    if (it.route && !topicRoutes.has(it.route)) err(`${where}: route "${it.route}" は存在しない画面です`);
+    if ((it.route || it.anchor) && !it.label) err(`${where}: route / anchor の行には label が必要です`);
+    if (it.anchor && !['termmap', 'srclist', 'research', 'lk-guide'].includes(it.anchor)) err(`${where}: anchor "${it.anchor}" は不明です`);
+  }
+}
+
 /* --- 5. メタ情報と Service Worker の版ずれ --- */
 const sw = fs.readFileSync(path.join(root, 'sw.js'), 'utf8');
 const m = sw.match(/const VERSION = "([^"]+)"/);
@@ -286,7 +312,7 @@ for (const c of categories) {
     err(`sw.js の PRECACHE に ${c.id}.json がありません`);
   }
 }
-for (const f of Object.values(TOPIC_FILES)) if (!sw.includes(f)) err(`sw.js の PRECACHE に ${f} がありません`);
+for (const f of [...Object.values(TOPIC_FILES), 'links.json']) if (!sw.includes(f)) err(`sw.js の PRECACHE に ${f} がありません`);
 if (sw.includes('futoukou.json')) err('sw.js の PRECACHE に futoukou.json が残っています');
 
 
@@ -393,7 +419,7 @@ for (const m of css.matchAll(/font-size:\s*([\d.]+)px/g)) {
 }
 
 /* --- 出力 --- */
-console.log(`検査: ${categories.length}区分 / ${totalDiseases}件 / 主題${topicCount}件 / 出典${sources.length}件 / 自立活動${itemCount}項目`);
+console.log(`検査: ${categories.length}区分 / ${totalDiseases}件 / 主題${topicCount}件 / リンク集${links.length}群 / 出典${sources.length}件 / 自立活動${itemCount}項目`);
 console.log(`出典確認が済んでいない疾患: ${unreviewed} / ${totalDiseases} 件`);
 console.log(`学校生活管理指導表の対象として印を付けた疾患: ${formCount}件`);
 console.log('出典区分の内訳:');
