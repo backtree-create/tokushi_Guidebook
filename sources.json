@@ -848,5 +848,85 @@
     "url": "https://www.mhlw.go.jp/stf/taikou_r041014.html",
     "policy": "pinned",
     "checked": "2026-09-14"
+  },
+  {
+    "id": "mext-seibouryoku-page",
+    "title": "性犯罪・性暴力対策の強化について（「生命（いのち）の安全教育」教材・指導の手引きほか）",
+    "publisher": "文部科学省",
+    "url": "https://www.mext.go.jp/a_menu/danjo/anzen/index.html",
+    "policy": "latest",
+    "review": "年次",
+    "checked": "2026-09-14",
+    "note": "生命の安全教育の教材・指導の手引きは令和8年3月改訂版。ワンストップ支援センターの周知、痴漢被害への対応もここ"
+  },
+  {
+    "id": "mext-gid-tsuchi-h27",
+    "title": "性同一性障害に係る児童生徒に対するきめ細かな対応の実施等について（通知）",
+    "publisher": "文部科学省",
+    "edition": "平成27年4月30日",
+    "url": "https://www.mext.go.jp/b_menu/houdou/27/04/1357468.htm",
+    "policy": "pinned",
+    "checked": "2026-09-14",
+    "note": "服装・髪型・更衣室・トイレ・呼称・水泳・修学旅行などの配慮例と、秘匿の意向への配慮、「性的マイノリティ」全般への言及"
+  },
+  {
+    "id": "mext-lgbt-page",
+    "title": "性的マイノリティに関する施策",
+    "publisher": "文部科学省",
+    "url": "https://www.mext.go.jp/a_menu/shotou/jinken/sankosiryo/1415166_00004.htm",
+    "policy": "latest",
+    "review": "年次",
+    "checked": "2026-09-14",
+    "note": "教職員向けパンフレット、研修動画、理解増進法の基本計画の通知の入口"
+  },
+  {
+    "id": "mext-joho-moral",
+    "title": "情報モラル教育の充実等",
+    "publisher": "文部科学省",
+    "url": "https://www.mext.go.jp/a_menu/shotou/zyouhou/detail/1369617.htm",
+    "policy": "latest",
+    "review": "年次",
+    "checked": "2026-09-14",
+    "note": "児童生徒向け動画教材、教員向け指導の手引き、保護者向け資料、「児童生徒の健康に留意してICTを活用するためのガイドブック」（令和4年3月改訂）"
+  },
+  {
+    "id": "mext-net-page",
+    "title": "子どもの携帯電話・インターネットをめぐる問題",
+    "publisher": "文部科学省",
+    "url": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/1302909.htm",
+    "policy": "latest",
+    "review": "年次",
+    "checked": "2026-09-14",
+    "note": "ネット上のいじめ対応マニュアル・事例集など、生徒指導側の入口"
+  },
+  {
+    "id": "moj-shonenho",
+    "title": "少年法が変わります！（改正少年法の解説）",
+    "publisher": "法務省",
+    "edition": "令和4年4月1日施行",
+    "url": "https://www.moj.go.jp/keiji1/keiji14_00015.html",
+    "policy": "pinned",
+    "checked": "2026-09-14",
+    "note": "18・19歳を「特定少年」とし、原則逆送の対象拡大、ぐ犯の対象外など"
+  },
+  {
+    "id": "nier-leaf",
+    "title": "「生徒指導リーフ」シリーズ",
+    "publisher": "国立教育政策研究所 生徒指導・進路指導研究センター",
+    "url": "https://www.nier.go.jp/shido/leaf/index.html",
+    "policy": "latest",
+    "checked": "2026-09-14",
+    "note": "Leaf.12「学校と警察等との連携」（日々の連携と緊急時の連携）、Leaf.3「発達障害と生徒指導」など",
+    "review": "年次"
+  },
+  {
+    "id": "saposute",
+    "title": "地域若者サポートステーション（サポステ）",
+    "publisher": "厚生労働省",
+    "url": "https://saposute-net.mhlw.go.jp/",
+    "policy": "latest",
+    "review": "年次",
+    "checked": "2026-09-14",
+    "note": "中途退学者等の就労・自立支援。高等学校との連携ページあり"
   }
 ]
