@@ -18,33 +18,39 @@
 
   var DATA = [], JIRITSU27 = [], SOURCES = [], META = {};
   // 区分（DATA）とは別の型で持つ「主題」のタブ。自立活動との対応は持たない。
-  //   haikei: 配慮を要する背景（学習指導要領 総則「特別な配慮を必要とする児童生徒」）
+  //   curriculum: 特別の教育課程（日本語指導・2E。特別支援ガイドブック側）
   //   seito : 生徒指導上の課題（生徒指導提要）
   var TOPICS = {
-    haikei: {
-      key: 'haikei', tab: 'tabHaikei', mark: '背',
-      title: '配慮を要する背景', en: 'Backgrounds Requiring Special Consideration',
-      intro: '障害ではないが、置かれた状況が学びの困難を生んでいる児童生徒についての整理です。' +
-        '学習指導要領 総則の「特別な配慮を必要とする児童生徒への指導」に沿い、障害種別ガイドとは別の枠で扱います。' +
-        '自立活動の27項目とは対応付けず、代わりに「関連する障害種別」で障害種別ガイドへ橋をかけています。',
-      noteHead: '3つの項目は性格が違います',
-      note: '日本語指導は「特別の教育課程」として制度が整っています。特異な才能（2E）は制度化の直前で、記述は検討中の資料に基づきます。' +
-        'ヤングケアラーは「指導」ではなく「気づいて、つなぐ」対象で、指導計画の項目を持ちません。',
-      foot: '一次資料は文部科学省・こども家庭庁などの公的資料に限っています。個別の研究成果は本文の根拠にしていません。',
+    curriculum: {
+      key: 'curriculum', book: 'tokushi', tab: 'tabCurriculum', mark: '課',
+      title: '特別の教育課程', en: 'Special Curricula (Japanese Language / Gifted with Disabilities)',
+      intro: '障害種別ガイドと同じ特別支援ガイドブックの中で、「特別の教育課程」という教育課程上の枠組みで応える対象のうち、障害種別以外の2件を扱います。' +
+        '学習指導要領 総則の「特別な配慮を必要とする児童生徒への指導」に並ぶものです。自立活動の27項目とは対応付けず、「関連する障害種別」で見立ての重なりを確認する入口にしています。',
+      noteHead: '特別の教育課程は3種類あり、自立活動を用いるのは通級（障害）だけです',
+      note: '(1) 通級による指導（学校教育法施行規則 第140条・第141条）：障害のある児童生徒が対象。自立活動の内容を参考に指導する。' +
+        '(2) 日本語指導（同 第56条の2 等、平成26年度から）：日本語の指導そのもので、自立活動ではない。' +
+        '(3) 特定分野に特異な才能のある児童生徒（制度化を検討中）：大学等での対象活動で、自立活動ではない。' +
+        'このタブの2件は(2)(3)にあたります。障害を併せ有する場合、障害の側は障害種別ガイドと自立活動の手順で扱います。',
+      foot: '一次資料は文部科学省の手引・通知・審議会資料に限っています。個別の研究成果は本文の根拠にしていません。',
       items: []
     },
     seito: {
-      key: 'seito', tab: 'tabSeito', mark: '生',
-      title: '生徒指導上の課題', en: 'Student Guidance Issues (Seito Shido Teiyo)',
-      intro: '生徒指導提要（令和4年12月改訂）を一次資料とし、障害ではないが学校が組織的に対応する課題を扱います。' +
-        '障害種別ガイドと同じ自立活動の枠には載せず、提要の重層的支援構造（発達支持的・課題予防的・困難課題対応的）で整理しています。',
-      noteHead: 'まず不登校から',
-      note: '以前は障害種別ガイドの11番目に置いていた不登校を、版3.0.0でこのタブに移しました。' +
-        '不登校は障害ではなく、自立活動の対応付けは根拠を持たないためです。提要の他の章（いじめ、児童虐待、自殺予防など）に広げるかどうかは別途判断します。',
-      foot: '一次資料は生徒指導提要と文部科学省の法令・通知・施策文書に限っています。',
+      key: 'seito', book: 'teiyo', tab: 'tabSeito', mark: '提',
+      title: '生徒指導上の課題', en: 'Student Guidance Issues (Seito Shido Teiyo, Part II)',
+      intro: '生徒指導提要（令和4年12月改訂）第II部「個別の課題に対する生徒指導」を一次資料とし、章の順に整理しています。' +
+        '第I部（生徒指導の基礎・体制）は本ツールでは扱わず、提要本文を参照してください。' +
+        '各課題は自立活動の枠には載せず、提要の重層的支援構造（発達支持的・課題予防的・困難課題対応的）で整理し、「関連する障害種別」で特別支援ガイドブックへ橋をかけています。',
+      noteHead: '障害のある児童生徒がこれらの課題に直面している場合',
+      note: '自立活動の目標は、課題名から項目を引くのではなく、サポートシートの手順（実態把握 → 課題の整理 → 項目の選定）で決めます。その課題を①実態把握と③指導すべき課題に書き込むところから始めてください。',
+      foot: '一次資料は生徒指導提要と文部科学省・こども家庭庁等の法令・通知・施策文書に限っています。',
       items: []
     }
   };
+  var BOOKS = {
+    tokushi: { title: '特別支援ガイドブック', home: '#/', modes: ['guide', 'curriculum', 'jiritsu', 'terms'] },
+    teiyo:   { title: '指導提要ガイドブック', home: '#/seito', modes: ['seito', 'terms'] }
+  };
+  var currentBook = 'tokushi';
   var LINKS = [];   // 目的別リンク集（links.json）。URLは持たず sources.json の id を参照する
 
   /* ---------- メンテナンス中の覆い ---------- */
@@ -111,10 +117,10 @@
   /* ---------- DOM 参照 ---------- */
 
   var catList, mainContent, searchBox, sideNav,
-      tabGuide, tabHaikei, tabSeito, tabJiritsu, tabTerms, layoutRoot, homeBtn, homeLink, homeEmblem, siteFooter;
+      tabGuide, tabCurriculum, tabSeito, tabJiritsu, tabTerms, bookTokushi, bookTeiyo, layoutRoot, homeBtn, homeLink, homeEmblem, siteFooter;
 
   var currentId = null;
-  var mode = 'guide'; // 'guide' | 'haikei' | 'seito' | 'jiritsu' | 'terms'
+  var mode = 'guide'; // 'guide' | 'curriculum' | 'seito' | 'jiritsu' | 'terms'
   var openDisease = null;   // 開いている疾患名（URLに載せる）
   var routing = false;      // 描画中の navigate を無視するための印
 
@@ -149,9 +155,9 @@
     jiritsu: function () { return '#/jiritsu'; },
     support: function () { return '#/jiritsu/support'; },
     terms:   function () { return '#/terms'; },
-    haikei:  function (id) { return '#/haikei' + (id ? '/' + encodeURIComponent(id) : ''); },
+    curriculum: function (id) { return '#/curriculum' + (id ? '/' + encodeURIComponent(id) : ''); },
     seito:   function (id) { return '#/seito'  + (id ? '/' + encodeURIComponent(id) : ''); },
-    topic:   function (key, id) { return key === 'seito' ? ROUTES.seito(id) : ROUTES.haikei(id); }
+    topic:   function (key, id) { return key === 'seito' ? ROUTES.seito(id) : ROUTES.curriculum(id); }
   };
 
   function parseHash() {
@@ -165,7 +171,11 @@
       case 'q':       return { view: 'search', q: seg.slice(1).join('/') };
       case 'jiritsu': return seg[1] === 'support' ? { view: 'support' } : { view: 'jiritsu' };  // 旧逆引き(#/jiritsu/区分/項目)は一覧へ
       case 'terms':   return { view: 'terms' };
-      case 'haikei':  return seg[1] ? { view: 'topic-item', topic: 'haikei', id: seg[1] } : { view: 'topic', topic: 'haikei' };
+      case 'curriculum': return seg[1] ? { view: 'topic-item', topic: 'curriculum', id: seg[1] } : { view: 'topic', topic: 'curriculum' };
+      // 旧「配慮を要する背景」(#/haikei)。版4.0.0で振り分けたので転送する
+      case 'haikei':  return seg[1] === 'young-carer'
+        ? { view: 'topic-item', topic: 'seito', id: 'young-carer', legacy: true }
+        : seg[1] ? { view: 'topic-item', topic: 'curriculum', id: seg[1], legacy: true } : { view: 'topic', topic: 'curriculum', legacy: true };
       case 'seito':   return seg[1] ? { view: 'topic-item', topic: 'seito',  id: seg[1] } : { view: 'topic', topic: 'seito' };
       default:        return { view: 'home' };
     }
@@ -183,8 +193,16 @@
   }
 
   function setTabs(m) {
+    // どの冊に属するモードかで上段の切替と下段のタブを揃える
+    if (m !== 'terms') currentBook = BOOKS.teiyo.modes.indexOf(m) >= 0 ? 'teiyo' : 'tokushi';
+    bookTokushi.classList.toggle('on', currentBook === 'tokushi');
+    bookTeiyo.classList.toggle('on', currentBook === 'teiyo');
+    document.querySelectorAll('.mode-tabs button').forEach(function (b) {
+      var bk = b.getAttribute('data-book');
+      b.hidden = !(bk === 'both' || bk === currentBook);
+    });
     tabGuide.classList.toggle('on', m === 'guide');
-    tabHaikei.classList.toggle('on', m === 'haikei');
+    tabCurriculum.classList.toggle('on', m === 'curriculum');
     tabSeito.classList.toggle('on', m === 'seito');
     tabJiritsu.classList.toggle('on', m === 'jiritsu');
     tabTerms.classList.toggle('on', m === 'terms');
@@ -205,6 +223,7 @@
       sideNav.style.display = wide ? 'none' : '';
       layoutRoot.classList.toggle('wide', wide);
 
+      if (r.legacy) { navigate(ROUTES.topic(r.topic, r.id), true); return; }
       // 版3.0.0で不登校を障害種別から生徒指導上の課題へ移した。古いURL(#/c/futoukou)は転送する
       if (r.view === 'cat' && r.catId === 'futoukou') { navigate(ROUTES.seito('futoukou'), true); return; }
       if (r.view === 'cat' || r.view === 'search' || r.view === 'home') {
@@ -263,7 +282,7 @@
   function setMode(m) {
     navigate(m === 'guide' ? ROUTES.home()
            : m === 'jiritsu' ? ROUTES.jiritsu()
-           : m === 'haikei' ? ROUTES.haikei()
+           : m === 'curriculum' ? ROUTES.curriculum()
            : m === 'seito' ? ROUTES.seito()
            : ROUTES.terms());
   }
@@ -391,15 +410,11 @@
     });
 
     html += '</div>';
-    ['haikei', 'seito'].forEach(function (key) {
-      var t = TOPICS[key];
-      if (!t.items.length) return;
-      html += '<div class="hk-home-note">' +
-        '<b>' + esc(t.title) + (maint(key) ? '<span class="maint-mini">整備中</span>' : '') + '</b>' +
-        '<span>' + (maint(key) ? esc(maint(key).title) : t.items.map(function (h) { return esc(h.name); }).join('／') +
-          ' は障害ではないため、上部タブ「' + esc(t.title) + '」にまとめています。') + '</span>' +
-        '<a href="' + ROUTES.topic(key) + '">' + esc(t.title) + 'を開く</a></div>';
-    });
+    html += '<div class="hk-home-note">' +
+      '<b>指導提要ガイドブック' + (maint('seito') ? '<span class="maint-mini">整備中</span>' : '') + '</b>' +
+      '<span>' + (maint('seito') ? esc(maint('seito').title) :
+        '不登校・ヤングケアラーなど、生徒指導提要に基づく課題は上段の切替から「指導提要ガイドブック」へ。障害種別の各ページからも関連する課題へ飛べます。') + '</span>' +
+      '<a href="' + ROUTES.seito() + '">指導提要ガイドブックを開く</a></div>';
     html += '<div class="disclaimer">' + esc(META.disclaimer.long) + '</div></div>';
 
     mainContent.innerHTML = html;
@@ -693,6 +708,7 @@
       '<section class="block">' +
         '<h3 class="block-title">学びの場</h3>' + placesHtml +
       '</section>' +
+      crossLinksBlock(cat.id) +
       legalBlock(cat) +
       programBlock(cat) +
 
@@ -1161,7 +1177,35 @@
     });
   }
 
-  /* ---------- 主題のタブ（配慮を要する背景／生徒指導上の課題） ---------- */
+  /* ---------- 障害種別 → 主題 の逆引き（指導提要側・特別の教育課程側が持つ related を逆から引く） ---------- */
+
+  function crossLinksBlock(catId) {
+    var groups = [];
+    ['seito', 'curriculum'].forEach(function (key) {
+      if (maint(key)) return;  // 覆っている冊へは案内しない
+      var t = TOPICS[key];
+      var hits = [];
+      t.items.forEach(function (h) {
+        (h.related || []).forEach(function (r) { if (r.catId === catId) hits.push({ item: h, note: r.note }); });
+      });
+      if (hits.length) groups.push({ t: t, hits: hits });
+    });
+    if (!groups.length) return '';
+    var html = '<section class="block">' +
+      '<h3 class="block-title">関連する生徒指導上の課題・特別の教育課程<span class="tally">この障害種を挙げている項目</span></h3>' +
+      '<p class="block-sub">それぞれの項目が「関連する障害種別」としてこの障害種を挙げています。見立てを分ける、または重なりを確認するときに参照してください。</p>';
+    groups.forEach(function (g) {
+      html += '<p class="hk-cross-book">' + esc(BOOKS[g.t.book].title) + '／' + esc(g.t.title) + '</p><div class="hk-rel">' +
+        g.hits.map(function (x) {
+          return '<a class="hk-rel-card" href="' + ROUTES.topic(g.t.key, x.item.id) + '">' +
+            '<span class="num">' + esc(x.item.chapter || x.item.num) + '</span><b>' + esc(x.item.name) + '</b><span>' + esc(x.note) + '</span></a>';
+        }).join('') + '</div>';
+    });
+    return html + '</section>';
+  }
+
+  /* ---------- 主題のタブ（特別の教育課程／生徒指導上の課題） ---------- */
+
 
   // 区分（DATA）とは別の型。自立活動27項目との対応は持たず、
   // 「関連する障害種別」で既存区分へ内部リンクする。
@@ -1193,7 +1237,7 @@
 
     t.items.forEach(function (h) {
       html += '<a class="hk-card" href="' + ROUTES.topic(t.key, h.id) + '">' +
-        '<span class="num">' + esc(h.num) + '</span>' +
+        '<span class="num">' + esc(h.chapter || h.num) + '</span>' +
         '<h4>' + esc(h.name) + '</h4>' +
         '<p>' + esc(h.subtitle) + '</p>' +
         '<div class="hk-card-foot">' + hkStatusTag(h) +
@@ -1263,8 +1307,13 @@
         '</section>';
     }
 
-    var relatedHtml = '<section class="block">' +
-      '<h3 class="block-title">関連する障害種別<span class="tally">障害種別ガイドへ</span></h3>' +
+    var jiritsuLine = (t.key === 'seito')
+      ? '<div class="section-disclaimer"><b>障害のある児童生徒がこの課題に直面している場合の自立活動</b>' +
+        '<p>自立活動の目標は、この課題名から項目を引くのではなく、<a href="' + ROUTES.support() + '">サポートシート</a>の手順（実態把握 → 課題の整理 → 項目の選定）で決めます。' +
+        'この課題を①実態把握と③指導すべき課題に書き込むところから始めてください。</p></div>'
+      : '';
+    var relatedHtml = jiritsuLine + '<section class="block">' +
+      '<h3 class="block-title">関連する障害種別<span class="tally">特別支援ガイドブックへ</span></h3>' +
       '<p class="block-sub">見立てを分ける、または重なりを確認するときに参照する区分です。</p>' +
       '<div class="hk-rel">' + (h.related || []).map(function (r) {
         var c = DATA.find(function (x) { return x.id === r.catId; });
@@ -1278,12 +1327,12 @@
     // 他の主題タブの項目への横リンク（不登校↔ヤングケアラー など）
     if (h.relatedTopics && h.relatedTopics.length) {
       relatedHtml += '<section class="block">' +
-        '<h3 class="block-title">関連する主題<span class="tally">他のタブへ</span></h3>' +
+        '<h3 class="block-title">関連する項目<span class="tally">他の冊・タブへ</span></h3>' +
         '<div class="hk-rel">' + h.relatedTopics.map(function (r) {
           var it = topicItem(r.tab, r.id), tt = topicOf(r.tab);
           if (!it || !tt) return '';
           return '<a class="hk-rel-card" href="' + ROUTES.topic(r.tab, it.id) + '">' +
-            '<span class="num">' + esc(tt.title) + '</span><b>' + esc(it.name) + '</b><span>' + esc(r.note) + '</span></a>';
+            '<span class="num">' + esc(BOOKS[tt.book].title + '／' + tt.title) + '</span><b>' + esc(it.name) + '</b><span>' + esc(r.note) + '</span></a>';
         }).join('') + '</div></section>';
     }
 
@@ -1300,6 +1349,7 @@
         '<div class="article-num" style="border-radius:3px;">' + esc(h.num) + '</div>' +
         '<h2 class="cat-title">' + esc(h.name) + '<span class="en">' + esc(h.en) + '</span></h2>' +
       '</div>' +
+      (h.chapter ? '<p class="hk-chapter">生徒指導提要 ' + esc(h.chapter) + '</p>' : '') +
       '<p class="hk-subtitle">' + esc(h.subtitle) + '</p>' +
       '<div class="hk-status tone-' + esc(st.tone || 'info') + '">' + hkStatusTag(h) + '<span>' + esc(st.text || '') + '</span></div>' +
       '<div class="overview">' + esc(h.overview) + '</div>' +
@@ -1328,7 +1378,7 @@
         '最終更新 ' + esc(META.updated) + '（版 ' + esc(META.version) + '）／ ' +
         '収録 ' + DATA.length + '区分・' +
         DATA.reduce(function (s, c) { return s + c.diseases.length; }, 0) + '件／ ' +
-        '配慮を要する背景 ' + TOPICS.haikei.items.length + '件／ 生徒指導上の課題 ' + TOPICS.seito.items.length + '件／ ' +
+        '特別の教育課程 ' + TOPICS.curriculum.items.length + '件／ 生徒指導上の課題 ' + TOPICS.seito.items.length + '件／ ' +
         '出典 ' + SOURCES.length + '件（詳細は上部タブ「出典・リンク集」）' +
       '</p>' +
       '<p class="footer-feedback"><b>' + esc(fb.label) + '</b>：' + esc(fb.note) +
@@ -1366,7 +1416,9 @@
     searchBox = document.getElementById('searchBox');
     sideNav = document.getElementById('sideNav');
     tabGuide = document.getElementById('tabGuide');
-    tabHaikei = document.getElementById('tabHaikei');
+    tabCurriculum = document.getElementById('tabCurriculum');
+    bookTokushi = document.getElementById('bookTokushi');
+    bookTeiyo = document.getElementById('bookTeiyo');
     tabSeito = document.getElementById('tabSeito');
     tabJiritsu = document.getElementById('tabJiritsu');
     tabTerms = document.getElementById('tabTerms');
@@ -1382,7 +1434,9 @@
     homeLink.onclick = goHome;
     if (homeEmblem) homeEmblem.onclick = goHome;
     tabGuide.onclick = function () { setMode('guide'); };
-    tabHaikei.onclick = function () { setMode('haikei'); };
+    tabCurriculum.onclick = function () { setMode('curriculum'); };
+    bookTokushi.onclick = function () { navigate(BOOKS.tokushi.home); };
+    bookTeiyo.onclick = function () { navigate(BOOKS.teiyo.home); };
     tabSeito.onclick = function () { setMode('seito'); };
     tabJiritsu.onclick = function () { setMode('jiritsu'); };
     tabTerms.onclick = function () { setMode('terms'); };
@@ -1405,7 +1459,7 @@
     SOURCES = bundle.sources;
     JIRITSU27 = bundle.jiritsu27;
     DATA = bundle.categories;
-    TOPICS.haikei.items = bundle.haikei || [];
+    TOPICS.curriculum.items = bundle.curriculum || [];
     TOPICS.seito.items = bundle.seito || [];
     LINKS = bundle.links || [];
     SOURCES.forEach(function (s) { SRC[s.id] = s; });
@@ -1413,7 +1467,7 @@
     bindDom();
     initPreview();
     // 整備中のタブに印を付ける
-    [['haikei', tabHaikei], ['seito', tabSeito]].forEach(function (pair) {
+    [['curriculum', tabCurriculum], ['seito', tabSeito]].forEach(function (pair) {
       if (maint(pair[0])) pair[1].insertAdjacentHTML('beforeend', '<span class="maint-mini">整備中</span>');
     });
     renderFooter();
@@ -1453,18 +1507,18 @@
       loadJson('sources.json'),
       loadJson('jiritsu27.json'),
       loadJson('categories.json'),
-      loadJson('haikei.json'),
+      loadJson('curriculum.json'),
       loadJson('seito.json'),
       loadJson('links.json')
     ]).then(function (r) {
-      var meta = r[0], sources = r[1], jiritsu27 = r[2], categories = r[3], haikei = r[4], seito = r[5], links = r[6];
+      var meta = r[0], sources = r[1], jiritsu27 = r[2], categories = r[3], curriculum = r[4], seito = r[5], links = r[6];
       return Promise.all(categories.map(function (c) {
         return loadJson(c.id + '.json').then(function (ds) {
           c.diseases = ds;
           return c;
         });
       })).then(function (cats) {
-        boot({ meta: meta, sources: sources, jiritsu27: jiritsu27, categories: cats, haikei: haikei, seito: seito, links: links });
+        boot({ meta: meta, sources: sources, jiritsu27: jiritsu27, categories: cats, curriculum: curriculum, seito: seito, links: links });
       });
     }).catch(fail);
   }

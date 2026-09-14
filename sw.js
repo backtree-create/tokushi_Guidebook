@@ -8,7 +8,7 @@
  * 注意：VERSION は meta.json の "version" と揃えること。
  *       内容を更新したらここも必ず書き換える。
  */
-const VERSION = "3.2.4";
+const VERSION = "4.0.0";
 const CACHE_NAME = `tokushi-guidebook-${VERSION}`;
 
 const PRECACHE = [
@@ -24,7 +24,7 @@ const PRECACHE = [
   "./sources.json",
   "./jiritsu27.json",
   "./categories.json",
-  "./haikei.json",
+  "./curriculum.json",
   "./seito.json",
   "./links.json",
   "./visual.json",

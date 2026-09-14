@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>特別支援教育 障害種別支援 リファレンス｜文部科学省資料に基づく指導ハンドブック</title>
-<meta name="description" content="障害種別・原因疾患ごとの教育的ニーズ、合理的配慮、自立活動を、文部科学省の公表資料および公的疾患データベースをもとに整理した実務参照ツール。">
+<title>特別な配慮を要する児童生徒 指導支援ハンドブック</title>
+<meta name="description" content="特別支援ガイドブック（障害種別・特別の教育課程・自立活動）と指導提要ガイドブック（生徒指導提要に基づく課題）の2冊を収めた、校内向けの指導支援ハンドブック。">
 <meta name="theme-color" content="#132132">
 <!-- 検索避け: 校内向けのため索引に載せない（robots.txt と対で機能する） -->
 <meta name="robots" content="noindex, nofollow, noarchive">
@@ -27,7 +27,7 @@
 </div>
 
 <div class="top-strip">
-  <span>特別支援教育 障害種別支援リファレンス <span class="dim">| Special Needs Education Field Reference</span></span>
+  <span>特別な配慮を要する児童生徒 指導支援ハンドブック <span class="dim">| 特別支援ガイドブック／指導提要ガイドブック</span></span>
   <span class="dim">文部科学省資料をもとに、公的疾患データベース等を参照して編集</span>
 </div>
 
@@ -36,15 +36,16 @@
     <div class="brandmark">
       <button class="emblem" id="homeEmblem" type="button" aria-label="ホームに戻る">特</button>
       <div class="brand-text">
-        <p class="eyebrow">Special Needs Education Reference</p>
-        <h1><button class="h1-home" id="homeLink" type="button">特別支援教育 指導支援ハンドブック</button></h1>
-        <p class="lead">障害種別・原因疾患ごとの教育的ニーズ、合理的配慮、自立活動を整理した実務参照ツールです。障害種別の記述は文部科学省の公表資料に基づき、疾患・状態別の分類は公的疾患データベース等を参照して編集しています。</p>
+        <p class="eyebrow">Handbook for Students Requiring Special Consideration</p>
+        <h1><button class="h1-home" id="homeLink" type="button">特別な配慮を要する児童生徒 指導支援ハンドブック</button></h1>
+        <p class="lead">2冊構成です。<b>特別支援ガイドブック</b>は、障害種別・原因疾患ごとの教育的ニーズと支援、特別の教育課程、自立活動を、文部科学省の手引と解説に基づいて整理しています。<b>指導提要ガイドブック</b>は、生徒指導提要に基づく生徒指導上の課題を扱います。</p>
       </div>
     </div>
     <div class="credential">
       <b>一次資料</b><br>
       文部科学省「障害のある子供の教育支援の手引」（令和3年6月）<br>
       文部科学省「特別支援学校 自立活動編」（平成30年3月）<br>
+      文部科学省「生徒指導提要」（令和4年12月改訂）<br>
       <b style="display:inline-block;margin-top:6px;">疾患・状態の分類</b><br>
       小児慢性特定疾病情報センター／難病情報センター／GeneReviews Japan ほか
     </div>
@@ -66,12 +67,16 @@
       </a>
     </div>
   </div>
+  <div class="book-switch" role="tablist" aria-label="ガイドブックの切替">
+    <button id="bookTokushi" class="on" type="button" role="tab"><b>特別支援ガイドブック</b><span>障害種別・特別の教育課程・自立活動</span></button>
+    <button id="bookTeiyo" type="button" role="tab"><b>指導提要ガイドブック</b><span>生徒指導提要に基づく課題</span></button>
+  </div>
   <div class="mode-tabs">
-    <button id="tabGuide" class="on" type="button">障害種別ガイド</button>
-    <button id="tabHaikei" type="button">配慮を要する背景</button>
-    <button id="tabSeito" type="button">生徒指導上の課題</button>
-    <button id="tabJiritsu" type="button">自立活動 6区分27項目 一覧</button>
-    <button id="tabTerms" type="button">出典・リンク集</button>
+    <button id="tabGuide" class="on" type="button" data-book="tokushi">障害種別ガイド</button>
+    <button id="tabCurriculum" type="button" data-book="tokushi">特別の教育課程</button>
+    <button id="tabJiritsu" type="button" data-book="tokushi">自立活動</button>
+    <button id="tabSeito" type="button" data-book="teiyo">生徒指導上の課題</button>
+    <button id="tabTerms" type="button" data-book="both">出典・リンク集</button>
   </div>
 </header>
 

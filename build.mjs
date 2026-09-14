@@ -22,11 +22,11 @@ for (const c of categories) {
   c.diseases = rj(`${c.id}.json`);
 }
 // 障害以外の教育的ニーズ（配慮を要する背景）。区分とは別の型なので categories には入れない
-const haikei = rj('haikei.json');
+const curriculum = rj('curriculum.json');   // 特別の教育課程（日本語指導・2E）
 const seito = rj('seito.json');   // 生徒指導上の課題（生徒指導提要）
 const links = rj('links.json');   // 目的別リンク集（sources.json の id を参照）
 
-const bundle = { meta, sources, jiritsu27, categories, haikei, seito, links };
+const bundle = { meta, sources, jiritsu27, categories, curriculum, seito, links };
 
 // </script> がデータ中に現れてもHTMLが壊れないようにエスケープする
 const bundleJson = JSON.stringify(bundle)
@@ -62,4 +62,4 @@ fs.writeFileSync(path.join(root, OUT), html);
 
 const kb = (Buffer.byteLength(html) / 1024).toFixed(0);
 const n = categories.reduce((s, c) => s + c.diseases.length, 0);
-console.log(`${OUT} を出力しました（${kb} KB／${categories.length}区分・${n}件・配慮を要する背景${haikei.length}件・生徒指導上の課題${seito.length}件・版 ${meta.version}）`);
+console.log(`${OUT} を出力しました（${kb} KB／${categories.length}区分・${n}件・特別の教育課程${curriculum.length}件・生徒指導上の課題${seito.length}件・版 ${meta.version}）`);

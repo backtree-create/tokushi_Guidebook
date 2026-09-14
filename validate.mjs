@@ -200,7 +200,7 @@ for (const [name, cats] of allNames) {
    区分（categories）とは別の型。自立活動との対応は持たず、既存区分への
    内部リンク（related.catId）、他の主題への横リンク（relatedTopics）、
    出典IDで整合を取る。素通りを防ぐため必須項目と参照先を検査する。 */
-const TOPIC_FILES = { haikei: 'haikei.json', seito: 'seito.json' };
+const TOPIC_FILES = { curriculum: 'curriculum.json', seito: 'seito.json' };
 const topics = {};
 for (const [key, file] of Object.entries(TOPIC_FILES)) {
   topics[key] = rj(file);
@@ -261,13 +261,16 @@ for (const [key, list] of Object.entries(topics)) {
 // 不登校は版3.0.0で障害種別から生徒指導上の課題へ移した。戻さない
 if (catIds.has('futoukou')) err('categories.json に futoukou があります。不登校は seito.json（生徒指導上の課題）で扱います');
 if (!(topics.seito || []).some(x => x.id === 'futoukou')) err('seito.json に futoukou がありません');
+if (!(topics.seito || []).some(x => x.id === 'young-carer')) err('seito.json に young-carer がありません（版4.0.0で指導提要側へ移した）');
+for (const h of topics.seito || []) if (!h.chapter) err(`seito.json ${h.id}: chapter（生徒指導提要の章）がありません`);
+if (fs.existsSync(path.join(root, 'haikei.json'))) err('haikei.json が残っています。版4.0.0で curriculum.json と seito.json に振り分けました。削除してください');
 
 /* --- 4c. 目的別リンク集（links.json） ---
    URL を持たず sources.json の id を参照する。route は本ツール内の
    ハッシュ、anchor は出典ページ内の要素id。 */
 const links = rj('links.json');
 if (!Array.isArray(links) || links.length === 0) err('links.json が配列ではないか空です');
-const topicRoutes = new Set(['#/jiritsu', '#/jiritsu/support', '#/terms', '#/haikei', '#/seito']);
+const topicRoutes = new Set(['#/jiritsu', '#/jiritsu/support', '#/terms', '#/curriculum', '#/seito']);
 for (const [key, list] of Object.entries(topics)) for (const h of list) topicRoutes.add(`#/${key}/${h.id}`);
 for (const c of categories) topicRoutes.add(`#/c/${c.id}`);
 const lkIds = new Set();
@@ -289,7 +292,7 @@ for (const g of links) {
 }
 
 /* --- 4d. メンテナンス中スイッチ（meta.json maintenance） --- */
-const MAINT_KEYS = ['support', 'jiritsu-block', 'haikei', 'seito', 'links'];
+const MAINT_KEYS = ['support', 'jiritsu-block', 'curriculum', 'seito', 'links'];
 if (meta.maintenance) {
   for (const [k, v] of Object.entries(meta.maintenance)) {
     if (k === '_note' || k === 'previewKey') continue;
