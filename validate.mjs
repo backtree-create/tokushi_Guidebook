@@ -293,7 +293,7 @@ for (const g of links) {
 }
 
 /* --- 4d. メンテナンス中スイッチ（meta.json maintenance） --- */
-const MAINT_KEYS = ['support', 'jiritsu-block', 'curriculum', 'seito', 'links'];
+const MAINT_KEYS = ['site', 'support', 'jiritsu-block', 'curriculum', 'seito', 'links'];
 if (meta.maintenance) {
   for (const [k, v] of Object.entries(meta.maintenance)) {
     if (k === '_note' || k === 'previewKey') continue;

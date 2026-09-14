@@ -224,6 +224,15 @@
       layoutRoot.classList.toggle('wide', wide);
 
       if (r.legacy) { navigate(ROUTES.topic(r.topic, r.id), true); return; }
+      // サイト全体のメンテナンス。どの画面でも案内だけを出す（プレビュー中は通常どおり）
+      if (maint('site')) {
+        sideNav.style.display = 'none';
+        layoutRoot.classList.add('wide');
+        mainContent.innerHTML = '<div class="jiritsu-table-wrap">' + maintCover(maint('site')) + '</div>';
+        playFadeIn();
+        document.title = 'メンテナンス中｜' + (META.title || '');
+        return;
+      }
       // 版3.0.0で不登校を障害種別から生徒指導上の課題へ移した。古いURL(#/c/futoukou)は転送する
       if (r.view === 'cat' && r.catId === 'futoukou') { navigate(ROUTES.seito('futoukou'), true); return; }
       if (r.view === 'cat' || r.view === 'search' || r.view === 'home') {
