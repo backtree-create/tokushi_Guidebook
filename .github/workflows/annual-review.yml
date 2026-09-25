@@ -54,7 +54,16 @@ jobs:
               }
               md += "\n";
             }
-            const noEdition = t.filter(x => !x.edition);
+            const quiet = t.filter(x => x.watch === "quiet");
+            if (quiet.length) {
+              md += `### 静かに監視している資料（${quiet.length}件）\n\n`;
+              md += "お知らせの更新で毎月中身が変わる一般向けポータルなので、月次の変化検出では Issue に載せていません。";
+              md += "本文がこれらのページの特定の記述に依存するようになったら、sources.json の `watch` を外して月次の監視に戻してください。\n\n";
+              for (const x of quiet) md += `- [ ] ${x.title}（\`${x.id}\`）　最終確認：${x.checked || "記録なし"}\n      ${x.indexUrl || x.url}\n`;
+              md += "\n";
+            }
+            // 版という概念がない資料（kind: portal。常時更新のページ・データベース・法令）は版の記載を求めない
+            const noEdition = t.filter(x => !x.edition && x.kind !== "portal");
             if (noEdition.length) {
               md += `### 版の記載がないもの（${noEdition.length}件）\n\n`;
               md += "何年版を見て書いたのかが残っていない出典です。分かる範囲で `edition` を足してください。\n\n";

@@ -36,8 +36,10 @@ jobs:
         run: |
           node -e '
             const s = require("./sources.json");
+            // watch: "quiet" の出典は、ハッシュは台帳に記録するが Issue には載せない
+            // （お知らせの更新で毎月変わる一般向けポータル。年次の棚卸しで目に入る）
             const t = s.filter(x => x.policy === "latest")
-                       .map(x => ({ id: x.id, title: x.title, url: x.indexUrl || x.url }))
+                       .map(x => ({ id: x.id, title: x.title, url: x.indexUrl || x.url, quiet: x.watch === "quiet" }))
                        .filter(x => x.url);
             require("fs").writeFileSync("watch-targets.json", JSON.stringify(t, null, 2));
             console.log("監視対象:", t.length, "件");
@@ -79,13 +81,14 @@ jobs:
             );
             const prev = fs.existsSync("source-hashes.json")
               ? JSON.parse(fs.readFileSync("source-hashes.json", "utf8")) : {};
-            const changed = [], added = [], failed = [];
+            const changed = [], added = [], failed = [], quietChanged = [];
             for (const t of targets) {
               const h = now[t.id];
               if (h === "取得失敗") { failed.push(t); continue; }
               if (!(t.id in prev)) { added.push(t); continue; }
-              if (prev[t.id] !== h) changed.push(t);
+              if (prev[t.id] !== h) (t.quiet ? quietChanged : changed).push(t);
             }
+            if (quietChanged.length) console.log("静かに監視中で変化あり（Issueには載せない）:", quietChanged.map(t => t.id).join(", "));
             // 台帳は取得失敗を上書きしない（前回の値を残す）
             const ledger = { ...prev };
             for (const [id, h] of Object.entries(now)) if (h !== "取得失敗") ledger[id] = h;
