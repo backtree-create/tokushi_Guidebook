@@ -1383,6 +1383,7 @@
   .sp-entry.maint-on{border-left-color:var(--tone-warn-bd);}
 
   /* ---------- 2階シート（試作） ---------- */
+  .s2-gate-note{margin:8px 0 24px;padding:14px 16px;background:var(--card);border:1px dashed var(--line-strong);border-radius:3px;font-size:14px;color:var(--ink-soft);}
   .s2-checks{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:10px;}
   .s2-check{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--line-strong);border-radius:3px;background:var(--card);font-size:14px;font-weight:700;color:var(--ink-strong);cursor:pointer;}
   .s2-check input{width:18px;height:18px;}

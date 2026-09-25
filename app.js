@@ -47,7 +47,7 @@
     }
   };
   var BOOKS = {
-    tokushi: { title: '特別支援ガイドブック', home: '#/', modes: ['guide', 'curriculum', 'jiritsu', 'terms'] },
+    tokushi: { title: '特別支援ガイドブック', home: '#/', modes: ['guide', 'curriculum', 'jiritsu', 'plan', 'terms'] },
     teiyo:   { title: '指導提要ガイドブック', home: '#/seito', modes: ['seito', 'terms'] }
   };
   var currentBook = 'tokushi';
@@ -117,7 +117,7 @@
   /* ---------- DOM 参照 ---------- */
 
   var catList, mainContent, searchBox, sideNav,
-      tabGuide, tabCurriculum, tabSeito, tabJiritsu, tabTerms, bookTokushi, bookTeiyo, layoutRoot, homeBtn, homeLink, homeEmblem, siteFooter;
+      tabGuide, tabCurriculum, tabSeito, tabJiritsu, tabPlan, tabTerms, bookTokushi, bookTeiyo, layoutRoot, homeBtn, homeLink, homeEmblem, siteFooter;
 
   var currentId = null;
   var mode = 'guide'; // 'guide' | 'curriculum' | 'seito' | 'jiritsu' | 'terms'
@@ -154,7 +154,7 @@
     search:  function (q) { return '#/q/' + encodeURIComponent(q); },
     jiritsu: function () { return '#/jiritsu'; },
     support: function () { return '#/jiritsu/support'; },
-    sheet2:  function () { return '#/jiritsu/sheet2'; },
+    plan:    function () { return '#/plan'; },
     terms:   function () { return '#/terms'; },
     curriculum: function (id) { return '#/curriculum' + (id ? '/' + encodeURIComponent(id) : ''); },
     seito:   function (id) { return '#/seito'  + (id ? '/' + encodeURIComponent(id) : ''); },
@@ -170,7 +170,8 @@
     switch (seg[0]) {
       case 'c':       return { view: 'cat', catId: seg[1], disease: seg[2] || null };
       case 'q':       return { view: 'search', q: seg.slice(1).join('/') };
-      case 'jiritsu': return seg[1] === 'support' ? { view: 'support' } : seg[1] === 'sheet2' ? { view: 'sheet2' } : { view: 'jiritsu' };  // 旧逆引き(#/jiritsu/区分/項目)は一覧へ
+      case 'jiritsu': return seg[1] === 'support' ? { view: 'support' } : seg[1] === 'sheet2' ? { view: 'plan', legacyPlan: true } : { view: 'jiritsu' };
+      case 'plan':    return { view: 'plan' };  // 旧逆引き(#/jiritsu/区分/項目)は一覧へ
       case 'terms':   return { view: 'terms' };
       case 'curriculum': return seg[1] ? { view: 'topic-item', topic: 'curriculum', id: seg[1] } : { view: 'topic', topic: 'curriculum' };
       // 旧「配慮を要する背景」(#/haikei)。版4.0.0で振り分けたので転送する
@@ -249,6 +250,7 @@
     tabCurriculum.classList.toggle('on', m === 'curriculum');
     tabSeito.classList.toggle('on', m === 'seito');
     tabJiritsu.classList.toggle('on', m === 'jiritsu');
+    tabPlan.classList.toggle('on', m === 'plan');
     tabTerms.classList.toggle('on', m === 'terms');
   }
 
@@ -257,7 +259,8 @@
     routing = true;
     try {
       var r = parseHash();
-      mode = (r.view === 'jiritsu' || r.view === 'support' || r.view === 'sheet2') ? 'jiritsu'
+      mode = (r.view === 'jiritsu' || r.view === 'support') ? 'jiritsu'
+           : r.view === 'plan' ? 'plan'
            : r.view === 'terms' ? 'terms'
            : (r.view === 'topic' || r.view === 'topic-item') ? r.topic
            : 'guide';
@@ -295,8 +298,9 @@
       } else if (r.view === 'support') {
         if (maint('support')) renderMaintPage(maint('support'), { href: ROUTES.jiritsu(), label: '自立活動 6区分27項目 一覧へ戻る' });
         else renderSupport();
-      } else if (r.view === 'sheet2') {
-        if (maint('sheet2')) renderMaintPage(maint('sheet2'), { href: ROUTES.jiritsu(), label: '自立活動 6区分27項目 一覧へ戻る' });
+      } else if (r.view === 'plan') {
+        if (r.legacyPlan) { navigate(ROUTES.plan(), true); return; }
+        if (maint('sheet2')) renderMaintPage(maint('sheet2'), { href: ROUTES.home(), label: 'ホームへ戻る' });
         else renderSheet2();
       } else if (r.view === 'terms') {
         renderTerms();
@@ -325,7 +329,7 @@
     if (r.view === 'search') return '「' + r.q + '」の検索結果｜' + base;
     if (r.view === 'jiritsu') return '自立活動 6区分27項目｜' + base;
     if (r.view === 'support') return '自立活動サポートシート｜' + base;
-    if (r.view === 'sheet2') return '2階シート（試作）｜' + base;
+    if (r.view === 'plan') return '計画シート｜' + base;
     if (r.view === 'terms') return '出典・リンク集｜' + base;
     if (r.view === 'topic') return topicOf(r.topic).title + '｜' + base;
     if (r.view === 'topic-item') {
@@ -340,6 +344,7 @@
     navigate(m === 'guide' ? ROUTES.home()
            : m === 'jiritsu' ? ROUTES.jiritsu()
            : m === 'curriculum' ? ROUTES.curriculum()
+           : m === 'plan' ? ROUTES.plan()
            : m === 'seito' ? ROUTES.seito()
            : ROUTES.terms());
   }
@@ -886,10 +891,6 @@
         '<span class="sp-entry-main"><b>自立活動サポートシートをAIと考える' + (maint('support') ? '<span class="maint-mini">整備中</span>' : '') + '</b>' +
         '<span>実態把握 → 課題の整理 → 項目の選定 → 指導内容、の手順で入力し、Copilot・Gemini に渡す指示書を作ります。項目は最後に出てきます。</span></span>' +
         '<span class="sp-entry-mark" aria-hidden="true">›</span></a>' +
-      '<a class="sp-entry' + (maint('sheet2') ? ' maint-on' : '') + '" href="' + ROUTES.sheet2() + '">' +
-        '<span class="sp-entry-main"><b>2階シート（試作）' + (maint('sheet2') ? '<span class="maint-mini">整備中</span>' : '') + '</b>' +
-        '<span>通級・日本語指導・不登校・特異な才能の計画を、共通シート＋個別シートで一枚にまとめる様式。印刷とWord貼り付け用テキストに出せます。</span></span>' +
-        '<span class="sp-entry-mark" aria-hidden="true">›</span></a>' +
       '<div class="section-disclaimer"><b>項目の選び方</b>' +
       '<p>自立活動編解説が示す手順は、実態把握 → 課題の整理 → 項目の選定 → 具体的な指導内容、の順です。' +
       '項目は目の前の子どもの実態と課題から選ぶもので、疾患や障害種から引くものではありません。この一覧は正式名称と要旨の確認用です。</p></div>' +
@@ -1226,6 +1227,7 @@
       '<div class="source-box">' +
         '<p>手順と観点は次に基づきます。<br>' + srcLink('jiritsu-kaisetsu') + '</p>' +
         '<p style="margin-top:8px;">AIの出力は案です。根拠欄が「仮定」になっている行、AIが「教員が確認すべき点」に挙げた点は、校内の検討で必ず確かめてください。</p>' +
+        '<p style="margin-top:8px;">選んだ項目を含む計画（通級・日本語指導・不登校・特異な才能）は、<a href="' + ROUTES.plan() + '">計画シート</a>に書きます。</p>' +
       '</div>' +
       '</div>';
 
@@ -1360,7 +1362,7 @@
         : '<textarea data-s2="' + esc(prefix + f.k) + '" rows="' + f.rows + '"></textarea>') + '</label>';
   }
   function s2Text(d) {
-    var out = ['2階シート（試作）', ''];
+    var out = ['計画シート（2階シート 試作）', ''];
     out.push('【共通シート】');
     S2_COMMON.forEach(function (f) { out.push('■ ' + f.label); out.push(d.common[f.k] || '（未記入）'); out.push(''); });
     S2_SPECIAL.forEach(function (s) {
@@ -1484,32 +1486,32 @@
     }).join('');
     var panels = S2_SPECIAL.map(function (s, i) {
       return '<div class="s2-panel" data-s2panel="' + s.id + '"' + (i === 0 ? '' : ' hidden') + '>' +
-        '<p class="block-sub">根拠：' + esc(s.legal) + '</p>' +
+        '<p class="block-sub">根拠：' + esc(s.legal) + (s.id === 'tsukyu' ? '　自立活動の項目は<a href="' + ROUTES.support() + '">サポートシート</a>の手順で決めてから、ここに書きます' : '') + '</p>' +
         s.fields.map(function (f) { return s2Field(s.id + ':', f); }).join('') + '</div>';
     }).join('');
 
     var html = '<div class="jiritsu-table-wrap sp-view s2-view">' +
-      '<p class="crumb"><a href="' + ROUTES.jiritsu() + '">自立活動 6区分27項目 一覧</a> › 2階シート（試作）</p>' +
       '<div class="article-head">' +
-        '<div class="article-num" style="border-radius:3px;">2</div>' +
-        '<h2 class="cat-title">2階シート（試作）<span class="en">Integrated Plan Sheet for Special Curricula (Prototype)</span></h2>' +
+        '<div class="article-num" style="border-radius:3px;">計</div>' +
+        '<h2 class="cat-title">計画シート<span class="en">Integrated Plan Sheet (2-kai Sheet, Prototype)</span></h2>' +
       '</div>' +
-      '<div class="overview">通級による指導・日本語指導・不登校・特定分野に特異な才能の各特例の計画を、「共通シート」と「特例ごとの個別シート」の構成で一体的に扱う様式です。' +
-        '複数の特例に該当する児童生徒を、一枚で俯瞰するために使います。</div>' +
+      '<div class="overview">通級による指導・日本語指導・不登校・特定分野に特異な才能の計画を、「共通シート」と「特例ごとの個別シート」で一枚にまとめる様式（いわゆる2階シート）です。' +
+        '複数の特例に該当する児童生徒を一枚で俯瞰するために使います。自立活動の項目そのものを選ぶ道具ではなく、選んだ項目を含む計画を書く道具です。項目を選ぶには<a href="' + ROUTES.support() + '">サポートシート</a>を。</div>' +
       '<div class="section-disclaimer"><b>試作版です。氏名は書かないでください</b>' +
         '<p>国が示す予定の参考様式はまだ公表されていません。ここでは各特例の既存の様式・記載項目を、取りまとめ案が示す構成に沿って寄せてあります。参考様式が出たら欄を合わせ直します。' +
         '「本児」「生徒A」で書き、入力はこのページの中だけで組み立て、どこにも送信・保存しません。ページを離れると消えます。</p></div>' +
 
-      '<form class="sp-form" id="s2Form" autocomplete="off">' +
+      '<div class="sp-form" id="s2Form">' +
       '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">1</span>該当する特例を選ぶ</h3>' +
         '<div class="s2-checks">' + checks + '</div></section>' +
+      '<div id="s2Rest">' +
       '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">2</span>共通シート</h3>' +
         '<p class="block-sub">どの特例にも共通する、本児の実態・希望・目標・支援体制。</p>' +
         S2_COMMON.map(function (f) { return s2Field('c:', f); }).join('') + '</section>' +
       '<section class="block sp-step" id="s2Special"><h3 class="block-title"><span class="sp-num">3</span>個別シート</h3>' +
         '<p class="block-sub">1で選んだ特例のシートだけが有効になります。選んでいない特例は印刷・コピーに含まれません。</p>' +
         '<div class="support-tabs s2-tabs">' + tabs + '</div>' + panels + '</section>' +
-      '</form>' +
+      '</div>' +
 
       '<section class="block"><h3 class="block-title"><span class="sp-num">4</span>AIと考える</h3>' +
         '<p class="block-sub">困っていることを一言書いて指示書をコピーし、Copilot または Gemini に貼ります。AIは1つずつ質問して聞き出し、揃ったら共通シートと個別シートを、このページに貼り戻せる形式で出します。書いてある欄は聞き直しません。</p>' +
@@ -1536,8 +1538,10 @@
           '<span class="sp-copied" id="s2Copied" aria-live="polite"></span>' +
         '</div>' +
       '</section>' +
-      '<section class="block s2-sheet" id="s2Sheet"><h3 class="block-title">2階シート（案）<span class="tally">印刷される内容</span></h3><div id="s2SheetBody"></div>' +
+      '<section class="block s2-sheet" id="s2Sheet"><h3 class="block-title">計画シート（案）<span class="tally">印刷される内容</span></h3><div id="s2SheetBody"></div>' +
         '<p class="sp-sheet-note">作成日：　　　　　　　　記入者：　　　　　　　　（氏名は書かず「本児」で記入）</p></section>' +
+      '</div>' +
+      '<p class="s2-gate-note" id="s2Gate">まず、1で該当する特例を選んでください。選ぶと共通シートと個別シートが開きます。</p>' +
       '<div class="source-box"><p class="basis-label">各シートの根拠</p><ul class="basis-refs">' +
         hkSourceRef('jiritsu-kaisetsu') + hkSourceRef('mext-clarinet-info') + hkSourceRef('mext-futoukou-tsuchi-r1') + hkSourceRef('mext-sainou-wg-r8-08') +
       '</ul></div>' +
@@ -1573,6 +1577,9 @@
       read();
       var seedEl = mainContent.querySelector('[data-s2seed]'); if (seedEl) d.seed = seedEl.value.trim();
       syncTabs();
+      var any = S2_SPECIAL.some(function (s) { return d.on[s.id]; });
+      document.getElementById('s2Rest').hidden = !any;
+      document.getElementById('s2Gate').hidden = any;
       document.getElementById('s2SheetBody').innerHTML = s2SheetHtml(d);
       document.getElementById('s2PromptOut').value = s2Prompt(aiTarget, d);
     }
@@ -1903,6 +1910,7 @@
     bookTeiyo = document.getElementById('bookTeiyo');
     tabSeito = document.getElementById('tabSeito');
     tabJiritsu = document.getElementById('tabJiritsu');
+    tabPlan = document.getElementById('tabPlan');
     tabTerms = document.getElementById('tabTerms');
     layoutRoot = document.getElementById('layoutRoot');
     homeBtn = document.getElementById('homeBtn');
@@ -1921,6 +1929,7 @@
     bookTeiyo.onclick = function () { navigate(BOOKS.teiyo.home); };
     tabSeito.onclick = function () { setMode('seito'); };
     tabJiritsu.onclick = function () { setMode('jiritsu'); };
+    tabPlan.onclick = function () { setMode('plan'); };
     tabTerms.onclick = function () { setMode('terms'); };
 
     // 検索は打つたびにURLを積むと戻るボタンが使い物にならないので、
@@ -1949,7 +1958,7 @@
     bindDom();
     initPreview();
     // 整備中のタブに印を付ける
-    [['curriculum', tabCurriculum], ['seito', tabSeito]].forEach(function (pair) {
+    [['curriculum', tabCurriculum], ['seito', tabSeito], ['sheet2', tabPlan]].forEach(function (pair) {
       if (maint(pair[0])) pair[1].insertAdjacentHTML('beforeend', '<span class="maint-mini">整備中</span>');
     });
     renderFooter();
