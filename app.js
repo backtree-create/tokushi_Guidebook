@@ -154,6 +154,7 @@
     search:  function (q) { return '#/q/' + encodeURIComponent(q); },
     jiritsu: function () { return '#/jiritsu'; },
     support: function () { return '#/jiritsu/support'; },
+    sheet2:  function () { return '#/jiritsu/sheet2'; },
     terms:   function () { return '#/terms'; },
     curriculum: function (id) { return '#/curriculum' + (id ? '/' + encodeURIComponent(id) : ''); },
     seito:   function (id) { return '#/seito'  + (id ? '/' + encodeURIComponent(id) : ''); },
@@ -169,7 +170,7 @@
     switch (seg[0]) {
       case 'c':       return { view: 'cat', catId: seg[1], disease: seg[2] || null };
       case 'q':       return { view: 'search', q: seg.slice(1).join('/') };
-      case 'jiritsu': return seg[1] === 'support' ? { view: 'support' } : { view: 'jiritsu' };  // 旧逆引き(#/jiritsu/区分/項目)は一覧へ
+      case 'jiritsu': return seg[1] === 'support' ? { view: 'support' } : seg[1] === 'sheet2' ? { view: 'sheet2' } : { view: 'jiritsu' };  // 旧逆引き(#/jiritsu/区分/項目)は一覧へ
       case 'terms':   return { view: 'terms' };
       case 'curriculum': return seg[1] ? { view: 'topic-item', topic: 'curriculum', id: seg[1] } : { view: 'topic', topic: 'curriculum' };
       // 旧「配慮を要する背景」(#/haikei)。版4.0.0で振り分けたので転送する
@@ -256,7 +257,7 @@
     routing = true;
     try {
       var r = parseHash();
-      mode = (r.view === 'jiritsu' || r.view === 'support') ? 'jiritsu'
+      mode = (r.view === 'jiritsu' || r.view === 'support' || r.view === 'sheet2') ? 'jiritsu'
            : r.view === 'terms' ? 'terms'
            : (r.view === 'topic' || r.view === 'topic-item') ? r.topic
            : 'guide';
@@ -294,6 +295,9 @@
       } else if (r.view === 'support') {
         if (maint('support')) renderMaintPage(maint('support'), { href: ROUTES.jiritsu(), label: '自立活動 6区分27項目 一覧へ戻る' });
         else renderSupport();
+      } else if (r.view === 'sheet2') {
+        if (maint('sheet2')) renderMaintPage(maint('sheet2'), { href: ROUTES.jiritsu(), label: '自立活動 6区分27項目 一覧へ戻る' });
+        else renderSheet2();
       } else if (r.view === 'terms') {
         renderTerms();
       } else if (r.view === 'topic' || r.view === 'topic-item') {
@@ -321,6 +325,7 @@
     if (r.view === 'search') return '「' + r.q + '」の検索結果｜' + base;
     if (r.view === 'jiritsu') return '自立活動 6区分27項目｜' + base;
     if (r.view === 'support') return '自立活動サポートシート｜' + base;
+    if (r.view === 'sheet2') return '2階シート（試作）｜' + base;
     if (r.view === 'terms') return '出典・リンク集｜' + base;
     if (r.view === 'topic') return topicOf(r.topic).title + '｜' + base;
     if (r.view === 'topic-item') {
@@ -881,6 +886,10 @@
         '<span class="sp-entry-main"><b>自立活動サポートシートをAIと考える' + (maint('support') ? '<span class="maint-mini">整備中</span>' : '') + '</b>' +
         '<span>実態把握 → 課題の整理 → 項目の選定 → 指導内容、の手順で入力し、Copilot・Gemini に渡す指示書を作ります。項目は最後に出てきます。</span></span>' +
         '<span class="sp-entry-mark" aria-hidden="true">›</span></a>' +
+      '<a class="sp-entry' + (maint('sheet2') ? ' maint-on' : '') + '" href="' + ROUTES.sheet2() + '">' +
+        '<span class="sp-entry-main"><b>2階シート（試作）' + (maint('sheet2') ? '<span class="maint-mini">整備中</span>' : '') + '</b>' +
+        '<span>通級・日本語指導・不登校・特異な才能の計画を、共通シート＋個別シートで一枚にまとめる様式。印刷とWord貼り付け用テキストに出せます。</span></span>' +
+        '<span class="sp-entry-mark" aria-hidden="true">›</span></a>' +
       '<div class="section-disclaimer"><b>項目の選び方</b>' +
       '<p>自立活動編解説が示す手順は、実態把握 → 課題の整理 → 項目の選定 → 具体的な指導内容、の順です。' +
       '項目は目の前の子どもの実態と課題から選ぶもので、疾患や障害種から引くものではありません。この一覧は正式名称と要旨の確認用です。</p></div>' +
@@ -1274,7 +1283,360 @@
     });
   }
 
+  /* ---------- 2階シート（試作） ----------
+     通級・日本語指導・不登校・特異な才能の各特例の計画を、共通シート＋特例ごとの個別シートで
+     一体的に扱う様式の試作。国の参考様式が公表されたら欄を合わせ直す。
+     入力はページ内だけで組み立て、送信も保存もしない。氏名は扱わない。 */
+
+  var S2_COMMON = [
+    { k: 'stage', label: '校種・学年・在籍学級', hint: '例：中学校2年 通常の学級（通級による指導を利用）', rows: 1 },
+    { k: 'period', label: '対象期間', hint: '例：令和8年度 前期', rows: 1 },
+    { k: 'profile', label: '実態の概要', hint: '学習・生活・対人・健康の面で、今どのような状態か。障害名だけでなく本児が何をどのようにしているか', rows: 4 },
+    { k: 'strength', label: '得意なこと・興味・関心', hint: '', rows: 2 },
+    { k: 'wish', label: '本人・保護者の希望', hint: '本人の言葉と保護者の希望を分けて', rows: 3 },
+    { k: 'goal', label: '共通の目標（この期間で目指すこと）', hint: '各特例の目標の上位にある、生活・学習全体の目標', rows: 2 },
+    { k: 'team', label: '支援体制', hint: '校内の担当（担任・通級担当・日本語指導担当・コーディネーター・養護教諭・SC・SSW）と、関係機関', rows: 3 },
+    { k: 'review', label: '見直しの時期と方法', hint: '例：学期末にケース会議で。評価の材料は各個別シートの記録', rows: 2 },
+    { k: 'handover', label: '引継ぎの要点', hint: '進級・進学・転校時に必ず伝えること', rows: 2 }
+  ];
+  var S2_SPECIAL = [
+    { id: 'tsukyu', name: '通級による指導', legal: '学校教育法施行規則 第140条・第141条。個別の指導計画（自立活動の内容を参考に）',
+      fields: [
+        { k: 'form', label: '指導の形態', hint: '自校通級／他校通級／巡回。週あたりの時数', rows: 1 },
+        { k: 'assess', label: '実態把握（自立活動の観点で）', hint: 'サポートシートの①②をここへ。健康の保持／心理的な安定／人間関係の形成／環境の把握／身体の動き／コミュニケーション', rows: 4 },
+        { k: 'issue', label: '指導すべき課題と中心となる課題', hint: 'サポートシートの③④', rows: 3 },
+        { k: 'items', label: '選定した自立活動の項目（正式名称）', hint: '例：心理的な安定 (1) 情緒の安定に関すること', rows: 2 },
+        { k: 'content', label: '具体的な指導内容', hint: '複数の項目を関連付けた指導内容', rows: 4 },
+        { k: 'class', label: '在籍学級での配慮', hint: '通級で学んだことを在籍学級でどう生かすか。担任と通級担当の連絡方法', rows: 3 },
+        { k: 'eval', label: '評価の観点と記録', hint: '', rows: 2 }
+      ] },
+    { id: 'nihongo', name: '日本語指導', legal: '学校教育法施行規則 第56条の2 等（特別の教育課程）。文部科学省「個別の指導計画」作成参考資料',
+      fields: [
+        { k: 'lang', label: '母語・家庭内言語・来日時期', hint: '', rows: 1 },
+        { k: 'level', label: '日本語の力の現状', hint: 'DLA等の結果。会話／読む／書く／聴く を分けて', rows: 3 },
+        { k: 'prior', label: '母語での学習経験・来日前の就学状況', hint: '', rows: 2 },
+        { k: 'goal', label: '指導目標', hint: '日本語の力と教科の学習を分けて', rows: 2 },
+        { k: 'content', label: '指導内容', hint: 'JSLカリキュラムの考え方で。取り出し指導と在籍学級での配慮', rows: 4 },
+        { k: 'form', label: '指導形態・時間・担当', hint: '取り出し／入り込み、週あたりの時数、担当者', rows: 2 },
+        { k: 'family', label: '保護者への連絡方法', hint: '通訳、翻訳ツール、多言語文書の利用', rows: 2 },
+        { k: 'eval', label: '評価', hint: '', rows: 2 }
+      ] },
+    { id: 'futoukou', name: '不登校（児童生徒理解・支援シート）', legal: '「不登校児童生徒への支援の在り方について」（令和元年10月25日通知）の参考様式',
+      fields: [
+        { k: 'attend', label: '欠席状況', hint: '年間・月ごとの欠席日数、遅刻・早退、保健室・別室の利用', rows: 2 },
+        { k: 'trigger', label: '不登校になったきっかけと、継続している理由', hint: '本人・保護者・学校の見方を分けて', rows: 3 },
+        { k: 'wish', label: '本人・保護者の希望', hint: '', rows: 2 },
+        { k: 'support', label: '具体的な支援策', hint: '学校ができること、学びの場（校内教育支援センター、教育支援センター、ICT等）', rows: 4 },
+        { k: 'org', label: '関係機関との連携状況', hint: 'SC・SSW、教育支援センター、医療、福祉', rows: 2 },
+        { k: 'attendance', label: '出席扱いの取扱い', hint: '教育支援センター等・ICT学習を出席扱いとする場合の要件と確認', rows: 2 },
+        { k: 'log', label: '経過と見直し', hint: '日付と内容', rows: 3 }
+      ] },
+    { id: 'sainou', name: '特定分野に特異な才能', legal: '中央教育審議会 特別の教育課程ワーキンググループ 取りまとめ案（令和8年）の記載項目例。制度化を検討中',
+      fields: [
+        { k: 'field', label: '才能を発揮する分野と程度', hint: '', rows: 2 },
+        { k: 'difficulty', label: '学習上・生活上の困難の状況', hint: '心理検査の結果があれば要点', rows: 3 },
+        { k: 'outside', label: '学校外での学習状況', hint: '大学・研究機関・地域のプログラムなど', rows: 2 },
+        { k: 'wish', label: '本人の希望', hint: '', rows: 2 },
+        { k: 'class', label: '通常学級での支援の在り方（1階）', hint: '発展的な課題、生成AIの活用、裁量的な時間など', rows: 3 },
+        { k: 'subject', label: '相当する教科等（2階の場合）', hint: '総合的な学習の時間または各教科の一部・全部', rows: 1 },
+        { k: 'activity', label: '対象活動・実施場所・指導者', hint: '', rows: 2 },
+        { k: 'goal', label: '目標・内容・頻度', hint: '', rows: 3 },
+        { k: 'log', label: '学習状況の記録', hint: '', rows: 2 }
+      ] }
+  ];
+
+  var S2 = null;
+  function s2Blank() {
+    var d = { common: {}, on: {}, sp: {}, seed: '' };
+    S2_COMMON.forEach(function (f) { d.common[f.k] = ''; });
+    S2_SPECIAL.forEach(function (s) { d.on[s.id] = false; d.sp[s.id] = {}; s.fields.forEach(function (f) { d.sp[s.id][f.k] = ''; }); });
+    return d;
+  }
+  function s2Field(prefix, f) {
+    return '<label class="sp-field"><span class="sp-label">' + esc(f.label) +
+      (f.hint ? '<span class="sp-hint">' + esc(f.hint) + '</span>' : '') + '</span>' +
+      (f.rows === 1
+        ? '<input type="text" data-s2="' + esc(prefix + f.k) + '">'
+        : '<textarea data-s2="' + esc(prefix + f.k) + '" rows="' + f.rows + '"></textarea>') + '</label>';
+  }
+  function s2Text(d) {
+    var out = ['2階シート（試作）', ''];
+    out.push('【共通シート】');
+    S2_COMMON.forEach(function (f) { out.push('■ ' + f.label); out.push(d.common[f.k] || '（未記入）'); out.push(''); });
+    S2_SPECIAL.forEach(function (s) {
+      if (!d.on[s.id]) return;
+      out.push('【個別シート：' + s.name + '】'); out.push('根拠：' + s.legal); out.push('');
+      s.fields.forEach(function (f) { out.push('■ ' + f.label); out.push(d.sp[s.id][f.k] || '（未記入）'); out.push(''); });
+    });
+    out.push('※ 氏名は記入せず「本児」で扱う。国の参考様式が公表されるまでの試作。');
+    return out.join('\n');
+  }
+  function s2SheetHtml(d) {
+    var tbl = function (title, sub, rows) {
+      return '<section class="s2-sheet-sec"><h4>' + esc(title) + (sub ? '<span>' + esc(sub) + '</span>' : '') + '</h4>' +
+        '<table class="s2-table"><tbody>' + rows.map(function (r) {
+          return '<tr><th>' + esc(r[0]) + '</th><td>' + (r[1] ? esc(r[1]).replace(/\n/g, '<br>') : '&nbsp;') + '</td></tr>';
+        }).join('') + '</tbody></table></section>';
+    };
+    var h = tbl('共通シート', '該当する特例：' + (S2_SPECIAL.filter(function (s) { return d.on[s.id]; }).map(function (s) { return s.name; }).join('、') || '（未選択）'),
+      S2_COMMON.map(function (f) { return [f.label, d.common[f.k]]; }));
+    S2_SPECIAL.forEach(function (s) {
+      if (!d.on[s.id]) return;
+      h += tbl('個別シート：' + s.name, s.legal, s.fields.map(function (f) { return [f.label, d.sp[s.id][f.k]]; }));
+    });
+    return h;
+  }
+
+  // AIに渡す指示書。役割は「聞き取り、問い返す人」。出力はこのページの欄と同じ形式にさせ、貼り戻せるようにする
+  function s2Prompt(target, d) {
+    var full = target === 'gemini';
+    var chosen = S2_SPECIAL.filter(function (s) { return d.on[s.id]; });
+    var out = [];
+    out.push('あなたは学校の特別支援教育コーディネーターの同僚として、「2階シート」（通級による指導・日本語指導・不登校・特定分野に特異な才能の各特例の計画を、共通シートと特例ごとの個別シートで一枚にまとめる様式）の作成を手伝ってください。' +
+      'あなたの役割は、シートを代わりに書くことではなく、質問して聞き出し、問い返しながら一緒に整理することです。');
+    out.push('');
+    out.push('【守ること】');
+    var rules = [
+      '児童生徒の氏名は扱いません。「本児」と呼びます。私が氏名を書いていたら指摘し、以後は本児と呼び替えてください。',
+      '質問は1回に1つだけ。私の答えを短く要約して確認してから次に進んでください。全部で6〜10往復を目安にし、細かく聞きすぎないでください。',
+      '順序は、共通シート（実態の概要 → 本人・保護者の希望 → 共通の目標 → 支援体制）→ 各個別シートの順です。既に書いてある欄は聞き直さないでください。',
+      '私が「分からない」「まだ見ていない」と答えたら、推測で埋めずに次へ進み、最後に「確認すべき点」として残してください。',
+      '各特例の欄の意味は、末尾の「欄の定義」に従ってください。制度の要件（出席扱いの要件、特別の教育課程の時数など）は断定せず、「学校で確認する」と書いてください。',
+      chosen.some(function (s) { return s.id === 'tsukyu'; })
+        ? '通級による指導の個別シートでは、自立活動の項目は「実態把握 → 課題の整理 → 項目の選定」の手順で決め、末尾の27項目の正式名称だけを使ってください。障害名から項目を引かないでください。'
+        : '自立活動の項目名や区分名を、根拠なく持ち出さないでください。',
+      '最終判断は私（教員）と校内の検討で行います。医学的な診断や治療の判断はしないでください。'
+    ];
+    rules.forEach(function (r, i) { out.push((i + 1) + '. ' + r); });
+    out.push('');
+    out.push('【本児について（私の入力）】');
+    out.push('該当する特例：' + (chosen.length ? chosen.map(function (s) { return s.name; }).join('、') : '（未選択。まず該当する特例を一緒に整理してください）'));
+    if (d.seed) out.push('今、困っていること・相談したいこと：' + d.seed);
+    var known = [];
+    S2_COMMON.forEach(function (f) { if (d.common[f.k]) known.push('・共通／' + f.label + '：' + d.common[f.k]); });
+    chosen.forEach(function (s) { s.fields.forEach(function (f) { if (d.sp[s.id][f.k]) known.push('・' + s.name + '／' + f.label + '：' + d.sp[s.id][f.k]); }); });
+    if (known.length) { out.push(''); out.push('既に書いてあること（聞き直さなくてよい）'); out.push.apply(out, known); }
+    out.push('');
+    out.push('【お願いすること】');
+    out.push('まず、私の入力を受け止めて、共通シートの最初の質問を1つだけしてください。答えが揃ったら共通シートを一度まとめて見せ、私が「それでいい」と言ったら個別シートに進んでください。');
+    out.push('すべて揃ったら、次の形式で出してください（このページに貼り戻せるよう、見出しと欄名を変えないでください）。');
+    out.push('【共通シート】');
+    out.push('■ 欄名');
+    out.push('内容');
+    out.push('（欄ごとに繰り返す）');
+    chosen.forEach(function (s) { out.push('【個別シート：' + s.name + '】'); out.push('（同じ形式）'); });
+    out.push('最後に「確認すべき点」を箇条書きで。私が「分からない」と答えた事項は必ず入れてください。');
+    out.push('');
+    out.push('【欄の定義】');
+    out.push('共通シート：');
+    S2_COMMON.forEach(function (f) { out.push('・' + f.label + (f.hint ? '（' + f.hint + '）' : '')); });
+    chosen.forEach(function (s) {
+      out.push('個別シート：' + s.name + '（根拠：' + s.legal + '）');
+      s.fields.forEach(function (f) { out.push('・' + f.label + (f.hint ? '（' + f.hint + '）' : '')); });
+    });
+    if (chosen.some(function (s) { return s.id === 'tsukyu'; })) {
+      out.push('');
+      out.push('【自立活動 6区分27項目（' + (full ? '正式名称と要旨' : '正式名称') + '）】');
+      out.push('出典：特別支援学校教育要領・学習指導要領解説 自立活動編（平成30年3月）');
+      out.push(spItemsText(full));
+    }
+    return out.join('\n');
+  }
+
+  // AIの回答（■ 欄名／内容 の形式）を欄に流し込む。見出し【…】で共通／個別を区別する
+  function s2Parse(text, d) {
+    var lines = (text || '').split(/\r?\n/);
+    var scope = null, key = null, buf = [], filled = 0, skipped = [];
+    var labelMap = {};
+    S2_COMMON.forEach(function (f) { labelMap['c|' + f.label] = ['c', f.k]; });
+    S2_SPECIAL.forEach(function (s) { s.fields.forEach(function (f) { labelMap[s.id + '|' + f.label] = [s.id, f.k]; }); });
+    function flush() {
+      if (!key) return;
+      var val = buf.join('\n').trim().replace(/^（未記入）$/, '');
+      buf = [];
+      var m = labelMap[key];
+      if (!m || !val) { key = null; return; }
+      if (m[0] === 'c') d.common[m[1]] = val; else { d.sp[m[0]][m[1]] = val; d.on[m[0]] = true; }
+      filled++; key = null;
+    }
+    lines.forEach(function (ln) {
+      var t = ln.trim();
+      var h = /^【(共通シート|個別シート[：:](.+?))】$/.exec(t);
+      if (h) { flush(); scope = h[1] === '共通シート' ? 'c' : null;
+        if (!scope) { var sp = S2_SPECIAL.find(function (s) { return h[2].indexOf(s.name.replace(/（.*$/, '')) === 0 || s.name === h[2]; }); scope = sp ? sp.id : null; }
+        return; }
+      var f = /^[■●◆・]?\s*(.+?)\s*$/.exec(t);
+      if (t.charAt(0) === '■' && scope) { flush(); var lab = t.replace(/^■\s*/, ''); key = scope + '|' + lab; if (!labelMap[key]) { skipped.push(lab); key = null; } return; }
+      if (key) buf.push(ln);
+    });
+    flush();
+    return { filled: filled, skipped: skipped };
+  }
+
+  function renderSheet2() {
+    if (!S2) S2 = s2Blank();
+    var d = S2;
+    var checks = S2_SPECIAL.map(function (s) {
+      return '<label class="s2-check"><input type="checkbox" data-s2on="' + s.id + '"> ' + esc(s.name) + '</label>';
+    }).join('');
+    var tabs = S2_SPECIAL.map(function (s, i) {
+      return '<button type="button" data-s2tab="' + s.id + '"' + (i === 0 ? ' class="on"' : '') + '>' + esc(s.name) + '</button>';
+    }).join('');
+    var panels = S2_SPECIAL.map(function (s, i) {
+      return '<div class="s2-panel" data-s2panel="' + s.id + '"' + (i === 0 ? '' : ' hidden') + '>' +
+        '<p class="block-sub">根拠：' + esc(s.legal) + '</p>' +
+        s.fields.map(function (f) { return s2Field(s.id + ':', f); }).join('') + '</div>';
+    }).join('');
+
+    var html = '<div class="jiritsu-table-wrap sp-view s2-view">' +
+      '<p class="crumb"><a href="' + ROUTES.jiritsu() + '">自立活動 6区分27項目 一覧</a> › 2階シート（試作）</p>' +
+      '<div class="article-head">' +
+        '<div class="article-num" style="border-radius:3px;">2</div>' +
+        '<h2 class="cat-title">2階シート（試作）<span class="en">Integrated Plan Sheet for Special Curricula (Prototype)</span></h2>' +
+      '</div>' +
+      '<div class="overview">通級による指導・日本語指導・不登校・特定分野に特異な才能の各特例の計画を、「共通シート」と「特例ごとの個別シート」の構成で一体的に扱う様式です。' +
+        '複数の特例に該当する児童生徒を、一枚で俯瞰するために使います。</div>' +
+      '<div class="section-disclaimer"><b>試作版です。氏名は書かないでください</b>' +
+        '<p>国が示す予定の参考様式はまだ公表されていません。ここでは各特例の既存の様式・記載項目を、取りまとめ案が示す構成に沿って寄せてあります。参考様式が出たら欄を合わせ直します。' +
+        '「本児」「生徒A」で書き、入力はこのページの中だけで組み立て、どこにも送信・保存しません。ページを離れると消えます。</p></div>' +
+
+      '<form class="sp-form" id="s2Form" autocomplete="off">' +
+      '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">1</span>該当する特例を選ぶ</h3>' +
+        '<div class="s2-checks">' + checks + '</div></section>' +
+      '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">2</span>共通シート</h3>' +
+        '<p class="block-sub">どの特例にも共通する、本児の実態・希望・目標・支援体制。</p>' +
+        S2_COMMON.map(function (f) { return s2Field('c:', f); }).join('') + '</section>' +
+      '<section class="block sp-step" id="s2Special"><h3 class="block-title"><span class="sp-num">3</span>個別シート</h3>' +
+        '<p class="block-sub">1で選んだ特例のシートだけが有効になります。選んでいない特例は印刷・コピーに含まれません。</p>' +
+        '<div class="support-tabs s2-tabs">' + tabs + '</div>' + panels + '</section>' +
+      '</form>' +
+
+      '<section class="block"><h3 class="block-title"><span class="sp-num">4</span>AIと考える</h3>' +
+        '<p class="block-sub">困っていることを一言書いて指示書をコピーし、Copilot または Gemini に貼ります。AIは1つずつ質問して聞き出し、揃ったら共通シートと個別シートを、このページに貼り戻せる形式で出します。書いてある欄は聞き直しません。</p>' +
+        spField('seed', '今、困っていること・相談したいこと', '例：通級で何を目標にすべきか、不登校の支援策と通級の目標をどう揃えるか', 3).replace('data-sp=', 'data-s2seed=') +
+        '<div class="support-tabs sp-tabs s2-ai-tabs">' +
+          '<button type="button" class="on" data-target="copilot">Copilot 用（短め）</button>' +
+          '<button type="button" data-target="gemini">Gemini 用（要旨付き）</button>' +
+        '</div>' +
+        '<div class="sp-actions">' +
+          '<button type="button" class="sp-btn primary" id="s2PromptCopy">指示書をコピー</button>' +
+          '<span class="sp-copied" id="s2PromptCopied" aria-live="polite"></span>' +
+        '</div>' +
+        '<textarea class="sp-out" id="s2PromptOut" readonly rows="10"></textarea>' +
+        '<label class="sp-field" style="margin-top:14px;"><span class="sp-label">AIの回答を貼り付けて欄に流し込む<span class="sp-hint">■ 欄名／内容 の形式で出た部分だけを読み取ります。読み取れなかった欄はそのまま</span></span>' +
+          '<textarea id="s2Paste" rows="6" placeholder="AIが最後に出したシート（【共通シート】…【個別シート：…】…）を貼り付け"></textarea></label>' +
+        '<div class="sp-actions"><button type="button" class="sp-btn" id="s2Import">欄に流し込む</button><span class="sp-copied" id="s2Imported" aria-live="polite"></span></div>' +
+      '</section>' +
+
+      '<section class="block"><h3 class="block-title"><span class="sp-num">5</span>印刷・コピー</h3>' +
+        '<div class="sp-actions">' +
+          '<button type="button" class="sp-btn primary" id="s2Print">印刷（PDFに保存）</button>' +
+          '<button type="button" class="sp-btn" id="s2Copy">Wordに貼る用のテキストをコピー</button>' +
+          '<button type="button" class="sp-btn danger" id="s2Reset">入力を消す</button>' +
+          '<span class="sp-copied" id="s2Copied" aria-live="polite"></span>' +
+        '</div>' +
+      '</section>' +
+      '<section class="block s2-sheet" id="s2Sheet"><h3 class="block-title">2階シート（案）<span class="tally">印刷される内容</span></h3><div id="s2SheetBody"></div>' +
+        '<p class="sp-sheet-note">作成日：　　　　　　　　記入者：　　　　　　　　（氏名は書かず「本児」で記入）</p></section>' +
+      '<div class="source-box"><p class="basis-label">各シートの根拠</p><ul class="basis-refs">' +
+        hkSourceRef('jiritsu-kaisetsu') + hkSourceRef('mext-clarinet-info') + hkSourceRef('mext-futoukou-tsuchi-r1') + hkSourceRef('mext-sainou-wg-r8-08') +
+      '</ul></div>' +
+      '</div>';
+
+    mainContent.innerHTML = html;
+    playFadeIn();
+
+    function read() {
+      mainContent.querySelectorAll('[data-s2]').forEach(function (el) {
+        var k = el.getAttribute('data-s2'), i = k.indexOf(':');
+        var scope = k.slice(0, i), key = k.slice(i + 1);
+        if (scope === 'c') d.common[key] = el.value.trim(); else d.sp[scope][key] = el.value.trim();
+      });
+      mainContent.querySelectorAll('[data-s2on]').forEach(function (el) { d.on[el.getAttribute('data-s2on')] = el.checked; });
+    }
+    function fill() {
+      mainContent.querySelectorAll('[data-s2]').forEach(function (el) {
+        var k = el.getAttribute('data-s2'), i = k.indexOf(':');
+        var scope = k.slice(0, i), key = k.slice(i + 1);
+        el.value = scope === 'c' ? (d.common[key] || '') : (d.sp[scope][key] || '');
+      });
+      mainContent.querySelectorAll('[data-s2on]').forEach(function (el) { el.checked = !!d.on[el.getAttribute('data-s2on')]; });
+    }
+    function syncTabs() {
+      mainContent.querySelectorAll('.s2-tabs button').forEach(function (b) {
+        var id = b.getAttribute('data-s2tab');
+        b.classList.toggle('off', !d.on[id]);
+      });
+    }
+    var aiTarget = 'copilot';
+    function refresh() {
+      read();
+      var seedEl = mainContent.querySelector('[data-s2seed]'); if (seedEl) d.seed = seedEl.value.trim();
+      syncTabs();
+      document.getElementById('s2SheetBody').innerHTML = s2SheetHtml(d);
+      document.getElementById('s2PromptOut').value = s2Prompt(aiTarget, d);
+    }
+
+    fill();
+    var seedEl0 = mainContent.querySelector('[data-s2seed]'); if (seedEl0) seedEl0.value = d.seed || '';
+    refresh();
+    mainContent.querySelectorAll('[data-s2],[data-s2on],[data-s2seed]').forEach(function (el) { el.addEventListener('input', refresh); el.addEventListener('change', refresh); });
+    mainContent.querySelectorAll('.s2-ai-tabs button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        mainContent.querySelectorAll('.s2-ai-tabs button').forEach(function (x) { x.classList.remove('on'); });
+        b.classList.add('on'); aiTarget = b.getAttribute('data-target'); refresh();
+      });
+    });
+    document.getElementById('s2PromptCopy').addEventListener('click', function () {
+      refresh();
+      var note = document.getElementById('s2PromptCopied'), text = document.getElementById('s2PromptOut').value;
+      function done(ok) { note.textContent = ok ? 'コピーしました。AIに貼ってください。' : 'コピーできませんでした。指示書を選択して手動でコピーしてください。'; setTimeout(function () { note.textContent = ''; }, 4000); }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); }); else done(false);
+    });
+    document.getElementById('s2Import').addEventListener('click', function () {
+      read();
+      var text = document.getElementById('s2Paste').value;
+      var note = document.getElementById('s2Imported');
+      if (!text.trim()) { note.textContent = '貼り付けが空です。'; return; }
+      var hasAny = S2_COMMON.some(function (f) { return d.common[f.k]; }) || S2_SPECIAL.some(function (s) { return s.fields.some(function (f) { return d.sp[s.id][f.k]; }); });
+      if (hasAny && !window.confirm('すでに書いてある欄は、貼り付けた内容で上書きされます。よろしいですか。')) return;
+      var r = s2Parse(text, d);
+      fill(); refresh();
+      note.textContent = r.filled + '欄を流し込みました' + (r.skipped.length ? '（読み取れなかった欄名：' + r.skipped.join('、') + '）' : '') + '。';
+      setTimeout(function () { note.textContent = ''; }, 8000);
+    });
+    mainContent.querySelectorAll('.s2-tabs button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var id = b.getAttribute('data-s2tab');
+        mainContent.querySelectorAll('.s2-tabs button').forEach(function (x) { x.classList.remove('on'); });
+        b.classList.add('on');
+        mainContent.querySelectorAll('.s2-panel').forEach(function (p) { p.hidden = p.getAttribute('data-s2panel') !== id; });
+      });
+    });
+    document.getElementById('s2Print').addEventListener('click', function () {
+      refresh();
+      document.body.classList.add('s2-print');
+      var off = function () { document.body.classList.remove('s2-print'); window.removeEventListener('afterprint', off); };
+      window.addEventListener('afterprint', off);
+      window.print();
+      setTimeout(off, 3000);
+    });
+    document.getElementById('s2Copy').addEventListener('click', function () {
+      refresh();
+      var note = document.getElementById('s2Copied');
+      var text = s2Text(d);
+      function done(ok) { note.textContent = ok ? 'コピーしました。Wordに貼り付けてください。' : 'コピーできませんでした。'; setTimeout(function () { note.textContent = ''; }, 4000); }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+      else done(false);
+    });
+    document.getElementById('s2Reset').addEventListener('click', function () {
+      if (!window.confirm('入力をすべて消します。よろしいですか。')) return;
+      S2 = d = s2Blank(); fill(); refresh();
+    });
+  }
+
   /* ---------- 障害種別 → 主題 の逆引き（指導提要側・特別の教育課程側が持つ related を逆から引く） ---------- */
+
 
   function crossLinksBlock(catId) {
     var groups = [];

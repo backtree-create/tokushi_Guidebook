@@ -271,7 +271,7 @@ if (fs.existsSync(path.join(root, 'haikei.json'))) err('haikei.json が残って
    ハッシュ、anchor は出典ページ内の要素id。 */
 const links = rj('links.json');
 if (!Array.isArray(links) || links.length === 0) err('links.json が配列ではないか空です');
-const topicRoutes = new Set(['#/jiritsu', '#/jiritsu/support', '#/terms', '#/curriculum', '#/seito']);
+const topicRoutes = new Set(['#/jiritsu', '#/jiritsu/support', '#/jiritsu/sheet2', '#/terms', '#/curriculum', '#/seito']);
 for (const [key, list] of Object.entries(topics)) for (const h of list) topicRoutes.add(`#/${key}/${h.id}`);
 for (const c of categories) topicRoutes.add(`#/c/${c.id}`);
 const lkIds = new Set();
@@ -293,7 +293,7 @@ for (const g of links) {
 }
 
 /* --- 4d. メンテナンス中スイッチ（meta.json maintenance） --- */
-const MAINT_KEYS = ['site', 'support', 'jiritsu-block', 'curriculum', 'seito', 'links'];
+const MAINT_KEYS = ['site', 'support', 'sheet2', 'jiritsu-block', 'curriculum', 'seito', 'links'];
 if (meta.maintenance) {
   for (const [k, v] of Object.entries(meta.maintenance)) {
     if (k === '_note' || k === 'previewKey') continue;
