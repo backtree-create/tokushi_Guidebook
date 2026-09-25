@@ -1348,6 +1348,14 @@
     playFadeIn();
   }
 
+  // 箇条書きの1文目を太字にして、拾い読みできるようにする（1文目が長すぎるときはそのまま）
+  function leadBold(text) {
+    var m = /^([^。]{4,30}。)([\s\S]+)$/.exec(text || '');
+    if (!m) return esc(text);
+    return '<b class="hk-lead">' + esc(m[1]) + '</b>' + esc(m[2]);
+  }
+  function hkLi(x) { return '<li>' + leadBold(x) + '</li>'; }
+
   function renderTopicItem(t, h) {
     var st = h.status || {};
 
@@ -1358,11 +1366,11 @@
             ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + '</a>'
             : esc(s.title)) + (s.edition ? '（' + esc(s.edition) + '）' : '') + '</span>'
         : '';
-      return '<li>' + esc(b.text) + ref + '</li>';
+      return '<li>' + leadBold(b.text) + ref + '</li>';
     }).join('');
 
     var pointsHtml = (h.points || []).map(function (p, i) {
-      return '<li><span class="hk-pt-n">' + (i + 1) + '</span><span>' + esc(p) + '</span></li>';
+      return '<li><span class="hk-pt-n">' + (i + 1) + '</span><span>' + leadBold(p) + '</span></li>';
     }).join('');
 
     var frameworkHtml = '';
@@ -1375,24 +1383,24 @@
         }).join('') + '</dl></section>';
     }
 
-    var signsHtml = '<section class="block">' +
+    var signsHtml = '<section class="block" id="hk-signs">' +
       '<h3 class="block-title">' + esc(h.signsLabel) + '<span class="tally">' + h.signs.length + '項目</span></h3>' +
       (h.signsNote ? '<p class="block-sub">' + esc(h.signsNote) + '</p>' : '') +
-      '<ul class="hk-list">' + h.signs.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' +
+      '<ul class="hk-list hk-signs">' + h.signs.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' +
       '</section>';
 
-    var supportsHtml = '<section class="block">' +
+    var supportsHtml = '<section class="block" id="hk-supports">' +
       '<h3 class="block-title">' + esc(h.supportsLabel) + '</h3>' +
       '<div class="hk-groups">' + h.supports.map(function (g) {
         return '<div class="hk-group"><h4>' + esc(g.title) + '</h4>' +
-          '<ul class="hk-list">' + g.items.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div>';
+          '<ul class="hk-list">' + g.items.map(hkLi).join('') + '</ul></div>';
       }).join('') + '</div></section>';
 
     var planningHtml = '';
     if (h.planning) {
-      planningHtml = '<section class="block">' +
+      planningHtml = '<section class="block" id="hk-planning">' +
         '<h3 class="block-title">' + esc(h.planningLabel) + '</h3>' +
-        '<ul class="hk-list">' + h.planning.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' +
+        '<ul class="hk-list">' + h.planning.map(hkLi).join('') + '</ul>' +
         '</section>';
     } else {
       planningHtml = '<section class="block">' +
@@ -1407,7 +1415,7 @@
         '<p>自立活動の目標は、この課題名から項目を引くのではなく、<a href="' + ROUTES.support() + '">サポートシート</a>の手順（実態把握 → 課題の整理 → 項目の選定）で決めます。' +
         'この課題を①実態把握と③指導すべき課題に書き込むところから始めてください。</p></div>'
       : '';
-    var relatedHtml = jiritsuLine + '<section class="block">' +
+    var relatedHtml = jiritsuLine + '<section class="block" id="hk-related">' +
       '<h3 class="block-title">関連する障害種別<span class="tally">特別支援ガイドブックへ</span></h3>' +
       '<p class="block-sub">見立てを分ける、または重なりを確認するときに参照する区分です。</p>' +
       '<div class="hk-rel">' + (h.related || []).map(function (r) {
@@ -1431,7 +1439,12 @@
         }).join('') + '</div></section>';
     }
 
-    var srcHtml = '<div class="source-box">' +
+    var basisBlock = '<section class="block" id="hk-basis">' +
+      '<details class="hk-basis-wrap"><summary><span class="block-title-like">公的な位置づけ</span><span class="tally">法令・通知の根拠 ' + (h.basis || []).length + '件</span></summary>' +
+      '<ul class="hk-list hk-basis">' + basisHtml + '</ul></details>' +
+      '</section>';
+
+    var srcHtml = basisBlock + '<div class="source-box">' +
       '<p class="basis-label">この項目が基づく資料</p>' +
       '<ul class="basis-refs">' + (h.sources || []).map(hkSourceRef).join('') + '</ul>' +
       '<p style="margin-top:10px;">出典確認 ' + esc(h.reviewed) + '。制度や資料の要旨は本ツールによる整理で、原文の言い換えを含みます。指導計画や会議の根拠にする際は原文をご確認ください。</p>' +
@@ -1448,11 +1461,15 @@
       '<p class="hk-subtitle">' + esc(h.subtitle) + '</p>' +
       '<div class="hk-status tone-' + esc(st.tone || 'info') + '">' + hkStatusTag(h) + '<span>' + esc(st.text || '') + '</span></div>' +
       '<div class="overview">' + esc(h.overview) + '</div>' +
-      '<section class="block">' +
-        '<h3 class="block-title">公的な位置づけ</h3>' +
-        '<ul class="hk-list hk-basis">' + basisHtml + '</ul>' +
-      '</section>' +
-      '<section class="block">' +
+      '<nav class="hk-toc" aria-label="ページ内の移動">' +
+        '<a href="javascript:void(0)" data-jump="hk-points">押さえておきたい点</a>' +
+        '<a href="javascript:void(0)" data-jump="hk-signs">' + esc(h.signsLabel) + '</a>' +
+        '<a href="javascript:void(0)" data-jump="hk-supports">' + esc(h.supportsLabel) + '</a>' +
+        (h.planning ? '<a href="javascript:void(0)" data-jump="hk-planning">' + esc(h.planningLabel) + '</a>' : '') +
+        '<a href="javascript:void(0)" data-jump="hk-related">関連する障害種別</a>' +
+        '<a href="javascript:void(0)" data-jump="hk-basis">公的な位置づけ</a>' +
+      '</nav>' +
+      '<section class="block" id="hk-points">' +
         '<h3 class="block-title">押さえておきたい点</h3>' +
         '<ol class="hk-points">' + pointsHtml + '</ol>' +
       '</section>' +
@@ -1461,6 +1478,14 @@
 
     mainContent.innerHTML = html;
     playFadeIn();
+    mainContent.querySelectorAll('[data-jump]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        var el = document.getElementById(a.getAttribute('data-jump'));
+        if (!el) return;
+        var d = el.querySelector('details'); if (d) d.open = true;
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
   }
 
   /* ---------- フッター ---------- */

@@ -1094,12 +1094,15 @@
   .hk-list{margin:12px 0 0;padding-left:0;list-style:none;}
   .hk-list li{
     position:relative;
-    padding:7px 0 7px 20px;
-    font-size:14px;
-    line-height:1.85;
+    padding:10px 0 10px 22px;
+    font-size:14.5px;
+    line-height:1.9;
     color:var(--ink);
     border-bottom:1px dashed var(--line);
+    max-width:56em;
   }
+  .hk-lead{font-weight:700;color:var(--ink-strong);}
+  .hk-signs li{padding:8px 0 8px 22px;}
   .hk-list li:last-child{border-bottom:none;}
   .hk-list li::before{
     content:"";
@@ -1113,7 +1116,7 @@
   .hk-ref a{color:var(--accent);}
 
   .hk-points{margin:14px 0 0;padding:0;list-style:none;counter-reset:none;}
-  .hk-points li{display:flex;gap:12px;align-items:flex-start;padding:8px 0;font-size:14px;line-height:1.85;color:var(--ink);}
+  .hk-points li{display:flex;gap:12px;align-items:flex-start;padding:10px 0;font-size:14.5px;line-height:1.9;color:var(--ink);max-width:56em;}
   .hk-pt-n{
     flex-shrink:0;
     width:26px;height:26px;
@@ -1137,8 +1140,8 @@
   .hk-dl dd{margin:0;font-size:13.5px;line-height:1.85;color:var(--ink);}
   @media (max-width:640px){.hk-dl-row{grid-template-columns:1fr;gap:4px;}}
 
-  .hk-groups{display:grid;gap:14px;margin-top:14px;}
-  .hk-group{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:14px 18px 10px;}
+  .hk-groups{display:grid;gap:18px;margin-top:14px;}
+  .hk-group{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:16px 22px 12px;}
   .hk-group h4{
     margin:0;
     font-family:var(--serif);
@@ -1149,6 +1152,30 @@
   }
   .hk-group .hk-list{margin-top:4px;}
 
+  .hk-toc{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px;}
+  .hk-toc a{
+    padding:6px 12px;
+    font-size:12.5px;font-weight:700;
+    color:var(--ink-strong);
+    background:var(--card);
+    border:1px solid var(--line-strong);
+    border-radius:16px;
+    text-decoration:none;
+  }
+  .hk-toc a:hover{border-color:var(--navy);}
+  .hk-basis-wrap summary{
+    cursor:pointer;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:8px 0 8px 12px;
+    border-left:4px solid var(--navy);
+    list-style:none;
+  }
+  .hk-basis-wrap summary::-webkit-details-marker{display:none;}
+  .hk-basis-wrap summary .block-title-like{font-family:var(--serif);font-weight:700;font-size:16px;color:var(--ink-strong);}
+  .hk-basis-wrap summary::after{content:"開く";font-size:12px;color:var(--accent);margin-left:auto;}
+  .hk-basis-wrap[open] summary::after{content:"閉じる";}
+  .hk-basis-wrap summary .tally{margin-left:8px;}
+  .hk-basis li{font-size:13.5px;}
   .hk-rel{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin-top:14px;}
   .hk-rel-card{
     display:flex;flex-direction:column;gap:4px;
@@ -1707,6 +1734,7 @@
     .hk-home-note{border-left-color:var(--accent);}
     .j-step.on{border-color:var(--accent);}
     .lk-title{border-left-color:var(--accent);}
+    .hk-toc a:hover,.hk-basis-wrap summary{border-color:var(--accent);}
     .sp-num{background:var(--accent);color:#0b131c;}
     .sp-btn.primary{background:var(--accent);color:#0b131c;border-color:var(--accent);}
     .lk-jump a:hover{border-color:var(--accent);}
