@@ -320,6 +320,13 @@ if (meta.maintenance) {
   }
 }
 
+/* --- 4f. 出典の監視フラグ（watch / kind） --- */
+for (const x of sources) {
+  if (x.watch !== undefined && x.watch !== 'quiet') err(`sources.json ${x.id}: watch は "quiet" のみ（外すときは項目ごと削除）`);
+  if (x.kind !== undefined && x.kind !== 'portal') err(`sources.json ${x.id}: kind は "portal" のみ`);
+  if (x.watch === 'quiet' && x.policy !== 'latest') err(`sources.json ${x.id}: watch: quiet は policy latest の出典にだけ付けます`);
+}
+
 /* --- 5. メタ情報と Service Worker の版ずれ --- */
 const sw = fs.readFileSync(path.join(root, 'sw.js'), 'utf8');
 const m = sw.match(/const VERSION = "([^"]+)"/);

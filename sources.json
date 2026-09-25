@@ -116,7 +116,8 @@
     "publisher": "文部科学省",
     "url": "https://www.mext.go.jp/a_menu/shotou/tokubetu/main.htm",
     "policy": "latest",
-    "checked": "2026-08-25"
+    "checked": "2026-08-25",
+    "kind": "portal"
   },
   {
     "id": "mext-tokubetsu-genjo",
@@ -124,7 +125,8 @@
     "publisher": "文部科学省",
     "url": "https://www.mext.go.jp/a_menu/shotou/tokubetu/002.htm",
     "policy": "latest",
-    "checked": "2026-08-25"
+    "checked": "2026-08-25",
+    "kind": "portal"
   },
   {
     "id": "mext-shiryo",
@@ -158,7 +160,8 @@
     "policy": "latest",
     "checked": "2026-08-25",
     "indexUrl": "https://www.nanbyou.or.jp/entry/5461",
-    "note": "五十音別の指定難病一覧（あ行〜ら行の9ページ）から各疾患へ。告示番号付き"
+    "note": "五十音別の指定難病一覧（あ行〜ら行の9ページ）から各疾患へ。告示番号付き",
+    "kind": "portal"
   },
   {
     "id": "grj",
@@ -166,9 +169,10 @@
     "publisher": "GeneReviews Japan",
     "url": "https://plaza.umin.ac.jp/~grj/contents/begin.htm",
     "policy": "latest",
-    "checked": "2026-09-14",
+    "checked": "2026-09-25",
     "note": "旧 grj.umin.jp から plaza.umin.ac.jp/~grj/ へ移転（2026年8月20日改訂の入口ページで確認）。入口で「承諾する」を押すと病名リストに進む。個別疾患ページは /grj/<略号>.htm 形式",
-    "indexUrl": "https://plaza.umin.ac.jp/~grj/contents/begin.htm"
+    "indexUrl": "https://plaza.umin.ac.jp/~grj/contents/begin.htm",
+    "kind": "portal"
   },
   {
     "id": "mext-futoukou-tsuchi-r1",
@@ -202,13 +206,15 @@
   },
   {
     "id": "ircn-2023",
-    "title": "ASDとADHDの併存に関する研究発表",
+    "title": "ASD/ADHD合併の神経基盤に関する研究（Watanabe et al., eNeuro 2023）",
     "publisher": "東京大学 ニューロインテリジェンス国際研究機構（WPI-IRCN）",
     "edition": "2023年7月",
-    "url": "https://ircn.jp/pressrelease/20230714_takamitsu_watanabe",
+    "url": "https://doi.org/10.1523/ENEURO.0146-23.2023",
     "policy": "pinned",
     "tier": "research",
-    "checked": "2026-08-25"
+    "checked": "2026-09-25",
+    "indexUrl": "https://ircn.jp/en/pressrelease/20230714_takamitsu_watanabe",
+    "note": "東京大学IRCNのプレスリリース（日本語）のURLが変わり到達できなくなったため、論文のDOIを本体URLにし、英語版プレスリリースを一覧URLにした"
   },
   {
     "id": "riken-2024",
@@ -237,7 +243,8 @@
     "publisher": "Simons Foundation Autism Research Initiative",
     "policy": "latest",
     "tier": "research",
-    "checked": "2026-08-25"
+    "checked": "2026-08-25",
+    "kind": "portal"
   },
   {
     "id": "nichigan",
@@ -246,8 +253,10 @@
     "url": "https://www.nichigan.or.jp/public/disease/index.html",
     "policy": "latest",
     "tier": "academic",
-    "checked": "2026-08-25",
-    "note": "個別疾患は ?pdid=<番号> 形式。眼疾患のうち小慢・指定難病に該当しないものの出典"
+    "checked": "2026-09-25",
+    "note": "個別疾患は ?pdid=<番号> 形式。眼疾患のうち小慢・指定難病に該当しないものの出典",
+    "watch": "quiet",
+    "kind": "portal"
   },
   {
     "id": "jibika",
@@ -257,8 +266,10 @@
     "indexUrl": "https://www.jibika.or.jp/modules/disease_kids/index.php",
     "policy": "latest",
     "tier": "academic",
-    "checked": "2026-08-25",
-    "note": "子ども向けQ&Aあり。中耳炎・伝音難聴など、公的疾病DBの対象外の耳疾患の出典"
+    "checked": "2026-09-25",
+    "note": "子ども向けQ&Aあり。中耳炎・伝音難聴など、公的疾病DBの対象外の耳疾患の出典",
+    "watch": "quiet",
+    "kind": "portal"
   },
   {
     "id": "ncchd",
@@ -268,7 +279,8 @@
     "policy": "latest",
     "tier": "academic",
     "checked": "2026-08-25",
-    "note": "小児のありふれた疾患の解説。気管支喘息・アトピー性皮膚炎等"
+    "note": "小児のありふれた疾患の解説。気管支喘息・アトピー性皮膚炎等",
+    "kind": "portal"
   },
   {
     "id": "kokoro-ncnp",
@@ -277,8 +289,10 @@
     "url": "https://kokoro.ncnp.go.jp/",
     "policy": "latest",
     "tier": "academic",
-    "checked": "2026-08-25",
-    "note": "厚生労働省「みんなのメンタルヘルス総合サイト」は2023年4月に当サイトへ統合。精神疾患の一般向け解説の出典"
+    "checked": "2026-09-25",
+    "note": "厚生労働省「みんなのメンタルヘルス総合サイト」は2023年4月に当サイトへ統合。精神疾患の一般向け解説の出典",
+    "watch": "quiet",
+    "kind": "portal"
   },
   {
     "id": "hattatsu-navi",
@@ -288,8 +302,10 @@
     "indexUrl": "https://www.rehab.go.jp/ddis/",
     "policy": "latest",
     "tier": "academic",
-    "checked": "2026-08-25",
-    "note": "発達障害に関する国の情報ポータル"
+    "checked": "2026-09-25",
+    "note": "発達障害に関する国の情報ポータル",
+    "watch": "quiet",
+    "kind": "portal"
   },
   {
     "id": "rehab-kitsuon",
@@ -310,7 +326,8 @@
     "policy": "latest",
     "tier": "academic",
     "checked": "2026-08-25",
-    "note": "起立性調節障害など、小児心身症の学会による解説"
+    "note": "起立性調節障害など、小児心身症の学会による解説",
+    "kind": "portal"
   },
   {
     "id": "neurology-jp",
@@ -320,7 +337,8 @@
     "policy": "latest",
     "tier": "academic",
     "checked": "2026-08-25",
-    "note": "日本てんかん学会・全国てんかんセンター協議会には一般向け解説が見当たらないため本ページを用いる"
+    "note": "日本てんかん学会・全国てんかんセンター協議会には一般向け解説が見当たらないため本ページを用いる",
+    "kind": "portal"
   },
   {
     "id": "icd11",
@@ -341,7 +359,8 @@
     "url": "https://laws.e-gov.go.jp/law/328CO0000000340",
     "policy": "latest",
     "checked": "2026-08-26",
-    "note": "視覚障害者・聴覚障害者・知的障害者・肢体不自由者・病弱者の5区分について程度を定めた別表。就学先を検討する際の法令上の基準"
+    "note": "視覚障害者・聴覚障害者・知的障害者・肢体不自由者・病弱者の5区分について程度を定めた別表。就学先を検討する際の法令上の基準",
+    "kind": "portal"
   },
   {
     "id": "gmfcs",
@@ -371,7 +390,7 @@
     "edition": "2014年7月17日改訂",
     "policy": "latest",
     "tier": "academic",
-    "checked": "2026-08-26",
+    "checked": "2026-09-25",
     "note": "移動機能（1〜6）・知的発達（A〜E）・特記事項の3項目で評価する"
   },
   {
@@ -382,7 +401,8 @@
     "policy": "latest",
     "tier": "academic",
     "checked": "2026-08-26",
-    "note": "厚生省研究班による機能障害度分類（ステージI〜VIII）を収載。海外で用いられるVignos分類は10段階で別systemである"
+    "note": "厚生省研究班による機能障害度分類（ステージI〜VIII）を収載。海外で用いられるVignos分類は10段階で別systemである",
+    "edition": "確認時点の学会掲載版（2026-08-26）"
   },
   {
     "id": "ilae-jes",
@@ -392,8 +412,9 @@
     "indexUrl": "https://www.ilae.org/translated-content/japanese",
     "policy": "latest",
     "tier": "academic",
-    "checked": "2026-08-26",
-    "note": "薬剤抵抗性てんかんは「適切に選択され使用された2種類の抗てんかん薬で発作抑制に至らないもの」と定義される。発作頻度による区分ではない"
+    "checked": "2026-09-25",
+    "note": "薬剤抵抗性てんかんは「適切に選択され使用された2種類の抗てんかん薬で発作抑制に至らないもの」と定義される。発作頻度による区分ではない",
+    "edition": "ILAE 2017年分類（日本てんかん学会による日本語訳）"
   },
   {
     "id": "gakko-hoken",
@@ -427,7 +448,8 @@
     "policy": "latest",
     "tier": "academic",
     "checked": "2026-08-26",
-    "note": "糖尿病については管理指導表とは別に専用の連絡表がある"
+    "note": "糖尿病については管理指導表とは別に専用の連絡表がある",
+    "kind": "portal"
   },
   {
     "id": "mext-756",
@@ -457,7 +479,8 @@
     "policy": "latest",
     "tier": "academic",
     "checked": "2026-08-26",
-    "note": "現行版。書籍のみの提供で、学会公開のWeb版PDFには重症度分類表が含まれていないため本文は未確認。本ツールの区分の文言はmhlw-asthmaに基づく"
+    "note": "現行版。書籍のみの提供で、学会公開のWeb版PDFには重症度分類表が含まれていないため本文は未確認。本ツールの区分の文言はmhlw-asthmaに基づく",
+    "edition": "2023年版"
   },
   {
     "id": "jsth-hemophilia",
@@ -468,17 +491,20 @@
     "policy": "latest",
     "tier": "academic",
     "checked": "2026-08-26",
-    "note": "「3. 用語の定義」に重症度の区切りを明記。凝固因子活性トラフ値（複数回検査時の最低値）で判定し、軽症の上限は40%とする。重症度は出血頻度や関節症の重症度と必ずしも一致しない旨も併記されている"
+    "note": "「3. 用語の定義」に重症度の区切りを明記。凝固因子活性トラフ値（複数回検査時の最低値）で判定し、軽症の上限は40%とする。重症度は出血頻度や関節症の重症度と必ずしも一致しない旨も併記されている",
+    "edition": "2013年改訂版"
   },
   {
     "id": "jspho-hemophilia",
-    "title": "血友病（小児血液・がん疾患診療ガイドライン）",
-    "publisher": "日本小児血液・がん学会／日本小児科学会",
-    "url": "https://www.jpeds.or.jp/uploads/files/20240318_GL069.pdf",
+    "title": "血友病A 疾患概要（小児慢性特定疾病情報センター）",
+    "publisher": "小児慢性特定疾病情報センター",
+    "url": "https://www.shouman.jp/archives/print/print_9_22_41_01.pdf",
     "policy": "latest",
     "tier": "academic",
-    "checked": "2026-08-26",
-    "note": "「重症度はFVIII あるいはFIX活性で規定され、1％未満が重症、1-5％未満が中等症、5-40％未満が軽症と分類される」と記載。日本血栓止血学会の区切りと一致する"
+    "checked": "2026-09-25",
+    "note": "以前参照していた日本小児血液・がん学会の血友病ガイドラインPDF（日本小児科学会サイト掲載）が移動して到達できなくなったため、小児慢性特定疾病の疾患概要に差し替え。重症度（凝固因子活性 1%未満が重症、1〜5%が中等症、5%以上が軽症）は日本血栓止血学会の区切りと同じ",
+    "review": "年次",
+    "kind": "portal"
   },
   {
     "id": "jspn-ckd2019",
@@ -488,18 +514,18 @@
     "policy": "latest",
     "tier": "academic",
     "checked": "2026-09-14",
-    "note": "GFR区分G1〜G5は2歳以上に適用。2歳未満は生理的にGFRが低くeGFRの絶対値では評価できないため、血清クレアチニンによる判定表を用いる。日本では小児に蛋白尿区分（CGA分類）を用いない。umin.jp のサーバーは一時的に応答しないことがあり、2026-09の自動検査で切れと判定されたが同日に手動で到達を確認"
+    "note": "GFR区分G1〜G5は2歳以上に適用。2歳未満は生理的にGFRが低くeGFRの絶対値では評価できないため、血清クレアチニンによる判定表を用いる。日本では小児に蛋白尿区分（CGA分類）を用いない。umin.jp のサーバーは一時的に応答しないことがあり、2026-09の自動検査で切れと判定されたが同日に手動で到達を確認",
+    "edition": "2019年"
   },
   {
     "id": "jspn-nephrotic2013",
     "title": "小児特発性ネフローゼ症候群診療ガイドライン2013 第1部 語句の定義",
     "publisher": "日本小児腎臓病学会",
     "url": "https://jspn01.umin.jp/guideline/2013_nephrotic/1.pdf",
-    "indexUrl": "https://minds.jcqhc.or.jp/summary/c00221/",
     "policy": "pinned",
     "tier": "academic",
-    "checked": "2026-09-14",
-    "note": "頻回再発・ステロイド依存性・ステロイド抵抗性の定義を原文で確認できる資料。現行版は2020年版だが本文に到達できず、区分の文言はこの2013年版に基づく。一覧URLはMinds（日本医療機能評価機構）の掲載ページに変更（旧版として本文公開中）。学会サイトのPDFは一時的に応答しないことがある"
+    "checked": "2026-09-25",
+    "note": "頻回再発・ステロイド依存性・ステロイド抵抗性の定義を原文で確認できる資料。現行版は2020年版だが本文に到達できず、区分の文言はこの2013年版に基づく。学会サイトのPDFは一時的に応答しないことがある。Minds のページは自動検査に応答しないため一覧URLは置かない"
   },
   {
     "id": "jspn-nephrotic2020",
@@ -509,7 +535,8 @@
     "policy": "latest",
     "tier": "academic",
     "checked": "2026-08-26",
-    "note": "現行版。全文PDFは公開されているが定義節の本文に到達できず未確認。国際的にはIPNAガイドラインが頻回再発を「12か月間に3回以上」とし、日本の「12か月以内に4回以上」と食い違う点に注意"
+    "note": "現行版。全文PDFは公開されているが定義節の本文に到達できず未確認。国際的にはIPNAガイドラインが頻回再発を「12か月間に3回以上」とし、日本の「12か月以内に4回以上」と食い違う点に注意",
+    "edition": "2020年版"
   },
   {
     "id": "jspccs-hf2015",
@@ -520,7 +547,8 @@
     "tier": "academic",
     "checked": "2026-08-26",
     "note": "「成人ではNYHA分類，小児ではROSSスコアなどの指標が用いられてきた」と記載。ただしクラスI〜IVの定義表は本ガイドラインには収載されていない",
-    "indexUrl": "https://jpccs.jp/10.9794/jspccs.31.S2_1/data/index.html"
+    "indexUrl": "https://jpccs.jp/10.9794/jspccs.31.S2_1/data/index.html",
+    "edition": "平成27年改訂版"
   },
   {
     "id": "ross-2012",
@@ -539,8 +567,9 @@
     "url": "https://medicalcriteria.com/web/carross/",
     "policy": "latest",
     "tier": "research",
-    "checked": "2026-08-26",
-    "note": "★二次情報。クラスI〜IVの定義を掲載した日本語の公式資料が見つからなかったため、暫定的にこの英語の二次情報を参照している。原典（ross-2012）または日本小児循環器学会への確認が望ましい"
+    "checked": "2026-09-25",
+    "note": "★二次情報。クラスI〜IVの定義を掲載した日本語の公式資料が見つからなかったため、暫定的にこの英語の二次情報を参照している。原典（ross-2012）または日本小児循環器学会への確認が望ましい",
+    "kind": "portal"
   },
   {
     "id": "ncnp-nmd",
@@ -549,8 +578,9 @@
     "url": "https://nmdportal.ncnp.go.jp/information/sma.html",
     "policy": "latest",
     "tier": "academic",
-    "checked": "2026-08-26",
-    "note": "「発症時期や最大獲得運動機能といった臨床的特徴によりⅠ，Ⅱ，Ⅲ，Ⅳ型に分類されます」と明記。重症度の段階ではなく病型の区分であることの根拠"
+    "checked": "2026-09-25",
+    "note": "「発症時期や最大獲得運動機能といった臨床的特徴によりⅠ，Ⅱ，Ⅲ，Ⅳ型に分類されます」と明記。重症度の段階ではなく病型の区分であることの根拠",
+    "kind": "portal"
   },
   {
     "id": "nanbyou-sma",
@@ -560,7 +590,8 @@
     "policy": "latest",
     "tier": "academic",
     "checked": "2026-08-26",
-    "note": "I〜IV型それぞれの発症時期と到達運動機能を本文テキストで確認できる。なお指定難病としての重症度分類は型ではなくmRS等の評価スケールによる"
+    "note": "I〜IV型それぞれの発症時期と到達運動機能を本文テキストで確認できる。なお指定難病としての重症度分類は型ではなくmRS等の評価スケールによる",
+    "kind": "portal"
   },
   {
     "id": "mext-clarinet-tebiki",
@@ -581,7 +612,8 @@
     "policy": "latest",
     "review": "年次",
     "checked": "2026-09-14",
-    "note": "日本語指導に関する制度・ツールの入口ページ。新しい資料はここに追加される"
+    "note": "日本語指導に関する制度・ツールの入口ページ。新しい資料はここに追加される",
+    "kind": "portal"
   },
   {
     "id": "mext-sainou-matome",
@@ -602,7 +634,8 @@
     "policy": "latest",
     "review": "月次",
     "checked": "2026-09-14",
-    "note": "取りまとめの最終版や運用の手引きはここに掲載される見込み。変化があれば2Eの項を見直す"
+    "note": "取りまとめの最終版や運用の手引きはここに掲載される見込み。変化があれば2Eの項を見直す",
+    "kind": "portal"
   },
   {
     "id": "mext-sainou-wg-r8-08",
@@ -634,7 +667,8 @@
     "policy": "latest",
     "review": "年次",
     "checked": "2026-09-14",
-    "note": "法改正（令和6年6月）、実態調査、支援ガイドライン、啓発ツールの入口ページ"
+    "note": "法改正（令和6年6月）、実態調査、支援ガイドライン、啓発ツールの入口ページ",
+    "kind": "portal"
   },
   {
     "id": "mext-yc-renkei-r7",
@@ -714,8 +748,10 @@
     "url": "https://inclusive.nise.go.jp/",
     "policy": "latest",
     "review": "年次",
-    "checked": "2026-09-14",
-    "note": "文部科学省のモデル事業で得られた合理的配慮の実践事例を、障害種・校種・キーワードで検索できる。リンク集の「合理的配慮の事例を探す」から案内"
+    "checked": "2026-09-25",
+    "note": "文部科学省のモデル事業で得られた合理的配慮の実践事例を、障害種・校種・キーワードで検索できる。リンク集の「合理的配慮の事例を探す」から案内",
+    "watch": "quiet",
+    "kind": "portal"
   },
   {
     "id": "mext-gyakutai-tebiki-r8",
@@ -780,8 +816,9 @@
     "url": "https://www.mext.go.jp/a_menu/shotou/seitoshidou/1302907.htm",
     "policy": "latest",
     "review": "年次",
-    "checked": "2026-09-14",
-    "note": "毎年の通知と手引きの改訂はここに載る。変化があれば自殺予防の項を見直す"
+    "checked": "2026-09-25",
+    "note": "毎年の通知と手引きの改訂はここに載る。変化があれば自殺予防の項を見直す。2026-09-25 確認：本文が依拠する最新の通知は令和8年7月3日付のまま（ページの更新は自殺予防週間の周知等）",
+    "kind": "portal"
   },
   {
     "id": "mext-jisatsu-kaisei-r8",
@@ -857,7 +894,8 @@
     "policy": "latest",
     "review": "年次",
     "checked": "2026-09-14",
-    "note": "生命の安全教育の教材・指導の手引きは令和8年3月改訂版。ワンストップ支援センターの周知、痴漢被害への対応もここ"
+    "note": "生命の安全教育の教材・指導の手引きは令和8年3月改訂版。ワンストップ支援センターの周知、痴漢被害への対応もここ",
+    "kind": "portal"
   },
   {
     "id": "mext-gid-tsuchi-h27",
@@ -877,7 +915,8 @@
     "policy": "latest",
     "review": "年次",
     "checked": "2026-09-14",
-    "note": "教職員向けパンフレット、研修動画、理解増進法の基本計画の通知の入口"
+    "note": "教職員向けパンフレット、研修動画、理解増進法の基本計画の通知の入口",
+    "kind": "portal"
   },
   {
     "id": "mext-joho-moral",
@@ -887,7 +926,8 @@
     "policy": "latest",
     "review": "年次",
     "checked": "2026-09-14",
-    "note": "児童生徒向け動画教材、教員向け指導の手引き、保護者向け資料、「児童生徒の健康に留意してICTを活用するためのガイドブック」（令和4年3月改訂）"
+    "note": "児童生徒向け動画教材、教員向け指導の手引き、保護者向け資料、「児童生徒の健康に留意してICTを活用するためのガイドブック」（令和4年3月改訂）",
+    "kind": "portal"
   },
   {
     "id": "mext-net-page",
@@ -897,7 +937,8 @@
     "policy": "latest",
     "review": "年次",
     "checked": "2026-09-14",
-    "note": "ネット上のいじめ対応マニュアル・事例集など、生徒指導側の入口"
+    "note": "ネット上のいじめ対応マニュアル・事例集など、生徒指導側の入口",
+    "kind": "portal"
   },
   {
     "id": "moj-shonenho",
@@ -917,7 +958,8 @@
     "policy": "latest",
     "checked": "2026-09-14",
     "note": "Leaf.12「学校と警察等との連携」（日々の連携と緊急時の連携）、Leaf.3「発達障害と生徒指導」など",
-    "review": "年次"
+    "review": "年次",
+    "kind": "portal"
   },
   {
     "id": "saposute",
@@ -927,6 +969,7 @@
     "policy": "latest",
     "review": "年次",
     "checked": "2026-09-14",
-    "note": "中途退学者等の就労・自立支援。高等学校との連携ページあり"
+    "note": "中途退学者等の就労・自立支援。高等学校との連携ページあり",
+    "kind": "portal"
   }
 ]

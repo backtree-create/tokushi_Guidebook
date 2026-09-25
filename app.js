@@ -478,42 +478,67 @@
 
   /* ---------- 出典区分バッジ ---------- */
 
+  // 見出しに付ける「出典①」の印。末尾の出典欄の番号と対応する
+  function srcRef(n) {
+    var circ = ['', '①', '②', '③'][n] || String(n);
+    return '<span class="src-ref" title="末尾の出典 ' + circ + '">' + circ + '</span>';
+  }
+
+  // 出典欄。①概要 ②個別に求められる支援 ③程度別の支援 の順に、何に基づくかを示す
   function basisBadges(d) {
     var b = d.basis;
     if (!b) return '';
-
     var ov = META.basisLabels.overview[b.overview];
     var sp = META.basisLabels.support[b.support];
-    var tags = [];
-    if (ov) tags.push('<span class="basis-tag tone-' + esc(ov.tone) + '">' + esc(ov.label) + '</span>');
-    if (sp) tags.push('<span class="basis-tag tone-' + esc(sp.tone) + '">' + esc(sp.label) + '</span>');
-    if (!tags.length) return '';
+    if (!ov && !sp) return '';
 
     // どの資料に基づくのかを、資料名と（あれば）URLで示す
     var refs = (b.sources || []).map(function (id) {
-      var s = SRC[id];
-      if (!s) return '';
-      var name = esc(s.title) + (s.edition ? '（' + esc(s.edition) + '）' : '');
-      return s.url
-        ? '<li><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + name + '</a>' +
-          '<span class="basis-pub">' + esc(s.publisher || '') + '</span></li>'
-        : '<li>' + name + '<span class="basis-pub">' + esc(s.publisher || '') + '</span></li>';
+      var x = SRC[id];
+      if (!x) return '';
+      var name = esc(x.title) + (x.edition ? '（' + esc(x.edition) + '）' : '');
+      return x.url
+        ? '<li><a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + name + '</a>' +
+          '<span class="basis-pub">' + esc(x.publisher || '') + '</span></li>'
+        : '<li>' + name + '<span class="basis-pub">' + esc(x.publisher || '') + '</span></li>';
     }).filter(Boolean);
 
-    var body = '';
-    if (refs.length) {
-      body += '<p class="basis-label">この項目の医学的説明が基づく資料</p>' +
-              '<ul class="basis-refs">' + refs.join('') + '</ul>';
-    }
+    var rows = [];
+    // ① 概要
+    var ovBody = '';
+    if (refs.length) ovBody += '<ul class="basis-refs">' + refs.join('') + '</ul>';
     if (b.evidence) {
       var isUrl = /^https?:\/\//.test(b.evidence);
-      body += '<p class="basis-evidence">' + (isUrl
+      ovBody += '<p class="basis-evidence">' + (isUrl
         ? '該当ページ：<a href="' + esc(b.evidence) + '" target="_blank" rel="noopener">' + esc(b.evidence) + '</a>'
         : esc(b.evidence)) + '</p>';
     }
-
-    return '<div class="basis-row">' + tags.join('') + '</div>' +
-           (body ? '<div class="basis-detail">' + body + '</div>' : '');
+    if (ov) rows.push(basisRow('①', '概要（医学的説明）', ov, ovBody));
+    // ② 個別に求められる支援
+    if (sp) {
+      var spBody = (b.support === 'editorial')
+        ? '<p class="basis-note">上の資料に示された医学的特性を踏まえ、本ツールが教育実務上まとめたものです。資料に支援内容の記載があるわけではありません。</p>'
+        : '';
+      rows.push(basisRow('②', '個別に求められる支援', sp, spBody));
+    }
+    // ③ 程度別の支援
+    if (d.severity) {
+      var sc = d.severityScale;
+      var lab, tone, scBody = '';
+      if (sc && sc.basis !== 'editorial') {
+        lab = '公的な尺度に基づく区分'; tone = 'ok';
+        scBody = '<p class="basis-note">用いている尺度：' + esc(sc.name) + '。区分ごとの支援内容は本ツールによる教育的整理です。</p>';
+      } else {
+        lab = '本ツールによる目安'; tone = 'info';
+        scBody = '<p class="basis-note">' + (sc ? '目安の立て方：' + esc(sc.name) + '。' : '') + '対応する公的な尺度がないため、本ツールが教育実務上の目安として区分したものです。</p>';
+      }
+      rows.push(basisRow('③', '程度別の支援', { label: lab, tone: tone }, scBody));
+    }
+    return '<div class="basis-detail"><p class="basis-label">出典</p><dl class="basis-legend">' + rows.join('') + '</dl></div>';
+  }
+  function basisRow(num, title, lab, body) {
+    return '<dt><span class="src-ref">' + num + '</span>' + esc(title) + '</dt>' +
+      '<dd><span class="basis-kind tone-' + esc(lab.tone) + '">' + esc(lab.label) + '</span>' + body + '</dd>';
   }
 
   // 学校生活管理指導表。運動制限は実際にはこの書式で学校に伝わるので、
@@ -676,7 +701,7 @@
       ) : '';
 
       var severityBlock = d.severity ? (
-        '<p class="dd-label">程度別の支援</p>' + scaleBlock +
+        '<p class="dd-label">程度別の支援' + srcRef(3) + '</p>' + scaleBlock +
         '<div class="severity-list">' + d.severity.map(function (sv) {
           return '<div class="severity-item">' +
             '<div class="sv-level">' + esc(sv.level) + '</div>' +
@@ -702,8 +727,9 @@
           '<span class="d-hint">詳細を見る</span>' +
         '</button>' +
         '<div class="disease-detail"><div class="disease-detail-inner">' +
+          '<p class="dd-label">概要（医学的説明）' + srcRef(1) + '</p>' +
           '<p class="d-overview">' + esc(d.overview) + '</p>' +
-          '<p class="dd-label">個別に求められる支援</p>' +
+          '<p class="dd-label">個別に求められる支援' + srcRef(2) + '</p>' +
           '<ul class="dd-support">' + supportLis + '</ul>' +
           severityBlock +
           noteBlock +
@@ -723,7 +749,7 @@
 
       '<section class="block">' +
         '<h3 class="block-title">基となる病気・状態による分類<span class="tally">' + cat.diseases.length + '件</span></h3>' +
-        '<p class="block-sub">同じ障害種でも、原因となる疾患や状態の違いによって必要な配慮は異なります。各項目をクリックすると、個別に求められる支援と出典が表示されます。</p>' +
+        '<p class="block-sub">同じ障害種でも、原因となる疾患や状態の違いによって必要な配慮は異なります。各項目をクリックすると、①概要 ②個別に求められる支援 ③程度別の支援 が、それぞれの出典と一緒に表示されます。</p>' +
         // 出典の性質はリストを読む前に示す（フッターまでスクロールしないと読めない状態を避ける）
         '<div class="section-disclaimer">' +
           '<b>この分類についての出典表示</b>' +

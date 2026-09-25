@@ -930,6 +930,42 @@
   }
 
   /* --- 疾患ごとの出典区分バッジ --- */
+  /* 見出しの出典番号（①②③）と、末尾の出典欄 */
+  .src-ref{
+    display:inline-block;
+    margin-left:6px;
+    font-family:var(--sans);
+    font-size:.85em;
+    font-weight:700;
+    color:var(--accent);
+    vertical-align:baseline;
+  }
+  .basis-legend{
+    margin:6px 0 0;
+    display:grid;
+    grid-template-columns:max-content 1fr;
+    gap:6px 18px;
+    align-items:baseline;
+  }
+  .basis-legend dt{
+    font-size:13px;
+    font-weight:700;
+    color:var(--ink-strong);
+    white-space:nowrap;
+  }
+  .basis-legend dt .src-ref{margin:0 6px 0 0;font-size:13px;}
+  .basis-legend dd{margin:0;min-width:0;font-size:13px;line-height:1.75;color:var(--ink);}
+  .basis-kind{font-weight:700;}
+  .basis-kind.tone-ok{color:var(--tone-ok-fg);}
+  .basis-kind.tone-info{color:var(--ink-strong);}
+  .basis-kind.tone-warn{color:var(--tone-warn-fg);}
+  .basis-legend .basis-refs{margin:2px 0 0;}
+  .basis-legend .basis-evidence{margin:2px 0 0;font-size:12.5px;}
+  .basis-note{margin:2px 0 0;font-size:12.5px;line-height:1.75;color:var(--ink-soft);}
+  @media (max-width:640px){
+    .basis-legend{grid-template-columns:1fr;gap:2px 0;}
+    .basis-legend dd{margin-bottom:8px;padding-left:22px;}
+  }
   .basis-row{
     display:flex;
     flex-wrap:wrap;
