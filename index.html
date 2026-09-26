@@ -32,59 +32,33 @@
 </div>
 
 <header>
-  <div class="header-inner">
-    <div class="brandmark">
+  <div class="masthead">
+    <div class="mast-left">
       <button class="emblem" id="homeEmblem" type="button" aria-label="ホームに戻る">特</button>
-      <div class="brand-text">
-        <p class="eyebrow">Handbook for Students Requiring Special Consideration</p>
-        <h1><button class="h1-home" id="homeLink" type="button">特別な配慮を要する児童生徒<wbr> 指導支援ハンドブック</button></h1>
-        <p class="lead">2冊構成です。<b>特別支援ガイドブック</b>は、障害種別・原因疾患ごとの教育的ニーズと支援、特別の教育課程、自立活動を、文部科学省の手引と解説に基づいて整理しています。<b>指導提要ガイドブック</b>は、生徒指導提要に基づく生徒指導上の課題を扱います。</p>
-      </div>
+      <h1><button class="h1-home" id="homeLink" type="button">特別な配慮を要する児童生徒<wbr> 指導支援ハンドブック</button></h1>
     </div>
-    <div class="credential">
-      <b>一次資料</b><br>
-      文部科学省「障害のある子供の教育支援の手引」（令和3年6月）<br>
-      文部科学省「特別支援学校 自立活動編」（平成30年3月）<br>
-      文部科学省「生徒指導提要」（令和4年12月改訂）<br>
-      <b style="display:inline-block;margin-top:6px;">疾患・状態の分類</b><br>
-      小児慢性特定疾病情報センター／難病情報センター／GeneReviews Japan ほか
+    <div class="mast-right">
+      <a href="https://backtree-create.github.io/tokushi_Guidebook/about.pdf" target="_blank" rel="noopener">趣意書（PDF）</a>
+      <a href="https://forms.gle/VuwXhhbAHGqZcfL18" target="_blank" rel="noopener">問い合わせ・情報提供</a>
     </div>
   </div>
-  <div class="header-notice" role="note" aria-label="ハンドブック作成のお知らせと情報提供のお願い">
-    <div class="notice-text">
-      <p class="notice-heading">先生方へ</p>
-      <p>このたび、学校全体の特別支援教育全般に係る専門性の向上と、児童生徒一人ひとりの指導目標や支援の方法、配慮の内容等の検討に係る時間の効率化を図るため、ポータルサイトを作成しました。</p>
-      <p>現在大幅な改修を行っておりますので、しばらくお待ちください。</p>
+  <nav class="navbar" aria-label="ガイドブックとタブ">
+    <div class="nav-group" data-book="tokushi">
+      <button class="nav-book" id="bookTokushi" type="button">特別支援</button>
+      <button id="tabGuide" class="on" type="button" data-book="tokushi">障害種別ガイド</button>
+      <button id="tabCurriculum" type="button" data-book="tokushi">特別の教育課程</button>
+      <button id="tabJiritsu" type="button" data-book="tokushi">自立活動</button>
+      <button id="tabPlan" type="button" data-book="tokushi">計画シート</button>
     </div>
-    <div class="notice-action">
-      <a class="notice-btn" href="https://forms.gle/VuwXhhbAHGqZcfL18" target="_blank" rel="noopener">
-        <span class="notice-btn-main">問い合わせ・情報提供フォーム</span>
-        <span class="notice-btn-sub">お名前の記入は不要です（Googleフォームが開きます）</span>
-      </a>
-      <a class="notice-doc" href="https://backtree-create.github.io/tokushi_Guidebook/about.pdf" target="_blank" rel="noopener">
-        <span class="notice-doc-icon" aria-hidden="true">PDF</span>
-        <span>作成の趣旨と活用場面（令和8年9月15日改訂）</span>
-      </a>
+    <div class="nav-group" data-book="teiyo">
+      <button class="nav-book" id="bookTeiyo" type="button">指導提要</button>
+      <button id="tabSeito" type="button" data-book="teiyo">生徒指導上の課題</button>
     </div>
-  </div>
-  <div class="book-switch" role="tablist" aria-label="ガイドブックの切替">
-    <button id="bookTokushi" class="on" type="button" role="tab"><b>特別支援ガイドブック</b><span>障害種別・特別の教育課程・自立活動</span></button>
-    <button id="bookTeiyo" type="button" role="tab"><b>指導提要ガイドブック</b><span>生徒指導提要に基づく課題</span></button>
-  </div>
-  <div class="mode-tabs">
-    <button id="tabGuide" class="on" type="button" data-book="tokushi">障害種別ガイド</button>
-    <button id="tabCurriculum" type="button" data-book="tokushi">特別の教育課程</button>
-    <button id="tabJiritsu" type="button" data-book="tokushi">自立活動</button>
-    <button id="tabPlan" type="button" data-book="tokushi">計画シート</button>
-    <button id="tabSeito" type="button" data-book="teiyo">生徒指導上の課題</button>
-    <button id="tabTerms" type="button" data-book="both">出典・リンク集</button>
-  </div>
+    <div class="nav-group nav-group-terms">
+      <button id="tabTerms" type="button" data-book="both">出典・リンク集</button>
+    </div>
+  </nav>
 </header>
-
-<button id="homeBtn" class="fab-home" type="button" aria-label="ホームに戻る">
-  <span class="fab-icon">🏠</span>
-  <span class="fab-label">ホーム</span>
-</button>
 
 <div class="layout" id="layoutRoot">
   <nav class="index" id="sideNav">
@@ -103,6 +77,9 @@
 
   <main id="mainContent"></main>
 </div>
+
+<button id="menuBtn" class="fab-menu" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="navPanel"><span class="burger" aria-hidden="true"><span></span><span></span><span></span></span><span class="fab-label">メニュー</span></button>
+<div id="navPanel" class="nav-panel" role="dialog" aria-label="移動" hidden></div>
 
 <footer id="siteFooter"></footer>
 

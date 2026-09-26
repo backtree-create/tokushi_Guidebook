@@ -47,7 +47,7 @@
     }
   };
   var BOOKS = {
-    tokushi: { title: '特別支援ガイドブック', home: '#/', modes: ['guide', 'curriculum', 'jiritsu', 'plan', 'terms'] },
+    tokushi: { title: '特別支援ガイドブック', home: '#/guide', modes: ['guide', 'curriculum', 'jiritsu', 'plan', 'terms'] },
     teiyo:   { title: '指導提要ガイドブック', home: '#/seito', modes: ['seito', 'terms'] }
   };
   var currentBook = 'tokushi';
@@ -146,7 +146,8 @@
      ========================================================== */
 
   var ROUTES = {
-    home:    function () { return '#/'; },
+    site:    function () { return '#/'; },          // 全体のホーム（2冊への分岐）
+    home:    function () { return '#/guide'; },     // 特別支援ガイドブックのホーム（障害種別の索引）
     cat:     function (id, disease) {
       return '#/c/' + encodeURIComponent(id) +
              (disease ? '/' + encodeURIComponent(disease) : '');
@@ -163,11 +164,12 @@
 
   function parseHash() {
     var h = (location.hash || '').replace(/^#\/?/, '');
-    if (!h) return { view: 'home' };
+    if (!h) return { view: 'site' };
     var seg = h.split('/').map(function (x) {
       try { return decodeURIComponent(x); } catch (e) { return x; }
     });
     switch (seg[0]) {
+      case 'guide':   return { view: 'home' };
       case 'c':       return { view: 'cat', catId: seg[1], disease: seg[2] || null };
       case 'q':       return { view: 'search', q: seg.slice(1).join('/') };
       case 'jiritsu': return seg[1] === 'support' ? { view: 'support' } : seg[1] === 'sheet2' ? { view: 'plan', legacyPlan: true } : { view: 'jiritsu' };
@@ -179,7 +181,7 @@
         ? { view: 'topic-item', topic: 'seito', id: 'young-carer', legacy: true }
         : seg[1] ? { view: 'topic-item', topic: 'curriculum', id: seg[1], legacy: true } : { view: 'topic', topic: 'curriculum', legacy: true };
       case 'seito':   return seg[1] ? { view: 'topic-item', topic: 'seito',  id: seg[1] } : { view: 'topic', topic: 'seito' };
-      default:        return { view: 'home' };
+      default:        return { view: 'site' };
     }
   }
 
@@ -206,7 +208,7 @@
   var lastHash = location.hash || '#/';
 
   function contentTop(preferMain) {
-    var t = document.querySelector('.mode-tabs');
+    var t = document.querySelector('.navbar');
     var anchor = t ? t.getBoundingClientRect().bottom + window.scrollY : mainContent.getBoundingClientRect().top + window.scrollY;
     // スマホ幅では索引（sideNav）が本文の上に積まれる。障害種別ページを開いたときは索引ではなく本文の先頭へ
     if (preferMain && sideNav.style.display !== 'none') {
@@ -239,12 +241,13 @@
 
   function setTabs(m) {
     // どの冊に属するモードかで上段の切替と下段のタブを揃える
-    if (m !== 'terms') currentBook = BOOKS.teiyo.modes.indexOf(m) >= 0 ? 'teiyo' : 'tokushi';
+    if (m === 'site') currentBook = null;
+    else if (m !== 'terms') currentBook = BOOKS.teiyo.modes.indexOf(m) >= 0 ? 'teiyo' : 'tokushi';
     bookTokushi.classList.toggle('on', currentBook === 'tokushi');
     bookTeiyo.classList.toggle('on', currentBook === 'teiyo');
-    document.querySelectorAll('.mode-tabs button').forEach(function (b) {
-      var bk = b.getAttribute('data-book');
-      b.hidden = !(bk === 'both' || bk === currentBook);
+    document.body.classList.toggle('at-site-home', m === 'site');
+    document.querySelectorAll('.navbar .nav-group[data-book]').forEach(function (g) {
+      g.classList.toggle('on', g.getAttribute('data-book') === currentBook);
     });
     tabGuide.classList.toggle('on', m === 'guide');
     tabCurriculum.classList.toggle('on', m === 'curriculum');
@@ -259,7 +262,8 @@
     routing = true;
     try {
       var r = parseHash();
-      mode = (r.view === 'jiritsu' || r.view === 'support') ? 'jiritsu'
+      mode = r.view === 'site' ? 'site'
+           : (r.view === 'jiritsu' || r.view === 'support') ? 'jiritsu'
            : r.view === 'plan' ? 'plan'
            : r.view === 'terms' ? 'terms'
            : (r.view === 'topic' || r.view === 'topic-item') ? r.topic
@@ -282,7 +286,9 @@
       }
       // 版3.0.0で不登校を障害種別から生徒指導上の課題へ移した。古いURL(#/c/futoukou)は転送する
       if (r.view === 'cat' && r.catId === 'futoukou') { navigate(ROUTES.seito('futoukou'), true); return; }
-      if (r.view === 'cat' || r.view === 'search' || r.view === 'home') {
+      if (r.view === 'site') {
+        renderSite();
+      } else if (r.view === 'cat' || r.view === 'search' || r.view === 'home') {
         searchBox.value = (r.view === 'search') ? (r.q || '') : '';
         currentId = (r.view === 'cat') ? r.catId : null;
         openDisease = (r.view === 'cat') ? (r.disease || null) : null;
@@ -330,6 +336,8 @@
     if (r.view === 'jiritsu') return '自立活動 6区分27項目｜' + base;
     if (r.view === 'support') return '自立活動サポートシート｜' + base;
     if (r.view === 'plan') return '計画シート｜' + base;
+    if (r.view === 'site') return base;
+    if (r.view === 'home') return '障害種別ガイド｜' + base;
     if (r.view === 'terms') return '出典・リンク集｜' + base;
     if (r.view === 'topic') return topicOf(r.topic).title + '｜' + base;
     if (r.view === 'topic-item') {
@@ -339,7 +347,7 @@
     return base;
   }
 
-  function goHome() { navigate(ROUTES.home()); }
+  function goHome() { navigate(ROUTES.site()); }
   function setMode(m) {
     navigate(m === 'guide' ? ROUTES.home()
            : m === 'jiritsu' ? ROUTES.jiritsu()
@@ -450,6 +458,168 @@
 
   /* ---------- ホーム ---------- */
 
+  // ホームの先頭に置く「先生方へ」と2冊の説明・一次資料（文面は meta.json の notice）
+  function homeNoticeHtml() {
+    var n = META.notice; if (!n) return '';
+    var html = '<section class="home-notice" aria-label="先生方へのお知らせ">' +
+      '<div class="home-notice-text">' +
+        '<p class="home-notice-heading">' + esc(n.heading || '先生方へ') + '</p>' +
+        (n.lines || []).map(function (l) { return '<p>' + esc(l) + '</p>'; }).join('') +
+      '</div>' +
+      '<div class="home-notice-actions">' +
+        (n.form ? '<a class="notice-btn" href="' + esc(n.form.url) + '" target="_blank" rel="noopener"><span class="notice-btn-main">' + esc(n.form.label) + '</span>' + (n.form.sub ? '<span class="notice-btn-sub">' + esc(n.form.sub) + '</span>' : '') + '</a>' : '') +
+        (n.pdf ? '<a class="notice-doc" href="' + esc(n.pdf.url) + '" target="_blank" rel="noopener"><span class="notice-doc-icon" aria-hidden="true">PDF</span><span>' + esc(n.pdf.label) + '</span></a>' : '') +
+      '</div></section>';
+    return html;
+  }
+
+  /* ---------- 右下の「メニュー」パネル ----------
+     上の帯にある冊とタブの切替は繰り返さない。ここに置くのは
+     「今いる画面の中の移動」と「よく使う行き先」。 */
+  function navPanelHtml() {
+    var cur = location.hash || '#/';
+    var r = parseHash();
+    var html = '<div class="nav-panel-inner">' +
+      '<div class="nav-panel-head"><span>メニュー</span><button type="button" class="nav-panel-close" aria-label="閉じる">閉じる</button></div>';
+
+    // 1) このページの中を移動（本文の見出しから自動で拾う）
+    var heads = Array.prototype.slice.call(mainContent.querySelectorAll('h3.block-title, .ku-heading h3'));
+    var seen = 0;
+    if (heads.length >= 2) {
+      html += '<div class="nav-panel-group"><p>このページの中</p><div class="nav-panel-chips">';
+      heads.forEach(function (h, i) {
+        var label = (h.childNodes[0] && h.childNodes[0].textContent || h.textContent).trim().replace(/\s+/g, ' ').slice(0, 18);
+        if (!label || seen >= 8) return;
+        var host = h.closest('section, .block, .ku-group') || h;
+        if (!host.id) host.id = 'sec-' + i;
+        html += '<button type="button" class="nav-chip" data-jump="' + esc(host.id) + '">' + esc(label) + '</button>';
+        seen++;
+      });
+      html += '</div></div>';
+    }
+
+    // 2) 今いる冊の中の行き先。特別支援側なら障害種別、指導提要側なら課題
+    if (currentBook === 'teiyo') {
+      html += '<div class="nav-panel-group"><p>生徒指導上の課題へ</p><div class="nav-panel-chips cats">' +
+        TOPICS.seito.items.map(function (h) {
+          var on = (r.view === 'topic-item' && r.topic === 'seito' && r.id === h.id);
+          return '<a class="nav-chip' + (on ? ' on' : '') + '" href="' + ROUTES.seito(h.id) + '"><span class="num">' + esc(h.num) + '</span>' + esc(h.name) + '</a>';
+        }).join('') + '</div></div>';
+    } else {
+      html += '<div class="nav-panel-group"><p>障害種別へ</p><div class="nav-panel-chips cats">' +
+        DATA.map(function (c) {
+          var on = (r.view === 'cat' && r.catId === c.id);
+          return '<a class="nav-chip' + (on ? ' on' : '') + '" href="' + ROUTES.cat(c.id) + '"><span class="num">' + esc(c.num) + '</span>' + esc(c.name.replace(/（.*$/, '')) + '</a>';
+        }).join('') + '</div></div>';
+    }
+
+    // 3) 道具と、もう一方の冊への入口
+    if (currentBook === 'teiyo') {
+      html += '<div class="nav-panel-group"><p>道具</p>' +
+        '<a class="nav-panel-item" href="' + ROUTES.plan() + '">計画シート（不登校の欄あり）' + (maint('sheet2') ? '<span class="maint-mini">整備中</span>' : '') + '</a>' +
+        '<a class="nav-panel-item" href="' + ROUTES.terms() + '">出典・リンク集</a>' +
+        '</div>' +
+        '<div class="nav-panel-group"><p>特別支援ガイドブックへ</p>' +
+        '<a class="nav-panel-item" href="' + ROUTES.home() + '">障害種別ガイド</a>' +
+        '<a class="nav-panel-item" href="' + ROUTES.support() + '">自立活動サポートシート' + (maint('support') ? '<span class="maint-mini">整備中</span>' : '') + '</a>' +
+        '</div>';
+    } else {
+      html += '<div class="nav-panel-group"><p>道具</p>' +
+        '<a class="nav-panel-item" href="' + ROUTES.support() + '">自立活動サポートシート' + (maint('support') ? '<span class="maint-mini">整備中</span>' : '') + '</a>' +
+        '<a class="nav-panel-item" href="' + ROUTES.plan() + '">計画シート' + (maint('sheet2') ? '<span class="maint-mini">整備中</span>' : '') + '</a>' +
+        '<a class="nav-panel-item" href="' + ROUTES.terms() + '">出典・リンク集</a>' +
+        '</div>' +
+        '<div class="nav-panel-group"><p>指導提要ガイドブックへ</p>' +
+        '<a class="nav-panel-item" href="' + ROUTES.seito() + '">生徒指導上の課題（不登校・いじめ・虐待など）' + (maint('seito') ? '<span class="maint-mini">整備中</span>' : '') + '</a>' +
+        '</div>';
+    }
+
+    // 4) 操作
+    html += '<div class="nav-panel-group nav-panel-actions">' +
+      '<button type="button" class="nav-action" data-act="top">ページの先頭へ</button>' +
+      '<a class="nav-action" href="' + ROUTES.site() + '">ホーム</a>' +
+      '<a class="nav-action" href="' + esc((META.notice && META.notice.form && META.notice.form.url) || '#') + '" target="_blank" rel="noopener">問い合わせ</a>' +
+      '</div>';
+    return html + '</div>';
+  }
+  var navClosing = null;
+  function openNavPanel(open) {
+    var panel = document.getElementById('navPanel'), btn = document.getElementById('menuBtn');
+    if (!panel || !btn) return;
+    if (open) {
+      if (navClosing) { clearTimeout(navClosing); navClosing = null; }
+      panel.innerHTML = navPanelHtml();
+      panel.hidden = false;
+      requestAnimationFrame(function () { requestAnimationFrame(function () { panel.classList.add('open'); }); });
+      btn.setAttribute('aria-expanded', 'true');
+      btn.classList.add('open');
+      document.body.classList.add('nav-open');
+      var c = panel.querySelector('.nav-panel-close'); if (c) c.onclick = function () { openNavPanel(false); };
+      panel.querySelectorAll('[data-jump]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var el = document.getElementById(b.getAttribute('data-jump'));
+          openNavPanel(false);
+          if (el) setTimeout(function () { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 120);
+        });
+      });
+      panel.querySelectorAll('[data-act="top"]').forEach(function (b) {
+        b.addEventListener('click', function () { openNavPanel(false); scrollToContent(); });
+      });
+      panel.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          a.classList.add('pressed');
+          setTimeout(function () { openNavPanel(false); }, 140);
+        });
+      });
+    } else {
+      panel.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.classList.remove('open');
+      document.body.classList.remove('nav-open');
+      navClosing = setTimeout(function () { panel.hidden = true; navClosing = null; }, 220);
+    }
+  }
+
+  // 全体のホーム：お知らせ → 2冊への入口 → 一次資料
+  function renderSite() {
+    var n = META.notice || {};
+    var total = DATA.reduce(function (s, c) { return s + c.diseases.length; }, 0);
+    var seitoNames = TOPICS.seito.items.map(function (h) { return h.name; }).join('、');
+    var html = '<div class="site-home">' + homeNoticeHtml() +
+      '<h2 class="site-home-h">2冊のガイドブック</h2>' +
+      '<div class="book-cards">' +
+        '<a class="book-card" href="' + ROUTES.home() + '">' +
+          '<span class="book-card-kicker">特別支援ガイドブック</span>' +
+          '<span class="book-card-title">障害のある児童生徒の理解と支援</span>' +
+          '<span class="book-card-desc">文部科学省「障害のある子供の教育支援の手引」と「自立活動編」解説に基づき、障害種別・原因疾患ごとの教育的ニーズと支援、学びの場を整理しています。</span>' +
+          '<span class="book-card-list">' +
+            '<span>障害種別ガイド　' + DATA.length + '区分・' + total + '件</span>' +
+            '<span>特別の教育課程　日本語指導・特異な才能</span>' +
+            '<span>自立活動　27項目・サポートシート</span>' +
+            '<span>計画シート</span>' +
+          '</span>' +
+          '<span class="book-card-go">開く ›</span>' +
+        '</a>' +
+        '<a class="book-card teiyo" href="' + ROUTES.seito() + '">' +
+          '<span class="book-card-kicker">指導提要ガイドブック' + (maint('seito') ? '<span class="maint-mini">整備中</span>' : '') + '</span>' +
+          '<span class="book-card-title">生徒指導上の課題への対応</span>' +
+          '<span class="book-card-desc">文部科学省「生徒指導提要」第II部に基づき、各課題の法令上の位置づけ、気づきのポイント、校内での初動、関係機関との連携を整理しています。障害との重なりは「関連する障害種別」から。</span>' +
+          '<span class="book-card-list"><span>' + esc(seitoNames) + '</span></span>' +
+          '<span class="book-card-go">開く ›</span>' +
+        '</a>' +
+      '</div>' +
+      '<section class="home-intro">' +
+        '<dl class="home-intro-src">' +
+          (n.primary && n.primary.length ? '<dt>一次資料</dt><dd>' + n.primary.map(esc).join('<br>') + '</dd>' : '') +
+          (n.classification ? '<dt>疾患・状態の分類</dt><dd>' + esc(n.classification) + '</dd>' : '') +
+        '</dl>' +
+        '<p class="site-home-more">出典の一覧と目的別のリンクは <a href="' + ROUTES.terms() + '">出典・リンク集</a> に。</p>' +
+      '</section>' +
+      '</div>';
+    mainContent.innerHTML = html;
+    playFadeIn();
+  }
+
   function renderHome() {
     var total = DATA.reduce(function (s, c) { return s + c.diseases.length; }, 0);
     var html = '<div class="home-view">' +
@@ -475,7 +645,7 @@
     html += '<div class="hk-home-note">' +
       '<b>指導提要ガイドブック' + (maint('seito') ? '<span class="maint-mini">整備中</span>' : '') + '</b>' +
       '<span>' + (maint('seito') ? esc(maint('seito').title) :
-        '不登校・ヤングケアラーなど、生徒指導提要に基づく課題は上段の切替から「指導提要ガイドブック」へ。障害種別の各ページからも関連する課題へ飛べます。') + '</span>' +
+        '不登校・ヤングケアラーなど、生徒指導提要に基づく課題は「指導提要ガイドブック」へ。障害種別の各ページからも関連する課題へ飛べます。') + '</span>' +
       '<a href="' + ROUTES.seito() + '">指導提要ガイドブックを開く</a></div>';
     html += '<div class="disclaimer">' + esc(META.disclaimer.long) + '</div></div>';
 
@@ -1913,14 +2083,21 @@
     tabPlan = document.getElementById('tabPlan');
     tabTerms = document.getElementById('tabTerms');
     layoutRoot = document.getElementById('layoutRoot');
-    homeBtn = document.getElementById('homeBtn');
+    homeBtn = document.getElementById('menuBtn');
     homeLink = document.getElementById('homeLink');
     homeEmblem = document.getElementById('homeEmblem');
     siteFooter = document.getElementById('siteFooter');
 
     // ホームへ戻る操作は3か所。いずれも button 要素なので、
     // Enter / Space の処理はブラウザに任せられる。
-    homeBtn.onclick = goHome;
+    homeBtn.onclick = function () { openNavPanel(document.getElementById('navPanel').hidden); };
+    document.addEventListener('click', function (e) {
+      var panel = document.getElementById('navPanel');
+      if (!panel || panel.hidden) return;
+      if (panel.contains(e.target) || homeBtn.contains(e.target)) return;
+      openNavPanel(false);
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') openNavPanel(false); });
     homeLink.onclick = goHome;
     if (homeEmblem) homeEmblem.onclick = goHome;
     tabGuide.onclick = function () { setMode('guide'); };
