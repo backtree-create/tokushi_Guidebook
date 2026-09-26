@@ -1886,7 +1886,7 @@
   /* 全体のホーム：2冊への分岐 */
   .site-home{max-width:1040px;}
   .site-home-h{font-family:var(--serif);font-size:22px;margin:30px 0 14px;color:var(--ink-strong);}
-  .book-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;}
+  .book-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;margin-bottom:34px;}
   .book-card{
     display:flex;flex-direction:column;gap:10px;
     padding:24px 26px 20px;
