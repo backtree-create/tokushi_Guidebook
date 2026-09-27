@@ -1308,6 +1308,12 @@
     out.push('・⑦ 具体的な指導内容（2〜3案）｜ねらい｜関連する項目｜根拠｜評価の観点');
     out.push('・最後に「教員が確認すべき点」を箇条書きで。私が「分からない」と答えた事項は必ずここに入れてください。');
     out.push('・シートの冒頭に、聞き取りで分かった①〜④の要約も付けてください（校内の検討で使います）。');
+    out.push('・そのあとに、計画シートへ貼り戻すための欄を、見出しと欄名を変えずに次の形式で付けてください。');
+    out.push('【個別シート：通級による指導】');
+    ['assess', 'issue', 'items', 'content', 'eval'].forEach(function (k) {
+      var f = S2_SPECIAL[0].fields.find(function (x) { return x.k === k; });
+      out.push('■ ' + f.label); out.push('（内容）');
+    });
     out.push('');
     out.push('【自立活動 6区分27項目（' + (full ? '正式名称と要旨' : '正式名称') + '）】');
     out.push('出典：特別支援学校教育要領・学習指導要領解説 自立活動編（平成30年3月）');
@@ -1394,6 +1400,11 @@
         '<textarea class="sp-out" id="spOut" readonly rows="18"></textarea>' +
       '</section>' +
 
+      '<section class="block"><h3 class="block-title"><span class="sp-num">3</span>計画シートへ送る</h3>' +
+        '<p class="block-sub">AIが最後に出した「【個別シート：通級による指導】」の部分を貼り付けると、計画シートの通級の欄に入ります。貼り付けなしで押すと、ここに書いた困りごとと①〜④だけを送ります。</p>' +
+        '<label class="sp-field"><span class="sp-label">AIの回答を貼り付け（任意）</span><textarea id="spPaste" rows="5" placeholder="【個別シート：通級による指導】 ■ 実態把握（自立活動の観点で）…"></textarea></label>' +
+        '<div class="sp-actions"><button type="button" class="sp-btn primary" id="spToPlan">計画シート（通級の欄）へ送る</button><span class="sp-copied" id="spSent" aria-live="polite"></span></div>' +
+      '</section>' +
       '<div class="source-box">' +
         '<p>手順と観点は次に基づきます。<br>' + srcLink('jiritsu-kaisetsu') + '</p>' +
         '<p style="margin-top:8px;">AIの出力は案です。根拠欄が「仮定」になっている行、AIが「教員が確認すべき点」に挙げた点は、校内の検討で必ず確かめてください。</p>' +
@@ -1452,6 +1463,28 @@
       if (!window.confirm('入力をすべて消します。よろしいですか。')) return;
       SP = d = spBlank();
       fillForm(); refresh();
+    });
+    document.getElementById('spToPlan').addEventListener('click', function () {
+      refresh();
+      if (!S2) S2 = s2Blank();
+      var t = S2.sp.tsukyu, filled = 0;
+      var pasted = document.getElementById('spPaste').value;
+      if (pasted.trim()) {
+        var r = s2Parse(pasted, S2);
+        filled = r.filled;
+      }
+      // 貼り付けが無いか、貼り付けで埋まらなかった欄は、ここの入力から組み立てる
+      function join(arr) { return arr.filter(Boolean).join('\n'); }
+      if (!t.assess) t.assess = join([d.status && '障害の状態：' + d.status, d.development && '発達や経験の程度：' + d.development, d.interest && '興味・関心：' + d.interest, d.environment && '環境：' + d.environment]
+        .concat(JIRITSU27.map(function (g) { return d.byKu[g.ku] && g.ku + '：' + d.byKu[g.ku]; })));
+      if (!t.issue) t.issue = join([d.issues, d.relations && '関係：' + d.relations, d.central && '中心となる課題：' + d.central, d.goal && '指導目標：' + d.goal]);
+      if (!S2.common.profile && (d.seed || d.status)) S2.common.profile = join([d.seed && '困っていること：' + d.seed, d.status]);
+      if (!S2.common.strength && d.interest) S2.common.strength = d.interest;
+      if (!S2.common.stage && d.stage) S2.common.stage = d.stage;
+      S2.on.tsukyu = true;
+      var note = document.getElementById('spSent');
+      note.textContent = (filled ? filled + '欄を流し込み、' : '') + '計画シートの通級の欄に送りました。';
+      setTimeout(function () { navigate(ROUTES.plan()); }, 500);
     });
   }
 
@@ -1657,6 +1690,7 @@
     var panels = S2_SPECIAL.map(function (s, i) {
       return '<div class="s2-panel" data-s2panel="' + s.id + '"' + (i === 0 ? '' : ' hidden') + '>' +
         '<p class="block-sub">根拠：' + esc(s.legal) + (s.id === 'tsukyu' ? '　自立活動の項目は<a href="' + ROUTES.support() + '">サポートシート</a>の手順で決めてから、ここに書きます' : '') + '</p>' +
+        (s.id === 'tsukyu' ? '<div class="sp-actions"><button type="button" class="sp-btn" id="s2ToSupport">サポートシートで項目を考える（ここの実態と課題を持って行く）</button></div>' : '') +
         s.fields.map(function (f) { return s2Field(s.id + ':', f); }).join('') + '</div>';
     }).join('');
 
@@ -1805,6 +1839,18 @@
       function done(ok) { note.textContent = ok ? 'コピーしました。Wordに貼り付けてください。' : 'コピーできませんでした。'; setTimeout(function () { note.textContent = ''; }, 4000); }
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
       else done(false);
+    });
+    var toSp = document.getElementById('s2ToSupport');
+    if (toSp) toSp.addEventListener('click', function () {
+      read();
+      if (!SP) SP = spBlank();
+      var t = d.sp.tsukyu;
+      if (!SP.seed) SP.seed = d.common.profile || t.assess || '';
+      if (!SP.status && t.assess) SP.status = t.assess;
+      if (!SP.issues && t.issue) SP.issues = t.issue;
+      if (!SP.interest && d.common.strength) SP.interest = d.common.strength;
+      if (!SP.stage && d.common.stage) SP.stage = d.common.stage;
+      navigate(ROUTES.support());
     });
     document.getElementById('s2Reset').addEventListener('click', function () {
       if (!window.confirm('入力をすべて消します。よろしいですか。')) return;
