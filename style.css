@@ -1913,6 +1913,46 @@
   .site-home .home-notice{margin-bottom:6px;}
   /* 全体のホームでは冊の切替はどちらも点いていない状態にする */
   body.at-site-home .nav-group .nav-book{background:rgba(255,255,255,.10);color:#e6e9ea;}
+  /* ---------- ダークモードの視認性（版4.4.9） ----------
+     青の強調色を明るくし、濃紺で塗っていた「選択中」は金色に置き換える（濃紺は地に沈む） */
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --accent:#a6cdf5;
+      --accent-soft:#1a2a3a;
+    }
+  }
+  :root[data-theme="dark"]{ --accent:#a6cdf5; --accent-soft:#1a2a3a; }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) ul.cat-list li.active button,
+    :root:not([data-theme="light"]) .nav-link.on,
+    :root:not([data-theme="light"]) .nav-panel-item.on,
+    :root:not([data-theme="light"]) .nav-chip.on{background:var(--gold-soft);color:#1b1a14;}
+    :root:not([data-theme="light"]) .nav-chip.on .num,
+    :root:not([data-theme="light"]) ul.cat-list li.active button .num{color:#5a4a20;}
+    :root:not([data-theme="light"]) .nav-panel-item.on .maint-mini{background:#fff;color:#1b1a14;}
+    :root:not([data-theme="light"]) .nav-action{background:#2a4460;color:#fff;}
+    :root:not([data-theme="light"]) .nav-action:hover{background:#3a5c80;}
+    :root:not([data-theme="light"]) .book-card{border-top-color:var(--accent);}
+    :root:not([data-theme="light"]) .book-card:hover{border-color:var(--accent);}
+    :root:not([data-theme="light"]) .book-card.teiyo{border-top-color:var(--gold-soft);}
+    :root:not([data-theme="light"]) .book-card.teiyo .book-card-kicker{color:var(--gold-soft);}
+    :root:not([data-theme="light"]) .dd-label{color:var(--accent);}
+    :root:not([data-theme="light"]) .src-ref{color:var(--accent);}
+    :root:not([data-theme="light"]) .hk-cross-book,
+    :root:not([data-theme="light"]) .hk-chapter{color:var(--accent);}
+    :root:not([data-theme="light"]) .sv-block,
+    :root:not([data-theme="light"]) .hk-status{border-left-color:var(--accent);}
+    :root:not([data-theme="light"]) .hk-card .num,
+    :root:not([data-theme="light"]) .hk-rel-card .num{color:var(--accent);}
+    :root:not([data-theme="light"]) .stage-flow{color:var(--accent);}
+    :root:not([data-theme="light"]) .home-notice-heading,
+    :root:not([data-theme="light"]) .lk-label{color:var(--accent) !important;}
+    :root:not([data-theme="light"]) .lk-row:hover,
+    :root:not([data-theme="light"]) .lk-row:focus-visible{background:var(--accent-soft);}
+    :root:not([data-theme="light"]) .sp-entry{border-left-color:var(--gold-soft);}
+    :root:not([data-theme="light"]) .hk-toc a.on,
+    :root:not([data-theme="light"]) .j-step.on{border-color:var(--gold-soft);}
+  }
   @media print{
     body.s2-print header,body.s2-print .mode-tabs,body.s2-print .book-switch,body.s2-print .index,body.s2-print footer,
     body.s2-print .crumb,body.s2-print .article-head,body.s2-print .overview,body.s2-print .section-disclaimer,
