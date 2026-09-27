@@ -1056,7 +1056,7 @@
         '<div class="article-num" style="border-radius:3px;">27</div>' +
         '<h2 class="cat-title">自立活動 6区分27項目 一覧<span class="en">Six Categories, 27 Items of Jiritsu Katsudo</span></h2>' +
       '</div>' +
-      '<div class="overview">自立活動は、障害のある子供が自立を目指し、学習上又は生活上の困難を主体的に改善・克服するために設けられた特別な指導領域です。27項目すべてを一律に指導するのではなく、子供一人一人の実態に応じて必要な項目を選定し、相互に関連付けて具体的な指導内容を組み立てます。</div>' +
+      '<div class="overview">自立活動は、障害のある子どもが自立を目指し、学習上又は生活上の困難を主体的に改善・克服するために設けられた特別な指導領域です。27項目すべてを一律に指導するのではなく、子ども一人一人の実態に応じて必要な項目を選定し、相互に関連付けて具体的な指導内容を組み立てます。</div>' +
       '<a class="sp-entry' + (maint('support') ? ' maint-on' : '') + '" href="' + ROUTES.support() + '">' +
         '<span class="sp-entry-main"><b>自立活動サポートシートをAIと考える' + (maint('support') ? '<span class="maint-mini">整備中</span>' : '') + '</b>' +
         '<span>実態把握 → 課題の整理 → 項目の選定 → 指導内容、の手順で入力し、Copilot・Gemini に渡す指示書を作ります。項目は最後に出てきます。</span></span>' +
