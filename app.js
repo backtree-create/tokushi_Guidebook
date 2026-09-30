@@ -1085,7 +1085,7 @@
     });
 
     html += '<div class="source-box">' +
-      '<p>出典：' + srcLink('jiritsu-kaisetsu') + '</p>' +
+      '<p>出典（高等部も同じ27項目。高等部の解説は総則等編（高等部）第9章）：<br>' + srcLink('jiritsu-kaisetsu') + '<br>' + srcLink('mext-koutoubu-kaisetsu') + '</p>' +
       '<p style="margin-top:8px;">項目の説明は原文を要約・言い換えたものです。指導計画作成の際は原文をご確認ください。</p>' +
       '</div></div>';
 
@@ -1242,6 +1242,7 @@
     JIRITSU27.forEach(function (g) { byKu[g.ku] = ''; });
     return {
       seed: '',
+      level: 'elem',   // 'elem' 幼稚部・小学部・中学部 ／ 'high' 高等部
       stage: '', disability: '',
       status: '', development: '', interest: '', strengths: '', wish: '',
       byKu: byKu,
@@ -1283,27 +1284,47 @@
     return lines.join('\n');
   }
 
+  // 校種による一次資料と観点の違い。27項目そのものは同じ
+  var SP_LEVELS = {
+    elem: {
+      label: '幼稚部・小学部・中学部',
+      source: '特別支援学校教育要領・学習指導要領解説 自立活動編（幼稚部・小学部・中学部）（平成30年3月）',
+      sourceId: 'jiritsu-kaisetsu',
+      guide: ''
+    },
+    high: {
+      label: '高等部',
+      source: '特別支援学校高等部学習指導要領（平成31年2月告示）第6章 自立活動、および 特別支援学校学習指導要領解説 総則等編（高等部）（平成31年2月）第9章 自立活動',
+      sourceId: 'mext-koutoubu-kaisetsu',
+      guide: '高等部では、卒業後の生活（進路・就労・進学・地域での生活）を見据えて考えてください。生徒自身が自分の障害の状態や特性を理解し、困難への対処の仕方を選び、必要な支援を自分から求める力（自己理解・自己選択・援助要請）を重視します。「思いや願い」は卒業後○年後の姿として聞き、指導目標は卒業までに何ができるようになるかで立ててください。進路指導や職業教育との関連にも触れてください。'
+    }
+  };
+  function spLevel(d) { return SP_LEVELS[d.level] || SP_LEVELS.elem; }
+
   function buildSupportPrompt(target, d) {
     var full = target === 'gemini';
+    var lv = spLevel(d);
     var rules = [
       '幼児児童生徒の氏名は扱いません。「本児」と呼びます。私が氏名を書いていたら指摘し、以後は本児と呼び替えてください。',
       '手順は ①実態把握 → ②実態の整理（6区分の観点）→ ③指導すべき課題の整理 → ④中心となる課題と指導目標 → ⑤項目の選定 → ⑥項目の関連付け → ⑦具体的な指導内容 の順です。私は「今、困っていること」だけを書きました。①から④までは、あなたが質問して私から聞き出してください。',
       '質問は1回に1つだけ。私の答えを短く要約して「こういうことですね」と確認してから、次の質問に進んでください。①は校内様式の5つの欄（' + SP_FORM.map(function (f) { return f.label; }).join('／') + '）を、②は6区分の観点のうち関係しそうなものだけを聞いてください。全部で5〜8往復を目安にし、細かく聞きすぎないでください。',
       '私が「分からない」「まだ見ていない」と答えたら、そこで止めずに次へ進み、最後に「確認すべき点」として残してください。分からないことを推測で埋めないでください。',
       '④の指導目標まで揃ってから⑤に進んでください。課題（③）がどの実態（①②）から出ているか分からないものは、そのまま通さないでください。',
-      '項目は、末尾の「自立活動 6区分27項目」の正式名称だけを使ってください。項目名を創作したり、言い換えたりしないでください。',
+      '項目は、末尾の「自立活動 6区分27項目」の正式名称だけを使ってください。項目名を創作したり、言い換えたりしないでください。根拠とする資料は「' + lv.source + '」です。',
       '候補を挙げるときは、選んだ理由と、有力だが選ばなかった項目とその理由も書いてください。',
       '出力の各行に「根拠」（どの実態・どの課題から導いたか）を付けてください。私の入力にない前提を置くときは「仮定」と明示してください。',
       '断定しないでください。最終判断は私（教員）と校内の検討で行います。医学的な診断や治療の判断はしないでください。'
     ];
     var out = [];
-    out.push('あなたは特別支援教育で自立活動を担当する教員の同僚として、「自立活動サポートシート」の作成を手伝ってください。' +
+    out.push('あなたは特別支援教育で自立活動を担当する教員の同僚として、「自立活動サポートシート」の作成を手伝ってください。対象は' + lv.label + 'の幼児児童生徒です。' +
       'あなたの役割は、シートを代わりに書くことではなく、問い返しながら一緒に考えることです。');
     out.push('');
     out.push('【守ること】');
+    if (lv.guide) rules.push(lv.guide);
     rules.forEach(function (r, i) { out.push((i + 1) + '. ' + r); });
     out.push('');
     out.push('【本児について（私の入力）】');
+    out.push('校種：' + lv.label);
     out.push(spInputBlock(d));
     out.push('');
     out.push('【お願いすること】');
@@ -1326,7 +1347,7 @@
     });
     out.push('');
     out.push('【自立活動 6区分27項目（' + (full ? '正式名称と要旨' : '正式名称') + '）】');
-    out.push('出典：特別支援学校教育要領・学習指導要領解説 自立活動編（平成30年3月）');
+    out.push('出典：' + lv.source);
     out.push(spItemsText(full));
     return out.join('\n');
   }
@@ -1389,6 +1410,11 @@
 
       '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">1</span>今、困っていることを書く</h3>' +
         '<p class="block-sub">1〜3行でかまいません。ここから先の実態把握と課題の整理は、AIが1つずつ質問して聞き出します。書けない欄を埋める必要はありません。</p>' +
+        '<div class="sp-level" role="radiogroup" aria-label="校種">' +
+          '<span class="sp-label">校種</span>' +
+          '<label class="sp-radio"><input type="radio" name="spLevel" value="elem" checked> 幼稚部・小学部・中学部<span class="sp-hint">解説 自立活動編（平成30年3月）</span></label>' +
+          '<label class="sp-radio"><input type="radio" name="spLevel" value="high"> 高等部<span class="sp-hint">高等部学習指導要領・解説 総則等編 第9章（平成31年2月）</span></label>' +
+        '</div>' +
         spField('seed', '今、困っていること', '例：授業中に急に立ち歩く。注意すると余計に興奮する。どこから手を付けていいか分からない', 3) +
         '<div class="sp-two">' +
           '<label class="sp-field"><span class="sp-label">校種・学年（任意）</span><input type="text" data-sp="stage" placeholder="例：中学部2年"></label>' +
@@ -1452,7 +1478,7 @@
         '<div class="sp-actions"><button type="button" class="sp-btn primary" id="spToPlan">計画シート（通級の欄）へ送る</button><span class="sp-copied" id="spSent" aria-live="polite"></span></div>' +
       '</section>' +
       '<div class="source-box">' +
-        '<p>手順と観点は次に基づきます。<br>' + srcLink('jiritsu-kaisetsu') + '</p>' +
+        '<p>手順と観点は次に基づきます。校種で切り替わります。<br>' + srcLink('jiritsu-kaisetsu') + '<br>' + srcLink('mext-koutoubu-kaisetsu') + '</p>' +
         '<p style="margin-top:8px;">AIの出力は案です。根拠欄が「仮定」になっている行、AIが「教員が確認すべき点」に挙げた点は、校内の検討で必ず確かめてください。</p>' +
         '<p style="margin-top:8px;">選んだ項目を含む計画（通級・日本語指導・不登校・特異な才能）は、<a href="' + ROUTES.plan() + '">計画シート</a>に書きます。</p>' +
       '</div>' +
@@ -1465,6 +1491,7 @@
     var out = document.getElementById('spOut');
 
     function readForm() {
+      var lvEl = mainContent.querySelector('input[name="spLevel"]:checked'); if (lvEl) d.level = lvEl.value;
       mainContent.querySelectorAll('[data-sp]').forEach(function (el) {
         var k = el.getAttribute('data-sp');
         if (k.indexOf('ku:') === 0) d.byKu[k.slice(3)] = el.value.trim();
@@ -1472,6 +1499,7 @@
       });
     }
     function fillForm() {
+      var lvEl = mainContent.querySelector('input[name="spLevel"][value="' + (d.level || 'elem') + '"]'); if (lvEl) lvEl.checked = true;
       mainContent.querySelectorAll('[data-sp]').forEach(function (el) {
         var k = el.getAttribute('data-sp');
         el.value = k.indexOf('ku:') === 0 ? (d.byKu[k.slice(3)] || '') : (d[k] || '');
@@ -1487,6 +1515,7 @@
     mainContent.querySelectorAll('[data-sp]').forEach(function (el) {
       el.addEventListener('input', refresh);
     });
+    mainContent.querySelectorAll('input[name="spLevel"]').forEach(function (el) { el.addEventListener('change', refresh); });
     mainContent.querySelectorAll('.sp-tabs button').forEach(function (b) {
       b.addEventListener('click', function () {
         mainContent.querySelectorAll('.sp-tabs button').forEach(function (x) { x.classList.remove('on'); });

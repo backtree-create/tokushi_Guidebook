@@ -1300,6 +1300,10 @@
     resize:vertical;
   }
   .sp-field textarea:focus,.sp-field input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent);}
+  .sp-level{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:6px 0 14px;padding:10px 14px;background:var(--card);border:1px solid var(--line);border-radius:3px;}
+  .sp-radio{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--ink-strong);cursor:pointer;}
+  .sp-radio input{width:16px;height:16px;}
+  .sp-radio .sp-hint{margin-left:2px;}
   .sp-two{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;}
   @media (max-width:640px){.sp-two{grid-template-columns:1fr;}}
 

@@ -971,5 +971,27 @@
     "checked": "2026-09-14",
     "note": "中途退学者等の就労・自立支援。高等学校との連携ページあり",
     "kind": "portal"
+  },
+  {
+    "id": "mext-koutoubu-kaisetsu",
+    "title": "特別支援学校学習指導要領解説 総則等編（高等部）",
+    "publisher": "文部科学省",
+    "edition": "平成31年2月（第9章 自立活動）",
+    "url": "https://www.mext.go.jp/content/20210908_mxt-tokubetu01-100002983_4.pdf",
+    "indexUrl": "https://www.mext.go.jp/a_menu/shotou/tokubetu/005.htm",
+    "policy": "pinned",
+    "checked": "2026-10-01",
+    "note": "高等部の自立活動の解説は独立した「自立活動編」ではなく、総則等編（高等部）の第9章にある。幼稚部・小学部・中学部の「自立活動編」（平成30年3月）と対で使う。自立活動サポートシートで「高等部」を選んだときの一次資料"
+  },
+  {
+    "id": "mext-tokushi-youryou",
+    "title": "特別支援教育に関する学習指導要領等（平成29年・31年改訂）",
+    "publisher": "文部科学省",
+    "url": "https://www.mext.go.jp/a_menu/shotou/tokubetu/005.htm",
+    "policy": "latest",
+    "review": "年次",
+    "kind": "portal",
+    "checked": "2026-10-01",
+    "note": "幼稚部教育要領・小学部・中学部学習指導要領（平成29年4月告示）、高等部学習指導要領（平成31年2月告示。令和4年度から年次進行で実施）の本文と解説の入口"
   }
 ]
