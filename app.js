@@ -1226,6 +1226,16 @@
     'コミュニケーション': '基礎的な能力、言語の受容と表出、言語の形成と活用、手段の選択と活用、状況に応じたコミュニケーション'
   };
 
+  // 校内で使っている「自立活動サポートシート」（R8.3時点）の欄。この順で画面・指示書・貼り付け用テキストを揃える
+  var SP_FORM = [
+    { k: 'status',      label: '障害の状態',                         hint: '見え方、聞こえ方、身体の動き、理解の仕方など。生活や学習の環境も含めて', rows: 3 },
+    { k: 'development', label: '発達や経験の程度',                   hint: 'できていること、これまでの学習・生活経験、身に付いている力', rows: 3 },
+    { k: 'interest',    label: '興味・関心等',                       hint: '好きな活動、集中できること、人との関わりで好むこと', rows: 2 },
+    { k: 'strengths',   label: '学習や生活の中で見られる長所やよさ、課題等', hint: '長所・よさと、困難・課題の両方。どの場面で見られるかも', rows: 4 },
+    { k: 'wish',        label: '思いや願い（○○年後をイメージする姿）', hint: '本人・保護者の思いや願い。何年後の姿かを書く', rows: 3 }
+  ];
+  var SP_FORM_NAME = '自立活動サポートシート（校内様式 R8.3時点）';
+
   var SP = null;  // 入力の状態（ページ内のみ）
   function spBlank() {
     var byKu = {};
@@ -1233,7 +1243,7 @@
     return {
       seed: '',
       stage: '', disability: '',
-      status: '', development: '', interest: '', environment: '',
+      status: '', development: '', interest: '', strengths: '', wish: '',
       byKu: byKu,
       issues: '', relations: '',
       central: '', goal: '',
@@ -1251,7 +1261,7 @@
 
   // 詳しい欄に何か書いてあるか
   function spHasAdvanced(d) {
-    if (d.status || d.development || d.interest || d.environment || d.issues || d.relations || d.central || d.goal) return true;
+    if (SP_FORM.some(function (f) { return d[f.k]; }) || d.issues || d.relations || d.central || d.goal) return true;
     return JIRITSU27.some(function (g) { return !!d.byKu[g.ku]; });
   }
   function spInputBlock(d) {
@@ -1262,10 +1272,7 @@
     if (spHasAdvanced(d)) {
       lines.push('');
       lines.push('既に分かっていること（書けたところだけ。ここに書いてあることは聞き直さなくてよい）');
-      if (d.status) lines.push('・①障害の状態：' + d.status);
-      if (d.development) lines.push('・①発達や経験の程度：' + d.development);
-      if (d.interest) lines.push('・①興味・関心、得意なこと：' + d.interest);
-      if (d.environment) lines.push('・①生活や学習の環境：' + d.environment);
+      SP_FORM.forEach(function (f) { if (d[f.k]) lines.push('・①' + f.label + '：' + d[f.k]); });
       JIRITSU27.forEach(function (g) { if (d.byKu[g.ku]) lines.push('・②' + g.ku + '：' + d.byKu[g.ku]); });
       if (d.issues) lines.push('・③指導すべき課題：' + d.issues.replace(/\n+/g, '／'));
       if (d.relations) lines.push('・③課題同士の関係：' + d.relations);
@@ -1281,7 +1288,7 @@
     var rules = [
       '幼児児童生徒の氏名は扱いません。「本児」と呼びます。私が氏名を書いていたら指摘し、以後は本児と呼び替えてください。',
       '手順は ①実態把握 → ②実態の整理（6区分の観点）→ ③指導すべき課題の整理 → ④中心となる課題と指導目標 → ⑤項目の選定 → ⑥項目の関連付け → ⑦具体的な指導内容 の順です。私は「今、困っていること」だけを書きました。①から④までは、あなたが質問して私から聞き出してください。',
-      '質問は1回に1つだけ。私の答えを短く要約して「こういうことですね」と確認してから、次の質問に進んでください。①は4つの観点（障害の状態／発達や経験の程度／興味・関心、得意なこと／生活や学習の環境）を、②は6区分の観点のうち関係しそうなものだけを聞いてください。全部で5〜8往復を目安にし、細かく聞きすぎないでください。',
+      '質問は1回に1つだけ。私の答えを短く要約して「こういうことですね」と確認してから、次の質問に進んでください。①は校内様式の5つの欄（' + SP_FORM.map(function (f) { return f.label; }).join('／') + '）を、②は6区分の観点のうち関係しそうなものだけを聞いてください。全部で5〜8往復を目安にし、細かく聞きすぎないでください。',
       '私が「分からない」「まだ見ていない」と答えたら、そこで止めずに次へ進み、最後に「確認すべき点」として残してください。分からないことを推測で埋めないでください。',
       '④の指導目標まで揃ってから⑤に進んでください。課題（③）がどの実態（①②）から出ているか分からないものは、そのまま通さないでください。',
       '項目は、末尾の「自立活動 6区分27項目」の正式名称だけを使ってください。項目名を創作したり、言い換えたりしないでください。',
@@ -1308,7 +1315,10 @@
     out.push('・⑦ 具体的な指導内容（2〜3案）｜ねらい｜関連する項目｜根拠｜評価の観点');
     out.push('・最後に「教員が確認すべき点」を箇条書きで。私が「分からない」と答えた事項は必ずここに入れてください。');
     out.push('・シートの冒頭に、聞き取りで分かった①〜④の要約も付けてください（校内の検討で使います）。');
-    out.push('・そのあとに、計画シートへ貼り戻すための欄を、見出しと欄名を変えずに次の形式で付けてください。');
+    out.push('・そのあとに、校内様式の「' + SP_FORM_NAME + '」へ貼るための欄を、欄名を変えずに次の形式で付けてください（私の答えを整えて書く。答えていない欄は「（未確認）」）。');
+    out.push('＜' + SP_FORM_NAME + '＞');
+    SP_FORM.forEach(function (f) { out.push('【' + f.label + '】'); out.push('（内容）'); });
+    out.push('・さらに、計画シートへ貼り戻すための欄を、見出しと欄名を変えずに次の形式で付けてください。');
     out.push('【個別シート：通級による指導】');
     ['assess', 'issue', 'items', 'content', 'eval'].forEach(function (k) {
       var f = S2_SPECIAL[0].fields.find(function (x) { return x.k === k; });
@@ -1319,6 +1329,34 @@
     out.push('出典：特別支援学校教育要領・学習指導要領解説 自立活動編（平成30年3月）');
     out.push(spItemsText(full));
     return out.join('\n');
+  }
+
+  // 校内様式へ貼るためのテキスト（【欄名】＋内容）
+  function spFormText(d) {
+    var out = ['＜' + SP_FORM_NAME + '＞', ''];
+    SP_FORM.forEach(function (f) { out.push('【' + f.label + '】'); out.push(d[f.k] || '（未記入）'); out.push(''); });
+    out.push('※ 幼児児童生徒名は校内様式に直接記入する。ここでは扱わない。');
+    return out.join('\n');
+  }
+  // AIの回答から、校内様式の欄（【欄名】…）と計画シートの欄（■ 欄名…）を読み取る。校内様式の欄は SP に入れる
+  function spParseForm(text, d) {
+    var lines = (text || '').split(/\r?\n/), key = null, buf = [], filled = 0;
+    var map = {}; SP_FORM.forEach(function (f) { map[f.label] = f.k; });
+    function flush() {
+      if (!key) return;
+      var v = buf.join('\n').trim().replace(/^（未確認）$|^（未記入）$/, '');
+      if (v) { d[key] = v; filled++; }
+      key = null; buf = [];
+    }
+    lines.forEach(function (ln) {
+      var t = ln.trim();
+      var m = /^【(.+?)】$/.exec(t);
+      if (m) { flush(); key = map[m[1]] || null; return; }
+      if (/^[＜<【■]/.test(t) && !m) { flush(); return; }
+      if (key) buf.push(ln);
+    });
+    flush();
+    return filled;
   }
 
   function spField(id, label, hint, rows) {
@@ -1362,10 +1400,8 @@
       '<details class="sp-adv"><summary>書けるところまで書いておく（任意）<span class="sp-hint">書いてある欄はAIが聞き直しません。空欄のままでかまいません</span></summary>' +
 
       '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">①</span>実態把握</h3>' +
-        spField('status', '障害の状態', '見え方、聞こえ方、身体の動き、理解の仕方など', 2) +
-        spField('development', '発達や経験の程度', 'できていること、これまでの学習・生活経験', 2) +
-        spField('interest', '興味・関心、得意なこと', '', 2) +
-        spField('environment', '生活や学習の環境', '家庭、学級、学びの場、支援者、補助手段', 2) +
+        '<p class="block-sub">校内で使っている「' + SP_FORM_NAME + '」と同じ欄です。書いた分は指示書に「既に分かっていること」として入り、AIは聞き直しません。</p>' +
+        SP_FORM.map(function (f) { return spField(f.k, f.label, f.hint, f.rows); }).join('') +
       '</section>' +
 
       '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">②</span>実態を6区分の観点で整理する</h3>' +
@@ -1400,7 +1436,17 @@
         '<textarea class="sp-out" id="spOut" readonly rows="18"></textarea>' +
       '</section>' +
 
-      '<section class="block"><h3 class="block-title"><span class="sp-num">3</span>計画シートへ送る</h3>' +
+      '<section class="block"><h3 class="block-title"><span class="sp-num">3</span>校内様式へ</h3>' +
+        '<p class="block-sub">AIが最後に出した「＜' + SP_FORM_NAME + '＞」の部分を貼り付けて「欄に流し込む」と、上の①の欄に入ります。「校内様式へ貼る用テキストをコピー」は、①の欄を【欄名】付きで写せる形にします。Wordの様式の各欄に貼ってください。' +
+        (META.notice && META.notice.supportForm && META.notice.supportForm.url ? ' 様式そのものは<a href="' + esc(META.notice.supportForm.url) + '" target="_blank" rel="noopener">' + esc(META.notice.supportForm.label || '校内様式') + '</a>から。' : '') + '</p>' +
+        '<label class="sp-field"><span class="sp-label">AIの回答を貼り付け</span><textarea id="spFormPaste" rows="5" placeholder="＜自立活動サポートシート（校内様式 R8.3時点）＞ 【障害の状態】…"></textarea></label>' +
+        '<div class="sp-actions">' +
+          '<button type="button" class="sp-btn" id="spFormImport">欄に流し込む</button>' +
+          '<button type="button" class="sp-btn primary" id="spFormCopy">校内様式へ貼る用テキストをコピー</button>' +
+          '<span class="sp-copied" id="spFormMsg" aria-live="polite"></span>' +
+        '</div>' +
+      '</section>' +
+      '<section class="block"><h3 class="block-title"><span class="sp-num">4</span>計画シートへ送る</h3>' +
         '<p class="block-sub">AIが最後に出した「【個別シート：通級による指導】」の部分を貼り付けると、計画シートの通級の欄に入ります。貼り付けなしで押すと、ここに書いた困りごとと①〜④だけを送ります。</p>' +
         '<label class="sp-field"><span class="sp-label">AIの回答を貼り付け（任意）</span><textarea id="spPaste" rows="5" placeholder="【個別シート：通級による指導】 ■ 実態把握（自立活動の観点で）…"></textarea></label>' +
         '<div class="sp-actions"><button type="button" class="sp-btn primary" id="spToPlan">計画シート（通級の欄）へ送る</button><span class="sp-copied" id="spSent" aria-live="polite"></span></div>' +
@@ -1464,6 +1510,23 @@
       SP = d = spBlank();
       fillForm(); refresh();
     });
+    document.getElementById('spFormImport').addEventListener('click', function () {
+      readForm();
+      var text = document.getElementById('spFormPaste').value, msg = document.getElementById('spFormMsg');
+      if (!text.trim()) { msg.textContent = '貼り付けが空です。'; return; }
+      var hasAny = SP_FORM.some(function (f) { return d[f.k]; });
+      if (hasAny && !window.confirm('すでに書いてある①の欄は、貼り付けた内容で上書きされます。よろしいですか。')) return;
+      var n = spParseForm(text, d);
+      mainContent.querySelector('.sp-adv').open = true;
+      fillForm(); refresh();
+      msg.textContent = n + '欄を流し込みました。'; setTimeout(function () { msg.textContent = ''; }, 6000);
+    });
+    document.getElementById('spFormCopy').addEventListener('click', function () {
+      refresh();
+      var msg = document.getElementById('spFormMsg'), text = spFormText(d);
+      function done(ok) { msg.textContent = ok ? 'コピーしました。校内様式（Word）の各欄に貼ってください。' : 'コピーできませんでした。'; setTimeout(function () { msg.textContent = ''; }, 5000); }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); }); else done(false);
+    });
     document.getElementById('spToPlan').addEventListener('click', function () {
       refresh();
       if (!S2) S2 = s2Blank();
@@ -1475,11 +1538,12 @@
       }
       // 貼り付けが無いか、貼り付けで埋まらなかった欄は、ここの入力から組み立てる
       function join(arr) { return arr.filter(Boolean).join('\n'); }
-      if (!t.assess) t.assess = join([d.status && '障害の状態：' + d.status, d.development && '発達や経験の程度：' + d.development, d.interest && '興味・関心：' + d.interest, d.environment && '環境：' + d.environment]
+      if (!t.assess) t.assess = join(SP_FORM.map(function (f) { return d[f.k] && f.label + '：' + d[f.k]; })
         .concat(JIRITSU27.map(function (g) { return d.byKu[g.ku] && g.ku + '：' + d.byKu[g.ku]; })));
       if (!t.issue) t.issue = join([d.issues, d.relations && '関係：' + d.relations, d.central && '中心となる課題：' + d.central, d.goal && '指導目標：' + d.goal]);
       if (!S2.common.profile && (d.seed || d.status)) S2.common.profile = join([d.seed && '困っていること：' + d.seed, d.status]);
-      if (!S2.common.strength && d.interest) S2.common.strength = d.interest;
+      if (!S2.common.strength && (d.strengths || d.interest)) S2.common.strength = join([d.strengths, d.interest]);
+      if (!S2.common.wish && d.wish) S2.common.wish = d.wish;
       if (!S2.common.stage && d.stage) S2.common.stage = d.stage;
       S2.on.tsukyu = true;
       var note = document.getElementById('spSent');

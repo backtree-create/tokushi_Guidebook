@@ -1272,6 +1272,8 @@
   .sp-entry-main b{font-family:var(--serif);font-size:17px;color:var(--ink-strong);}
   .sp-entry-main span{font-size:13px;line-height:1.75;color:var(--ink-soft);}
   .sp-entry-mark{font-size:24px;color:var(--accent);}
+  /* カード内の説明文用の指定（span の色と大きさ）が「整備中」の印にも効いていたのを外す */
+  .sp-entry-main .maint-mini{font-size:11px;color:var(--tone-warn-fg);line-height:1.5;}
 
   .sp-num{
     display:inline-flex;align-items:center;justify-content:center;
