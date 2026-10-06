@@ -638,11 +638,10 @@
     var html = '<div class="home-view">' +
       '<p class="eyebrow" style="color:var(--gold);font-family:var(--sans);letter-spacing:.28em;font-size:11px;">INDEX</p>' +
       '<h2 class="cat-title">障害種別 索引</h2>' +
-      '<p>' + DATA.length + 'の障害種別について、原因となる病気・状態別の分類、教育的ニーズ、合理的配慮を含む必要な支援内容、学びの場を整理しています。自立活動の項目は、疾患から引くのではなく、サポートシートの手順で子どもの実態から選びます。左の索引または下の一覧から選んでください。</p>' +
+      '<p>' + DATA.length + 'の障害種別について、見るべき軸、実態把握の仕方、指導内容と支援の要点、学びの場、主な疾患・状態を、文部科学省の手引に基づいて整理しています。左の索引または下の一覧から選んでください。</p>' +
       '<div class="home-stats">' +
         '<div class="home-stat"><b>' + DATA.length + '</b><span>障害種別</span></div>' +
         '<div class="home-stat"><b>' + total + '</b><span>主な疾患・状態</span></div>' +
-        '<div class="home-stat"><b>27</b><span>自立活動 項目数</span></div>' +
       '</div>' +
       '<div class="home-grid">';
 
@@ -964,7 +963,7 @@
     }
     var guidHtml = '<section class="block" id="v5-guidance">' +
       '<h3 class="block-title">指導内容と支援の要点<span class="tally">手引の記述の要点</span></h3>' +
-      (g.intro ? '<div class="section-disclaimer"><b>自立活動の項目との対応付けはしません</b><p>' + esc(g.intro) + '</p></div>' : '') +
+      '<p class="block-sub">手引がこの障害種について挙げている指導内容と支援の要点です。</p>' +
       gList(g.preschool) + gList(g.school) +
       (g.accommodation ? '<div class="v5-spec"><h4>' + esc(g.accommodation.label) + v5Ref(cat, g.accommodation.ref) + '</h4>' +
         '<div class="hk-groups">' + (g.accommodation.groups || []).map(function (gr) {
