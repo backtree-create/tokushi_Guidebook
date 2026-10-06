@@ -158,6 +158,22 @@ for (const c of categories) {
       }
     }
     for (const t of v.terms || []) if (!t.term || !t.desc) err(`${w}: terms の各行には term と desc が必要です`);
+    if (v.sheet && (!v.sheet.seed || !v.sheet.ask)) err(`${w}: sheet には seed と ask（サポートシートの例文）が必要です`);
+    // 版5.3：サポートシートの障害種ごとの項目
+    if (!Array.isArray(v.fields) || !v.fields.length) err(`${w}: fields（サポートシートの項目）がありません`);
+    const FTYPES = ['select', 'number', 'text', 'textarea', 'checks', 'image'];
+    const FCOLS = ['status', 'development', 'interest', 'strengths', 'wish'];
+    const fkeys = new Set();
+    for (const x of v.fields || []) {
+      if (!x.k || !x.label) err(`${w}: fields に k / label のない行があります`);
+      if (fkeys.has(x.k)) err(`${w}: fields の k "${x.k}" が重複しています`);
+      fkeys.add(x.k);
+      if (!FTYPES.includes(x.type)) err(`${w}: fields "${x.k}" の type が不正 (${x.type})`);
+      if (x.col && !FCOLS.includes(x.col)) err(`${w}: fields "${x.k}" の col が不正 (${x.col})`);
+      if ((x.type === 'select' || x.type === 'checks') && (!Array.isArray(x.options) || x.options.length < 2)) err(`${w}: fields "${x.k}" に options（2つ以上）が必要です`);
+      if (/氏名|名前|生年月日/.test(x.label)) err(`${w}: fields "${x.k}" は氏名・生年月日を扱う項目です。サポートシートでは扱いません`);
+    }
+    if (!(v.fields || []).some(x => x.type === 'image')) warn(`${w}: 画像の項目（type: image）がありません`);
     for (const sid of v.sources || []) if (!srcIds.has(sid)) err(`${w}: sources の "${sid}" が sources.json にありません`);
     if (!(v.sources || []).includes(c.sourceId)) err(`${w}: sources に区分の sourceId "${c.sourceId}"（手引の章）が必要です`);
     for (const r of v.related || []) {

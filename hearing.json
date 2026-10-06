@@ -654,5 +654,187 @@
     "tebiki",
     "mext-choukaku-tebiki"
   ],
-  "reviewed": "2026-10-06"
+  "reviewed": "2026-10-06",
+  "sheet": {
+    "seed": "例：補聴器を付けているが、一斉指示を聞き落として周りを見てから動く。本人はどこまで聞こえているのか分からない",
+    "ask": "例：補聴援助機器を使うべきか。聞こえなかったときに聞き返せるようにしたい"
+  },
+  "fields": [
+    {
+      "k": "kind",
+      "label": "難聴の種類",
+      "type": "select",
+      "options": [
+        "伝音難聴",
+        "感音難聴",
+        "混合性難聴",
+        "不明・未確認"
+      ],
+      "col": "status",
+      "ref": "p.90"
+    },
+    {
+      "k": "dbR",
+      "label": "平均聴力レベル（右）",
+      "type": "number",
+      "unit": "dB",
+      "col": "status",
+      "ref": "p.90"
+    },
+    {
+      "k": "dbL",
+      "label": "平均聴力レベル（左）",
+      "type": "number",
+      "unit": "dB",
+      "col": "status",
+      "ref": "p.90"
+    },
+    {
+      "k": "type",
+      "label": "聴力型",
+      "type": "select",
+      "options": [
+        "水平型",
+        "低音障害型",
+        "高音漸傾型",
+        "高音急墜型",
+        "dip型",
+        "不明・未確認"
+      ],
+      "col": "status",
+      "ref": "p.108"
+    },
+    {
+      "k": "onset",
+      "label": "障害が生じた時期",
+      "type": "select",
+      "options": [
+        "言語習得期前",
+        "言語習得期後",
+        "不明・未確認"
+      ],
+      "col": "status",
+      "ref": "p.108"
+    },
+    {
+      "k": "prog",
+      "label": "進行性・遅発性の指摘",
+      "type": "select",
+      "options": [
+        "あり",
+        "なし",
+        "不明・未確認"
+      ],
+      "col": "status",
+      "ref": "p.110"
+    },
+    {
+      "k": "ha",
+      "label": "補聴器",
+      "type": "select",
+      "options": [
+        "なし",
+        "片耳",
+        "両耳"
+      ],
+      "col": "status",
+      "ref": "p.90"
+    },
+    {
+      "k": "ci",
+      "label": "人工内耳",
+      "type": "select",
+      "options": [
+        "なし",
+        "片耳",
+        "両耳"
+      ],
+      "col": "status",
+      "ref": "p.90"
+    },
+    {
+      "k": "aided",
+      "label": "装用したときの聞き取り（装用下の聴取能）",
+      "type": "text",
+      "col": "status",
+      "ref": "p.90",
+      "hint": "例：装用閾値30dB、静かな場所なら会話可"
+    },
+    {
+      "k": "fm",
+      "label": "補聴援助機器",
+      "type": "select",
+      "options": [
+        "使用している",
+        "使用していない",
+        "検討中"
+      ],
+      "col": "status",
+      "ref": "p.91"
+    },
+    {
+      "k": "audio",
+      "label": "オージオグラム・検査結果の画像",
+      "type": "image",
+      "col": "status",
+      "ref": "p.114",
+      "hint": "純音・語音聴力検査、補聴器適合検査など"
+    },
+    {
+      "k": "med",
+      "label": "医療機関・言語聴覚士からの情報",
+      "type": "textarea",
+      "col": "status",
+      "ref": "p.91"
+    },
+    {
+      "k": "comm",
+      "label": "主な伝え合いの手段",
+      "type": "checks",
+      "options": [
+        "音声",
+        "読話",
+        "手話",
+        "指文字",
+        "キュード",
+        "筆談・文字",
+        "絵カード"
+      ],
+      "col": "development",
+      "ref": "p.93"
+    },
+    {
+      "k": "lang",
+      "label": "言葉の理解と表出、概念の形成の様子",
+      "type": "textarea",
+      "col": "development",
+      "ref": "p.93"
+    },
+    {
+      "k": "ask",
+      "label": "聞き返す・伝わったか確かめる・助けを求める",
+      "type": "select",
+      "options": [
+        "自分からできる",
+        "促されればできる",
+        "難しい",
+        "不明・未確認"
+      ],
+      "col": "strengths",
+      "ref": "p.94"
+    },
+    {
+      "k": "self",
+      "label": "自分の聞こえについての理解",
+      "type": "select",
+      "options": [
+        "よく分かっている",
+        "部分的に",
+        "まだこれから",
+        "不明・未確認"
+      ],
+      "col": "strengths",
+      "ref": "p.94"
+    }
+  ]
 }

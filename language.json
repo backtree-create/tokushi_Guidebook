@@ -331,5 +331,131 @@
     "tebiki-3-language",
     "tebiki"
   ],
-  "reviewed": "2026-10-06"
+  "reviewed": "2026-10-06",
+  "sheet": {
+    "seed": "例：音読のときに言葉が出にくく、発表を嫌がる。日によって話しやすさが違う",
+    "ask": "例：本人が話し方を気にしている。周りの子どもにどう伝えるか"
+  },
+  "fields": [
+    {
+      "k": "kind",
+      "label": "主な状態",
+      "type": "select",
+      "options": [
+        "構音障害",
+        "吃音",
+        "言語発達の遅れ・偏り",
+        "複数",
+        "不明・未確認"
+      ],
+      "col": "status",
+      "ref": "p.235"
+    },
+    {
+      "k": "organic",
+      "label": "原因",
+      "type": "select",
+      "options": [
+        "器質性（口蓋裂など）",
+        "機能性・発達性",
+        "他の障害に主として起因",
+        "不明・未確認"
+      ],
+      "col": "status",
+      "ref": "p.236"
+    },
+    {
+      "k": "err",
+      "label": "構音の誤りの型",
+      "type": "checks",
+      "options": [
+        "置換",
+        "省略",
+        "ひずみ",
+        "鼻にかかる"
+      ],
+      "col": "status",
+      "ref": "p.237"
+    },
+    {
+      "k": "sounds",
+      "label": "誤りやすい音・苦手な音",
+      "type": "text",
+      "col": "status",
+      "ref": "p.237"
+    },
+    {
+      "k": "stut",
+      "label": "吃音の中核症状",
+      "type": "checks",
+      "options": [
+        "連発",
+        "伸発",
+        "難発"
+      ],
+      "col": "status",
+      "ref": "p.238"
+    },
+    {
+      "k": "scenes",
+      "label": "苦手な場面・楽に話せる場面",
+      "type": "text",
+      "col": "status",
+      "ref": "p.239"
+    },
+    {
+      "k": "clarity",
+      "label": "会話の明瞭度",
+      "type": "select",
+      "options": [
+        "ほぼ全て分かる",
+        "時々聞き返す",
+        "半分程度",
+        "ほとんど分からない",
+        "不明・未確認"
+      ],
+      "col": "status",
+      "ref": "p.220"
+    },
+    {
+      "k": "doc",
+      "label": "構音検査・言語検査の結果の画像",
+      "type": "image",
+      "col": "status",
+      "ref": "p.239"
+    },
+    {
+      "k": "st",
+      "label": "言語聴覚士の評価と支援の内容",
+      "type": "textarea",
+      "col": "status",
+      "ref": "p.222"
+    },
+    {
+      "k": "hear",
+      "label": "自分の発音と手本の違いに気付くか",
+      "type": "select",
+      "options": [
+        "気付く",
+        "時々",
+        "気付きにくい",
+        "不明・未確認"
+      ],
+      "col": "development",
+      "ref": "p.222"
+    },
+    {
+      "k": "self",
+      "label": "自分の話し方についての受け止め",
+      "type": "select",
+      "options": [
+        "気にしていない",
+        "気にしている",
+        "話すのを避ける",
+        "不明・未確認"
+      ],
+      "col": "strengths",
+      "ref": "p.223"
+    }
+  ]
 }

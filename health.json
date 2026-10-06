@@ -775,5 +775,146 @@
     "mext-iryoteki-care",
     "gakko-hoken"
   ],
-  "reviewed": "2026-10-06"
+  "reviewed": "2026-10-06",
+  "sheet": {
+    "seed": "例：入院と退院を繰り返し、学習の空白がある。運動の制限があり、体育で何をさせてよいか分からない",
+    "ask": "例：服薬や体調の管理を本人に任せる範囲をどう広げるか"
+  },
+  "fields": [
+    {
+      "k": "dx",
+      "label": "診断名",
+      "type": "text",
+      "col": "status",
+      "ref": "p.174"
+    },
+    {
+      "k": "course",
+      "label": "病気の経過",
+      "type": "select",
+      "options": [
+        "安定している",
+        "寛解と再燃を繰り返す",
+        "進行性",
+        "治療中",
+        "不明・未確認"
+      ],
+      "col": "status",
+      "ref": "p.174"
+    },
+    {
+      "k": "grade",
+      "label": "学校生活管理指導表の指導区分",
+      "type": "select",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "対象外",
+        "不明・未確認"
+      ],
+      "col": "status",
+      "ref": "pp.195–214"
+    },
+    {
+      "k": "restrict",
+      "label": "治療による制限",
+      "type": "checks",
+      "options": [
+        "運動",
+        "食事・除去食",
+        "感染予防",
+        "紫外線",
+        "水分",
+        "その他"
+      ],
+      "col": "status",
+      "ref": "p.175"
+    },
+    {
+      "k": "meds",
+      "label": "服薬（学校での服薬・吸入・注射の有無）",
+      "type": "text",
+      "col": "status",
+      "ref": "p.174"
+    },
+    {
+      "k": "emerg",
+      "label": "緊急時の対応の取り決め",
+      "type": "select",
+      "options": [
+        "主治医の指示あり",
+        "校内で確認済み",
+        "未確認"
+      ],
+      "col": "status",
+      "ref": "p.182"
+    },
+    {
+      "k": "care",
+      "label": "医療的ケア",
+      "type": "checks",
+      "options": [
+        "なし",
+        "経管栄養",
+        "喀痰吸引",
+        "導尿",
+        "酸素",
+        "人工呼吸器",
+        "血糖測定・インスリン",
+        "その他"
+      ],
+      "col": "status",
+      "ref": "p.176"
+    },
+    {
+      "k": "absence",
+      "label": "入院・欠席の状況と学習の空白",
+      "type": "text",
+      "col": "status",
+      "ref": "p.182"
+    },
+    {
+      "k": "doc",
+      "label": "学校生活管理指導表・連絡表・指示書の画像",
+      "type": "image",
+      "col": "status",
+      "ref": "pp.195–214"
+    },
+    {
+      "k": "med",
+      "label": "主治医からの情報（本人・保護者の許可を得て）",
+      "type": "textarea",
+      "col": "status",
+      "ref": "p.176"
+    },
+    {
+      "k": "selfcare",
+      "label": "病気の理解と自己管理",
+      "type": "select",
+      "options": [
+        "自分で管理できる",
+        "一部できる",
+        "周囲の管理が必要",
+        "不明・未確認"
+      ],
+      "col": "strengths",
+      "ref": "p.179"
+    },
+    {
+      "k": "help",
+      "label": "必要なときに援助を求められるか",
+      "type": "select",
+      "options": [
+        "できる",
+        "促されればできる",
+        "難しい",
+        "不明・未確認"
+      ],
+      "col": "strengths",
+      "ref": "p.179"
+    }
+  ]
 }

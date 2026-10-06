@@ -578,5 +578,188 @@
     "tebiki",
     "mext-tenji-tebiki"
   ],
-  "reviewed": "2026-10-06"
+  "reviewed": "2026-10-06",
+  "sheet": {
+    "seed": "例：拡大教科書を使っているが、黒板の字は見えていないようで写すのに時間がかかる。どのくらいの大きさなら見やすいのか分からない",
+    "ask": "例：弱視レンズを使いたがらない。本人の見え方をどう聞き取ればいいか"
+  },
+  "fields": [
+    {
+      "k": "dx",
+      "label": "眼疾患名",
+      "type": "text",
+      "col": "status",
+      "ref": "p.62"
+    },
+    {
+      "k": "prog",
+      "label": "進行性か",
+      "type": "select",
+      "options": [
+        "進行性",
+        "非進行性",
+        "不明・未確認"
+      ],
+      "col": "status",
+      "ref": "p.62"
+    },
+    {
+      "k": "vaFarR",
+      "label": "遠見矯正視力（右）",
+      "type": "number",
+      "unit": "",
+      "col": "status",
+      "ref": "p.67"
+    },
+    {
+      "k": "vaFarL",
+      "label": "遠見矯正視力（左）",
+      "type": "number",
+      "unit": "",
+      "col": "status",
+      "ref": "p.67"
+    },
+    {
+      "k": "vaFarB",
+      "label": "遠見矯正視力（両眼）",
+      "type": "text",
+      "col": "status",
+      "ref": "p.67",
+      "hint": "例：0.08。指数弁・手動弁・光覚弁はそのまま書く"
+    },
+    {
+      "k": "vaNear",
+      "label": "近見視力（30cm）",
+      "type": "text",
+      "col": "status",
+      "ref": "p.67"
+    },
+    {
+      "k": "field",
+      "label": "視野",
+      "type": "select",
+      "options": [
+        "異常なし",
+        "求心性視野狭窄",
+        "中心暗点",
+        "半盲・その他の欠損",
+        "不明・未確認"
+      ],
+      "col": "status",
+      "ref": "p.81"
+    },
+    {
+      "k": "light",
+      "label": "光覚",
+      "type": "select",
+      "options": [
+        "異常なし",
+        "暗順応障害（夜盲）",
+        "明順応障害・羞明",
+        "両方",
+        "不明・未確認"
+      ],
+      "col": "status",
+      "ref": "p.81"
+    },
+    {
+      "k": "restrict",
+      "label": "視覚管理上の運動制限（眼球への衝撃）",
+      "type": "select",
+      "options": [
+        "あり",
+        "なし",
+        "不明・未確認"
+      ],
+      "col": "status",
+      "ref": "p.63"
+    },
+    {
+      "k": "script",
+      "label": "使っている文字",
+      "type": "select",
+      "options": [
+        "普通の文字",
+        "拡大した文字",
+        "点字",
+        "併用",
+        "不明・未確認"
+      ],
+      "col": "status",
+      "ref": "p.64"
+    },
+    {
+      "k": "minSize",
+      "label": "最も見やすい文字の大きさ・距離・行間",
+      "type": "text",
+      "col": "status",
+      "ref": "p.67",
+      "hint": "例：22ポイント、25cm、行間広め"
+    },
+    {
+      "k": "aids",
+      "label": "使っている補助具",
+      "type": "checks",
+      "options": [
+        "眼鏡",
+        "遮光眼鏡",
+        "弱視レンズ（遠用）",
+        "弱視レンズ（近用）",
+        "拡大読書器",
+        "タブレット",
+        "書見台",
+        "白杖"
+      ],
+      "col": "status",
+      "ref": "p.63"
+    },
+    {
+      "k": "light2",
+      "label": "見やすい照明・コントラストの条件",
+      "type": "text",
+      "col": "status",
+      "ref": "p.85",
+      "hint": "例：手元は明るく、窓を背にしない、白黒反転"
+    },
+    {
+      "k": "exam",
+      "label": "視力・視野検査などの結果の画像",
+      "type": "image",
+      "col": "status",
+      "ref": "p.67"
+    },
+    {
+      "k": "med",
+      "label": "医療機関・視能訓練士からの情報",
+      "type": "textarea",
+      "col": "status",
+      "ref": "p.63"
+    },
+    {
+      "k": "walk",
+      "label": "慣れた場所の単独歩行",
+      "type": "select",
+      "options": [
+        "できる",
+        "一部できる",
+        "難しい",
+        "不明・未確認"
+      ],
+      "col": "development",
+      "ref": "p.65"
+    },
+    {
+      "k": "cond",
+      "label": "最も見やすい条件を自分で分かっているか",
+      "type": "select",
+      "options": [
+        "分かっている",
+        "部分的に",
+        "まだこれから",
+        "不明・未確認"
+      ],
+      "col": "strengths",
+      "ref": "p.67"
+    }
+  ]
 }
