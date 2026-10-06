@@ -993,5 +993,96 @@
     "kind": "portal",
     "checked": "2026-10-01",
     "note": "幼稚部教育要領・小学部・中学部学習指導要領（平成29年4月告示）、高等部学習指導要領（平成31年2月告示。令和4年度から年次進行で実施）の本文と解説の入口"
+  },
+  {
+    "id": "jibika-kids",
+    "title": "子どものみみ・はな・のどの病気（一般向け解説）",
+    "publisher": "日本耳鼻咽喉科頭頸部外科学会",
+    "url": "https://www.jibika.or.jp/modules/disease_kids/index.php?content_id=7",
+    "indexUrl": "https://www.jibika.or.jp/modules/disease_kids/index.php?content_id=7",
+    "policy": "latest",
+    "review": "年1回",
+    "checked": "2026-10-06",
+    "note": "滲出性中耳炎・一側難聴・機能性難聴・補聴器・人工内耳など。各疾患の行から該当ページへ",
+    "kind": "portal",
+    "watch": "quiet"
+  },
+  {
+    "id": "jibika-shoni-tebiki",
+    "title": "小児難聴診療の手引き",
+    "publisher": "日本耳鼻咽喉科頭頸部外科学会 福祉医療・乳幼児委員会",
+    "url": "https://www.jibika.or.jp/uploads/files/guidelines/shoni_nancho_0430.pdf",
+    "policy": "latest",
+    "review": "年1回",
+    "checked": "2026-10-06",
+    "note": "先天性難聴の発見から診断・療育までの医療側の流れ"
+  },
+  {
+    "id": "joa-sick",
+    "title": "症状・病気をしらべる（一般向け解説）",
+    "publisher": "日本整形外科学会",
+    "url": "https://www.joa.or.jp/public/sick/index.html",
+    "indexUrl": "https://www.joa.or.jp/public/sick/body/index.html",
+    "policy": "latest",
+    "review": "年1回",
+    "checked": "2026-10-06",
+    "note": "側弯症・脊髄損傷・発育性股関節形成不全・腕神経叢損傷など",
+    "kind": "portal",
+    "watch": "quiet"
+  },
+  {
+    "id": "childneuro-qa",
+    "title": "小児神経Q&A",
+    "publisher": "日本小児神経学会",
+    "url": "https://www.childneuro.jp/general/6463/",
+    "policy": "latest",
+    "review": "年1回",
+    "checked": "2026-10-06",
+    "note": "脳性まひ・てんかん・重症心身障害などの一般向けQ&A",
+    "kind": "portal",
+    "watch": "quiet"
+  },
+  {
+    "id": "mext-choukaku-tebiki",
+    "title": "聴覚障害教育の手引",
+    "publisher": "文部科学省",
+    "edition": "令和2年3月",
+    "url": "https://www.mext.go.jp/a_menu/shotou/tokubetu/material/1340250_00009.htm",
+    "policy": "pinned",
+    "checked": "2026-10-06",
+    "note": "言語指導を中心とした聴覚障害教育の手引。本ツールでは節を設けずリンクで案内"
+  },
+  {
+    "id": "mext-tenji-tebiki",
+    "title": "点字学習指導の手引",
+    "publisher": "文部科学省",
+    "edition": "令和5年改訂版",
+    "url": "https://www.mext.go.jp/a_menu/shotou/tokubetu/material/1340250_00010.htm",
+    "policy": "pinned",
+    "checked": "2026-10-06",
+    "note": "点字を使う幼児児童生徒の指導"
+  },
+  {
+    "id": "mext-iryoteki-care",
+    "title": "小学校等における医療的ケア実施支援資料～医療的ケア児を安心・安全に受け入れるために～",
+    "publisher": "文部科学省",
+    "edition": "令和3年6月",
+    "url": "https://www.mext.go.jp/a_menu/shotou/tokubetu/material/1340250_00002.htm",
+    "policy": "pinned",
+    "checked": "2026-10-06",
+    "note": "学校での医療的ケアの体制と手順"
+  },
+  {
+    "id": "jsprs-disease",
+    "title": "形成外科で扱う疾患（一般向け解説）",
+    "publisher": "日本形成外科学会",
+    "url": "https://jsprs.or.jp/general/disease/",
+    "indexUrl": "https://jsprs.or.jp/general/disease/",
+    "policy": "latest",
+    "review": "年1回",
+    "checked": "2026-10-06",
+    "note": "口唇裂・口蓋裂など",
+    "kind": "portal",
+    "watch": "quiet"
   }
 ]

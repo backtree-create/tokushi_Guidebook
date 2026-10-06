@@ -61,5 +61,8 @@ const OUT = 'tokushi-guidebook-standalone.html';
 fs.writeFileSync(path.join(root, OUT), html);
 
 const kb = (Buffer.byteLength(html) / 1024).toFixed(0);
-const n = categories.reduce((s, c) => s + c.diseases.length, 0);
+// 版5.0 の区分は疾患を conditionGroups に持つ
+const n = categories.reduce((s, c) => s + (Array.isArray(c.diseases)
+  ? c.diseases.length
+  : (c.diseases.conditionGroups || []).reduce((t, g) => t + g.items.length, 0)), 0);
 console.log(`${OUT} を出力しました（${kb} KB／${categories.length}区分・${n}件・特別の教育課程${curriculum.length}件・生徒指導上の課題${seito.length}件・版 ${meta.version}）`);

@@ -1,1076 +1,582 @@
-[
-  {
-    "name": "小眼球症",
-    "overview": "眼球の発育が未熟なまま生まれる先天性疾患で、他の眼疾患を合併しやすい。",
-    "support": [
-      "保有する視覚を活かす拡大教材の工夫",
-      "視覚以外の感覚（触覚・聴覚）を活用した教材の併用"
-    ],
-    "basis": {
-      "overview": "mext",
-      "sources": [
-        "tebiki",
-        "tebiki-3-visual"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "先天白内障",
-    "overview": "水晶体の混濁により視力発達が妨げられる疾患。手術で回復する場合と、合併症により回復が限定的な場合がある。",
-    "support": [
-      "術後の見え方の変化に応じた教材サイズの調整",
-      "遮光眼鏡等によるまぶしさ対策"
-    ],
-    "basis": {
-      "overview": "mext",
-      "sources": [
-        "tebiki",
-        "tebiki-3-visual"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "先天緑内障",
-    "overview": "眼圧の上昇により視神経が損傷し、視野狭窄や視力低下が進行しうる疾患。",
-    "support": [
-      "眼圧管理を踏まえた学校生活での安全確保",
-      "疲労時の休憩やまぶしさへの配慮"
-    ],
-    "basis": {
-      "overview": "mext",
-      "sources": [
-        "tebiki",
-        "tebiki-3-visual"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "視神経萎縮",
-    "overview": "視神経の障害により視力・視野が低下する状態。原因となる疾患は多岐にわたる。",
-    "support": [
-      "拡大教材や読み上げソフト等ICT機器の活用",
-      "近距離での観察や作業空間の確保"
-    ],
-    "basis": {
-      "overview": "mext",
-      "sources": [
-        "tebiki",
-        "tebiki-3-visual"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "網膜色素変性症",
-    "overview": "進行性に視野狭窄・夜盲が生じる遺伝性疾患。将来的な見え方の変化を見据えた指導が必要。",
-    "support": [
-      "進行を見据えた白杖歩行等の技能の早期習得",
-      "暗い場所・夕方の活動での安全確保"
-    ],
-    "basis": {
-      "overview": "mext",
-      "sources": [
-        "tebiki",
-        "tebiki-3-visual"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "未熟児網膜症",
-    "overview": "未熟児への酸素投与等に伴い網膜血管に異常が生じる疾患。",
-    "support": [
-      "視機能の状態に応じた個別の教材調整",
-      "定期的な眼科受診結果を踏まえた指導の見直し"
-    ],
-    "basis": {
-      "overview": "mext",
-      "sources": [
-        "tebiki",
-        "tebiki-3-visual"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "網膜芽細胞腫",
-    "overview": "乳幼児期に発症する眼内の悪性腫瘍。摘出により視力を失う場合がある。",
-    "support": [
-      "手術前後の心理的ケア",
-      "片眼視力となった場合の遠近感の困難への配慮"
-    ],
-    "basis": {
-      "overview": "mext",
-      "sources": [
-        "tebiki",
-        "tebiki-3-visual"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "強度近視",
-    "overview": "屈折異常が強く、矯正しても十分な視力が得られにくい場合がある状態。",
-    "support": [
-      "拡大教材・拡大読書器の活用",
-      "黒板や掲示物が見やすい座席位置の配慮"
-    ],
-    "basis": {
-      "overview": "mext",
-      "sources": [
-        "tebiki",
-        "tebiki-3-visual"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "白子症（アルビニズム）に伴う視覚障害",
-    "overview": "メラニン色素の欠乏により羞明・視力低下・眼振等を伴う遺伝性疾患。",
-    "support": [
-      "遮光眼鏡やサンバイザー等によるまぶしさ対策",
-      "屋外活動時の照度調整"
-    ],
-    "basis": {
-      "overview": "shouman",
-      "sources": [
-        "shouman"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "眼皮膚白皮症"
-    }
-  },
-  {
-    "name": "若年性黄斑変性",
-    "overview": "網膜の中心部（黄斑）が変性し、中心視力が低下する疾患。周辺視野は保たれることが多い。",
-    "support": [
-      "中心外視野を活用する見方の指導",
-      "拡大教材と十分な明るさの確保"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "コロボーマ（脈絡膜・網膜欠損）",
-    "overview": "眼球組織の形成不全により、視野の一部が欠ける先天性疾患。",
-    "support": [
-      "欠損部位に応じた見え方の把握と教材配置の工夫",
-      "視野の状態に応じた座席位置の配慮"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "先天性全盲",
-    "overview": "出生時より光を全く感じない状態。点字を中心とした触覚・聴覚を活用する教育が必要となる。",
-    "support": [
-      "点字の読み書き技能の系統的な指導",
-      "触覚教材・立体教材による概念形成"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "屈折異常による弱視（斜視性・不同視性等）",
-    "overview": "強い遠視・乱視や斜視等により、視力の発達自体が妨げられている状態。",
-    "support": [
-      "眼科での治療（アイパッチ等）と学校生活の連携",
-      "文字の大きさやコントラストの調整"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "続発性緑内障",
-    "overview": "他の眼疾患や外傷、手術後等に伴って眼圧が上昇する状態。",
-    "support": [
-      "定期受診の状況を踏まえた活動制限の共有",
-      "急な視力変化への注意深い観察"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "視神経形成不全",
-    "overview": "視神経が生まれつき十分に発達していないために生じる視力障害。",
-    "support": [
-      "保有視力を最大限活用する教材の工夫",
-      "他の障害の合併有無の確認"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "糖尿病網膜症（若年発症例）",
-    "overview": "糖尿病の合併症として網膜の血管が障害され、視力低下が進行することがある状態。",
-    "support": [
-      "血糖管理と眼科受診の状況の共有",
-      "視力の変化に応じた教材の見直し"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "レーベル先天黒内障",
-    "overview": "網膜の光受容細胞の遺伝子異常により、乳児期から高度の視覚障害を示す遺伝性疾患。",
-    "support": [
-      "早期からの触覚・聴覚を中心とした教育的対応",
-      "保有する光覚の活用方法の探索"
-    ],
-    "basis": {
-      "overview": "grj",
-      "sources": [
-        "grj"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "https://plaza.umin.ac.jp/~grj/grj/LCA-EOSRD.htm"
-    }
-  },
-  {
-    "name": "スターガルト病",
-    "overview": "若年期に発症する遺伝性の黄斑変性症。中心視力が進行性に低下する。",
-    "support": [
-      "進行を見据えた拡大教材から点字への移行準備",
-      "羞明への対応（遮光眼鏡等）"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "アッシャー症候群（視覚障害を伴う場合）",
-    "overview": "感音難聴と網膜色素変性症を併せ有する遺伝性疾患。視覚と聴覚の両面での配慮が必要。",
-    "support": [
-      "視覚・聴覚双方の状態変化を踏まえた複合的支援",
-      "将来を見据えた点字・手話等の選択肢の提供"
-    ],
-    "basis": {
-      "overview": "grj",
-      "sources": [
-        "grj"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "https://plaza.umin.ac.jp/~grj/grj/usher1.htm"
-    }
-  },
-  {
-    "name": "未熟児無水晶体症",
-    "overview": "未熟児網膜症の治療等に伴い水晶体を摘出した状態。強い遠視となるため矯正が必要。",
-    "support": [
-      "コンタクトレンズ・眼鏡の管理支援",
-      "矯正後の見え方に応じた教材調整"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "視中枢障害（皮質盲を含む）",
-    "overview": "眼球自体に大きな異常がなくても、脳の視覚中枢の障害により見えにくさが生じる状態。",
-    "support": [
-      "視覚以外の感覚を優先した教材構成",
-      "医療機関と連携した状態把握"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "眼球振盪（先天眼振）",
-    "overview": "眼球が不随意に揺れ動くため、注視や追視に困難が生じる状態。",
-    "support": [
-      "最も見やすい頭位・視距離の把握と教材配置",
-      "作業時間への配慮"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "ぶどう膜炎による視力低下",
-    "overview": "眼内の炎症性疾患により、慢性的に視力低下や羞明を来すことがある状態。",
-    "support": [
-      "炎症の活動性に応じた活動量の調整",
-      "点眼等の治療スケジュールとの連携"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "未熟児網膜症後の網膜剥離",
-    "overview": "未熟児網膜症の進行により網膜剥離を来し、視力に重い影響が及ぶことがある状態。",
-    "support": [
-      "術後の見え方の変化に応じた教材の見直し",
-      "段階的な保有視覚の活用訓練"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "角膜混濁（先天性・外傷性）",
-    "overview": "角膜が濁ることで光の通過が妨げられ、視力低下が生じる状態。",
-    "support": [
-      "移植・手術の見通しを踏まえた学習計画",
-      "羞明対策"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "色覚異常（強度）",
-    "overview": "色の識別に困難があり、教材や資料の色分けが判別しにくい状態。",
-    "support": [
-      "色以外の情報（形・模様・文字）を併用した教材",
-      "色覚シミュレーションを踏まえた掲示物の配色"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "視野障害（緑内障による末期）",
-    "overview": "緑内障の進行により視野の大部分が失われた状態。中心視力は保たれることもある。",
-    "support": [
-      "残存視野を最大限活かした資料配置",
-      "歩行時の安全確保"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "視神経炎後遺症",
-    "overview": "視神経の炎症の後遺症として視力低下が残ることがある状態。",
-    "support": [
-      "視力の変動に応じた柔軟な教材選択",
-      "体調管理との連携"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "未熟児による皮質視覚障害",
-    "overview": "未熟児として出生した子どもに、脳の視覚処理の未熟さに起因する見えにくさが生じる状態。",
-    "support": [
-      "視覚刺激の量や提示速度の調整",
-      "他の感覚と組み合わせた学習支援"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "外傷性視覚障害",
-    "overview": "事故等による眼球や視神経の損傷によって生じる視覚障害。",
-    "support": [
-      "受傷前後の見え方の変化への心理的ケア",
-      "新しい見え方に応じた学習方法の再構築"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "複視（両眼視機能障害）",
-    "overview": "両眼の視線が一致せず、物が二重に見える状態。眼球運動障害等が原因となる。",
-    "support": [
-      "片眼遮蔽等、見やすくする工夫の共有",
-      "疲労に配慮した学習時間の調整"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "進行性外眼筋麻痺に伴う視覚障害",
-    "overview": "眼球を動かす筋肉の進行性の機能低下により、視野や見え方に制約が生じる状態。",
-    "support": [
-      "頭部を動かして視野を補う指導",
-      "疲労しやすさへの配慮"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "黄斑ジストロフィ（ベスト病等）",
-    "overview": "黄斑部に病変が生じる遺伝性疾患群。進行の速度や視力低下の程度は型により異なる。",
-    "support": [
-      "進行状況に応じた教材サイズの見直し",
-      "定期的な視力評価に基づく学習方法の調整"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "錐体杆体ジストロフィ",
-    "overview": "色覚異常や羞明、視力低下が進行する遺伝性網膜疾患。",
-    "support": [
-      "色以外の情報を併用した教材",
-      "羞明対策（遮光眼鏡等）"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "無虹彩症",
-    "overview": "虹彩が生まれつき欠損又は形成不全であるため、羞明や視力低下を伴う疾患。",
-    "support": [
-      "遮光眼鏡・カラーコンタクトレンズ等の活用",
-      "明るい場所での活動時間の調整"
-    ],
-    "basis": {
-      "overview": "nanbyou",
-      "sources": [
-        "nanbyou"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "無虹彩症"
-    }
-  },
-  {
-    "name": "小児白内障術後の水晶体様変化",
-    "overview": "乳幼児期の白内障手術後、眼鏡やコンタクトレンズによる継続的な矯正が必要となる状態。",
-    "support": [
-      "矯正器具の管理支援",
-      "定期受診状況の共有"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "未熟児網膜症（軽症・自然治癒例の経過観察）",
-    "overview": "軽度の未熟児網膜症で自然治癒した場合も、将来的な近視や網膜合併症のリスクに留意が必要とされる。",
-    "support": [
-      "定期眼科受診の継続的な確認",
-      "近視進行への配慮（座席位置等）"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "視神経低形成症",
-    "overview": "視神経が生まれつき細く、視力障害を来す疾患。下垂体機能低下を合併することがある。",
-    "support": [
-      "内分泌機能の定期評価との連携",
-      "保有視覚を生かした教材の工夫"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "網膜静脈閉塞症（若年発症例）",
-    "overview": "網膜の血管が詰まることで視力低下や視野欠損を来す疾患。若年での発症は稀。",
-    "support": [
-      "視野の状態に応じた資料配置",
-      "急な見え方の変化への対応体制"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "角膜ジストロフィ",
-    "overview": "角膜に混濁が生じ、進行性に視力が低下する遺伝性疾患群。",
-    "support": [
-      "羞明対策と拡大教材の活用",
-      "移植手術の見通しを踏まえた学習計画"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "若年性黄斑円孔",
-    "overview": "黄斑部に孔が生じ、中心視力が低下する疾患。外傷等が誘因となることがある。",
-    "support": [
-      "術後の見え方の変化に応じた教材調整",
-      "中心外視野を活用する見方の指導"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "視放線・後頭葉損傷による同名半盲",
-    "overview": "脳の視覚経路の損傷により、視野の左右どちらか半分が欠ける状態。",
-    "support": [
-      "欠損側からの情報提示を補う配置の工夫",
-      "頭部を動かして視野を広げる指導"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "先天性眼瞼下垂による視性刺激遮断弱視",
-    "overview": "まぶたが十分に開かないことにより、視覚刺激が遮断され弱視を生じる状態。",
-    "support": [
-      "手術後の視機能訓練との連携",
-      "保有視覚を最大限活用する教材"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "視神経脊髄炎関連疾患による視力障害",
-    "overview": "自己免疫性の炎症性疾患により、視神経炎を繰り返し視力障害が進行することがある状態。",
-    "support": [
-      "再発時の急な見え方の変化への対応",
-      "治療スケジュールとの連携"
-    ],
-    "basis": {
-      "overview": "nanbyou",
-      "sources": [
-        "nanbyou"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "視神経脊髄炎"
-    }
-  },
-  {
-    "name": "未熟児黄斑低形成",
-    "overview": "未熟児網膜症等の影響で黄斑部の発達が不十分となり、視力に制約が生じる状態。",
-    "support": [
-      "拡大教材と十分な明るさの確保",
-      "保有視覚の活用方法の個別検討"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "虚血性視神経症",
-    "overview": "視神経への血流が障害され、急激な視力低下を来す状態。",
-    "support": [
-      "急な視力変化への心理的ケア",
-      "新しい見え方に応じた学習方法の再構築"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "デュエイン症候群（眼球運動障害を伴う）",
-    "overview": "外眼筋の発達異常により、眼球の運動が制限される先天性疾患。",
-    "support": [
-      "見やすい頭位を活かした教材配置",
-      "眼精疲労への配慮"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "若年性糖尿病網膜症の増殖期病変",
-    "overview": "糖尿病網膜症が進行し、新生血管や出血を伴う状態。視力への影響が大きい。",
-    "support": [
-      "血糖・眼科治療の状況を踏まえた活動調整",
-      "視力変動に応じた柔軟な教材選択"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "先天無眼球症",
-    "overview": "眼球が生まれつき形成されていない状態。義眼を装用することが多い。",
-    "support": [
-      "点字を中心とした早期からの教育的対応",
-      "義眼の管理に関する情報共有"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "未熟児による視覚性認知の困難（皮質性視覚障害の軽症例）",
-    "overview": "眼球の機能は保たれているが、脳での視覚情報処理に軽度の困難がある状態。",
-    "support": [
-      "視覚刺激を整理した教材提示",
-      "反応時間に配慮した学習進行"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "未熟児網膜症瘢痕期による斜視・弱視",
-    "overview": "未熟児網膜症の瘢痕化に伴い、斜視や弱視を来すことがある状態。",
-    "support": [
-      "視能訓練との連携",
-      "保有視覚を生かした教材の工夫"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "視神経乳頭低形成",
-    "overview": "視神経の根元部分が生まれつき小さく、視力障害の原因となる状態。",
-    "support": [
-      "拡大教材の活用",
-      "定期的な視機能評価"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "水晶体亜脱臼に伴う視力障害（マルファン症候群等）",
-    "overview": "結合組織の異常により水晶体の位置がずれ、視力障害を来す状態。全身疾患の一症状であることがある。",
-    "support": [
-      "矯正眼鏡の管理支援",
-      "全身状態を踏まえた活動制限の確認"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "レーベル遺伝性視神経症（LHON）",
-    "overview": "ミトコンドリアDNA変異により、青年期に急速な視力低下を来す遺伝性疾患。男性に多く発症する。",
-    "support": [
-      "急激な視力変化への心理的サポート",
-      "進行後の保有視覚活用訓練"
-    ],
-    "basis": {
-      "overview": "grj",
-      "sources": [
-        "grj"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "https://plaza.umin.ac.jp/~grj/grj/LHON.htm"
-    }
-  },
-  {
-    "name": "網膜芽細胞腫の遺伝性タイプ（両側性）",
-    "overview": "RB1遺伝子の生殖細胞変異による遺伝性の網膜芽細胞腫。両眼性に発症しやすく、他のがんの易罹患性にも注意が必要。",
-    "support": [
-      "長期的な健康フォローアップとの連携",
-      "視力を失った場合の空間認知の指導"
-    ],
-    "basis": {
-      "overview": "shouman",
-      "sources": [
-        "shouman"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "網膜芽細胞腫"
-    }
-  },
-  {
-    "name": "黄斑低形成を伴う眼皮膚白皮症",
-    "overview": "色素形成の異常により黄斑の発達が不十分となり、視力発達が制限される状態。",
-    "support": [
-      "拡大教材と羞明対策の組み合わせ",
-      "保有視覚を活かした学習方法の確立"
-    ],
-    "basis": {
-      "overview": "shouman",
-      "sources": [
-        "shouman"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "眼皮膚白皮症"
-    }
-  },
-  {
-    "name": "未熟児網膜症瘢痕期（重症）による高度視覚障害",
-    "overview": "未熟児網膜症の重症例で、瘢痕形成により高度の視覚障害が残った状態。",
-    "support": [
-      "点字を含む複数の情報入手手段の並行指導",
-      "早期からの歩行訓練"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "視神経膠腫による視覚障害",
-    "overview": "視神経に生じる腫瘍で、神経線維腫症1型に伴うことが多い小児の脳腫瘍の一種。",
-    "support": [
-      "治療経過に応じた視力変化への対応",
-      "定期的な画像検査結果の共有"
-    ],
-    "basis": {
-      "overview": "shouman",
-      "sources": [
-        "shouman"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "中枢神経系腫瘍"
-    }
-  },
-  {
-    "name": "視覚失認（大脳性の見えの困難）",
-    "overview": "眼球や視神経に異常がなくても、脳の視覚情報処理の障害により対象物の認識に困難が生じる状態。",
-    "support": [
-      "形よりも色や動きを手がかりにした教材提示",
-      "触覚等他の感覚と組み合わせた確認"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "視覚性運動失調（見た情報と動作の協調の困難）",
-    "overview": "視覚から得た情報を運動に的確に反映させることに困難がある状態。",
-    "support": [
-      "手元を確認しながら行う作業の時間的余裕",
-      "段階的な目と手の協応動作の練習"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "黄斑ジストロフィ（若年発症網膜分離症）",
-    "overview": "X連鎖性の遺伝性疾患で、網膜の層が分離し中心視力が低下する。男児に多い。",
-    "support": [
-      "両眼视力差に応じた座席配置",
-      "急激な視力低下（硝子体出血等）への注意"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "視神経低形成septo-optic dysplasia（下垂体機能低下合併型）",
-    "overview": "視神経の低形成に、下垂体機能低下症や脳梁欠損等を伴うことがある症候群。",
-    "support": [
-      "内分泌科との継続的な連携",
-      "低血糖等のリスクに関する情報共有"
-    ],
-    "basis": {
-      "overview": "shouman",
-      "sources": [
-        "shouman"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "中隔視神経形成異常症"
-    }
-  },
-  {
-    "name": "風疹網膜症（先天性風疹症候群の眼症状）",
-    "overview": "胎内での風疹感染により網膜に色素沈着等の変化を来し、視機能に影響が及ぶことがある状態。",
-    "support": [
-      "難聴・心疾患等の合併症を踏まえた総合的支援",
-      "保有視覚の活用訓練"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "糖尿病を背景とする若年発症網膜症の進行例",
-    "overview": "血糖コントロール不良が続いた場合に、若年でも網膜症が進行し視力に影響が及ぶことがある状態。",
-    "support": [
-      "血糖管理の徹底と定期受診の励行",
-      "視力変動に応じた教材調整"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "外傷性視神経症（頭部外傷後）",
-    "overview": "頭部への強い衝撃により視神経が損傷し、視力低下を来す状態。",
-    "support": [
-      "受傷後の心理的ケア",
-      "新しい見え方への適応支援"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "未熟児網膜症に対するレーザー治療後の視野狭窄",
-    "overview": "未熟児網膜症の進行を防ぐレーザー治療の結果として、周辺視野が狭くなることがある状態。",
-    "support": [
-      "周辺からの接近への気付きを補う指導",
-      "安全な移動のための白杖等の活用"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "nichigan"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  }
-]
+{
+  "v5": true,
+  "id": "visual",
+  "axisType": "function",
+  "axisTypeLabel": "見え方の状態で見る",
+  "definition": "視機能の永続的な低下により、学習や生活に困難がある状態です。手引は病名ではなく視機能で定義しています。教育上の視覚障害は、両眼とも低下していて回復が望めない場合を指し、片眼だけの障害や手術で回復する白内障などは含めません。視力は出生後に発達し、10歳頃に安定するため、それまでの時期の見る経験と早期の対応が重要です。",
+  "definitionRef": "pp.60–61, 80",
+  "axesIntro": "手引は視機能を7つの要素（視力、視野、光覚、色覚、屈折・調節、眼球運動、両眼視）で見ています。ページでは①〜④の「見え方」で状態を示し、⑤の眼疾患は補足に置きます。",
+  "axes": [
+    {
+      "name": "視力",
+      "levels": [
+        "矯正視力 0.3程度（黒板・教科書に困難）",
+        "0.1前後（拡大が要る）",
+        "0.01以下（指数弁・手動弁・光覚弁・0）"
+      ],
+      "meaning": "文字をどう学ぶか（点字か、拡大した普通の文字か）を判断する中心。両眼で見た遠見視力のほか、近見視力を別に測る。",
+      "ref": "pp.80–81"
+    },
+    {
+      "name": "視野",
+      "levels": [
+        "求心性視野狭窄（中心10度以内）",
+        "中心暗点",
+        "半盲・その他の欠損"
+      ],
+      "meaning": "視野が狭いと移動や周囲の把握に著しい不自由が出る。中心が見えないと周辺は見えても読み書きに困難が出る。困難の出方が逆方向になる。",
+      "ref": "p.81"
+    },
+    {
+      "name": "光覚",
+      "levels": [
+        "暗順応障害（夜盲）",
+        "明順応障害（昼盲）",
+        "羞明（まぶしさ）"
+      ],
+      "meaning": "屋外・暗所・照明・まぶしさで見え方が変わる。遮光眼鏡、カーテン、机上の照明など環境の条件に直結する。",
+      "ref": "p.81"
+    },
+    {
+      "name": "色覚・屈折・眼球運動・両眼視",
+      "levels": [
+        "色の弁別",
+        "ピント（屈折・調節）",
+        "追視・注視（眼球運動、眼振）",
+        "遠近感（両眼視）"
+      ],
+      "meaning": "教材の色やコントラスト、見る距離、動くものを目で追えるか、立体的に捉えられるかに関わる。",
+      "ref": "pp.80–82"
+    },
+    {
+      "name": "眼疾患と経過",
+      "levels": [
+        "進行性か",
+        "視覚管理上の運動制限（眼球への衝撃）があるか",
+        "手術・治療の予定"
+      ],
+      "meaning": "疾患は「視機能の特徴と医学的な管理」を知るために押さえる。分類の主役ではない。",
+      "ref": "pp.83–84"
+    }
+  ],
+  "assessmentIntro": "手引の「状態等の把握」を校内様式の5つの欄に合わせて並べ替えました。視覚障害では、最も見やすい条件（文字の大きさ・距離・照明・コントラスト）を実測して書くことを勧めます。",
+  "assessment": {
+    "status": [
+      {
+        "text": "眼疾患名と発症の時期、合併する疾患、進行性かどうか",
+        "ref": "p.62"
+      },
+      {
+        "text": "視力（遠見・近見、裸眼・矯正）、視野障害・光覚障害の有無、両眼視・追視などの評価",
+        "ref": "pp.62–63"
+      },
+      {
+        "text": "視覚管理上の配慮：眼球への衝撃を避ける全身運動の制限があるか",
+        "ref": "p.63"
+      },
+      {
+        "text": "補装具：眼鏡・コンタクト・遮光眼鏡、弱視レンズ（遠用・近用）、視覚補助具の種類と使う頻度",
+        "ref": "p.63"
+      },
+      {
+        "text": "使っている文字（点字／普通の文字）、見やすい字体・文字の大きさ・最小可読指標・行間、照明、アイパッチの使用",
+        "ref": "p.64"
+      },
+      {
+        "text": "医療機関からの情報：検査結果、進行の見通し、眼鏡の調整、調光の必要性、視能訓練士の評価",
+        "ref": "p.63"
+      }
+    ],
+    "development": [
+      {
+        "text": "保有する視覚の活用の様子。慣れた場所では視覚を使わず経験で判断していることがあるので、小部屋と大部屋、移動を含めて見る",
+        "ref": "pp.63–64"
+      },
+      {
+        "text": "歩行・階段・方向感覚、目と手の協応、探索的に触って調べる動作",
+        "ref": "p.65"
+      },
+      {
+        "text": "慣れた場所を一人で歩けるかを含む基本的生活習慣",
+        "ref": "p.65"
+      },
+      {
+        "text": "言葉だけで作られた誤ったイメージがないか（概念の形成と意思の伝え合い）",
+        "ref": "p.66"
+      },
+      {
+        "text": "健康と安全、感覚の働き、知的発達",
+        "ref": "pp.64–66"
+      }
+    ],
+    "interest": [
+      {
+        "text": "屋外活動への消極性や自分で選ぶ力の弱さがないか（情緒の安定）",
+        "ref": "p.66"
+      },
+      {
+        "text": "園等での遊びの中の関わりと興味・関心。保護者が行動を制限しすぎていないかも見る",
+        "ref": "pp.66, 68"
+      }
+    ],
+    "strengths": [
+      {
+        "text": "自分の見え方の理解。最も見やすい環境の条件を自分で分かっているか",
+        "ref": "p.67"
+      },
+      {
+        "text": "弱視レンズなどの補助的手段を使いこなせるか、自分から工夫しているか",
+        "ref": "p.67"
+      },
+      {
+        "text": "自分で安全を管理できるか（自立への意欲）",
+        "ref": "p.67"
+      },
+      {
+        "text": "アイ・コンタクトの程度など対人関係の様子、道具を使う活動への苦手意識の有無",
+        "ref": "pp.67–68"
+      }
+    ],
+    "wish": [
+      {
+        "text": "本人の思いや願い。使いたい文字や道具、やってみたい活動",
+        "ref": "p.68"
+      },
+      {
+        "text": "保護者の思いや願いと、家庭での関わり方",
+        "ref": "p.68"
+      }
+    ],
+    "how": [
+      {
+        "text": "音・光・素材の異なるおもちゃで、顔の向き・距離・眼球の動き・手の動きを観察する",
+        "ref": "p.63"
+      },
+      {
+        "text": "最も見やすい条件を知るための検査：5mの遠見視力、30cmの近見視力、最も近づいた距離での最小可読視標、視力以外の視機能の評価",
+        "ref": "pp.67–68"
+      },
+      {
+        "text": "屋外と屋内、照明、色やコントラストでの見えやすさの違いを観察して記録する",
+        "ref": "p.85"
+      },
+      {
+        "text": "検査で文字の指示を音声に代える、時間を延ばす、検査者が補助するなどの工夫をしたら記録する。動作性の検査は下位項目ごとに構造的に評価する",
+        "ref": "p.68"
+      },
+      {
+        "text": "医療機関（眼科・視能訓練士）、園・児童発達支援施設から情報を集める",
+        "ref": "pp.63, 68"
+      }
+    ],
+    "tests": [
+      {
+        "name": "遠見視力検査（5m）",
+        "note": "ランドルト環。両眼で見た矯正視力が学びの場の目安に使われる",
+        "ref": "pp.67, 81"
+      },
+      {
+        "name": "近見視力検査（30cm）",
+        "note": "読み書きの条件を知る。遠見とは別に測る",
+        "ref": "p.67"
+      },
+      {
+        "name": "最小可読視標",
+        "note": "最も近づいた距離で読める最小の文字。拡大の程度を決める材料",
+        "ref": "p.67"
+      },
+      {
+        "name": "視野検査・暗順応検査",
+        "note": "視野計、暗順応計。移動や照明の条件に関わる",
+        "ref": "p.82"
+      },
+      {
+        "name": "視知覚の検査",
+        "note": "フロスティッグ視知覚発達検査など",
+        "ref": "p.68"
+      }
+    ]
+  },
+  "specific": [
+    {
+      "title": "視力の程度と文字の学び方",
+      "ref": "pp.74–80",
+      "body": [
+        "両眼の矯正視力がおおむね0.3未満（0.5程度まで想定）または視力以外の視機能障害が高度で、拡大鏡等を使っても通常の文字・図形の認識が不可能（点字が必要）または著しく困難な場合が、特別支援学校（視覚障害）の対象の目安。",
+        "「著しく困難」とは、認識に倍以上の時間がかかる、正答率が半分に満たないなど。「拡大鏡等」は弱視レンズ類・単眼鏡・遮光眼鏡を指し、拡大読書器やタブレットは含まない。",
+        "拡大教材を使う場合も、最も見やすい文字の大きさ・行間・コントラストは一人一人違う。実測した条件を校内様式の「障害の状態」に書く。"
+      ]
+    },
+    {
+      "title": "視野・光覚ごとの見え方の特徴",
+      "ref": "pp.81–82",
+      "body": [
+        "視野が狭い（求心性狭窄）：読む・見ることはできても、歩行や周囲の把握、動くものへの対応が難しい。",
+        "中心が見えない（中心暗点）：周辺は見えるので移動はできるが、文字を読むのに時間がかかる。視線をずらして見ることがある。",
+        "暗順応障害：暗い場所や夕方に急に見えにくくなる。明順応障害・羞明：明るい場所でまぶしく見えにくい。遮光眼鏡や照明の調整で変わる。"
+      ]
+    },
+    {
+      "title": "特別支援学校（視覚障害）で使われる教材・設備",
+      "ref": "pp.85–86",
+      "body": [
+        "点字教科書、拡大教科書、拡大読書器、弱視レンズ、書見台、感光器、表面作図器、点字器、3Dプリンタによる触察教材など。",
+        "通常の学級や弱視特別支援学級でも、特別支援学校のセンター的機能を通じて相談できる。"
+      ]
+    }
+  ],
+  "guidance": {
+    "intro": "手引が視覚障害について挙げている指導内容と支援の要点です。自立活動の項目との対応付けはしません。項目は、この子の実態から選びます。",
+    "preschool": {
+      "label": "就学前（幼稚部など）",
+      "ref": "pp.68–69",
+      "items": [
+        "注視・追視など視覚を活用する基礎的な技能",
+        "概念の形成と言葉の活用（触って順に捉える把握と、一目で捉える把握の違いを踏まえる）",
+        "状況の理解と変化への対応、他者の意図や感情の理解"
+      ]
+    },
+    "school": {
+      "label": "義務教育段階",
+      "ref": "pp.69–71",
+      "items": [
+        "保有する視機能の活用と向上",
+        "認知や行動の手掛かりとなる概念の形成",
+        "感覚の補助・代行手段の活用（弱視レンズ、タブレット端末など）",
+        "状況に応じたコミュニケーション",
+        "身体の移動能力（ガイド歩行、援助の依頼、白杖）"
+      ]
+    },
+    "accommodation": {
+      "label": "合理的配慮を含む支援の内容",
+      "ref": "pp.71–73",
+      "groups": [
+        {
+          "title": "教育内容・方法",
+          "items": [
+            "弱視レンズの活用と、見やすい環境を自分で整える力",
+            "時間の延長、近づく・触る学習、実物や模型に触れる機会",
+            "拡大・音声・読み上げによる情報保障、予定の事前提示",
+            "自分の視覚障害の理解と事故防止、見えにくいときに尋ねられる雰囲気"
+          ]
+        },
+        {
+          "title": "支援体制",
+          "items": [
+            "特別支援学校（視覚障害）のセンター的機能、弱視特別支援学級・通級の専門性",
+            "眼科医の助言、点字図書館など地域資源との連携",
+            "災害時の避難"
+          ]
+        },
+        {
+          "title": "施設・設備",
+          "items": [
+            "廊下を含む十分な明るさ、分かりやすい目印や段差の表示",
+            "まぶしさを防ぐ照明・カーテンの調整、拡大読書器の設置"
+          ]
+        }
+      ]
+    }
+  },
+  "placesIntro": "程度と学びの場の目安は手引 §2（pp.74–80）に基づきます。法令・通知の条文は下の欄に引用しています。",
+  "conditionsIntro": "手引が学齢期の主な原因疾患として挙げているものを中心に、公的な医学資料で確認できるものだけを載せています。各行は「どの視機能にどう影響するか（視力／視野／光覚／進行性／運動制限）」の1行で、疾患ごとの支援は書きません。並び順は、手引の記載と学齢期の視覚障害での頻度を踏まえ、主要なものを先にしています。",
+  "conditionGroups": [
+    {
+      "title": "手引が挙げる学齢期の主な原因疾患（学齢期に多いものから）",
+      "items": [
+        {
+          "name": "未熟児網膜症",
+          "axis": "視力・視野（瘢痕期の程度による）",
+          "line": "早産児の網膜の血管の発達異常。軽症は自然に治るが、重症では網膜剥離により高度の視覚障害が残る。強度近視を伴うことがある。",
+          "ref": "p.83",
+          "links": [
+            {
+              "label": "国立成育医療研究センター 子どもの病気",
+              "url": "https://www.ncchd.go.jp/hospital/sickness/children/retinopathy.html",
+              "sourceId": "ncchd"
+            }
+          ]
+        },
+        {
+          "name": "網膜色素変性症",
+          "axis": "視野・光覚（進行性）",
+          "line": "夜盲と求心性の視野狭窄が進行する。暗い場所での移動に注意が要る。指定難病。",
+          "ref": "p.83",
+          "links": [
+            {
+              "label": "難病情報センター（指定難病90）",
+              "url": "https://www.nanbyou.or.jp/entry/196",
+              "sourceId": "nanbyou"
+            },
+            {
+              "label": "日本眼科学会 目の病気「網膜色素変性」",
+              "url": "https://www.nichigan.or.jp/public/disease/name.html?pdid=53",
+              "sourceId": "nichigan"
+            }
+          ]
+        },
+        {
+          "name": "視神経萎縮",
+          "axis": "視力・視野",
+          "line": "視神経の障害で視力や視野が低下する。原因はさまざまで、進行の有無は原因による。",
+          "ref": "p.83",
+          "links": [
+            {
+              "label": "教育支援の手引 第3編 Ⅰ 視覚障害（p.83）",
+              "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_05.pdf",
+              "sourceId": "tebiki-3-visual"
+            },
+            {
+              "label": "日本眼科学会 目の病気「視神経症」",
+              "url": "https://www.nichigan.or.jp/public/disease/name.html?pdid=32",
+              "sourceId": "nichigan"
+            }
+          ]
+        },
+        {
+          "name": "先天白内障",
+          "axis": "視力（手術後の経過）",
+          "line": "生まれつき水晶体が濁る。手術後も視力の発達には弱視訓練が要り、眼鏡やコンタクトで調整する。",
+          "ref": "p.83",
+          "links": [
+            {
+              "label": "国立成育医療研究センター 子どもの病気",
+              "url": "https://www.ncchd.go.jp/hospital/sickness/children/029.html",
+              "sourceId": "ncchd"
+            },
+            {
+              "label": "日本眼科学会 目の病気「白内障」",
+              "url": "https://www.nichigan.or.jp/public/disease/name.html?pdid=48",
+              "sourceId": "nichigan"
+            }
+          ]
+        },
+        {
+          "name": "先天緑内障",
+          "axis": "視力・視野（進行性）",
+          "line": "眼圧が高く視神経が障害される。視野が狭くなり、進行する。眼圧の管理と定期受診が要る。",
+          "ref": "p.83",
+          "links": [
+            {
+              "label": "日本眼科学会 目の病気「緑内障」",
+              "url": "https://www.nichigan.or.jp/public/disease/name.html?pdid=35",
+              "sourceId": "nichigan"
+            }
+          ]
+        },
+        {
+          "name": "強度近視",
+          "axis": "視力・屈折（運動制限に注意）",
+          "line": "眼軸が長く、矯正しても視力が出にくいことがある。網膜剥離のリスクがあり、眼球への衝撃を避ける指示が出ることがある。",
+          "ref": "p.83",
+          "links": [
+            {
+              "label": "日本眼科学会 目の病気「近視・遠視・乱視」",
+              "url": "https://www.nichigan.or.jp/public/disease/name.html?pdid=28",
+              "sourceId": "nichigan"
+            }
+          ]
+        },
+        {
+          "name": "網膜芽細胞腫",
+          "axis": "視力（治療後の経過）",
+          "line": "乳幼児の網膜にできる悪性腫瘍。眼球摘出や放射線・薬物の治療後に視覚障害が残ることがある。小児慢性特定疾病。",
+          "ref": "p.83",
+          "links": [
+            {
+              "label": "小児慢性特定疾病情報センター",
+              "url": "https://www.shouman.jp/disease/details/01_05_029/",
+              "sourceId": "shouman"
+            }
+          ]
+        },
+        {
+          "name": "黄斑変性（黄斑ジストロフィー）",
+          "axis": "視力・中心暗点",
+          "line": "網膜の中心（黄斑）が障害され、中心が見えにくくなる。周辺は見えるため移動はできるが読みに困難が出る。指定難病。",
+          "ref": "p.83",
+          "links": [
+            {
+              "label": "難病情報センター 黄斑ジストロフィー（指定難病301）",
+              "url": "https://www.nanbyou.or.jp/entry/4798",
+              "sourceId": "nanbyou"
+            }
+          ]
+        },
+        {
+          "name": "小眼球症",
+          "axis": "視力（先天）",
+          "line": "眼球が小さく生まれ、視力の発達が限られる。他の眼の異常（コロボーマ等）を伴うことがある。",
+          "ref": "p.83",
+          "links": [
+            {
+              "label": "教育支援の手引 第3編 Ⅰ 視覚障害（p.83）",
+              "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_05.pdf",
+              "sourceId": "tebiki-3-visual"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "そのほか公的資料で確認できるもの（学齢期に関わりの大きいものから）",
+      "items": [
+        {
+          "name": "眼皮膚白皮症（アルビニズム）",
+          "axis": "視力・光覚（羞明）・眼振",
+          "line": "色素が少なく、強いまぶしさと視力低下、眼振を伴う。遮光眼鏡や照明の調整が関わる。指定難病・小児慢性特定疾病。",
+          "links": [
+            {
+              "label": "難病情報センター（指定難病164）",
+              "url": "https://www.nanbyou.or.jp/entry/4492",
+              "sourceId": "nanbyou"
+            },
+            {
+              "label": "小児慢性特定疾病情報センター",
+              "url": "https://www.shouman.jp/disease/details/14_01_001/",
+              "sourceId": "shouman"
+            }
+          ]
+        },
+        {
+          "name": "無虹彩症",
+          "axis": "光覚（羞明）・視力",
+          "line": "虹彩がほとんどなく、強いまぶしさと視力低下がある。緑内障や白内障を併発することがある。指定難病。",
+          "links": [
+            {
+              "label": "難病情報センター（指定難病329）",
+              "url": "https://www.nanbyou.or.jp/entry/5452",
+              "sourceId": "nanbyou"
+            }
+          ]
+        },
+        {
+          "name": "レーベル先天黒内障",
+          "axis": "視力（先天・重度）",
+          "line": "生後早期から重度の視覚障害がある遺伝性の網膜疾患。眼振や光に対する反応の弱さを伴う。",
+          "links": [
+            {
+              "label": "GeneReviews Japan",
+              "url": "https://plaza.umin.ac.jp/~grj/grj/LCA-EOSRD.htm",
+              "sourceId": "grj"
+            }
+          ]
+        },
+        {
+          "name": "レーベル遺伝性視神経症",
+          "axis": "視力・中心暗点（思春期以降の急な低下）",
+          "line": "ミトコンドリア遺伝子の変異により、10代〜20代に両眼の中心視力が急に低下する。指定難病。",
+          "links": [
+            {
+              "label": "難病情報センター（指定難病302）",
+              "url": "https://www.nanbyou.or.jp/entry/4661",
+              "sourceId": "nanbyou"
+            }
+          ]
+        },
+        {
+          "name": "アッシャー症候群",
+          "axis": "視野・光覚（進行性）＋難聴",
+          "line": "難聴に網膜色素変性症を伴う。視野が就学後に狭くなっていくため、聴覚障害との連携で見る。指定難病。",
+          "links": [
+            {
+              "label": "難病情報センター（指定難病303）",
+              "url": "https://www.nanbyou.or.jp/entry/4624",
+              "sourceId": "nanbyou"
+            }
+          ]
+        },
+        {
+          "name": "弱視（医学的弱視：屈折異常・斜視・不同視による）",
+          "axis": "視力（発達期の治療で改善しうる）",
+          "line": "眼に器質的な病気がなく、視力の発達が妨げられた状態。眼鏡やアイパッチの治療で改善が見込める。教育上の「弱視」（視覚障害）とは意味が違う。",
+          "links": [
+            {
+              "label": "日本眼科学会 目の病気「弱視」",
+              "url": "https://www.nichigan.or.jp/public/disease/name.html?pdid=25",
+              "sourceId": "nichigan"
+            },
+            {
+              "label": "国立成育医療研究センター「斜視」",
+              "url": "https://www.ncchd.go.jp/hospital/sickness/children/019.html",
+              "sourceId": "ncchd"
+            }
+          ]
+        },
+        {
+          "name": "先天色覚異常",
+          "axis": "色覚",
+          "line": "特定の色の組合せが見分けにくい。視力は正常で、教育上の視覚障害には当たらないが、教材の色づかいに配慮が要る。",
+          "links": [
+            {
+              "label": "日本眼科学会 目の病気「先天色覚異常」",
+              "url": "https://www.nichigan.or.jp/public/disease/name.html?pdid=33",
+              "sourceId": "nichigan"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "terms": [
+    {
+      "term": "視力の表し方",
+      "desc": "ランドルト環で測る。0.1以下は距離を縮めて換算し、さらに低いと指数弁・手動弁・光覚弁・0と表す。矯正視力は「0.04（1.0×−5.0D）」のように眼鏡の度数と一緒に書かれる。",
+      "ref": "pp.80–81"
+    },
+    {
+      "term": "遠見視力・近見視力",
+      "desc": "5mで測る遠見と30cmで測る近見。黒板を見る力と手元を見る力は別に把握する。",
+      "ref": "p.67"
+    },
+    {
+      "term": "最小可読視標",
+      "desc": "最も近づいた距離で読める最小の文字の大きさ。拡大の程度を決める材料。",
+      "ref": "p.67"
+    },
+    {
+      "term": "拡大鏡等",
+      "desc": "学びの場の判断で使われる語。弱視レンズ類・単眼鏡・遮光眼鏡を指し、拡大読書器やタブレットは含まない。",
+      "ref": "p.77"
+    },
+    {
+      "term": "求心性視野狭窄・中心暗点",
+      "desc": "視野の周りから狭くなるのが求心性狭窄、中心が見えないのが中心暗点。困難の出方が逆になる。",
+      "ref": "p.81"
+    },
+    {
+      "term": "暗順応・明順応",
+      "desc": "暗い所・明るい所に目が慣れること。障害があると夜盲・昼盲として現れる。",
+      "ref": "p.81"
+    },
+    {
+      "term": "弱視レンズ",
+      "desc": "遠用（単眼鏡）と近用（ルーペ）がある。使いこなしには練習が要る。",
+      "ref": "p.63"
+    },
+    {
+      "term": "視能訓練士",
+      "desc": "視機能の検査と訓練を行う医療職。医療機関からの情報で評価を得る。",
+      "ref": "p.63"
+    }
+  ],
+  "related": [
+    {
+      "label": "点字学習指導の手引（令和5年改訂）",
+      "sourceId": "mext-tenji-tebiki",
+      "note": "点字を使う場合の指導はこちら"
+    },
+    {
+      "label": "日本眼科学会「ロービジョン」",
+      "url": "https://www.nichigan.or.jp/public/disease/name.html?pdid=80",
+      "sourceId": "nichigan",
+      "note": "見えにくさへの医療側の対応（ロービジョンケア）の入口"
+    }
+  ],
+  "sources": [
+    "tebiki-3-visual",
+    "tebiki",
+    "mext-tenji-tebiki"
+  ],
+  "reviewed": "2026-10-06"
+}

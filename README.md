@@ -21,9 +21,31 @@
 |---|---|---|
 | 障害種別ページ | 教育的ニーズ／指導内容／合理的配慮／学びの場 | 文部科学省「障害のある子供の教育支援の手引」（令和3年6月） |
 | 自立活動 6区分27項目 | 区分・項目・内容の要旨 | 文部科学省「解説 自立活動編」（平成30年3月） |
-| **疾患・状態別の分類（495件）** | 医学的説明は公的疾患データベース由来。**支援内容は本ツールによる教育的整理** | 文部科学省の資料に直接記載されているものではありません |
+| **主な疾患・状態（版5.1.0〜、10区分で103件）** | 「軸のどこに位置づくか」の1行と公的な医学資料へのリンクのみ。**本ツールの編集による支援内容は載せない** | 小慢・難病情報センター・GeneReviews Japan・学会の一般向け解説。手引に説明がある場合は章のページ |
 
-3つ目が全体の分量の大半を占めます。各疾患を開くと、記述ごとの出典区分がバッジで表示されます。
+版5.1.0 で10区分すべてが版5.0の型に移行し、旧型（疾患ごとの support / severity / basis）は廃止しました。旧データは版4.6.0までのGitの履歴にあります。
+
+### 版5.0 の障害種別ページ（版5.0.0〜、版5.1.0で全区分）
+
+同僚からの指摘（疾患ごとの支援に出典がない／分類が障害種の実態に合っていない／疾患が多すぎる／実態把握の仕方が分からない）を受けて作り替えたものです。設計は `/mnt/user-data/outputs/v5_design.md`（作業メモ）と精査メモ `seisa_01〜10` に基づきます。
+
+- データは `<id>.json` が配列ではなく1つのオブジェクト（`v5: true`）。`categories.json` 側は `v5: true` を付け、`needs / instruction / support` を持たない（`places / quote / sourceId / legalCriteria / programCriteria` は残す）
+- 構造：`definition`（節1）→ `axes`（節2 見るべき軸。`axisType` は function＝機能の状態で見る〈視覚・聴覚〉／disease＝疾患と経過で見る〈肢体・病弱〉／profile＝実態で見る〈それ以外〉）→ `assessment`（節4。`status / development / interest / strengths / wish` が校内様式の5欄、`how` が集め方、`tests` が検査名）→ `specific`（節5 固有の見方）→ `guidance`（節6 `preschool / school / accommodation`）→ `placesIntro`（節7）→ `conditionGroups`（節8。各疾患は `name / axis / line / links[{label,url,sourceId}] / ref`）→ `terms`（節9）→ `related / sources / reviewed`（節11）
+- 各行の `ref` は手引の章PDFのページ番号。画面では「手引 p.90」の印になり、章のPDFへ飛ぶ
+- 疾患は `links` が1件以上ないと validate が落ちる（出典のない疾患は載せない）。`support / severity` を持つと落ちる。`axisType: profile` の区分だけは `conditionGroups` を空にでき（言語・LD・ADHD）、その場合 `conditionsIntro` に理由を書く
+- 疾患の並びは50音順にしない。群の中は、手引の記載と学齢期の頻度を踏まえて主要なものを先に置く（校内からの指摘：小眼球症が視覚障害の先頭に来るのはおかしい）。`conditionsIntro` の末尾に並び方の方針を一言書く
+- `related` の各行は `sourceId` / `url` / `route`（`#/c/<区分id>`、他の障害種ページへの内部リンク）のいずれかを持つ
+- 節3「この子の支援を考える」は `app.js` の `v5SupportCard`。`#/jiritsu/support?cat=<id>` でサポートシートへ。渡すのは障害種の id だけ（疾患名・氏名は渡さない）
+- 検索と件数のために、`boot()` で `conditionGroups` を平らにして `cat.diseases`（name / overview）に入れる。検索で疾患名に当たると `#/c/<id>/<疾患名>` で該当行に目印を付ける
+- 文中の「児童生徒」「子供」は validate が警告する（自前の文は「幼児児童生徒」「子ども」）
+
+### サポートシートの障害種の観点（版5.0.0〜）
+
+- URL `#/jiritsu/support?cat=hearing` で開くと、冒頭に「『聴覚障害』の観点で開いています」の帯、①の5欄にその障害種の `assessment` の観点がプレースホルダーで出る、指示書に「【実態把握の観点（聴覚障害）】」の塊（5欄＋集め方＋検査、出典）が入る
+- 1の欄の「障害種の観点を読み込む」プルダウンで、障害種ページを経由せずに同じ状態にできる（版5.0 に移行していない区分は「準備中」で選べない）。切替は `navigate(…, true)` で URL を置き換えて描き直す
+- 観点は `SP.cat` に持つ。URL に `?cat=` がない場合は前回の観点を保つ
+- 計画シートへ送るとき、共通シート「実態の概要」の先頭に「障害種：聴覚障害」が入る
+- やらないこと：障害種→項目の対応表（AIにも「障害種から項目を引かない」と指示）、疾患名の受け渡し
 
 ---
 
@@ -44,10 +66,10 @@ sources.json          参考資料の一元管理（URL はここにしか書か
 categories.json       障害種別 10区分（疾患は含まない）
 jiritsu27.json        自立活動 6区分27項目
 
-visual.json           疾患・状態 495件。区分ごとに1ファイル
-hearing.json          （visual / hearing / intellectual / physical /
-intellectual.json       health / language / autism / emotional /
-physical.json           ld / adhd の10本）
+visual.json           区分ごとに1ファイル（版5.0の型：1つのオブジェクト。
+hearing.json            軸・実態把握・固有の見方・指導内容・疾患・用語・出典）
+intellectual.json
+physical.json
 health.json
 language.json
 autism.json

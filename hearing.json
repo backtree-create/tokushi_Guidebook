@@ -1,908 +1,658 @@
-[
-  {
-    "name": "感音難聴（内耳性）",
-    "overview": "内耳・聴神経の障害による難聴。音がひずみ、語音の明瞭度が低下しやすい。",
-    "support": [
-      "補聴器・人工内耳の適切な調整",
-      "板書や資料等、視覚的な情報提示の徹底"
-    ],
-    "basis": {
-      "overview": "mext",
-      "sources": [
-        "tebiki",
-        "tebiki-3-hearing"
+{
+  "v5": true,
+  "id": "hearing",
+  "axisType": "function",
+  "axisTypeLabel": "聞こえの状態で見る",
+  "definition": "身の回りの音や話し言葉が聞こえにくい、または聞こえない状態で、そのために学習や生活に困難がある状態です。医学的な難聴の種類や程度だけでなく、補聴器や人工内耳を使ったときの聞こえ、言葉を身に付ける前か後かといった、教育上の見方が重要になります。",
+  "definitionRef": "p.89",
+  "axesIntro": "手引は、難聴を次の5つの軸で見ています。同じ診断名でも、軸の組合せで聞こえ方と必要な配慮が変わります。疾患名は軸⑤「原因」の下に置きます。",
+  "axes": [
+    {
+      "name": "障害の部位",
+      "levels": [
+        "伝音難聴",
+        "感音難聴（内耳性・後迷路性）",
+        "混合性難聴"
       ],
-      "support": "editorial",
-      "reviewed": true
+      "meaning": "伝音難聴は音が小さく聞こえる状態、感音難聴は音がひずんで言葉の聞き分けが落ちる状態。平均聴力レベルが同じでも聞こえ方は違う。",
+      "ref": "pp.106–107"
+    },
+    {
+      "name": "程度",
+      "levels": [
+        "軽度（25〜40dB）",
+        "中等度（40〜60dB）",
+        "高度（60〜90dB）",
+        "最重度（90dB以上）"
+      ],
+      "meaning": "500・1000・2000Hzの平均聴力レベルで区分する。聞き取れる距離や場面、補聴の必要性が変わり、学びの場の目安にもなる。",
+      "ref": "pp.107–108, 112"
+    },
+    {
+      "name": "聴力型（オージオグラムの形）",
+      "levels": [
+        "水平型",
+        "低音障害型",
+        "高音漸傾型",
+        "高音急墜型",
+        "dip型"
+      ],
+      "meaning": "子どもの難聴の多くは高音漸傾型。高音急墜型は平均聴力が軽く見えても子音が聞き取れず、発音に影響する。",
+      "ref": "p.108"
+    },
+    {
+      "name": "障害が生じた時期",
+      "levels": [
+        "言語習得期前",
+        "言語習得期後"
+      ],
+      "meaning": "先天性か後天性かより、言葉を身に付ける前か後かが教育上は重要。言語発達への影響と、必要な指導の中身が大きく変わる。",
+      "ref": "pp.108–109"
+    },
+    {
+      "name": "原因と経過",
+      "levels": [
+        "遺伝性（非症候群性／症候群性）",
+        "獲得性（胎生期／周産期／後天性）",
+        "進行性・遅発性の有無"
+      ],
+      "meaning": "症候群性では視覚や腎臓の問題が就学後に出ることがある。外から見える原因がなくても進行することがあり、聴力検査で経過を追う。",
+      "ref": "pp.109–110"
+    }
+  ],
+  "assessmentIntro": "手引の「状態等の把握」（医学的側面／心理学的・教育的側面）を、校内様式の5つの欄に合わせて並べ替えました。欄に書く順ではなく、集める観点の一覧です。",
+  "assessment": {
+    "status": [
+      {
+        "text": "診断名（伝音・感音・混合）、発病と失聴の時期、合併する障害や疾患",
+        "ref": "p.90"
+      },
+      {
+        "text": "両耳の聴力レベル（オージオグラム）と聴力型。進行性・遅発性の指摘があるか",
+        "ref": "pp.90, 108–110"
+      },
+      {
+        "text": "補聴器・人工内耳の装用状況（なし／片耳／両耳）と、装用したときの聞き取り（装用下の聴取能）",
+        "ref": "pp.90–91"
+      },
+      {
+        "text": "補聴援助機器（ワイヤレスのマイクなど）の種類と、使う場面",
+        "ref": "p.91"
+      },
+      {
+        "text": "出生の状況、障害の発見と確定診断の時期、治療歴と見通し",
+        "ref": "p.90"
+      },
+      {
+        "text": "医療機関からの情報：検査の種類と結果、補聴器の調整、言語聴覚士の評価",
+        "ref": "p.91"
+      }
+    ],
+    "development": [
+      {
+        "text": "保有する聴覚の活用の様子。聞こえていても言葉として処理しにくい、音の区切りが捉えにくいといった困難がないか",
+        "ref": "p.92"
+      },
+      {
+        "text": "意思の伝え合いの手段（音声、読話、キュード、手話、指文字など）と、家庭でどの手段を使っているか",
+        "ref": "p.93"
+      },
+      {
+        "text": "言葉の理解と表出、概念の形成の様子（知的発達は概念形成の把握が中心）",
+        "ref": "p.93"
+      },
+      {
+        "text": "健康と安全、基本的生活習慣、運動の様子、感覚の働き",
+        "ref": "pp.92–93"
+      },
+      {
+        "text": "読み書きの技能と速さ（学習意欲と取組の姿勢の中で見る）",
+        "ref": "p.95"
+      }
+    ],
+    "interest": [
+      {
+        "text": "園や児童発達支援施設での遊びの中の関わり、興味・関心、社会性の育ち",
+        "ref": "p.96"
+      },
+      {
+        "text": "人との関わりで好むこと、保護者との関わりの様子",
+        "ref": "p.91"
+      }
+    ],
+    "strengths": [
+      {
+        "text": "自分の聞こえについての気付きと受け止め、必要なときに助けを求められるか",
+        "ref": "p.94"
+      },
+      {
+        "text": "聞き返す、伝わったか確かめる、補聴援助機器のマイクを相手に渡すなど、困難を減らす工夫を自分でしているか",
+        "ref": "p.94"
+      },
+      {
+        "text": "自立への意欲、対人関係の様子、学習への意欲",
+        "ref": "pp.94–95"
+      },
+      {
+        "text": "情緒の安定と社会性の発達",
+        "ref": "p.93"
+      }
+    ],
+    "wish": [
+      {
+        "text": "本人の思いや願い。伝え合いの手段についての本人の好みも含めて",
+        "ref": "p.93"
+      },
+      {
+        "text": "保護者の思いや願い。家庭で使っている伝達手段と、就学後に望むこと",
+        "ref": "pp.93, 96"
+      }
+    ],
+    "how": [
+      {
+        "text": "遊びの場面で観察する：音への反応、言葉の理解と表出、人との関わり、保護者との関わり",
+        "ref": "p.91"
+      },
+      {
+        "text": "検査は個別式を優先し、言語性と非言語性を併用する。音声の指示を文字に代える、時間を延ばす、補聴システムを使うなどの配慮をしたら記録する",
+        "ref": "p.95"
+      },
+      {
+        "text": "行動観察は「どんな条件や援助があればできるか」の視点で見る。下位項目ごとに構造的に見る",
+        "ref": "pp.95–96"
+      },
+      {
+        "text": "医療機関、言語聴覚士、園・児童発達支援施設から情報を集める",
+        "ref": "pp.91, 96"
+      }
+    ],
+    "tests": [
+      {
+        "name": "純音聴力検査",
+        "note": "気導と骨導。オージオグラムの基になる",
+        "ref": "pp.113–114"
+      },
+      {
+        "name": "語音聴力検査",
+        "note": "語音の聴取域値と弁別（聞き分け）。感音難聴で特に重要",
+        "ref": "p.114"
+      },
+      {
+        "name": "乳幼児聴力検査",
+        "note": "聴性行動反応、COR、遊戯聴力検査。他覚的検査（ABR・ASSR・OAE）を含む",
+        "ref": "pp.114–115"
+      },
+      {
+        "name": "補聴器適合検査",
+        "note": "補聴器を付けた状態での聞こえを確かめる",
+        "ref": "p.116"
+      }
+    ]
+  },
+  "specific": [
+    {
+      "title": "程度ごとの聞こえの特徴と学びの場の目安",
+      "ref": "pp.112–113",
+      "body": [
+        "軽度（25〜40dB）：小さな声や離れた場所の声が聞き取りにくい。騒がしい場所で聞き落としが増える。",
+        "中等度（40〜60dB）：普通の大きさの会話で聞き落としがある。補聴器の装用が必要になることが多い。難聴特別支援学級や通級による指導の典型的な対象。",
+        "高度（60〜90dB）：補聴器がないと会話の聞き取りが難しい。特別支援学校（聴覚障害）の対象の目安（施行令第22条の3）。",
+        "最重度（90dB以上）：補聴器の効果が限られ、人工内耳が検討される。"
+      ]
+    },
+    {
+      "title": "補聴の手段",
+      "ref": "pp.110–112",
+      "body": [
+        "補聴器：気導・骨導・軟骨伝導、植え込み型がある。調整は医療機関と補聴器店で行う。",
+        "人工内耳：一般に90dB以上で補聴器の効果が不十分な場合に検討される。装用した状態の聴力は20〜40dB程度になることが多いが、聞こえ方は健聴と同じではない。",
+        "補聴援助機器：騒音・距離・残響の影響を減らす。話し手がマイクを持ち、音声を直接届ける。教室で有効。"
+      ]
+    }
+  ],
+  "guidance": {
+    "intro": "手引が聴覚障害について挙げている指導内容と支援の要点です。自立活動の項目との対応付けはしません。項目は、この子の実態から選びます。",
+    "preschool": {
+      "label": "就学前（幼稚部など）",
+      "ref": "pp.96–97",
+      "items": [
+        "聴覚の活用",
+        "言葉の習得と概念形成",
+        "言葉を用いた関わりと知識の広がり"
+      ]
+    },
+    "school": {
+      "label": "義務教育段階",
+      "ref": "pp.97–100",
+      "items": [
+        "自分の障害の特性を理解し、聞こえやすい環境を整える",
+        "困難を改善しようとする意欲",
+        "他者の意図や感情を理解し、集団に参加する",
+        "保有する聴覚を活用し、補助・代行手段を使う",
+        "言語の受容と表出",
+        "言語概念の形成と、言語による思考",
+        "コミュニケーション手段の選択と活用"
+      ]
+    },
+    "accommodation": {
+      "label": "合理的配慮を含む支援の内容",
+      "ref": "pp.100–102",
+      "groups": [
+        {
+          "title": "教育内容・方法",
+          "items": [
+            "情報保障（文字・視覚的な提示）、学習内容の調整",
+            "座席の位置と教室の騒音への対策",
+            "体験と言葉を結び付ける学習",
+            "孤立させない学級づくり"
+          ]
+        },
+        {
+          "title": "支援体制",
+          "items": [
+            "特別支援学校（聴覚障害）のセンター的機能、通級・学級の専門性の活用",
+            "耳鼻科、補聴器店、親の会との連携",
+            "周囲の理解啓発、災害時の避難誘導"
+          ]
+        },
+        {
+          "title": "施設・設備",
+          "items": [
+            "字幕放送、聞こえの環境（残響・騒音）の調整",
+            "緊急情報の視覚化"
+          ]
+        }
+      ]
     }
   },
-  {
-    "name": "伝音難聴",
-    "overview": "外耳・中耳の障害による難聴。音が全体的に小さく聞こえる状態が中心。",
-    "support": [
-      "聞き取りやすい座席位置の配慮",
-      "補聴器の適切な活用と定期点検"
-    ],
-    "basis": {
-      "overview": "mext",
-      "sources": [
-        "tebiki",
-        "tebiki-3-hearing"
-      ],
-      "support": "editorial",
-      "reviewed": true
+  "placesIntro": "程度と学びの場の目安は手引 §2（pp.102–106）に基づきます。法令・通知の条文は下の欄に引用しています。",
+  "conditionsIntro": "手引が軸⑤「原因と経過」の中で名前を挙げているものを中心に、公的な医学資料で確認できるものだけを載せています。各行は「どの軸に位置づくか」と医学的な要点の1行で、疾患ごとの支援は書きません。支援はこの子の実態から考えます。各群の中は、学齢期に関わりの大きいものを先にしています。",
+  "conditionGroups": [
+    {
+      "title": "遺伝性（非症候群性）",
+      "items": [
+        {
+          "name": "先天性難聴（非症候群性）",
+          "axis": "原因／遺伝性",
+          "line": "先天性難聴の多くを占める。GJB2遺伝子の変異が最も多い。新生児聴覚スクリーニングで発見されることが多い。",
+          "ref": "p.109",
+          "links": [
+            {
+              "label": "新生児聴覚スクリーニング（日本耳鼻咽喉科頭頸部外科学会）",
+              "url": "https://www.jibika.or.jp/modules/disease_kids/index.php?content_id=6",
+              "sourceId": "jibika-kids"
+            },
+            {
+              "label": "小児難聴診療の手引き（同学会）",
+              "url": "https://www.jibika.or.jp/uploads/files/guidelines/shoni_nancho_0430.pdf",
+              "sourceId": "jibika-shoni-tebiki"
+            }
+          ]
+        },
+        {
+          "name": "若年発症型両側性感音難聴",
+          "axis": "原因／遺伝性・進行性",
+          "line": "40歳未満で発症する両側の感音難聴で、遺伝子変異によるもの。進行することがある。指定難病。",
+          "links": [
+            {
+              "label": "難病情報センター（指定難病304）",
+              "url": "https://www.nanbyou.or.jp/entry/4628",
+              "sourceId": "nanbyou"
+            }
+          ]
+        },
+        {
+          "name": "ミトコンドリア病に伴う難聴",
+          "axis": "原因／遺伝性（母系遺伝）",
+          "line": "ミトコンドリアの働きの異常で、難聴のほか筋力低下や糖尿病などを伴うことがある。指定難病。",
+          "links": [
+            {
+              "label": "難病情報センター（指定難病21）",
+              "url": "https://www.nanbyou.or.jp/entry/335",
+              "sourceId": "nanbyou"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "遺伝性（症候群性）— 難聴以外の症状を伴う",
+      "items": [
+        {
+          "name": "アッシャー症候群",
+          "axis": "原因／症候群性・進行性",
+          "line": "難聴に網膜色素変性症による視覚障害を伴う。視野や夜間の見え方が就学後に変化することがあり、視覚障害との連携が要る。指定難病。",
+          "ref": "pp.109, 117",
+          "links": [
+            {
+              "label": "難病情報センター（指定難病303）",
+              "url": "https://www.nanbyou.or.jp/entry/4624",
+              "sourceId": "nanbyou"
+            },
+            {
+              "label": "GeneReviews Japan アッシャー症候群1型",
+              "url": "https://plaza.umin.ac.jp/~grj/grj/usher1.htm",
+              "sourceId": "grj"
+            }
+          ]
+        },
+        {
+          "name": "鰓耳腎（BOR）症候群",
+          "axis": "原因／症候群性",
+          "line": "難聴に、耳や首の形の特徴と腎臓の異常を伴う。腎機能の経過に注意が要る。小児慢性特定疾病。",
+          "ref": "p.109",
+          "links": [
+            {
+              "label": "小児慢性特定疾病情報センター",
+              "url": "https://www.shouman.jp/disease/details/02_17_044/",
+              "sourceId": "shouman"
+            }
+          ]
+        },
+        {
+          "name": "ペンドレッド症候群",
+          "axis": "原因／症候群性・変動性",
+          "line": "内耳の形の異常（前庭水管拡大）を伴う難聴で、甲状腺の腫れを伴うことがある。頭部への衝撃などで聴力が変動・悪化することがある。",
+          "links": [
+            {
+              "label": "GeneReviews Japan",
+              "url": "https://plaza.umin.ac.jp/~grj/grj/pds_nseva.htm",
+              "sourceId": "grj"
+            }
+          ]
+        },
+        {
+          "name": "アルポート症候群",
+          "axis": "原因／症候群性・進行性",
+          "line": "腎炎に進行性の感音難聴と眼の異常を伴う。指定難病・小児慢性特定疾病。",
+          "links": [
+            {
+              "label": "難病情報センター（指定難病218）",
+              "url": "https://www.nanbyou.or.jp/entry/4348",
+              "sourceId": "nanbyou"
+            },
+            {
+              "label": "小児慢性特定疾病情報センター",
+              "url": "https://www.shouman.jp/disease/details/02_02_013/",
+              "sourceId": "shouman"
+            }
+          ]
+        },
+        {
+          "name": "CHARGE症候群",
+          "axis": "原因／症候群性",
+          "line": "眼・心臓・鼻（後鼻孔）・成長・性腺・耳の異常を組み合わせて持つ。難聴に視覚障害や心疾患を伴うことが多く、重複障害として見る。指定難病・小児慢性特定疾病。",
+          "links": [
+            {
+              "label": "難病情報センター（指定難病105）",
+              "url": "https://www.nanbyou.or.jp/entry/4138",
+              "sourceId": "nanbyou"
+            },
+            {
+              "label": "小児慢性特定疾病情報センター",
+              "url": "https://www.shouman.jp/disease/details/13_01_021/",
+              "sourceId": "shouman"
+            }
+          ]
+        },
+        {
+          "name": "トリーチャー・コリンズ症候群",
+          "axis": "原因／症候群性（伝音）",
+          "line": "顔面の骨の形成異常に、外耳・中耳の異常による伝音難聴を伴う。骨導補聴器の適応になることがある。小児慢性特定疾病。",
+          "links": [
+            {
+              "label": "小児慢性特定疾病情報センター",
+              "url": "https://www.shouman.jp/disease/details/13_01_038/",
+              "sourceId": "shouman"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "獲得性（胎生期・周産期）",
+      "items": [
+        {
+          "name": "先天性風疹症候群",
+          "axis": "原因／胎生期",
+          "line": "妊娠中の風疹感染による。重度の難聴に心疾患・眼疾患（白内障など）を伴うことがある。小児慢性特定疾病。",
+          "ref": "p.109",
+          "links": [
+            {
+              "label": "小児慢性特定疾病情報センター",
+              "url": "https://www.shouman.jp/disease/details/11_35_094/",
+              "sourceId": "shouman"
+            }
+          ]
+        },
+        {
+          "name": "先天性サイトメガロウイルス感染症",
+          "axis": "原因／胎生期・遅発性",
+          "line": "出生時に症状がなくても、後から難聴が現れたり進行したりすることがある。定期的な聴力検査で経過を追う。小児慢性特定疾病。",
+          "ref": "p.109",
+          "links": [
+            {
+              "label": "小児慢性特定疾病情報センター",
+              "url": "https://www.shouman.jp/disease/details/11_35_095/",
+              "sourceId": "shouman"
+            }
+          ]
+        },
+        {
+          "name": "先天性トキソプラズマ感染症",
+          "axis": "原因／胎生期",
+          "line": "妊娠中の感染による。難聴のほか眼や脳の症状を伴うことがある。小児慢性特定疾病。",
+          "ref": "p.109",
+          "links": [
+            {
+              "label": "小児慢性特定疾病情報センター",
+              "url": "https://www.shouman.jp/disease/details/11_35_096/",
+              "sourceId": "shouman"
+            }
+          ]
+        },
+        {
+          "name": "周産期の要因（低出生体重、新生児仮死、重症高ビリルビン血症）",
+          "axis": "原因／周産期",
+          "line": "出生前後の要因で内耳や聴神経が障害されることがある。他の障害を併せ持つことがあり、重複障害として見る。",
+          "ref": "p.110",
+          "links": [
+            {
+              "label": "教育支援の手引 第3編 Ⅱ 聴覚障害（p.110）",
+              "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_06.pdf",
+              "sourceId": "tebiki-3-hearing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "獲得性（後天性）",
+      "items": [
+        {
+          "name": "滲出性中耳炎",
+          "axis": "部位／伝音・変動性",
+          "line": "中耳に液がたまり、音が小さく聞こえる。子どもに多く、治療で改善するが、繰り返すと言葉の発達に影響することがある。",
+          "links": [
+            {
+              "label": "日本耳鼻咽喉科頭頸部外科学会 子どもの病気",
+              "url": "https://www.jibika.or.jp/modules/disease_kids/index.php?content_id=4",
+              "sourceId": "jibika-kids"
+            }
+          ]
+        },
+        {
+          "name": "慢性中耳炎（真珠腫性を含む）",
+          "axis": "部位／伝音（進行すると混合）",
+          "line": "鼓膜の穴や真珠腫により伝音難聴が続く。真珠腫は骨を壊して進行するため手術の対象になる。",
+          "links": [
+            {
+              "label": "日本耳鼻咽喉科頭頸部外科学会 子どもの病気",
+              "url": "https://www.jibika.or.jp/modules/disease_kids/index.php?content_id=5",
+              "sourceId": "jibika-kids"
+            }
+          ]
+        },
+        {
+          "name": "髄膜炎後の難聴",
+          "axis": "原因／後天性（言語習得期前後）",
+          "line": "細菌性髄膜炎のあとに両側の高度難聴が残ることがある。内耳が骨化することがあり、人工内耳の判断を急ぐ場合がある。",
+          "ref": "p.110",
+          "links": [
+            {
+              "label": "教育支援の手引 第3編 Ⅱ 聴覚障害（p.110）",
+              "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_06.pdf",
+              "sourceId": "tebiki-3-hearing"
+            }
+          ]
+        },
+        {
+          "name": "一側難聴（ムンプス難聴など）",
+          "axis": "部位／片側",
+          "line": "おたふくかぜのあとなどに片耳が高度に聞こえなくなる。音の方向が分かりにくく、騒がしい場所で聞き取りが落ちる。",
+          "links": [
+            {
+              "label": "日本耳鼻咽喉科頭頸部外科学会 子どもの病気「一側難聴」",
+              "url": "https://www.jibika.or.jp/modules/disease_kids/index.php?content_id=8",
+              "sourceId": "jibika-kids"
+            }
+          ]
+        },
+        {
+          "name": "音響外傷",
+          "axis": "原因／後天性",
+          "line": "大きな音を聞いたあとに起こる感音難聴。耳鳴りを伴うことがある。",
+          "links": [
+            {
+              "label": "日本耳鼻咽喉科頭頸部外科学会 子どもの病気",
+              "url": "https://www.jibika.or.jp/modules/disease_kids/index.php?content_id=11",
+              "sourceId": "jibika-kids"
+            }
+          ]
+        },
+        {
+          "name": "薬剤性難聴（耳毒性薬物）",
+          "axis": "原因／後天性",
+          "line": "ストレプトマイシンやゲンタマイシン、シスプラチンなどの薬剤で内耳が障害されることがある。治療歴の確認が要る。",
+          "ref": "p.110",
+          "links": [
+            {
+              "label": "教育支援の手引 第3編 Ⅱ 聴覚障害（p.110）",
+              "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_06.pdf",
+              "sourceId": "tebiki-3-hearing"
+            }
+          ]
+        },
+        {
+          "name": "神経線維腫症Ⅱ型（聴神経腫瘍）",
+          "axis": "原因／後天性・進行性",
+          "line": "両側の聴神経に腫瘍ができ、難聴が進行する。指定難病。",
+          "links": [
+            {
+              "label": "難病情報センター（指定難病34）",
+              "url": "https://www.nanbyou.or.jp/entry/275",
+              "sourceId": "nanbyou"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "伝音難聴の代表例とその他",
+      "items": [
+        {
+          "name": "外耳道閉鎖症・小耳症",
+          "axis": "部位／伝音",
+          "line": "耳の穴がふさがっている、または耳の形が小さい状態。内耳は正常なことが多く、骨導補聴器の適応になる。",
+          "ref": "p.110",
+          "links": [
+            {
+              "label": "教育支援の手引 第3編 Ⅱ 聴覚障害（p.110）",
+              "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_06.pdf",
+              "sourceId": "tebiki-3-hearing"
+            }
+          ]
+        },
+        {
+          "name": "機能性難聴",
+          "axis": "その他",
+          "line": "耳の器官に異常がないのに聴力検査で難聴の結果が出る状態。学校健診で見つかることがあり、心理的な背景を含めて医療機関で確かめる。",
+          "links": [
+            {
+              "label": "日本耳鼻咽喉科頭頸部外科学会 子どもの病気",
+              "url": "https://www.jibika.or.jp/modules/disease_kids/index.php?content_id=12",
+              "sourceId": "jibika-kids"
+            }
+          ]
+        }
+      ]
     }
-  },
-  {
-    "name": "混合性難聴",
-    "overview": "伝音難聴と感音難聴の両方の要素を併せ持つ状態。",
-    "support": [
-      "聴覚活用と視覚的情報提示を組み合わせた指導",
-      "補聴援助機器の活用"
-    ],
-    "basis": {
-      "overview": "mext",
-      "sources": [
-        "tebiki",
-        "tebiki-3-hearing"
-      ],
-      "support": "editorial",
-      "reviewed": true
+  ],
+  "terms": [
+    {
+      "term": "平均聴力レベル",
+      "desc": "500・1000・2000Hzの聴力レベルの平均。程度の区分に使う。dBの値が大きいほど聞こえにくい。",
+      "ref": "p.107"
+    },
+    {
+      "term": "オージオグラム",
+      "desc": "周波数ごとの聴力レベルを描いた図。形（聴力型）で聞こえ方の特徴が分かる。",
+      "ref": "p.108"
+    },
+    {
+      "term": "高音急墜型",
+      "desc": "高い音だけ急に聞こえなくなる型。平均聴力は軽くても子音が聞き取れず、発音や聞き分けに影響する。",
+      "ref": "p.108"
+    },
+    {
+      "term": "装用下の聴取能（装用閾値）",
+      "desc": "補聴器や人工内耳を付けた状態での聞こえ。裸耳の聴力より、教室での聞こえを考えるときに重要。",
+      "ref": "pp.90, 111"
+    },
+    {
+      "term": "語音弁別",
+      "desc": "語音を聞き分ける力。感音難聴では聴力レベルの割に弁別が落ちることがある。",
+      "ref": "p.114"
+    },
+    {
+      "term": "ABR・ASSR・OAE",
+      "desc": "本人の反応を要しない他覚的な聴力検査。乳幼児や検査が難しい子どもに使う。",
+      "ref": "p.115"
+    },
+    {
+      "term": "読話・キュード・指文字",
+      "desc": "口の形を読み取る読話、手の形で音を補うキュードスピーチ、五十音を手で表す指文字。手話と併せて、本人の伝達手段を把握する。",
+      "ref": "p.93"
+    },
+    {
+      "term": "補聴援助機器",
+      "desc": "話し手のマイクの音声を直接届ける機器。距離・騒音・残響の影響を減らす。",
+      "ref": "p.111"
     }
-  },
-  {
-    "name": "症候群性難聴（アッシャー症候群等）",
-    "overview": "難聴に加え視力障害等を伴う遺伝性疾患群。",
-    "support": [
-      "視覚障害の進行も見据えた早期からの複合的な支援",
-      "関連する専門医療機関との情報共有"
-    ],
-    "basis": {
-      "overview": "grj",
-      "sources": [
-        "grj"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "https://plaza.umin.ac.jp/~grj/grj/usher1.htm"
+  ],
+  "related": [
+    {
+      "label": "聴覚障害教育の手引（言語指導が中心）",
+      "sourceId": "mext-choukaku-tebiki",
+      "note": "言語指導の方法や実践はこちら。本ページでは節を設けずリンクで案内します"
+    },
+    {
+      "label": "補聴器・人工内耳と学校生活（日本耳鼻咽喉科頭頸部外科学会）",
+      "url": "https://www.jibika.or.jp/modules/disease_kids/index.php?content_id=15",
+      "sourceId": "jibika-kids",
+      "note": "学校での補聴機器の扱い"
+    },
+    {
+      "label": "お子様の難聴に関する情報（同学会）",
+      "url": "https://www.jibika.or.jp/modules/hearingloss/index.php?content_id=6",
+      "sourceId": "jibika-kids",
+      "note": "保護者向けの入口"
     }
-  },
-  {
-    "name": "先天性風疹症候群",
-    "overview": "妊娠初期の母体感染により、難聴に心疾患・眼疾患等を伴うことがある。",
-    "support": [
-      "重複障害を踏まえた個別の指導計画の作成",
-      "医療機関との緊密な連携"
-    ],
-    "basis": {
-      "overview": "mext",
-      "sources": [
-        "tebiki",
-        "tebiki-3-hearing"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "人工内耳装用",
-    "overview": "高度難聴で補聴器の効果が不十分な場合に手術で装用するもの。装用後も聞き取りには個人差が大きい。",
-    "support": [
-      "装用後の聴覚活用を促す継続的な指導",
-      "雑音環境での聞き取りを助ける補聴援助機器の活用"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "滲出性中耳炎（慢性）",
-    "overview": "中耳炎の慢性化等により、一時的・断続的な伝音難聴を生じることがある状態。",
-    "support": [
-      "定期的な聴力チェックの実施",
-      "聞こえの変動を踏まえた座席・環境調整"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "先天性サイトメガロウイルス感染症",
-    "overview": "胎内感染により難聴のほか、まれに知的障害等を伴うことがある疾患。",
-    "support": [
-      "聴力の変動（進行性の場合あり）を踏まえた定期評価",
-      "重複する困難への総合的な支援"
-    ],
-    "basis": {
-      "overview": "shouman",
-      "sources": [
-        "shouman"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "先天性サイトメガロウイルス感染症"
-    }
-  },
-  {
-    "name": "若年発症型両側性感音難聴（遺伝性）",
-    "overview": "GJB2遺伝子変異等による、非症候群性の遺伝性難聴。",
-    "support": [
-      "補聴器・人工内耳の早期からの適合",
-      "家族への遺伝カウンセリング情報の共有"
-    ],
-    "basis": {
-      "overview": "nanbyou",
-      "sources": [
-        "nanbyou"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "若年発症型両側性感音難聴"
-    }
-  },
-  {
-    "name": "突発性難聴（後天性・学齢期発症）",
-    "overview": "ある日突然、片側または両側の聴力が低下する疾患。原因は多くの場合特定されない。",
-    "support": [
-      "発症前後の聞こえの変化への心理的配慮",
-      "座席位置や情報保障の見直し"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "進行性難聴",
-    "overview": "加齢や遺伝的要因等により、時間の経過とともに聴力が低下していく状態。",
-    "support": [
-      "定期的な聴力検査に基づく支援内容の見直し",
-      "将来を見据えたコミュニケーション手段の拡充"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "聴覚情報処理障害（APD）",
-    "overview": "聴力自体に大きな問題はないが、聞いた音声情報の処理に困難がある状態。",
-    "support": [
-      "静かな環境の確保と指示の視覚化",
-      "要点を絞った簡潔な伝え方"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "外耳道閉鎖症（先天性）",
-    "overview": "外耳道が生まれつき形成されていないため生じる伝音難聴。",
-    "support": [
-      "骨導補聴器等、特性に応じた補聴手段の活用",
-      "手術の可能性を含めた医療機関との連携"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "ムンプス難聴（後天性・片側性）",
-    "overview": "流行性耳下腺炎（おたふくかぜ）の合併症として生じる、多くは片側性の高度難聴。",
-    "support": [
-      "健聴耳を活かした座席配置",
-      "片側性難聴による聞こえの偏りへの配慮"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "ワールデンブルグ症候群",
-    "overview": "虹彩の色素異常や前頭部の白髪等を伴う遺伝性の症候群性難聴。",
-    "support": [
-      "外見に関する心理的配慮",
-      "聴覚活用と視覚的情報提示の併用"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "ペンドレッド症候群",
-    "overview": "感音難聴に甲状腺腫を伴う遺伝性疾患。思春期以降に甲状腺症状が顕在化することがある。",
-    "support": [
-      "甲状腺機能の定期チェックとの連携",
-      "進行性難聴を見据えたコミュニケーション手段の検討"
-    ],
-    "basis": {
-      "overview": "grj",
-      "sources": [
-        "grj"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "https://plaza.umin.ac.jp/~grj/grj/pds_nseva.htm"
-    }
-  },
-  {
-    "name": "トリーチャー・コリンズ症候群",
-    "overview": "顔面骨の低形成や外耳・中耳の形態異常を特徴とする先天性疾患。伝音難聴を伴う。",
-    "support": [
-      "摂食・呼吸面への配慮を含む多職種連携",
-      "伝音難聴に応じた補聴手段の活用"
-    ],
-    "basis": {
-      "overview": "shouman",
-      "sources": [
-        "shouman"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "トリーチャーコリンズ症候群"
-    }
-  },
-  {
-    "name": "CHARGE症候群",
-    "overview": "眼のコロボーマ、心疾患、後鼻孔閉鎖、成長発達の遅れ、耳の異常等、複数の症状を伴う症候群。",
-    "support": [
-      "視覚・聴覚等複数の感覚障害を踏まえた総合的な支援",
-      "医療的ケアを含む多職種連携"
-    ],
-    "basis": {
-      "overview": "shouman",
-      "sources": [
-        "shouman"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "チャージ症候群"
-    }
-  },
-  {
-    "name": "アルポート症候群",
-    "overview": "進行性の腎炎に感音難聴を伴う遺伝性疾患。",
-    "support": [
-      "腎機能の状態に応じた生活管理との連携",
-      "進行性難聴を踏まえた定期的な聴力評価"
-    ],
-    "basis": {
-      "overview": "nanbyou",
-      "sources": [
-        "nanbyou"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "アルポート症候群"
-    }
-  },
-  {
-    "name": "スティックラー症候群",
-    "overview": "結合組織の異常により、難聴のほか近視や関節の症状を伴うことがある遺伝性疾患。",
-    "support": [
-      "視覚・聴覚双方の状態把握と教材の工夫",
-      "関節への負担に配慮した活動"
-    ],
-    "basis": {
-      "overview": "grj",
-      "sources": [
-        "grj"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "https://plaza.umin.ac.jp/~grj/grj/stickler.htm"
-    }
-  },
-  {
-    "name": "鰓弓耳腎症候群（BOR症候群）",
-    "overview": "外耳・中耳の形態異常に腎機能障害を伴うことがある遺伝性症候群。",
-    "support": [
-      "腎機能の定期評価との連携",
-      "伝音難聴に応じた補聴支援"
-    ],
-    "basis": {
-      "overview": "shouman",
-      "sources": [
-        "shouman",
-        "nanbyou"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "鰓耳腎症候群／鰓耳腎症候群"
-    }
-  },
-  {
-    "name": "内耳奇形（Mondini型異形成等）",
-    "overview": "内耳の形成が不完全なために生じる先天性の感音難聴。",
-    "support": [
-      "人工内耳の適応可能性の医療機関での検討",
-      "めまい等前庭症状への配慮"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "側頭骨骨折後の難聴",
-    "overview": "頭部外傷により側頭骨が骨折し、伝音難聴や感音難聴を来すことがある状態。",
-    "support": [
-      "受傷前後の聞こえの変化への心理的ケア",
-      "座席位置・情報保障の見直し"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "高ビリルビン血症後遺症による難聴",
-    "overview": "新生児期の重症黄疸の後遺症として感音難聴が生じることがある状態。",
-    "support": [
-      "早期からの補聴器・人工内耳の適合",
-      "言語発達の状態に応じた継続的評価"
-    ],
-    "basis": {
-      "overview": "shouman",
-      "sources": [
-        "shouman"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "早産児ビリルビン脳症"
-    }
-  },
-  {
-    "name": "髄膜炎後の両側性高度難聴",
-    "overview": "細菌性髄膜炎の後遺症として、急速に進行する高度感音難聴を来すことがある状態。",
-    "support": [
-      "人工内耳の早期適応の検討",
-      "急な聞こえの変化への心理的支援"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "聴神経腫瘍による難聴",
-    "overview": "聴神経に生じる腫瘍により、片側性の進行性難聴を来すことがある状態（稀に神経線維腫症2型に伴う）。",
-    "support": [
-      "定期的な聴力・画像検査の状況共有",
-      "片側性難聴による聞こえの偏りへの配慮"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "薬剤性難聴（抗がん剤・抗菌薬等）",
-    "overview": "治療に用いる薬剤の副作用として、内耳の有毛細胞が障害され難聴を生じる状態。",
-    "support": [
-      "治療経過を踏まえた聴力の定期評価",
-      "治療優先の中での学習支援の工夫"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "オトフェリン遺伝子異常による難聴（聴覚神経症）",
-    "overview": "内耳の機能は保たれているが、音の情報がうまく神経に伝わらないタイプの難聴。人工内耳の効果が高いとされる。",
-    "support": [
-      "人工内耳の適応評価との連携",
-      "雑音下での聞き取りへの配慮"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "若年発症型両側性感音難聴（コネキシン26遺伝子変異以外）",
-    "overview": "GJB2以外の遺伝子変異による非症候群性難聴。臨床像はGJB2関連難聴と類似することが多い。",
-    "support": [
-      "補聴器・人工内耳の早期適合",
-      "定期的な聴力評価に基づく指導内容の見直し"
-    ],
-    "basis": {
-      "overview": "nanbyou",
-      "sources": [
-        "nanbyou"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "若年発症型両側性感音難聴"
-    }
-  },
-  {
-    "name": "ジャーバル・ランゲ・ニールセン症候群",
-    "overview": "高度先天性感音難聴に心臓の不整脈を伴う稀な遺伝性疾患。突然死のリスクがあるため注意を要する。",
-    "support": [
-      "心疾患管理との連携（運動制限等）",
-      "緊急時対応体制の整備"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "ノリー病",
-    "overview": "網膜の異常と難聴を伴うことがあるX連鎖性遺伝性疾患。視覚・聴覚両面の支援を要する。",
-    "support": [
-      "視覚・聴覚の複合的な状態把握",
-      "早期からの多職種連携"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "外リンパ瘻",
-    "overview": "内耳と中耳を隔てる膜が破れ、めまいや難聴を来す状態。外傷や気圧変化が誘因となることがある。",
-    "support": [
-      "めまい発作時の安全確保",
-      "激しい運動や気圧変化を伴う活動の制限"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "メニエール病（若年発症例）",
-    "overview": "内耳のリンパ水腫により、難聴・耳鳴り・めまいを繰り返す疾患。若年での発症は比較的稀。",
-    "support": [
-      "めまい発作時の休息場所の確保",
-      "ストレス管理に関する情報共有"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "側頭骨形成異常（小耳症・外耳道狭窄を伴う）",
-    "overview": "耳介や外耳道の形成不全により、伝音難聴を伴う先天性疾患。",
-    "support": [
-      "骨導補聴器等、特性に応じた補聴手段",
-      "外見に関する心理的配慮"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "聴神経発育不全",
-    "overview": "聴神経そのものが生まれつき細い、又は欠損しているために生じる高度難聴。人工内耳の効果が限定的な場合がある。",
-    "support": [
-      "触覚や視覚を活用した代替コミュニケーション手段の検討",
-      "早期からの手話等の選択肢の提供"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "先天性サイトメガロウイルス感染症による遅発性難聴",
-    "overview": "出生時は正常聴力でも、乳幼児期以降に進行性の難聴が顕在化することがある状態。",
-    "support": [
-      "定期的な聴力検査の継続",
-      "聴力低下の兆候の早期把握"
-    ],
-    "basis": {
-      "overview": "shouman",
-      "sources": [
-        "shouman"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "先天性サイトメガロウイルス感染症"
-    }
-  },
-  {
-    "name": "騒音性難聴（若年例）",
-    "overview": "大音量への曝露により生じる感音難聴。近年、イヤホン使用等による若年層での増加が指摘されている。",
-    "support": [
-      "音量管理に関する生活指導",
-      "高音域の聞き取りにくさへの配慮"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "真珠腫性中耳炎",
-    "overview": "中耳に生じた表皮組織の塊が周囲の骨を破壊し、難聴や合併症を来す疾患。",
-    "support": [
-      "手術前後の聞こえの変化への対応",
-      "定期的な耳鼻科受診の状況共有"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "顔面神経麻痺を伴う難聴",
-    "overview": "顔面神経と近接する内耳の障害が同時に生じ、難聴と顔面の動きの困難を併せ有する状態。",
-    "support": [
-      "表情表出の困難に配慮したコミュニケーション支援",
-      "リハビリテーションとの連携"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "聴覚過敏を伴う難聴（一部周波数の過敏反応）",
-    "overview": "難聴がある一方で、特定の周波数の音に過敏に反応する状態を併せ持つことがある。",
-    "support": [
-      "音環境の調整（イヤーマフの併用等）",
-      "過敏な音への段階的な慣らし"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "外傷性鼓膜穿孔",
-    "overview": "事故等により鼓膜が破れ、一時的又は永続的な伝音難聴を来す状態。",
-    "support": [
-      "治癒までの活動制限（水泳等）の共有",
-      "聞こえの回復状況に応じた座席配慮"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "耳硬化症（若年発症例）",
-    "overview": "中耳の骨が硬化し、進行性の伝音難聴を来す疾患。若年での発症は比較的稀。",
-    "support": [
-      "進行性難聴を見据えた定期評価",
-      "手術の可能性を含めた医療機関との連携"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "先天性内耳道狭窄症",
-    "overview": "聴神経が通る内耳道が生まれつき狭く、聴神経の発達に影響が及ぶことがある状態。",
-    "support": [
-      "人工内耳の効果を含む医学的評価との連携",
-      "代替コミュニケーション手段の準備"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "ムコ多糖症に伴う難聴",
-    "overview": "代謝異常疾患の症状の一つとして、伝音難聴や感音難聴を来すことがある状態。",
-    "support": [
-      "全身状態を踏まえた総合的な支援計画",
-      "定期的な聴力評価"
-    ],
-    "basis": {
-      "overview": "shouman",
-      "sources": [
-        "shouman"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "ムコ多糖症"
-    }
-  },
-  {
-    "name": "聴覚野の脳損傷による中枢性難聴",
-    "overview": "内耳・聴神経は正常でも、脳の聴覚処理領域の損傷により聞こえに困難が生じる稀な状態。",
-    "support": [
-      "視覚的な情報保障を中心とした指導",
-      "医療機関との連携による状態把握"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "先天性トキソプラズマ症による難聴",
-    "overview": "胎内感染により難聴のほか、視力障害や知的障害を伴うことがある疾患。",
-    "support": [
-      "複数の障害を踏まえた総合的な支援",
-      "医療機関との緊密な連携"
-    ],
-    "basis": {
-      "overview": "shouman",
-      "sources": [
-        "shouman"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "先天性トキソプラズマ感染症"
-    }
-  },
-  {
-    "name": "ミトコンドリア遺伝子変異による難聴（母系遺伝）",
-    "overview": "母系遺伝するミトコンドリアDNA変異により生じる難聴。抗菌薬（アミノグリコシド系）で難聴が誘発されやすい体質を伴うことがある。",
-    "support": [
-      "家族への薬剤感受性に関する情報共有",
-      "進行性難聴を見据えた早期からの支援"
-    ],
-    "basis": {
-      "overview": "shouman",
-      "sources": [
-        "shouman",
-        "nanbyou"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "ミトコンドリア病／ミトコンドリア病"
-    }
-  },
-  {
-    "name": "コネキシン26遺伝子変異による難聴（GJB2関連）",
-    "overview": "非症候群性難聴の原因として最も頻度が高いとされる遺伝子変異。出生時から両側性の難聴を示すことが多い。",
-    "support": [
-      "新生児聴覚スクリーニング結果を踏まえた早期支援開始",
-      "補聴器・人工内耳の早期からの適合"
-    ],
-    "basis": {
-      "overview": "nanbyou",
-      "sources": [
-        "nanbyou"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "若年発症型両側性感音難聴"
-    }
-  },
-  {
-    "name": "内耳道形成不全に伴う両側性難聴",
-    "overview": "聴神経の通り道である内耳道が細く形成される先天異常。人工内耳の効果に個人差が大きい。",
-    "support": [
-      "聴覚活用の限界を見据えた複数のコミュニケーション手段の準備",
-      "医療機関での継続的な機能評価"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "先天性サイトメガロウイルス感染症（無症候性）による遅発性難聴",
-    "overview": "出生時に症状がなくても、後になって難聴が顕在化することがある先天感染症のタイプ。",
-    "support": [
-      "就学後も継続する定期的な聴力検査",
-      "聞こえの変動を踏まえた学級担任との情報共有"
-    ],
-    "basis": {
-      "overview": "shouman",
-      "sources": [
-        "shouman"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "先天性サイトメガロウイルス感染症"
-    }
-  },
-  {
-    "name": "両側性小耳症・外耳道閉鎖症",
-    "overview": "両側の耳介・外耳道の形成不全により、生まれつき高度の伝音難聴を示す状態。",
-    "support": [
-      "骨導補聴器の早期からの活用",
-      "形成外科的治療のスケジュールとの調整"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "聴神経腫瘍（両側性・神経線維腫症2型）による進行性難聴",
-    "overview": "神経線維腫症2型に伴い両側の聴神経に腫瘍が生じ、進行性に難聴が悪化する状態。",
-    "support": [
-      "進行を見据えた早期からの手話等の習得",
-      "定期的な聴力・画像検査の結果共有"
-    ],
-    "basis": {
-      "overview": "shouman",
-      "sources": [
-        "shouman",
-        "nanbyou"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "神経線維腫症／神経線維腫症"
-    }
-  },
-  {
-    "name": "若年発症型両側性感音難聴（原因不明・特発性）",
-    "overview": "精査によっても明確な原因が特定されない両側性の感音難聴。",
-    "support": [
-      "原因が不明でも状態像に応じた支援を優先",
-      "定期的な聴力の経過観察"
-    ],
-    "basis": {
-      "overview": "nanbyou",
-      "sources": [
-        "nanbyou"
-      ],
-      "support": "editorial",
-      "reviewed": true,
-      "evidence": "若年発症型両側性感音難聴"
-    }
-  },
-  {
-    "name": "外リンパ瘻による変動性難聴",
-    "overview": "内耳と中耳を隔てる膜の損傷により、日によって聞こえが変動する状態。",
-    "support": [
-      "聞こえの変動を踏まえた柔軟な配慮",
-      "めまい symptom時の安全確保"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  },
-  {
-    "name": "人工内耳の効果が限定的なタイプ（聴神経低形成合併例）",
-    "overview": "聴神経が細い等の理由で、人工内耳を装用しても期待される効果が得られにくいタイプ。",
-    "support": [
-      "視覚言語（手話等）を中心とした代替手段の確立",
-      "本人の伸びやすい手段を尊重した指導"
-    ],
-    "basis": {
-      "overview": "academic",
-      "sources": [
-        "jibika"
-      ],
-      "support": "editorial",
-      "reviewed": true
-    }
-  }
-]
+  ],
+  "sources": [
+    "tebiki-3-hearing",
+    "tebiki",
+    "mext-choukaku-tebiki"
+  ],
+  "reviewed": "2026-10-06"
+}

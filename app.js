@@ -154,7 +154,7 @@
     },
     search:  function (q) { return '#/q/' + encodeURIComponent(q); },
     jiritsu: function () { return '#/jiritsu'; },
-    support: function () { return '#/jiritsu/support'; },
+    support: function (catId) { return '#/jiritsu/support' + (catId ? '?cat=' + encodeURIComponent(catId) : ''); },
     plan:    function () { return '#/plan'; },
     terms:   function () { return '#/terms'; },
     curriculum: function (id) { return '#/curriculum' + (id ? '/' + encodeURIComponent(id) : ''); },
@@ -162,9 +162,21 @@
     topic:   function (key, id) { return key === 'seito' ? ROUTES.seito(id) : ROUTES.curriculum(id); }
   };
 
+  // ハッシュの後ろの ?key=value を読む（例: #/jiritsu/support?cat=hearing）
+  function hashQuery(h) {
+    var q = {}, i = h.indexOf('?');
+    if (i < 0) return { path: h, q: q };
+    h.slice(i + 1).split('&').forEach(function (kv) {
+      var p = kv.split('=');
+      try { q[decodeURIComponent(p[0])] = decodeURIComponent(p[1] || ''); } catch (e) {}
+    });
+    return { path: h.slice(0, i), q: q };
+  }
+
   function parseHash() {
-    var h = (location.hash || '').replace(/^#\/?/, '');
-    if (!h) return { view: 'site' };
+    var raw = (location.hash || '').replace(/^#\/?/, '');
+    if (!raw) return { view: 'site' };
+    var hq = hashQuery(raw), h = hq.path;
     var seg = h.split('/').map(function (x) {
       try { return decodeURIComponent(x); } catch (e) { return x; }
     });
@@ -172,7 +184,7 @@
       case 'guide':   return { view: 'home' };
       case 'c':       return { view: 'cat', catId: seg[1], disease: seg[2] || null };
       case 'q':       return { view: 'search', q: seg.slice(1).join('/') };
-      case 'jiritsu': return seg[1] === 'support' ? { view: 'support' } : seg[1] === 'sheet2' ? { view: 'plan', legacyPlan: true } : { view: 'jiritsu' };
+      case 'jiritsu': return seg[1] === 'support' ? { view: 'support', cat: hq.q.cat || null } : seg[1] === 'sheet2' ? { view: 'plan', legacyPlan: true } : { view: 'jiritsu' };
       case 'plan':    return { view: 'plan' };  // 旧逆引き(#/jiritsu/区分/項目)は一覧へ
       case 'terms':   return { view: 'terms' };
       case 'curriculum': return seg[1] ? { view: 'topic-item', topic: 'curriculum', id: seg[1] } : { view: 'topic', topic: 'curriculum' };
@@ -303,7 +315,7 @@
         renderJiritsuTable();
       } else if (r.view === 'support') {
         if (maint('support')) renderMaintPage(maint('support'), { href: ROUTES.jiritsu(), label: '自立活動 6区分27項目 一覧へ戻る' });
-        else renderSupport();
+        else renderSupport(r.cat);
       } else if (r.view === 'plan') {
         if (r.legacyPlan) { navigate(ROUTES.plan(), true); return; }
         if (maint('sheet2')) renderMaintPage(maint('sheet2'), { href: ROUTES.home(), label: 'ホームへ戻る' });
@@ -393,7 +405,8 @@
       var catHay = (cat.name + cat.en + cat.overview +
         (cat.needs || []).map(function (n) { return n.k + n.v; }).join('') +
         (cat.instruction || []).map(function (x) { return x.t + x.d; }).join('') +
-        Object.keys(cat.support || {}).map(function (k) { return cat.support[k].join(''); }).join('')
+        Object.keys(cat.support || {}).map(function (k) { return cat.support[k].join(''); }).join('') +
+        v5Hay(cat)
       ).toLowerCase();
       // 病名・概要に加え、支援内容・程度別支援・自立活動の項目名まで探す。
       // 「拡大教材」のような手立ての言葉から、それを要する状態を辿れるように。
@@ -593,7 +606,7 @@
           '<span class="book-card-title">障害のある幼児児童生徒の理解と支援</span>' +
           '<span class="book-card-desc">文部科学省「障害のある子供の教育支援の手引」と「自立活動編」解説に基づき、障害種別・原因疾患ごとの教育的ニーズと支援、学びの場を整理しています。</span>' +
           '<span class="book-card-list">' +
-            '<span>障害種別ガイド　' + DATA.length + '区分・' + total + '件</span>' +
+            '<span>障害種別ガイド　' + DATA.length + '区分・主な疾患' + total + '件</span>' +
             '<span>特別の教育課程　日本語指導・特異な才能</span>' +
             '<span>自立活動　27項目・サポートシート</span>' +
             '<span>計画シート</span>' +
@@ -628,16 +641,18 @@
       '<p>' + DATA.length + 'の障害種別について、原因となる病気・状態別の分類、教育的ニーズ、合理的配慮を含む必要な支援内容、学びの場を整理しています。自立活動の項目は、疾患から引くのではなく、サポートシートの手順で子どもの実態から選びます。左の索引または下の一覧から選んでください。</p>' +
       '<div class="home-stats">' +
         '<div class="home-stat"><b>' + DATA.length + '</b><span>障害種別</span></div>' +
-        '<div class="home-stat"><b>' + total + '</b><span>原因疾患・状態の分類</span></div>' +
+        '<div class="home-stat"><b>' + total + '</b><span>主な疾患・状態</span></div>' +
         '<div class="home-stat"><b>27</b><span>自立活動 項目数</span></div>' +
       '</div>' +
       '<div class="home-grid">';
 
     DATA.forEach(function (cat) {
-      html += '<div class="home-card" data-id="' + esc(cat.id) + '">' +
+      html += '<div class="home-card' + (cat.v5 ? ' v5' : '') + '" data-id="' + esc(cat.id) + '">' +
         '<span class="num">' + esc(cat.num) + '</span>' +
-        '<h4>' + esc(cat.name) + '</h4>' +
-        '<p>' + cat.diseases.length + '種の分類を収録 ／ ' + esc(cat.overview.slice(0, 40)) + '…</p>' +
+        '<h4>' + esc(cat.name) + (cat.v5 ? '<span class="v5-tag">' + esc(cat.v5.axisTypeLabel || '軸で見る') + '</span>' : '') + '</h4>' +
+        '<p>' + (cat.v5
+          ? cat.v5.axes.length + 'つの軸・実態把握の観点・主な疾患' + cat.diseases.length + '件 ／ ' + esc(cat.v5.definition.slice(0, 40)) + '…'
+          : cat.diseases.length + '種の分類を収録 ／ ' + esc(cat.overview.slice(0, 40)) + '…') + '</p>' +
         '</div>';
     });
 
@@ -840,11 +855,209 @@
       '</section>';
   }
 
-  /* ---------- 障害種別ページ ---------- */
+  /* ==========================================================
+     障害種別ページ（版5.0 の型）
+     手引 第3編の各章を一次資料に、「見るべき軸」「実態把握の仕方（校内様式の5欄）」
+     「固有の見方」「指導内容と支援の要点」「学びの場」「主な疾患」「用語」の順で組む。
+     疾患ごとの支援は書かない。自立活動の項目との対応も持たない。
+     「この子の支援を考える」のカードから、障害種の観点を持った状態でサポートシートへ。
+     ========================================================== */
+
+  // 検索用の文字列（v5 の区分）
+  function v5Hay(cat) {
+    var v = cat.v5; if (!v) return '';
+    var out = [v.definition || ''];
+    (v.axes || []).forEach(function (a) { out.push(a.name, (a.levels || []).join(''), a.meaning || ''); });
+    (v.terms || []).forEach(function (t) { out.push(t.term, t.desc); });
+    (v.specific || []).forEach(function (s) { out.push(s.title, (s.body || []).join('')); });
+    return out.join('');
+  }
+
+  // 手引のページ番号の印。章のPDFに飛べるようにする
+  function v5Ref(cat, ref) {
+    if (!ref) return '';
+    var s = SRC[cat.sourceId];
+    var label = '手引 ' + ref;
+    return s && s.url
+      ? ' <a class="v5-ref" href="' + esc(s.url) + '" target="_blank" rel="noopener" title="' + esc(s.title) + '">' + esc(label) + '</a>'
+      : ' <span class="v5-ref">' + esc(label) + '</span>';
+  }
+
+  // 「この子の支援を考える」。障害種の観点だけを渡す（疾患名は渡さない）
+  function v5SupportCard(cat) {
+    var m = maint('support');
+    return '<section class="block v5-think" id="v5-think">' +
+      '<h3 class="block-title">この子の支援を考える<span class="tally">サポートシートへ</span></h3>' +
+      '<div class="v5-think-card">' +
+        '<p>自立活動の項目は、障害名ではなく、この子の実態から選びます。下のボタンを押すと、自立活動サポートシートが「' + esc(cat.name) + '」の実態把握の観点を持った状態で開きます。' +
+        '校内様式の5つの欄に沿って、AIと一緒に実態を整理するところから始められます。</p>' +
+        '<p class="v5-think-sub">渡すのは「' + esc(cat.name) + '」という障害種と、下の「実態把握の仕方」の観点だけです。疾患名や氏名は渡しません。</p>' +
+        '<a class="sp-btn primary v5-think-btn" href="' + ROUTES.support(cat.id) + '">' + esc(cat.name) + 'の観点でサポートシートを開く' + (m ? '<span class="maint-mini">整備中</span>' : '') + '</a>' +
+      '</div></section>';
+  }
+
+  function v5Links(cat, links) {
+    return '<ul class="v5-links">' + (links || []).map(function (l) {
+      var s = l.sourceId ? SRC[l.sourceId] : null;
+      var url = l.url || (s && s.url) || '';
+      var label = l.label || (s ? s.title : url);
+      var pub = s && s.publisher ? '<span class="basis-pub">' + esc(s.publisher) + '</span>' : '';
+      var a = l.route ? '<a href="' + esc(l.route) + '">' + esc(label) + ' ›</a>'
+            : url ? '<a href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(label) + '</a>' : esc(label);
+      return '<li>' + a + pub +
+        (l.note ? '<span class="v5-link-note">' + esc(l.note) + '</span>' : '') + '</li>';
+    }).join('') + '</ul>';
+  }
+
+  function renderCategoryV5(cat, openName) {
+    var v = cat.v5;
+    var toc = [
+      ['v5-axes', '見るべき軸'], ['v5-think', 'この子の支援を考える'], ['v5-assess', '実態把握の仕方'],
+      ['v5-specific', 'この障害種に固有の見方'], ['v5-guidance', '指導内容と支援の要点'], ['v5-places', '学びの場と障害の程度'],
+      ['v5-conditions', '主な疾患・状態'], ['v5-terms', '用語'], ['v5-sources', '出典と関連資料']
+    ];
+
+    /* 1 軸 */
+    var axesHtml = '<section class="block" id="v5-axes">' +
+      '<h3 class="block-title">見るべき軸<span class="tally">' + esc(v.axisTypeLabel || '') + '</span></h3>' +
+      (v.axesIntro ? '<p class="block-sub">' + esc(v.axesIntro) + '</p>' : '') +
+      '<div class="table-scroll"><table class="item-table v5-axes">' +
+      '<thead><tr><th>軸</th><th>区分</th><th>支援上の意味</th></tr></thead><tbody>' +
+      (v.axes || []).map(function (a, i) {
+        return '<tr><td class="item-name"><span class="v5-axis-n">' + (i + 1) + '</span>' + esc(a.name) + v5Ref(cat, a.ref) + '</td>' +
+          '<td>' + (a.levels || []).map(function (l) { return '<span class="v5-level">' + esc(l) + '</span>'; }).join('') + '</td>' +
+          '<td>' + esc(a.meaning) + '</td></tr>';
+      }).join('') + '</tbody></table></div></section>';
+
+    /* 3 実態把握（校内様式の5欄） */
+    var as = v.assessment || {};
+    var assessHtml = '<section class="block" id="v5-assess">' +
+      '<h3 class="block-title">実態把握の仕方<span class="tally">校内様式の5欄に対応</span></h3>' +
+      (v.assessmentIntro ? '<p class="block-sub">' + esc(v.assessmentIntro) + '</p>' : '') +
+      '<div class="v5-assess-grid">' +
+      SP_FORM.map(function (f, i) {
+        var items = as[f.k] || [];
+        return '<div class="v5-assess-card"><p class="v5-assess-head"><span class="sp-num">' + (i + 1) + '</span>' + esc(f.label) + '</p>' +
+          '<ul>' + items.map(function (x) { return '<li>' + esc(x.text) + v5Ref(cat, x.ref) + '</li>'; }).join('') + '</ul></div>';
+      }).join('') + '</div>' +
+      '<div class="v5-assess-two">' +
+        '<div class="v5-assess-card how"><p class="v5-assess-head">集め方・聞き取り先</p><ul>' +
+          (as.how || []).map(function (x) { return '<li>' + esc(x.text) + v5Ref(cat, x.ref) + '</li>'; }).join('') + '</ul></div>' +
+        '<div class="v5-assess-card tests"><p class="v5-assess-head">医療・心理からの報告に出てくる検査・資料</p><dl class="v5-tests">' +
+          (as.tests || []).map(function (t) { return '<dt>' + esc(t.name) + '</dt><dd>' + esc(t.note || '') + v5Ref(cat, t.ref) + '</dd>'; }).join('') + '</dl></div>' +
+      '</div></section>';
+
+    /* 4 固有の見方 */
+    var specHtml = '<section class="block" id="v5-specific">' +
+      '<h3 class="block-title">この障害種に固有の見方</h3>' +
+      (v.specific || []).map(function (s) {
+        return '<div class="v5-spec"><h4>' + esc(s.title) + v5Ref(cat, s.ref) + '</h4><ul class="hk-list">' +
+          (s.body || []).map(hkLi).join('') + '</ul></div>';
+      }).join('') + '</section>';
+
+    /* 5 指導内容と支援 */
+    var g = v.guidance || {};
+    function gList(x) {
+      if (!x) return '';
+      return '<div class="v5-spec"><h4>' + esc(x.label) + v5Ref(cat, x.ref) + '</h4><ul class="hk-list">' +
+        (x.items || []).map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></div>';
+    }
+    var guidHtml = '<section class="block" id="v5-guidance">' +
+      '<h3 class="block-title">指導内容と支援の要点<span class="tally">手引の記述の要点</span></h3>' +
+      (g.intro ? '<div class="section-disclaimer"><b>自立活動の項目との対応付けはしません</b><p>' + esc(g.intro) + '</p></div>' : '') +
+      gList(g.preschool) + gList(g.school) +
+      (g.accommodation ? '<div class="v5-spec"><h4>' + esc(g.accommodation.label) + v5Ref(cat, g.accommodation.ref) + '</h4>' +
+        '<div class="hk-groups">' + (g.accommodation.groups || []).map(function (gr) {
+          return '<div class="hk-group"><h4>' + esc(gr.title) + '</h4><ul class="hk-list">' + gr.items.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></div>';
+        }).join('') + '</div></div>' : '') +
+      '</section>';
+
+    /* 6 学びの場 */
+    var placesHtml = '<section class="block" id="v5-places">' +
+      '<h3 class="block-title">学びの場と障害の程度</h3>' +
+      (v.placesIntro ? '<p class="block-sub">' + esc(v.placesIntro) + '</p>' : '') +
+      (cat.places || []).map(function (p) {
+        return '<div class="place-row"><div class="p-name">' + esc(p.name) + '</div><div>' + esc(p.note) + '</div></div>';
+      }).join('') + '</section>' + legalBlock(cat) + programBlock(cat);
+
+    /* 7 主な疾患・状態 */
+    var n = 0;
+    var hasCond = cat.diseases.length > 0;
+    var condHtml = !hasCond ? '<section class="block" id="v5-conditions">' +
+      '<h3 class="block-title">主な疾患・状態<span class="tally">一覧なし</span></h3>' +
+      '<div class="section-disclaimer"><b>この障害種は疾患の一覧を持ちません</b><p>' + esc(v.conditionsIntro || '') + '</p></div></section>'
+      : '<section class="block" id="v5-conditions">' +
+      '<h3 class="block-title">主な疾患・状態<span class="tally">' + cat.diseases.length + '件</span></h3>' +
+      '<div class="section-disclaimer"><b>医学的な説明は公的な資料へのリンクで</b><p>' + esc(v.conditionsIntro || '') + '</p></div>' +
+      (v.conditionGroups || []).map(function (gr) {
+        return '<div class="v5-cond-group"><h4>' + esc(gr.title) + '</h4>' + gr.items.map(function (c) {
+          var id = 'cond-' + (n++);
+          return '<div class="v5-cond" id="' + id + '" data-name="' + esc(c.name) + '">' +
+            '<p class="v5-cond-head"><b>' + esc(c.name) + '</b><span class="v5-cond-axis">' + esc(c.axis || '') + '</span></p>' +
+            '<p class="v5-cond-line">' + esc(c.line) + v5Ref(cat, c.ref) + '</p>' +
+            v5Links(cat, c.links) +
+          '</div>';
+        }).join('') + '</div>';
+      }).join('') +
+      '<p class="v5-cond-foot">疾患の行からもサポートシートへ入れますが、渡すのは障害種の観点だけです。 <a href="' + ROUTES.support(cat.id) + '">' + esc(cat.name) + 'の観点でサポートシートを開く</a></p>' +
+      '</section>';
+
+    /* 8 用語 */
+    var termsHtml = '<section class="block" id="v5-terms">' +
+      '<h3 class="block-title">用語<span class="tally">報告を読むために</span></h3>' +
+      '<dl class="hk-dl">' + (v.terms || []).map(function (t) {
+        return '<div class="hk-dl-row"><dt>' + esc(t.term) + '</dt><dd>' + esc(t.desc) + v5Ref(cat, t.ref) + '</dd></div>';
+      }).join('') + '</dl></section>';
+
+    /* 10 出典 */
+    var srcHtml = '<section class="block" id="v5-sources">' +
+      '<h3 class="block-title">出典と関連資料</h3>' +
+      '<div class="source-box">' +
+        '<p class="quote">「' + esc(cat.quote) + '」</p>' +
+        '<p class="basis-label">このページが基づく資料</p>' +
+        '<ul class="basis-refs">' + (v.sources || []).map(hkSourceRef).join('') + '</ul>' +
+        ((v.related || []).length ? '<p class="basis-label" style="margin-top:12px;">関連資料</p>' + v5Links(cat, v.related) : '') +
+        '<p style="margin-top:10px;">出典確認 ' + esc(v.reviewed || '') + '。手引の記述は本ツールによる要旨の言い換えで、原文の転載ではありません。ページ番号は章のPDFの位置です。指導計画や会議の根拠にする際は原文をご確認ください。</p>' +
+        feedbackLink(cat.name, 'ページ全体') +
+      '</div></section>';
+
+    mainContent.innerHTML =
+      '<div class="v5-view">' +
+      '<div class="article-head">' +
+        '<div class="article-num">' + esc(cat.num) + '</div>' +
+        '<h2 class="cat-title">' + esc(cat.name) + '<span class="en">' + esc(cat.en) + '</span></h2>' +
+      '</div>' +
+      '<div class="overview">' + esc(v.definition) + v5Ref(cat, v.definitionRef) + '</div>' +
+      '<nav class="hk-toc v5-toc" aria-label="ページ内の移動">' + toc.map(function (t) {
+        return '<a href="javascript:void(0)" data-jump="' + t[0] + '">' + esc(t[1]) + '</a>';
+      }).join('') + '</nav>' +
+      axesHtml + v5SupportCard(cat) + assessHtml + specHtml + guidHtml + placesHtml + condHtml + termsHtml +
+      crossLinksBlock(cat.id) + srcHtml +
+      '</div>';
+
+    playFadeIn();
+    mainContent.querySelectorAll('[data-jump]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        var el = document.getElementById(a.getAttribute('data-jump'));
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+    // 検索から疾患名で来たときは、その行へ寄せて目印を付ける
+    if (openName) {
+      var row = Array.prototype.slice.call(mainContent.querySelectorAll('.v5-cond')).find(function (el) { return el.getAttribute('data-name') === openName; });
+      if (row) {
+        row.classList.add('hit');
+        setTimeout(function () { row.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 120);
+      }
+    }
+  }
+
+  /* ---------- 障害種別ページ（旧型。版5.0へ移行中の区分で使う） ---------- */
 
   function renderMain(id, openDiseaseName) {
     var cat = DATA.find(function (c) { return c.id === id; });
     if (!cat) { renderHome(); return; }
+    if (cat.v5) { renderCategoryV5(cat, openDiseaseName); return; }
 
     var needsHtml = cat.needs.map(function (n) {
       return '<div class="need-card"><span class="k">' + esc(n.k) + '</span><div>' + esc(n.v) + '</div></div>';
@@ -1242,6 +1455,7 @@
     JIRITSU27.forEach(function (g) { byKu[g.ku] = ''; });
     return {
       seed: '',
+      cat: '',         // 障害種の観点（版5.0。障害種ページの「この子の支援を考える」から渡る。疾患名は渡さない）
       level: 'elem',   // 'elem' 幼稚部・小学部・中学部 ／ 'high' 高等部
       stage: '', disability: '',
       status: '', development: '', interest: '', strengths: '', wish: '',
@@ -1323,10 +1537,13 @@
     if (lv.guide) rules.push(lv.guide);
     rules.forEach(function (r, i) { out.push((i + 1) + '. ' + r); });
     out.push('');
+    var sc = spCatOf(d);
     out.push('【本児について（私の入力）】');
     out.push('校種：' + lv.label);
+    if (sc) out.push('障害種（観点の出どころ）：' + sc.name + '。診断名・疾患名は渡しません。');
     out.push(spInputBlock(d));
     out.push('');
+    if (sc) { out.push(spCatBlock(sc)); out.push(''); }
     out.push('【お願いすること】');
     out.push('まず「今、困っていること」を受け止めて、①実態把握の最初の質問を1つだけしてください。私が答えたら要約して確認し、次の質問へ。④の指導目標まで揃ったら、そこまでを一度まとめて見せてください。');
     out.push('私が「それでいい」と言ったら、次の形式でシート（案）を出してください。');
@@ -1380,15 +1597,58 @@
     return filled;
   }
 
-  function spField(id, label, hint, rows) {
+  function spField(id, label, hint, rows, placeholder) {
     return '<label class="sp-field"><span class="sp-label">' + esc(label) +
       (hint ? '<span class="sp-hint">' + esc(hint) + '</span>' : '') + '</span>' +
-      '<textarea data-sp="' + esc(id) + '" rows="' + (rows || 2) + '"></textarea></label>';
+      '<textarea data-sp="' + esc(id) + '" rows="' + (rows || 2) + '"' + (placeholder ? ' placeholder="' + esc(placeholder) + '"' : '') + '></textarea></label>';
   }
 
-  function renderSupport() {
+  // 障害種の観点（版5.0 の区分だけが持つ）。サポートシートが受け取る
+  function spCatOf(d) {
+    if (!d || !d.cat) return null;
+    var c = DATA.find(function (x) { return x.id === d.cat; });
+    return (c && c.v5) ? c : null;
+  }
+  // 5欄ごとの観点を「／」でつないだ薄い文字（書き始めれば消える）
+  function spCatPlaceholder(cat, k) {
+    if (!cat) return '';
+    var items = (cat.v5.assessment || {})[k] || [];
+    return items.map(function (x) { return x.text; }).join('／');
+  }
+  // 指示書に同梱する観点の塊
+  function spCatBlock(cat) {
+    var v = cat.v5, as = v.assessment || {}, out = [];
+    var src = SRC[cat.sourceId];
+    out.push('【実態把握の観点（' + cat.name + '）】');
+    out.push('出典：' + (src ? src.title + (src.edition ? '（' + src.edition + '）' : '') : '障害のある子供の教育支援の手引 第3編'));
+    out.push('①の実態把握では、次の観点を参考に聞き出してください。観点は順に全部聞くものではなく、「今、困っていること」に関係しそうなものから選んで聞いてください。');
+    SP_FORM.forEach(function (f) {
+      var items = as[f.k] || [];
+      if (!items.length) return;
+      out.push('■ ' + f.label);
+      items.forEach(function (x) { out.push('・' + x.text); });
+    });
+    if ((as.how || []).length) { out.push('■ 集め方・聞き取り先'); as.how.forEach(function (x) { out.push('・' + x.text); }); }
+    if ((as.tests || []).length) { out.push('■ 医療・心理からの報告に出てくる検査・資料'); as.tests.forEach(function (t) { out.push('・' + t.name + (t.note ? '（' + t.note + '）' : '')); }); }
+    out.push('※ 障害種の名前から自立活動の項目を引かないでください。項目は①〜④で整理した本児の実態と課題から選びます。');
+    return out.join('\n');
+  }
+
+  function renderSupport(catId) {
     if (!SP) SP = spBlank();
     var d = SP;
+    if (catId !== undefined) d.cat = catId || '';   // URL の ?cat= が優先。無指定なら前回の観点を保つ
+    var sc = spCatOf(d);
+    if (d.cat && !sc) d.cat = '';   // 版5.0 に移行していない区分は観点を持たない
+    var catOptions = '<option value="">（選ばない：汎用の指示書）</option>' + DATA.map(function (c) {
+      return '<option value="' + esc(c.id) + '"' + (c.v5 ? '' : ' disabled') + (sc && sc.id === c.id ? ' selected' : '') + '>' +
+        esc(c.num + ' ' + c.name) + (c.v5 ? '' : '（準備中）') + '</option>';
+    }).join('');
+    var catBanner = sc
+      ? '<div class="sp-cat-banner" role="status"><b>「' + esc(sc.name) + '」の観点で開いています</b>' +
+        '<span>①実態把握の5つの欄に、手引 第3編の観点を薄い文字で出しています。指示書にも同じ観点が入り、AIはそれを参考に質問します。疾患名は渡しません。</span>' +
+        '<a href="' + ROUTES.cat(sc.id) + '">' + esc(sc.name) + 'のページへ戻る</a></div>'
+      : '';
 
     var kuFields = JIRITSU27.map(function (g) {
       return spField('ku:' + g.ku, g.ku, SP_KU_HINT[g.ku] || '', 2);
@@ -1405,11 +1665,16 @@
       '<div class="section-disclaimer"><b>氏名を書かないでください</b>' +
         '<p>「本児」「生徒A」で書きます。入力はこのページの中だけで組み立て、どこにも送信・保存しません。ページを離れると消えます。' +
         'AIに貼るのは先生自身です。校内で許可されたAI（学校アカウントの Copilot など）を使ってください。</p></div>' +
+      catBanner +
 
       '<form class="sp-form" id="spForm" autocomplete="off">' +
 
       '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">1</span>今、困っていることを書く</h3>' +
         '<p class="block-sub">1〜3行でかまいません。ここから先の実態把握と課題の整理は、AIが1つずつ質問して聞き出します。書けない欄を埋める必要はありません。</p>' +
+        '<div class="sp-level sp-cat" aria-label="障害種の観点">' +
+          '<span class="sp-label">障害種の観点を読み込む<span class="sp-hint">障害種ページの「この子の支援を考える」から来ると、選ばれています</span></span>' +
+          '<select id="spCat">' + catOptions + '</select>' +
+        '</div>' +
         '<div class="sp-level" role="radiogroup" aria-label="校種">' +
           '<span class="sp-label">校種</span>' +
           '<label class="sp-radio"><input type="radio" name="spLevel" value="elem" checked> 幼稚部・小学部・中学部<span class="sp-hint">解説 自立活動編（平成30年3月）</span></label>' +
@@ -1427,7 +1692,7 @@
 
       '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">①</span>実態把握</h3>' +
         '<p class="block-sub">校内で使っている「' + SP_FORM_NAME + '」と同じ欄です。書いた分は指示書に「既に分かっていること」として入り、AIは聞き直しません。</p>' +
-        SP_FORM.map(function (f) { return spField(f.k, f.label, f.hint, f.rows); }).join('') +
+        SP_FORM.map(function (f) { return spField(f.k, f.label, f.hint, f.rows, spCatPlaceholder(sc, f.k)); }).join('') +
       '</section>' +
 
       '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">②</span>実態を6区分の観点で整理する</h3>' +
@@ -1479,6 +1744,7 @@
       '</section>' +
       '<div class="source-box">' +
         '<p>手順と観点は次に基づきます。校種で切り替わります。<br>' + srcLink('jiritsu-kaisetsu') + '<br>' + srcLink('mext-koutoubu-kaisetsu') + '</p>' +
+        (sc ? '<p style="margin-top:8px;">「' + esc(sc.name) + '」の実態把握の観点は次に基づきます。<br>' + srcLink(sc.sourceId) + '</p>' : '') +
         '<p style="margin-top:8px;">AIの出力は案です。根拠欄が「仮定」になっている行、AIが「教員が確認すべき点」に挙げた点は、校内の検討で必ず確かめてください。</p>' +
         '<p style="margin-top:8px;">選んだ項目を含む計画（通級・日本語指導・不登校・特異な才能）は、<a href="' + ROUTES.plan() + '">計画シート</a>に書きます。</p>' +
       '</div>' +
@@ -1516,6 +1782,11 @@
       el.addEventListener('input', refresh);
     });
     mainContent.querySelectorAll('input[name="spLevel"]').forEach(function (el) { el.addEventListener('change', refresh); });
+    document.getElementById('spCat').addEventListener('change', function () {
+      readForm();
+      // 観点の切替は画面を描き直す（プレースホルダーと案内が変わる）。履歴は積まない
+      navigate(ROUTES.support(this.value || null), true);
+    });
     mainContent.querySelectorAll('.sp-tabs button').forEach(function (b) {
       b.addEventListener('click', function () {
         mainContent.querySelectorAll('.sp-tabs button').forEach(function (x) { x.classList.remove('on'); });
@@ -1570,7 +1841,8 @@
       if (!t.assess) t.assess = join(SP_FORM.map(function (f) { return d[f.k] && f.label + '：' + d[f.k]; })
         .concat(JIRITSU27.map(function (g) { return d.byKu[g.ku] && g.ku + '：' + d.byKu[g.ku]; })));
       if (!t.issue) t.issue = join([d.issues, d.relations && '関係：' + d.relations, d.central && '中心となる課題：' + d.central, d.goal && '指導目標：' + d.goal]);
-      if (!S2.common.profile && (d.seed || d.status)) S2.common.profile = join([d.seed && '困っていること：' + d.seed, d.status]);
+      var scat = spCatOf(d);
+      if (!S2.common.profile && (d.seed || d.status || scat)) S2.common.profile = join([scat && '障害種：' + scat.name, d.seed && '困っていること：' + d.seed, d.status]);
       if (!S2.common.strength && (d.strengths || d.interest)) S2.common.strength = join([d.strengths, d.interest]);
       if (!S2.common.wish && d.wish) S2.common.wish = d.wish;
       if (!S2.common.stage && d.stage) S2.common.stage = d.stage;
@@ -2174,7 +2446,7 @@
       '<p>' + esc(META.disclaimer.long) + '</p>' +
       '<p class="footer-meta">' +
         '最終更新 ' + esc(META.updated) + '（版 ' + esc(META.version) + '）／ ' +
-        '収録 ' + DATA.length + '区分・' +
+        '収録 ' + DATA.length + '区分・主な疾患 ' +
         DATA.reduce(function (s, c) { return s + c.diseases.length; }, 0) + '件／ ' +
         '特別の教育課程 ' + TOPICS.curriculum.items.length + '件／ 生徒指導上の課題 ' + TOPICS.seito.items.length + '件／ ' +
         '出典 ' + SOURCES.length + '件（詳細は上部タブ「出典・リンク集」）' +
@@ -2266,6 +2538,15 @@
     SOURCES = bundle.sources;
     JIRITSU27 = bundle.jiritsu27;
     DATA = bundle.categories;
+    // 版5.0 の区分：<id>.json が配列ではなく1つのオブジェクト。疾患は検索・件数のために平らにしておく
+    DATA.forEach(function (c) {
+      if (Array.isArray(c.diseases)) return;
+      c.v5 = c.diseases;
+      c.diseases = [];
+      (c.v5.conditionGroups || []).forEach(function (g) {
+        (g.items || []).forEach(function (x) { c.diseases.push({ name: x.name, overview: (x.axis ? x.axis + '。' : '') + x.line, support: [] }); });
+      });
+    });
     TOPICS.curriculum.items = bundle.curriculum || [];
     TOPICS.seito.items = bundle.seito || [];
     LINKS = bundle.links || [];

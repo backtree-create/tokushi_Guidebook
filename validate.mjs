@@ -54,9 +54,15 @@ for (const c of categories) {
   if (catIds.has(c.id)) err(`categories.json に重複ID: ${c.id}`);
   catIds.add(c.id);
 
-  for (const k of ['num', 'name', 'en', 'overview', 'needs', 'instruction', 'support', 'places', 'quote', 'sourceId']) {
+  const V5 = c.v5 === true;
+  const reqKeys = V5
+    ? ['num', 'name', 'en', 'overview', 'places', 'quote', 'sourceId']
+    : ['num', 'name', 'en', 'overview', 'needs', 'instruction', 'support', 'places', 'quote', 'sourceId'];
+  for (const k of reqKeys) {
     if (c[k] == null) err(`${c.id}: ${k} がありません`);
   }
+  // 版5.0 の区分は、旧型の編集項目（needs / instruction / support）を持たない
+  if (V5) for (const k of ['needs', 'instruction', 'support']) if (c[k] != null) err(`${c.id}: 版5.0 の区分に ${k} が残っています（本文は ${c.id}.json へ）`);
   if (!srcIds.has(c.sourceId)) err(`${c.id}: sourceId "${c.sourceId}" が sources.json にありません`);
 
   // 法令が定める程度は条文の引用。出典と注意書きを必ず伴わせる
@@ -102,7 +108,72 @@ for (const c of categories) {
 
   const dp = `${c.id}.json`;
   if (!fs.existsSync(path.join(root, dp))) { err(`${dp} がありません`); continue; }
-  const diseases = rj(dp);
+  const raw = rj(dp);
+
+  /* --- 3b. 版5.0 の区分（<id>.json が1つのオブジェクト） ---
+     軸・実態把握（校内様式の5欄）・固有の見方・指導内容・疾患（公的資料へのリンクのみ）・用語・出典。
+     疾患ごとの支援は持たない。自立活動との対応も持たない。 */
+  if (V5) {
+    if (Array.isArray(raw)) { err(`${dp}: 版5.0 の区分なのに旧型の配列です`); continue; }
+    const v = raw, w = `${dp}`;
+    if (v.v5 !== true || v.id !== c.id) err(`${w}: v5: true と id: "${c.id}" が必要です`);
+    for (const k of ['definition', 'axes', 'assessment', 'specific', 'guidance', 'conditionGroups', 'terms', 'sources', 'reviewed', 'axisType', 'axisTypeLabel']) {
+      if (v[k] == null || (Array.isArray(v[k]) && !v[k].length && !(k === 'conditionGroups' && v.axisType === 'profile'))) err(`${w}: ${k} がありません`);
+    }
+    // 疾患一覧を持たない区分（言語・LD・ADHD など）は axisType: profile に限り空を許す。その場合 conditionsIntro で理由を書く
+    if (Array.isArray(v.conditionGroups) && !v.conditionGroups.length && !v.conditionsIntro) err(`${w}: 疾患一覧が空なら conditionsIntro にその理由を書いてください`);
+    if (!['function', 'disease', 'profile'].includes(v.axisType)) err(`${w}: axisType は function / disease / profile のいずれか`);
+    for (const a of v.axes || []) {
+      if (!a.name || !Array.isArray(a.levels) || !a.levels.length || !a.meaning) err(`${w}: axes の各行には name / levels / meaning が必要です（${a.name || '?'}）`);
+    }
+    const as = v.assessment || {};
+    for (const k of ['status', 'development', 'interest', 'strengths', 'wish', 'how', 'tests']) {
+      if (!Array.isArray(as[k]) || !as[k].length) err(`${w}: assessment.${k} がありません（校内様式の5欄＋集め方＋検査）`);
+    }
+    for (const k of ['status', 'development', 'interest', 'strengths', 'wish', 'how']) for (const x of as[k] || []) if (!x.text) err(`${w}: assessment.${k} に text のない行があります`);
+    for (const t of as.tests || []) if (!t.name) err(`${w}: assessment.tests に name のない行があります`);
+    for (const sp of v.specific || []) if (!sp.title || !Array.isArray(sp.body) || !sp.body.length) err(`${w}: specific の各節には title と body が必要です`);
+    const g = v.guidance || {};
+    if (!g.school || !Array.isArray(g.school.items) || !g.school.items.length) err(`${w}: guidance.school がありません`);
+    if (!g.accommodation || !Array.isArray(g.accommodation.groups) || !g.accommodation.groups.length) err(`${w}: guidance.accommodation がありません`);
+    if (v.guidance && (v.guidance.jiritsu || v.jiritsu)) err(`${w}: 自立活動との対応（jiritsu）は持ちません`);
+    const seenC = new Set();
+    for (const gr of v.conditionGroups || []) {
+      if (!gr.title || !Array.isArray(gr.items) || !gr.items.length) err(`${w}: conditionGroups の各群には title と items が必要です`);
+      for (const x of gr.items || []) {
+        const where = `${w} ${x.name || '(名前なし)'}`;
+        totalDiseases++;
+        if (!x.name || !x.line) err(`${where}: name / line が必要です`);
+        if (x.support || x.severity) err(`${where}: 疾患ごとの支援（support / severity）は版5.0で廃止しました`);
+        if (!Array.isArray(x.links) || !x.links.length) err(`${where}: 公的資料へのリンク（links）が1件以上必要です。出典のない疾患は載せません`);
+        for (const l of x.links || []) {
+          if (!l.url || !/^https:\/\//.test(l.url)) err(`${where}: links の url が https ではありません`);
+          if (!l.sourceId || !srcIds.has(l.sourceId)) err(`${where}: links.sourceId "${l.sourceId}" が sources.json にありません`);
+          if (!l.label) err(`${where}: links に label がありません`);
+        }
+        if (seenC.has(x.name)) err(`${where}: 同じ区分内で疾患名が重複しています`);
+        seenC.add(x.name);
+        if (!allNames.has(x.name)) allNames.set(x.name, []);
+        allNames.get(x.name).push(c.id);
+      }
+    }
+    for (const t of v.terms || []) if (!t.term || !t.desc) err(`${w}: terms の各行には term と desc が必要です`);
+    for (const sid of v.sources || []) if (!srcIds.has(sid)) err(`${w}: sources の "${sid}" が sources.json にありません`);
+    if (!(v.sources || []).includes(c.sourceId)) err(`${w}: sources に区分の sourceId "${c.sourceId}"（手引の章）が必要です`);
+    for (const r of v.related || []) {
+      if (r.sourceId && !srcIds.has(r.sourceId)) err(`${w}: related.sourceId "${r.sourceId}" が sources.json にありません`);
+      if (!r.sourceId && !r.route && !r.url) err(`${w}: related「${r.label}」には sourceId / url / route のいずれかが必要です`);
+      if (r.route && !/^#\/c\/[a-z]+$/.test(r.route)) err(`${w}: related.route "${r.route}" は #/c/<区分id> の形で`);
+      if (r.url && !/^https:\/\//.test(r.url)) err(`${w}: related.url が https ではありません`);
+    }
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(v.reviewed || '')) err(`${w}: reviewed が YYYY-MM-DD ではありません`);
+    const flat = JSON.stringify(v);
+    if (/要確認|TODO|TBD/.test(flat)) err(`${w}: 「要確認」「TODO」「TBD」が本文に残っています`);
+    if (/(?<!幼児)児童生徒(?!理解)|子供(?!の教育支援|SOS)/.test(flat.replace(/障害のある子供の教育支援の手引/g, ''))) warn(`${w}: 「児童生徒」「子供」が本文にあります（自前の文は「幼児児童生徒」「子ども」に）`);
+    continue;
+  }
+  const diseases = raw;
+  if (!Array.isArray(diseases)) { err(`${dp}: 旧型の区分なのに配列ではありません（版5.0 にするなら categories.json に v5: true）`); continue; }
   totalDiseases += diseases.length;
 
   const seen = new Set();

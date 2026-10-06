@@ -2295,3 +2295,117 @@
   @media print{
     .form-line{background:#fff !important;border-color:#666 !important;}
   }
+
+  /* ==========================================================
+     版5.0 障害種別ページの新しい型（軸・実態把握・固有の見方・疾患）
+     ========================================================== */
+  .v5-view .overview{margin-bottom:10px;}
+  .v5-toc{margin-top:14px;}
+  .v5-ref{
+    display:inline-block;margin-left:6px;padding:1px 6px;border-radius:3px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.02em;line-height:1.5;vertical-align:middle;
+    color:var(--ink-faint);background:var(--paper2);border:1px solid var(--line);text-decoration:none;white-space:nowrap;
+  }
+  a.v5-ref:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-soft);}
+  .item-table a.v5-ref[target="_blank"]::after{content:none;}
+
+  /* 軸の表 */
+  table.v5-axes td.item-name{width:170px;}
+  .v5-axis-n{
+    display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;margin-right:6px;border-radius:50%;
+    background:var(--navy);color:#fff;font-family:var(--mono);font-size:11px;vertical-align:middle;
+  }
+  .v5-level{
+    display:inline-block;margin:2px 6px 2px 0;padding:2px 8px;border-radius:3px;
+    background:var(--tag-bg);color:var(--tag-fg);font-size:12.5px;line-height:1.6;
+  }
+  @media (max-width:640px){table.v5-axes td.item-name{width:120px;}}
+
+  /* この子の支援を考える */
+  .v5-think-card{
+    background:var(--card);border:1px solid var(--gold-line);border-left:5px solid var(--gold);border-radius:3px;
+    padding:18px 22px 20px;box-shadow:var(--shadow);
+  }
+  .v5-think-card p{margin:0 0 10px;font-size:14.5px;line-height:1.85;color:var(--ink);}
+  .v5-think-card .v5-think-sub{font-size:12.5px;color:var(--ink-faint);}
+  .v5-think-btn{display:inline-block;text-decoration:none;margin-top:4px;}
+  .v5-think-btn .maint-mini{margin-left:8px;font-size:11px;color:var(--tone-warn-fg);}
+
+  /* 実態把握（5欄） */
+  .v5-assess-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:6px;}
+  .v5-assess-two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-top:12px;}
+  .v5-assess-card{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:14px 18px 12px;}
+  .v5-assess-card.how,.v5-assess-card.tests{background:var(--paper2);}
+  .v5-assess-head{
+    display:flex;align-items:center;gap:8px;margin:0 0 8px;font-family:var(--sans);font-weight:700;font-size:14px;color:var(--ink-strong);
+    padding-bottom:8px;border-bottom:1px solid var(--line);
+  }
+  .v5-assess-card ul{margin:0;padding-left:18px;}
+  .v5-assess-card li{font-size:13.5px;line-height:1.8;margin:3px 0;color:var(--ink);}
+  .v5-tests{margin:0;}
+  .v5-tests dt{font-weight:700;font-size:13.5px;color:var(--ink-strong);margin-top:6px;}
+  .v5-tests dd{margin:0 0 4px;font-size:13px;color:var(--ink-soft);line-height:1.7;}
+
+  /* 固有の見方・指導内容 */
+  .v5-spec{margin:12px 0 0;}
+  .v5-spec h4{
+    margin:0 0 6px;font-family:var(--sans);font-size:14.5px;font-weight:700;color:var(--ink-strong);
+    padding-left:10px;border-left:4px solid var(--gold);
+  }
+  .v5-spec .hk-list{margin-top:2px;}
+  .v5-spec .hk-groups{margin-top:8px;}
+
+  /* 主な疾患・状態 */
+  .v5-cond-group{margin-top:14px;}
+  .v5-cond-group > h4{
+    margin:0 0 6px;font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--ink-faint);text-transform:none;
+  }
+  .v5-cond{
+    background:var(--card);border:1px solid var(--line);border-radius:3px;padding:12px 16px;margin-bottom:8px;
+    transition:box-shadow .25s,border-color .25s;
+  }
+  .v5-cond.hit{border-color:var(--gold-line);box-shadow:0 0 0 3px var(--gold-soft);}
+  .v5-cond-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:0 0 4px;}
+  .v5-cond-head b{font-size:15px;color:var(--ink-strong);}
+  .v5-cond-axis{
+    font-size:11.5px;padding:2px 8px;border-radius:3px;background:var(--tone-info-bg);color:var(--tone-info-fg);border:1px solid var(--tone-info-bd);
+  }
+  .v5-cond-line{margin:0 0 6px;font-size:13.5px;line-height:1.8;color:var(--ink);}
+  .v5-links{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:4px 14px;}
+  .v5-links li{font-size:12.5px;line-height:1.7;}
+  .v5-links li a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;}
+  .v5-links .basis-pub{margin-left:4px;color:var(--ink-faint);font-size:11.5px;}
+  .v5-links .v5-link-note{display:block;color:var(--ink-faint);font-size:11.5px;}
+  .v5-cond-foot{margin:12px 0 0;font-size:13px;color:var(--ink-soft);}
+  .v5-cond-foot a{color:var(--accent);}
+  .source-box .v5-links{display:block;}
+  .source-box .v5-links li{margin:2px 0;}
+
+  /* ホームのカードの印 */
+  .home-card .v5-tag{
+    display:inline-block;margin-left:8px;padding:1px 7px;border-radius:3px;vertical-align:middle;
+    font-size:11px;font-weight:600;letter-spacing:.04em;background:var(--gold-soft);color:var(--navy);
+  }
+
+  /* サポートシートが障害種の観点を受け取ったとき */
+  .sp-cat-banner{
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin:0 0 16px;padding:12px 16px;
+    background:var(--card);border:1px solid var(--gold-line);border-left:5px solid var(--gold);border-radius:3px;
+  }
+  .sp-cat-banner b{font-size:14.5px;color:var(--ink-strong);}
+  .sp-cat-banner span{flex:1 1 100%;font-size:13px;line-height:1.75;color:var(--ink-soft);}
+  .sp-cat-banner a{font-size:13px;color:var(--accent);}
+  .sp-cat select{
+    font:inherit;font-size:14px;padding:6px 10px;border:1px solid var(--line-strong);border-radius:3px;background:var(--card);color:var(--ink);min-width:240px;
+  }
+  .sp-field textarea::placeholder{color:var(--ink-faint);opacity:.75;font-size:12.5px;}
+
+  @media (prefers-color-scheme: dark){
+    .v5-axis-n{background:var(--gold);color:var(--navy);}
+    .v5-level{background:#1e2a36;color:#cfe0f2;}
+    .home-card .v5-tag{color:#10151a;}
+  }
+
+  /* 版5.0.1：実態把握の見出しの番号の円が横に伸びないように */
+  .v5-assess-head .sp-num{flex:0 0 auto;width:24px;height:24px;min-width:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;padding:0;}
+  .v5-links li a[href^="#/"]{text-decoration:none;font-weight:600;}
