@@ -888,9 +888,7 @@
     return '<section class="block v5-think" id="v5-think">' +
       '<h3 class="block-title">この子の支援を考える<span class="tally">サポートシートへ</span></h3>' +
       '<div class="v5-think-card">' +
-        '<p>自立活動の項目は、障害名ではなく、この子の実態から選びます。下のボタンを押すと、自立活動サポートシートが「' + esc(cat.name) + '」の実態把握の観点を持った状態で開きます。' +
-        '校内様式の5つの欄に沿って、AIと一緒に実態を整理するところから始められます。</p>' +
-        '<p class="v5-think-sub">渡すのは「' + esc(cat.name) + '」という障害種と、下の「実態把握の仕方」の観点だけです。疾患名や氏名は渡しません。</p>' +
+        '<p>自立活動サポートシートが「' + esc(cat.name) + '」の実態把握の項目と観点を持った状態で開きます。校内様式の5つの欄に沿って、AIと一緒に実態を整理するところから始められます。</p>' +
         '<a class="sp-btn primary v5-think-btn" href="' + ROUTES.support(cat.id) + '">' + esc(cat.name) + 'の観点でサポートシートを開く' + (m ? '<span class="maint-mini">整備中</span>' : '') + '</a>' +
       '</div></section>';
   }
@@ -962,7 +960,7 @@
         (x.items || []).map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></div>';
     }
     var guidHtml = '<section class="block" id="v5-guidance">' +
-      '<h3 class="block-title">指導内容と支援の要点<span class="tally">手引の記述の要点</span></h3>' +
+      '<h3 class="block-title">指導内容と支援の要点</h3>' +
       '<p class="block-sub">手引がこの障害種について挙げている指導内容と支援の要点です。</p>' +
       gList(g.preschool) + gList(g.school) +
       (g.accommodation ? '<div class="v5-spec"><h4>' + esc(g.accommodation.label) + v5Ref(cat, g.accommodation.ref) + '</h4>' +
@@ -983,11 +981,11 @@
     var n = 0;
     var hasCond = cat.diseases.length > 0;
     var condHtml = !hasCond ? '<section class="block" id="v5-conditions">' +
-      '<h3 class="block-title">主な疾患・状態<span class="tally">一覧なし</span></h3>' +
-      '<div class="section-disclaimer"><b>この障害種は疾患の一覧を持ちません</b><p>' + esc(v.conditionsIntro || '') + '</p></div></section>'
+      '<h3 class="block-title">主な疾患・状態</h3>' +
+      '<p class="block-sub">' + esc(v.conditionsIntro || '') + '</p></section>'
       : '<section class="block" id="v5-conditions">' +
       '<h3 class="block-title">主な疾患・状態<span class="tally">' + cat.diseases.length + '件</span></h3>' +
-      '<div class="section-disclaimer"><b>医学的な説明は公的な資料へのリンクで</b><p>' + esc(v.conditionsIntro || '') + '</p></div>' +
+      '<p class="block-sub">' + esc(v.conditionsIntro || '') + '</p>' +
       (v.conditionGroups || []).map(function (gr) {
         return '<div class="v5-cond-group"><h4>' + esc(gr.title) + '</h4>' + gr.items.map(function (c) {
           var id = 'cond-' + (n++);
@@ -998,12 +996,12 @@
           '</div>';
         }).join('') + '</div>';
       }).join('') +
-      '<p class="v5-cond-foot">疾患の行からもサポートシートへ入れますが、渡すのは障害種の観点だけです。 <a href="' + ROUTES.support(cat.id) + '">' + esc(cat.name) + 'の観点でサポートシートを開く</a></p>' +
+      '<p class="v5-cond-foot"><a href="' + ROUTES.support(cat.id) + '">' + esc(cat.name) + 'の観点でサポートシートを開く</a></p>' +
       '</section>';
 
     /* 8 用語 */
     var termsHtml = '<section class="block" id="v5-terms">' +
-      '<h3 class="block-title">用語<span class="tally">報告を読むために</span></h3>' +
+      '<h3 class="block-title">用語</h3>' +
       '<dl class="hk-dl">' + (v.terms || []).map(function (t) {
         return '<div class="hk-dl-row"><dt>' + esc(t.term) + '</dt><dd>' + esc(t.desc) + v5Ref(cat, t.ref) + '</dd></div>';
       }).join('') + '</dl></section>';
@@ -1016,7 +1014,7 @@
         '<p class="basis-label">このページが基づく資料</p>' +
         '<ul class="basis-refs">' + (v.sources || []).map(hkSourceRef).join('') + '</ul>' +
         ((v.related || []).length ? '<p class="basis-label" style="margin-top:12px;">関連資料</p>' + v5Links(cat, v.related) : '') +
-        '<p style="margin-top:10px;">出典確認 ' + esc(v.reviewed || '') + '。手引の記述は本ツールによる要旨の言い換えで、原文の転載ではありません。ページ番号は章のPDFの位置です。指導計画や会議の根拠にする際は原文をご確認ください。</p>' +
+        '<p style="margin-top:10px;">出典確認 ' + esc(v.reviewed || '') + '。手引の記述は要旨です。「手引 p.○」は章のPDFのページで、指導計画や会議の根拠にする際は原文をご確認ください。</p>' +
         feedbackLink(cat.name, 'ページ全体') +
       '</div></section>';
 
@@ -1662,7 +1660,7 @@
       parts.push('<p class="sp-cat-ref-head">' + esc(x.label) + '</p><ul>' + x.items.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>');
     });
     if (!parts.length) return '';
-    return '<details class="sp-cat-ref"><summary>参考：手引が「' + esc(cat.name) + '」について挙げている指導内容<span class="sp-hint">6区分の観点で書かれています。本児に当てはまるものだけを下の欄に書いてください</span></summary>' +
+    return '<details class="sp-cat-ref"><summary>手引が「' + esc(cat.name) + '」について挙げている指導内容<span class="sp-hint">本児に当てはまるものを下の欄に書く手掛かりに</span></summary>' +
       '<div class="sp-cat-ref-body">' + parts.join('') + '</div></details>';
   }
   // 観点を「・観点：」の下書きとして空の欄に入れる
@@ -1750,7 +1748,7 @@
     }).join('');
     var catBanner = sc
       ? '<div class="sp-cat-banner" role="status"><b>「' + esc(sc.name) + '」の観点で開いています</b>' +
-        '<span>①実態把握の5つの欄に、手引 第3編の観点を薄い文字で出しています。指示書にも同じ観点が入り、AIはそれを参考に質問します。疾患名は渡しません。</span>' +
+        '<span>①実態把握に、この障害種の項目と観点が入ります。指示書にも同じ観点が入り、AIはそれを参考に質問します。</span>' +
         '<a href="' + ROUTES.cat(sc.id) + '">' + esc(sc.name) + 'のページへ戻る</a></div>'
       : '';
 
