@@ -2463,3 +2463,53 @@
   @media (max-width:640px){
     .lk-view table.item-table{table-layout:auto;min-width:560px;}
   }
+
+  /* ==========================================================
+     版5.5.0 障害種別ページの見やすさ：節の区切り・軸のカード・疾患の行・出典の印
+     ========================================================== */
+  /* 節：番号付きの見出しと余白で区切る */
+  .v5-view section.block{margin-top:40px;padding-top:0;}
+  .v5-view section.block > h3.block-title{font-size:19px;padding-bottom:10px;margin-bottom:14px;border-bottom:2px solid var(--line-strong);}
+  .v5-view section.block > h3.block-title .tally{font-size:12px;}
+  .v5-view .block-sub{margin:0 0 14px;color:var(--ink-soft);}
+  /* 目次：画面上部に貼り付く */
+  .v5-toc{position:sticky;top:0;z-index:5;margin:14px -8px 10px;padding:10px 8px;background:var(--paper);border-bottom:1px solid var(--line);gap:6px;}
+  .v5-toc a{font-size:12.5px;padding:5px 10px 5px 6px;display:inline-flex;align-items:center;gap:6px;}
+  .v5-toc-n{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--mono);font-size:11px;}
+  /* 出典の印：目立たせない */
+  .v5-view .v5-ref,.sp-f .v5-ref{background:none;border:none;padding:0;margin-left:6px;font-size:11px;color:var(--ink-faint);}
+  .v5-view a.v5-ref:hover{background:none;border:none;color:var(--accent);text-decoration:underline;}
+  /* 軸：カードを縦に並べ、区分と意味を左右に */
+  .v5-axis-list{display:flex;flex-direction:column;gap:10px;}
+  .v5-axis{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:14px 18px 12px;}
+  .v5-axis-head{display:flex;align-items:center;gap:8px;margin:0 0 10px;font-family:var(--sans);font-size:15.5px;font-weight:700;color:var(--ink-strong);}
+  .v5-axis-body{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,4fr);gap:8px 24px;}
+  .v5-axis-lab{display:block;margin-bottom:4px;font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--ink-faint);}
+  .v5-axis-levels .v5-level{display:block;width:fit-content;margin:0 0 5px;padding:4px 10px;font-size:13.5px;line-height:1.6;}
+  .v5-axis-meaning{margin:0;font-size:14px;line-height:1.85;color:var(--ink);}
+  @media (max-width:720px){.v5-axis-body{grid-template-columns:1fr;}}
+  /* 実態把握：カードの見出しを少し大きく */
+  .v5-assess-head{font-size:15px;}
+  /* 疾患：枠を減らし、区切り線で並べる。リンクは右（狭い画面では下） */
+  .v5-cond-group{margin-top:22px;}
+  .v5-cond-group > h4{font-size:14px;color:var(--ink-strong);padding:6px 0;border-bottom:2px solid var(--line-strong);margin-bottom:0;}
+  .v5-cond{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:4px 20px;align-items:start;background:none;border:none;border-bottom:1px solid var(--line);border-radius:0;padding:12px 4px;margin:0;}
+  .v5-cond:last-child{border-bottom:none;}
+  .v5-cond.hit{background:var(--tone-warn-bg);box-shadow:none;border-left:4px solid var(--gold);padding-left:10px;}
+  .v5-cond-head{margin:0 0 2px;}
+  .v5-cond-head b{font-size:15.5px;}
+  .v5-cond-axis{border:none;background:none;padding:0;color:var(--ink-faint);font-size:12px;}
+  .v5-cond-axis::before{content:"— ";}
+  .v5-cond-line{margin:0;font-size:14px;line-height:1.8;}
+  .v5-cond-links .v5-links{flex-direction:column;gap:3px;padding-top:2px;}
+  .v5-cond-links .v5-links li{font-size:12.5px;line-height:1.6;}
+  .v5-cond-links .v5-links li a{text-decoration:none;color:var(--accent);}
+  .v5-cond-links .v5-links li a::before{content:"↗ ";color:var(--ink-faint);}
+  .v5-cond-links .v5-links li a:hover{text-decoration:underline;}
+  @media (max-width:760px){.v5-cond{grid-template-columns:1fr;}}
+  /* 用語：行間を広げる */
+  .v5-view .hk-dl-row{padding:8px 0;}
+  @media (prefers-color-scheme: dark){
+    .v5-toc{background:var(--paper);}
+    .v5-cond.hit{background:#2a2410;}
+  }

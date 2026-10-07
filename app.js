@@ -898,7 +898,7 @@
       var s = l.sourceId ? SRC[l.sourceId] : null;
       var url = l.url || (s && s.url) || '';
       var label = l.label || (s ? s.title : url);
-      var pub = s && s.publisher ? '<span class="basis-pub">' + esc(s.publisher) + '</span>' : '';
+      var pub = '';
       var a = l.route ? '<a href="' + esc(l.route) + '">' + esc(label) + ' ›</a>'
             : url ? '<a href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(label) + '</a>' : esc(label);
       return '<li>' + a + pub +
@@ -918,13 +918,15 @@
     var axesHtml = '<section class="block" id="v5-axes">' +
       '<h3 class="block-title">見るべき軸<span class="tally">' + esc(v.axisTypeLabel || '') + '</span></h3>' +
       (v.axesIntro ? '<p class="block-sub">' + esc(v.axesIntro) + '</p>' : '') +
-      '<div class="table-scroll"><table class="item-table v5-axes">' +
-      '<thead><tr><th>軸</th><th>区分</th><th>支援上の意味</th></tr></thead><tbody>' +
+      '<div class="v5-axis-list">' +
       (v.axes || []).map(function (a, i) {
-        return '<tr><td class="item-name"><span class="v5-axis-n">' + (i + 1) + '</span>' + esc(a.name) + v5Ref(cat, a.ref) + '</td>' +
-          '<td>' + (a.levels || []).map(function (l) { return '<span class="v5-level">' + esc(l) + '</span>'; }).join('') + '</td>' +
-          '<td>' + esc(a.meaning) + '</td></tr>';
-      }).join('') + '</tbody></table></div></section>';
+        return '<div class="v5-axis">' +
+          '<p class="v5-axis-head"><span class="v5-axis-n">' + (i + 1) + '</span>' + esc(a.name) + v5Ref(cat, a.ref) + '</p>' +
+          '<div class="v5-axis-body">' +
+            '<div class="v5-axis-levels"><span class="v5-axis-lab">区分</span>' + (a.levels || []).map(function (l) { return '<span class="v5-level">' + esc(l) + '</span>'; }).join('') + '</div>' +
+            '<p class="v5-axis-meaning"><span class="v5-axis-lab">支援上の意味</span>' + esc(a.meaning) + '</p>' +
+          '</div></div>';
+      }).join('') + '</div></section>';
 
     /* 3 実態把握（校内様式の5欄） */
     var as = v.assessment || {};
@@ -990,9 +992,11 @@
         return '<div class="v5-cond-group"><h4>' + esc(gr.title) + '</h4>' + gr.items.map(function (c) {
           var id = 'cond-' + (n++);
           return '<div class="v5-cond" id="' + id + '" data-name="' + esc(c.name) + '">' +
-            '<p class="v5-cond-head"><b>' + esc(c.name) + '</b><span class="v5-cond-axis">' + esc(c.axis || '') + '</span></p>' +
-            '<p class="v5-cond-line">' + esc(c.line) + v5Ref(cat, c.ref) + '</p>' +
-            v5Links(cat, c.links) +
+            '<div class="v5-cond-main">' +
+              '<p class="v5-cond-head"><b>' + esc(c.name) + '</b>' + (c.axis ? '<span class="v5-cond-axis">' + esc(c.axis) + '</span>' : '') + '</p>' +
+              '<p class="v5-cond-line">' + esc(c.line) + v5Ref(cat, c.ref) + '</p>' +
+            '</div>' +
+            '<div class="v5-cond-links">' + v5Links(cat, c.links) + '</div>' +
           '</div>';
         }).join('') + '</div>';
       }).join('') +
@@ -1025,8 +1029,8 @@
         '<h2 class="cat-title">' + esc(cat.name) + '<span class="en">' + esc(cat.en) + '</span></h2>' +
       '</div>' +
       '<div class="overview">' + esc(v.definition) + v5Ref(cat, v.definitionRef) + '</div>' +
-      '<nav class="hk-toc v5-toc" aria-label="ページ内の移動">' + toc.map(function (t) {
-        return '<a href="javascript:void(0)" data-jump="' + t[0] + '">' + esc(t[1]) + '</a>';
+      '<nav class="hk-toc v5-toc" aria-label="ページ内の移動">' + toc.map(function (t, i) {
+        return '<a href="javascript:void(0)" data-jump="' + t[0] + '"><span class="v5-toc-n">' + (i + 1) + '</span>' + esc(t[1]) + '</a>';
       }).join('') + '</nav>' +
       axesHtml + v5SupportCard(cat) + assessHtml + specHtml + guidHtml + placesHtml + condHtml + termsHtml +
       crossLinksBlock(cat.id) + srcHtml +
