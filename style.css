@@ -2448,3 +2448,18 @@
   .sp-img-note{margin-bottom:12px;}
   @media (prefers-color-scheme: dark){ .sp-thumb img{background:#fff;} .sp-mini.danger{color:#f0a0a0;} }
   .sp-img-state{font:inherit;font-size:13.5px;padding:5px 8px;border:1px solid var(--line-strong);border-radius:3px;background:var(--paper);color:var(--ink);}
+
+  /* 版5.4.0：出典・リンク集の表 */
+  .lk-view table.item-table{table-layout:fixed;min-width:0;width:100%;}
+  .lk-view table.item-table td{word-break:break-word;vertical-align:top;}
+  .lk-view table.item-table td.item-name{width:auto;}
+  .lk-view .src-note{display:block;margin-top:3px;font-weight:400;font-size:12px;color:var(--ink-faint);line-height:1.6;}
+  .lk-view td.lk-date{font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);white-space:nowrap;}
+  .lk-src-group{
+    display:flex;align-items:center;justify-content:space-between;margin:22px 0 8px;padding-left:10px;border-left:4px solid var(--gold);
+    font-family:var(--sans);font-size:14.5px;font-weight:700;color:var(--ink-strong);
+  }
+  .lk-src-group .tally{font-weight:400;font-size:12px;color:var(--ink-faint);}
+  @media (max-width:640px){
+    .lk-view table.item-table{table-layout:auto;min-width:560px;}
+  }

@@ -40,6 +40,8 @@ for (const s of sources) {
   if (!['pinned', 'latest'].includes(s.policy)) err(`sources.json: policy が不正 (${s.id}: ${s.policy})`);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(s.checked || '')) err(`sources.json: checked が不正 (${s.id})`);
   if (s.url && !/^https:\/\//.test(s.url)) err(`sources.json: url が https ではありません (${s.id})`);
+  if (!['mext', 'law', 'gov', 'medical', 'school-health', 'classification', 'research'].includes(s.group)) err(`sources.json: group が不正 (${s.id}: ${s.group})。mext / law / gov / medical / school-health / classification / research`);
+  if (s.tier === 'research' && s.group !== 'research') err(`sources.json: tier research の出典は group も research に (${s.id})`);
 }
 
 /* --- 3. カテゴリ --- */

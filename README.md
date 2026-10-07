@@ -201,6 +201,12 @@ python3 -m http.server 8000
 
 ## 参考資料の管理
 
+### 版5.4.0〜 の表示ルール
+
+- 出典・リンク集の「参照資料の一覧」は `group`（mext / law / gov / medical / school-health / classification / research）ごとに分けて表示する。validate が group を必須にしている
+- 画面に出るのは 資料名・`note`（読み手向けの一言）・発行・`edition`・`checked` だけ。`policy` / `review` / `indexUrl` / `watch` / `kind` は自動化（リンクチェック・更新検知・年次棚卸し）のためのもので画面には出さない
+- 編集者向けのメモ（URLの形式、未確認の事情、移転の経緯など）は `editorNote` に書く。`note` には書かない
+
 URL は `sources.json` にのみ書きます。画面のフッターと「出典・リンク集」タブは、このファイルから自動生成されます。
 
 各資料には更新方針を持たせています。

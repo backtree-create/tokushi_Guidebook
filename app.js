@@ -1307,14 +1307,22 @@
 
   function renderTerms() {
     var tm = META.termMap;
+    var GROUPS = [
+      ['mext', '文部科学省の手引・解説・資料'],
+      ['law', '法令・通知'],
+      ['gov', '関係省庁・国の機関'],
+      ['medical', '医療（疾患データベース・学会・医療機関）'],
+      ['school-health', '学校保健の様式'],
+      ['classification', '診断分類']
+    ];
 
-    var html = '<div class="jiritsu-table-wrap">' +
+    var html = '<div class="jiritsu-table-wrap lk-view">' +
       '<div class="article-head">' +
         '<div class="article-num" style="border-radius:3px;">典</div>' +
-        '<h2 class="cat-title">出典・リンク集<span class="en">Sources &amp; Links by Purpose</span></h2>' +
+        '<h2 class="cat-title">出典・リンク集<span class="en">Sources &amp; Links</span></h2>' +
       '</div>' +
-      '<div class="overview">目的別に公的資料を並べています。参照している資料の一覧と、診断名と教育上の区分の対応表はページの後半にあります。</div>' +
-      '<nav class="lk-jump" aria-label="ページ内の移動">' +
+      '<div class="overview">目的別の案内、診断名と教育上の区分の対応表、参照している資料の一覧です。</div>' +
+      '<nav class="hk-toc" aria-label="ページ内の移動">' +
         '<a href="javascript:void(0)" data-jump="lk-guide">目的別リンク</a>' +
         '<a href="javascript:void(0)" data-jump="termmap">診断名の対応表</a>' +
         '<a href="javascript:void(0)" data-jump="srclist">参照資料の一覧</a>' +
@@ -1325,47 +1333,47 @@
       '<div class="ku-group" id="termmap">' +
         '<div class="ku-heading"><span class="ku-index">1</span><h3>教育上の区分と医学的診断名の対応</h3></div>' +
         '<p class="block-sub">' + esc(tm.note) + '</p>' +
-        '<div class="table-scroll"><table class="item-table">' +
-        '<thead><tr><th>本ツールの見出し（学校教育法・文部科学省）</th><th>医学的診断名（DSM-5-TR ／ ICD-11）</th><th>補足</th></tr></thead><tbody>';
+        '<div class="table-scroll"><table class="item-table lk-termtable">' +
+        '<colgroup><col style="width:30%"><col style="width:38%"><col style="width:32%"></colgroup>' +
+        '<thead><tr><th>本ツールの見出し</th><th>医学的診断名（DSM-5-TR ／ ICD-11）</th><th>補足</th></tr></thead><tbody>';
     tm.rows.forEach(function (r) {
       html += '<tr><td class="item-name">' + esc(r.edu) + '</td><td>' + esc(r.med) + '</td><td>' + esc(r.memo) + '</td></tr>';
     });
     html += '</tbody></table></div></div>';
 
-    /* 出典一覧：確立した資料と研究段階の知見を分けて示す */
+    /* 参照資料の一覧：列幅を固定し、資料名・発行・版・確認日の4列で揃える */
     function sourceTable(list) {
-      var t = '<div class="table-scroll"><table class="item-table">' +
-        '<thead><tr><th>資料</th><th>発行</th><th>版・時点</th><th>更新方針</th></tr></thead><tbody>';
+      var t = '<div class="table-scroll"><table class="item-table lk-srctable">' +
+        '<colgroup><col style="width:46%"><col style="width:26%"><col style="width:16%"><col style="width:12%"></colgroup>' +
+        '<thead><tr><th>資料</th><th>発行</th><th>版・時点</th><th>確認日</th></tr></thead><tbody>';
       list.forEach(function (s) {
         var name = s.url
           ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + '</a>'
           : esc(s.title);
-        var extra = s.indexUrl
-          ? '<br><span class="src-index">一覧：<a href="' + esc(s.indexUrl) + '" target="_blank" rel="noopener">' + esc(s.indexUrl) + '</a></span>'
-          : '';
-        var note = s.note ? '<br><span class="src-note">' + esc(s.note) + '</span>' : '';
-        var policy = s.policy === 'latest'
-          ? '<span class="policy-tag latest">常に最新を参照' + (s.review ? '／' + esc(s.review) + '見直し' : '') + '</span>'
-          : '<span class="policy-tag pinned">特定版の固定引用</span>';
-        t += '<tr><td class="item-name">' + name + extra + note + '</td>' +
+        var note = s.note ? '<span class="src-note">' + esc(s.note) + '</span>' : '';
+        t += '<tr><td class="item-name">' + name + note + '</td>' +
              '<td>' + esc(s.publisher || '—') + '</td>' +
              '<td>' + esc(s.edition || '—') + '</td>' +
-             '<td>' + policy + '<br><span class="src-note">確認 ' + esc(s.checked) + '</span></td></tr>';
+             '<td class="lk-date">' + esc(s.checked || '—') + '</td></tr>';
       });
       return t + '</tbody></table></div>';
     }
 
-    var established = SOURCES.filter(function (s) { return s.tier !== 'research'; });
     var research = SOURCES.filter(function (s) { return s.tier === 'research'; });
-
     html += '<div class="ku-group" id="srclist">' +
-      '<div class="ku-heading"><span class="ku-index">2</span><h3>参照資料の一覧（一次資料・公的データベース・学会等）</h3></div>' +
-      sourceTable(established) + '</div>';
+      '<div class="ku-heading"><span class="ku-index">2</span><h3>参照資料の一覧</h3></div>' +
+      '<p class="block-sub">確認日は、リンク先の内容を本ツールが最後に確かめた日です。</p>';
+    GROUPS.forEach(function (g) {
+      var list = SOURCES.filter(function (s) { return s.tier !== 'research' && (s.group || 'medical') === g[0]; });
+      if (!list.length) return;
+      html += '<h4 class="lk-src-group">' + esc(g[1]) + '<span class="tally">' + list.length + '件</span></h4>' + sourceTable(list);
+    });
+    html += '</div>';
 
     html += '<div class="ku-group" id="research">' +
       '<div class="ku-heading"><span class="ku-index">3</span><h3>研究段階の知見</h3></div>' +
       '<div class="section-disclaimer"><b>診断・指導の基準ではありません</b>' +
-      '<p>以下は個別の研究発表です。DSM-5-TR／ICD-11 のような確立した診断分類とは位置づけが異なります。本ツールの記述の背景として挙げているもので、就学相談や指導計画の根拠として用いるものではありません。</p></div>' +
+      '<p>個別の研究発表です。本ツールの記述の背景として挙げているもので、就学相談や指導計画の根拠には用いません。</p></div>' +
       sourceTable(research) + '</div>';
 
     html += '<div class="source-box"><p>' + esc(META.disclaimer.long) + '</p></div></div>';
