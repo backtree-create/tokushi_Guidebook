@@ -2513,3 +2513,18 @@
     .v5-toc{background:var(--paper);}
     .v5-cond.hit{background:#2a2410;}
   }
+
+  /* 版5.5.1：見るべき軸を「左に軸名、右に区分と意味」の行にする */
+  .v5-axis-list{gap:0;}
+  .v5-axis{display:grid;grid-template-columns:190px minmax(0,1fr);gap:4px 24px;background:none;border:none;border-bottom:1px solid var(--line);border-radius:0;padding:16px 4px;}
+  .v5-axis:first-child{border-top:1px solid var(--line);}
+  .v5-axis-head{flex-direction:column;align-items:flex-start;gap:6px;margin:0;font-size:15px;line-height:1.5;}
+  .v5-axis-head .v5-ref{margin-left:0;}
+  .v5-axis-body{display:block;}
+  .v5-axis-lab{display:none;}
+  .v5-axis-levels{display:flex;flex-wrap:wrap;gap:6px 8px;margin-bottom:8px;}
+  .v5-axis-levels .v5-level{display:inline-block;width:auto;margin:0;padding:3px 10px;font-size:13px;}
+  .v5-axis-meaning{font-size:14px;color:var(--ink-soft);}
+  @media (max-width:720px){.v5-axis{grid-template-columns:1fr;gap:8px;}}
+  .v5-axis-head{flex-direction:row;flex-wrap:wrap;align-items:center;gap:8px;}
+  .v5-axis-head .v5-ref{flex-basis:100%;margin-top:-2px;}
