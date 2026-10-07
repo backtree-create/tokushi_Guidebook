@@ -1455,8 +1455,7 @@
     return {
       seed: '',
       cat: '',         // 障害種の観点（版5.0。障害種ページの「この子の支援を考える」から渡る。疾患名は渡さない）
-      f: {},           // 障害種ごとの項目（版5.3。キーは 区分id:項目k）
-      img: [],         // 取り込んだ画像 {id, cat, k, name, dataUrl}。ページ内だけ。送信も保存もしない
+      f: {},           // 障害種ごとの項目（版5.3。キーは 区分id:項目k）。資料（type: image）は有無だけを持つ
       level: 'elem',   // 'elem' 幼稚部・小学部・中学部 ／ 'high' 高等部
       stage: '', disability: '',
       status: '', development: '', interest: '', strengths: '', wish: '',
@@ -1485,11 +1484,7 @@
   function spFKey(cat, x) { return cat.id + ':' + x.k; }
   function spFieldVal(d, cat, x) {
     var v = d.f[spFKey(cat, x)];
-    if (x.type === 'image') {
-      var n = d.img.filter(function (im) { return im.cat === cat.id && im.k === x.k; }).length;
-      if (n) return '画像' + n + '枚（この指示書と一緒に添付）';
-      return v === 'later' ? '手元にある（AIに求められたら渡す）' : v === 'none' ? 'なし' : '';
-    }
+    if (x.type === 'image') return v === 'later' ? '手元にある（AIに求められたら渡す）' : v === 'none' ? 'なし・未確認' : '';
     if (v == null || v === '') return '';
     return x.type === 'number' && x.unit ? v + x.unit : String(v);
   }
@@ -1503,24 +1498,13 @@
     if (d[k]) lines.push(d[k]);
     return lines.join('\n');
   }
-  function spImages(d, cat) { return cat ? d.img.filter(function (im) { return im.cat === cat.id; }) : []; }
   // 「手元にあるが、まだ渡していない」資料の一覧
   function spPendingList(d, cat) {
     if (!cat) return [];
     return (cat.v5.fields || []).filter(function (x) {
-      return x.type === 'image' && d.f[spFKey(cat, x)] === 'later' && !d.img.some(function (im) { return im.cat === cat.id && im.k === x.k; });
+      return x.type === 'image' && d.f[spFKey(cat, x)] === 'later';
     }).map(function (x) { return x.label; });
   }
-  function spImageList(d, cat) {
-    var ims = spImages(d, cat); if (!ims.length) return '';
-    var byK = {};
-    ims.forEach(function (im) { byK[im.k] = (byK[im.k] || 0) + 1; });
-    return Object.keys(byK).map(function (k) {
-      var f = (cat.v5.fields || []).find(function (x) { return x.k === k; });
-      return (f ? f.label : k) + '（' + byK[k] + '枚）';
-    }).join('、');
-  }
-
   // 詳しい欄に何か書いてあるか
   function spHasAdvanced(d) {
     if (SP_FORM.some(function (f) { return spColText(d, f.k); }) || d.issues || d.relations || d.central || d.goal) return true;
@@ -1591,17 +1575,11 @@
     out.push(spInputBlock(d));
     out.push('');
     if (sc) { out.push(spCatBlock(sc)); out.push(''); }
-    if (sc && spImages(d, sc).length) {
-      out.push('【添付する画像（この指示書と一緒に貼ります）】');
-      out.push(spImageList(d, sc));
-      out.push('画像から読み取れることは①の実態把握に使ってください。読み取れない部分や数値の解釈に迷う部分は、推測せずに私に聞いてください。画像に氏名などが写っていたら、それは使わず指摘してください。');
-      out.push('');
-    }
     var pend = sc ? spPendingList(d, sc) : [];
     if (pend.length) {
       out.push('【手元にある資料（まだ渡していません）】');
       pend.forEach(function (t) { out.push('・' + t); });
-      out.push('①の実態把握でこれらの資料が必要になった時点で、「○○の画像を貼ってください」と私に求めてください。私が貼るまで、その中身を推測して進めないでください。貼った画像から読み取れることを要約して確認してから、次の質問に進んでください。');
+      out.push('①の実態把握でこれらの資料が必要になった時点で、「○○の内容（数値や所見）を教えてください」と私に求めてください。私が伝えるまで、その中身を推測して進めないでください。伝えた内容を要約して確認してから、次の質問に進んでください。氏名などは伝えません。');
       out.push('');
     }
     out.push('【お願いすること】');
@@ -1684,7 +1662,7 @@
       parts.push('<p class="sp-cat-ref-head">' + esc(x.label) + '</p><ul>' + x.items.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>');
     });
     if (!parts.length) return '';
-    return '<details class="sp-cat-ref"><summary>手引が「' + esc(cat.name) + '」について挙げている指導内容（参考）<span class="sp-hint">6区分の観点で書かれています。本児に当てはまるものだけを下の欄に書いてください</span></summary>' +
+    return '<details class="sp-cat-ref"><summary>参考：手引が「' + esc(cat.name) + '」について挙げている指導内容<span class="sp-hint">6区分の観点で書かれています。本児に当てはまるものだけを下の欄に書いてください</span></summary>' +
       '<div class="sp-cat-ref-body">' + parts.join('') + '</div></details>';
   }
   // 観点を「・観点：」の下書きとして空の欄に入れる
@@ -1733,7 +1711,7 @@
       var key = spFKey(cat, x), v = d.f[key] == null ? '' : d.f[key];
       var lab = '<span class="sp-label">' + esc(x.label) + (x.hint ? '<span class="sp-hint">' + esc(x.hint) + '</span>' : '') + v5Ref(cat, x.ref) + '</span>';
       if (x.type === 'select') {
-        return '<label class="sp-field sp-f sp-f-select">' + lab + '<select data-spf="' + esc(key) + '"><option value="">（未選択）</option>' +
+        return '<label class="sp-field sp-f sp-f-select">' + lab + '<select data-spf="' + esc(key) + '"><option value="">—</option>' +
           x.options.map(function (o) { return '<option value="' + esc(o) + '"' + (v === o ? ' selected' : '') + '>' + esc(o) + '</option>'; }).join('') + '</select></label>';
       }
       if (x.type === 'number') {
@@ -1745,16 +1723,10 @@
           x.options.map(function (o) { return '<label class="sp-check-item"><input type="checkbox" value="' + esc(o) + '"' + (sel.indexOf(o) >= 0 ? ' checked' : '') + '> ' + esc(o) + '</label>'; }).join('') + '</div></div>';
       }
       if (x.type === 'image') {
-        var ims = d.img.filter(function (im) { return im.cat === cat.id && im.k === x.k; });
-        return '<div class="sp-field sp-f sp-f-image">' + lab +
-          '<div class="sp-img-row">' +
-          '<select data-spf="' + esc(key) + '" class="sp-img-state"><option value=""' + (v === '' ? ' selected' : '') + '>（未選択）</option>' +
+        return '<label class="sp-field sp-f sp-f-select">' + lab +
+          '<select data-spf="' + esc(key) + '"><option value=""' + (v === '' ? ' selected' : '') + '>—</option>' +
             '<option value="none"' + (v === 'none' ? ' selected' : '') + '>なし・未確認</option>' +
-            '<option value="later"' + (v === 'later' ? ' selected' : '') + '>手元にある（AIに求められたら渡す）</option>' +
-            '<option value="here"' + (v === 'here' ? ' selected' : '') + '>ここに取り込む</option></select>' +
-          '<label class="sp-btn sp-img-add">画像を取り込む<input type="file" accept="image/*" multiple data-spimg="' + esc(x.k) + '" hidden></label>' +
-          '<span class="sp-hint">「手元にある」を選ぶと、AIが必要になった時点で貼るよう求めてきます。取り込めば指示書と一緒に添付する形になります</span></div>' +
-          '<div class="sp-thumbs" data-spthumbs="' + esc(x.k) + '">' + ims.map(spThumbHtml).join('') + '</div></div>';
+            '<option value="later"' + (v === 'later' ? ' selected' : '') + '>手元にある</option></select></label>';
       }
       if (x.type === 'textarea') {
         return '<label class="sp-field sp-f">' + lab + '<textarea data-spf="' + esc(key) + '" rows="2">' + esc(v) + '</textarea></label>';
@@ -1766,47 +1738,15 @@
       spField(f.k, fields.length ? '補足・自由記述' : f.label, f.hint, f.rows, fields.length ? '' : spCatPlaceholder(cat, f.k)) +
       '</div>';
   }
-  function spThumbHtml(im) {
-    return '<figure class="sp-thumb" data-imgid="' + esc(im.id) + '"><img src="' + im.dataUrl + '" alt="">' +
-      '<figcaption><span class="sp-thumb-name">' + esc(im.name) + '</span>' +
-      '<button type="button" class="sp-mini" data-imgcopy="' + esc(im.id) + '">コピー</button>' +
-      '<button type="button" class="sp-mini" data-imgdl="' + esc(im.id) + '">保存</button>' +
-      '<button type="button" class="sp-mini danger" data-imgdel="' + esc(im.id) + '">削除</button></figcaption></figure>';
-  }
-  var spImgSeq = 0;
-  function spReadImage(file, cb) {
-    var r = new FileReader();
-    r.onload = function () {
-      // 大きい画像は長辺1600pxに縮める（ページ内の負担と、AIに貼るときの扱いやすさのため）
-      var img = new Image();
-      img.onload = function () {
-        var max = 1600, w = img.width, h = img.height, sc = Math.min(1, max / Math.max(w, h));
-        var c = document.createElement('canvas'); c.width = Math.round(w * sc); c.height = Math.round(h * sc);
-        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
-        cb(c.toDataURL('image/png'));
-      };
-      img.onerror = function () { cb(null); };
-      img.src = r.result;
-    };
-    r.readAsDataURL(file);
-  }
-  function spCopyImage(dataUrl, done) {
-    try {
-      fetch(dataUrl).then(function (r) { return r.blob(); }).then(function (blob) {
-        return navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-      }).then(function () { done(true); }, function () { done(false); });
-    } catch (e) { done(false); }
-  }
-
   function renderSupport(catId) {
     if (!SP) SP = spBlank();
     var d = SP;
     if (catId !== undefined) d.cat = catId || '';   // URL の ?cat= が優先。無指定なら前回の観点を保つ
     var sc = spCatOf(d);
     if (d.cat && !sc) d.cat = '';   // 版5.0 に移行していない区分は観点を持たない
-    var catOptions = '<option value="">（選ばない：汎用の指示書）</option>' + DATA.map(function (c) {
+    var catOptions = '<option value="">選ばない</option>' + DATA.map(function (c) {
       return '<option value="' + esc(c.id) + '"' + (c.v5 ? '' : ' disabled') + (sc && sc.id === c.id ? ' selected' : '') + '>' +
-        esc(c.num + ' ' + c.name) + (c.v5 ? '' : '（準備中）') + '</option>';
+        esc(c.num + ' ' + c.name) + '' + '</option>';
     }).join('');
     var catBanner = sc
       ? '<div class="sp-cat-banner" role="status"><b>「' + esc(sc.name) + '」の観点で開いています</b>' +
@@ -1836,27 +1776,26 @@
       '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">1</span>今、困っていることを書く</h3>' +
         '<p class="block-sub">1〜3行でかまいません。ここから先の実態把握と課題の整理は、AIが1つずつ質問して聞き出します。書けない欄を埋める必要はありません。</p>' +
         '<div class="sp-level sp-cat" aria-label="障害種の観点">' +
-          '<span class="sp-label">障害種の観点を読み込む<span class="sp-hint">障害種ページの「この子の支援を考える」から来ると、選ばれています</span></span>' +
+          '<span class="sp-label">障害種の観点<span class="sp-hint">障害種ページから来ると選ばれています</span></span>' +
           '<select id="spCat">' + catOptions + '</select>' +
         '</div>' +
         '<div class="sp-level" role="radiogroup" aria-label="校種">' +
           '<span class="sp-label">校種</span>' +
-          '<label class="sp-radio"><input type="radio" name="spLevel" value="elem" checked> 幼稚部・小学部・中学部<span class="sp-hint">解説 自立活動編（平成30年3月）</span></label>' +
-          '<label class="sp-radio"><input type="radio" name="spLevel" value="high"> 高等部<span class="sp-hint">高等部学習指導要領・解説 総則等編 第9章（平成31年2月）</span></label>' +
+          '<label class="sp-radio"><input type="radio" name="spLevel" value="elem" checked> 幼稚部・小学部・中学部</label>' +
+          '<label class="sp-radio"><input type="radio" name="spLevel" value="high"> 高等部<span class="sp-hint">根拠が高等部学習指導要領に切り替わります</span></label>' +
         '</div>' +
         spField('seed', '今、困っていること', (sc && sc.v5.sheet && sc.v5.sheet.seed) || '例：授業中に急に立ち歩く。注意すると余計に興奮する。どこから手を付けていいか分からない', 3) +
         '<div class="sp-two">' +
-          '<label class="sp-field"><span class="sp-label">校種・学年（任意）</span><input type="text" data-sp="stage" placeholder="例：中学部2年"></label>' +
-          '<label class="sp-field"><span class="sp-label">主たる障害・状態（任意）<span class="sp-hint">診断名の細部は不要</span></span><input type="text" data-sp="disability" placeholder="例：知的障害を伴う自閉症"></label>' +
+          '<label class="sp-field"><span class="sp-label">校種・学年<span class="sp-hint">任意</span></span><input type="text" data-sp="stage" placeholder="例：中学部2年"></label>' +
+          '<label class="sp-field"><span class="sp-label">主たる障害・状態<span class="sp-hint">任意。診断名の細部は不要</span></span><input type="text" data-sp="disability" placeholder="例：知的障害を伴う自閉症"></label>' +
         '</div>' +
-        spField('ask', '特に相談したいこと（任意）', (sc && sc.v5.sheet && sc.v5.sheet.ask) || '迷っている点、校内で意見が分かれている点など', 2) +
+        spField('ask', '特に相談したいこと', (sc && sc.v5.sheet && sc.v5.sheet.ask) || '迷っている点、校内で意見が分かれている点など', 2) +
       '</section>' +
 
-      '<details class="sp-adv"' + (sc ? ' open' : '') + '><summary>書けるところまで書いておく（任意）<span class="sp-hint">書いてある欄はAIが聞き直しません。空欄のままでかまいません</span></summary>' +
+      '<details class="sp-adv"' + (sc ? ' open' : '') + '><summary>書けるところまで書いておく<span class="sp-hint">書いてある欄はAIが聞き直しません。空欄のままでかまいません</span></summary>' +
 
       '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">①</span>実態把握</h3>' +
         '<p class="block-sub">校内で使っている「' + SP_FORM_NAME + '」と同じ欄です。書いた分は指示書に「既に分かっていること」として入り、AIは聞き直しません。</p>' +
-        (sc ? '<div class="section-disclaimer sp-img-note"><b>画像を取り込むときは、氏名・生年月日などが写っていないか確かめてください</b><p>画像はこのページの中だけに置かれ、送信も保存もしません。ページを離れると消えます。AIに渡すときは、指示書を貼ったあとに同じ画像を先生が添付します。</p></div>' : '') +
         SP_FORM.map(function (f) { return sc ? spColHtml(sc, f, d) : spField(f.k, f.label, f.hint, f.rows); }).join('') +
       '</section>' +
 
@@ -1953,43 +1892,6 @@
     });
     mainContent.querySelectorAll('[data-spf]').forEach(function (el) { el.addEventListener('input', refresh); el.addEventListener('change', refresh); });
     mainContent.querySelectorAll('[data-spf-group] input').forEach(function (el) { el.addEventListener('change', refresh); });
-    // 画像の取り込み・コピー・保存・削除
-    mainContent.querySelectorAll('[data-spimg]').forEach(function (inp) {
-      inp.addEventListener('change', function () {
-        var k = inp.getAttribute('data-spimg'), files = Array.prototype.slice.call(inp.files || []);
-        var wrap = mainContent.querySelector('[data-spthumbs="' + k + '"]');
-        files.forEach(function (file) {
-          spReadImage(file, function (dataUrl) {
-            if (!dataUrl) return;
-            var im = { id: 'im' + (++spImgSeq), cat: sc.id, k: k, name: file.name, dataUrl: dataUrl };
-            d.img.push(im);
-            wrap.insertAdjacentHTML('beforeend', spThumbHtml(im));
-            var st = mainContent.querySelector('select[data-spf="' + sc.id + ':' + k + '"]'); if (st) st.value = 'here';
-            refresh();
-          });
-        });
-        inp.value = '';
-      });
-    });
-    mainContent.addEventListener('click', function (e) {
-      var b = e.target.closest('[data-imgdel],[data-imgcopy],[data-imgdl]'); if (!b) return;
-      var note = document.getElementById('spCopied');
-      function say(t) { note.textContent = t; setTimeout(function () { note.textContent = ''; }, 4000); }
-      if (b.hasAttribute('data-imgdel')) {
-        var id = b.getAttribute('data-imgdel');
-        d.img = d.img.filter(function (im) { return im.id !== id; });
-        var fig = b.closest('.sp-thumb'); if (fig) fig.remove();
-        refresh(); return;
-      }
-      var im = d.img.find(function (x) { return x.id === b.getAttribute('data-imgcopy') || x.id === b.getAttribute('data-imgdl'); });
-      if (!im) return;
-      if (b.hasAttribute('data-imgcopy')) {
-        spCopyImage(im.dataUrl, function (ok) { say(ok ? '画像をコピーしました。AIの入力欄に貼り付けてください。' : 'このブラウザでは画像をコピーできません。「保存」して添付してください。'); });
-      } else {
-        var a = document.createElement('a'); a.href = im.dataUrl; a.download = (im.name || 'image').replace(/\.[^.]+$/, '') + '.png'; document.body.appendChild(a); a.click(); a.remove();
-      }
-    });
-    mainContent.querySelectorAll('input[name="spLevel"]').forEach(function (el) { el.addEventListener('change', refresh); });
     document.getElementById('spCat').addEventListener('change', function () {
       readForm();
       // 観点の切替は画面を描き直す（プレースホルダーと案内が変わる）。履歴は積まない

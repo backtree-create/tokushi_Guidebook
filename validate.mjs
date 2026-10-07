@@ -173,7 +173,7 @@ for (const c of categories) {
       if ((x.type === 'select' || x.type === 'checks') && (!Array.isArray(x.options) || x.options.length < 2)) err(`${w}: fields "${x.k}" に options（2つ以上）が必要です`);
       if (/氏名|名前|生年月日/.test(x.label)) err(`${w}: fields "${x.k}" は氏名・生年月日を扱う項目です。サポートシートでは扱いません`);
     }
-    if (!(v.fields || []).some(x => x.type === 'image')) warn(`${w}: 画像の項目（type: image）がありません`);
+    if (!(v.fields || []).some(x => x.type === 'image')) warn(`${w}: 資料の有無の項目（type: image）がありません`);
     for (const sid of v.sources || []) if (!srcIds.has(sid)) err(`${w}: sources の "${sid}" が sources.json にありません`);
     if (!(v.sources || []).includes(c.sourceId)) err(`${w}: sources に区分の sourceId "${c.sourceId}"（手引の章）が必要です`);
     for (const r of v.related || []) {

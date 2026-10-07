@@ -34,6 +34,7 @@
 - 各行の `ref` は手引の章PDFのページ番号。画面では「手引 p.90」の印になり、章のPDFへ飛ぶ
 - 疾患は `links` が1件以上ないと validate が落ちる（出典のない疾患は載せない）。`support / severity` を持つと落ちる。`axisType: profile` の区分だけは `conditionGroups` を空にでき（言語・LD・ADHD）、その場合 `conditionsIntro` に理由を書く
 - 疾患の並びは50音順にしない。群の中は、手引の記載と学齢期の頻度を踏まえて主要なものを先に置く（校内からの指摘：小眼球症が視覚障害の先頭に来るのはおかしい）。`conditionsIntro` の末尾に並び方の方針を一言書く
+- 項目名・選択肢に括弧書きの説明を付けない（版5.3.3の指摘）。補足は `hint` に短く書く。右／左、遠用／近用、自走／介助のように語の一部になっているものだけ残す
 - `related` の各行は `sourceId` / `url` / `route`（`#/c/<区分id>`、他の障害種ページへの内部リンク）のいずれかを持つ
 - 節3「この子の支援を考える」は `app.js` の `v5SupportCard`。`#/jiritsu/support?cat=<id>` でサポートシートへ。渡すのは障害種の id だけ（疾患名・氏名は渡さない）
 - 検索と件数のために、`boot()` で `conditionGroups` を平らにして `cat.diseases`（name / overview）に入れる。検索で疾患名に当たると `#/c/<id>/<疾患名>` で該当行に目印を付ける
@@ -45,7 +46,7 @@
 - 1の欄の「障害種の観点を読み込む」プルダウンで、障害種ページを経由せずに同じ状態にできる（版5.0 に移行していない区分は「準備中」で選べない）。切替は `navigate(…, true)` で URL を置き換えて描き直す
 - 観点は `SP.cat` に持つ。URL に `?cat=` がない場合は前回の観点を保つ
 - 計画シートへ送るとき、共通シート「実態の概要」の先頭に「障害種：聴覚障害」が入る
-- 版5.3.0〜：①実態把握は障害種ごとの項目（各 json の `fields`。`{k,label,type,col,options,unit,hint,ref}`、type は select / number / text / textarea / checks / image、col は校内様式の5欄）で入力する。値は `SP.f["区分id:項目k"]`、画像は `SP.img`（dataURL、ページ内のみ）。欄の本文は `spColText` が「項目：値」の行＋自由記述で組み立て、指示書・校内様式へ貼る用テキスト・計画シートで共通。画像は指示書に「添付する画像」の一覧として入り、先生が「コピー」か「保存」でAIに添付する。氏名・生年月日を扱う項目は validate が落とす。画像の項目は有無の選択（none / later / here）を持ち、later なら指示書に「手元にある資料（まだ渡していません）」として入り、AIが必要な時点で求める（`spPendingList`）
+- 版5.3.0〜：①実態把握は障害種ごとの項目（各 json の `fields`。`{k,label,type,col,options,unit,hint,ref}`、type は select / number / text / textarea / checks / image、col は校内様式の5欄）で入力する。値は `SP.f["区分id:項目k"]`。欄の本文は `spColText` が「項目：値」の行＋自由記述で組み立て、指示書・校内様式へ貼る用テキスト・計画シートで共通。氏名・生年月日を扱う項目は validate が落とす。type: image は「資料の有無」で、値は none / later だけ（版5.3.2で画像の取り込みは廃止。AIに自動で渡せないため）。later なら指示書に「手元にある資料（まだ渡していません）」として入り、AIが必要な時点で内容を教えるよう求める（`spPendingList`）
 - 版5.2.0〜：観点を持つと、例文（各 json の `sheet.seed / sheet.ask`）が障害種ごとに変わる、②の上に手引の指導内容（`guidance.preschool / school`）を参考として折りたたみ表示（`spCatGuidanceHtml`）、指示書にも同じ一覧を「参考」として同梱。詳しい欄は最初から開く
 - やらないこと：障害種→項目の対応表（AIにも「障害種から項目を引かない」と指示。手引の指導内容は6区分の観点で書かれているが、参考として渡すだけで区分や項目に割り付けない）、疾患名の受け渡し
 
