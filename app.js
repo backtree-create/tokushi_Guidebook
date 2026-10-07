@@ -661,7 +661,7 @@
       '<span>' + (maint('seito') ? esc(maint('seito').title) :
         '不登校・ヤングケアラーなど、生徒指導提要に基づく課題は「指導提要ガイドブック」へ。障害種別の各ページからも関連する課題へ飛べます。') + '</span>' +
       '<a href="' + ROUTES.seito() + '">指導提要ガイドブックを開く</a></div>';
-    html += '<div class="disclaimer">' + esc(META.disclaimer.long) + '</div></div>';
+    html += '</div>';
 
     mainContent.innerHTML = html;
     playFadeIn();
@@ -1376,7 +1376,7 @@
       '<p>個別の研究発表です。本ツールの記述の背景として挙げているもので、就学相談や指導計画の根拠には用いません。</p></div>' +
       sourceTable(research) + '</div>';
 
-    html += '<div class="source-box"><p>' + esc(META.disclaimer.long) + '</p></div></div>';
+    html += '</div>';
 
     mainContent.innerHTML = html;
     playFadeIn();
