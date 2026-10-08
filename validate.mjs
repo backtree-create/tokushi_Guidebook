@@ -393,17 +393,26 @@ for (const g of links) {
     if (!catIds.has(d.cat)) err(`tsujo.json check: domain「${d.label}」の cat "${d.cat}" が categories.json にありません`);
   }
   if (!Array.isArray(t.check?.result?.next) || !t.check.result.next.length) err('tsujo.json check.result.next がありません');
-  const kinds = new Set((t.tedate?.kinds || []).map(k => k.id));
+  const checkLinks = (where, links) => {
+    if (!Array.isArray(links) || !links.length) { err(`tsujo.json tedate ${where}: links がありません`); return; }
+    for (const l of links) {
+      if (!l.label) err(`tsujo.json tedate ${where}: label のない行があります`);
+      if (l.sourceId && !srcIds.has(l.sourceId)) err(`tsujo.json tedate ${where}: sourceId "${l.sourceId}" が sources.json にありません`);
+      if (!l.sourceId && !l.url && !l.route) err(`tsujo.json tedate ${where}「${l.label}」: sourceId / url / route のいずれかが必要です`);
+      if (l.url && !/^https:\/\//.test(l.url)) err(`tsujo.json tedate ${where}「${l.label}」: url が https ではありません`);
+      if (l.route && !topicRoutesLater.has(l.route)) err(`tsujo.json tedate ${where}「${l.label}」: route "${l.route}" は存在しない画面です`);
+    }
+  };
+  const topicRoutesLater = topicRoutes;
+  checkLinks('common', t.tedate?.common);
+  checkLinks('dev', t.tedate?.dev);
   const seenCats = new Set();
   for (const c of t.tedate?.cats || []) {
     if (!catIds.has(c.cat)) err(`tsujo.json tedate: cat "${c.cat}" が categories.json にありません`);
     seenCats.add(c.cat);
-    for (const x of c.items || []) {
-      if (!kinds.has(x.k)) err(`tsujo.json tedate ${c.cat}: k "${x.k}" は kinds にありません`);
-      if (!x.text) err(`tsujo.json tedate ${c.cat}: text のない行があります`);
-    }
+    checkLinks(c.cat, c.links);
   }
-  for (const id of catIds) if (!seenCats.has(id)) err(`tsujo.json tedate: 区分 "${id}" の手立てがありません`);
+  for (const id of catIds) if (!seenCats.has(id)) err(`tsujo.json tedate: 区分 "${id}" の資料がありません`);
   for (const st of t.goui?.steps || []) {
     if (!st.title || !Array.isArray(st.body) || !st.body.length) err(`tsujo.json goui: 各手順には title と body が必要です`);
     for (const r of st.refs || []) if (!srcIds.has(r.sourceId)) err(`tsujo.json goui「${st.title}」: refs.sourceId "${r.sourceId}" が sources.json にありません`);

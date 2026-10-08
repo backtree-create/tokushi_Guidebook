@@ -533,7 +533,7 @@
 
     // 2) 今いる冊の中の行き先。特別支援側なら障害種別、指導提要側なら課題、通常の学級側は手立ての障害種
     if (currentBook === 'tsujo') {
-      html += '<div class="nav-panel-group"><p>手立てを障害種で見る</p><div class="nav-panel-chips cats">' +
+      html += '<div class="nav-panel-group"><p>手立ての資料を障害種で見る</p><div class="nav-panel-chips cats">' +
         DATA.map(function (c) {
           var on = (r.view === 'tsujo' && r.sub === 'tedate' && r.id === c.id);
           return '<a class="nav-chip' + (on ? ' on' : '') + '" href="' + ROUTES.tsujo('tedate', c.id) + '"><span class="num">' + esc(c.num) + '</span>' + esc(c.name.replace(/（.*$/, '')) + '</a>';
@@ -2692,7 +2692,18 @@
     render();
   }
 
-  /* --- 明日からできる手立て --- */
+  /* --- 明日からできる手立て（参考リンク） --- */
+  function tjLinkList(links) {
+    return '<ul class="tj-links">' + (links || []).map(function (l) {
+      var s = l.sourceId ? SRC[l.sourceId] : null;
+      var url = l.url || (s && s.url) || '';
+      var label = l.label || (s ? s.title : '');
+      var pub = '';
+      var a = l.route ? '<a href="' + esc(l.route) + '">' + esc(label) + ' ›</a>'
+            : url ? '<a href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(label) + '</a>' : esc(label);
+      return '<li>' + a + pub + (l.note ? '<span class="tj-link-note">' + esc(l.note) + '</span>' : '') + '</li>';
+    }).join('') + '</ul>';
+  }
   function renderTsujoTedate(catId) {
     var t = TSUJO.tedate;
     var cur = catById(catId) || null;
@@ -2700,23 +2711,22 @@
       '<div class="tj-catpick">' + DATA.map(function (c) {
         return '<a class="nav-chip' + (cur && cur.id === c.id ? ' on' : '') + '" href="' + ROUTES.tsujo('tedate', c.id) + '"><span class="num">' + esc(c.num) + '</span>' + esc(c.name.replace(/（.*$/, '')) + '</a>';
       }).join('') + '</div>';
+    var isDev = cur && ['ld', 'adhd', 'autism'].indexOf(cur.id) >= 0;
     if (!cur) {
-      html += '<p class="block-sub">障害種を選んでください。診断名がなくても、「気になる」チェックで関係しそうな領域から選べます。</p></div>';
+      html += '<section class="tj-kind"><h4>どの障害種でも</h4>' + tjLinkList(t.common) + '</section>' +
+        '<section class="tj-kind"><h4>発達障害（LD・ADHD・自閉症）が関係しそうなとき</h4>' + tjLinkList(t.dev) + '</section>' +
+        '<p class="block-sub" style="margin-top:14px;">上の障害種を選ぶと、その障害種の資料が加わります。</p></div>';
       mainContent.innerHTML = html; playFadeIn(); return;
     }
-    var entry = t.cats.find(function (x) { return x.cat === cur.id; }) || { items: [] };
+    var entry = t.cats.find(function (x) { return x.cat === cur.id; }) || { links: [] };
     html += '<div class="tj-tedate-head"><h3>' + esc(cur.name) + '</h3>' +
       '<p>' + esc((cur.v5 && cur.v5.definition) || cur.overview || '') + '</p>' +
       '<p class="tj-tedate-links"><a href="' + ROUTES.cat(cur.id) + '">' + esc(cur.name) + 'のページ</a><a href="' + ROUTES.support(cur.id) + '">自立活動サポートシート</a></p></div>' +
-      '<div class="tj-kinds">' + t.kinds.map(function (k) {
-        var items = entry.items.filter(function (x) { return x.k === k.id; });
-        if (!items.length) return '';
-        return '<section class="tj-kind"><h4>' + esc(k.label) + '</h4><ul>' + items.map(function (x) {
-          return '<li>' + esc(x.text) + tsujoRef(cur, x.ref) + '</li>';
-        }).join('') + '</ul></section>';
-      }).join('') + '</div>' +
-      '<div class="source-box"><p>出典：' + srcLink(cur.sourceId) + '</p></div>' +
-      '</div>';
+      '<div class="tj-kinds tj-kinds-links">' +
+        '<section class="tj-kind"><h4>' + esc(cur.name) + 'の手立てを調べる</h4>' + tjLinkList(entry.links) + '</section>' +
+        (isDev ? '<section class="tj-kind"><h4>つまずきの場面から探す</h4>' + tjLinkList(t.dev) + '</section>' : '') +
+        '<section class="tj-kind"><h4>どの障害種でも</h4>' + tjLinkList(t.common) + '</section>' +
+      '</div></div>';
     mainContent.innerHTML = html;
     playFadeIn();
   }

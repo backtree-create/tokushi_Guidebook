@@ -2618,3 +2618,12 @@
   .navbar .nav-books .nav-terms{margin-left:auto;background:none;border:1px solid rgba(255,255,255,.25);border-radius:4px;color:#e6e9ea;padding:8px 12px;}
   .navbar .nav-books .nav-terms.on{background:var(--paper);color:var(--ink-strong);border-color:var(--paper);}
   .navbar .nav-books .nav-terms:hover{border-color:var(--gold-soft);color:#fff;}
+  .tj-kinds-links{grid-template-columns:1fr;}
+  .tj-links{margin:0;padding:0;list-style:none;}
+  .tj-links li{padding:8px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.7;}
+  .tj-links li:last-child{border-bottom:none;}
+  .tj-links li a{color:var(--accent);font-weight:600;text-decoration:none;}
+  .tj-links li a[target="_blank"]::before{content:"↗ ";color:var(--ink-faint);font-weight:400;}
+  .tj-links li a:hover{text-decoration:underline;}
+  .tj-link-pub{margin-left:8px;font-size:12px;color:var(--ink-faint);}
+  .tj-link-note{display:block;font-size:12.5px;color:var(--ink-soft);}

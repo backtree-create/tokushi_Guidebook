@@ -1295,5 +1295,51 @@
     "checked": "2026-10-08",
     "group": "gov",
     "note": "意思の表明・過重な負担・建設的対話の3要素と、断る理由にならない例"
+  },
+  {
+    "id": "mext-tsukyu-guide",
+    "title": "初めて通級による指導を担当する教師のためのガイド",
+    "publisher": "文部科学省",
+    "url": "https://www.mext.go.jp/tsukyu-guide/",
+    "policy": "latest",
+    "review": "年1回",
+    "checked": "2026-10-08",
+    "group": "mext",
+    "note": "障害種ごとの困難さの見方、通級の1年の流れ、実践例。通常の学級の担任にも使える"
+  },
+  {
+    "id": "mext-gouriteki-rei",
+    "title": "「合理的配慮」の例（別紙2）",
+    "publisher": "文部科学省（中央教育審議会初等中等教育分科会）",
+    "edition": "平成24年",
+    "url": "https://www.mext.go.jp/b_menu/shingi/chukyo/chukyo3/044/attach/1297377.htm",
+    "policy": "pinned",
+    "checked": "2026-10-08",
+    "group": "mext",
+    "note": "共通と障害種ごとの合理的配慮の例"
+  },
+  {
+    "id": "mext-taisei-gl-h29",
+    "title": "発達障害を含む障害のある幼児児童生徒に対する教育支援体制整備ガイドライン",
+    "publisher": "文部科学省",
+    "edition": "平成29年3月",
+    "url": "https://www.mext.go.jp/a_menu/shotou/tokubetu/1383809.htm",
+    "policy": "pinned",
+    "checked": "2026-10-08",
+    "group": "mext",
+    "note": "可能性の段階から気付き、支え、つなぐための校内体制。通常の学級の担任・コーディネーター・管理職の役割"
+  },
+  {
+    "id": "cpedd",
+    "title": "発達障害教育推進センター 指導・支援",
+    "publisher": "国立特別支援教育総合研究所",
+    "url": "https://cpedd.nise.go.jp/shido_shien",
+    "policy": "latest",
+    "review": "年1回",
+    "checked": "2026-10-08",
+    "group": "gov",
+    "note": "学習面・行動面・社会面のつまずきと指導・支援、LD・ADHD・自閉症の指導・支援",
+    "kind": "portal",
+    "watch": "quiet"
   }
 ]
