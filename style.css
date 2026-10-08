@@ -2566,3 +2566,11 @@
      ========================================================== */
   body.at-site-home .navbar{display:none !important;}
   body.at-site-home header{border-bottom:4px solid var(--gold-line);}
+
+  /* ==========================================================
+     版5.7.2 実態把握の欄名：④は区切りで改行、⑤は言い換え＋補足行
+     ========================================================== */
+  .v5-assess-head,.sp-col-head{align-items:flex-start;}
+  .v5-assess-head .sp-num,.sp-col-head .sp-num{margin-top:1px;}
+  .sp-head-t{display:block;line-height:1.45;}
+  .sp-head-t small{display:block;margin-top:3px;font-size:12px;font-weight:400;color:var(--ink-faint);}

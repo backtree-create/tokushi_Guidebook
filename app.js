@@ -939,7 +939,7 @@
       '<div class="v5-assess-grid">' +
       SP_FORM.map(function (f, i) {
         var items = as[f.k] || [];
-        return '<div class="v5-assess-card"><p class="v5-assess-head"><span class="sp-num">' + (i + 1) + '</span>' + esc(f.label) + '</p>' +
+        return '<div class="v5-assess-card"><p class="v5-assess-head"><span class="sp-num">' + (i + 1) + '</span>' + spHeadHtml(f) + '</p>' +
           '<ul>' + items.map(function (x) { return '<li>' + esc(x.text) + v5Ref(cat, x.ref) + '</li>'; }).join('') + '</ul></div>';
       }).join('') + '</div>' +
       '<div class="v5-assess-two">' +
@@ -1456,9 +1456,15 @@
     { k: 'status',      label: '障害の状態',                         hint: '見え方、聞こえ方、身体の動き、理解の仕方など。生活や学習の環境も含めて', rows: 3 },
     { k: 'development', label: '発達や経験の程度',                   hint: 'できていること、これまでの学習・生活経験、身に付いている力', rows: 3 },
     { k: 'interest',    label: '興味・関心等',                       hint: '好きな活動、集中できること、人との関わりで好むこと', rows: 2 },
-    { k: 'strengths',   label: '学習や生活の中で見られる長所やよさ、課題等', hint: '長所・よさと、困難・課題の両方。どの場面で見られるかも', rows: 4 },
-    { k: 'wish',        label: '思いや願い（○○年後をイメージする姿）', hint: '本人・保護者の思いや願い。何年後の姿かを書く', rows: 3 }
+    { k: 'strengths',   label: '学習や生活の中で見られる長所やよさ、課題等', disp: ['学習や生活の中で見られる', '長所やよさ、課題等'], hint: '長所・よさと、困難・課題の両方。どの場面で見られるかも', rows: 4 },
+    { k: 'wish',        label: '思いや願い（○○年後をイメージする姿）', disp: ['本人・保護者の思いや願い'], sub: '○年後の姿を思い描いて', hint: '本人・保護者の思いや願い。何年後の姿かを書く', rows: 3 }
   ];
+  // 欄名の表示用。label は校内様式の欄名そのもの（貼り付け・流し込みで照合するので変えない）、disp は画面での改行位置
+  function spDispLabel(f) { return (f.disp || [f.label]).join(''); }
+  function spHeadHtml(f) {
+    var lines = f.disp || [f.label];
+    return '<span class="sp-head-t">' + lines.map(esc).join('<br>') + (f.sub ? '<small>' + esc(f.sub) + '</small>' : '') + '</span>';
+  }
   var SP_FORM_NAME = '自立活動サポートシート（校内様式 R8.3時点）';
 
   var SP = null;  // 入力の状態（ページ内のみ）
@@ -1746,9 +1752,9 @@
       }
       return '<label class="sp-field sp-f">' + lab + '<input type="text" data-spf="' + esc(key) + '" value="' + esc(v) + '"></label>';
     }).join('');
-    return '<div class="sp-col"><p class="sp-col-head"><span class="sp-num">' + (SP_FORM.indexOf(f) + 1) + '</span>' + esc(f.label) + '</p>' +
+    return '<div class="sp-col"><p class="sp-col-head"><span class="sp-num">' + (SP_FORM.indexOf(f) + 1) + '</span>' + spHeadHtml(f) + '</p>' +
       (inner ? '<div class="sp-grid">' + inner + '</div>' : '') +
-      spField(f.k, fields.length ? '補足・自由記述' : f.label, f.hint, f.rows, fields.length ? '' : spCatPlaceholder(cat, f.k)) +
+      spField(f.k, fields.length ? '補足・自由記述' : spDispLabel(f), f.hint, f.rows, fields.length ? '' : spCatPlaceholder(cat, f.k)) +
       '</div>';
   }
   function renderSupport(catId) {
@@ -1809,7 +1815,7 @@
 
       '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">①</span>実態把握</h3>' +
         '<p class="block-sub">校内で使っている「' + SP_FORM_NAME + '」と同じ欄です。書いた分は指示書に「既に分かっていること」として入り、AIは聞き直しません。</p>' +
-        SP_FORM.map(function (f) { return sc ? spColHtml(sc, f, d) : spField(f.k, f.label, f.hint, f.rows); }).join('') +
+        SP_FORM.map(function (f) { return sc ? spColHtml(sc, f, d) : spField(f.k, spDispLabel(f), f.hint, f.rows); }).join('') +
       '</section>' +
 
       '<section class="block sp-step"><h3 class="block-title"><span class="sp-num">②</span>実態を6区分の観点で整理する</h3>' +
