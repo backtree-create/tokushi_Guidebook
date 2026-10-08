@@ -48,8 +48,10 @@
   };
   var BOOKS = {
     tokushi: { title: '特別支援ガイドブック', home: '#/guide', modes: ['guide', 'curriculum', 'jiritsu', 'plan', 'terms'] },
-    teiyo:   { title: '指導提要ガイドブック', home: '#/seito', modes: ['seito', 'terms'] }
+    teiyo:   { title: '指導提要ガイドブック', home: '#/seito', modes: ['seito', 'terms'] },
+    tsujo:   { title: '通常の学級ガイドブック', home: '#/tsujo', modes: ['check', 'tedate', 'goui', 'terms'] }
   };
+  var TSUJO = null;   // 通常の学級ガイドブック（tsujo.json）
   var currentBook = 'tokushi';
   var LINKS = [];   // 目的別リンク集（links.json）。URLは持たず sources.json の id を参照する
 
@@ -117,7 +119,8 @@
   /* ---------- DOM 参照 ---------- */
 
   var catList, mainContent, searchBox, sideNav,
-      tabGuide, tabCurriculum, tabSeito, tabJiritsu, tabPlan, tabTerms, bookTokushi, bookTeiyo, layoutRoot, homeBtn, homeLink, homeEmblem, siteFooter;
+      tabGuide, tabCurriculum, tabSeito, tabJiritsu, tabPlan, tabTerms, bookTokushi, bookTeiyo, layoutRoot, homeBtn, homeLink, homeEmblem, siteFooter,
+      bookTsujo, tabCheck, tabTedate, tabGoui;
 
   var currentId = null;
   var mode = 'guide'; // 'guide' | 'curriculum' | 'seito' | 'jiritsu' | 'terms'
@@ -159,7 +162,8 @@
     terms:   function () { return '#/terms'; },
     curriculum: function (id) { return '#/curriculum' + (id ? '/' + encodeURIComponent(id) : ''); },
     seito:   function (id) { return '#/seito'  + (id ? '/' + encodeURIComponent(id) : ''); },
-    topic:   function (key, id) { return key === 'seito' ? ROUTES.seito(id) : ROUTES.curriculum(id); }
+    topic:   function (key, id) { return key === 'seito' ? ROUTES.seito(id) : ROUTES.curriculum(id); },
+    tsujo:   function (sub, id) { return '#/tsujo' + (sub ? '/' + sub : '') + (id ? '/' + encodeURIComponent(id) : ''); }
   };
 
   // ハッシュの後ろの ?key=value を読む（例: #/jiritsu/support?cat=hearing）
@@ -193,6 +197,7 @@
         ? { view: 'topic-item', topic: 'seito', id: 'young-carer', legacy: true }
         : seg[1] ? { view: 'topic-item', topic: 'curriculum', id: seg[1], legacy: true } : { view: 'topic', topic: 'curriculum', legacy: true };
       case 'seito':   return seg[1] ? { view: 'topic-item', topic: 'seito',  id: seg[1] } : { view: 'topic', topic: 'seito' };
+      case 'tsujo':   return { view: 'tsujo', sub: ['check', 'tedate', 'goui'].indexOf(seg[1]) >= 0 ? seg[1] : 'check', id: seg[2] || null };
       default:        return { view: 'site' };
     }
   }
@@ -254,13 +259,20 @@
   function setTabs(m) {
     // どの冊に属するモードかで上段の切替と下段のタブを揃える
     if (m === 'site') currentBook = null;
-    else if (m !== 'terms') currentBook = BOOKS.teiyo.modes.indexOf(m) >= 0 ? 'teiyo' : 'tokushi';
+    else if (m !== 'terms') currentBook = BOOKS.teiyo.modes.indexOf(m) >= 0 ? 'teiyo' : BOOKS.tsujo.modes.indexOf(m) >= 0 ? 'tsujo' : 'tokushi';
     bookTokushi.classList.toggle('on', currentBook === 'tokushi');
     bookTeiyo.classList.toggle('on', currentBook === 'teiyo');
+    bookTsujo.classList.toggle('on', currentBook === 'tsujo');
+    tabCheck.classList.toggle('on', m === 'check');
+    tabTedate.classList.toggle('on', m === 'tedate');
+    tabGoui.classList.toggle('on', m === 'goui');
     document.body.classList.toggle('at-site-home', m === 'site');
-    document.querySelectorAll('.navbar .nav-group[data-book]').forEach(function (g) {
+    document.querySelectorAll('.navbar .nav-book[data-book]').forEach(function (g) {
       g.classList.toggle('on', g.getAttribute('data-book') === currentBook);
     });
+    var nt = document.getElementById('navTabs');
+    if (nt) nt.setAttribute('data-current', currentBook || '');
+    tabTerms.classList.toggle('on', m === 'terms');
     tabGuide.classList.toggle('on', m === 'guide');
     tabCurriculum.classList.toggle('on', m === 'curriculum');
     tabSeito.classList.toggle('on', m === 'seito');
@@ -275,6 +287,7 @@
     try {
       var r = parseHash();
       mode = r.view === 'site' ? 'site'
+           : r.view === 'tsujo' ? r.sub
            : (r.view === 'jiritsu' || r.view === 'support') ? 'jiritsu'
            : r.view === 'plan' ? 'plan'
            : r.view === 'terms' ? 'terms'
@@ -322,6 +335,9 @@
         else renderSheet2();
       } else if (r.view === 'terms') {
         renderTerms();
+      } else if (r.view === 'tsujo') {
+        if (maint('tsujo')) renderMaintPage(maint('tsujo'), { href: ROUTES.site(), label: 'ホームへ戻る' });
+        else renderTsujo(r.sub, r.id);
       } else if (r.view === 'topic' || r.view === 'topic-item') {
         if (maint(r.topic)) {
           renderMaintPage(maint(r.topic), { href: ROUTES.home(), label: 'ホームへ戻る' });
@@ -351,6 +367,7 @@
     if (r.view === 'site') return base;
     if (r.view === 'home') return '障害種別ガイド｜' + base;
     if (r.view === 'terms') return '出典・リンク集｜' + base;
+    if (r.view === 'tsujo') return (TSUJO && TSUJO[r.sub] ? TSUJO[r.sub].title + '｜' : '') + '通常の学級ガイドブック｜' + base;
     if (r.view === 'topic') return topicOf(r.topic).title + '｜' + base;
     if (r.view === 'topic-item') {
       var h = topicItem(r.topic, r.id);
@@ -366,6 +383,9 @@
            : m === 'curriculum' ? ROUTES.curriculum()
            : m === 'plan' ? ROUTES.plan()
            : m === 'seito' ? ROUTES.seito()
+           : m === 'check' ? ROUTES.tsujo('check')
+           : m === 'tedate' ? ROUTES.tsujo('tedate')
+           : m === 'goui' ? ROUTES.tsujo('goui')
            : ROUTES.terms());
   }
 
@@ -511,8 +531,14 @@
       html += '</div></div>';
     }
 
-    // 2) 今いる冊の中の行き先。特別支援側なら障害種別、指導提要側なら課題
-    if (currentBook === 'teiyo') {
+    // 2) 今いる冊の中の行き先。特別支援側なら障害種別、指導提要側なら課題、通常の学級側は手立ての障害種
+    if (currentBook === 'tsujo') {
+      html += '<div class="nav-panel-group"><p>手立てを障害種で見る</p><div class="nav-panel-chips cats">' +
+        DATA.map(function (c) {
+          var on = (r.view === 'tsujo' && r.sub === 'tedate' && r.id === c.id);
+          return '<a class="nav-chip' + (on ? ' on' : '') + '" href="' + ROUTES.tsujo('tedate', c.id) + '"><span class="num">' + esc(c.num) + '</span>' + esc(c.name.replace(/（.*$/, '')) + '</a>';
+        }).join('') + '</div></div>';
+    } else if (currentBook === 'teiyo') {
       html += '<div class="nav-panel-group"><p>生徒指導上の課題へ</p><div class="nav-panel-chips cats">' +
         TOPICS.seito.items.map(function (h) {
           var on = (r.view === 'topic-item' && r.topic === 'seito' && r.id === h.id);
@@ -527,7 +553,16 @@
     }
 
     // 3) 道具と、もう一方の冊への入口
-    if (currentBook === 'teiyo') {
+    if (currentBook === 'tsujo') {
+      html += '<div class="nav-panel-group"><p>道具</p>' +
+        '<a class="nav-panel-item" href="' + ROUTES.support() + '">自立活動サポートシート' + (maint('support') ? '<span class="maint-mini">整備中</span>' : '') + '</a>' +
+        '<a class="nav-panel-item" href="' + ROUTES.terms() + '">出典・リンク集</a>' +
+        '</div>' +
+        '<div class="nav-panel-group"><p>ほかの冊へ</p>' +
+        '<a class="nav-panel-item" href="' + ROUTES.home() + '">特別支援ガイドブック（障害種別ガイド）</a>' +
+        '<a class="nav-panel-item" href="' + ROUTES.seito() + '">指導提要ガイドブック' + (maint('seito') ? '<span class="maint-mini">整備中</span>' : '') + '</a>' +
+        '</div>';
+    } else if (currentBook === 'teiyo') {
       html += '<div class="nav-panel-group"><p>道具</p>' +
         '<a class="nav-panel-item" href="' + ROUTES.plan() + '">計画シート（不登校の欄あり）' + (maint('sheet2') ? '<span class="maint-mini">整備中</span>' : '') + '</a>' +
         '<a class="nav-panel-item" href="' + ROUTES.terms() + '">出典・リンク集</a>' +
@@ -599,7 +634,7 @@
     var total = DATA.reduce(function (s, c) { return s + c.diseases.length; }, 0);
     var seitoNames = TOPICS.seito.items.map(function (h) { return h.name; }).join('、');
     var html = '<div class="site-home">' + homeNoticeHtml() +
-      '<h2 class="site-home-h">2冊のガイドブック</h2>' +
+      '<h2 class="site-home-h">3冊のガイドブック</h2>' +
       '<div class="book-cards">' +
         '<a class="book-card" href="' + ROUTES.home() + '">' +
           '<span class="book-card-kicker">特別支援ガイドブック</span>' +
@@ -611,6 +646,13 @@
             '<span>自立活動　27項目・サポートシート</span>' +
             '<span>計画シート</span>' +
           '</span>' +
+          '<span class="book-card-go">開く ›</span>' +
+        '</a>' +
+        '<a class="book-card tsujo" href="' + ROUTES.tsujo('check') + '">' +
+          '<span class="book-card-kicker">通常の学級ガイドブック' + (maint('tsujo') ? '<span class="maint-mini">整備中</span>' : '') + '</span>' +
+          '<span class="book-card-title">気になる子への手立てと相談のすすめ方</span>' +
+          '<span class="book-card-desc">診断名のない段階から使えます。気になることの整理、明日からできる手立て、合理的配慮の合意形成の手順を、文部科学省の手引・通知に基づいて整理しています。</span>' +
+          '<span class="book-card-list"><span>「気になる」チェック</span><span>明日からできる手立て　10区分×5場面</span><span>合意形成の手順</span></span>' +
           '<span class="book-card-go">開く ›</span>' +
         '</a>' +
         '<a class="book-card teiyo" href="' + ROUTES.seito() + '">' +
@@ -2558,6 +2600,155 @@
     });
   }
 
+  /* ==========================================================
+     通常の学級ガイドブック（tsujo.json）
+     「気になる」チェック／明日からできる手立て／合意形成の手順。
+     チェックの印はページ内だけで持ち、保存も送信もしない。
+     ========================================================== */
+  var CHECKED = {};   // domainId:index -> true（ページ内のみ）
+
+  function tsujoHead(sub) {
+    var t = TSUJO, s = t[sub];
+    var tabs = [['check', t.check.title], ['tedate', t.tedate.title], ['goui', t.goui.title]];
+    return '<div class="article-head">' +
+        '<div class="article-num" style="border-radius:3px;">級</div>' +
+        '<h2 class="cat-title">' + esc(s.title) + '<span class="en">' + esc(t.title) + '</span></h2>' +
+      '</div>' +
+      '<nav class="hk-toc tj-tabs" aria-label="通常の学級ガイドブックの中">' + tabs.map(function (x) {
+        return '<a href="' + ROUTES.tsujo(x[0]) + '"' + (x[0] === sub ? ' class="on"' : '') + '>' + esc(x[1]) + '</a>';
+      }).join('') + '</nav>' +
+      '<div class="overview">' + esc(s.intro) + '</div>';
+  }
+  function tsujoRef(cat, ref) { return cat ? v5Ref(cat, ref) : ''; }
+  function catById(id) { return DATA.find(function (c) { return c.id === id; }); }
+
+  function renderTsujo(sub, id) {
+    if (!TSUJO) { renderSite(); return; }
+    if (sub === 'tedate') return renderTsujoTedate(id);
+    if (sub === 'goui') return renderTsujoGoui();
+    return renderTsujoCheck();
+  }
+
+  /* --- 「気になる」チェック --- */
+  function renderTsujoCheck() {
+    var c = TSUJO.check;
+    var html = '<div class="jiritsu-table-wrap tj-view">' + tsujoHead('check') +
+      '<div class="tj-check-grid">' + c.domains.map(function (dm) {
+        var cat = catById(dm.cat);
+        return '<section class="tj-domain" data-domain="' + esc(dm.id) + '">' +
+          '<h3 class="tj-domain-h">' + esc(dm.label) + '<span class="tj-domain-cat">' + esc(cat ? cat.name : '') + tsujoRef(cat, dm.ref) + '</span></h3>' +
+          '<div class="tj-items">' + dm.items.map(function (it, i) {
+            var key = dm.id + ':' + i;
+            return '<label class="tj-item"><input type="checkbox" data-chk="' + esc(key) + '"' + (CHECKED[key] ? ' checked' : '') + '><span>' + esc(it) + '</span></label>';
+          }).join('') + '</div></section>';
+      }).join('') + '</div>' +
+      '<section class="block tj-result" id="tj-result"></section>' +
+      '</div>';
+    mainContent.innerHTML = html;
+    playFadeIn();
+
+    function render() {
+      var rows = c.domains.map(function (dm) {
+        var n = dm.items.filter(function (_, i) { return CHECKED[dm.id + ':' + i]; }).length;
+        return { dm: dm, n: n, total: dm.items.length };
+      }).filter(function (x) { return x.n > 0; }).sort(function (a, b) { return b.n - a.n; });
+      var box = document.getElementById('tj-result');
+      if (!rows.length) {
+        box.innerHTML = '<h3 class="block-title">整理の結果</h3><p class="block-sub">気になる項目に印を付けると、ここに関係しそうな領域と手立てへの入口が出ます。</p>';
+        return;
+      }
+      var lines = [];
+      box.innerHTML = '<h3 class="block-title">整理の結果<span class="tally">' + rows.reduce(function (s, x) { return s + x.n; }, 0) + '項目</span></h3>' +
+        '<p class="block-sub">' + esc(c.result.lead) + '</p>' +
+        '<div class="tj-result-list">' + rows.map(function (x) {
+          var cat = catById(x.dm.cat);
+          lines.push('・' + x.dm.label + '（' + x.n + '／' + x.total + '）：' + x.dm.items.filter(function (_, i) { return CHECKED[x.dm.id + ':' + i]; }).join('／'));
+          return '<div class="tj-result-row"><div class="tj-result-main"><b>' + esc(x.dm.label) + '</b><span class="tj-count">' + x.n + ' / ' + x.total + '</span></div>' +
+            '<div class="tj-result-links">' +
+              (cat ? '<a href="' + ROUTES.tsujo('tedate', cat.id) + '">明日からできる手立て（' + esc(cat.name) + '）</a>' +
+                     '<a href="' + ROUTES.cat(cat.id) + '">' + esc(cat.name) + 'のページ</a>' : '') +
+            '</div></div>';
+        }).join('') + '</div>' +
+        '<h4 class="tj-next-h">次にすること</h4><ol class="tj-next">' + c.result.next.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ol>' +
+        '<div class="sp-actions"><button type="button" class="sp-btn" id="tjCopy">相談用にコピー</button><button type="button" class="sp-btn danger" id="tjClear">印を消す</button><span class="sp-copied" id="tjMsg" aria-live="polite"></span></div>';
+      document.getElementById('tjCopy').onclick = function () {
+        var text = ['「気になる」チェックの整理（' + new Date().toLocaleDateString('ja-JP') + '）', '氏名は書かない。本児について。', ''].concat(lines).concat(['', '試した手立てと経過：', '']).join('\n');
+        var msg = document.getElementById('tjMsg');
+        function done(ok) { msg.textContent = ok ? 'コピーしました。校内委員会の相談に貼ってください。' : 'コピーできませんでした。'; setTimeout(function () { msg.textContent = ''; }, 4000); }
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); }); else done(false);
+      };
+      document.getElementById('tjClear').onclick = function () {
+        CHECKED = {};
+        mainContent.querySelectorAll('[data-chk]').forEach(function (el) { el.checked = false; });
+        render();
+      };
+    }
+    mainContent.querySelectorAll('[data-chk]').forEach(function (el) {
+      el.addEventListener('change', function () {
+        if (el.checked) CHECKED[el.getAttribute('data-chk')] = true; else delete CHECKED[el.getAttribute('data-chk')];
+        render();
+      });
+    });
+    render();
+  }
+
+  /* --- 明日からできる手立て --- */
+  function renderTsujoTedate(catId) {
+    var t = TSUJO.tedate;
+    var cur = catById(catId) || null;
+    var html = '<div class="jiritsu-table-wrap tj-view">' + tsujoHead('tedate') +
+      '<div class="tj-catpick">' + DATA.map(function (c) {
+        return '<a class="nav-chip' + (cur && cur.id === c.id ? ' on' : '') + '" href="' + ROUTES.tsujo('tedate', c.id) + '"><span class="num">' + esc(c.num) + '</span>' + esc(c.name.replace(/（.*$/, '')) + '</a>';
+      }).join('') + '</div>';
+    if (!cur) {
+      html += '<p class="block-sub">障害種を選んでください。診断名がなくても、「気になる」チェックで関係しそうな領域から選べます。</p></div>';
+      mainContent.innerHTML = html; playFadeIn(); return;
+    }
+    var entry = t.cats.find(function (x) { return x.cat === cur.id; }) || { items: [] };
+    html += '<div class="tj-tedate-head"><h3>' + esc(cur.name) + '</h3>' +
+      '<p>' + esc((cur.v5 && cur.v5.definition) || cur.overview || '') + '</p>' +
+      '<p class="tj-tedate-links"><a href="' + ROUTES.cat(cur.id) + '">' + esc(cur.name) + 'のページ</a><a href="' + ROUTES.support(cur.id) + '">自立活動サポートシート</a></p></div>' +
+      '<div class="tj-kinds">' + t.kinds.map(function (k) {
+        var items = entry.items.filter(function (x) { return x.k === k.id; });
+        if (!items.length) return '';
+        return '<section class="tj-kind"><h4>' + esc(k.label) + '</h4><ul>' + items.map(function (x) {
+          return '<li>' + esc(x.text) + tsujoRef(cur, x.ref) + '</li>';
+        }).join('') + '</ul></section>';
+      }).join('') + '</div>' +
+      '<div class="source-box"><p>出典：' + srcLink(cur.sourceId) + '</p></div>' +
+      '</div>';
+    mainContent.innerHTML = html;
+    playFadeIn();
+  }
+
+  /* --- 合意形成の手順 --- */
+  function renderTsujoGoui() {
+    var g = TSUJO.goui;
+    function refs(list) {
+      return '<p class="tj-refs">' + (list || []).map(function (r) {
+        var s = SRC[r.sourceId]; if (!s) return '';
+        var label = esc(s.title.replace(/^同\s*/, '')) + (r.ref ? ' ' + esc(r.ref) : '');
+        return s.url ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + label + '</a>' : label;
+      }).filter(Boolean).join('　') + '</p>';
+    }
+    var html = '<div class="jiritsu-table-wrap tj-view">' + tsujoHead('goui') +
+      '<ol class="tj-steps">' + g.steps.map(function (st, i) {
+        return '<li class="tj-step"><div class="tj-step-n">' + (i + 1) + '</div><div class="tj-step-body"><h3>' + esc(st.title) + '</h3>' +
+          '<ul class="hk-list">' + st.body.map(function (b) { return '<li>' + esc(b) + '</li>'; }).join('') + '</ul>' + refs(st.refs) + '</div></li>';
+      }).join('') + '</ol>' +
+      '<div class="hk-groups tj-notes">' + g.notes.map(function (n) {
+        var s = n.sourceId ? SRC[n.sourceId] : null;
+        return '<div class="hk-group"><h4>' + esc(n.title) + '</h4><p>' + esc(n.body) +
+          (s && s.url ? ' <a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + '</a>' : '') + '</p></div>';
+      }).join('') + '</div>' +
+      '<div class="source-box"><p class="basis-label">この項目が基づく資料</p><ul class="basis-refs">' +
+        ['tebiki-1', 'mext-taiou-shishin-r6', 'cao-gouriteki-leaflet'].map(hkSourceRef).join('') + '</ul>' +
+        '<p style="margin-top:10px;">出典確認 ' + esc(TSUJO.reviewed) + '。要旨の言い換えです。校内の方針や教育委員会の対応要領がある場合はそちらが優先します。</p></div>' +
+      '</div>';
+    mainContent.innerHTML = html;
+    playFadeIn();
+  }
+
   /* ---------- フッター ---------- */
 
   function renderFooter() {
@@ -2613,6 +2804,10 @@
     tabJiritsu = document.getElementById('tabJiritsu');
     tabPlan = document.getElementById('tabPlan');
     tabTerms = document.getElementById('tabTerms');
+    bookTsujo = document.getElementById('bookTsujo');
+    tabCheck = document.getElementById('tabCheck');
+    tabTedate = document.getElementById('tabTedate');
+    tabGoui = document.getElementById('tabGoui');
     layoutRoot = document.getElementById('layoutRoot');
     homeBtn = document.getElementById('menuBtn');
     homeLink = document.getElementById('homeLink');
@@ -2639,6 +2834,10 @@
     tabJiritsu.onclick = function () { setMode('jiritsu'); };
     tabPlan.onclick = function () { setMode('plan'); };
     tabTerms.onclick = function () { setMode('terms'); };
+    bookTsujo.onclick = function () { navigate(BOOKS.tsujo.home); };
+    tabCheck.onclick = function () { setMode('check'); };
+    tabTedate.onclick = function () { setMode('tedate'); };
+    tabGoui.onclick = function () { setMode('goui'); };
 
     // 検索は打つたびにURLを積むと戻るボタンが使い物にならないので、
     // 表示だけ即座に更新し、URLは打ち終わってから置き換える。
@@ -2670,12 +2869,13 @@
     TOPICS.curriculum.items = bundle.curriculum || [];
     TOPICS.seito.items = bundle.seito || [];
     LINKS = bundle.links || [];
+    TSUJO = bundle.tsujo || null;
     SOURCES.forEach(function (s) { SRC[s.id] = s; });
 
     bindDom();
     initPreview();
     // 整備中のタブに印を付ける
-    [['curriculum', tabCurriculum], ['seito', tabSeito], ['sheet2', tabPlan]].forEach(function (pair) {
+    [['curriculum', tabCurriculum], ['seito', tabSeito], ['sheet2', tabPlan], ['tsujo', bookTsujo]].forEach(function (pair) {
       if (maint(pair[0])) pair[1].insertAdjacentHTML('beforeend', '<span class="maint-mini">整備中</span>');
     });
     renderFooter();
@@ -2720,16 +2920,17 @@
       loadJson('categories.json'),
       loadJson('curriculum.json'),
       loadJson('seito.json'),
-      loadJson('links.json')
+      loadJson('links.json'),
+      loadJson('tsujo.json')
     ]).then(function (r) {
-      var meta = r[0], sources = r[1], jiritsu27 = r[2], categories = r[3], curriculum = r[4], seito = r[5], links = r[6];
+      var meta = r[0], sources = r[1], jiritsu27 = r[2], categories = r[3], curriculum = r[4], seito = r[5], links = r[6], tsujo = r[7];
       return Promise.all(categories.map(function (c) {
         return loadJson(c.id + '.json').then(function (ds) {
           c.diseases = ds;
           return c;
         });
       })).then(function (cats) {
-        boot({ meta: meta, sources: sources, jiritsu27: jiritsu27, categories: cats, curriculum: curriculum, seito: seito, links: links });
+        boot({ meta: meta, sources: sources, jiritsu27: jiritsu27, categories: cats, curriculum: curriculum, seito: seito, links: links, tsujo: tsujo });
       });
     }).catch(fail);
   }

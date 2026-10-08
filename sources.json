@@ -1259,5 +1259,41 @@
     "group": "medical",
     "editorNote": "口唇裂・口蓋裂など",
     "note": "口唇裂・口蓋裂など"
+  },
+  {
+    "id": "tebiki-1",
+    "title": "同 第1編 障害のある子供の教育支援の基本的な考え方",
+    "publisher": "文部科学省",
+    "edition": "令和3年6月",
+    "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_03.pdf",
+    "policy": "pinned",
+    "checked": "2026-10-08",
+    "group": "mext",
+    "note": "合理的配慮と基礎的環境整備、合意形成、個別の教育支援計画への記載（pp.11–14）"
+  },
+  {
+    "id": "mext-taiou-shishin-r6",
+    "title": "文部科学省所管事業分野における障害を理由とする差別の解消の推進に関する対応指針の改正について（通知）（5文科初第1788号）",
+    "publisher": "文部科学省",
+    "edition": "令和6年1月17日（改正指針は令和6年4月1日施行）",
+    "url": "https://www.mext.go.jp/content/20240117-mxt_tokubetu02-000033332_1.pdf",
+    "indexUrl": "https://www.mext.go.jp/a_menu/shotou/tokubetu/material/1364725.htm",
+    "policy": "pinned",
+    "checked": "2026-10-08",
+    "group": "law",
+    "note": "建設的対話、過重な負担の判断、相談体制、個別の教育支援計画への明記、引継ぎ"
+  },
+  {
+    "id": "cao-gouriteki-leaflet",
+    "title": "令和6年4月1日から合理的配慮の提供が義務化されました（リーフレット）",
+    "publisher": "内閣府",
+    "edition": "令和6年",
+    "url": "https://www8.cao.go.jp/shougai/suishin/pdf/gouriteki_hairyo2/print.pdf",
+    "indexUrl": "https://www8.cao.go.jp/shougai/suishin/sabekai.html",
+    "policy": "latest",
+    "review": "年1回",
+    "checked": "2026-10-08",
+    "group": "gov",
+    "note": "意思の表明・過重な負担・建設的対話の3要素と、断る理由にならない例"
   }
 ]
