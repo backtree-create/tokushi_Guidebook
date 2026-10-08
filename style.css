@@ -2544,7 +2544,7 @@
   .nav-tabs[data-current="tokushi"] button[data-book="tokushi"],
   .nav-tabs[data-current="teiyo"] button[data-book="teiyo"]{display:inline-flex;align-items:center;}
   .navbar .nav-tabs button{font-size:13.5px;padding:9px 14px;border-radius:4px 4px 0 0;}
-  body.at-site-home .nav-tabs{display:none;}
+  body.at-site-home .navbar{display:none;}
   body.at-site-home .nav-books .nav-book{background:rgba(255,255,255,.10);color:#e6e9ea;}
   @media (max-width:700px){
     .navbar{padding:0 10px;}
@@ -2560,3 +2560,9 @@
   .navbar .nav-books .nav-terms{margin-left:auto;background:none;border:1px solid rgba(255,255,255,.25);border-radius:4px;color:#e6e9ea;padding:8px 12px;}
   .navbar .nav-books .nav-terms.on{background:var(--paper);color:var(--ink-strong);border-color:var(--paper);}
   .navbar .nav-books .nav-terms:hover{border-color:var(--gold-soft);color:#fff;}
+
+  /* ==========================================================
+     版5.7.1 ホームではヘッダーのナビを出さない（画面内の冊カードで選ぶ）
+     ========================================================== */
+  body.at-site-home .navbar{display:none !important;}
+  body.at-site-home header{border-bottom:4px solid var(--gold-line);}

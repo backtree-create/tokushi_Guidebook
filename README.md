@@ -27,7 +27,7 @@
 
 ### ヘッダー（版5.6.1〜）
 
-上段 `.nav-books` に冊の切替（`.nav-book[data-book]`）と出典・リンク集、下段 `.nav-tabs` に全冊のタブを置き、`data-current` に今いる冊の id を入れて該当のタブだけ表示する（`setTabs`）。ホーム（`body.at-site-home`）では下段を隠す。
+上段 `.nav-books` に冊の切替（`.nav-book[data-book]`）と出典・リンク集、下段 `.nav-tabs` に全冊のタブを置き、`data-current` に今いる冊の id を入れて該当のタブだけ表示する（`setTabs`）。ホーム（`body.at-site-home`）ではナビ全体を隠す（版5.7.1〜。冊は画面内のカードで選ぶ）。
 
 ### 版5.0 の障害種別ページ（版5.0.0〜、版5.1.0で全区分）
 
