@@ -360,7 +360,7 @@ if (fs.existsSync(path.join(root, 'haikei.json'))) err('haikei.json が残って
    ハッシュ、anchor は出典ページ内の要素id。 */
 const links = rj('links.json');
 if (!Array.isArray(links) || links.length === 0) err('links.json が配列ではないか空です');
-const topicRoutes = new Set(['#/', '#/guide', '#/jiritsu', '#/jiritsu/support', '#/plan', '#/terms', '#/curriculum', '#/seito', '#/tsujo', '#/tsujo/check', '#/tsujo/tedate', '#/tsujo/goui']);
+const topicRoutes = new Set(['#/', '#/guide', '#/jiritsu', '#/jiritsu/support', '#/plan', '#/terms', '#/curriculum', '#/seito']);
 for (const [key, list] of Object.entries(topics)) for (const h of list) topicRoutes.add(`#/${key}/${h.id}`);
 for (const c of categories) topicRoutes.add(`#/c/${c.id}`);
 const lkIds = new Set();
@@ -381,50 +381,9 @@ for (const g of links) {
   }
 }
 
-/* --- 4c2. 通常の学級ガイドブック（tsujo.json） --- */
-{
-  const t = rj('tsujo.json');
-  for (const k of ['title', 'intro', 'reviewed', 'check', 'tedate', 'goui']) if (t[k] == null) err(`tsujo.json: ${k} がありません`);
-  const dids = new Set();
-  for (const d of t.check?.domains || []) {
-    if (!d.id || !d.label || !Array.isArray(d.items) || d.items.length < 2) err(`tsujo.json check: domain「${d.label || d.id}」には id / label / items（2つ以上）が必要です`);
-    if (dids.has(d.id)) err(`tsujo.json check: domain id "${d.id}" が重複`);
-    dids.add(d.id);
-    if (!catIds.has(d.cat)) err(`tsujo.json check: domain「${d.label}」の cat "${d.cat}" が categories.json にありません`);
-  }
-  if (!Array.isArray(t.check?.result?.next) || !t.check.result.next.length) err('tsujo.json check.result.next がありません');
-  const checkLinks = (where, links) => {
-    if (!Array.isArray(links) || !links.length) { err(`tsujo.json tedate ${where}: links がありません`); return; }
-    for (const l of links) {
-      if (!l.label) err(`tsujo.json tedate ${where}: label のない行があります`);
-      if (l.sourceId && !srcIds.has(l.sourceId)) err(`tsujo.json tedate ${where}: sourceId "${l.sourceId}" が sources.json にありません`);
-      if (!l.sourceId && !l.url && !l.route) err(`tsujo.json tedate ${where}「${l.label}」: sourceId / url / route のいずれかが必要です`);
-      if (l.url && !/^https:\/\//.test(l.url)) err(`tsujo.json tedate ${where}「${l.label}」: url が https ではありません`);
-      if (l.route && !topicRoutesLater.has(l.route)) err(`tsujo.json tedate ${where}「${l.label}」: route "${l.route}" は存在しない画面です`);
-    }
-  };
-  const topicRoutesLater = topicRoutes;
-  checkLinks('common', t.tedate?.common);
-  checkLinks('dev', t.tedate?.dev);
-  const seenCats = new Set();
-  for (const c of t.tedate?.cats || []) {
-    if (!catIds.has(c.cat)) err(`tsujo.json tedate: cat "${c.cat}" が categories.json にありません`);
-    seenCats.add(c.cat);
-    checkLinks(c.cat, c.links);
-  }
-  for (const id of catIds) if (!seenCats.has(id)) err(`tsujo.json tedate: 区分 "${id}" の資料がありません`);
-  for (const st of t.goui?.steps || []) {
-    if (!st.title || !Array.isArray(st.body) || !st.body.length) err(`tsujo.json goui: 各手順には title と body が必要です`);
-    for (const r of st.refs || []) if (!srcIds.has(r.sourceId)) err(`tsujo.json goui「${st.title}」: refs.sourceId "${r.sourceId}" が sources.json にありません`);
-  }
-  for (const n of t.goui?.notes || []) if (n.sourceId && !srcIds.has(n.sourceId)) err(`tsujo.json goui notes「${n.title}」: sourceId が不正`);
-  const flat = JSON.stringify(t);
-  if (/(?<!幼児)児童生徒(?!理解)|子供(?!の教育支援)/.test(flat)) warn('tsujo.json: 「児童生徒」「子供」が本文にあります');
-  if (/診断名を伝え|受診を勧め(?!ない|る側)/.test(flat)) warn('tsujo.json: 学校が診断名や受診を示す表現がないか確認');
-}
 
 /* --- 4d. メンテナンス中スイッチ（meta.json maintenance） --- */
-const MAINT_KEYS = ['site', 'support', 'sheet2', 'jiritsu-block', 'curriculum', 'seito', 'links', 'tsujo'];
+const MAINT_KEYS = ['site', 'support', 'sheet2', 'jiritsu-block', 'curriculum', 'seito', 'links'];
 if (meta.maintenance) {
   for (const [k, v] of Object.entries(meta.maintenance)) {
     if (k === '_note' || k === 'previewKey') continue;

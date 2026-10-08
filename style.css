@@ -2530,62 +2530,6 @@
   .v5-axis-head .v5-ref{flex-basis:100%;margin-top:-2px;}
 
   /* ==========================================================
-     版5.6.0 通常の学級ガイドブック
-     ========================================================== */
-  .book-card.tsujo{border-top:4px solid var(--gold-soft);}
-  .tj-tabs{margin:14px 0 18px;}
-  .tj-tabs a.on{background:var(--navy);color:#fff;border-color:var(--navy);}
-  .tj-view .overview{margin-bottom:18px;}
-  /* チェック */
-  .tj-check-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px;}
-  .tj-domain{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:12px 16px 8px;}
-  .tj-domain-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 10px;margin:0 0 8px;font-family:var(--sans);font-size:15px;font-weight:700;color:var(--ink-strong);padding-bottom:6px;border-bottom:1px solid var(--line);}
-  .tj-domain-cat{font-size:11.5px;font-weight:400;color:var(--ink-faint);}
-  .tj-items{display:flex;flex-direction:column;}
-  .tj-item{display:flex;align-items:flex-start;gap:8px;padding:5px 0;font-size:13.5px;line-height:1.7;cursor:pointer;}
-  .tj-item input{margin-top:5px;flex:0 0 auto;}
-  .tj-item:hover{background:var(--paper2);}
-  .tj-result{margin-top:28px;}
-  .tj-result-list{display:flex;flex-direction:column;}
-  .tj-result-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 20px;align-items:center;padding:10px 4px;border-bottom:1px solid var(--line);}
-  .tj-result-main b{font-size:15px;color:var(--ink-strong);margin-right:10px;}
-  .tj-count{font-family:var(--mono);font-size:12.5px;color:var(--ink-faint);}
-  .tj-result-links{display:flex;flex-wrap:wrap;gap:6px;}
-  .tj-result-links a{font-size:12.5px;padding:4px 10px;border:1px solid var(--line-strong);border-radius:3px;color:var(--accent);text-decoration:none;background:var(--card);}
-  .tj-result-links a:hover{border-color:var(--accent);}
-  .tj-next-h{margin:18px 0 6px;font-family:var(--sans);font-size:14px;font-weight:700;color:var(--ink-strong);}
-  .tj-next{margin:0 0 14px;padding-left:22px;}
-  .tj-next li{font-size:13.5px;line-height:1.8;margin:3px 0;}
-  @media (max-width:640px){.tj-result-row{grid-template-columns:1fr;}}
-  /* 手立て */
-  .tj-catpick{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 18px;}
-  .tj-catpick .nav-chip{font-size:13px;}
-  .tj-tedate-head{margin:0 0 14px;padding:0 0 12px;border-bottom:2px solid var(--line-strong);}
-  .tj-tedate-head h3{margin:0 0 6px;font-family:var(--sans);font-size:20px;color:var(--ink-strong);}
-  .tj-tedate-head p{margin:0;font-size:14px;line-height:1.8;color:var(--ink-soft);}
-  .tj-tedate-links{margin-top:8px !important;display:flex;gap:14px;}
-  .tj-tedate-links a{font-size:13px;color:var(--accent);}
-  .tj-kinds{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px;}
-  .tj-kind{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:12px 16px 8px;}
-  .tj-kind h4{margin:0 0 8px;font-family:var(--sans);font-size:14.5px;font-weight:700;color:var(--ink-strong);padding-left:10px;border-left:4px solid var(--gold-line);}
-  .tj-kind ul{margin:0;padding-left:18px;}
-  .tj-kind li{font-size:13.5px;line-height:1.8;margin:4px 0;}
-  /* 合意形成 */
-  .tj-steps{list-style:none;margin:0 0 20px;padding:0;display:flex;flex-direction:column;gap:12px;}
-  .tj-step{display:grid;grid-template-columns:40px minmax(0,1fr);gap:0 14px;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:14px 18px;}
-  .tj-step-n{width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:14px;}
-  .tj-step-body h3{margin:4px 0 6px;font-family:var(--sans);font-size:16px;color:var(--ink-strong);}
-  .tj-step-body .hk-list{margin:0;}
-  .tj-refs{margin:8px 0 0;font-size:12px;color:var(--ink-faint);}
-  .tj-refs a{color:var(--ink-faint);text-decoration:underline;text-underline-offset:2px;}
-  .tj-notes{margin-bottom:16px;}
-  .tj-notes .hk-group p{margin:0;font-size:13.5px;line-height:1.8;}
-  @media (prefers-color-scheme: dark){ .tj-step-n{background:var(--gold-line);color:var(--navy);} .tj-tabs a.on{background:var(--gold-line);color:var(--navy);border-color:var(--gold-line);} }
-
-  .tj-view .v5-ref{background:none;border:none;padding:0;font-size:11px;color:var(--ink-faint);}
-  .tj-domain-cat .v5-ref{margin-left:4px;}
-
-  /* ==========================================================
      版5.6.1 ヘッダーを2段に整理：上段は冊の切替、下段は今いる冊のタブだけ
      ========================================================== */
   .navbar{display:flex;flex-direction:column;align-items:stretch;gap:0;padding:0 24px;}
@@ -2598,8 +2542,7 @@
   .nav-tabs{padding:0 0 0 4px;border-top:1px solid rgba(255,255,255,.10);min-height:40px;}
   .nav-tabs button{display:none;}
   .nav-tabs[data-current="tokushi"] button[data-book="tokushi"],
-  .nav-tabs[data-current="teiyo"] button[data-book="teiyo"],
-  .nav-tabs[data-current="tsujo"] button[data-book="tsujo"]{display:inline-flex;align-items:center;}
+  .nav-tabs[data-current="teiyo"] button[data-book="teiyo"]{display:inline-flex;align-items:center;}
   .navbar .nav-tabs button{font-size:13.5px;padding:9px 14px;border-radius:4px 4px 0 0;}
   body.at-site-home .nav-tabs{display:none;}
   body.at-site-home .nav-books .nav-book{background:rgba(255,255,255,.10);color:#e6e9ea;}
@@ -2613,17 +2556,7 @@
   }
   .navbar .nav-tabs button:not(.nav-book){display:none;}
   .navbar .nav-tabs[data-current="tokushi"] button[data-book="tokushi"],
-  .navbar .nav-tabs[data-current="teiyo"] button[data-book="teiyo"],
-  .navbar .nav-tabs[data-current="tsujo"] button[data-book="tsujo"]{display:inline-flex;align-items:center;}
+  .navbar .nav-tabs[data-current="teiyo"] button[data-book="teiyo"]{display:inline-flex;align-items:center;}
   .navbar .nav-books .nav-terms{margin-left:auto;background:none;border:1px solid rgba(255,255,255,.25);border-radius:4px;color:#e6e9ea;padding:8px 12px;}
   .navbar .nav-books .nav-terms.on{background:var(--paper);color:var(--ink-strong);border-color:var(--paper);}
   .navbar .nav-books .nav-terms:hover{border-color:var(--gold-soft);color:#fff;}
-  .tj-kinds-links{grid-template-columns:1fr;}
-  .tj-links{margin:0;padding:0;list-style:none;}
-  .tj-links li{padding:8px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.7;}
-  .tj-links li:last-child{border-bottom:none;}
-  .tj-links li a{color:var(--accent);font-weight:600;text-decoration:none;}
-  .tj-links li a[target="_blank"]::before{content:"↗ ";color:var(--ink-faint);font-weight:400;}
-  .tj-links li a:hover{text-decoration:underline;}
-  .tj-link-pub{margin-left:8px;font-size:12px;color:var(--ink-faint);}
-  .tj-link-note{display:block;font-size:12.5px;color:var(--ink-soft);}

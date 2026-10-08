@@ -25,9 +25,8 @@ for (const c of categories) {
 const curriculum = rj('curriculum.json');   // 特別の教育課程（日本語指導・2E）
 const seito = rj('seito.json');   // 生徒指導上の課題（生徒指導提要）
 const links = rj('links.json');   // 目的別リンク集（sources.json の id を参照）
-const tsujo = rj('tsujo.json');   // 通常の学級ガイドブック
 
-const bundle = { meta, sources, jiritsu27, categories, curriculum, seito, links, tsujo };
+const bundle = { meta, sources, jiritsu27, categories, curriculum, seito, links };
 
 // </script> がデータ中に現れてもHTMLが壊れないようにエスケープする
 const bundleJson = JSON.stringify(bundle)
