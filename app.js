@@ -129,6 +129,40 @@
     system: '支援体制', facility: '施設・設備'
   };
 
+  // ページ内目次：今見えている節の札を濃くする（版5.8.0）
+  var tocObserver = null;
+  function watchToc() {
+    if (tocObserver) { tocObserver.disconnect(); tocObserver = null; }
+    var links = Array.prototype.slice.call(mainContent.querySelectorAll('.v5-toc [data-jump]'));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var visible = {};
+    function paint() {
+      var firstId = null;
+      links.forEach(function (a) { var id = a.getAttribute('data-jump'); if (!firstId && visible[id]) firstId = id; });
+      if (!firstId) return;   // どの節も見えていない間は前の状態を保つ
+      links.forEach(function (a) { a.classList.toggle('on', a.getAttribute('data-jump') === firstId); });
+    }
+    links[0].classList.add('on');
+    tocObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { visible[e.target.id] = e.isIntersecting; });
+      paint();
+    }, { rootMargin: '-72px 0px -60% 0px', threshold: 0 });
+    links.forEach(function (a) { var el = document.getElementById(a.getAttribute('data-jump')); if (el) tocObserver.observe(el); });
+  }
+
+  // 上に戻るボタン（版5.8.0）。1画面分より下がったら出す
+  function installToTop() {
+    var btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'to-top'; btn.setAttribute('aria-label', 'ページの先頭へ'); btn.innerHTML = '&#8593;';
+    btn.onclick = function () { window.scrollTo({ top: 0, behavior: 'smooth' }); };
+    document.body.appendChild(btn);
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (ticking) return; ticking = true;
+      requestAnimationFrame(function () { btn.classList.toggle('show', window.scrollY > window.innerHeight * 0.9); ticking = false; });
+    }, { passive: true });
+  }
+
   function playFadeIn() {
     mainContent.classList.remove('fade-in');
     void mainContent.offsetWidth; // 強制リフローでアニメーションを再スタート
@@ -1046,6 +1080,7 @@
         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
+    watchToc();
     // 検索から疾患名で来たときは、その行へ寄せて目印を付ける
     if (openName) {
       var row = Array.prototype.slice.call(mainContent.querySelectorAll('.v5-cond')).find(function (el) { return el.getAttribute('data-name') === openName; });
@@ -1393,6 +1428,7 @@
         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
+    watchToc();
   }
 
   /* ---------- 目的別リンク集 ---------- */
@@ -1927,7 +1963,7 @@
     document.getElementById('spCopy').addEventListener('click', function () {
       refresh();
       var note = document.getElementById('spCopied');
-      function done(ok) { note.textContent = ok ? 'コピーしました。AIに貼ってください。' : 'コピーできませんでした。指示書を選択して手動でコピーしてください。'; setTimeout(function () { note.textContent = ''; }, 4000); }
+      function done(ok) { note.classList.toggle('err', !ok); note.textContent = ok ? 'コピーしました。AIに貼ってください。' : 'コピーできませんでした。指示書を選択して手動でコピーしてください。'; setTimeout(function () { note.textContent = ''; }, 4000); }
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(out.value).then(function () { done(true); }, function () { done(false); });
       } else {
@@ -1953,7 +1989,7 @@
     document.getElementById('spFormCopy').addEventListener('click', function () {
       refresh();
       var msg = document.getElementById('spFormMsg'), text = spFormText(d);
-      function done(ok) { msg.textContent = ok ? 'コピーしました。校内様式（Word）の各欄に貼ってください。' : 'コピーできませんでした。'; setTimeout(function () { msg.textContent = ''; }, 5000); }
+      function done(ok) { msg.classList.toggle('err', !ok); msg.textContent = ok ? 'コピーしました。校内様式（Word）の各欄に貼ってください。' : 'コピーできませんでした。'; setTimeout(function () { msg.textContent = ''; }, 5000); }
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); }); else done(false);
     });
     document.getElementById('spToPlan').addEventListener('click', function () {
@@ -2295,7 +2331,7 @@
     document.getElementById('s2PromptCopy').addEventListener('click', function () {
       refresh();
       var note = document.getElementById('s2PromptCopied'), text = document.getElementById('s2PromptOut').value;
-      function done(ok) { note.textContent = ok ? 'コピーしました。AIに貼ってください。' : 'コピーできませんでした。指示書を選択して手動でコピーしてください。'; setTimeout(function () { note.textContent = ''; }, 4000); }
+      function done(ok) { note.classList.toggle('err', !ok); note.textContent = ok ? 'コピーしました。AIに貼ってください。' : 'コピーできませんでした。指示書を選択して手動でコピーしてください。'; setTimeout(function () { note.textContent = ''; }, 4000); }
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); }); else done(false);
     });
     document.getElementById('s2Import').addEventListener('click', function () {
@@ -2330,7 +2366,7 @@
       refresh();
       var note = document.getElementById('s2Copied');
       var text = s2Text(d);
-      function done(ok) { note.textContent = ok ? 'コピーしました。Wordに貼り付けてください。' : 'コピーできませんでした。'; setTimeout(function () { note.textContent = ''; }, 4000); }
+      function done(ok) { note.classList.toggle('err', !ok); note.textContent = ok ? 'コピーしました。Wordに貼り付けてください。' : 'コピーできませんでした。'; setTimeout(function () { note.textContent = ''; }, 4000); }
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
       else done(false);
     });
@@ -2689,6 +2725,7 @@
     });
     renderFooter();
     installBanner();
+    installToTop();
 
     // 戻る／進む、URL直打ち、リンク経由のいずれもここで拾う
     window.addEventListener('hashchange', function () {

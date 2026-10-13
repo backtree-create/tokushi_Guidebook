@@ -2574,3 +2574,180 @@
   .v5-assess-head .sp-num,.sp-col-head .sp-num{margin-top:1px;}
   .sp-head-t{display:block;line-height:1.45;}
   .sp-head-t small{display:block;margin-top:3px;font-size:12px;font-weight:400;color:var(--ink-faint);}
+
+  /* ==========================================================
+     版5.8.0 使用感の底上げ
+     役所の文書の落ち着きは残したまま、角・影・動きで「触れる道具」に寄せる。
+     ・角は役割で決める：面（カード）10px、操作（ボタン・入力）8px、札（チップ）999px
+     ・動きは「押した・開いた・移った」の応答だけ。読み物の本文は動かさない
+     ・reduce-motion では全部止める
+     ========================================================== */
+  :root{
+    --r-card:10px; --r-ctl:8px; --r-pill:999px;
+    --ease-out:cubic-bezier(.2,.8,.2,1);
+    --shadow-card:0 1px 2px rgba(19,33,50,.04), 0 10px 24px -16px rgba(19,33,50,.25);
+    --shadow-lift:0 2px 4px rgba(19,33,50,.05), 0 18px 36px -18px rgba(19,33,50,.32);
+    --ring:0 0 0 3px rgba(15,76,138,.18);
+  }
+  html{scroll-behavior:smooth;}
+  body{color:#1b2129;}
+
+  /* --- ヘッダー：面の重さを減らす --- */
+  header{background:linear-gradient(180deg,var(--navy-2) 0%,var(--navy) 100%);border-bottom-width:2px;}
+  .top-strip{padding:5px 24px;font-size:11.5px;}
+  .mast-right a{border-radius:var(--r-pill);transition:background .18s,border-color .18s,transform .18s var(--ease-out);}
+  .mast-right a:hover{background:rgba(255,255,255,.12);transform:translateY(-1px);}
+  .navbar .nav-books .nav-book{border-radius:var(--r-pill);transition:background .18s,color .18s,transform .18s var(--ease-out),box-shadow .18s;}
+  .navbar .nav-books .nav-book:hover{transform:translateY(-1px);}
+  .navbar .nav-books .nav-book.on{box-shadow:0 4px 14px -6px rgba(201,169,107,.7);}
+  .navbar .nav-books .nav-terms{border-radius:var(--r-pill);transition:background .18s,border-color .18s,color .18s;}
+  .navbar .nav-tabs button{position:relative;border-radius:var(--r-ctl) var(--r-ctl) 0 0;transition:background .18s,color .18s;}
+  .navbar .nav-tabs button::after{
+    content:"";position:absolute;left:14px;right:14px;bottom:0;height:3px;border-radius:3px 3px 0 0;
+    background:var(--gold-soft);transform:scaleX(0);transform-origin:center;transition:transform .22s var(--ease-out);
+  }
+  .navbar .nav-tabs button:hover:not(.on)::after{transform:scaleX(.6);}
+  .navbar .nav-tabs button.on::after{transform:scaleX(0);}
+  .emblem{transition:transform .25s var(--ease-out),border-color .2s,box-shadow .2s;}
+  .emblem:hover{transform:rotate(-6deg) scale(1.05);box-shadow:0 0 0 4px rgba(201,169,107,.18);}
+
+  /* --- 左の索引：行を札にして、今いる行が左から灯る --- */
+  ul.cat-list{border-top:none;}
+  ul.cat-list li{border-bottom:none;margin:2px 0;}
+  ul.cat-list button{
+    position:relative;padding:9px 10px 9px 12px;border-radius:var(--r-ctl);
+    transition:background .16s,color .16s,transform .16s var(--ease-out);
+  }
+  ul.cat-list button::before{
+    content:"";position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:3px;
+    background:var(--navy);transform:scaleY(0);transition:transform .2s var(--ease-out);
+  }
+  ul.cat-list button:hover{background:var(--paper2);transform:translateX(2px);}
+  ul.cat-list li.active button{background:var(--accent-soft);color:var(--ink-strong);transform:none;}
+  ul.cat-list li.active button::before{transform:scaleY(1);}
+  ul.cat-list li.active button .num{color:var(--accent);}
+  .index input[type="search"],.index input[type="text"],#searchBox{
+    border-radius:var(--r-ctl);transition:border-color .18s,box-shadow .18s;
+  }
+  .index input:focus,#searchBox:focus{outline:none;border-color:var(--accent);box-shadow:var(--ring);}
+
+  /* --- カード：角を揃え、触れると浮く --- */
+  .hk-card,.home-card,.book-card,.v5-assess-card,.sp-col,.hk-rel-card,.hk-group,.hk-dl-row,.v5-spec,.v5-axis,.source-box,.legal-box,.lk-guide,.jiritsu-card{
+    border-radius:var(--r-card);
+  }
+  .hk-card,.home-card,.hk-rel-card{
+    box-shadow:var(--shadow-card);
+    transition:transform .2s var(--ease-out),box-shadow .2s,border-color .2s;
+  }
+  .hk-card:hover,.home-card:hover,.hk-rel-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift);border-color:var(--accent);}
+  .hk-card:active,.home-card:active,.book-card:active{transform:translateY(0) scale(.995);}
+  .book-card{border-radius:var(--r-card);transition:transform .22s var(--ease-out),box-shadow .22s,border-color .22s;}
+  .book-card .book-card-go{transition:transform .2s var(--ease-out),color .2s;display:inline-block;}
+  .book-card:hover .book-card-go{transform:translateX(4px);}
+  .hk-card .num,.home-card .num{transition:color .2s;}
+  .hk-card:hover .num,.home-card:hover .num{color:var(--gold-line);}
+
+  /* --- ページ内の目次（1〜9の札）：丸札にし、今読んでいる節を濃くする --- */
+  .v5-toc a{
+    border-radius:var(--r-pill);
+    transition:background .18s,color .18s,border-color .18s,transform .18s var(--ease-out),box-shadow .18s;
+  }
+  .v5-toc a:hover{transform:translateY(-1px);border-color:var(--accent);box-shadow:var(--shadow-card);}
+  .v5-toc a.on{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .v5-toc a.on .v5-toc-n{background:var(--gold-soft);color:#1b1a14;}
+  .v5-toc .v5-toc-n{transition:background .18s,color .18s;}
+
+  /* --- 見出し：罫を細く、節の切れ目を柔らかく --- */
+  h3.block-title{border-bottom-width:1px;}
+  h3.block-title .tally{border-radius:var(--r-pill);}
+
+  /* --- ボタン・入力：押した手応えとフォーカスの輪 --- */
+  .sp-btn{
+    border-radius:var(--r-ctl);
+    transition:background .16s,border-color .16s,color .16s,transform .12s var(--ease-out),box-shadow .16s;
+  }
+  .sp-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-card);}
+  .sp-btn:active{transform:translateY(0) scale(.97);box-shadow:none;}
+  .sp-btn.primary{box-shadow:0 6px 16px -8px rgba(19,33,50,.6);}
+  .sp-btn:focus-visible,.nav-book:focus-visible,.nav-tabs button:focus-visible,ul.cat-list button:focus-visible,.v5-toc a:focus-visible,.book-card:focus-visible,.hk-card:focus-visible{
+    outline:none;box-shadow:var(--ring);
+  }
+  .sp-field textarea,.sp-field input[type="text"],.sp-field input[type="number"],.sp-field select,.sp-f select,.sp-f input,.sp-f textarea{
+    border-radius:var(--r-ctl);transition:border-color .18s,box-shadow .18s,background .18s;
+  }
+  .sp-field textarea:focus,.sp-field input:focus,.sp-field select:focus,.sp-f select:focus,.sp-f input:focus,.sp-f textarea:focus{
+    outline:none;border-color:var(--accent);box-shadow:var(--ring);background:#fff;
+  }
+  .sp-field label,.sp-label{transition:color .18s;}
+  .sp-field:focus-within .sp-label,.sp-field:focus-within>span:first-child{color:var(--accent);}
+  /* コピーした・送った、の知らせはふわっと出て自然に残る */
+  @keyframes popIn{0%{opacity:0;transform:translateY(4px) scale(.96);}60%{opacity:1;transform:translateY(-1px) scale(1.02);}100%{opacity:1;transform:none;}}
+  .sp-copied:not(:empty){
+    display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:var(--r-pill);
+    background:var(--tone-ok-bg);border:1px solid var(--tone-ok-bd);
+    animation:popIn .32s var(--ease-out);
+  }
+  .sp-copied:not(:empty)::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--tone-ok-fg);}
+  .sp-copied.err:not(:empty){color:var(--tone-warn-fg);background:var(--tone-warn-bg);border-color:var(--tone-warn-bd);}
+  .sp-copied.err:not(:empty)::before{background:var(--tone-warn-fg);}
+
+  /* --- 主な疾患の行、軸の行：なぞると行が浮かぶ --- */
+  .v5-cond{transition:background .16s,box-shadow .16s;border-radius:var(--r-ctl);}
+  .v5-cond:hover{background:var(--paper2);}
+  .v5-cond.hit{animation:hitPulse 1.6s var(--ease-out);}
+  @keyframes hitPulse{0%{box-shadow:0 0 0 0 rgba(201,169,107,.0);background:var(--tone-warn-bg);}30%{box-shadow:0 0 0 6px rgba(201,169,107,.25);}100%{box-shadow:0 0 0 0 rgba(201,169,107,0);}}
+  .v5-axis-lab{border-radius:var(--r-pill);}
+
+  /* --- 画面の切替：本文は一度だけ静かに立ち上がり、札は少しずつ --- */
+  @keyframes riseIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+  #mainContent.fade-in .hk-card,#mainContent.fade-in .home-card,#mainContent.fade-in .book-card,#mainContent.fade-in .v5-assess-card{
+    animation:riseIn .42s var(--ease-out) both;
+  }
+  #mainContent.fade-in .hk-card:nth-child(1),#mainContent.fade-in .home-card:nth-child(1),#mainContent.fade-in .book-card:nth-child(1){animation-delay:0.04s;}
+  #mainContent.fade-in .hk-card:nth-child(2),#mainContent.fade-in .home-card:nth-child(2),#mainContent.fade-in .book-card:nth-child(2){animation-delay:0.09s;}
+  #mainContent.fade-in .hk-card:nth-child(3),#mainContent.fade-in .home-card:nth-child(3),#mainContent.fade-in .book-card:nth-child(3){animation-delay:0.14s;}
+  #mainContent.fade-in .hk-card:nth-child(4),#mainContent.fade-in .home-card:nth-child(4),#mainContent.fade-in .book-card:nth-child(4){animation-delay:0.19s;}
+  #mainContent.fade-in .hk-card:nth-child(5),#mainContent.fade-in .home-card:nth-child(5),#mainContent.fade-in .book-card:nth-child(5){animation-delay:0.24s;}
+  #mainContent.fade-in .hk-card:nth-child(6),#mainContent.fade-in .home-card:nth-child(6),#mainContent.fade-in .book-card:nth-child(6){animation-delay:0.29s;}
+  #mainContent.fade-in .hk-card:nth-child(7),#mainContent.fade-in .home-card:nth-child(7),#mainContent.fade-in .book-card:nth-child(7){animation-delay:0.34s;}
+  #mainContent.fade-in .hk-card:nth-child(8),#mainContent.fade-in .home-card:nth-child(8),#mainContent.fade-in .book-card:nth-child(8){animation-delay:0.39s;}
+  #mainContent.fade-in .hk-card:nth-child(9),#mainContent.fade-in .home-card:nth-child(9),#mainContent.fade-in .book-card:nth-child(9){animation-delay:0.44s;}
+  #mainContent.fade-in .hk-card:nth-child(n+10),#mainContent.fade-in .home-card:nth-child(n+10){animation-delay:.5s;}
+  #mainContent.fade-in .v5-assess-card:nth-child(2){animation-delay:.06s;}
+  #mainContent.fade-in .v5-assess-card:nth-child(3){animation-delay:.12s;}
+  #mainContent.fade-in .v5-assess-card:nth-child(4){animation-delay:.18s;}
+  #mainContent.fade-in .v5-assess-card:nth-child(5){animation-delay:.24s;}
+
+  /* --- 浮いているメニュー：少し軽く --- */
+  .fab-menu{box-shadow:0 8px 22px -6px rgba(19,33,50,.45);}
+  .nav-panel{border-radius:14px;}
+  .nav-panel-item,.nav-chip{border-radius:var(--r-ctl);transition:background .16s,transform .16s var(--ease-out),border-color .16s;}
+  .nav-panel-item:hover,.nav-chip:hover{transform:translateX(2px);}
+  .nav-chip{border-radius:var(--r-pill);}
+
+  /* --- 整備中の覆い・札 --- */
+  .maint-mini{border-radius:var(--r-pill);}
+
+  /* --- 上に戻る --- */
+  .to-top{
+    position:fixed;left:18px;bottom:18px;z-index:58;
+    width:42px;height:42px;border-radius:50%;border:1px solid var(--line-strong);
+    background:var(--card);color:var(--ink-strong);cursor:pointer;
+    display:flex;align-items:center;justify-content:center;font-size:16px;
+    box-shadow:var(--shadow-card);
+    opacity:0;transform:translateY(12px);pointer-events:none;
+    transition:opacity .22s,transform .22s var(--ease-out),border-color .18s,box-shadow .18s;
+  }
+  .to-top.show{opacity:1;transform:none;pointer-events:auto;}
+  .to-top:hover{border-color:var(--accent);box-shadow:var(--shadow-lift);transform:translateY(-2px);}
+  .to-top:focus-visible{outline:none;box-shadow:var(--ring);}
+  @media (max-width:700px){.to-top{left:12px;bottom:12px;width:38px;height:38px;}}
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .hk-card,.home-card,.book-card,.hk-rel-card,.sp-btn,.v5-toc a,.emblem,.nav-book,.mast-right a,ul.cat-list button,.to-top,.nav-panel-item,.nav-chip{transition:none !important;}
+    .hk-card:hover,.home-card:hover,.book-card:hover,.sp-btn:hover,.v5-toc a:hover,.emblem:hover,ul.cat-list button:hover{transform:none !important;}
+    #mainContent.fade-in *{animation:none !important;}
+    .sp-copied:not(:empty),.v5-cond.hit{animation:none !important;}
+  }
+  @media print{.to-top{display:none;}}

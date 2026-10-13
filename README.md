@@ -25,6 +25,10 @@
 
 版5.1.0 で10区分すべてが版5.0の型に移行し、旧型（疾患ごとの support / severity / basis）は廃止しました。旧データは版4.6.0までのGitの履歴にあります。
 
+### 見た目の約束（版5.8.0〜）
+
+角は役割で決める：面（カード）`--r-card` 10px、操作（ボタン・入力）`--r-ctl` 8px、札（チップ）`--r-pill`。動きは「押した・開いた・移った」への応答だけで、本文は動かさない。画面切替は `#mainContent.fade-in` の立ち上がり＋札（`.hk-card` `.home-card` `.book-card` `.v5-assess-card`）の時間差、索引の行・カード・目次の札・ボタンはなぞると応答する。障害種別ページの目次は `watchToc()`（IntersectionObserver）で読んでいる節の札に `.on`。「上に戻る」は `installToTop()`。`prefers-reduced-motion` では全部止める。CSSは style.css 末尾の「版5.8.0 使用感の底上げ」の塊にまとめている。
+
 ### ヘッダー（版5.6.1〜）
 
 上段 `.nav-books` に冊の切替（`.nav-book[data-book]`）と出典・リンク集、下段 `.nav-tabs` に全冊のタブを置き、`data-current` に今いる冊の id を入れて該当のタブだけ表示する（`setTabs`）。ホーム（`body.at-site-home`）ではナビ全体を隠す（版5.7.1〜。冊は画面内のカードで選ぶ）。
