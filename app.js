@@ -643,7 +643,7 @@
           '<span class="book-card-title">障害のある幼児児童生徒の理解と支援</span>' +
           '<span class="book-card-desc">文部科学省「障害のある子供の教育支援の手引」と「自立活動編」解説に基づき、障害種別・原因疾患ごとの教育的ニーズと支援、学びの場を整理しています。</span>' +
           '<span class="book-card-list">' +
-            '<span>障害種別ガイド　' + DATA.length + '区分・主な疾患' + total + '件</span>' +
+            '<span>障害種別ガイド　手引 第3編の10の障害種</span>' +
             '<span>特別の教育課程　日本語指導・特異な才能</span>' +
             '<span>自立活動　27項目・サポートシート</span>' +
             '<span>計画シート</span>' +
@@ -671,15 +671,10 @@
   }
 
   function renderHome() {
-    var total = DATA.reduce(function (s, c) { return s + c.diseases.length; }, 0);
     var html = '<div class="home-view">' +
       '<p class="eyebrow" style="color:var(--gold);font-family:var(--sans);letter-spacing:.28em;font-size:11px;">INDEX</p>' +
       '<h2 class="cat-title">障害種別 索引</h2>' +
-      '<p>' + DATA.length + 'の障害種別について、見るべき軸、実態把握の仕方、指導内容と支援の要点、学びの場、主な疾患・状態を、文部科学省の手引に基づいて整理しています。左の索引または下の一覧から選んでください。</p>' +
-      '<div class="home-stats">' +
-        '<div class="home-stat"><b>' + DATA.length + '</b><span>障害種別</span></div>' +
-        '<div class="home-stat"><b>' + total + '</b><span>主な疾患・状態</span></div>' +
-      '</div>' +
+      '<p>文部科学省「障害のある子供の教育支援の手引」第3編が取り上げる10の障害種について、見るべき軸、実態把握の仕方、指導内容と支援の要点、学びの場、主な疾患・状態を、手引に基づいて整理しています。左の索引または下の一覧から選んでください。</p>' +
       '<div class="home-grid">';
 
     DATA.forEach(function (cat) {
@@ -687,7 +682,7 @@
         '<span class="num">' + esc(cat.num) + '</span>' +
         '<h4>' + esc(cat.name) + (cat.v5 ? '<span class="v5-tag">' + esc(cat.v5.axisTypeLabel || '軸で見る') + '</span>' : '') + '</h4>' +
         '<p>' + (cat.v5
-          ? cat.v5.axes.length + 'つの軸・実態把握の観点・主な疾患' + cat.diseases.length + '件 ／ ' + esc(cat.v5.definition.slice(0, 40)) + '…'
+          ? cat.v5.axes.length + 'つの軸・実態把握の観点・主な疾患・状態 ／ ' + esc(cat.v5.definition.slice(0, 40)) + '…'
           : cat.diseases.length + '種の分類を収録 ／ ' + esc(cat.overview.slice(0, 40)) + '…') + '</p>' +
         '</div>';
     });
@@ -894,7 +889,7 @@
   /* ==========================================================
      障害種別ページ（版5.0 の型）
      手引 第3編の各章を一次資料に、「見るべき軸」「実態把握の仕方（校内様式の5欄）」
-     「固有の見方」「指導内容と支援の要点」「学びの場」「主な疾患」「用語」の順で組む。
+     「押さえておきたい基礎知識」「指導内容と支援の要点」「学びの場」「主な疾患」「用語」の順で組む。
      疾患ごとの支援は書かない。自立活動の項目との対応も持たない。
      「この子の支援を考える」のカードから、障害種の観点を持った状態でサポートシートへ。
      ========================================================== */
@@ -910,12 +905,22 @@
   }
 
   // 手引のページ番号の印。章のPDFに飛べるようにする
+  // 手引のページ参照。ref は手引全体の通しページ（例 p.89、pp.90–91、pp.90, 108–110）。
+  // 章ごとのPDFは1ページ目が通しページの途中から始まるので、sources.json の pdfFirstPage で
+  // 差し引き、PDFの該当ページ（#page=）を開く
+  function tebikiPdfUrl(s, ref) {
+    if (!s || !s.url) return '';
+    var m = /(\d+)/.exec(ref || '');
+    if (!m || !s.pdfFirstPage) return s.url;
+    var n = parseInt(m[1], 10) - s.pdfFirstPage + 1;
+    return n >= 1 ? s.url + '#page=' + n : s.url;
+  }
   function v5Ref(cat, ref) {
     if (!ref) return '';
     var s = SRC[cat.sourceId];
     var label = '手引 ' + ref;
     return s && s.url
-      ? ' <a class="v5-ref" href="' + esc(s.url) + '" target="_blank" rel="noopener" title="' + esc(s.title) + '">' + esc(label) + '</a>'
+      ? ' <a class="v5-ref" href="' + esc(tebikiPdfUrl(s, ref)) + '" target="_blank" rel="noopener" title="' + esc(s.title) + '（PDFの該当ページを開きます。ページ番号は手引全体の通しページ）">' + esc(label) + '</a>'
       : ' <span class="v5-ref">' + esc(label) + '</span>';
   }
 
@@ -947,7 +952,7 @@
     var v = cat.v5;
     var toc = [
       ['v5-axes', '見るべき軸'], ['v5-think', 'この子の支援を考える'], ['v5-assess', '実態把握の仕方'],
-      ['v5-specific', 'この障害種に固有の見方'], ['v5-guidance', '指導内容と支援の要点'], ['v5-places', '学びの場と障害の程度'],
+      ['v5-specific', '押さえておきたい基礎知識'], ['v5-guidance', '指導内容と支援の要点'], ['v5-places', '学びの場と障害の程度'],
       ['v5-conditions', '主な疾患・状態'], ['v5-terms', '用語'], ['v5-sources', '出典と関連資料']
     ];
 
@@ -983,9 +988,9 @@
           (as.tests || []).map(function (t) { return '<dt>' + esc(t.name) + '</dt><dd>' + esc(t.note || '') + v5Ref(cat, t.ref) + '</dd>'; }).join('') + '</dl></div>' +
       '</div></section>';
 
-    /* 4 固有の見方 */
+    /* 4 押さえておきたい基礎知識（データ上は specific） */
     var specHtml = '<section class="block" id="v5-specific">' +
-      '<h3 class="block-title">この障害種に固有の見方</h3>' +
+      '<h3 class="block-title">押さえておきたい基礎知識<span class="tally">手引の解説から</span></h3>' +
       (v.specific || []).map(function (s) {
         return '<div class="v5-spec"><h4>' + esc(s.title) + v5Ref(cat, s.ref) + '</h4><ul class="hk-list">' +
           (s.body || []).map(hkLi).join('') + '</ul></div>';
@@ -1023,7 +1028,7 @@
       '<h3 class="block-title">主な疾患・状態</h3>' +
       '<p class="block-sub">' + esc(v.conditionsIntro || '') + '</p></section>'
       : '<section class="block" id="v5-conditions">' +
-      '<h3 class="block-title">主な疾患・状態<span class="tally">' + cat.diseases.length + '件</span></h3>' +
+      '<h3 class="block-title">主な疾患・状態</h3>' +
       '<p class="block-sub">' + esc(v.conditionsIntro || '') + '</p>' +
       (v.conditionGroups || []).map(function (gr) {
         return '<div class="v5-cond-group"><h4>' + esc(gr.title) + '</h4>' + gr.items.map(function (c) {
@@ -2611,8 +2616,7 @@
       '<p>' + esc(META.disclaimer.long) + '</p>' +
       '<p class="footer-meta">' +
         '最終更新 ' + esc(META.updated) + '（版 ' + esc(META.version) + '）／ ' +
-        '収録 ' + DATA.length + '区分・主な疾患 ' +
-        DATA.reduce(function (s, c) { return s + c.diseases.length; }, 0) + '件／ ' +
+        '収録 障害種 ' + DATA.length + '（手引 第3編）／ ' +
         '特別の教育課程 ' + TOPICS.curriculum.items.length + '件／ 生徒指導上の課題 ' + TOPICS.seito.items.length + '件／ ' +
         '出典 ' + SOURCES.length + '件（詳細は上部タブ「出典・リンク集」）' +
       '</p>' +

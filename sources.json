@@ -19,8 +19,10 @@
     "edition": "令和3年6月",
     "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_05.pdf",
     "policy": "pinned",
-    "checked": "2026-08-25",
-    "group": "mext"
+    "checked": "2026-10-14",
+    "group": "mext",
+    "pdfFirstPage": 60,
+    "note": "ページ参照（手引 p.○）は手引全体の通しページ。リンクはこのPDFの該当ページを開く（このPDFは p.60 から）"
   },
   {
     "id": "tebiki-3-hearing",
@@ -29,8 +31,10 @@
     "edition": "令和3年6月",
     "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_06.pdf",
     "policy": "pinned",
-    "checked": "2026-08-25",
-    "group": "mext"
+    "checked": "2026-10-14",
+    "group": "mext",
+    "pdfFirstPage": 89,
+    "note": "ページ参照（手引 p.○）は手引全体の通しページ。リンクはこのPDFの該当ページを開く（このPDFは p.89 から）"
   },
   {
     "id": "tebiki-3-intellectual",
@@ -39,8 +43,10 @@
     "edition": "令和3年6月",
     "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_07.pdf",
     "policy": "pinned",
-    "checked": "2026-08-25",
-    "group": "mext"
+    "checked": "2026-10-14",
+    "group": "mext",
+    "pdfFirstPage": 120,
+    "note": "ページ参照（手引 p.○）は手引全体の通しページ。リンクはこのPDFの該当ページを開く（このPDFは p.120 から）"
   },
   {
     "id": "tebiki-3-physical",
@@ -49,8 +55,10 @@
     "edition": "令和3年6月",
     "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_08.pdf",
     "policy": "pinned",
-    "checked": "2026-08-25",
-    "group": "mext"
+    "checked": "2026-10-14",
+    "group": "mext",
+    "pdfFirstPage": 143,
+    "note": "ページ参照（手引 p.○）は手引全体の通しページ。リンクはこのPDFの該当ページを開く（このPDFは p.143 から）"
   },
   {
     "id": "tebiki-3-health",
@@ -59,8 +67,10 @@
     "edition": "令和3年6月",
     "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_09.pdf",
     "policy": "pinned",
-    "checked": "2026-08-25",
-    "group": "mext"
+    "checked": "2026-10-14",
+    "group": "mext",
+    "pdfFirstPage": 172,
+    "note": "ページ参照（手引 p.○）は手引全体の通しページ。リンクはこのPDFの該当ページを開く（このPDFは p.172 から）"
   },
   {
     "id": "tebiki-3-language",
@@ -69,8 +79,10 @@
     "edition": "令和3年6月",
     "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_10.pdf",
     "policy": "pinned",
-    "checked": "2026-08-25",
-    "group": "mext"
+    "checked": "2026-10-14",
+    "group": "mext",
+    "pdfFirstPage": 217,
+    "note": "ページ参照（手引 p.○）は手引全体の通しページ。リンクはこのPDFの該当ページを開く（このPDFは p.217 から）"
   },
   {
     "id": "tebiki-3-autism",
@@ -79,8 +91,10 @@
     "edition": "令和3年6月",
     "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_11.pdf",
     "policy": "pinned",
-    "checked": "2026-08-25",
-    "group": "mext"
+    "checked": "2026-10-14",
+    "group": "mext",
+    "pdfFirstPage": 243,
+    "note": "ページ参照（手引 p.○）は手引全体の通しページ。リンクはこのPDFの該当ページを開く（このPDFは p.243 から）"
   },
   {
     "id": "tebiki-3-emotional",
@@ -89,8 +103,10 @@
     "edition": "令和3年6月",
     "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_12.pdf",
     "policy": "pinned",
-    "checked": "2026-08-25",
-    "group": "mext"
+    "checked": "2026-10-14",
+    "group": "mext",
+    "pdfFirstPage": 266,
+    "note": "ページ参照（手引 p.○）は手引全体の通しページ。リンクはこのPDFの該当ページを開く（このPDFは p.266 から）"
   },
   {
     "id": "tebiki-3-ld",
@@ -99,8 +115,10 @@
     "edition": "令和3年6月",
     "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_13.pdf",
     "policy": "pinned",
-    "checked": "2026-08-25",
-    "group": "mext"
+    "checked": "2026-10-14",
+    "group": "mext",
+    "pdfFirstPage": 285,
+    "note": "ページ参照（手引 p.○）は手引全体の通しページ。リンクはこのPDFの該当ページを開く（このPDFは p.285 から）"
   },
   {
     "id": "tebiki-3-adhd",
@@ -109,8 +127,10 @@
     "edition": "令和3年6月",
     "url": "https://www.mext.go.jp/content/20211014-mxt_tokubetu02-000018454_14.pdf",
     "policy": "pinned",
-    "checked": "2026-08-25",
-    "group": "mext"
+    "checked": "2026-10-14",
+    "group": "mext",
+    "pdfFirstPage": 306,
+    "note": "ページ参照（手引 p.○）は手引全体の通しページ。リンクはこのPDFの該当ページを開く（このPDFは p.306 から）"
   },
   {
     "id": "jiritsu-kaisetsu",

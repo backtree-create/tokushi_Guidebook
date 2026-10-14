@@ -33,12 +33,16 @@
 
 上段 `.nav-books` に冊の切替（`.nav-book[data-book]`）と出典・リンク集、下段 `.nav-tabs` に全冊のタブを置き、`data-current` に今いる冊の id を入れて該当のタブだけ表示する（`setTabs`）。ホーム（`body.at-site-home`）ではナビ全体を隠す（版5.7.1〜。冊は画面内のカードで選ぶ）。
 
+### 手引のページ参照（版5.9.0〜）
+
+`ref` は手引全体の通しページ（章PDFの印字ページ）。表示は「手引 p.○」で、リンクは `sources.json` の章PDFの `pdfFirstPage`（その章PDFの1ページ目の通しページ）から差し引いて `#page=` を付け、PDFの該当ページを直接開く（`tebikiPdfUrl`）。版5.9.0で全10章の `ref` を章PDFの本文と照合して298件を訂正した（照合結果は配布物の外 `audit/`）。病弱・身体虚弱の p.201–216（疾患別の説明）は取得できず未照合。件数（障害種10・主な疾患103）は独自の数字と誤解されるため表示しない。「10」は手引 第3編 Ⅰ〜Ⅹ の障害種に対応している旨を添えて出す。
+
 ### 版5.0 の障害種別ページ（版5.0.0〜、版5.1.0で全区分）
 
 同僚からの指摘（疾患ごとの支援に出典がない／分類が障害種の実態に合っていない／疾患が多すぎる／実態把握の仕方が分からない）を受けて作り替えたものです。設計は `/mnt/user-data/outputs/v5_design.md`（作業メモ）と精査メモ `seisa_01〜10` に基づきます。
 
 - データは `<id>.json` が配列ではなく1つのオブジェクト（`v5: true`）。`categories.json` 側は `v5: true` を付け、`needs / instruction / support` を持たない（`places / quote / sourceId / legalCriteria / programCriteria` は残す）
-- 構造：`definition`（節1）→ `axes`（節2 見るべき軸。`axisType` は function＝機能の状態で見る〈視覚・聴覚〉／disease＝疾患と経過で見る〈肢体・病弱〉／profile＝実態で見る〈それ以外〉）→ `assessment`（節4。`status / development / interest / strengths / wish` が校内様式の5欄、`how` が集め方、`tests` が検査名）→ `specific`（節5 固有の見方）→ `guidance`（節6 `preschool / school / accommodation`）→ `placesIntro`（節7）→ `conditionGroups`（節8。各疾患は `name / axis / line / links[{label,url,sourceId}] / ref`）→ `terms`（節9）→ `related / sources / reviewed`（節11）
+- 構造：`definition`（節1）→ `axes`（節2 見るべき軸。`axisType` は function＝機能の状態で見る〈視覚・聴覚〉／disease＝疾患と経過で見る〈肢体・病弱〉／profile＝実態で見る〈それ以外〉）→ `assessment`（節4。`status / development / interest / strengths / wish` が校内様式の5欄、`how` が集め方、`tests` が検査名）→ `specific`（節5 押さえておきたい基礎知識。版5.9.0で見出しを改称、キー名はそのまま）→ `guidance`（節6 `preschool / school / accommodation`）→ `placesIntro`（節7）→ `conditionGroups`（節8。各疾患は `name / axis / line / links[{label,url,sourceId}] / ref`）→ `terms`（節9）→ `related / sources / reviewed`（節11）
 - 各行の `ref` は手引の章PDFのページ番号。画面では「手引 p.90」の印になり、章のPDFへ飛ぶ
 - 疾患は `links` が1件以上ないと validate が落ちる（出典のない疾患は載せない）。`support / severity` を持つと落ちる。`axisType: profile` の区分だけは `conditionGroups` を空にでき（言語・LD・ADHD）、その場合 `conditionsIntro` に理由を書く
 - 疾患の並びは50音順にしない。群の中は、手引の記載と学齢期の頻度を踏まえて主要なものを先に置く（校内からの指摘：小眼球症が視覚障害の先頭に来るのはおかしい）。`conditionsIntro` の末尾に並び方の方針を一言書く
@@ -79,7 +83,7 @@ categories.json       障害種別 10区分（疾患は含まない）
 jiritsu27.json        自立活動 6区分27項目
 
 visual.json           区分ごとに1ファイル（版5.0の型：1つのオブジェクト。
-hearing.json            軸・実態把握・固有の見方・指導内容・疾患・用語・出典）
+hearing.json            軸・実態把握・基礎知識・指導内容・疾患・用語・出典）
 intellectual.json
 physical.json
 health.json
