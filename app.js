@@ -641,7 +641,7 @@
         '<a class="book-card" href="' + ROUTES.home() + '">' +
           '<span class="book-card-kicker">特別支援ガイドブック</span>' +
           '<span class="book-card-title">障害のある幼児児童生徒の理解と支援</span>' +
-          '<span class="book-card-desc">文部科学省「障害のある子供の教育支援の手引」と「自立活動編」解説に基づき、障害種別・原因疾患ごとの教育的ニーズと支援、学びの場を整理しています。</span>' +
+          '<span class="book-card-desc">文部科学省「障害のある子供の教育支援の手引」と「自立活動編」解説に基づき、障害種ごとの見るべき軸、実態把握の仕方、指導内容と支援の要点、学びの場を整理しています。</span>' +
           '<span class="book-card-list">' +
             '<span>障害種別ガイド　手引 第3編の10の障害種</span>' +
             '<span>特別の教育課程　日本語指導・特異な才能</span>' +
@@ -672,7 +672,7 @@
 
   function renderHome() {
     var html = '<div class="home-view">' +
-      '<p class="eyebrow" style="color:var(--gold);font-family:var(--sans);letter-spacing:.28em;font-size:11px;">INDEX</p>' +
+      
       '<h2 class="cat-title">障害種別 索引</h2>' +
       '<p>文部科学省「障害のある子供の教育支援の手引」第3編が取り上げる10の障害種について、見るべき軸、実態把握の仕方、指導内容と支援の要点、学びの場、主な疾患・状態を、手引に基づいて整理しています。左の索引または下の一覧から選んでください。</p>' +
       '<div class="home-grid">';
