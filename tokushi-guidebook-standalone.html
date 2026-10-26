@@ -3160,13 +3160,12 @@
       links.forEach(function (a) { var id = a.getAttribute('data-jump'); if (!firstId && visible[id]) firstId = id; });
       if (!firstId) return;   // どの節も見えていない間は前の状態を保つ
       links.forEach(function (a) { a.classList.toggle('on', a.getAttribute('data-jump') === firstId); });
-      document.querySelectorAll('#secbar [data-jump]').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-jump') === firstId); });
     }
     links[0].classList.add('on');
     tocObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { visible[e.target.id] = e.isIntersecting; });
       paint();
-    }, { rootMargin: '-70px 0px -55% 0px', threshold: 0 });
+    }, { rootMargin: '-72px 0px -60% 0px', threshold: 0 });
     links.forEach(function (a) { var el = document.getElementById(a.getAttribute('data-jump')); if (el) tocObserver.observe(el); });
   }
 
@@ -3187,145 +3186,6 @@
     mainContent.classList.remove('fade-in');
     void mainContent.offsetWidth; // 強制リフローでアニメーションを再スタート
     mainContent.classList.add('fade-in');
-    // 描画後に読みやすさの仕掛けを掛ける（節のたたみ、現在地の帯、疾患の絞り込み、節の立ち上がり）
-    setTimeout(enhanceReadability, 0);
-  }
-
-  /* ==========================================================
-     版6.1.0 読みやすさの仕掛け
-     ・節の見出しを押すとたたむ／開く（高さをなめらかに）
-     ・障害種別ページでは、目次が画面から外れると上に細い帯が出て、今読んでいる節を示す
-     ・目次から飛んだ先の見出しを一瞬だけ光らせて目を導く
-     ・主な疾患・状態は名前で絞り込める（行は消すのではなく畳む）
-     ・節は画面に入るときに静かに立ち上がる
-     ・文字の大きさは右上の「文」で 標準→大→特大 を切り替え（この端末にだけ覚える）
-     ========================================================== */
-  var FS_STEPS = [['normal', '標準'], ['large', '大'], ['xl', '特大']];
-  function applyFontStep(step, save) {
-    document.documentElement.setAttribute('data-fs', step);
-    var btn = document.getElementById('fsBtn');
-    if (btn) { var f = FS_STEPS.filter(function (x) { return x[0] === step; })[0]; btn.querySelector('.fs-lab').textContent = f ? f[1] : '標準'; }
-    if (save) { try { localStorage.setItem('fontStep', step); } catch (e) {} }
-  }
-  function initFontStep() {
-    var step = 'normal';
-    try { step = localStorage.getItem('fontStep') || 'normal'; } catch (e) {}
-    applyFontStep(step, false);
-    var btn = document.getElementById('fsBtn');
-    if (!btn) return;
-    btn.onclick = function () {
-      var cur = document.documentElement.getAttribute('data-fs') || 'normal';
-      var i = FS_STEPS.map(function (x) { return x[0]; }).indexOf(cur);
-      var next = FS_STEPS[(i + 1) % FS_STEPS.length][0];
-      applyFontStep(next, true);
-      btn.classList.remove('bump'); void btn.offsetWidth; btn.classList.add('bump');
-    };
-  }
-
-  function enhanceReadability() {
-    // 1) 節のたたみ・開き
-    mainContent.querySelectorAll('.block').forEach(function (sec) {
-      var h = sec.querySelector(':scope > h3.block-title');
-      if (!h || sec.querySelector(':scope > .block-body')) return;
-      var body = document.createElement('div'); body.className = 'block-body';
-      var inner = document.createElement('div'); inner.className = 'block-body-in';
-      var n = h.nextSibling;
-      while (n) { var nx = n.nextSibling; inner.appendChild(n); n = nx; }
-      body.appendChild(inner); sec.appendChild(body);
-      var tg = document.createElement('button');
-      tg.type = 'button'; tg.className = 'block-toggle'; tg.setAttribute('aria-expanded', 'true'); tg.setAttribute('aria-label', 'この節をたたむ');
-      tg.innerHTML = '<span class="chev" aria-hidden="true"></span>';
-      h.appendChild(tg);
-      function toggle() {
-        var closed = sec.classList.toggle('closed');
-        tg.setAttribute('aria-expanded', closed ? 'false' : 'true');
-        tg.setAttribute('aria-label', closed ? 'この節を開く' : 'この節をたたむ');
-      }
-      tg.addEventListener('click', function (e) { e.stopPropagation(); toggle(); });
-      h.addEventListener('click', function (e) { if (e.target.closest('a, button:not(.block-toggle)')) return; toggle(); });
-    });
-
-    // 2) 節の立ち上がり（画面に入ったとき一度だけ）
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (es) {
-        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-      }, { rootMargin: '0px 0px -8% 0px' });
-      mainContent.querySelectorAll('.block').forEach(function (sec, i) {
-        if (i < 2) { sec.classList.add('in'); return; }   // 最初の2節は待たせない
-        sec.classList.add('reveal'); io.observe(sec);
-      });
-    }
-
-    // 3) 障害種別ページ：現在地の帯と、飛んだ先の光り方
-    var toc = mainContent.querySelector('.v5-toc');
-    var old = document.getElementById('secbar'); if (old) old.remove();
-    if (toc) {
-      var bar = document.createElement('div'); bar.id = 'secbar'; bar.className = 'secbar';
-      bar.innerHTML = '<div class="secbar-in"><span class="secbar-name">' + esc(mainContent.querySelector('.cat-title') ? mainContent.querySelector('.cat-title').firstChild.textContent : '') + '</span>' +
-        '<div class="secbar-chips">' + Array.prototype.map.call(toc.querySelectorAll('[data-jump]'), function (a) {
-          return '<button type="button" data-jump="' + esc(a.getAttribute('data-jump')) + '"><span class="n">' + esc(a.querySelector('.v5-toc-n').textContent) + '</span><span class="t">' + esc(a.textContent.replace(/^\d+/, '')) + '</span></button>';
-        }).join('') + '</div>' +
-        '<button type="button" class="secbar-all" data-all="close">すべてたたむ</button></div>';
-      document.body.appendChild(bar);
-      bar.querySelectorAll('[data-jump]').forEach(function (b) {
-        b.addEventListener('click', function () { jumpTo(b.getAttribute('data-jump')); });
-      });
-      var allBtn = bar.querySelector('.secbar-all');
-      allBtn.addEventListener('click', function () {
-        var close = allBtn.getAttribute('data-all') === 'close';
-        mainContent.querySelectorAll('.block').forEach(function (sec) {
-          sec.classList.toggle('closed', close);
-          var t = sec.querySelector('.block-toggle'); if (t) t.setAttribute('aria-expanded', close ? 'false' : 'true');
-        });
-        allBtn.setAttribute('data-all', close ? 'open' : 'close');
-        allBtn.textContent = close ? 'すべて開く' : 'すべてたたむ';
-      });
-      // 目次が見えなくなったら帯を出す
-      if ('IntersectionObserver' in window) {
-        var tio = new IntersectionObserver(function (es) {
-          es.forEach(function (e) { bar.classList.toggle('show', !e.isIntersecting && e.boundingClientRect.top < 0); });
-        }, { threshold: 0 });
-        tio.observe(toc);
-      }
-      // 目次の札もこの関数経由で飛ぶように差し替え
-      toc.querySelectorAll('[data-jump]').forEach(function (a) {
-        a.addEventListener('click', function () { jumpTo(a.getAttribute('data-jump')); });
-      });
-    }
-
-    // 4) 主な疾患・状態の絞り込み
-    var cond = mainContent.querySelector('#v5-conditions');
-    if (cond && cond.querySelectorAll('.v5-cond').length >= 6 && !cond.querySelector('.cond-filter')) {
-      var rows = Array.prototype.slice.call(cond.querySelectorAll('.v5-cond'));
-      var wrap = document.createElement('div'); wrap.className = 'cond-filter';
-      wrap.innerHTML = '<input type="search" placeholder="疾患名・原因で絞り込む" aria-label="疾患名で絞り込む"><span class="cond-filter-n">' + rows.length + '件</span>';
-      var anchor = cond.querySelector('.block-body-in') || cond;
-      var intro = anchor.querySelector(':scope > .block-sub');
-      if (intro) intro.insertAdjacentElement('afterend', wrap); else anchor.insertBefore(wrap, anchor.firstChild);
-      var inp = wrap.querySelector('input'), cnt = wrap.querySelector('.cond-filter-n');
-      inp.addEventListener('input', function () {
-        var q = inp.value.trim().toLowerCase(); var shown = 0;
-        rows.forEach(function (r) {
-          var hit = !q || r.textContent.toLowerCase().indexOf(q) >= 0;
-          r.classList.toggle('folded', !hit); if (hit) shown++;
-        });
-        cond.querySelectorAll('.v5-cond-group').forEach(function (g) {
-          g.classList.toggle('folded', !g.querySelector('.v5-cond:not(.folded)'));
-        });
-        cnt.textContent = (q ? shown + '／' : '') + rows.length + '件';
-      });
-    }
-  }
-
-  // 目次から節へ。閉じていれば開き、見出しを一瞬光らせる
-  function jumpTo(id) {
-    var el = document.getElementById(id); if (!el) return;
-    if (el.classList.contains('closed')) {
-      el.classList.remove('closed');
-      var t = el.querySelector('.block-toggle'); if (t) t.setAttribute('aria-expanded', 'true');
-    }
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    el.classList.remove('jump-hit'); void el.offsetWidth; el.classList.add('jump-hit');
   }
 
   /* ==========================================================
@@ -4238,6 +4098,12 @@
       '</div>';
 
     playFadeIn();
+    mainContent.querySelectorAll('[data-jump]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        var el = document.getElementById(a.getAttribute('data-jump'));
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
     watchToc();
     // 検索から疾患名で来たときは、その行へ寄せて目印を付ける
     if (openName) {
@@ -4580,6 +4446,12 @@
 
     mainContent.innerHTML = html;
     playFadeIn();
+    mainContent.querySelectorAll('[data-jump]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        var el = document.getElementById(a.getAttribute('data-jump'));
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
     watchToc();
   }
 
@@ -5877,7 +5749,6 @@
     renderFooter();
     installBanner();
     installToTop();
-    initFontStep();
 
     // 戻る／進む、URL直打ち、リンク経由のいずれもここで拾う
     window.addEventListener('hashchange', function () {
