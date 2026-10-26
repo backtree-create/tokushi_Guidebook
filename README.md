@@ -25,6 +25,10 @@
 
 版5.1.0 で10区分すべてが版5.0の型に移行し、旧型（疾患ごとの support / severity / basis）は廃止しました。旧データは版4.6.0までのGitの履歴にあります。
 
+### 読みやすさの仕掛け（版6.1.0〜）
+
+描画のたびに `enhanceReadability()`（`playFadeIn` から呼ぶ）が、`.block` の見出し以降を `.block-body > .block-body-in` に包んでたたみ・開き（`.closed`）を付け、節に `.reveal`（画面に入ると `.in`）を付け、障害種別ページでは `#secbar`（現在地の帯。目次が画面外に出ると `.show`、`watchToc` が `.on` を同期）と主な疾患の絞り込み（`.cond-filter`、該当しない行と群は `.folded`）を足す。目次・帯からの移動は `jumpTo()`（閉じていれば開き、見出しに `.jump-hit`）。文字の大きさは `html[data-fs]`（normal / large / xl）で `--fs-*` を切り替え、`localStorage.fontStep` に覚える（`initFontStep`）。
+
 ### 文字の段階（版6.0.0〜）
 
 文字の大きさは `:root` の `--fs-body`(16) `--fs-sub`(15) `--fs-note`(14) `--fs-chip`(13.5) `--fs-h2/h3/h4` の5段階だけを使う。新しい部品を足すときも 14px 未満の文字は作らない（手引の参照 `.v5-ref` の 13.5px が下限）。本文の行の長さは `--measure`(44em) まで。style.css 末尾の「版6.0.0 視認性の底上げ」の塊で既存の指定を上書きしているので、個別の調整もそこに足す。

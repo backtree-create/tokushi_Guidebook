@@ -2837,3 +2837,95 @@
   .v5-cond b,.v5-cond .v5-cond-name{font-size:var(--fs-body);}
   .v5-cond-axis{font-size:var(--fs-note);}
   .v5-cond .v5-links a{font-size:var(--fs-note);}
+
+  /* ==========================================================
+     版6.1.0 読みやすさの仕掛け
+     ========================================================== */
+  /* 文字の大きさ 3段階（右上の「文」）。切替はなめらかに */
+  html[data-fs="large"]{--fs-body:17.5px;--fs-sub:16.5px;--fs-note:15.5px;--fs-chip:14.5px;--fs-h2:28px;--fs-h3:21px;--fs-h4:18px;--measure:40em;}
+  html[data-fs="xl"]{--fs-body:19.5px;--fs-sub:18px;--fs-note:17px;--fs-chip:15.5px;--fs-h2:30px;--fs-h3:23px;--fs-h4:19.5px;--measure:36em;}
+  html[data-fs="large"] main,html[data-fs="xl"] main{line-height:1.85;}
+  main,main *{transition-property:font-size;transition-duration:.25s;transition-timing-function:var(--ease-out);}
+  .fs-btn{
+    all:unset;display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+    padding:7px 12px;border:1px solid rgba(255,255,255,.35);border-radius:var(--r-pill);color:#e6e9ea;font-size:14px;font-family:var(--sans);
+    transition:background .18s,border-color .18s,transform .18s var(--ease-out);
+  }
+  .fs-btn:hover{background:rgba(255,255,255,.12);transform:translateY(-1px);}
+  .fs-btn:focus-visible{box-shadow:var(--ring);}
+  .fs-btn .fs-a{font-family:var(--serif);font-weight:700;font-size:16px;color:var(--gold-soft);}
+  .fs-btn .fs-lab{font-size:13px;}
+  .fs-btn.bump .fs-a{animation:fsBump .35s var(--ease-out);}
+  @keyframes fsBump{0%{transform:scale(1);}40%{transform:scale(1.35);}100%{transform:scale(1);}}
+
+  /* 節のたたみ・開き：見出しを押す。高さは grid で滑らかに */
+  .block > h3.block-title{cursor:pointer;user-select:none;position:relative;padding-right:40px;transition:color .18s;}
+  .block > h3.block-title:hover{color:var(--accent);}
+  .block-toggle{
+    all:unset;position:absolute;right:0;top:50%;transform:translateY(-50%);
+    width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
+    border:1px solid var(--line);background:var(--card);transition:background .18s,border-color .18s,transform .25s var(--ease-out);
+  }
+  .block-toggle .chev{width:9px;height:9px;border-right:2px solid var(--ink-soft);border-bottom:2px solid var(--ink-soft);transform:rotate(45deg) translate(-2px,-2px);transition:transform .25s var(--ease-out);}
+  .block-toggle:hover{border-color:var(--accent);background:var(--accent-soft);}
+  .block.closed .block-toggle .chev{transform:rotate(-45deg) translate(-1px,1px);}
+  .block-body{display:grid;grid-template-rows:1fr;transition:grid-template-rows .32s var(--ease-out),opacity .25s;}
+  .block-body-in{min-height:0;overflow:hidden;}
+  .block.closed .block-body{grid-template-rows:0fr;opacity:0;}
+  .block.closed > h3.block-title{margin-bottom:0;border-bottom-color:transparent;}
+  .block.closed{padding-bottom:4px;}
+  /* 飛んだ先の見出しを一瞬光らせる */
+  @keyframes jumpHit{0%{background:rgba(201,169,107,.35);box-shadow:0 0 0 8px rgba(201,169,107,.25);}100%{background:transparent;box-shadow:none;}}
+  .block.jump-hit > h3.block-title{animation:jumpHit 1.4s var(--ease-out);border-radius:var(--r-ctl);}
+  /* 節の立ち上がり */
+  .block.reveal{opacity:0;transform:translateY(14px);transition:opacity .45s var(--ease-out),transform .45s var(--ease-out);}
+  .block.reveal.in{opacity:1;transform:none;}
+
+  /* 現在地の帯：目次が画面から外れたら上に出る */
+  .secbar{
+    position:fixed;left:0;right:0;top:0;z-index:57;
+    background:rgba(255,255,255,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);box-shadow:0 6px 18px -14px rgba(19,33,50,.35);
+    transform:translateY(-100%);opacity:0;transition:transform .28s var(--ease-out),opacity .2s;
+  }
+  .secbar.show{transform:none;opacity:1;}
+  .secbar-in{max-width:1220px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:6px 16px;}
+  .secbar-name{font-family:var(--serif);font-weight:700;font-size:15px;color:var(--ink-strong);white-space:nowrap;padding-right:12px;border-right:1px solid var(--line);}
+  .secbar-chips{display:flex;gap:4px;flex:1 1 auto;overflow-x:auto;scrollbar-width:none;}
+  .secbar-chips::-webkit-scrollbar{display:none;}
+  .secbar-chips button{
+    all:unset;display:inline-flex;align-items:center;gap:6px;cursor:pointer;white-space:nowrap;
+    padding:5px 10px 5px 6px;border-radius:var(--r-pill);font-size:13.5px;color:var(--ink-soft);
+    transition:background .18s,color .18s;
+  }
+  .secbar-chips button .n{width:20px;height:20px;border-radius:50%;background:var(--paper2);color:var(--ink-soft);display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;transition:background .18s,color .18s,transform .25s var(--ease-out);}
+  .secbar-chips button:hover{background:var(--paper2);color:var(--ink-strong);}
+  .secbar-chips button.on{background:var(--navy);color:#fff;}
+  .secbar-chips button.on .n{background:var(--gold-soft);color:#1b1a14;transform:scale(1.08);}
+  .secbar-all{all:unset;cursor:pointer;white-space:nowrap;font-size:13px;color:var(--accent);padding:5px 10px;border:1px solid var(--line-strong);border-radius:var(--r-pill);transition:background .18s,border-color .18s;}
+  .secbar-all:hover{background:var(--accent-soft);border-color:var(--accent);}
+  /* 帯の札は番号だけを並べ、今いる節だけ名前を出す（幅に収める） */
+  .secbar-chips button .t{display:none;}
+  .secbar-chips button.on .t{display:inline;}
+  .secbar-chips button{padding:4px 8px 4px 4px;}
+  .secbar-chips button:hover .t{display:inline;}
+  @media (max-width:700px){.secbar-name{display:none;}}
+
+  /* 主な疾患・状態の絞り込み */
+  .cond-filter{display:flex;align-items:center;gap:10px;margin:0 0 14px;}
+  .cond-filter input{flex:1 1 auto;max-width:420px;font:inherit;font-size:var(--fs-sub);padding:9px 14px;border:1px solid var(--line-strong);border-radius:var(--r-pill);background:var(--card);transition:border-color .18s,box-shadow .18s;}
+  .cond-filter input:focus{outline:none;border-color:var(--accent);box-shadow:var(--ring);}
+  .cond-filter-n{font-family:var(--mono);font-size:13px;color:var(--ink-faint);white-space:nowrap;}
+  .v5-cond,.v5-cond-group{transition:opacity .22s,transform .22s var(--ease-out);}
+  .v5-cond.folded,.v5-cond-group.folded{display:none;}
+  /* 疾患の行：交互に薄く地を付けて行を追いやすく */
+  .v5-cond:nth-child(even){background:rgba(242,245,248,.6);}
+
+  @media (prefers-reduced-motion:reduce){
+    main,main *{transition:none !important;}
+    .block.reveal{opacity:1;transform:none;transition:none;}
+    .block-body,.block-toggle .chev,.secbar{transition:none !important;}
+    .block.jump-hit > h3.block-title,.fs-btn.bump .fs-a{animation:none !important;}
+  }
+  .v5-view .block{scroll-margin-top:64px;}
+  .cond-filter{margin:14px 0 18px;}
