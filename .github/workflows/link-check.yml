@@ -1,0 +1,129 @@
+# ================= このファイルの先頭 =================
+name: link check
+
+# 出典・疾患リンクの「消えた」を月に一度見つける。
+# 2026-10-27 作り直し：
+#   ・学会や行政のサイトは機械的なアクセスを弾くことがあり（403／429／503、
+#     ブラウザ以外に404を返すものも）、それを「切れ」と数えると偽の警告が毎月出る。
+#     ブラウザと同じ User-Agent で取り、403／429／503 は「切れ」ではなく「要手動確認」に分ける。
+#   ・404／410／名前解決不可／タイムアウトだけを「切れ」として Issue に載せる。
+#   ・1回失敗しても2回まで間をおいて取り直す。
+
+on:
+  schedule:
+    - cron: "0 21 1 * *"    # 毎月2日 06:00 JST
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: link-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: 点検するURLを集める
+        run: |
+          node -e '
+            const fs = require("fs");
+            const seen = new Map();
+            const add = (id, url) => { if (url && /^https?:\/\//.test(url) && !seen.has(url)) seen.set(url, id); };
+            for (const s of require("./sources.json")) { add(s.id, s.url); add(s.id + "(index)", s.indexUrl); }
+            for (const c of require("./categories.json")) {
+              const d = require("./" + c.id + ".json");
+              for (const g of d.conditionGroups || []) for (const it of g.items || []) for (const l of it.links || []) add(c.id + ":" + it.name, l.url);
+              for (const r of d.related || []) add(c.id + ":related", r.url);
+            }
+            for (const f of ["seito.json", "curriculum.json", "links.json"]) {
+              const t = fs.readFileSync(f, "utf8");
+              for (const m of t.matchAll(/https?:\/\/[^"\s]+/g)) add(f, m[0]);
+            }
+            const rows = [...seen].map(([url, id]) => id + "\t" + url);
+            fs.writeFileSync("targets.tsv", rows.join("\n") + "\n");
+            console.log("点検対象:", rows.length, "件");
+          '
+
+      - name: 取得する
+        run: |
+          : > results.tsv
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+          while IFS=$'\t' read -r id url; do
+            [ -z "$url" ] && continue
+            code=""
+            for try in 1 2 3; do
+              code=$(curl -sS -o /dev/null -w "%{http_code}" -L --max-time 40 \
+                     -A "$UA" -H "Accept-Language: ja,en;q=0.8" -H "Accept: text/html,application/pdf,*/*;q=0.8" \
+                     "$url" 2>/dev/null || echo "000")
+              case "$code" in 2*|3*) break;; esac
+              # 弾かれ・混雑は間をおいて取り直す
+              sleep $((try * 4))
+            done
+            printf '%s\t%s\t%s\n' "$code" "$id" "$url" >> results.tsv
+            sleep 1
+          done < targets.tsv
+          sort results.tsv | awk -F'\t' '{print $1}' | uniq -c
+
+      - name: 仕分けて報告を作る
+        id: triage
+        run: |
+          node -e '
+            const fs = require("fs");
+            const rows = fs.readFileSync("results.tsv", "utf8").trim().split("\n").filter(Boolean)
+              .map(l => { const [code, id, url] = l.split("\t"); return { code, id, url }; });
+            const broken = rows.filter(r => ["404", "410", "000"].includes(r.code));
+            const blocked = rows.filter(r => ["401", "403", "406", "429", "500", "502", "503", "999"].includes(r.code));
+            const ok = rows.length - broken.length - blocked.length;
+            let md = `点検 ${rows.length} 件：到達 ${ok} ／ 切れの疑い ${broken.length} ／ 機械的なアクセスを弾かれた ${blocked.length}\n\n`;
+            if (broken.length) {
+              md += "## 切れの疑い（404／410／応答なし）\n\n";
+              md += "ブラウザで開いて確かめ、移転していれば sources.json または各障害種JSONの url を直し、`checked` を今日の日付にしてください。\n\n";
+              for (const r of broken) md += `- [ ] [${r.code}] **${r.id}**\n      ${r.url}\n`;
+              md += "\n";
+            }
+            if (blocked.length) {
+              md += "## 機械的なアクセスを弾かれた（403／429／503 など）\n\n";
+              md += "学会・行政のサイトに多く、ブラウザでは開けることがほとんどです。切れではありません。念のため一つ開いて確かめてください。\n\n";
+              for (const r of blocked) md += `- [${r.code}] ${r.id}\n      ${r.url}\n`;
+              md += "\n";
+            }
+            fs.writeFileSync("report.md", md);
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `notify=${broken.length > 0}\n`);
+            console.log(md);
+          '
+
+      - name: Issueを立てる／書き換える
+        if: steps.triage.outputs.notify == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('report.md', 'utf8').slice(0, 60000);
+            const title = 'リンク切れの疑い';
+            try {
+              const { data: open } = await github.rest.issues.listForRepo({
+                owner: context.repo.owner, repo: context.repo.repo,
+                state: 'open', labels: 'リンク', per_page: 100,
+              });
+              const found = open.find(i => i.title === title);
+              if (found) {
+                await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: found.number, body });
+                core.notice(`既存の Issue #${found.number} を更新しました`);
+              } else {
+                const { data: made } = await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo, title, body, labels: ['リンク', '自動検出'] });
+                core.notice(`Issue #${made.number} を作成しました`);
+              }
+            } catch (e) {
+              core.warning(`Issueを操作できませんでした: ${e.message}`);
+            }
+
+# ================= このファイルの末尾 =================
+# この行より下に何か書かれていたら、貼り付けが二重になっています。

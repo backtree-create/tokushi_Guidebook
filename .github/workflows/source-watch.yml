@@ -56,7 +56,7 @@ jobs:
             [ -z "$id" ] && continue
             # 取得できなかったものは "取得失敗" として記録し、差分扱いにはしない
             if curl -sSL --max-time 45 --retry 2 \
-                 -A "Mozilla/5.0 (compatible; tokushi-Guidebook-source-watch/1.0)" \
+                 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" -H "Accept-Language: ja,en;q=0.8" \
                  "$url" -o page.bin 2>/dev/null; then
               # 日付やアクセスカウンタで毎回変わるのを避けるため、
               # 数字の並びを潰したうえでハッシュをとる
