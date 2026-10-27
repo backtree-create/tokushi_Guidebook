@@ -209,13 +209,13 @@
     "id": "grj",
     "title": "GeneReviews Japan（日本語版）",
     "publisher": "GeneReviews Japan",
-    "url": "https://plaza.umin.ac.jp/~grj/contents/begin.htm",
+    "url": "https://grj.umin.jp/begin.html",
     "policy": "latest",
     "checked": "2026-10-27",
-    "indexUrl": "https://plaza.umin.ac.jp/~grj/contents/begin.htm",
+    "indexUrl": "https://grj.umin.jp/list.html",
     "kind": "portal",
     "group": "medical",
-    "editorNote": "旧 grj.umin.jp から plaza.umin.ac.jp/~grj/ へ移転（2026年8月20日改訂の入口ページで確認）。入口で「承諾する」を押すと病名リストに進む。個別疾患ページは /grj/<略号>.htm 形式。2026-10-27 一覧ページの変化を確認：趣旨・利用上の注意の文面のみ。収録疾患の参照先に変更なし",
+    "editorNote": "2026-10-27 入口を公式ドメイン grj.umin.jp に戻した（plaza.umin.ac.jp/~grj/ は同内容のミラーだが、自動点検から404が返り続けたため）。個別疾患ページは https://grj.umin.jp/grj/<略号>.htm で到達を確認（usher1、LCA-EOSRD）。一覧は list.html",
     "note": "遺伝性疾患の解説の日本語版。入口ページで「承諾する」を押すと病名の一覧へ"
   },
   {
@@ -1333,9 +1333,10 @@
     "edition": "平成24年",
     "url": "https://www.mext.go.jp/b_menu/shingi/chukyo/chukyo3/044/attach/1297377.htm",
     "policy": "pinned",
-    "checked": "2026-10-08",
+    "checked": "2026-10-27",
     "group": "mext",
-    "note": "共通と障害種ごとの合理的配慮の例"
+    "note": "共通と障害種ごとの合理的配慮の例",
+    "editorNote": "2026-10-27 ブラウザでは開ける（題「別紙2 「合理的配慮」の例」、移転案内なし）が、GitHub の自動点検からは404が返る。文部科学省の b_menu 配下のHTMLは機械的なアクセスに404を返すことがある。同内容の文科省発行PDFは見つからず、都道府県の再掲PDFは二次資料のため採用しない。手動確認済みURLとして点検の除外一覧に登録"
   },
   {
     "id": "mext-taisei-gl-h29",
@@ -1350,15 +1351,16 @@
   },
   {
     "id": "cpedd",
-    "title": "発達障害教育推進センター 指導・支援",
+    "title": "発達障害教育推進センター 個に応じた指導・支援",
     "publisher": "国立特別支援教育総合研究所",
-    "url": "https://cpedd.nise.go.jp/shido_shien",
+    "url": "https://cpedd.nise.go.jp/support/individual/",
     "policy": "latest",
     "review": "年1回",
-    "checked": "2026-10-08",
+    "checked": "2026-10-27",
     "group": "gov",
     "note": "学習面・行動面・社会面のつまずきと指導・支援、LD・ADHD・自閉症の指導・支援",
     "kind": "portal",
-    "watch": "quiet"
+    "watch": "quiet",
+    "editorNote": "2026-10-27 サイト改編後の構成に合わせ、旧URL /shido_shien から /support/individual/（個に応じた指導・支援）に差し替え。学習面・行動面・社会面のつまずきのQ&Aと、LD・ADHD・自閉症の指導・支援を収載"
   }
 ]

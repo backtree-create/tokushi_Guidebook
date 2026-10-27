@@ -27,7 +27,7 @@
 `meta.json` の `maintenance.<key>.on` を true にすると、その機能が「整備中」の案内で覆われる。`?preview=<previewKey>` を付けて開くと中身を確認できる。公開中は `sheet2`（計画シート）だけ true。`site` を true にするとサイト全体が覆われる（緊急時）。
 
 ### 定期点検（学期に1回を目安）
-- 外部リンクの到達確認：`sources.json` の `url` と各障害種JSONの `links[].url`。切れていれば `checked` と `editorNote` を更新して差し替える（版6.2.0の点検では207件すべて到達）
+- 外部リンクの到達確認：`sources.json` の `url` と各障害種JSONの `links[].url`。GitHub Actions の `link check`（毎月2日）が Issue に出す。切れていれば `checked` と `editorNote` を更新して差し替える。行政・学会のサイトは自動点検に404や403を返すことがあるので、ブラウザで開けるのに自動点検だけ落ちるURLは `linkcheck-known-ok.txt` に登録する（半年に一度は開き直す）
 - 手引・提要の改訂の有無：`sources.json` の `policy: "latest"` の資料は新版が出ていないか確認
 - 問い合わせフォームの回答を確認し、追加・訂正を反映
 
