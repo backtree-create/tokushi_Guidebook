@@ -2845,6 +2845,11 @@
   html[data-fs="large"]{--fs-body:17.5px;--fs-sub:16.5px;--fs-note:15.5px;--fs-chip:14.5px;--fs-h2:28px;--fs-h3:21px;--fs-h4:18px;--measure:40em;}
   html[data-fs="xl"]{--fs-body:19.5px;--fs-sub:18px;--fs-note:17px;--fs-chip:15.5px;--fs-h2:30px;--fs-h3:23px;--fs-h4:19.5px;--measure:36em;}
   html[data-fs="large"] main,html[data-fs="xl"] main{line-height:1.85;}
+  /* 固定pxの部品も含めて本文側をまとめて拡大する（ヘッダーは拡大しない） */
+  #layoutRoot{transition:zoom .2s;}
+  html[data-fs="large"] #layoutRoot{zoom:1.15;}
+  html[data-fs="xl"] #layoutRoot{zoom:1.32;}
+  html[data-fs="large"] .secbar-in,html[data-fs="xl"] .secbar-in{zoom:1.08;}
   main,main *{transition-property:font-size;transition-duration:.25s;transition-timing-function:var(--ease-out);}
   .fs-btn{
     all:unset;display:inline-flex;align-items:center;gap:6px;cursor:pointer;
