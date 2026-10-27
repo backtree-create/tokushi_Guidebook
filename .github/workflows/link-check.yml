@@ -54,23 +54,35 @@ jobs:
 
       - name: 取得する
         run: |
-          : > results.tsv
+          # 1件ずつ直列に取ると弾かれるサイトの再試行で30分以上かかり、ログも動かないので
+          # 止まって見える。8本並列にし、1件ごとに進み具合を出す。
+          cat > fetch_one.sh <<'SH'
+          #!/bin/bash
+          id="$1"; url="$2"
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
-          while IFS=$'\t' read -r id url; do
-            [ -z "$url" ] && continue
-            code=""
-            for try in 1 2 3; do
-              code=$(curl -sS -o /dev/null -w "%{http_code}" -L --max-time 40 \
-                     -A "$UA" -H "Accept-Language: ja,en;q=0.8" -H "Accept: text/html,application/pdf,*/*;q=0.8" \
-                     "$url" 2>/dev/null || echo "000")
-              case "$code" in 2*|3*) break;; esac
-              # 弾かれ・混雑は間をおいて取り直す
-              sleep $((try * 4))
-            done
-            printf '%s\t%s\t%s\n' "$code" "$id" "$url" >> results.tsv
-            sleep 1
-          done < targets.tsv
-          sort results.tsv | awk -F'\t' '{print $1}' | uniq -c
+          code="000"
+          for try in 1 2; do
+            code=$(curl -sS -o /dev/null -w "%{http_code}" -L --max-time 25 \
+                   -A "$UA" -H "Accept-Language: ja,en;q=0.8" -H "Accept: text/html,application/pdf,*/*;q=0.8" \
+                   "$url" < /dev/null 2>/dev/null)
+            [ -z "$code" ] && code="000"
+            case "$code" in
+              2*|3*|404|410) break;;        # 確定した結果は取り直さない
+              *) sleep 3;;                  # 弾かれ・混雑・応答なしは一度だけ取り直す
+            esac
+          done
+          printf '%s\t%s\t%s\n' "$code" "$id" "$url"
+          SH
+          chmod +x fetch_one.sh
+          total=$(wc -l < targets.tsv)
+          echo "取得開始: ${total} 件（8本並列）"
+          # 1行ずつ fetch_one.sh に渡す。タブ区切りの id と url を引数にする
+          awk -F'\t' '{print $1 "\t" $2}' targets.tsv \
+            | xargs -P 8 -d '\n' -I{} bash -c 'IFS=$'"'"'\t'"'"' read -r id url <<< "{}"; ./fetch_one.sh "$id" "$url"' \
+            | tee results.tsv \
+            | awk -F'\t' '{ n++; printf "[%d] %s %s\n", n, $1, $3; fflush() }'
+          echo "取得完了: $(wc -l < results.tsv) 件"
+          awk -F'\t' '{print $1}' results.tsv | sort | uniq -c
 
       - name: 仕分けて報告を作る
         id: triage
