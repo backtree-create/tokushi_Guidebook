@@ -2934,3 +2934,7 @@
   }
   .v5-view .block{scroll-margin-top:64px;}
   .cond-filter{margin:14px 0 18px;}
+
+  /* 版6.2.3 権利表示（フッター最下段） */
+  .footer-copyright{margin:14px 0 0;padding-top:10px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink-faint);letter-spacing:.02em;}
+  @media print{.footer-copyright{font-size:8pt;}}
