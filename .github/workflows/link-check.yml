@@ -91,14 +91,25 @@ jobs:
             const fs = require("fs");
             const rows = fs.readFileSync("results.tsv", "utf8").trim().split("\n").filter(Boolean)
               .map(l => { const [code, id, url] = l.split("\t"); return { code, id, url }; });
-            const broken = rows.filter(r => ["404", "410", "000"].includes(r.code));
+            // 手動で開けることを確認済みのURL（linkcheck-known-ok.txt）は切れと数えない
+            const known = new Set(fs.existsSync("linkcheck-known-ok.txt")
+              ? fs.readFileSync("linkcheck-known-ok.txt", "utf8").split("\n").map(l => l.trim()).filter(l => l && !l.startsWith("#")) : []);
+            const isBad = r => ["404", "410", "000"].includes(r.code);
+            const broken = rows.filter(r => isBad(r) && !known.has(r.url));
+            const knownBad = rows.filter(r => isBad(r) && known.has(r.url));
             const blocked = rows.filter(r => ["401", "403", "406", "429", "500", "502", "503", "999"].includes(r.code));
-            const ok = rows.length - broken.length - blocked.length;
-            let md = `点検 ${rows.length} 件：到達 ${ok} ／ 切れの疑い ${broken.length} ／ 機械的なアクセスを弾かれた ${blocked.length}\n\n`;
+            const ok = rows.length - broken.length - knownBad.length - blocked.length;
+            let md = `点検 ${rows.length} 件：到達 ${ok} ／ 切れの疑い ${broken.length} ／ 手動確認済み ${knownBad.length} ／ 機械的なアクセスを弾かれた ${blocked.length}\n\n`;
             if (broken.length) {
               md += "## 切れの疑い（404／410／応答なし）\n\n";
               md += "ブラウザで開いて確かめ、移転していれば sources.json または各障害種JSONの url を直し、`checked` を今日の日付にしてください。\n\n";
               for (const r of broken) md += `- [ ] [${r.code}] **${r.id}**\n      ${r.url}\n`;
+              md += "\n";
+            }
+            if (knownBad.length) {
+              md += "## 手動確認済み（自動点検では開けないが、ブラウザで開けることを確認したURL）\n\n";
+              md += "linkcheck-known-ok.txt に登録してあるものです。半年に一度はブラウザで開き直してください。\n\n";
+              for (const r of knownBad) md += `- [${r.code}] ${r.id}\n      ${r.url}\n`;
               md += "\n";
             }
             if (blocked.length) {
