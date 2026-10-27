@@ -5777,7 +5777,8 @@
         '出典 ' + SOURCES.length + '件（詳細は上部タブ「出典・リンク集」）' +
       '</p>' +
       '<p class="footer-feedback"><b>' + esc(fb.label) + '</b>：' + esc(fb.note) +
-        ' <a href="' + esc(fb.url) + '" target="_blank" rel="noopener">' + esc(fb.url) + '</a></p>';
+        ' <a href="' + esc(fb.url) + '" target="_blank" rel="noopener">' + esc(fb.url) + '</a></p>' +
+      (META.copyright ? '<p class="footer-copyright">' + esc(META.copyright) + '</p>' : '');
   }
 
   /* ---------- ホーム画面追加の案内 ---------- */
