@@ -15,7 +15,7 @@
 
     /* ---- 文字 ----
        白地で18:1。行政文書の水準に合わせて高めに取る。 */
-    --ink:#141719;
+    --ink:#1b2129;
     --ink-strong:#0e2033;
     --ink-soft:#363e45;
     --ink-faint:#4f5860;
@@ -2590,7 +2590,7 @@
     --ring:0 0 0 3px rgba(15,76,138,.18);
   }
   html{scroll-behavior:smooth;}
-  body{color:#1b2129;}
+  body{color:var(--ink);}
 
   /* --- ヘッダー：面の重さを減らす --- */
   header{background:linear-gradient(180deg,var(--navy-2) 0%,var(--navy) 100%);border-bottom-width:2px;}
@@ -2676,7 +2676,7 @@
     border-radius:var(--r-ctl);transition:border-color .18s,box-shadow .18s,background .18s;
   }
   .sp-field textarea:focus,.sp-field input:focus,.sp-field select:focus,.sp-f select:focus,.sp-f input:focus,.sp-f textarea:focus{
-    outline:none;border-color:var(--accent);box-shadow:var(--ring);background:#fff;
+    outline:none;border-color:var(--accent);box-shadow:var(--ring);background:var(--card);
   }
   .sp-field label,.sp-label{transition:color .18s;}
   .sp-field:focus-within .sp-label,.sp-field:focus-within>span:first-child{color:var(--accent);}
@@ -2889,7 +2889,7 @@
   /* 現在地の帯：目次が画面から外れたら上に出る */
   .secbar{
     position:fixed;left:0;right:0;top:0;z-index:57;
-    background:rgba(255,255,255,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    background:rgba(255,255,255,.94);background:color-mix(in srgb, var(--paper) 94%, transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);box-shadow:0 6px 18px -14px rgba(19,33,50,.35);
     transform:translateY(-100%);opacity:0;transition:transform .28s var(--ease-out),opacity .2s;
   }
@@ -2924,7 +2924,7 @@
   .v5-cond,.v5-cond-group{transition:opacity .22s,transform .22s var(--ease-out);}
   .v5-cond.folded,.v5-cond-group.folded{display:none;}
   /* 疾患の行：交互に薄く地を付けて行を追いやすく */
-  .v5-cond:nth-child(even){background:rgba(242,245,248,.6);}
+  .v5-cond:nth-child(even){background:rgba(242,245,248,.6);background:color-mix(in srgb, var(--paper2) 60%, transparent);}
 
   @media (prefers-reduced-motion:reduce){
     main,main *{transition:none !important;}
@@ -2938,3 +2938,22 @@
   /* 版6.2.3 権利表示（フッター最下段） */
   .footer-copyright{margin:14px 0 0;padding-top:10px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink-faint);letter-spacing:.02em;}
   @media print{.footer-copyright{font-size:8pt;}}
+
+  /* ==========================================================
+     版6.3.0 暗い配色とレイアウトの再精査（整備中だった画面）
+     ========================================================== */
+  /* 実態把握の項目：見出しの高さが違っても入力欄の位置が揃うように */
+  .sp-grid{align-items:stretch;}
+  .sp-grid .sp-f{display:flex;flex-direction:column;gap:5px;}
+  .sp-grid .sp-f > :last-child{margin-top:auto;}
+  .sp-grid .sp-f .sp-label{align-items:baseline;}
+  .sp-grid .sp-f > :last-child{margin-top:0;}
+  .sp-grid .sp-f{gap:4px;}
+  .sp-hint-below{display:block;font-size:13.5px;line-height:1.5;color:var(--ink-faint);margin-top:2px;}
+  @media print{.block.reveal{opacity:1 !important;transform:none !important;}.block.closed .block-body{grid-template-rows:1fr !important;opacity:1 !important;}.block-toggle,.secbar,.cond-filter{display:none !important;}}
+  @media (prefers-color-scheme: dark){
+    @supports not (background: color-mix(in srgb, red, blue)){
+      .secbar{background:rgba(16,21,26,.94);}
+      .v5-cond:nth-child(even){background:rgba(255,255,255,.03);}
+    }
+  }

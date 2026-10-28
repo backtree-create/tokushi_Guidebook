@@ -235,6 +235,13 @@
         if (i < 2) { sec.classList.add('in'); return; }   // 最初の2節は待たせない
         sec.classList.add('reveal'); io.observe(sec);
       });
+      // 保険：何かの事情で監視が働かなくても、2秒後には全部見える状態にする
+      setTimeout(function () { mainContent.querySelectorAll('.block.reveal').forEach(function (sec) { sec.classList.add('in'); }); }, 2000);
+      // 印刷前にはすべて開いて見せる
+      window.addEventListener('beforeprint', function () {
+        mainContent.querySelectorAll('.block.reveal').forEach(function (sec) { sec.classList.add('in'); });
+        mainContent.querySelectorAll('.block.closed').forEach(function (sec) { sec.classList.remove('closed'); });
+      }, { once: true });
     }
 
     // 3) 障害種別ページ：現在地の帯と、飛んだ先の光り方
@@ -1897,33 +1904,35 @@
     var fields = spFieldsOf(cat, f.k);
     var inner = fields.map(function (x) {
       var key = spFKey(cat, x), v = d.f[key] == null ? '' : d.f[key];
-      var lab = '<span class="sp-label">' + esc(x.label) + (x.hint ? '<span class="sp-hint">' + esc(x.hint) + '</span>' : '') + v5Ref(cat, x.ref) + '</span>';
+      // 見出しは1行（名前＋手引の参照）、補足は入力欄の下に置く。欄の高さが揃い、目が迷わない
+      var lab = '<span class="sp-label">' + esc(x.label) + v5Ref(cat, x.ref) + '</span>';
+      var hintBelow = x.hint ? '<span class="sp-hint sp-hint-below">' + esc(x.hint) + '</span>' : '';
       if (x.type === 'select') {
         return '<label class="sp-field sp-f sp-f-select">' + lab + '<select data-spf="' + esc(key) + '"><option value="">—</option>' +
-          x.options.map(function (o) { return '<option value="' + esc(o) + '"' + (v === o ? ' selected' : '') + '>' + esc(o) + '</option>'; }).join('') + '</select></label>';
+          x.options.map(function (o) { return '<option value="' + esc(o) + '"' + (v === o ? ' selected' : '') + '>' + esc(o) + '</option>'; }).join('') + '</select>' + hintBelow + '</label>';
       }
       if (x.type === 'number') {
-        return '<label class="sp-field sp-f sp-f-number">' + lab + '<span class="sp-num-wrap"><input type="number" step="any" data-spf="' + esc(key) + '" value="' + esc(v) + '">' + (x.unit ? '<span class="sp-unit">' + esc(x.unit) + '</span>' : '') + '</span></label>';
+        return '<label class="sp-field sp-f sp-f-number">' + lab + '<span class="sp-num-wrap"><input type="number" step="any" data-spf="' + esc(key) + '" value="' + esc(v) + '">' + (x.unit ? '<span class="sp-unit">' + esc(x.unit) + '</span>' : '') + '</span>' + hintBelow + '</label>';
       }
       if (x.type === 'checks') {
         var sel = String(v).split('／').filter(Boolean);
         return '<div class="sp-field sp-f sp-f-checks">' + lab + '<div class="sp-checks" data-spf-group="' + esc(key) + '">' +
-          x.options.map(function (o) { return '<label class="sp-check-item"><input type="checkbox" value="' + esc(o) + '"' + (sel.indexOf(o) >= 0 ? ' checked' : '') + '> ' + esc(o) + '</label>'; }).join('') + '</div></div>';
+          x.options.map(function (o) { return '<label class="sp-check-item"><input type="checkbox" value="' + esc(o) + '"' + (sel.indexOf(o) >= 0 ? ' checked' : '') + '> ' + esc(o) + '</label>'; }).join('') + '</div>' + hintBelow + '</div>';
       }
       if (x.type === 'image') {
         return '<label class="sp-field sp-f sp-f-select">' + lab +
           '<select data-spf="' + esc(key) + '"><option value=""' + (v === '' ? ' selected' : '') + '>—</option>' +
             '<option value="none"' + (v === 'none' ? ' selected' : '') + '>なし・未確認</option>' +
-            '<option value="later"' + (v === 'later' ? ' selected' : '') + '>手元にある</option></select></label>';
+            '<option value="later"' + (v === 'later' ? ' selected' : '') + '>手元にある</option></select>' + hintBelow + '</label>';
       }
       if (x.type === 'textarea') {
-        return '<label class="sp-field sp-f">' + lab + '<textarea data-spf="' + esc(key) + '" rows="2">' + esc(v) + '</textarea></label>';
+        return '<label class="sp-field sp-f">' + lab + '<textarea data-spf="' + esc(key) + '" rows="2">' + esc(v) + '</textarea>' + hintBelow + '</label>';
       }
-      return '<label class="sp-field sp-f">' + lab + '<input type="text" data-spf="' + esc(key) + '" value="' + esc(v) + '"></label>';
+      return '<label class="sp-field sp-f">' + lab + '<input type="text" data-spf="' + esc(key) + '" value="' + esc(v) + '">' + hintBelow + '</label>';
     }).join('');
     return '<div class="sp-col"><p class="sp-col-head"><span class="sp-num">' + (SP_FORM.indexOf(f) + 1) + '</span>' + spHeadHtml(f) + '</p>' +
       (inner ? '<div class="sp-grid">' + inner + '</div>' : '') +
-      spField(f.k, fields.length ? '補足・自由記述' : spDispLabel(f), f.hint, f.rows, fields.length ? '' : spCatPlaceholder(cat, f.k)) +
+      spField(f.k, fields.length ? '補足・自由記述' : '記入欄', f.hint, f.rows, fields.length ? '' : spCatPlaceholder(cat, f.k)) +
       '</div>';
   }
   function renderSupport(catId) {

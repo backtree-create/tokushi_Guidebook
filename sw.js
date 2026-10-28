@@ -8,7 +8,7 @@
  * 注意：VERSION は meta.json の "version" と揃えること。
  *       内容を更新したらここも必ず書き換える。
  */
-const VERSION = "6.2.3";
+const VERSION = "6.3.0";
 const CACHE_NAME = `tokushi-guidebook-${VERSION}`;
 
 const PRECACHE = [
@@ -43,8 +43,11 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       // 1本でも失敗すると install ごと失敗するため、個別に握りつぶす
+      // 2026-10-27: ブラウザのHTTPキャッシュ（GitHub Pages は10分）を通さず、
+      // 必ずサーバーから取り直す。これがないと、新しい版のSWが古い app.js を
+      // 抱え込み、版を上げたのに表示が変わらないことがある
       .then((cache) => Promise.all(
-        PRECACHE.map((url) => cache.add(url).catch(() => null))
+        PRECACHE.map((url) => cache.add(new Request(url, { cache: "reload" })).catch(() => null))
       ))
       .then(() => self.skipWaiting())
   );
