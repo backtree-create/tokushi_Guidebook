@@ -1465,21 +1465,25 @@
       '<div class="section-disclaimer"><b>項目名の表記について</b>' +
       '<p>本ツールでは画面上の読みやすさのため短縮した項目名を用いています。学習指導要領の正式名称（「〜に関すること」）は各項目に併記しました。指導計画等の書類に記載する際は正式名称をお使いください。</p></div>';
 
+    // 区分の目次（札）。押すとその区分へ
+    html += '<nav class="ku-toc" aria-label="区分へ移動">' + JIRITSU27.map(function (g, gi) {
+      return '<a href="javascript:void(0)" data-jump="ku-' + (gi + 1) + '"><span class="n">' + (gi + 1) + '</span>' + esc(g.ku) + '<span class="tally">' + g.items.length + '項目</span></a>';
+    }).join('') + '</nav>';
+
     JIRITSU27.forEach(function (group, gi) {
-      html += '<div class="ku-group">' +
+      html += '<div class="ku-group" id="ku-' + (gi + 1) + '">' +
         '<div class="ku-heading"><span class="ku-index">' + (gi + 1) + '</span><h3>' + esc(group.ku) + '</h3></div>' +
-        '<div class="table-scroll"><table class="item-table">' +
-        '<thead><tr><th style="width:34px;">No.</th><th>項目</th><th>内容の要旨</th></tr></thead><tbody>';
+        '<div class="ku-cards">';
       group.items.forEach(function (it, ii) {
-        // 見出しは短縮名、その下に学習指導要領の正式名称を併記する
-        var official = it.official
-          ? '<span class="item-official">正式名称：' + esc(it.official) + '</span>'
-          : '';
-        html += '<tr><td class="item-no">(' + (ii + 1) + ')</td>' +
-                '<td class="item-name"><span class="item-label">' + esc(it.name) + '</span>' + official + '</td>' +
-                '<td>' + esc(it.desc) + '</td></tr>';
+        // 見出しは短縮名、その下に学習指導要領の正式名称、本文に要旨
+        html += '<div class="ku-card">' +
+          '<span class="ku-no">(' + (ii + 1) + ')</span>' +
+          '<span class="ku-name">' + esc(it.name) + '</span>' +
+          (it.official ? '<span class="ku-official">正式名称：' + esc(it.official) + '</span>' : '') +
+          '<span class="ku-desc">' + esc(it.desc) + '</span>' +
+        '</div>';
       });
-      html += '</tbody></table></div></div>';
+      html += '</div></div>';
     });
 
     html += '<div class="source-box">' +
@@ -1489,6 +1493,9 @@
 
     mainContent.innerHTML = html;
     playFadeIn();
+    mainContent.querySelectorAll('.ku-toc [data-jump]').forEach(function (a) {
+      a.addEventListener('click', function () { var el = document.getElementById(a.getAttribute('data-jump')); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    });
   }
 
   /* ---------- 出典・リンク集（旧 診断名・出典） ---------- */
@@ -1657,9 +1664,19 @@
       byKu: byKu,
       issues: '', relations: '',
       central: '', goal: '',
-      ask: ''
+      ask: '',
+      // 版6.4.0：AIの回答から流し込む「シート（案）」の欄。様式表示に反映する
+      sheet: { summary: '', items: '', rejected: '', relate: '', content: '', check: '' }
     };
   }
+  var SP_SHEET = [
+    ['summary',  '①〜④の要約'],
+    ['items',    '⑤ 選定した項目'],
+    ['rejected', '⑤′ 検討したが選ばなかった項目'],
+    ['relate',   '⑥ 項目の関連付け'],
+    ['content',  '⑦ 具体的な指導内容'],
+    ['check',    '教員が確認すべき点']
+  ];
 
   function spItemsText(withDesc) {
     return JIRITSU27.map(function (g, gi) {
@@ -1779,13 +1796,13 @@
     }
     out.push('【お願いすること】');
     out.push('まず「今、困っていること」を受け止めて、①実態把握の最初の質問を1つだけしてください。私が答えたら要約して確認し、次の質問へ。④の指導目標まで揃ったら、そこまでを一度まとめて見せてください。');
-    out.push('私が「それでいい」と言ったら、次の形式でシート（案）を出してください。');
-    out.push('・⑤ 選定した項目（正式名称）｜区分｜選んだ理由｜根拠');
-    out.push('・⑤′ 検討したが選ばなかった項目｜理由');
-    out.push('・⑥ 項目の関連付け：選んだ項目同士をどう結び付けて指導するか｜根拠');
-    out.push('・⑦ 具体的な指導内容（2〜3案）｜ねらい｜関連する項目｜根拠｜評価の観点');
-    out.push('・最後に「教員が確認すべき点」を箇条書きで。私が「分からない」と答えた事項は必ずここに入れてください。');
-    out.push('・シートの冒頭に、聞き取りで分かった①〜④の要約も付けてください（校内の検討で使います）。');
+    out.push('私が「それでいい」と言ったら、次の見出しをこの表記のまま使ってシート（案）を出してください（見出しは【 】で囲み、順番も変えない。私はこの見出しを手がかりに様式へ流し込みます）。');
+    out.push('【①〜④の要約】聞き取りで分かった実態・課題・中心となる課題・指導目標の要約（校内の検討で使います）');
+    out.push('【⑤ 選定した項目】1行に1項目。「正式名称｜区分｜選んだ理由｜根拠」の順に「｜」で区切る');
+    out.push('【⑤′ 検討したが選ばなかった項目】1行に1項目。「正式名称｜理由」');
+    out.push('【⑥ 項目の関連付け】選んだ項目同士をどう結び付けて指導するか｜根拠');
+    out.push('【⑦ 具体的な指導内容】2〜3案。各案は「案の名前｜ねらい｜関連する項目｜根拠｜評価の観点」');
+    out.push('【教員が確認すべき点】箇条書き。私が「分からない」と答えた事項は必ずここに入れてください');
     out.push('・そのあとに、校内様式の「' + SP_FORM_NAME + '」へ貼るための欄を、欄名を変えずに次の形式で付けてください（私の答えを整えて書く。答えていない欄は「（未確認）」）。');
     out.push('＜' + SP_FORM_NAME + '＞');
     SP_FORM.forEach(function (f) { out.push('【' + f.label + '】'); out.push('（内容）'); });
@@ -1828,6 +1845,96 @@
     });
     flush();
     return filled;
+  }
+
+  // AIの回答から【⑤ 選定した項目】などの欄を読み取って d.sheet に入れる（版6.4.0）
+  function spParseSheet(text, d) {
+    var lines = (text || '').split(/\r?\n/), key = null, buf = [], filled = 0;
+    if (!d.sheet) d.sheet = { summary: '', items: '', rejected: '', relate: '', content: '', check: '' };
+    function keyOf(h) {
+      h = h.replace(/\s/g, '');
+      if (/^①[〜～~\-－]?④|^①から④|要約/.test(h)) return 'summary';
+      if (/^⑤[′'’]|選ばなかった/.test(h)) return 'rejected';
+      if (/^⑤|選定した項目/.test(h)) return 'items';
+      if (/^⑥|関連付け/.test(h)) return 'relate';
+      if (/^⑦|指導内容/.test(h)) return 'content';
+      if (/確認すべき点/.test(h)) return 'check';
+      return null;
+    }
+    function flush() {
+      if (!key) return;
+      var v = buf.join('\n').trim();
+      if (v) { d.sheet[key] = v; filled++; }
+      key = null; buf = [];
+    }
+    lines.forEach(function (ln) {
+      var t = ln.trim();
+      var m = /^【(.+?)】\s*(.*)$/.exec(t);
+      if (m) { flush(); key = keyOf(m[1]); if (key && m[2]) buf.push(m[2]); return; }
+      if (/^[＜<]/.test(t)) { flush(); return; }   // ＜校内様式＞ 以降は別の読み取り
+      if (key) buf.push(ln);
+    });
+    flush();
+    return filled;
+  }
+  // 「正式名称｜区分｜理由｜根拠」の行を表に、それ以外は箇条書きに
+  function spRowsHtml(text, heads) {
+    var lines = (text || '').split(/\r?\n/).map(function (l) { return l.replace(/^[・\-•\d.．)）\s]+/, '').trim(); }).filter(Boolean);
+    if (!lines.length) return '<div class="sh-blank"></div>';
+    var cells = lines.map(function (l) { return l.split(/[｜|]/).map(function (x) { return x.trim(); }); });
+    var tabular = heads && cells.filter(function (c) { return c.length >= 2; }).length >= Math.ceil(cells.length / 2);
+    if (!tabular) return '<ul class="sh-list">' + lines.map(function (l) { return '<li>' + esc(l) + '</li>'; }).join('') + '</ul>';
+    var n = heads.length;
+    return '<table class="sh-table"><thead><tr>' + heads.map(function (h) { return '<th>' + esc(h) + '</th>'; }).join('') + '</tr></thead><tbody>' +
+      cells.map(function (c) { var row = ''; for (var i = 0; i < n; i++) row += '<td>' + esc(c[i] || (i === n - 1 ? c.slice(n - 1).join('｜') : '')) + '</td>'; return '<tr>' + row + '</tr>'; }).join('') +
+      '</tbody></table>';
+  }
+  function spTextCell(t) { return t ? '<div class="sh-text">' + esc(t).replace(/\n/g, '<br>') + '</div>' : '<div class="sh-blank"></div>'; }
+  // 様式として組んだシート（画面表示・印刷用）
+  function spSheetHtml(d) {
+    var sc = spCatOf(d);
+    var today = new Date(); var ymd = today.getFullYear() + '年' + (today.getMonth() + 1) + '月' + today.getDate() + '日';
+    var lv = d.level === 'high' ? '高等部' : '幼稚部・小学部・中学部';
+    var h = '<div class="sh-head">' +
+      '<div class="sh-title">自立活動サポートシート<span>校内様式 R8.3時点に準拠</span></div>' +
+      '<table class="sh-meta"><tr>' +
+        '<th>幼児児童生徒</th><td class="sh-name">（氏名は様式に直接記入）</td>' +
+        '<th>校種・学年</th><td>' + esc(d.stage || '') + '</td>' +
+        '<th>障害種の観点</th><td>' + esc(sc ? sc.name : (d.disability || '')) + '</td>' +
+        '<th>作成日</th><td>' + esc(ymd) + '</td>' +
+      '</tr></table></div>';
+    h += '<h4 class="sh-h">① 実態把握</h4><table class="sh-form">' + SP_FORM.map(function (f) {
+      return '<tr><th>' + esc(f.label) + '</th><td>' + spTextCell(spColText(d, f.k)) + '</td></tr>';
+    }).join('') + '</table>';
+    var kuRows = JIRITSU27.filter(function (g) { return d.byKu[g.ku]; });
+    h += '<h4 class="sh-h">② 6区分の観点からの整理</h4><table class="sh-form">' + JIRITSU27.map(function (g, i) {
+      return '<tr><th>' + (i + 1) + ' ' + esc(g.ku) + '</th><td>' + spTextCell(d.byKu[g.ku]) + '</td></tr>';
+    }).join('') + '</table>';
+    h += '<h4 class="sh-h">③ 指導すべき課題</h4><table class="sh-form">' +
+      '<tr><th>課題</th><td>' + spTextCell(d.issues) + '</td></tr>' +
+      '<tr><th>課題同士の関係</th><td>' + spTextCell(d.relations) + '</td></tr></table>';
+    var sh = d.sheet || {};
+    h += '<h4 class="sh-h">④ 中心となる課題と指導目標</h4><table class="sh-form">' +
+      '<tr><th>中心となる課題</th><td>' + spTextCell(d.central) + '</td></tr>' +
+      '<tr><th>指導目標</th><td>' + spTextCell(d.goal) + '</td></tr>' +
+      (sh.summary ? '<tr><th>①〜④の要約（聞き取りから）</th><td>' + spTextCell(sh.summary) + '</td></tr>' : '') + '</table>';
+    h += '<h4 class="sh-h">⑤ 選定した項目</h4>' + spRowsHtml(sh.items, ['項目（正式名称）', '区分', '選んだ理由', '根拠']);
+    h += '<h4 class="sh-h">⑤′ 検討したが選ばなかった項目</h4>' + spRowsHtml(sh.rejected, ['項目（正式名称）', '理由']);
+    h += '<h4 class="sh-h">⑥ 項目の関連付け</h4><div class="sh-box">' + spTextCell(sh.relate) + '</div>';
+    h += '<h4 class="sh-h">⑦ 具体的な指導内容</h4>' + spRowsHtml(sh.content, ['案', 'ねらい', '関連する項目', '根拠', '評価の観点']);
+    h += '<h4 class="sh-h">教員が確認すべき点</h4>' + spRowsHtml(sh.check, null);
+    h += '<p class="sh-foot">根拠：特別支援学校教育要領・学習指導要領解説 自立活動編（平成30年3月）の手順（実態把握 → 課題の整理 → 項目の選定 → 関連付け → 具体的な指導内容）。AIの案は校内の検討で確かめてから用いる。</p>';
+    return h;
+  }
+  function spSheetText(d) {
+    var sc = spCatOf(d), o = ['＜自立活動サポートシート＞', '校種・学年：' + (d.stage || ''), '障害種の観点：' + (sc ? sc.name : (d.disability || '')), ''];
+    o.push('【① 実態把握】'); SP_FORM.forEach(function (f) { o.push('（' + f.label + '）'); o.push(spColText(d, f.k) || '（未記入）'); });
+    o.push(''); o.push('【② 6区分の観点】'); JIRITSU27.forEach(function (g) { if (d.byKu[g.ku]) { o.push('（' + g.ku + '）'); o.push(d.byKu[g.ku]); } });
+    o.push(''); o.push('【③ 指導すべき課題】'); o.push(d.issues || '（未記入）'); if (d.relations) { o.push('（課題同士の関係）'); o.push(d.relations); }
+    o.push(''); o.push('【④ 中心となる課題】'); o.push(d.central || '（未記入）'); o.push('【④ 指導目標】'); o.push(d.goal || '（未記入）');
+    SP_SHEET.forEach(function (x) { if (x[0] === 'summary') return; o.push(''); o.push('【' + x[1] + '】'); o.push((d.sheet && d.sheet[x[0]]) || '（未記入）'); });
+    o.push(''); o.push('※ 幼児児童生徒名は様式に直接記入する。');
+    return o.join('\n');
   }
 
   function spField(id, label, hint, rows, placeholder) {
@@ -2029,20 +2136,29 @@
         '<textarea class="sp-out" id="spOut" readonly rows="18"></textarea>' +
       '</section>' +
 
-      '<section class="block"><h3 class="block-title"><span class="sp-num">3</span>校内様式へ</h3>' +
-        '<p class="block-sub">AIが最後に出した「＜' + SP_FORM_NAME + '＞」の部分を貼り付けて「欄に流し込む」と、上の①の欄に入ります。「校内様式へ貼る用テキストをコピー」は、①の欄を【欄名】付きで写せる形にします。Wordの様式の各欄に貼ってください。' +
-        (META.notice && META.notice.supportForm && META.notice.supportForm.url ? ' 様式そのものは<a href="' + esc(META.notice.supportForm.url) + '" target="_blank" rel="noopener">' + esc(META.notice.supportForm.label || '校内様式') + '</a>から。' : '') + '</p>' +
-        '<label class="sp-field"><span class="sp-label">AIの回答を貼り付け</span><textarea id="spFormPaste" rows="5" placeholder="＜自立活動サポートシート（校内様式 R8.3時点）＞ 【障害の状態】…"></textarea></label>' +
+      '<section class="block"><h3 class="block-title"><span class="sp-num">3</span>AIの回答を貼って、シートに反映する</h3>' +
+        '<p class="block-sub">AIが最後に出した回答を、見出しごと（【⑤ 選定した項目】〜【教員が確認すべき点】、＜' + SP_FORM_NAME + '＞、【個別シート：通級による指導】）まるごと貼り付けて「シートに反映する」を押すと、①の欄と下の様式に入ります。' +
+        (META.notice && META.notice.supportForm && META.notice.supportForm.url ? ' 校内様式そのものは<a href="' + esc(META.notice.supportForm.url) + '" target="_blank" rel="noopener">' + esc(META.notice.supportForm.label || '校内様式') + '</a>。' : '') + '</p>' +
+        '<label class="sp-field"><span class="sp-label">AIの回答を貼り付け</span><textarea id="spFormPaste" rows="6" placeholder="【⑤ 選定した項目】…　＜' + esc(SP_FORM_NAME) + '＞ 【障害の状態】…　【個別シート：通級による指導】 ■ 実態把握…"></textarea></label>' +
         '<div class="sp-actions">' +
-          '<button type="button" class="sp-btn" id="spFormImport">欄に流し込む</button>' +
-          '<button type="button" class="sp-btn primary" id="spFormCopy">校内様式へ貼る用テキストをコピー</button>' +
+          '<button type="button" class="sp-btn primary" id="spFormImport">シートに反映する</button>' +
+          '<button type="button" class="sp-btn" id="spToPlan">計画シート（通級の欄）へ送る</button>' +
           '<span class="sp-copied" id="spFormMsg" aria-live="polite"></span>' +
+          '<span class="sp-copied" id="spSent" aria-live="polite"></span>' +
         '</div>' +
+        '<details class="sp-adv sp-sheet-fields"><summary>反映した欄を手で直す<span class="sp-hint">⑤〜⑦と確認すべき点。貼り付けなしで直接書くこともできます</span></summary>' +
+          SP_SHEET.filter(function (x) { return x[0] !== 'summary'; }).map(function (x) { return spField('sheet:' + x[0], x[1], x[0] === 'items' ? '1行に1項目。正式名称｜区分｜理由｜根拠' : x[0] === 'content' ? '案の名前｜ねらい｜関連する項目｜根拠｜評価の観点' : '', 3); }).join('') +
+        '</details>' +
       '</section>' +
-      '<section class="block"><h3 class="block-title"><span class="sp-num">4</span>計画シートへ送る</h3>' +
-        '<p class="block-sub">AIが最後に出した「【個別シート：通級による指導】」の部分を貼り付けると、計画シートの通級の欄に入ります。貼り付けなしで押すと、ここに書いた困りごとと①〜④だけを送ります。</p>' +
-        '<label class="sp-field"><span class="sp-label">AIの回答を貼り付け（任意）</span><textarea id="spPaste" rows="5" placeholder="【個別シート：通級による指導】 ■ 実態把握（自立活動の観点で）…"></textarea></label>' +
-        '<div class="sp-actions"><button type="button" class="sp-btn primary" id="spToPlan">計画シート（通級の欄）へ送る</button><span class="sp-copied" id="spSent" aria-live="polite"></span></div>' +
+      '<section class="block" id="spSheetSec"><h3 class="block-title"><span class="sp-num">4</span>サポートシート（様式）</h3>' +
+        '<p class="block-sub">ここまでの入力と、貼り付けたAIの回答を様式の形に組んだものです。印刷してそのまま校内の検討に使えます。空欄は手書きできるよう枠だけ残ります。</p>' +
+        '<div class="sp-actions">' +
+          '<button type="button" class="sp-btn primary" id="spPrint">印刷・PDFに保存</button>' +
+          '<button type="button" class="sp-btn" id="spSheetCopy">シート全体をテキストでコピー</button>' +
+          '<button type="button" class="sp-btn" id="spFormCopy">①だけを【欄名】付きでコピー</button>' +
+          '<span class="sp-copied" id="spSheetMsg" aria-live="polite"></span>' +
+        '</div>' +
+        '<div class="sp-sheet" id="spSheet"></div>' +
       '</section>' +
       '<div class="source-box">' +
         '<p>手順と観点は次に基づきます。校種で切り替わります。<br>' + srcLink('jiritsu-kaisetsu') + '<br>' + srcLink('mext-koutoubu-kaisetsu') + '</p>' +
@@ -2063,6 +2179,7 @@
       mainContent.querySelectorAll('[data-sp]').forEach(function (el) {
         var k = el.getAttribute('data-sp');
         if (k.indexOf('ku:') === 0) d.byKu[k.slice(3)] = el.value.trim();
+        else if (k.indexOf('sheet:') === 0) { if (!d.sheet) d.sheet = {}; d.sheet[k.slice(6)] = el.value.trim(); }
         else d[k] = el.value.trim();
       });
       mainContent.querySelectorAll('[data-spf]').forEach(function (el) { d.f[el.getAttribute('data-spf')] = el.value.trim(); });
@@ -2074,12 +2191,14 @@
       var lvEl = mainContent.querySelector('input[name="spLevel"][value="' + (d.level || 'elem') + '"]'); if (lvEl) lvEl.checked = true;
       mainContent.querySelectorAll('[data-sp]').forEach(function (el) {
         var k = el.getAttribute('data-sp');
-        el.value = k.indexOf('ku:') === 0 ? (d.byKu[k.slice(3)] || '') : (d[k] || '');
+        el.value = k.indexOf('ku:') === 0 ? (d.byKu[k.slice(3)] || '') : k.indexOf('sheet:') === 0 ? ((d.sheet && d.sheet[k.slice(6)]) || '') : (d[k] || '');
       });
     }
+    var sheetEl = document.getElementById('spSheet');
     function refresh() {
       readForm();
       out.value = buildSupportPrompt(target, d);
+      if (sheetEl) sheetEl.innerHTML = spSheetHtml(d);
     }
     fillForm();
     refresh();
@@ -2121,16 +2240,33 @@
       readForm();
       var text = document.getElementById('spFormPaste').value, msg = document.getElementById('spFormMsg');
       if (!text.trim()) { msg.textContent = '貼り付けが空です。'; return; }
-      var hasAny = SP_FORM.some(function (f) { return d[f.k]; });
-      if (hasAny && !window.confirm('すでに書いてある①の欄は、貼り付けた内容で上書きされます。よろしいですか。')) return;
-      var n = spParseForm(text, d);
+      var hasAny = SP_FORM.some(function (f) { return d[f.k]; }) || SP_SHEET.some(function (x) { return d.sheet && d.sheet[x[0]]; });
+      if (hasAny && !window.confirm('すでに書いてある欄は、貼り付けた内容で上書きされます。よろしいですか。')) return;
+      var n = spParseForm(text, d) + spParseSheet(text, d);
       mainContent.querySelector('.sp-adv').open = true;
       fillForm(); refresh();
-      msg.textContent = n + '欄を流し込みました。'; setTimeout(function () { msg.textContent = ''; }, 6000);
+      msg.classList.toggle('err', n === 0);
+      msg.textContent = n ? n + '欄をシートに反映しました。下の様式で確認してください。' : '読み取れる見出し（【⑤ 選定した項目】や【障害の状態】など）が見つかりませんでした。AIの回答を見出しごと貼ってください。';
+      setTimeout(function () { msg.textContent = ''; }, 8000);
+      if (n) document.getElementById('spSheetSec').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    document.getElementById('spPrint').addEventListener('click', function () {
+      refresh();
+      document.body.classList.add('sp-print');
+      var off = function () { document.body.classList.remove('sp-print'); window.removeEventListener('afterprint', off); };
+      window.addEventListener('afterprint', off);
+      window.print();
+      setTimeout(off, 1500);
+    });
+    document.getElementById('spSheetCopy').addEventListener('click', function () {
+      refresh();
+      var msg = document.getElementById('spSheetMsg'), text = spSheetText(d);
+      function done(ok) { msg.classList.toggle('err', !ok); msg.textContent = ok ? 'コピーしました。' : 'コピーできませんでした。'; setTimeout(function () { msg.textContent = ''; }, 5000); }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); }); else done(false);
     });
     document.getElementById('spFormCopy').addEventListener('click', function () {
       refresh();
-      var msg = document.getElementById('spFormMsg'), text = spFormText(d);
+      var msg = document.getElementById('spSheetMsg'), text = spFormText(d);
       function done(ok) { msg.classList.toggle('err', !ok); msg.textContent = ok ? 'コピーしました。校内様式（Word）の各欄に貼ってください。' : 'コピーできませんでした。'; setTimeout(function () { msg.textContent = ''; }, 5000); }
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); }); else done(false);
     });
@@ -2138,7 +2274,7 @@
       refresh();
       if (!S2) S2 = s2Blank();
       var t = S2.sp.tsukyu, filled = 0;
-      var pasted = document.getElementById('spPaste').value;
+      var pasted = document.getElementById('spFormPaste').value;
       if (pasted.trim()) {
         var r = s2Parse(pasted, S2);
         filled = r.filled;

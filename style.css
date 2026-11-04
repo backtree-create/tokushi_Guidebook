@@ -2957,3 +2957,72 @@
       .v5-cond:nth-child(even){background:rgba(255,255,255,.03);}
     }
   }
+
+  /* ==========================================================
+     版6.4.0 サポートシート（様式）と、自立活動27項目の並べ方
+     ========================================================== */
+  /* --- 様式：配色にかかわらず「紙」として見せる --- */
+  .sp-sheet{
+    background:#fff;color:#111;border:1px solid #9aa4ae;border-radius:4px;padding:26px 30px 22px;
+    font-family:var(--sans);font-size:14px;line-height:1.65;box-shadow:var(--shadow-card);
+    max-width:900px;margin:0 auto;
+  }
+  .sh-head{display:flex;flex-direction:column;gap:10px;margin-bottom:14px;}
+  .sh-title{font-family:var(--serif);font-size:20px;font-weight:700;letter-spacing:.04em;color:#111;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+  .sh-title span{font-family:var(--sans);font-size:12.5px;font-weight:400;color:#555;}
+  .sh-meta{width:100%;border-collapse:collapse;font-size:13px;}
+  .sh-meta th,.sh-meta td{border:1px solid #333;padding:6px 8px;text-align:left;vertical-align:top;}
+  .sh-meta th{background:#f0f2f4;font-weight:700;white-space:nowrap;width:1%;}
+  .sh-meta .sh-name{min-width:160px;color:#666;}
+  .sh-h{margin:16px 0 6px;padding:4px 10px;font-size:14.5px;font-weight:700;color:#111;background:#e9edf1;border-left:4px solid #132132;}
+  .sh-form{width:100%;border-collapse:collapse;}
+  .sh-form th,.sh-form td{border:1px solid #333;padding:7px 9px;vertical-align:top;text-align:left;}
+  .sh-form th{width:24%;background:#f6f7f9;font-weight:700;font-size:13.5px;}
+  .sh-text{white-space:normal;min-height:1.6em;}
+  .sh-blank{min-height:2.6em;}
+  .sh-table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  .sh-table th,.sh-table td{border:1px solid #333;padding:6px 8px;vertical-align:top;text-align:left;}
+  .sh-table th{background:#f6f7f9;font-weight:700;}
+  .sh-list{margin:0;padding:6px 8px 6px 26px;border:1px solid #333;}
+  .sh-list li{margin:2px 0;}
+  .sh-foot{margin:14px 0 0;font-size:12px;color:#555;}
+  .sp-sheet-fields{margin-top:12px;}
+  @media (max-width:700px){.sp-sheet{padding:16px 14px;}.sh-meta th,.sh-meta td{display:block;width:auto;border-top:none;}.sh-meta tr{display:block;border-top:1px solid #333;}.sh-form th{width:34%;}}
+  @media (prefers-color-scheme: dark){ .sp-sheet{border-color:#58636d;} }
+
+  /* --- 印刷：様式だけを紙に出す --- */
+  @media print{
+    body.sp-print > *:not(#layoutRoot){display:none !important;}
+    body.sp-print #layoutRoot > *:not(#mainContent),body.sp-print .index{display:none !important;}
+    body.sp-print #mainContent > *{display:none !important;}
+    body.sp-print #mainContent > .sp-view{display:block !important;}
+    body.sp-print .sp-view > *:not(#spSheetSec){display:none !important;}
+    body.sp-print #spSheetSec > *:not(.block-body){display:none !important;}
+    body.sp-print #spSheetSec .block-sub,body.sp-print #spSheetSec .sp-actions{display:none !important;}
+    body.sp-print #spSheetSec .block-body{display:block !important;grid-template-rows:1fr !important;opacity:1 !important;}
+    body.sp-print .sp-sheet{border:none;box-shadow:none;padding:0;max-width:none;font-size:10.5pt;}
+    body.sp-print .sh-h{break-after:avoid;background:#e9edf1 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    body.sp-print .sh-form,body.sp-print .sh-table{break-inside:auto;}
+    body.sp-print tr{break-inside:avoid;}
+    body.sp-print .to-top,body.sp-print .fab-menu,body.sp-print .secbar{display:none !important;}
+    @page{margin:14mm 12mm;}
+  }
+
+  /* --- 自立活動 6区分27項目：表から札の並びへ --- */
+  .ku-toc{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px;}
+  .ku-toc a{display:inline-flex;align-items:center;gap:8px;padding:7px 14px 7px 8px;border:1px solid var(--line-strong);border-radius:var(--r-pill);color:var(--ink-strong);text-decoration:none;font-size:var(--fs-sub);background:var(--card);transition:border-color .18s,box-shadow .18s,transform .18s var(--ease-out);}
+  .ku-toc a:hover{border-color:var(--accent);box-shadow:var(--shadow-card);transform:translateY(-1px);}
+  .ku-toc a .n{width:24px;height:24px;border-radius:50%;background:var(--navy);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;}
+  .ku-group{scroll-margin-top:64px;}
+  .ku-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:12px;margin-top:10px;}
+  .ku-card{display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 12px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-card);padding:14px 18px 14px 14px;box-shadow:var(--shadow-card);transition:border-color .2s,box-shadow .2s,transform .2s var(--ease-out);}
+  .ku-card:hover{border-color:var(--accent);box-shadow:var(--shadow-lift);transform:translateY(-2px);}
+  .ku-card .ku-no{grid-row:1 / span 3;width:34px;height:34px;border-radius:50%;background:var(--paper2);color:var(--ink-strong);display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13.5px;border:1px solid var(--line);}
+  .ku-card .ku-name{font-size:var(--fs-h4);font-weight:700;color:var(--ink-strong);line-height:1.4;}
+  .ku-card .ku-official{font-size:var(--fs-note);color:var(--ink-faint);line-height:1.5;}
+  .ku-card .ku-desc{font-size:var(--fs-sub);line-height:1.75;color:var(--ink);margin-top:4px;}
+  .ku-heading{margin-top:36px;}
+  @media (max-width:700px){.ku-cards{grid-template-columns:1fr;}}
+  @media (prefers-color-scheme: dark){ .ku-toc a .n{background:var(--accent);color:#0b131c;} }
+  .sh-box{border:1px solid #333;padding:7px 9px;}
+  .sh-meta .sh-name{min-width:200px;}

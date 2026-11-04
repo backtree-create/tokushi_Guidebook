@@ -31,6 +31,9 @@
 - 手引・提要の改訂の有無：`sources.json` の `policy: "latest"` の資料は新版が出ていないか確認
 - 問い合わせフォームの回答を確認し、追加・訂正を反映
 
+### サポートシートの様式（版6.4.0〜）
+`renderSupport` の第4節 `#spSheetSec` に `spSheetHtml(d)` で様式を組む（①実態把握の5欄＝`SP_FORM`、②6区分＝`byKu`、③④、⑤〜⑦と確認すべき点＝`d.sheet`）。`d.sheet` は `SP_SHEET` の6欄で、AIの回答の【⑤ 選定した項目】などの見出しを `spParseSheet` が読む（「｜」区切りの行は表、それ以外は箇条書き `spRowsHtml`）。貼り付け欄は `#spFormPaste` 一つで、`spParseForm`（①）・`spParseSheet`（⑤〜）・`s2Parse`（計画シート）がそれぞれ読む。印刷は `body.sp-print` で様式以外を隠す。指示書の末尾の出力形式（見出しの文言）を変えるときは `spParseSheet.keyOf` も合わせる。
+
 ### 権利表示
 `meta.json` の `copyright` をフッターの最下段に出す。年は最初に公開した年。年をまたいで公開を続けるときは `© 2026–2027 …` のように範囲にする。
 
